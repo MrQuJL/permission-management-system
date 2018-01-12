@@ -1,0 +1,187 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>用户管理</title>
+	
+<meta charset="utf-8" />
+<meta name="renderer" content="webkit">
+
+<script src="static/jquery/jquery-1.8.3.min.js" type="text/javascript"></script>
+<link href="static/bootstrap/2.3.1/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+<script src="static/bootstrap/2.3.1/js/bootstrap.min.js" type="text/javascript"></script>
+<!--[if lte IE 6]>
+<link href="static/bootstrap/bsie/css/bootstrap-ie6.min.css" type="text/css" rel="stylesheet" />
+<script src="static/bootstrap/bsie/js/bootstrap-ie.min.js" type="text/javascript"></script>
+<![endif]-->
+<link href="static/jquery-select2/3.4/select2.min.css" rel="stylesheet" />
+<script src="static/jquery-select2/3.4/select2.min.js" type="text/javascript"></script>
+<link href="static/jquery-validation/1.11.0/jquery.validate.min.css" type="text/css" rel="stylesheet" />
+<script src="static/jquery-validation/1.11.0/jquery.validate.min.js" type="text/javascript"></script>
+<link href="static/jquery-jbox/2.3/Skins/Bootstrap/jbox.min.css" rel="stylesheet" />
+<script src="static/jquery-jbox/2.3/jquery.jBox-2.3.min.js" type="text/javascript"></script>
+<script src="static/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+<link href="static/common/common.css" type="text/css" rel="stylesheet" />
+<script src="static/common/common.js" type="text/javascript"></script>
+<script type="text/javascript">var ctx = '', ctxStatic='/static';</script>
+	<script type="text/javascript">
+		$(function() {
+			$("#no").focus();
+			$("#inputForm").validate({
+				rules: {
+					loginName: {remote: "/sys/user/checkLoginName?oldLoginName=" + encodeURIComponent('')}
+				},
+				messages: {
+					loginName: {remote: "用户登录名已存在"},
+					confirmNewPassword: {equalTo: "输入与上面相同的密码"}
+				},
+				submitHandler: function(form){
+					loading('正在提交，请稍等...');
+					form.submit();
+				},
+				errorContainer: "#messageBox",
+				errorPlacement: function(error, element) {
+					$("#messageBox").text("输入有误，请先更正。");
+					if (element.is(":checkbox")||element.is(":radio")||element.parent().is(".input-append")){
+						error.appendTo(element.parent().parent());
+					} else {
+						error.insertAfter(element);
+					}
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<ul class="nav nav-tabs">
+		<li><a href="userList.html">用户列表</a></li>
+		<li class="active">
+			<a href="userAdd.html">用户
+			添加
+			
+			</a>
+		</li>
+	</ul><br/>
+	<form id="inputForm" class="form-horizontal" action="#" method="post">
+		<input id="id" name="id" type="hidden" value=""/>
+
+<script type="text/javascript">top.$.jBox.closeTip();</script>
+
+		<div class="control-group">
+			<label class="control-label">归属公司:</label>
+			<div class="controls">
+
+<div class="input-append">
+	<input id="companyId" name="company.id" class="required" type="hidden" value="1"/>
+	<input id="companyName" name="company.name" readonly="readonly" type="text" value="湖南省总公司" data-msg-required=""
+		class="required" style=""/><a id="companyButton" href="javascript:" class="btn  " style="">&nbsp;<i class="icon-search"></i>&nbsp;</a>&nbsp;&nbsp;
+</div>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">归属部门:</label>
+			<div class="controls">
+
+<div class="input-append">
+	<input id="officeId" name="office.id" class="required" type="hidden" value="2"/>
+	<input id="officeName" name="office.name" readonly="readonly" type="text" value="公司领导" data-msg-required=""
+		class="required" style=""/><a id="officeButton" href="javascript:" class="btn  " style="">&nbsp;<i class="icon-search"></i>&nbsp;</a>&nbsp;&nbsp;
+</div>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">工号:</label>
+			<div class="controls">
+				<input id="no" name="no" class="required" type="text" value="" maxlength="50"/>
+				<span class="help-inline"><span style="color:red">*</span> </span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">姓名:</label>
+			<div class="controls">
+				<input id="name" name="name" class="required" type="text" value="" maxlength="50"/>
+				<span class="help-inline"><span style="color:red">*</span> </span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">登录名:</label>
+			<div class="controls">
+				<input id="oldLoginName" name="oldLoginName" type="hidden" value="">
+				<input id="loginName" name="loginName" class="required userName" type="text" value="" maxlength="50"/>
+				<span class="help-inline"><span style="color:red">*</span> </span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">密码:</label>
+			<div class="controls">
+				<input id="newPassword" name="newPassword" type="password" value="" maxlength="50" minlength="3" class="required"/>
+				<span class="help-inline"><span style="color:red">*</span> </span>
+				
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">确认密码:</label>
+			<div class="controls">
+				<input id="confirmNewPassword" name="confirmNewPassword" type="password" value="" maxlength="50" minlength="3" equalTo="#newPassword"/>
+				<span class="help-inline"><span style="color:red">*</span> </span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">邮箱:</label>
+			<div class="controls">
+				<input id="email" name="email" class="email" type="text" value="" maxlength="100"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">电话:</label>
+			<div class="controls">
+				<input id="phone" name="phone" type="text" value="" maxlength="100"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">手机:</label>
+			<div class="controls">
+				<input id="mobile" name="mobile" type="text" value="" maxlength="100"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">是否允许登录:</label>
+			<div class="controls">
+				<select id="loginFlag" name="loginFlag">
+					<option value="1" selected="selected">是</option><option value="0">否</option>
+				</select>
+				<span class="help-inline"><span style="color:red">*</span> “是”代表此账号允许登录，“否”则表示此账号不允许登录</span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">用户角色:</label>
+			<div class="controls">
+				<span><input id="roleIdList1" name="roleIdList" class="required" type="checkbox" value="6"/><label for="roleIdList1">普通用户</label></span><span><input id="roleIdList2" name="roleIdList" class="required" type="checkbox" value="5"/><label for="roleIdList2">本部门管理员</label></span><span><input id="roleIdList3" name="roleIdList" class="required" type="checkbox" value="4"/><label for="roleIdList3">部门管理员</label></span><span><input id="roleIdList4" name="roleIdList" class="required" type="checkbox" value="2"/><label for="roleIdList4">公司管理员</label></span><span><input id="roleIdList5" name="roleIdList" class="required" type="checkbox" value="3"/><label for="roleIdList5">本公司管理员</label></span><span><input id="roleIdList6" name="roleIdList" class="required" type="checkbox" value="1"/><label for="roleIdList6">系统管理员</label></span><span><input id="roleIdList7" name="roleIdList" class="required" type="checkbox" value="7"/><label for="roleIdList7">长沙市管理员</label></span><input type="hidden" name="_roleIdList" value="on"/>
+				<span class="help-inline"><span style="color:red">*</span> </span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">备注:</label>
+			<div class="controls">
+				<textarea id="remarks" name="remarks" maxlength="200" class="input-xlarge" rows="3"></textarea>
+			</div>
+		</div>
+		
+		<div class="form-actions">
+			<input id="btnSubmit" class="btn btn-primary" type="submit" value="保 存"/>&nbsp;
+			<input id="btnCancel" class="btn" type="button" value="返 回" onclick="history.go(-1)"/>
+		</div>
+	</form>
+</body>
+</html>

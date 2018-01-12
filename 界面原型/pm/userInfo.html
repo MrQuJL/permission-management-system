@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>������Ϣ</title>
+	
+<meta charset="utf-8" />
+<meta name="renderer" content="webkit">
+
+<script src="static/jquery/jquery-1.8.3.min.js" type="text/javascript"></script>
+<link href="static/bootstrap/2.3.1/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+<script src="static/bootstrap/2.3.1/js/bootstrap.min.js" type="text/javascript"></script>
+<!--[if lte IE 6]>
+<link href="static/bootstrap/bsie/css/bootstrap-ie6.min.css" type="text/css" rel="stylesheet" />
+<script src="static/bootstrap/bsie/js/bootstrap-ie.min.js" type="text/javascript"></script>
+<![endif]-->
+<link href="static/jquery-select2/3.4/select2.min.css" rel="stylesheet" />
+<script src="static/jquery-select2/3.4/select2.min.js" type="text/javascript"></script>
+<link href="static/jquery-validation/1.11.0/jquery.validate.min.css" type="text/css" rel="stylesheet" />
+<script src="static/jquery-validation/1.11.0/jquery.validate.min.js" type="text/javascript"></script>
+<link href="static/jquery-jbox/2.3/Skins/Bootstrap/jbox.min.css" rel="stylesheet" />
+<script src="static/jquery-jbox/2.3/jquery.jBox-2.3.min.js" type="text/javascript"></script>
+<script src="static/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+<link href="static/common/common.css" type="text/css" rel="stylesheet" />
+<script src="static/common/common.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("#inputForm").validate({
+				submitHandler: function(form){
+					loading('�����ύ�����Ե�...');
+					form.submit();
+				},
+				errorContainer: "#messageBox",
+				errorPlacement: function(error, element) {
+					$("#messageBox").text("�����������ȸ�����");
+					if (element.is(":checkbox")||element.is(":radio")||element.parent().is(".input-append")){
+						error.appendTo(element.parent().parent());
+					} else {
+						error.insertAfter(element);
+					}
+				}
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="userInfo.html">个人信息</a></li>
+		<li><a href="changePwd.html">修改密码</a></li>
+	</ul><br/>
+	<form id="inputForm" class="form-horizontal" action="#" method="post">
+<script type="text/javascript">top.$.jBox.closeTip();</script>
+
+		<div class="control-group">
+			<label class="control-label">所属公司:</label>
+			<div class="controls">
+				<label class="lbl">湖南省总公司</label>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">所属部门:</label>
+			<div class="controls">
+				<label class="lbl">公司领导</label>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">姓名:</label>
+			<div class="controls">
+				<input id="name" name="name" class="required" readonly="readonly" type="text" value="系统超级管理员" maxlength="50"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">邮箱:</label>
+			<div class="controls">
+				<input id="email" name="email" class="email" type="text" value="colin@163.com" maxlength="50"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">电话:</label>
+			<div class="controls">
+				<input id="phone" name="phone" type="text" value="" maxlength="50"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">手机:</label>
+			<div class="controls">
+				<input id="mobile" name="mobile" type="text" value="18888888888" maxlength="50"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">备注:</label>
+			<div class="controls">
+				<textarea id="remarks" name="remarks" maxlength="200" class="input-xlarge" rows="3">最高管理员</textarea>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">用户角色:</label>
+			<div class="controls">
+				<label class="lbl">公司管理员,系统管理员</label>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">上次登录:</label>
+			<div class="controls">
+				<label class="lbl">IP: 0:0:0:0:0:0:0:1&nbsp;&nbsp;&nbsp;&nbsp;时间：2015年7月20日 星期一 19:35:28</label>
+			</div>
+		</div>
+		<div class="form-actions">
+			<input id="btnSubmit" class="btn btn-primary" type="submit" value="保 存"/>
+		</div>
+	</form>
+</body>
+</html>
