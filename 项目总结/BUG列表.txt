@@ -1,0 +1,29 @@
+2018/1/12
+
+1. 使用<c:set />之类的jstl库的标签的时候不要忘记在Maven里面添加依赖
+<dependency>
+	 <groupId>jstl</groupId>
+	 <artifactId>jstl</artifactId>
+	 <version>1.2</version>
+ </dependency>
+
+1.2版本的标签库的uri写法为：
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+1.1版本的标签库的uri的写法为：
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+注：我的项目最初就是用的jstl1.2，并且uri的写法也正确，但是运行的时候却报错，
+重启了几次后就好了，这个tomcat缓存也是挺厉害的。
+
+2. 为了编译jsp的标签也要在Maven里面添加一个依赖
+<dependency>
+	<groupId>javax.servlet.jsp</groupId>
+	<artifactId>jsp-api</artifactId>
+	<version>2.1</version>
+	<scope>provided</scope>
+</dependency>
+注：不添加这个依赖的话，在编译的时候就会在jsp标签处报红叉叉。
+
+
+
+
