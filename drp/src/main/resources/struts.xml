@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	 <package name="loginPackage" extends="struts-default">
+	 	<!-- 前往登录页面 -->
+	 	<action name="toLogin" class="com.qjl.drp.sysmanage.action.LoginAction" method="toLogin">
+	 		<result name="loginPage" type="dispatcher">/WEB-INF/pages/login.jsp</result>
+	 	</action>
+	 	
+	 	<!-- 前往主页 -->
+	 	<action name="login" class="com.qjl.drp.sysmanage.action.LoginAction" method="login">
+	 		<result name="main" type="redirect">/main.action</result>
+	 		<result name="loginPage" type="dispatcher">/WEB-INF/pages/login.jsp</result>
+	 	</action>
+	 	
+	 	<!-- 重定向到主页面的请求 -->
+	 	<action name="main" class="com.qjl.drp.sysmanage.action.LoginAction" method="main">
+	 		<result name="mainPage" type="dispatcher">/WEB-INF/pages/main/main.jsp</result>
+	 	</action>
+	 	
+	 </package>
+	 
+	 <include file="struts-sysmgr.xml"></include>
+	 
+</struts>

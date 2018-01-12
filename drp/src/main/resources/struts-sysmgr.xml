@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name = "sysmgr" namespace ="/sysmgr" extends ="struts-default" >	
+		
+		<action name = "userInfo" class= "com.tz.ssspm.sysmanage.action.UserAction" method = "userInfo">
+			<result name = "userInfo">/WEB-INF/pages/sysmanage/user/userInfo.jsp</result>
+		
+		</action>
+		
+		<action name = "changePwd" class= "com.tz.ssspm.sysmanage.action.UserAction" method = "changePwd">
+			<result name = "changePwd">/WEB-INF/pages/sysmanage/user/changePwd.jsp</result>
+		
+		</action>
+		
+		<!-- <action name = "addUser"  class = "com.tz.strutsstudy.sysmgr.action.UserAction" method="add">
+ 			<result name = "returnPage" >/WEB-INF/pages/usermgr/userOperator.jsp</result> 			
+ 		</action>
+		
+		<action name = "delUser"  class = "com.tz.strutsstudy.sysmgr.action.UserAction" method="del">
+			<interceptor-ref name = "loginInterceptor" />
+			<result name = "returnPage" >/WEB-INF/pages/usermgr/userOperator.jsp</result>
+ 		</action>	
+		
+		<action name = "upateUser"  class = "com.tz.strutsstudy.sysmgr.action.UserAction" method="update">
+			<interceptor-ref name = "loginInterceptor" />		
+			<result name = "returnPage" >/WEB-INF/pages/usermgr/userOperator.jsp</result>
+ 		</action>
+		
+		<action name = "queryUser"  class = "com.tz.strutsstudy.sysmgr.action.UserAction" method="query">
+			<interceptor-ref name = "loginInterceptor" />		
+			<result name = "returnPage" >/WEB-INF/pages/usermgr/userOperator.jsp</result>
+ 		</action> -->	
+				
+	</package>
+	
+
+</struts>

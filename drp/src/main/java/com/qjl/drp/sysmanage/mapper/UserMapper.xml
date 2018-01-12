@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace = "com.qjl.drp.sysmanage.mapper.UserMapper"> 
+	<sql id = "all_user_columns">
+	 	USER_ID,DEPT_ID,LOGIN_NAME,PASSWORD,
+	  		USER_NO,USER_NAME,EMAIL,PHONE,MOBILE,
+	  		UPDATE_BY,UPDATE_DATE,REMARKS	 
+	</sql>
+ 
+	<!--将通用的sql查询条件抽取出来,成为sql片段 ,给不同方法应用  -->
+	<sql id="query_user_sql_where">			
+		<if test="userName!=null"> 
+			AND USER_NAME LIKE '%${userName}%'
+		</if>
+		<if test="loginName!=null"> 
+			AND LOGIN_NAME= #{loginName}
+		</if>
+		<if test="password!=null"> 
+			AND PASSWORD= #{password}
+		</if>		
+	</sql>
+	<!--根据条件查询 用户列表   -->
+	<select id="getUserList" parameterType="user" resultType="user">
+		SELECT
+		<include refid="all_user_columns"></include>
+		FROM PM_SYS_USER
+		<where>
+			<include refid="query_user_sql_where"></include>		
+		</where>
+	</select> 
+	 
+</mapper>
