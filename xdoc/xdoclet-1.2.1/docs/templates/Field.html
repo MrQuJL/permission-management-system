@@ -1,0 +1,322 @@
+
+<html>
+<head>
+</head>
+<body bgcolor="#ffffff">
+
+<h2>Field</h2>
+
+<p>Implemented in class <a href="../api/xdoclet/tagshandler/FieldTagsHandler.html">xdoclet.tagshandler.FieldTagsHandler</a>.</p>
+<ul>
+  <li><a href="#block">Block Tags</a>
+  <li><a href="#content">Content Tags</a>
+</ul>
+
+<h3><a name="block">Block Tags:</a></h3>
+
+<h4><a name="forAllFields">forAllFields</a> (block template)</h4>
+<p>Iterates over all fields of current class and evaluates the body of the tag for each field.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [superclasses]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       If true then traverse superclasses also, otherwise look up the tag in current concrete class only.<br></br>
+        Valid Values = {true,false}
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [sort]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       If true then sort the fields list.<br></br>
+        Valid Values = {true,false}
+    </td>
+  </tr>
+</table>
+
+<h4><a name="forAllFieldTags">forAllFieldTags</a> (block template)</h4>
+<p>Iterates over all tags of current field and evaluates the body of the tag for each field.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           tagName
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The tag name.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [superclasses]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       If true then traverse superclasses also, otherwise look up the tag in current concrete class only. Default is true.<br></br>
+        Valid Values = {true,false}
+    </td>
+  </tr>
+</table>
+
+<h4><a name="forAllFieldTagTokens">forAllFieldTagTokens</a> (block template)</h4>
+<p>Iterates over all tokens in current field tag with the name tagName and evaluates the body for every token.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           tagName
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The tag name.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [delimiter]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       delimiter for the StringTokenizer. consult javadoc for java.util.StringTokenizer default is ','<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [skip]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       how many tokens to skip on start<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="ifHasFieldTag">ifHasFieldTag</a> (block template)</h4>
+<p>Evaluates the body if current field has at least one tag with the specified name.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           tagName
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The tag name.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [paramName]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The parameter name. If not specified, then the raw content of the tag is returned.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [paramNum]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The zero-based parameter number. It's used if the user used the space-separated format for specifying parameters.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [superclasses]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       If true then traverse superclasses also, otherwise look up the tag in current concrete class only. Default is true.<br></br>
+        Valid Values = {true,false}
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [error]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       Show this error message if no tag found.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="ifFieldTagValueEquals">ifFieldTagValueEquals</a> (block template)</h4>
+<p>Evaluates the body if value for the field tag equals the specified value.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           tagName
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The tag name.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [paramName]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The parameter name. If not specified, then the raw content of the tag is returned.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [paramNum]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The zero-based parameter number. It's used if the user used the space-separated format for specifying parameters.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           value
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The desired value.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h3><a name="content">Content templates:</a></h3>
+
+<h4><a name="firstSentenceDescriptionOfCurrentField">firstSentenceDescriptionOfCurrentField</a> (content template)</h4>
+<p>Return standard javadoc of current field.</p>
+
+<h4><a name="fieldName">fieldName</a> (content template)</h4>
+<p>Returns the name of the current field.</p>
+
+<h4><a name="fieldComment">fieldComment</a> (content template)</h4>
+<p>The comment for the current field.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [no-comment-signs]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       If true then don't decorate the comment with comment signs.<br></br>
+        Valid Values = {true,false}
+    </td>
+  </tr>
+</table>
+
+<h4><a name="fieldTagValue">fieldTagValue</a> (content template)</h4>
+<p>Iterates over all field tags with the specified tagName for the current field probably inside of a forAllFieldTags body.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           tagName
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The tag name.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [paramName]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The parameter name. If not specified, then the raw content of the tag is returned.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [paramNum]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The zero-based parameter number. It's used if the user used the space-separated format for specifying parameters.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [values]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The valid values for the parameter, comma separated. An error message is printed if the parameter value is not one of the values.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [default]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The default value is returned if parameter not specified by user for the tag.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="fieldType">fieldType</a> (content template)</h4>
+<p>Returns the type of the current field.</p>
+
+<h4><a name="getClassNameFor">getClassNameFor</a> (content template)</h4>
+<p>Returns the not-full-qualified name of the current class without the package name.</p>
+
+<h4><a name="getFullClassNameFor">getFullClassNameFor</a> (content template)</h4>
+<p>Returns the full-qualified name of the current class with the package name.</p>
+
+<h4><a name="getFullSuperclassNameFor">getFullSuperclassNameFor</a> (content template)</h4>
+<p>Returns the full-qualified name of the superclass of the current class.</p>
+
+<h4><a name="setMatchValue">setMatchValue</a> (content template)</h4>
+<p>Sets the vaSoulue of match variable.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           value
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The new value for matchPattern.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="matchValue">matchValue</a> (content template)</h4>
+<p>Returns the value of match variable. Match variable serves as a variable for templates, you set it somewhere in template and look it up somewhere else in template.</p>
+
+<h4><a name="currentToken">currentToken</a> (content template)</h4>
+<p>Returns current token inside forAllClassTagTokens.</p>
+
+<h4><a name="skipToken">skipToken</a> (content template)</h4>
+<p>Skips current token. Returns empty string.</p>
+
+</body>
+</html>

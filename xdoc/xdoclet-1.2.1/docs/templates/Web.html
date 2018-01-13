@@ -1,0 +1,38 @@
+
+<html>
+<head>
+</head>
+<body bgcolor="#ffffff">
+
+<h2>Web</h2>
+
+<p>Implemented in class <a href="../api/xdoclet/modules/web/WebTagsHandler.html">xdoclet.modules.web.WebTagsHandler</a>.</p>
+<ul>
+  <li><a href="#block">Block Tags</a>
+  <li><a href="#content">Content Tags</a>
+</ul>
+
+<h3><a name="block">Block Tags:</a></h3>
+
+<h4><a name="forAllEjbRefs">forAllEjbRefs</a> (block template)</h4>
+<p>Process the tag body for each web:ejb-ref tag in all source files. Please note that this tag already iterates over all available sources; it should <em>not</em> be enclosed by a &lt;XDtClass:forAllClasses> tag or any other that process classes. This tag does not process tags with duplicated name attributes. If such tags occurs, only the first tag is processed, and further tags will only emit a warning message.</p>
+
+<h4><a name="forAllEjbLocalRefs">forAllEjbLocalRefs</a> (block template)</h4>
+<p>Process the tag body for each web:ejb-local-ref tag in all source files. Look at forAllEjbRefs for some notes about the behavior of this tag.</p>
+
+<h4><a name="forAllResourceRefs">forAllResourceRefs</a> (block template)</h4>
+<p>Process the tag body for each web:resource-ref tag in all source files. Look at forAllEjbRefs for some notes about the behavior of this tag.</p>
+
+<h4><a name="forAllResourceEnvRefs">forAllResourceEnvRefs</a> (block template)</h4>
+<p>Process the tag body for each web:resource-env-ref tag in all source files. Look at forAllEjbRefs for some notes about the behavior of this tag.</p>
+
+<h4><a name="forAllSecurityRoles">forAllSecurityRoles</a> (block template)</h4>
+<p>Process the tag body for each web:security-role tag in all source files. Look at forAllEjbRefs for some notes about the behavior of this tag.</p>
+
+<h4><a name="forAllEnvEntries">forAllEnvEntries</a> (block template)</h4>
+<p>Process the tag body for each web:env-entry tag in all source files. Look at forAllEjbRefs for some notes about the behavior of this tag.</p>
+
+<h3><a name="content">Content templates:</a></h3>
+
+</body>
+</html>

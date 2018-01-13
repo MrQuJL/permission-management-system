@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jrun-web-app PUBLIC "-//Macromedia, Inc.//DTD jrun-web 4.0//EN" "http://www.macromedia.com/dtds/jrun-web.dtd">
+
+<jrun-web-app>
+
+  <!--
+    Define session-config in a file called session-config.xml and place
+    it in your merge directory.
+  -->
+  <!--
+    Define virtual-mapping* in a file called virtual-mapping.xml and place
+    it in your merge directory.
+  -->
+</jrun-web-app>

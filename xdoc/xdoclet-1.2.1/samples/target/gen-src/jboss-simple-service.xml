@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<service>
+
+  <classpath codebase="lib"
+             archives="*"
+      />
+  <classpath codebase="otherPath"
+             archives="someLib.jar"
+      />
+  <mbean code="test.jmx.SimpleJMX"
+         name=":service=SimpleJMX"
+         >
+  </mbean>
+
+  <classpath codebase="." libraries="*"/>
+  <mbean code="org.xdoclet.NonexistentMBean" name="xdoclet.test:service=NONE"/>
+
+</service>

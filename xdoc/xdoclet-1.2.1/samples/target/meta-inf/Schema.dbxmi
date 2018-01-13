@@ -1,0 +1,182 @@
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:RDBSchema="RDBSchema.xmi">
+
+   <RDBSchema:RDBDatabase xmi:id="RDBDatabase_1" name="TopDownDB" tableGroup="RDBTable_1 RDBTable_2">
+      <dataTypeSet href="UDBV7_Primitives.xmi#SQLPrimitives_1"/>
+   </RDBSchema:RDBDatabase>
+
+   <RDBSchema:RDBTable xmi:id="RDBTable_Customer" name="" primaryKey="Customer_PRIMARYKEY" database="RDBDatabase_1">
+      <namedGroup xmi:type="RDBSchema:SQLReference" xmi:id="Customer_PRIMARYKEY" members="------RDBColumn_1" table="RDBTable_Customer" constraint="Constraint_Customer_"/>
+
+      <columns xmi:id="Customer_credit" name="credit">
+      </columns>
+      <columns xmi:id="Customer_array" name="array">
+      </columns>
+      <columns xmi:id="Customer_image" name="image">
+      </columns>
+      <columns xmi:id="Customer_tax" name="tax">
+      </columns>
+      <columns xmi:id="ejb:bean_id" name="id">
+      </columns>
+      <columns xmi:id="ejb:bean_name" name="name">
+      </columns>
+      <columns xmi:id="ejb:bean_firstName" name="firstName">
+      </columns>
+      <columns xmi:id="ejb:bean_phone" name="phone">
+      </columns>
+      <columns xmi:id="ejb:bean_fax" name="fax">
+      </columns>
+      <columns xmi:id="ejb:bean_creationDate" name="creationDate">
+      </columns>
+
+   </RDBSchema:RDBTable>
+   <RDBSchema:RDBTable xmi:id="RDBTable_LanguageCode" name="" primaryKey="LanguageCode_PRIMARYKEY" database="RDBDatabase_1">
+      <namedGroup xmi:type="RDBSchema:SQLReference" xmi:id="LanguageCode_PRIMARYKEY" members="------RDBColumn_1" table="RDBTable_LanguageCode" constraint="Constraint_LanguageCode_"/>
+
+      <columns xmi:id="LanguageCode_languageCodeId" name="languageCodeId">
+      </columns>
+      <columns xmi:id="LanguageCode_name" name="name">
+      </columns>
+
+   </RDBSchema:RDBTable>
+   <RDBSchema:RDBTable xmi:id="RDBTable_Account" name="" primaryKey="Account_PRIMARYKEY" database="RDBDatabase_1">
+      <namedGroup xmi:type="RDBSchema:SQLReference" xmi:id="Account_PRIMARYKEY" members="------RDBColumn_1" table="RDBTable_Account" constraint="Constraint_Account_"/>
+
+      <columns xmi:id="Account_id" name="id">
+      </columns>
+      <columns xmi:id="Account_owner" name="owner">
+      </columns>
+      <columns xmi:id="Account_balance" name="balance">
+      </columns>
+      <columns xmi:id="Account_lastModificationDate" name="lastModificationDate">
+      </columns>
+      <columns xmi:id="Account_accountId" name="accountId">
+      </columns>
+      <columns xmi:id="ejb:bean_creationDate" name="creationDate">
+      </columns>
+
+   </RDBSchema:RDBTable>
+   <RDBSchema:RDBTable xmi:id="RDBTable_City" name="" primaryKey="City_PRIMARYKEY" database="RDBDatabase_1">
+      <namedGroup xmi:type="RDBSchema:SQLReference" xmi:id="City_PRIMARYKEY" members="------RDBColumn_1" table="RDBTable_City" constraint="Constraint_City_"/>
+
+      <columns xmi:id="City_cityId" name="cityId">
+      </columns>
+      <columns xmi:id="City_countryIdFk" name="countryIdFk">
+      </columns>
+      <columns xmi:id="City_name" name="name">
+      </columns>
+
+   </RDBSchema:RDBTable>
+   <RDBSchema:RDBTable xmi:id="RDBTable_AllTypesEntity" name="" primaryKey="AllTypesEntity_PRIMARYKEY" database="RDBDatabase_1">
+      <namedGroup xmi:type="RDBSchema:SQLReference" xmi:id="AllTypesEntity_PRIMARYKEY" members="------RDBColumn_1" table="RDBTable_AllTypesEntity" constraint="Constraint_AllTypesEntity_"/>
+
+      <columns xmi:id="AllTypesEntity_IVOwnerHdl" name="IVOwnerHdl">
+      </columns>
+      <columns xmi:id="AllTypesEntity_id" name="id">
+      </columns>
+      <columns xmi:id="AllTypesEntity_ABoolean" name="ABoolean">
+      </columns>
+      <columns xmi:id="AllTypesEntity_AByte" name="AByte">
+      </columns>
+      <columns xmi:id="AllTypesEntity_AShort" name="AShort">
+      </columns>
+      <columns xmi:id="AllTypesEntity_AChar" name="AChar">
+      </columns>
+      <columns xmi:id="AllTypesEntity_anInt" name="anInt">
+      </columns>
+      <columns xmi:id="AllTypesEntity_ALong" name="ALong">
+      </columns>
+      <columns xmi:id="AllTypesEntity_AFloat" name="AFloat">
+      </columns>
+      <columns xmi:id="AllTypesEntity_ADouble" name="ADouble">
+      </columns>
+      <columns xmi:id="AllTypesEntity_anObject" name="anObject">
+      </columns>
+      <columns xmi:id="AllTypesEntity_anObjectArray" name="anObjectArray">
+      </columns>
+      <columns xmi:id="AllTypesEntity_ABooleanArray" name="ABooleanArray">
+      </columns>
+      <columns xmi:id="AllTypesEntity_AByteArray" name="AByteArray">
+      </columns>
+      <columns xmi:id="AllTypesEntity_ACharArray" name="ACharArray">
+      </columns>
+      <columns xmi:id="AllTypesEntity_AShortArray" name="AShortArray">
+      </columns>
+      <columns xmi:id="AllTypesEntity_anIntArray" name="anIntArray">
+      </columns>
+      <columns xmi:id="AllTypesEntity_ALongArray" name="ALongArray">
+      </columns>
+      <columns xmi:id="AllTypesEntity_AFloatArray" name="AFloatArray">
+      </columns>
+      <columns xmi:id="AllTypesEntity_ADoubleArray" name="ADoubleArray">
+      </columns>
+      <columns xmi:id="ejb:bean_creationDate" name="creationDate">
+      </columns>
+
+   </RDBSchema:RDBTable>
+   <RDBSchema:RDBTable xmi:id="RDBTable_Country" name="" primaryKey="Country_PRIMARYKEY" database="RDBDatabase_1">
+      <namedGroup xmi:type="RDBSchema:SQLReference" xmi:id="Country_PRIMARYKEY" members="------RDBColumn_1" table="RDBTable_Country" constraint="Constraint_Country_"/>
+
+      <columns xmi:id="Country_countryId" name="countryId">
+      </columns>
+      <columns xmi:id="Country_ownerIdFk" name="ownerIdFk">
+      </columns>
+      <columns xmi:id="Country_name" name="name">
+      </columns>
+
+   </RDBSchema:RDBTable>
+   <RDBSchema:RDBTable xmi:id="RDBTable_Address" name="" primaryKey="Address_PRIMARYKEY" database="RDBDatabase_1">
+      <namedGroup xmi:type="RDBSchema:SQLReference" xmi:id="Address_PRIMARYKEY" members="------RDBColumn_1" table="RDBTable_Address" constraint="Constraint_Address_"/>
+
+      <columns xmi:id="Address_id" name="id">
+      </columns>
+      <columns xmi:id="Address_street" name="street">
+      </columns>
+      <columns xmi:id="Address_city" name="city">
+      </columns>
+      <columns xmi:id="ejb:bean_creationDate" name="creationDate">
+      </columns>
+
+   </RDBSchema:RDBTable>
+   <RDBSchema:RDBTable xmi:id="RDBTable_Employee" name="" primaryKey="Employee_PRIMARYKEY" database="RDBDatabase_1">
+      <namedGroup xmi:type="RDBSchema:SQLReference" xmi:id="Employee_PRIMARYKEY" members="------RDBColumn_1" table="RDBTable_Employee" constraint="Constraint_Employee_"/>
+
+      <columns xmi:id="Employee_id" name="id">
+      </columns>
+      <columns xmi:id="Employee_name" name="name">
+      </columns>
+
+   </RDBSchema:RDBTable>
+   <RDBSchema:RDBTable xmi:id="RDBTable_Language" name="" primaryKey="Language_PRIMARYKEY" database="RDBDatabase_1">
+      <namedGroup xmi:type="RDBSchema:SQLReference" xmi:id="Language_PRIMARYKEY" members="------RDBColumn_1" table="RDBTable_Language" constraint="Constraint_Language_"/>
+
+      <columns xmi:id="Language_languageId" name="languageId">
+      </columns>
+      <columns xmi:id="Language_languageCodeIdFk" name="languageCodeIdFk">
+      </columns>
+      <columns xmi:id="Language_name" name="name">
+      </columns>
+
+   </RDBSchema:RDBTable>
+   <RDBSchema:RDBTable xmi:id="RDBTable_File" name="" primaryKey="File_PRIMARYKEY" database="RDBDatabase_1">
+      <namedGroup xmi:type="RDBSchema:SQLReference" xmi:id="File_PRIMARYKEY" members="------RDBColumn_1" table="RDBTable_File" constraint="Constraint_File_"/>
+
+      <columns xmi:id="File_id" name="id">
+      </columns>
+      <columns xmi:id="File_content" name="content">
+      </columns>
+      <columns xmi:id="File_contentType" name="contentType">
+      </columns>
+      <columns xmi:id="File_creationDate" name="creationDate">
+      </columns>
+
+   </RDBSchema:RDBTable>
+   <RDBSchema:RDBTable xmi:id="RDBTable_EmployeeAddress" name="" primaryKey="EmployeeAddress_PRIMARYKEY" database="RDBDatabase_1">
+      <namedGroup xmi:type="RDBSchema:SQLReference" xmi:id="EmployeeAddress_PRIMARYKEY" members="------RDBColumn_1" table="RDBTable_EmployeeAddress" constraint="Constraint_EmployeeAddress_"/>
+
+      <columns xmi:id="EmployeeAddress_id" name="id">
+      </columns>
+      <columns xmi:id="EmployeeAddress_description" name="description">
+      </columns>
+
+   </RDBSchema:RDBTable>
+</xmi:XMI>

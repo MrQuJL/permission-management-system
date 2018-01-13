@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+    <class
+        name="test.hibernate.Order"
+        table="ORDERS"
+        polymorphism="explicit"
+        dynamic-update="false"
+        dynamic-insert="false"
+        mutable="false"
+    >
+
+        <jcs-cache usage="read-write" />
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="table">HIVAL</param>
+                <param name="column">NEXT</param>
+            </generator>
+        </id>
+
+        <version
+            name="version"
+            type="int"
+            column="version"
+            access="property"
+            unsaved-value="undefined"
+        />
+
+        <list
+            name="items"
+            lazy="true"
+            inverse="true"
+            cascade="all"
+        >
+            <jcs-cache 
+                usage="read-write" 
+             />
+
+              <key
+                  column="ORDER_ID"
+              >
+              </key>
+
+              <index
+                  column="ORDER_POS"
+              />
+
+              <one-to-many
+                  class="test.hibernate.LineItem"
+              />
+        </list>
+
+        <property
+            name="date"
+            type="calendar_date"
+            update="true"
+            insert="true"
+            access="property"
+            column="date"
+        />
+
+        <many-to-one
+            name="customer"
+            class="test.hibernate.Human"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="CUSTOMER_ID"
+            not-null="true"
+        />
+
+        <property
+            name="updateComment"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="LAST_UPDATED_BY"
+        />
+
+        <property
+            name="created"
+            type="timestamp"
+            update="false"
+            insert="true"
+            access="property"
+            column="created"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Order.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

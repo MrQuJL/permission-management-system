@@ -1,0 +1,1 @@
+This folder contains jar files required to compile the samples source code.

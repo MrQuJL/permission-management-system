@@ -1,0 +1,2654 @@
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  
+      
+  
+
+      
+      
+      
+      
+      
+      
+        
+         
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      
+
+      
+
+  
+  
+
+  
+  
+
+   
+   
+
+   
+   
+
+
+    
+	
+	
+
+    
+    
+      
+	
+	
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+    <html>
+      <head>
+        
+        
+          <title>
+            XDoclet: Attribute-Oriented Programming - 
+          Tag Reference
+        
+          </title>
+        
+        
+        
+        <style type="text/css">
+          @import url("../style/tigris.css");
+          @import url("../style/maven.css");
+        </style>
+        
+        
+        
+        
+        
+        <link rel="stylesheet" href="../style/print.css" type="text/css" media="print"></link>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
+        
+        
+        
+    <link href="../favicon.ico" rel="shortcut icon">
+      
+    </link>
+   
+    <link href="../favicon.ico" rel="icon">
+      
+    </link>
+   
+        
+      </head>
+
+      <body class="composite">
+
+        <div id="banner">
+          <table border="0" width="100%" cellpadding="8" cellspacing="0">
+            <tr>
+              
+              <td>
+                
+                
+                  
+                  
+                  
+                    
+                  
+                  
+                  
+                  
+                  
+                    
+                  
+                  <a href="http://xdoclet.sourceforge.net/">
+                    <img border="0" alt="XDoclet Team" src="../images/logo.gif" align="left"></img>
+                  </a>
+                
+              </td>
+
+              
+              <td>
+                <div id="login" align="right">
+                  
+                  
+                    
+                    
+                    
+
+                    <a href="http://xdoclet.sourceforge.net/">
+                      <img border="0" alt="XDoclet" src="http://sourceforge.net/sflogo.php?group_id=31602&amp;type=5" align="right"></img>
+                    </a>
+                  
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="breadcrumbs">
+          <table border="0" width="100%" cellpadding="4" cellspacing="0">
+            <tr>
+              
+                
+                <td>Last published: 28 April 2004
+                  | Doc for 1.2.1
+                </td>
+              
+              <td>
+                <div align="right">
+                  
+                  
+                  
+                    
+    
+    
+      
+      
+      
+      <a href="http://xdoclet.sourceforge.net/"><img class="handle" src="../images/none.png" alt=""></img>Home Page</a>
+      
+    
+      |
+      
+      
+      <a href="http://sourceforge.net/projects/xdoclet/"><img class="handle" src="../images/none.png" alt=""></img>SourceForge Project Page</a>
+      
+    
+      |
+      
+      
+      <a href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/xdoclet/"><img class="handle" src="../images/none.png" alt=""></img>Browse CVS</a>
+      
+    
+      |
+      
+      
+      <a href="http://opensource.atlassian.com/projects/xdoclet/secure/CreateIssue!default.jspa"><img class="handle" src="../images/none.png" alt=""></img>Create an Issue</a>
+      
+    
+  
+                  
+                  
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        
+        <table border="0" width="100%" cellpadding="8" cellspacing="0"> 
+          <tr valign="top">
+            <td width="20%" id="leftcol">
+              <div id="navcolumn">
+                
+
+                
+                  
+    <div>
+      <strong>XDoclet</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../index.html"><img class="handle" src="../images/none.png" alt=""></img>Overview</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../status.html"><img class="handle" src="../images/none.png" alt=""></img>News and Status</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../install.html"><img class="handle" src="../images/none.png" alt=""></img>Download/Installation</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../using.html"><img class="handle" src="../images/none.png" alt=""></img>Using XDoclet</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../bp.html"><img class="handle" src="../images/none.png" alt=""></img>Best Practices</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../faq.html"><img class="handle" src="../images/none.png" alt=""></img>FAQ</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../licenses/xdoclet-license.html"><img class="handle" src="../images/none.png" alt=""></img>License</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Ant Task Reference</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/ejb/EjbDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;ejbdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/web/WebDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;webdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/hibernate/HibernateDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;hibernatedoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/mockobjects/MockObjectDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;mockdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/jdo/JdoDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;jdodoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/jmx/JMXDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;jmxdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/portlet/PortletDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;portletdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/DocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;doclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Tag Reference</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/apache-tags.html"><img class="handle" src="../images/none.png" alt=""></img>apache (@soap @struts)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/bea-tags.html"><img class="handle" src="../images/none.png" alt=""></img>bea (@weblogic)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/borland-tags.html"><img class="handle" src="../images/none.png" alt=""></img>borland (@bes)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/caucho-tags.html"><img class="handle" src="../images/none.png" alt=""></img>caucho (@resin)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/ejb-tags.html"><img class="handle" src="../images/none.png" alt=""></img>ejb (@ejb @dao)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/exolab-tags.html"><img class="handle" src="../images/none.png" alt=""></img>exolab (@castor)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/hp-tags.html"><img class="handle" src="../images/none.png" alt=""></img>hp (@hpas)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/hibernate-tags.html"><img class="handle" src="../images/none.png" alt=""></img>hibernate (@hibernate)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/ibm-tags.html"><img class="handle" src="../images/none.png" alt=""></img>ibm (@websphere)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/java-tags.html"><img class="handle" src="../images/none.png" alt=""></img>java (@javabean)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/jboss-tags.html"><img class="handle" src="../images/none.png" alt=""></img>jboss (@jboss)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/jdo-tags.html"><img class="handle" src="../images/none.png" alt=""></img>jdo (@jdo)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/jmx-tags.html"><img class="handle" src="../images/none.png" alt=""></img>jmx (@jmx)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/macromedia-tags.html"><img class="handle" src="../images/none.png" alt=""></img>macromedia (@jrun)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/mockobjects-tags.html"><img class="handle" src="../images/none.png" alt=""></img>mockobjects (@mock)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/mvcsoft-tags.html"><img class="handle" src="../images/none.png" alt=""></img>mvcsoft (@mvcsoft)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/mx4j-tags.html"><img class="handle" src="../images/none.png" alt=""></img>mx4j (@mx4j)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/objectweb-tags.html"><img class="handle" src="../images/none.png" alt=""></img>objectweb (@jonas)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/oracle-tags.html"><img class="handle" src="../images/none.png" alt=""></img>oracle (@oc4j)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/orion-tags.html"><img class="handle" src="../images/none.png" alt=""></img>orion (@orion)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/portlet-tags.html"><img class="handle" src="../images/none.png" alt=""></img>portlet (@portlet)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/pramati-tags.html"><img class="handle" src="../images/none.png" alt=""></img>pramati (@pramati)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/sun-tags.html"><img class="handle" src="../images/none.png" alt=""></img>sun (@sunone)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/sybase-tags.html"><img class="handle" src="../images/none.png" alt=""></img>sybase (@easerver)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/tjdo-tags.html"><img class="handle" src="../images/none.png" alt=""></img>tjdo (@tjdo)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/web-tags.html"><img class="handle" src="../images/none.png" alt=""></img>web (@web @jsp)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/webwork-tags.html"><img class="handle" src="../images/none.png" alt=""></img>webwork (@webwork)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/xdoclet-tags.html"><img class="handle" src="../images/none.png" alt=""></img>xdoclet (@xdoclet @doc)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Feature Documentation</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../valueobjects.html"><img class="handle" src="../images/none.png" alt=""></img>Using Value Objects</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Advanced</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../maven-plugin.html"><img class="handle" src="../images/none.png" alt=""></img>Maven Plug-in</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../merge.html"><img class="handle" src="../images/none.png" alt=""></img>Merge Points</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ide/index.html"><img class="handle" src="../images/none.png" alt=""></img>IDE Integration</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../migration.html"><img class="handle" src="../images/none.png" alt=""></img>Migration from EJBDoclet</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant15.html"><img class="handle" src="../images/none.png" alt=""></img>Ant 1.5 Troubleshooting</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Community</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../feedback.html"><img class="handle" src="../images/none.png" alt=""></img>Feedback</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../resources.html"><img class="handle" src="../images/none.png" alt=""></img>Resources</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tools.html"><img class="handle" src="../images/none.png" alt=""></img>Tools</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Development</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../development/index.html"><img class="handle" src="../images/none.png" alt=""></img>Developer Guide</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../api/index.html"><img class="handle" src="../images/none.png" alt=""></img>Javadoc (API)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../templates/index.html"><img class="handle" src="../images/none.png" alt=""></img>Template Language (*.xdt)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="http://xdoclet.sourceforge.net/xjavadoc/"><img class="handle" src="../images/none.png" alt=""></img>XJavaDoc Site</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    
+    
+    
+    <div>
+      <strong>Search XDoclet</strong>
+      <form action="http://www.google.com/search" method="get">
+        <a href="http://www.google.com" class="navlink">
+          <img border="0" alt="Google" src="http://www.google.com/logos/Logo_25wht.gif"></img>
+        </a><p></p>
+        
+        
+        
+          
+          
+        
+        <input name="q" maxlength="255" size="15" type="text" value=""></input>
+        <input name="btnG" type="submit" value="Go"></input>
+        <input name="domains" type="hidden" value="http://xdoclet.sourceforge.net"></input>
+        <input name="sitesearch" type="hidden" value="http://xdoclet.sourceforge.net" id="search"></input>
+      </form>
+    </div>
+  
+                
+
+				
+    <div>
+      <strong>Project Documentation</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../index.html"><img class="handle" src="../images/none.png" alt=""></img>About XDoclet</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		
+		
+          
+		
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../project-info.html"><img class="handle" src="../images/collapsed.png" alt=""></img>Project Info</a>
+      	
+      </small>
+	  
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		
+		
+          
+		
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../maven-reports.html"><img class="handle" src="../images/collapsed.png" alt=""></img>Project Reports</a>
+      	
+      </small>
+	  
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="http://maven.apache.org/development-process.html"><img class="handle" src="../images/none.png" alt=""></img>Development Process</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+                
+                
+                
+
+                
+                
+                
+                
+                	<div style="margin-top: 20px; width: 100%; text-align: center;">
+                		<a href="http://maven.apache.org/" title="Powered by Maven"><img style="border: 1px solid black" alt="Powered by Maven" src="../images/logos/maven-propaganda.png"></img></a>
+                	</div>
+                
+              
+                
+              </div>
+            </td>
+            <td rowspan="2">
+              <div id="bodycol">
+                
+                <div class="app">
+                  
+                  
+    <div class="h3">
+      
+      
+        <h3>
+          <a name="@kodo Tag Reference">@kodo Tag Reference</a>
+        </h3>
+      
+      
+    <p>
+      
+     JDO tags specific for Solarmetric's Kodo.
+   
+    </p>
+   
+    <p>
+      
+     Applies to: classes to be persistence-capable on class and field level
+   
+    </p>
+   
+    <div id="source">
+      
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@kodo Class Level Tags">@kodo Class Level Tags</a>
+        </h4>
+      
+      
+    <a href="#@kodo.table (0..1)" title="The kodo.table tag gives access to the Kodo extensions at the class level to be included in the generated jdo metadata.">
+     @kodo.table
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    </div>
+  
+    </div>
+   
+    <div id="source">
+      
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@kodo Method Level Tags">@kodo Method Level Tags</a>
+        </h4>
+      
+      
+    </div>
+  
+    </div>
+   
+    <div id="source">
+      
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@kodo Field Level Tags">@kodo Field Level Tags</a>
+        </h4>
+      
+      
+    <a href="#@kodo.field (0..*)" title="The kodo.field tag gives access to the Kodo extensions at the field level to be included in the generated jdo metadata.">
+     @kodo.field
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    </div>
+  
+    </div>
+   
+    </div>
+  
+    <div class="h3">
+      
+      
+        <h3>
+          <a name="@kodo Class Level Tag Usage">@kodo Class Level Tag Usage</a>
+        </h3>
+      
+      
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@kodo.table (0..1)">@kodo.table (0..1)</a>
+        </h4>
+      
+      
+    <p>
+      
+     
+
+           The kodo.table tag gives access to the Kodo extensions at the class level to be included in the 
+   
+     
+
+           generated jdo metadata.
+   
+     
+
+        
+   
+    </p>
+   
+    <p>
+      
+     Applies to: The jdo.persistence-capable tag must be present
+   
+    </p>
+   
+    
+    <table border="1" width="100%" cellspacing="2" cellpadding="3">
+      
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a">
+    <th>
+      
+     Parameter
+   
+    </th>
+   
+    <th>
+      
+     Type
+   
+    </th>
+   
+    <th>
+      
+     Applicability
+   
+    </th>
+   
+    <th>
+      
+     Description
+   
+    </th>
+   
+    <th>
+      
+     Mandatory
+   
+    </th>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     pk-column
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     
+
+             This is only for classes using datastore identity. It specifies the primary key column 
+   
+     
+
+             for the table in which the class is held. This column must be of a numeric type and must not be 
+   
+     
+
+             mapped to any fields of the class. If the pk-column extension is not specified, Kodo will add its 
+   
+     
+
+             own primary key column, usually named JDOIDX.
+   
+     
+
+          
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     lock-column
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     
+
+             Specifies the column used to record the version number of objects. Versioning is used to detect concurrent 
+   
+     
+
+             modification 
+   
+     of objects during optimistic transactions. The given column must be of a numeric type and must 
+   
+     
+
+             not be mapped to any fields of the class. If the extension is not present, Kodo JDO will add its own lock 
+   
+     
+
+             column, usually named JDOLOCKX. You can prevent the creation of a lock column by specifying a value of none. 
+   
+     
+
+             In this case, concurrent modification violations will not be detected.
+   
+     
+
+          
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     JDOLOCKX
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     class-column
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     
+
+             This column stores the class name of the object represented by each table row. The column must be a string 
+   
+     
+
+             type, and must be large enough to hold the full class name of any persistent class mapped to the table. 
+   
+     
+
+             It must not be mapped to any fields of the class. If the extension is not present, Kodo JDO will add its 
+   
+     
+
+             own class column, usually named JDOCLASSX. If the table's corresponding persistent class has no persistent 
+   
+     
+
+             subclasses and you do not want a column to be generated, specify a value of none. 
+   
+     
+
+          
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     JDOCLASSX
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    </table>
+  
+    </div>
+  
+    </div>
+  
+    <div class="h3">
+      
+      
+        <h3>
+          <a name="@kodo Method Level Tag Usage">@kodo Method Level Tag Usage</a>
+        </h3>
+      
+      
+    </div>
+  
+    <div class="h3">
+      
+      
+        <h3>
+          <a name="@kodo Field Level Tag Usage">@kodo Field Level Tag Usage</a>
+        </h3>
+      
+      
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@kodo.field (0..*)">@kodo.field (0..*)</a>
+        </h4>
+      
+      
+    <p>
+      
+     
+
+           The kodo.field tag gives access to the Kodo extensions at the field level to be included in the 
+   
+     
+
+           generated jdo metadata.
+   
+     
+
+        
+   
+    </p>
+   
+    <p>
+      
+     Applies to: The jdo.field tag must be present
+   
+    </p>
+   
+    
+    <table border="1" width="100%" cellspacing="2" cellpadding="3">
+      
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a">
+    <th>
+      
+     Parameter
+   
+    </th>
+   
+    <th>
+      
+     Type
+   
+    </th>
+   
+    <th>
+      
+     Applicability
+   
+    </th>
+   
+    <th>
+      
+     Description
+   
+    </th>
+   
+    <th>
+      
+     Mandatory
+   
+    </th>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     blob
+   
+    </td>
+   
+    <td>
+      
+     bool
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     
+
+               This extension can be used to explicitly mark fields that should be stored as serialized BLOB values. 
+   
+     
+
+               For example, Kodo JDO would normally s
+   
+     tore a field of type byte[
+   
+     ]
+   
+      using a secondary table with a row 
+   
+     
+
+               for each byte value in the array; this type of storage allows for queries on the array. If the byte[
+   
+     ]
+   
+      
+   
+     
+
+               is large or contains information that should not be query-able, it may be more efficient to store it 
+   
+     
+
+               as a BLOB column of the main table. Fields that Kodo JDO cannot normally persist, such as user-defined 
+   
+     
+
+               interface fields or fields of type java.lang.Object are defaulted to use BLOB mappings. In these cases 
+   
+     
+
+               this extension is not necessary, though it is still allowed. 
+   
+     
+
+          
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     column-length
+   
+    </td>
+   
+    <td>
+      
+     int
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     
+
+                String fields can specify the maximum length of the String that will be stored in the database column. 
+   
+     
+
+                The default maximum is 255 characters. Use a value of -1 to indicate that there should be no length 
+   
+     
+
+                limit on the String. In this case, the column will be created as a CLOB, or the correct database equivalent. 
+   
+     
+
+                Currently, this extension is used only when creating a schema using the schematool. In the future, this 
+   
+     
+
+                extension may be also used for performing runtime data validations.
+   
+     
+
+          
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     column-index
+   
+    </td>
+   
+    <td>
+      
+     bool
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     
+
+               Specifies whether the column holding the data for the field should be indexed.
+   
+     
+
+          
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     ordered
+   
+    </td>
+   
+    <td>
+      
+     bool
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     
+
+                By default, databases do not guarantee the order in which results are read. Thus, collection and array 
+   
+     
+
+                field elements may be retrieved from the database in a different order from the one in which they were 
+   
+     
+
+                stored. A value of true for this key, however, will ensure that the order of the elements in this field 
+   
+     
+
+                is retained during database reads. This flag is useful only f
+   
+     or collection and array fields that 
+   
+     
+
+                represent a one-sided relationship, such as a collection of simple values or a 1-sided many-to-many 
+   
+     
+
+                relation. It cannot be used for one-to-many relations or shared many-to-many relations. 
+   
+     
+
+                See the order-column extension for more information.
+   
+     
+
+          
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     embedded
+   
+    </td>
+   
+    <td>
+      
+     bool
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     
+
+                Specifies whether the field should be stored if possible as part of
+   
+     
+
+                the instance instead of as its own instance in the datastore. It defaults
+   
+     
+
+                to "true" for fields of primitive types, java.util.Date, and fields of
+   
+     
+
+                java.lang, java.math, and array types specified above. This attribute
+   
+     
+
+                is only a hint to the implementation. A compliant implementation
+   
+     
+
+                is permitted to support these types as first class instances in
+   
+     
+
+                the datastore. A portable application should not depend on the
+   
+     
+
+                embedded treatment of persistent fields.
+   
+     
+
+          
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     order-column
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+     This extension is applicable only to collection fields that also have the ordered extension.
+   
+    </td>
+   
+    <td>
+      
+     
+
+                Specifies the column of the secondary table used to hold ordering information. This column must be of a numeric type. 
+   
+     
+
+                If the ordered extension is given but this extension is omitted, Kodo JDO will create its own order column, 
+   
+     
+
+                usually named JDOORDERX.
+   
+     
+
+          
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     JDOORDERX
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     read-only
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+     Must be used with collection or array valued persistent field
+   
+    </td>
+   
+    <td>
+      
+     
+
+                This extension is used for collection fields that represent a shared many-to-many mapping. In such mappings, 
+   
+     
+
+                one class can declare its field to be read-only i
+   
+     n order to avoid duplicate inserts into the shared table. 
+   
+     
+
+                The value of this extension should be either true or false. Note that Kodo JDO typically makes one side of 
+   
+     
+
+                the relation read-only automatically; this extension is never strictly needed.
+   
+     
+
+          
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    </table>
+  
+    </div>
+  
+    </div>
+  
+                  
+                  
+                  
+                  
+                  
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <div id="footer">
+          <table border="0" style="width:100%" cellpadding="4" cellspacing="0">
+            
+            <tr>
+              <td>
+                
+                  
+                    
+                    
+                      © 2000-2004, XDoclet Team
+                    
+                  
+                  
+                
+
+                
+              </td>
+              
+            </tr>
+          </table>
+        </div>
+      </body>
+    </html>
+  

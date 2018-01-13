@@ -1,0 +1,292 @@
+<?xml version="1.0"?>
+<!DOCTYPE orion-ejb-jar PUBLIC "-//Evermind//DTD Enterprise JavaBeans 1.1 runtime//EN" "http://www.orionserver.com/dtds/orion-ejb-jar.dtd">
+
+<orion-ejb-jar deployment-version="1.6.0">
+
+   <enterprise-beans>
+
+      <!-- Session Beans -->
+      <session-deployment name="Stateful"
+									location="Stateful"
+									location="StatefulLocal"
+                          >
+
+      </session-deployment>
+      <session-deployment name="Teller"
+									location="ejb/bank/Teller"
+									location="TellerLocal"
+                          >
+
+      </session-deployment>
+
+      <!-- Entity Beans -->
+      <entity-deployment name="Customer"
+									location="blah/bank/Customer"
+                          table="customer"
+                          >
+
+       <primkey-mapping>
+          <cmp-field-mapping>
+              <fields>
+              <cmp-field-mapping name="id" persistence-name="id" />
+
+              </fields>
+          </cmp-field-mapping>
+       </primkey-mapping>
+
+              <cmp-field-mapping name="credit" persistence-name="credit" />
+
+              <cmp-field-mapping name="array" persistence-name="array" />
+
+              <cmp-field-mapping name="image" persistence-name="image" />
+
+              <cmp-field-mapping name="tax" persistence-name="tax" />
+
+              <cmp-field-mapping name="name" persistence-name="name" />
+
+              <cmp-field-mapping name="firstName" persistence-name="first_name" />
+
+              <cmp-field-mapping name="phone" persistence-name="phone" />
+
+              <cmp-field-mapping name="fax" persistence-name="fax" />
+
+              <cmp-field-mapping name="creationDate" persistence-name="creationDate" />
+
+      </entity-deployment>
+      <entity-deployment name="LanguageCode"
+                          data-source="airline.database"
+									location="airline.LanguageCodeLocalHome"
+                          table="language_code"
+                          >
+
+       <primkey-mapping>
+              <cmp-field-mapping name="languageCodeId" persistence-name="language_code_id" />
+
+       </primkey-mapping>
+
+              <cmp-field-mapping name="name" persistence-name="name" />
+
+      </entity-deployment>
+      <entity-deployment name="Account"
+									location="ejb/bank/Account"
+									location="AccountLocal"
+                          table="acct"
+                          >
+
+       <primkey-mapping>
+          <cmp-field-mapping>
+              <fields>
+              <cmp-field-mapping name="id" persistence-name="account_id" />
+
+              </fields>
+          </cmp-field-mapping>
+       </primkey-mapping>
+
+              <cmp-field-mapping name="owner" persistence-name="last_modif" />
+
+              <cmp-field-mapping name="lastModificationDate" persistence-name="last_modif" />
+
+              <cmp-field-mapping name="accountId" persistence-name="accountid" />
+
+              <cmp-field-mapping name="creationDate" persistence-name="creationDate" />
+
+      </entity-deployment>
+      <entity-deployment name="City"
+                          data-source="airline.database"
+									location="airline.CityLocalHome"
+                          table="city"
+                          >
+
+       <primkey-mapping>
+              <cmp-field-mapping name="cityId" persistence-name="city_id" />
+
+       </primkey-mapping>
+
+              <cmp-field-mapping name="countryIdFk" persistence-name="country_id_fk" />
+
+              <cmp-field-mapping name="name" persistence-name="name" />
+
+      </entity-deployment>
+      <entity-deployment name="AllTypesEntity"
+									location="test/AllTypesEntity"
+									location="test/LocalAllTypesEntity"
+                          table="alltypes"
+                          >
+
+       <primkey-mapping>
+          <cmp-field-mapping>
+              <fields>
+
+              <cmp-field-mapping name="id" persistence-name="types_id" />
+
+              </fields>
+          </cmp-field-mapping>
+       </primkey-mapping>
+
+              <cmp-field-mapping name="ABoolean" persistence-name="boolean" />
+
+              <cmp-field-mapping name="AByte" persistence-name="byte" />
+
+              <cmp-field-mapping name="AShort" persistence-name="short" />
+
+              <cmp-field-mapping name="AChar" persistence-name="char" />
+
+              <cmp-field-mapping name="anInt" persistence-name="int" />
+
+              <cmp-field-mapping name="ALong" persistence-name="long" />
+
+              <cmp-field-mapping name="AFloat" persistence-name="float" />
+
+              <cmp-field-mapping name="ADouble" persistence-name="double" />
+
+              <cmp-field-mapping name="anObject" persistence-name="object" />
+
+              <cmp-field-mapping name="anObjectArray" persistence-name="objectArray" />
+
+              <cmp-field-mapping name="ABooleanArray" persistence-name="booleanArray" />
+
+              <cmp-field-mapping name="AByteArray" persistence-name="byteArray" />
+
+              <cmp-field-mapping name="ACharArray" persistence-name="charArray" />
+
+              <cmp-field-mapping name="AShortArray" persistence-name="shortArray" />
+
+              <cmp-field-mapping name="anIntArray" persistence-name="intArray" />
+
+              <cmp-field-mapping name="ALongArray" persistence-name="longArray" />
+
+              <cmp-field-mapping name="AFloatArray" persistence-name="floatArray" />
+
+              <cmp-field-mapping name="ADoubleArray" persistence-name="doubleArray" />
+
+              <cmp-field-mapping name="creationDate" persistence-name="creationDate" />
+
+      </entity-deployment>
+      <entity-deployment name="Country"
+                          data-source="airline.database"
+									location="airline.CountryLocalHome"
+                          table="CountryBean"
+                          >
+
+       <primkey-mapping>
+              <cmp-field-mapping name="countryId" persistence-name="country_id" />
+
+       </primkey-mapping>
+
+              <cmp-field-mapping name="ownerIdFk" persistence-name="owner_id_fk" />
+
+              <cmp-field-mapping name="name" persistence-name="name" />
+
+      </entity-deployment>
+      <entity-deployment name="Address"
+									location="AddressLocal"
+                          table="address"
+                          >
+
+       <primkey-mapping>
+              <cmp-field-mapping name="id" persistence-name="id" />
+
+       </primkey-mapping>
+
+              <cmp-field-mapping name="street" persistence-name="street" />
+
+              <cmp-field-mapping name="city" persistence-name="city" />
+
+              <cmp-field-mapping name="creationDate" persistence-name="creationDate" />
+
+      </entity-deployment>
+      <entity-deployment name="Employee"
+									location="EmployeeLocal"
+                          table="employee"
+                          >
+
+       <primkey-mapping>
+       </primkey-mapping>
+
+              <cmp-field-mapping name="id" persistence-name="employee_id" />
+
+              <cmp-field-mapping name="name" persistence-name="employee_name" />
+
+      </entity-deployment>
+      <entity-deployment name="CustomerBMP"
+									location="ejb/bank/CustomerBMP"
+                          table="customer"
+                          >
+
+       <primkey-mapping>
+          <cmp-field-mapping>
+              <fields>
+              <cmp-field-mapping name="id" persistence-name="id" />
+
+              </fields>
+          </cmp-field-mapping>
+       </primkey-mapping>
+
+              <cmp-field-mapping name="credit" persistence-name="credit" />
+
+              <cmp-field-mapping name="array" persistence-name="array" />
+
+              <cmp-field-mapping name="image" persistence-name="image" />
+
+              <cmp-field-mapping name="tax" persistence-name="tax" />
+
+              <cmp-field-mapping name="name" persistence-name="name" />
+
+              <cmp-field-mapping name="firstName" persistence-name="first_name" />
+
+              <cmp-field-mapping name="phone" persistence-name="phone" />
+
+              <cmp-field-mapping name="fax" persistence-name="fax" />
+
+              <cmp-field-mapping name="creationDate" persistence-name="creationDate" />
+
+      </entity-deployment>
+      <entity-deployment name="Language"
+                          data-source="airline.database"
+									location="airline.LanguageLocalHome"
+                          table="language"
+                          >
+
+       <primkey-mapping>
+              <cmp-field-mapping name="languageId" persistence-name="language_id" />
+
+       </primkey-mapping>
+
+              <cmp-field-mapping name="languageCodeIdFk" persistence-name="language_code_id_fk" />
+
+              <cmp-field-mapping name="name" persistence-name="name" />
+
+      </entity-deployment>
+      <entity-deployment name="File"
+									location="blah/File"
+                          table="FileBean"
+                          >
+
+       <primkey-mapping>
+
+       </primkey-mapping>
+
+      </entity-deployment>
+      <entity-deployment name="EmployeeAddress"
+									location="EmployeeAddressLocal"
+                          table="address"
+                          >
+
+       <primkey-mapping>
+       </primkey-mapping>
+
+              <cmp-field-mapping name="id" persistence-name="addr_id" />
+
+              <cmp-field-mapping name="description" persistence-name="addr_description" />
+
+      </entity-deployment>
+
+      <!-- Message Driven Beans -->
+      <message-driven-deployment name="QueueBean"
+                                 >
+
+      </message-driven-deployment>
+
+   </enterprise-beans>
+
+</orion-ejb-jar>

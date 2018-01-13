@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+    <class
+        name="test.hibernate.CompositeIdEntity"
+        dynamic-update="false"
+        dynamic-insert="false"
+    >
+
+        <composite-id
+            name="id"
+            class="test.hibernate.CompositeId"
+        >
+                     <key-property
+                        name="foo"
+                        type="java.lang.Integer"
+                        column="foo"
+                />
+
+                     <key-property
+                        name="bar"
+                        type="long"
+                        column="bar"
+                />
+
+                     <key-property
+                        name="baz"
+                        type="java.lang.String"
+                        column="baz"
+                />
+
+                    <key-many-to-one
+                        name="order"
+                        class="test.hibernate.Order"
+                        column="order"
+                    />
+
+        </composite-id>
+
+        <property
+            name="foo"
+            type="void"
+            update="true"
+            insert="true"
+            access="property"
+            column="foo"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-CompositeIdEntity.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

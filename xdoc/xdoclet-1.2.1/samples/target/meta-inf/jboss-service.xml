@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE server>
+
+<!-- Generated file - Do not edit! -->
+
+<server>
+   <mbean code="net.sf.hibernate.jmx.HibernateService" name="jboss.jca:service=HibernateSamples">
+       <depends>jboss.jca:service=RARDeployer</depends>
+       <attribute name="MapResources">test/hibernate/CompositeIdEntity.hbm.xml,test/hibernate/Animal.hbm.xml,test/hibernate/Order.hbm.xml,test/hibernate/Product.hbm.xml,test/hibernate/LineItem.hbm.xml</attribute>
+       <attribute name="JndiName">java:/hibernate/Samples</attribute>
+       <attribute name="Datasource">java:/DefaultDS</attribute>
+       <attribute name="Dialect">net.sf.hibernate.dialect.HSQLDialect</attribute>
+       <attribute name="UserName">foo bar</attribute>
+       <attribute name="Password">blurge</attribute>
+       <attribute name="UseOuterJoin">false</attribute>
+       <attribute name="ShowSql">false</attribute>
+   </mbean>
+
+</server>

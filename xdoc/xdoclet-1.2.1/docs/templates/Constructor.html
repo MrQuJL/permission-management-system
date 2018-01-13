@@ -1,0 +1,536 @@
+
+<html>
+<head>
+</head>
+<body bgcolor="#ffffff">
+
+<h2>Constructor</h2>
+
+<p>Implemented in class <a href="../api/xdoclet/tagshandler/ConstructorTagsHandler.html">xdoclet.tagshandler.ConstructorTagsHandler</a>.</p>
+<ul>
+  <li><a href="#block">Block Tags</a>
+  <li><a href="#content">Content Tags</a>
+</ul>
+
+<h3><a name="block">Block Tags:</a></h3>
+
+<h4><a name="setCurrentConstructor">setCurrentConstructor</a> (block template)</h4>
+<p>Evaluate the body if current class has a constructor with the specified name+parameters. If parameters not specified then any constructor with the given name and any set of parameters is considered equal to the given constructor name and so the test result is positive and the body is evaluated. This constructor change the current constructor to the one specified.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           name
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The name of the constructor we're searching for its existence in current class.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [parameters]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       We're searching for a constructor that has the exact set of parameters specified in parameters param.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [delimiter]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The parameters param is delimited by the string specified in delimiter parameter.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="exceptionList">exceptionList</a> (block template)</h4>
+<p>Iterates over all exceptions thrown by the current constructor and returns a string containing definition of all those exceptions.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [constructor]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The constructor name of which exceptions list is extracted. If not specified then current constructor is used.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [skip]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       A comma-separated list of exceptions that should be skipped and not put into the list.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [append]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       A comma-separated list of exceptions that should be always appended regardless if current constructor has that constructor defined or not.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="forAllClassConstructors">forAllClassConstructors</a> (block template)</h4>
+<p>Loops through all constructors for all classes after first sorting all the constructors.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [type]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       For all classes by the type.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [extent]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       Specifies the extent of the type search. If concrete-type then only check the concrete type, if superclass then check also superclass, if hierarchy then search the whole hierarchy and find if the class is of the specified type. Default is hierarchy.<br></br>
+        Valid Values = {concrete-type,superclass,hierarchy}
+    </td>
+  </tr>
+</table>
+
+<h4><a name="forAllConstructors">forAllConstructors</a> (block template)</h4>
+<p>Iterates over all constructors of current class and evaluates the body of the tag for each constructor.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [superclasses]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       If true then traverse superclasses also, otherwise look up the tag in current concrete class only.<br></br>
+        Valid Values = {true,false}
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [sort]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       If true then sort the constructors list.<br></br>
+        Valid Values = {true,false}
+    </td>
+  </tr>
+</table>
+
+<h4><a name="ifDoesntHaveConstructorTag">ifDoesntHaveConstructorTag</a> (block template)</h4>
+<p>Evaluates the body if current constructor doesn't have at least one tag with the specified name.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           tagName
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The tag name.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [paramName]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The parameter name. If not specified, then the raw content of the tag is returned.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [paramNum]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The zero-based parameter number. It's used if the user used the space-separated format for specifying parameters.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [error]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       Show this error message if no tag found.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="ifHasConstructorTag">ifHasConstructorTag</a> (block template)</h4>
+<p>Evaluates the body if current constructor has at least one tag with the specified name.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           tagName
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The tag name.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [paramName]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The parameter name. If not specified, then the raw content of the tag is returned.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [paramNum]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The zero-based parameter number. It's used if the user used the space-separated format for specifying parameters.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [error]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       Show this error message if no tag found.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="executeAndRestoreConstructor">executeAndRestoreConstructor</a> (block template)</h4>
+<p>Evaluate the current block, and then restore the current constructor before continuing.</p>
+
+<h4><a name="ifConstructorTagValueEquals">ifConstructorTagValueEquals</a> (block template)</h4>
+<p>Evaluates the body if value for the constructor tag equals the specified value.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           tagName
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The tag name.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [paramName]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The parameter name. If not specified, then the raw content of the tag is returned.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [paramNum]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The zero-based parameter number. It's used if the user used the space-separated format for specifying parameters.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="ifConstructorTagValueNotEquals">ifConstructorTagValueNotEquals</a> (block template)</h4>
+<p>Evaluates the body if value for the constructor tag not equals the specified value.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           tagName
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The tag name.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [paramName]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The parameter name. If not specified, then the raw content of the tag is returned.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [paramNum]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The zero-based parameter number. It's used if the user used the space-separated format for specifying parameters.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="forAllConstructorTags">forAllConstructorTags</a> (block template)</h4>
+<p>Iterates over all tags of current constructor and evaluates the body of the tag for each constructor.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           tagName
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The tag name.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="forAllConstructorTagTokens">forAllConstructorTagTokens</a> (block template)</h4>
+<p>Iterates over all tokens in current constructor tag with the name tagName and evaluates the body for every token.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           tagName
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The tag name.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [delimiter]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       delimiter for the StringTokenizer. consult javadoc for java.util.StringTokenizer default is ','<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [skip]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       how many tokens to skip on start<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="ifHasConstructor">ifHasConstructor</a> (block template)</h4>
+<p>Evaluate the body if current class has a constructor with the specified name+parameters. If parameters not specified then any constructor with the given name and any set of parameters is considered equal to the given constructor name and so the test result is positive and the body is evaluated. This constructor does not change the current constructor to the one specified.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           name
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The name of the constructor we're searching for its existence in current class.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [parameters]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       We're searching for a constructor that has the exact set of parameters specified in parameters param.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [delimiter]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The parameters param is delimited by the string specified in delimiter parameter.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="ifDoesntHaveConstructor">ifDoesntHaveConstructor</a> (block template)</h4>
+<p>Evaluate the body if current class doesn't have a constructor with the specified name+parameters. If parameters not specified then any constructor with the given name and any set of parameters is considered equal to the given constructor name and so the test result is positive and the body is evaluated.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           name
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The name of the constructor we're searching for its existence in current class.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [parameters]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       We're searching for a constructor that has the exact set of parameters specified in parameters param.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [delimiter]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The parameters param is delimited by the string specified in delimiter parameter.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h3><a name="content">Content templates:</a></h3>
+
+<h4><a name="constructorComment">constructorComment</a> (content template)</h4>
+<p>The comment for the current constructor.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [no-comment-signs]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       If true then don't decorate the comment with comment signs.<br></br>
+        Valid Values = {true,false}
+    </td>
+  </tr>
+</table>
+
+<h4><a name="constructorTagValue">constructorTagValue</a> (content template)</h4>
+<p>Iterates over all constructor tags with the specified tagName for the current constructor probably inside of a forAllConstructorTags body.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           tagName
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The tag name.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [paramName]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The parameter name. If not specified, then the raw content of the tag is returned.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [paramNum]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The zero-based parameter number. It's used if the user used the space-separated format for specifying parameters.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [values]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The valid values for the parameter, comma separated. An error message is printed if the parameter value is not one of the values.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [default]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The default value is returned if parameter not specified by user for the tag.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="firstSentenceDescriptionOfCurrentConstructor">firstSentenceDescriptionOfCurrentConstructor</a> (content template)</h4>
+<p>Return standard javadoc of current constructor.</p>
+
+<h4><a name="constructorName">constructorName</a> (content template)</h4>
+<p>Returns the name of the current constructor.</p>
+
+<h4><a name="getClassNameFor">getClassNameFor</a> (content template)</h4>
+<p>Returns the not-full-qualified name of the current class without the package name.</p>
+
+<h4><a name="getFullClassNameFor">getFullClassNameFor</a> (content template)</h4>
+<p>Returns the full-qualified name of the current class with the package name.</p>
+
+<h4><a name="getFullSuperclassNameFor">getFullSuperclassNameFor</a> (content template)</h4>
+<p>Returns the full-qualified name of the superclass of the current class.</p>
+
+<h4><a name="setMatchValue">setMatchValue</a> (content template)</h4>
+<p>Sets the vaSoulue of match variable.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           value
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The new value for matchPattern.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="matchValue">matchValue</a> (content template)</h4>
+<p>Returns the value of match variable. Match variable serves as a variable for templates, you set it somewhere in template and look it up somewhere else in template.</p>
+
+<h4><a name="currentToken">currentToken</a> (content template)</h4>
+<p>Returns current token inside forAllClassTagTokens.</p>
+
+<h4><a name="skipToken">skipToken</a> (content template)</h4>
+<p>Skips current token. Returns empty string.</p>
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+    <class
+        name="test.hibernate.Animal"
+        table="ANIMALS"
+        dynamic-update="true"
+        dynamic-insert="false"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="table">HIVAL</param>
+                <param name="column">NEXT</param>
+            </generator>
+        </id>
+
+        <version
+            name="version"
+            type="int"
+            column="version"
+            access="property"
+            unsaved-value="undefined"
+        />
+
+        <set
+            name="prey"
+            table="PREDATOR_PREY"
+            lazy="true"
+            inverse="false"
+            cascade="none"
+            sort="unsorted"
+            order-by="PREY_ID"
+        >
+
+              <key
+                  column="PREDATOR_ID"
+              >
+              </key>
+
+              <many-to-many
+                  class=""
+                  column="PREY_ID"
+                  outer-join="auto"
+               />
+
+        </set>
+
+        <property
+            name="sex"
+            type="char"
+            update="true"
+            insert="true"
+            access="property"
+            column="sex"
+            not-null="true"
+        />
+
+        <property
+            name="created"
+            type="timestamp"
+            update="false"
+            insert="true"
+            access="property"
+            column="created"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Animal.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+        <joined-subclass
+            name="test.hibernate.Reptile"
+            table="REPTILES"
+            dynamic-update="false"
+            dynamic-insert="false"
+        >
+        <key
+            column="ANIMAL_ID"
+        />
+
+        <joined-subclass
+            name="test.hibernate.Lizard"
+            table="LIZARDS"
+            dynamic-update="false"
+            dynamic-insert="false"
+        >
+        <key
+            column="ANIMAL_ID"
+        />
+        <property
+            name="bodyTemperature"
+            type="float"
+            update="true"
+            insert="true"
+            access="property"
+            column="bodyTemperature"
+            not-null="true"
+        />
+
+        </joined-subclass>
+
+        </joined-subclass>
+        <joined-subclass
+            name="test.hibernate.Human"
+            table="HUMANS"
+            dynamic-update="true"
+            dynamic-insert="false"
+        >
+        <key
+            column="ANIMAL_ID"
+        />
+
+        <component
+            name="name"
+            class="test.hibernate.Name"
+        >
+        <property
+            name="first"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="FIRST_NAME"
+        />
+
+        <property
+            name="initial"
+            type="char"
+            update="true"
+            insert="true"
+            access="property"
+        >
+            <column
+                name="INITIAL" 
+                not-null="true"
+                sql-type="VARCHAR(1)"
+            />
+        </property>
+
+        <property
+            name="last"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="LIST_NAME"
+        />
+
+        </component>
+
+        <property
+            name="occupation"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="occupation"
+        />
+
+        </joined-subclass>
+
+    </class>
+
+</hibernate-mapping>

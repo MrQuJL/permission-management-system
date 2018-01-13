@@ -1,0 +1,474 @@
+Revision History
+=================
+
+THIS CHANGELOG FILE IS DEPRECATED AND KEPT FOR REFERENCE ONLY.
+PLEASE CREATE A FILE NAMED xdoclet_X_X.xml (where X_X is version
+number followed by the beta id if applicable) IN THE CHANGELOGS
+DIRECTORY. LINK IT FROM THE status.xml PAGE.
+
+-------------------------------------------------------------------------------
+XDoclet 1.1.2 - March 11, 2002 - Changes since XDoclet v1.1.1
+-------------------------------------------------------------------------------
+
+Core:
+- *** Because of changes to the JDK1.4 javadoc (increased strictness with
+unknown tags and using ':' to delimit the -tag option), XDoclet now supports
+class and method-level tags of the form "@namespace.tag" in addition to the
+existing "@namespace:tag".  If you're using XDoclet under JDK1.4, we recommend
+you use this new form for your tags if you don't want lots of warnings when
+you build your javadocs.  ***
+- Added support for unit testing XDoclet using JUnit.
+- Added i18n support to messages, exceptions and templates.
+- Refactored the use of java.io.File for reading to use java.net.URL instead.
+This makes it possible to read templates from within other jar files.
+- Added a "currentClass" property to "importList" to avoid importing package
+of current package.
+- Added a tag for putting comments into template files (<XDtComment:comment>bla
+bla bla</XDtComment:comment>).
+- New PropertyTagsHandler.  For use with getter/setter methods having a
+specified tag to access to the other method of the pair.
+- Added Cygwin support to the build.sh files.
+- <packageSubstitution/> is now available to TemplateSubTasks.
+- Better support for timestamp checks done to guess if a generation is needed
+or not.
+- Added an option to turn off the timestamp/etc guessing of merge point/etc of
+a template.
+- You can set subtaskname now (pretty cool if you want to fool xdoclet!).
+- Much better id management and generation for xml elements, XDtId:prefixedId
+introduced.
+- A useIds parameter is introduced for XmlSubTask so all xml subtasks have the
+ability to enable/disable id="IDPrefix_i" (by default off, enable it for
+websphere).
+
+ejbdoclet:
+- Added "cmpspec" attr to <entitycmp/> subtask.  This permits beans to not be
+aware of which cmp implementation will be used, and so facilitate migration
+from cmp1 to cmp2.
+- Made bean name suffixes a config parameter of ejbdoclet task.
+- Removed caching from util class.
+- Added support for both JNDI_NAME and COMP_NAME to util object's home lookups.
+- Improved generated util objects' javadoc comments.
+- Added hashCode() impl in data object.
+- Added use-super-equals="true|false" option to @ejb:data-object; allows for
+using the super.equals() method instead of having to write it yourself (also
+applies to hashCode).
+- acknowledge-mode is optional
+- Reset data holder to null in ejbRemove()
+
+webdoclet:
+- Added welcomefiles.xml merge point.
+
+jBoss support:
+- Added relation taghandler.
+- Removed support of jBoss 2.2.
+- Fixed up samples so they deployed successfully on JBoss.
+- read-only is for entity.
+- Added @jboss:jdbc-type DOUBLE next to @jboss:sql-type DOUBLE  Because
+JBoss doesn't support sql-type, without jdbc-type.
+- Changed jbosscmp-jdbc.xml generation to make it possible to avoid including
+the difficult-to-get-right relationship key-fields tags. Use a
+jboss:auto-key-fields tag in your cmr accessors to suppress <key-fields/> and
+<key-fields>...</key-fields> elements for that side.
+- Added Dave Smith's patch to do MDB subscriber stuff
+
+Castor support:
+- Added patches submitted by Bart Guijt.
+
+Orion support:
+- Commited Hani Suleiman's patch: composite PK's to be wrapped in <fields> for
+collection/set.
+
+Weblogic support:
+- Refactored relation handling.
+- Turned on xml validation in samples.
+
+New sub-tasks:
+- dao subtask for ejbdoclet.
+- bluestone subtask for ejbdoclet.
+- JRun subtask for webdoclet/ejbdoclet (thanks to Macromedia and Dan Schaffer
+for providing it).
+- pramati subtask for ejbdoclet (thanks to Patrick Lightbody for providing it).
+- jbossxmbean subtask for jmxdoclet.
+- jbossXmlServiceTemplate subtask for jmxdoclet.  Small task to generate
+skeleton jboss mbean configuration files from marked up mbeans.
+- openjmxdescription subtask for jmxdoclet (thanks to Jerome Bernard).
+- mlet subtask for jmxdoclet.
+- Implemented a new ReplaceCopy task which extends Ant's Copy task, but with a
+nifty replace feature.  AntPropertyTask is now deprecated in favour of
+ReplaceCopy.
+
+Misc:
+- Various documentation updates.
+- Numerous typos fixed in docs & source.
+- Ant code cleanup : Use protected variable project instead of getProject()
+Thanks to Erik Hatcher.
+
+Fixed Issues:
+(FR) [492015] Fine grained DataObjects
+(FR) [500114] Remote to Data util method
+[506291] Redundant import, same as class name
+[510210] Invalid property asignment for BMP's
+[510475] <template> dependency checking
+(patch) [510960] change in jboss read-only tag  Thanks to David Jencks.
+(patch) [513132] adds default OBJECT_NAME static string  Thanks to David Jencks.
+NB subsequently replaced by a merge point.
+[513655] ejb-ref order
+[513657] acknowledge-mode
+[514220] (Weblogic) Generates entity descriptor for BMP beans
+(patch) [515019] Incorrect <ejb-ref> elements generated  Thanks to Tim Taylor.
+[518956] Jboss.xml security domain specifics
+[522926] dataHolder not set to null in passivate
+(patch) [524074] ejb-body.j 1.1 security identity patch
+- Fixed template tag documentation (which was generating all namespaces' tags
+on every page).
+- Fixed problem in data-object when a class use the same Data class as its
+superclass (e.g. BMP extends CMP).
+- ifHasMethod did not work properly with methods without parameters.
+- Avoid "Ambiguous class" compilation errors in utility class if the bean class
+imported org.omg.CORBA.Object
+- Fixed beanFile problem with inner classes
+
+-------------------------------------------------------------------------------
+XDoclet 1.1.1 - January 28, 2002 - Changes since XDoclet v1.1
+-------------------------------------------------------------------------------
+
+Core:
+- implemented <configParam/> nested element. User-defined config params supported.
+- changed format of config param names: dataobject.blablaParam and so on
+  (the prefix is the getSubTaskName(), "" for DocletTask).
+- implemented subTaskClassName for <template/>/<xmlTemplate/> so you can feed it
+  your subtask name easily.
+- Add a schema template tag to the XmlSubTask.
+- Constructor tags support plus a XDtConstructor template namespace.
+
+ejbdoclet:
+- Changed jndiName() to return doclet specified local/remote name, or compName if
+  user doesn't specify a local/remote jndi name.
+- <ejb-ql> always wrapped in CDATA.
+- Correct behaviour for dirty flag in BMP, doesn't call ejbStore if not dirty.
+
+jBoss support:
+- Full support for jBoss 3 jbosscmp-jdbc.xml generation.
+- Changed fk-constraint to be an optional parameter
+- Changed it's default to false rather than true (since Hypersonic doesn't
+  support fk-constraint), and that is the database that jboss3 comes with.
+- Renamed "foreign-key-column" to "fk-column", to be consistent with "pk*"
+  fields.
+- Renamed "relation-pk-column" to "related-pk-field", since it isn't actually a
+  column, it's the field name for the pk of the related ejb.
+- Add local-jndi-name for session/entity bean DD
+- Applied Patch #503809: problem with <configuration-name> in MDBs
+- Supported version are 2.4 and 3.0.  JBoss 2.2 support is deprecated since XDoclet 1.1.
+
+Weblogic support:
+- In weblogic ejb templates, in a few places <cache>....</cache> should be
+  <entity-cache> or <stateful-session-cache>
+
+Orion support:
+- Fixed typo "field-persistence-manager-peroperty" in orion's template files.
+
+WebSphere support:
+- Fixed well-formedness problem in Schema_dbxmi.j
+
+-------------------------------------------------------------------------------
+XDoclet 1.1 - January 14, 2002 - Changes since XDoclet v1.0.1
+-------------------------------------------------------------------------------
+
+Core:
+- Enhanced and refactored template tag handling system. This helps us enhance
+  XDoclet more easily. The new template system is more grnaular. Refer to docs
+  at docs/architecture.html for a more detailed overview of the new system.
+- DTD validation in all XML sub-tasks.
+- XDoclet makes a better decision on generating or not a Class or a XML file,
+  it looks at timestamp of class and superclasses, at xdoclet JAR and finally
+  at merge files. If this is not enough a new parameter "force" on the doclet
+  that you can set to true to force the regeneration
+- @ejb:data-object container="true/false" replaced by generate="true/false"
+- Much better and bug free EJB 2.0 relationships support plus more samples
+- You can use ant properties in tag values, eg:
+  @jboss:create-table "${jboss.create.table}"
+  Just create put a <property name="jboss.create.table" value="blabla"/>.
+  This is usful for keeping deployment-oriented settings out of source code.
+- <template/> subtask supports per-class generation, various new parameters are
+  introduced.
+- Now the ouput looks prettier, no more than 1 consequent empty line outputed.
+- Now ant stops if an error occurs (It's just a dirty workaround till we submit
+  a fix to Ant) :o)
+- Implemented TagDef namespace, so as an end user you can put a
+  <XDtTagDef:tagDef namespace="Foo" handler="com.blabla.FooTagsHandler"/> in
+  start of your template file and define a new tag handler for system.
+- New maxmemory attribute for doclet tasks, in case you also have so many
+  classes to process.
+- Parameters of class level @tags are now inherited/overriden too.
+- Class/method comment enhanced (output nothing if no comment/etc, break lines
+  properly and so on).
+- Added <xmlTemplate/> support.
+- Added support for field level tags.
+- Added a task that uses the template engine to merge custom templates with
+  contents extracted from ant properties instead of javadoc tags. See the examples.
+- Improved documentation:
+  - docs/architecture.html: a thorough architecture doc with class diagram and
+    detailed explanation of how xdoclet works
+  - Template tag documentation (auto-generated)
+  - docs/using.html covers more configuration instructions.
+  - Added download links.
+
+ejbdoclet:
+- Many useful defaults added so that you can start from an ordinary EJB and
+  ejbdoclet makes some defaults from the code and generates based on it.
+- New <packageSubstitution/> nested element for ejbdoclet and its subtasks, so
+  that no package chossing is hard-coded (Previously it was hardcoded to put ejb
+  interfaces of beans form .ejb and .beans packages in .interfaces package. Now
+  no longer it's the case, instead you should use <packageSubstitution/> and you
+  have full control.
+- If ejb=2 then cmp=2.x by default.
+- ejbSelect method support added.
+- Add missing Merge Points in local/remote interfaces, utilobj and so on.
+- All EJB sub-tasks are now optional. This most requested feature is now
+  implemented!
+- Added new method-intf parameter for @ejb:pk and @ejb:finder to support local
+  interfaces.
+- Implemented automatic inheritance of pk/intf/home/etc (no need to put extends=""
+  in base ejbeans), this way you have true component inheritance automatically.
+  Also updated samples.
+- If you define a remote-interface method in a base ejbean it's only defined in
+  local/home class of parent not the subclass ejbean.
+- If you define a persistent field in base it's only ... (ditto), plus changes to
+  samples to show it.
+- Supporting java.lang.Object as return type of create methods.
+- Add serialVersionUID to sub-classed bean classes.
+- Change container parameter in favour of generate for ejb:data-object.
+
+jBoss support:
+- Added support for CMP2 1-1 and 1-n relationships in JBoss 3.0 alpha.
+- jbosscmp-jdbc.xml generation support for JBoss 3.0 CMP2. It's disabled,
+  commented out for now, but you may want to experiment it.
+
+Weblogic support:
+- New config parameters version and createtables for weblogic ejbdoclet subtask.
+- weblogic-ejb-jar.xml and weblogic-cmp-rdbms-jar.xml generation now generates
+  relevent parts for MDB and session beans too. Also added merge point for
+  security roles.
+- Added support for weblogic web deployment descriptor.
+- Added support for weblogic relations.
+- Set the default data-source-name to "" so it can be overridden with the
+  @weblogic:data-source-name tag.
+
+Orion support:
+- Enhancements to <orion/> ejbdoclet subtask, cmp mapping fully supported. Also
+  destination-jndi-name parameter changed to ejb-name. All parameters you find
+  in orion-ejb-jar.xml are supported.
+- Primitives supported for set/list/etc ampping.
+- persistence-name parameter is optional.
+
+WebWork support:
+- Command support added, plus a sample.
+- Webwork commands are now ! instead of _, updated.
+
+WebSphere 4.x support:
+- Some minor bug fixes plus Schema.dbxml generated only when there's at least
+  one cmp bean.
+
+webdoclet:
+- filters.xml merge file for web_xml.j.
+
+Struts support:
+- Added struts:forward name=foo path=/foo.jsp support for struts local forwards.
+- Multiple action forms per bean supported.
+- Partial property setting for bulk data object
+- Automatic inclusion of pk fields in generated form (unless disabled)
+- Automatic inclusion of all bean properties or per-property specification
+- Parameter support for struts:action. Also added prefix and suffix support,
+  and made some action parameters optional (scope is by default request).
+- Added merge point struts-forms.xml and renamed actions.xml to struts-actions.xml
+  (still supports actions.xml).
+- Added support for form implements.
+
+New Sub-tasks:
+- Added <utilObject/> subtask, generates utility class for each ejb to easy
+  lookup remote interfaces.
+- Caster support added.
+- DAO (Data Access Object) is now possible.  Look at samples.
+- MVCSoft persistence manager support added.
+
+IDE integration:
+- IDEA live templates :o)
+
+Fixed Bugs:
+- jsp taglib problems because of changed element names between spec versions
+  fixed.
+- Fixed bugs 472759 and 472764
+- Exceptions of a method in ejbean class are now declared in overriden methods
+  too.
+- DocletTask now ignores any file that doesn't have the .java extension.
+  Required if people put additional files like package.html and other stuff
+  along with their sources.
+- Fixed some minor problems in <entitybmp/>.
+- Fixed wrong email links (all were pointing to ejbdoclet!!)
+- Allow boolean field type in PK.
+- Fixed problems with comments, wrap in CDATA.
+- Fixed ejb2-style ejbCreateBlabla methods bug (also updated ejbHome logic).
+- Fixed array type support bug (was trying to load byte[] for example).
+- Fixed many of the reported bugs, refer to bug database for more details, it
+  could become a book if I were to include the list here :o)
+
+
+-------------------------------------------------------------------------------
+XDoclet 1.0.1 - October 1, 2001 - Changes since XDoclet v1.0
+-------------------------------------------------------------------------------
+Features:
+- New info sub-task and @todo tag. You can document your sources using this tag
+  and it generates a nice report.
+- More complete using.html doc.
+- Better weblogic support.
+- Added local-jndi-name to @ejb:bean for local EJBs (EJB 2.0 only). The old
+  jndi-name is for remote EJBs.
+
+Fixed Bugs:
+- [ #463157 ] Improve misleading error message: xdoclet reports an IOException
+  instead of NoClassDefFoundException.
+- [ #466629 ] local ejb-external-ref not working
+- [ #465430 ] local home template: incorrectly remote was used instead of local
+- [ #465170 ] Typos in template files: orion and weblogic template had typos.
+- [ #464786 ] exception from ifIsNotOfType tag: actually the problem was not
+  supporting primitive types.
+- [ #464666 ] Error in CMP template: setData didn't have a dataholder=null
+- Better docs, @bean use-soft-locking="true|false" documented (previously
+  @ejb-use-soft-locking).
+
+Templates:
+- [ #464782 ] "Template" subtask: A <template/> sub-task is added, so that
+  you can add your own template files to any doclet task and execute them.
+- [ #464783 ] Multiple subtasks of same type: each doclet decides which
+  sub-tasks can have more than one sub-tasks of the same type. Multiple
+  <template/> sub-tasks are permitted.
+
+-------------------------------------------------------------------------------
+XDoclet 1.0 - September 17, 2001 - Changes since EJBDoclet v1.2
+-------------------------------------------------------------------------------
+XDoclet is the successor to EJBDoclet. XDoclet is wholly restructured,
+with lots of changes and new features that it's almost impossible to list
+them all even briefly here!
+
+Features:
+- Full EJB 2.0 support. All EJB @tags now consolidated.
+- EJB: support for Websphere 4, Weblogic 6.x, full Orion support, support
+  for business interface pattern, etc.
+- Support for Struts, JSP Taglibs, WebWork, Apache-SOAP, JMX
+
+Fixed Bugs:
+- Almost all!
+
+Templates:
+- New parsing engine, lots of new tags, existing tags more generalized.
+
+--------------------------------------------------------------------------
+EJBDoclet 1.2 - July 11, 2001 - Changes since 1.1
+--------------------------------------------------------------------------
+Features:
+- EJBDoclet is now absolutely generic and does not have any ties to EJBs.
+  It's possible to use it for various other things not related to EJBs.
+  We're planning to re-label it under a new name that reflects this fact.
+- web.xml support (v2.2 and v2.3) plus samples :-)
+- All @data-object-blabla tags marked deprecated. Instead use the new
+  @data-object tag. This tag also has serialVersionUID field generation
+  support. We're trying to group/consolidate different @tags like the
+  @data=object case.
+- EJB relationship support: @ejb:relationship.
+- Added support for "@wl:transaction-isolation" tag, for setting Weblogic's
+  <isolation-level>.
+- New Jaws tags: @ejb:select-for-update, @ejb:pk-constraint and
+  @ejb:cmp-version
+- toString() method generation for EJBean PK-classes
+- <resource-ref> support for jboss.xml
+- Merge Points on entitycmp / entitybmp
+- Added mandatory <session/> sub-task and session.j template. This way you
+  can easily merge some template inside session bean code, no need to change
+  the standard ejbdoclet .j files when adding custom features.
+- New organization for docs
+- Added cvs support to <pretty/>. This way pretty only runs on files that
+  are new or modified not all the files including those checked out from
+  cvs. This is very useful for enforsing coding conventions in open source
+  projects, just put a <pretty cvs="true"/> in build file and no one can
+  fool it!
+
+Fixed Bugs:
+- You can now set the destdir parameter to point to where your sources are
+  also located. @ejb:doclet-generated in generated files.
+- JBoss specific templates generate DTD-compliant files
+- Fixed @wl:caching bug of weblogic support. In previous version it wasn't
+  functionaing complaining about a missing template tag.
+- Handled the tricky nested tags case, things like this now are valid (note
+  the nesting of a ifHasClassTag inside another ifHasClassTag:
+      <EJBDoclet:ifHasClassTag tagName="wl:caching">
+         <EJBDoclet:ifHasClassTag tagName="ejb:stateless-session"> ...
+         </EJBDoclet:ifHasClassTag>
+      </EJBDoclet:ifHasClassTag>
+- TemplateDoclet.getText() now handles \n in tag value, so you can span it
+  to multiple lines (see @doc:param in SubTask as an example).
+- Fixed Bugs 434982 and 435675
+- Fixed Bug: sourcepath of ant task could not take multiple directories
+  separated by ; character.
+
+Templates:
+- Various new tags like methodType, methodName, forAllConfigParameters,
+  ifConfigParamGreaterOrEquals, matchValue, methodNameWithoutPrefix and ....
+- New document.j template, used internally by EJBDoclet for generating its
+  template tag documentation! Documentation for template tags are generated
+  to docs/templates.html.
+- home.j uses new jndiName tag.
+- A template writing how-to :-)
+
+--------------------------------------------------------------------------
+EJBDoclet 1.1 - June 15, 2001 - Changes since 1.0
+--------------------------------------------------------------------------
+Features:
+- Full superclass tag-inheritance support. If a tag is defined in the base
+  class, it is inherited by sub-classes. For example if you define a
+  @env-entry in your base class, you get generated <env-entry> in
+  ejb-jar.xml for the sub-classes also. It makes it like a real component
+  inheritance.
+- Now parameters of a tag can either be in space-separated format or
+  name="value" format. For example: @ejb:env-name name="bank/Account".
+- Moved optional "type" parameter of @env-entry to the end of parameters
+  list. This is the only non-backward-compatible change.
+- Added support for nested <fileset/> elements, now you can specify exactly
+  which EJBean files should be analyzed by ejbdoclet.
+- To be conformant with spec 2.0 remove calls to PK fields set methods
+  inside setData() of an entity bean. A PK field needs to be set at Entity
+  Bean creation time only.
+  WARNING : This implies a manual call inside ejbCreate() to set all
+  fields before calling setData().  Look at the examples.
+  WARNING : Because of how ejbdoclet is working now, we still have a set
+  method on each pk fields.  These should only be used by ejbCreate.
+
+Fixed Bugs:
+- There was a problem in v1.0 with getData/setData methods in hierarchies,
+  this release fixes it by:
+  1. declare getData return type as the most Upper definition of getData
+     found in the super classes. This suppose the use of @data-extends in
+     the extended class.
+  2. declare as many setData as found in the inheritance tree.
+- Fixed: method/classTagValue currentTag ignorance (seen at ejb-jar.xml
+  as repeated role-names)
+- Fixed: inheritance of mergedir parameter from <ejbdoclet/> by sub-tasks
+
+Templates:
+- classTagValue and MethodTagValue now supports these parameters:
+  - [paramName] : the parameter name
+  - [paramNum] : the parameter index
+  - [values] : valid values for the parameter, a comma-separated list
+  - [default] : if tag/parameter not found, then use this default value
+  - [superclasses] : "true" | "false" -> if true then search superclasses
+    for the tag, if false don't. Applicable to classTagValue only.
+- ifHasClassTag and ifHasMethodTag now supports these parameters:
+  - [error] : raise the error when a tag/param is missing
+- new tags ifDoesntHaveMethodTag and ifDoesntHaveClassTag, both have
+  optional error param
+- Updated ejb-jar_xml.j and jboss_xml.j and jboss-jaws_xml.j to take
+  advantage of the new tags
+
+--------------------------------------------------------------------------
+EJBDoclet 1.0 - June 2, 2001
+--------------------------------------------------------------------------
+- Initial Release! No Changes!! ;-)

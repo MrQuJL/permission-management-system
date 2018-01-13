@@ -1,0 +1,2 @@
+  <classpath codebase="." libraries="*"/>
+  <mbean code="org.xdoclet.NonexistentMBean" name="xdoclet.test:service=NONE"/>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mbean PUBLIC "-//JBoss//DTD JBOSS XMBEAN 1.0//EN" "http://www.jboss.org/j2ee/dtd/jboss_xmbean_1_0.dtd">
+
+<mbean>
+  <description>sample for jboss xmbean.dtd</description>
+  <descriptors>
+    <persistence persistPolicy="Never"
+                 persistPeriod="10"
+                 persistLocation="pl1"
+                 persistName="JBossXMLExample1"/>
+    <currencyTimeLimit value="10"/>
+    <state-action-on-update value="RESTART"/>
+    <display-name value="Sample xmbean for jboss"/>
+    <persistence-manager value="org.jboss.mx.persistence.ObjectStreamPersistenceManager"/>
+      <descriptor name="classdescriptor" value="classdescriptorvalue"/>
+  </descriptors>
+  <class>test.jmx.JBossXMLExample</class>
+
+  <constructor>
+    <description>default constructor</description>
+    <name>test.jmx.JBossXMLExample</name>
+  </constructor>
+  <constructor>
+    <description>(no description)</description>
+    <name>test.jmx.JBossXMLExample</name>
+    <parameter>
+      <description>(no description)</description>
+      <name>stringParam</name>
+      <type>java.lang.String</type>
+    </parameter>
+    <parameter>
+      <description>(no description)</description>
+      <name>intParam</name>
+      <type>java.lang.Integer</type>
+    </parameter>
+  </constructor>
+
+  <!--attributes-->
+  <attribute access="read-only" getMethod="getString" setMethod="setString">
+
+    <description>string attribute</description>
+    <name>String</name>
+    <type>java.lang.String</type>
+    <descriptors>
+      <persistence persistPolicy="Never"
+                   persistPeriod="30"/>
+      <currencyTimeLimit value="30"/>
+      <value value="this is a string"/>
+
+      <descriptor name="attributedescriptor" value="attributedescriptorvalue"/>
+    </descriptors>
+  </attribute>
+  <attribute access="read-only" getMethod="getStrings">
+
+    <description>strings attribute</description>
+    <name>Strings</name>
+    <type>[[Ljava.lang.String;</type>
+    <descriptors>
+      <persistence persistPolicy="Never"
+                   persistPeriod="30"/>
+      <currencyTimeLimit value="30"/>
+      <value value="these are strings"/>
+
+      <descriptor name="attributedescriptor" value="attributedescriptorvalue"/>
+    </descriptors>
+  </attribute>
+  <attribute access="write-only" getMethod="getId" setMethod="setId">
+
+    <description>id attribute</description>
+    <name>Id</name>
+    <type>java.lang.Integer</type>
+    <descriptors>
+      <persistence persistPolicy="Never"
+                   persistPeriod="40"/>
+      <currencyTimeLimit value="40"/>
+      <value value="5"/>
+
+    </descriptors>
+  </attribute>
+  <attribute access="read-write" getMethod="getValue">
+
+    <description>id attribute</description>
+    <name>Value</name>
+    <type>java.lang.Integer</type>
+    <descriptors>
+      <persistence persistPolicy="Never"
+                   persistPeriod="50"/>
+      <currencyTimeLimit value="50"/>
+      <state-action-on-update value="KEEP_RUNNING"/>
+
+    </descriptors>
+  </attribute>
+  <attribute access="read-write" getMethod="getRef" setMethod="setRef">
+
+    <description>Object Name attribute</description>
+    <name>Ref</name>
+    <type>javax.management.ObjectName</type>
+    <descriptors>
+      <persistence/>
+      <value value="xdoclet.test:service=RefTest"/>
+
+    </descriptors>
+  </attribute>
+
+<!--artificial attributes-->
+    <attribute access="read-write">
+
+    <description>artificial attribute not impemeneted in class</description>
+    <name>ArtificialAttribute</name>
+    <type>java.lang.String</type>
+    <descriptors>
+      <persistence
+                   persistLocation="pl1"
+                   persistName="JBossXMLExample1"
+/>
+
+    </descriptors>
+    </attribute>
+
+<!--operations -->
+  <operation impact="INFO">
+    <description>operation with 2 arguments</description>
+    <name>doSomething</name>
+    <parameter>
+      <description>first string param</description>
+      <name>stringParam1</name>
+      <type>java.lang.String</type>
+    </parameter>
+    <parameter>
+      <description>other param</description>
+      <name>integerParam2</name>
+      <type>java.lang.Integer</type>
+    </parameter>
+    <return-type>java.lang.String</return-type>
+    <descriptors>
+      <descriptor name="operationdescriptor" value="operationdescriptorvalue"/>
+    </descriptors>
+  </operation>
+
+<!--artificial operations-->
+  <operation impact="ACTION_INFO">
+    <description>artificial operation not implemented in class</description>
+    <name>artificialOperation</name>
+    <return-type>java.lang.String</return-type>
+    <descriptors>
+      <descriptor name="interceptor-classes" value="org.jboss.TestMBeanInterceptor"/>
+    </descriptors>
+  </operation>
+
+<!--notifications -->
+  <notification>
+    <description>first notification</description>
+    <name>javax.management.SomeEvent</name>
+    <notification-type>xd.example.first</notification-type>
+    <notification-type>xd.example.second</notification-type>
+    <descriptors>
+      <persistence persistPolicy="Never"
+                   persistPeriod="20"
+                   persistLocation="pl2"
+                   persistName="JBossXMLExample2"
+/>
+      <currencyTimeLimit value="20"/>
+    </descriptors>
+  </notification>
+  <notification>
+    <description>second notification</description>
+    <name>javax.management.SomeOtherEvent</name>
+    <notification-type>xd.example.third</notification-type>
+    <notification-type>xd.example.fourth</notification-type>
+    <descriptors>
+      <persistence/>
+    </descriptors>
+  </notification>
+
+</mbean>

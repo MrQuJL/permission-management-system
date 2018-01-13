@@ -1,0 +1,6968 @@
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  
+      
+  
+
+      
+      
+      
+      
+      
+      
+        
+         
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      
+
+      
+
+  
+  
+
+  
+  
+
+   
+   
+
+   
+   
+
+
+    
+	
+	
+
+    
+    
+      
+	
+	
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+    <html>
+      <head>
+        
+        
+          <title>
+            XDoclet: Attribute-Oriented Programming - 
+          Tag Reference
+        
+          </title>
+        
+        
+        
+        <style type="text/css">
+          @import url("../style/tigris.css");
+          @import url("../style/maven.css");
+        </style>
+        
+        
+        
+        
+        
+        <link rel="stylesheet" href="../style/print.css" type="text/css" media="print"></link>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
+        
+        
+        
+    <link href="../favicon.ico" rel="shortcut icon">
+      
+    </link>
+   
+    <link href="../favicon.ico" rel="icon">
+      
+    </link>
+   
+        
+      </head>
+
+      <body class="composite">
+
+        <div id="banner">
+          <table border="0" width="100%" cellpadding="8" cellspacing="0">
+            <tr>
+              
+              <td>
+                
+                
+                  
+                  
+                  
+                    
+                  
+                  
+                  
+                  
+                  
+                    
+                  
+                  <a href="http://xdoclet.sourceforge.net/">
+                    <img border="0" alt="XDoclet Team" src="../images/logo.gif" align="left"></img>
+                  </a>
+                
+              </td>
+
+              
+              <td>
+                <div id="login" align="right">
+                  
+                  
+                    
+                    
+                    
+
+                    <a href="http://xdoclet.sourceforge.net/">
+                      <img border="0" alt="XDoclet" src="http://sourceforge.net/sflogo.php?group_id=31602&amp;type=5" align="right"></img>
+                    </a>
+                  
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="breadcrumbs">
+          <table border="0" width="100%" cellpadding="4" cellspacing="0">
+            <tr>
+              
+                
+                <td>Last published: 28 April 2004
+                  | Doc for 1.2.1
+                </td>
+              
+              <td>
+                <div align="right">
+                  
+                  
+                  
+                    
+    
+    
+      
+      
+      
+      <a href="http://xdoclet.sourceforge.net/"><img class="handle" src="../images/none.png" alt=""></img>Home Page</a>
+      
+    
+      |
+      
+      
+      <a href="http://sourceforge.net/projects/xdoclet/"><img class="handle" src="../images/none.png" alt=""></img>SourceForge Project Page</a>
+      
+    
+      |
+      
+      
+      <a href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/xdoclet/"><img class="handle" src="../images/none.png" alt=""></img>Browse CVS</a>
+      
+    
+      |
+      
+      
+      <a href="http://opensource.atlassian.com/projects/xdoclet/secure/CreateIssue!default.jspa"><img class="handle" src="../images/none.png" alt=""></img>Create an Issue</a>
+      
+    
+  
+                  
+                  
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        
+        <table border="0" width="100%" cellpadding="8" cellspacing="0"> 
+          <tr valign="top">
+            <td width="20%" id="leftcol">
+              <div id="navcolumn">
+                
+
+                
+                  
+    <div>
+      <strong>XDoclet</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../index.html"><img class="handle" src="../images/none.png" alt=""></img>Overview</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../status.html"><img class="handle" src="../images/none.png" alt=""></img>News and Status</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../install.html"><img class="handle" src="../images/none.png" alt=""></img>Download/Installation</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../using.html"><img class="handle" src="../images/none.png" alt=""></img>Using XDoclet</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../bp.html"><img class="handle" src="../images/none.png" alt=""></img>Best Practices</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../faq.html"><img class="handle" src="../images/none.png" alt=""></img>FAQ</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../licenses/xdoclet-license.html"><img class="handle" src="../images/none.png" alt=""></img>License</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Ant Task Reference</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/ejb/EjbDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;ejbdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/web/WebDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;webdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/hibernate/HibernateDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;hibernatedoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/mockobjects/MockObjectDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;mockdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/jdo/JdoDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;jdodoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/jmx/JMXDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;jmxdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/portlet/PortletDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;portletdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/DocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;doclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Tag Reference</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/apache-tags.html"><img class="handle" src="../images/none.png" alt=""></img>apache (@soap @struts)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/bea-tags.html"><img class="handle" src="../images/none.png" alt=""></img>bea (@weblogic)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/borland-tags.html"><img class="handle" src="../images/none.png" alt=""></img>borland (@bes)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/caucho-tags.html"><img class="handle" src="../images/none.png" alt=""></img>caucho (@resin)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/ejb-tags.html"><img class="handle" src="../images/none.png" alt=""></img>ejb (@ejb @dao)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/exolab-tags.html"><img class="handle" src="../images/none.png" alt=""></img>exolab (@castor)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/hp-tags.html"><img class="handle" src="../images/none.png" alt=""></img>hp (@hpas)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/hibernate-tags.html"><img class="handle" src="../images/none.png" alt=""></img>hibernate (@hibernate)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/ibm-tags.html"><img class="handle" src="../images/none.png" alt=""></img>ibm (@websphere)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/java-tags.html"><img class="handle" src="../images/none.png" alt=""></img>java (@javabean)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/jboss-tags.html"><img class="handle" src="../images/none.png" alt=""></img>jboss (@jboss)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/jdo-tags.html"><img class="handle" src="../images/none.png" alt=""></img>jdo (@jdo)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/jmx-tags.html"><img class="handle" src="../images/none.png" alt=""></img>jmx (@jmx)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/macromedia-tags.html"><img class="handle" src="../images/none.png" alt=""></img>macromedia (@jrun)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/mockobjects-tags.html"><img class="handle" src="../images/none.png" alt=""></img>mockobjects (@mock)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/mvcsoft-tags.html"><img class="handle" src="../images/none.png" alt=""></img>mvcsoft (@mvcsoft)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/mx4j-tags.html"><img class="handle" src="../images/none.png" alt=""></img>mx4j (@mx4j)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/objectweb-tags.html"><img class="handle" src="../images/none.png" alt=""></img>objectweb (@jonas)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/oracle-tags.html"><img class="handle" src="../images/none.png" alt=""></img>oracle (@oc4j)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/orion-tags.html"><img class="handle" src="../images/none.png" alt=""></img>orion (@orion)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/portlet-tags.html"><img class="handle" src="../images/none.png" alt=""></img>portlet (@portlet)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/pramati-tags.html"><img class="handle" src="../images/none.png" alt=""></img>pramati (@pramati)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/sun-tags.html"><img class="handle" src="../images/none.png" alt=""></img>sun (@sunone)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/sybase-tags.html"><img class="handle" src="../images/none.png" alt=""></img>sybase (@easerver)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/tjdo-tags.html"><img class="handle" src="../images/none.png" alt=""></img>tjdo (@tjdo)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      		<b><a href="../tags/web-tags.html"><img class="handle" src="../images/none.png" alt=""></img>web (@web @jsp)</a></b>
+      	
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/webwork-tags.html"><img class="handle" src="../images/none.png" alt=""></img>webwork (@webwork)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/xdoclet-tags.html"><img class="handle" src="../images/none.png" alt=""></img>xdoclet (@xdoclet @doc)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Feature Documentation</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../valueobjects.html"><img class="handle" src="../images/none.png" alt=""></img>Using Value Objects</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Advanced</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../maven-plugin.html"><img class="handle" src="../images/none.png" alt=""></img>Maven Plug-in</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../merge.html"><img class="handle" src="../images/none.png" alt=""></img>Merge Points</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ide/index.html"><img class="handle" src="../images/none.png" alt=""></img>IDE Integration</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../migration.html"><img class="handle" src="../images/none.png" alt=""></img>Migration from EJBDoclet</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant15.html"><img class="handle" src="../images/none.png" alt=""></img>Ant 1.5 Troubleshooting</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Community</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../feedback.html"><img class="handle" src="../images/none.png" alt=""></img>Feedback</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../resources.html"><img class="handle" src="../images/none.png" alt=""></img>Resources</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tools.html"><img class="handle" src="../images/none.png" alt=""></img>Tools</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Development</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../development/index.html"><img class="handle" src="../images/none.png" alt=""></img>Developer Guide</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../api/index.html"><img class="handle" src="../images/none.png" alt=""></img>Javadoc (API)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../templates/index.html"><img class="handle" src="../images/none.png" alt=""></img>Template Language (*.xdt)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="http://xdoclet.sourceforge.net/xjavadoc/"><img class="handle" src="../images/none.png" alt=""></img>XJavaDoc Site</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    
+    
+    
+    <div>
+      <strong>Search XDoclet</strong>
+      <form action="http://www.google.com/search" method="get">
+        <a href="http://www.google.com" class="navlink">
+          <img border="0" alt="Google" src="http://www.google.com/logos/Logo_25wht.gif"></img>
+        </a><p></p>
+        
+        
+        
+          
+          
+        
+        <input name="q" maxlength="255" size="15" type="text" value=""></input>
+        <input name="btnG" type="submit" value="Go"></input>
+        <input name="domains" type="hidden" value="http://xdoclet.sourceforge.net"></input>
+        <input name="sitesearch" type="hidden" value="http://xdoclet.sourceforge.net" id="search"></input>
+      </form>
+    </div>
+  
+                
+
+				
+    <div>
+      <strong>Project Documentation</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../index.html"><img class="handle" src="../images/none.png" alt=""></img>About XDoclet</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		
+		
+          
+		
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../project-info.html"><img class="handle" src="../images/collapsed.png" alt=""></img>Project Info</a>
+      	
+      </small>
+	  
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		
+		
+          
+		
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../maven-reports.html"><img class="handle" src="../images/collapsed.png" alt=""></img>Project Reports</a>
+      	
+      </small>
+	  
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="http://maven.apache.org/development-process.html"><img class="handle" src="../images/none.png" alt=""></img>Development Process</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+                
+                
+                
+
+                
+                
+                
+                
+                	<div style="margin-top: 20px; width: 100%; text-align: center;">
+                		<a href="http://maven.apache.org/" title="Powered by Maven"><img style="border: 1px solid black" alt="Powered by Maven" src="../images/logos/maven-propaganda.png"></img></a>
+                	</div>
+                
+              
+                
+              </div>
+            </td>
+            <td rowspan="2">
+              <div id="bodycol">
+                
+                <div class="app">
+                  
+                  
+    <div class="h3">
+      
+      
+        <h3>
+          <a name="@web Tag Reference">@web Tag Reference</a>
+        </h3>
+      
+      
+    <p>
+      
+     These tags are used to specify information about web application
+   
+     
+    components (servlets, filters 
+   
+     &amp;
+   
+      listeners).  They are used in generating the
+   
+     
+    WEB-INF/web.xml file.
+   
+    </p>
+   
+    <p>
+      
+     Applies to: Servlet, Filter, Listener
+   
+    </p>
+   
+    <div id="source">
+      
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@web Class Level Tags">@web Class Level Tags</a>
+        </h4>
+      
+      
+    <a href="#@web.ejb-local-ref (0..1)" title="Defines a local EJB reference with the specified name, type, home interface name, local interface name, link name, and description. The value of the link parameter must be the ejb-name of an enterprise bean in the same J2EE application unit.">
+     @web.ejb-local-ref
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    <a href="#@web.ejb-ref (0..1)" title="Defines a remote EJB reference with the specified name, type, home interface name, remote interface name, link name, and description. The value of the link parameter must be the ejb-name of an enterprise bean in the same J2EE application unit">
+     @web.ejb-ref
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    <a href="#@web.env-entry (0..1)" title="Defines a environment entry with the specified description, name, type and value">
+     @web.env-entry
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    <a href="#@web.filter (0..1)" title="Declares the class as a Filter class, with the specified name, display-name, icon and description. Applicable to Servlet 2.3 only">
+     @web.filter
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    <a href="#@web.filter-init-param (0..1)" title="Declares init parameters for the Filter with the specified parameter name, value and description. Applicable to Servlet 2.3 only.">
+     @web.filter-init-param
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    <a href="#@web.filter-mapping (0..1)" title="Defines the mapping for the Filter. Either url-pattern or servlet-name should be specified. Applicable to Servlet 2.3 only">
+     @web.filter-mapping
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    <a href="#@web.listener (0..1)" title="Declares the class as a Listener class">
+     @web.listener
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    <a href="#@web.resource-env-ref (0..1)" title="Defines a resource environment reference with the specified name, type and description">
+     @web.resource-env-ref
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    <a href="#@web.resource-ref (0..1)" title="Defines a resource reference with the specified name, type, description, authentication (auth) and scope">
+     @web.resource-ref
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    <a href="#@web.security-role (0..1)" title="Defines a security role with the specified role-name and description">
+     @web.security-role
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    <a href="#@web.security-role-ref (0..1)" title="Defines a security role reference with the name role-name to a security role link named role-link">
+     @web.security-role-ref
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    <a href="#@web.servlet (0..1)" title="Declares the class as a Servlet class, with the specified name, display-name, icon and description">
+     @web.servlet
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    <a href="#@web.servlet-init-param (0..1)" title="Declares init parameters for the Servlet with the specified parameter name, value and description">
+     @web.servlet-init-param
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    <a href="#@web.servlet-mapping (0..1)" title="Defines the mapping for the Servlet to the specified url-pattern">
+     @web.servlet-mapping
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    </div>
+  
+    </div>
+   
+    <div id="source">
+      
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@web Method Level Tags">@web Method Level Tags</a>
+        </h4>
+      
+      
+    </div>
+  
+    </div>
+   
+    <div id="source">
+      
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@web Field Level Tags">@web Field Level Tags</a>
+        </h4>
+      
+      
+    </div>
+  
+    </div>
+   
+    </div>
+  
+    <div class="h3">
+      
+      
+        <h3>
+          <a name="@web Class Level Tag Usage">@web Class Level Tag Usage</a>
+        </h3>
+      
+      
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@web.ejb-local-ref (0..1)">@web.ejb-local-ref (0..1)</a>
+        </h4>
+      
+      
+    <p>
+      
+     Defines a local EJB reference with the
+   
+     
+                specified name, type, home interface name, local interface name,
+   
+     
+                link name, and description. The value of the link parameter must
+   
+     
+                be the ejb-name of an enterprise bean in the same J2EE
+   
+     
+                application unit.
+   
+    </p>
+   
+    <p>
+      
+     Applies to: Servlet
+   
+    </p>
+   
+    
+    <table border="1" width="100%" cellspacing="2" cellpadding="3">
+      
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a">
+    <th>
+      
+     Parameter
+   
+    </th>
+   
+    <th>
+      
+     Type
+   
+    </th>
+   
+    <th>
+      
+     Applicability
+   
+    </th>
+   
+    <th>
+      
+     Description
+   
+    </th>
+   
+    <th>
+      
+     Mandatory
+   
+    </th>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     name
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The name or the ejb reference
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     type
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The expected type of the referenced
+   
+     
+                    enterprise bean
+   
+     . Must be one of the following: Entity or Session
+   
+    <br>
+      
+     Valid options are:
+   
+    </br>
+   
+    <br>
+      
+     Entity
+   
+    </br>
+   
+    <br>
+      
+     Session
+   
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     home
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The home interface of the referenced ejb
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     local
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The local interface of the referenced ejb
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     link
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The link to the EJB
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     description
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     An optional description for the ejb-ref
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    </table>
+  
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@web.ejb-ref (0..1)">@web.ejb-ref (0..1)</a>
+        </h4>
+      
+      
+    <p>
+      
+     Defines a remote EJB reference with the
+   
+     
+                specified name, type, home interface name, remote interface name,
+   
+     
+                link name, and description. The value of the link parameter must
+   
+     
+                be the ejb-name of an enterprise bean in the same J2EE
+   
+     
+                application unit
+   
+    </p>
+   
+    <p>
+      
+     Applies to: Servlet
+   
+    </p>
+   
+    
+    <table border="1" width="100%" cellspacing="2" cellpadding="3">
+      
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b">
+    <th>
+      
+     Parameter
+   
+    </th>
+   
+    <th>
+      
+     Type
+   
+    </th>
+   
+    <th>
+      
+     Applicability
+   
+    </th>
+   
+    <th>
+      
+     Description
+   
+    </th>
+   
+    <th>
+      
+     Mandatory
+   
+    </th>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     name
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The name or the ejb reference
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     type
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The expected type of the referenced
+   
+     
+                    enterprise bean. Must be one of the following: Entity or Session
+   
+    <br>
+      
+     Valid options are:
+   
+    </br>
+   
+    <br>
+      
+     Entity
+   
+    </br>
+   
+    <br>
+      
+     Session
+   
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     home
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The home interface of the referenced ejb
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     remote
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The remote interface of the referenced ejb
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     link
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The link to the EJB
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     description
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     An optional description for the ejb-ref
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    </table>
+  
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@web.env-entry (0..1)">@web.env-entry (0..1)</a>
+        </h4>
+      
+      
+    <p>
+      
+     Defines a environment entry with the specified
+   
+     
+                description, name, type and value
+   
+    </p>
+   
+    <p>
+      
+     Applies to: Servlet
+   
+    </p>
+   
+    
+    <table border="1" width="100%" cellspacing="2" cellpadding="3">
+      
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a">
+    <th>
+      
+     Parameter
+   
+    </th>
+   
+    <th>
+      
+     Type
+   
+    </th>
+   
+    <th>
+      
+     Applicability
+   
+    </th>
+   
+    <th>
+      
+     Description
+   
+    </th>
+   
+    <th>
+      
+     Mandatory
+   
+    </th>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     description
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     A description of the env-entry
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     name
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The name of the env-entry
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+    <b>
+      
+     true
+   
+    </b>
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     type
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The type of the env-entry
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+    <b>
+      
+     true
+   
+    </b>
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     value
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The value of the env-entry
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    </table>
+  
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@web.filter (0..1)">@web.filter (0..1)</a>
+        </h4>
+      
+      
+    <p>
+      
+     Declares the class as a Filter class, with
+   
+     
+                the specified name, display-name, icon and description.
+   
+     
+                Applicable to Servlet 2.3 only
+   
+    </p>
+   
+    <p>
+      
+     Applies to: Filter
+   
+    </p>
+   
+    
+    <table border="1" width="100%" cellspacing="2" cellpadding="3">
+      
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b">
+    <th>
+      
+     Parameter
+   
+    </th>
+   
+    <th>
+      
+     Type
+   
+    </th>
+   
+    <th>
+      
+     Applicability
+   
+    </th>
+   
+    <th>
+      
+     Description
+   
+    </th>
+   
+    <th>
+      
+     Mandatory
+   
+    </th>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     name
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The name for the fil
+   
+     ter. Unique within the application
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+    <b>
+      
+     true
+   
+    </b>
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     display-name
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The display name of the filter
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     icon
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The icon for the filter
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     description
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     A description for the filter
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    </table>
+  
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@web.filter-init-param (0..1)">@web.filter-init-param (0..1)</a>
+        </h4>
+      
+      
+    <p>
+      
+     Declares init parameters for the Filter with
+   
+     
+                the specified parameter name, value and description. Applicable
+   
+     
+                to Servlet 2.3 only.
+   
+    </p>
+   
+    <p>
+      
+     Applies to: Filter
+   
+    </p>
+   
+    
+    <table border="1" width="100%" cellspacing="2" cellpadding="3">
+      
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a">
+    <th>
+      
+     Parameter
+   
+    </th>
+   
+    <th>
+      
+     Type
+   
+    </th>
+   
+    <th>
+      
+     Applicability
+   
+    </th>
+   
+    <th>
+      
+     Description
+   
+    </th>
+   
+    <th>
+      
+     Mandatory
+   
+    </th>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     name
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The name of the init parameter
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+    <b>
+      
+     true
+   
+    </b>
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     value
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The value for the parameter
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     description
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     An optional description of the parameter
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    </table>
+  
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@web.filter-mapping (0..1)">@web.filter-mapping (0..1)</a>
+        </h4>
+      
+      
+    <p>
+      
+     Defines the mapping for the Filter. Either
+   
+     
+                url-pattern or servlet-name should be specified. Applicable to
+   
+     
+                Servlet 2.3 only
+   
+    </p>
+   
+    <p>
+      
+     Applies to: Filter
+   
+    </p>
+   
+    
+    <table border="1" width="100%" cellspacing="2" cellpadding="3">
+      
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a">
+    <th>
+      
+     Parameter
+   
+    </th>
+   
+    <th>
+      
+     Type
+   
+    </th>
+   
+    <th>
+      
+     Applicability
+   
+    </th>
+   
+    <th>
+      
+     Description
+   
+    </th>
+   
+    <th>
+      
+     Mandatory
+   
+    </th>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     url-pattern
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The url pattern the filter should match
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     servlet-name
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The servlet name for the filter
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    </table>
+  
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@web.listener (0..1)">@web.listener (0..1)</a>
+        </h4>
+      
+      
+    <p>
+      
+     Declares the class as a Listener class
+   
+    </p>
+   
+    <p>
+      
+     Applies to: Listener
+   
+    </p>
+   
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@web.resource-env-ref (0..1)">@web.resource-env-ref (0..1)</a>
+        </h4>
+      
+      
+    <p>
+      
+     Defines a resource environment reference with
+   
+     
+                the specified name, type and description
+   
+    </p>
+   
+    <p>
+      
+     Applies to: Servlet
+   
+    </p>
+   
+    
+    <table border="1" width="100%" cellspacing="2" cellpadding="3">
+      
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b">
+    <th>
+      
+     Parameter
+   
+    </th>
+   
+    <th>
+      
+     Type
+   
+    </th>
+   
+    <th>
+      
+     Applicability
+   
+    </th>
+   
+    <th>
+      
+     Description
+   
+    </th>
+   
+    <th>
+      
+     Mandatory
+   
+    </th>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     name
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The name of the resource environment reference
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+    <b>
+      
+     true
+   
+    </b>
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     type
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The type of the referenced resource
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+    <b>
+      
+     true
+   
+    </b>
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     description
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     An optional description of the resource reference
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    </table>
+  
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@web.resource-ref (0..1)">@web.resource-ref (0..1)</a>
+        </h4>
+      
+      
+    <p>
+      
+     Defines a resource reference with the
+   
+     
+                specified name, type, description, authentication (auth) and scope
+   
+    </p>
+   
+    <p>
+      
+     Applies to: Servlet
+   
+    </p>
+   
+    
+    <table border="1" width="100%" cellspacing="2" cellpadding="3">
+      
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b">
+    <th>
+      
+     Parameter
+   
+    </th>
+   
+    <th>
+      
+     Type
+   
+    </th>
+   
+    <th>
+      
+     Applicability
+   
+    </th>
+   
+    <th>
+      
+     Description
+   
+    </th>
+   
+    <th>
+      
+     Mandatory
+   
+    </th>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     name
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The name of the resource reference
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+    <b>
+      
+     true
+   
+    </b>
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     type
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The type of the referenced resource
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+    
+   
+                                                   
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+    <b>
+      
+     true
+   
+    </b>
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     auth
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The authentication for the resource.  "Application" | "Container"
+   
+    <br>
+      
+     Valid options are:
+   
+    </br>
+   
+    <br>
+      
+     Application
+   
+    </br>
+   
+    <br>
+      
+     Container
+   
+    </br>
+   
+    </td>
+   
+    <td>
+      
+    <b>
+      
+     true
+   
+    </b>
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     description
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     An optional description for the resource reference
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     scope
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The scope of the resource.  "Shareable" | "Unshareable"
+   
+    <br>
+      
+     Valid options are:
+   
+    </br>
+   
+    <br>
+      
+     Shareable
+   
+    </br>
+   
+    <br>
+      
+     Unshareable
+   
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     jndi-name
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     
+          The physical jndi-name of the resource. Note: it currently is used only in 1-2
+   
+     
+          of the app server modules, but those modules will also support this consolidated standard tag soon.
+   
+     
+          
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    </table>
+  
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@web.security-role (0..1)">@web.security-role (0..1)</a>
+        </h4>
+      
+      
+    <p>
+      
+     Defines a security role with the specified
+   
+     
+                role-name and description
+   
+    </p>
+   
+    <p>
+      
+     Applies to: Servlet
+   
+    </p>
+   
+    
+    <table border="1" width="100%" cellspacing="2" cellpadding="3">
+      
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a">
+    <th>
+      
+     Parameter
+   
+    </th>
+   
+    <th>
+      
+     Type
+   
+    </th>
+   
+    <th>
+      
+     Applicability
+   
+    </th>
+   
+    <th>
+      
+     Description
+   
+    </th>
+   
+    <th>
+      
+     Mandatory
+   
+    </th>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     role-name
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The role name
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     description
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The description of the role
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    </table>
+  
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@web.security-role-ref (0..1)">@web.security-role-ref (0..1)</a>
+        </h4>
+      
+      
+    <p>
+      
+     Defines a security role reference with the
+   
+     
+                name role-name to a security role link named role-link
+   
+    </p>
+   
+    <p>
+      
+     Applies to: Servlet
+   
+    </p>
+   
+    
+    <table border="1" width="100%" cellspacing="2" cellpadding="3">
+      
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b">
+    <th>
+      
+     Parameter
+   
+    </th>
+   
+    <th>
+      
+     Type
+   
+    </th>
+   
+    <th>
+      
+     Applicability
+   
+    </th>
+   
+    <th>
+      
+     Description
+   
+    </th>
+   
+    <th>
+      
+     Mandatory
+   
+    </th>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     role-name
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The name of the ro
+   
+     le reference
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+    <b>
+      
+     true
+   
+    </b>
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     role-link
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The name of the role link
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+    <b>
+      
+     true
+   
+    </b>
+   
+    </td>
+   </tr>
+  
+    </table>
+  
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@web.servlet (0..1)">@web.servlet (0..1)</a>
+        </h4>
+      
+      
+    <p>
+      
+     Declares the class as a Servlet class, with
+   
+     
+                the specified name, display-name, icon and description
+   
+    </p>
+   
+    <p>
+      
+     Applies to: Servlet
+   
+    </p>
+   
+    
+    <table border="1" width="100%" cellspacing="2" cellpadding="3">
+      
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a">
+    <th>
+      
+     Parameter
+   
+    </th>
+   
+    <th>
+      
+     Type
+   
+    </th>
+   
+    <th>
+      
+     Applicability
+   
+    </th>
+   
+    <th>
+      
+     Description
+   
+    </th>
+   
+    <th>
+      
+     Mandatory
+   
+    </th>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     name
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The name of the servlet - unique within the application
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+    <b>
+      
+     true
+   
+    </b>
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     display-name
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The display name of the servlet
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     icon
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The icon for the servlet
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     description
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     A description for the servlet
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     load-on-startup
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     Integer indicating order in which the servlet should be loaded.
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     run-as
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     Specifies the run-as identity (the name of
+   
+     
+                    a security role) to be used for the execution of the web
+   
+     
+                    application.
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    </table>
+  
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@web.servlet-init-param (0..1)">@web.servlet-init-param (0..1)</a>
+        </h4>
+      
+      
+    <p>
+      
+     Declares init parameters fo
+   
+     r the Servlet with
+   
+     
+                the specified parameter name, value and description
+   
+    </p>
+   
+    <p>
+      
+     Applies to: Servlet
+   
+    </p>
+   
+    
+    <table border="1" width="100%" cellspacing="2" cellpadding="3">
+      
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b">
+    <th>
+      
+     Parameter
+   
+    </th>
+   
+    <th>
+      
+     Type
+   
+    </th>
+   
+    <th>
+      
+     Applicability
+   
+    </th>
+   
+    <th>
+      
+     Description
+   
+    </th>
+   
+    <th>
+      
+     Mandatory
+   
+    </th>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     name
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The name of the init parameter
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+    <b>
+      
+     true
+   
+    </b>
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     value
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The value for the parameter
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     description
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     An optional description of the parameter
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    </table>
+  
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@web.servlet-mapping (0..1)">@web.servlet-mapping (0..1)</a>
+        </h4>
+      
+      
+    <p>
+      
+     Defines the mapping for the Servlet to the
+   
+     
+                specified url-pattern
+   
+    </p>
+   
+    <p>
+      
+     Applies to: Filter
+   
+    </p>
+   
+    
+    <table border="1" width="100%" cellspacing="2" cellpadding="3">
+      
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b">
+    <th>
+      
+     Parameter
+   
+    </th>
+   
+    <th>
+      
+     Type
+   
+    </th>
+   
+    <th>
+      
+     Applicability
+   
+    </th>
+   
+    <th>
+      
+     Description
+   
+    </th>
+   
+    <th>
+      
+     Mandatory
+   
+    </th>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     url-pattern
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The url pattern the filter should match
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    </table>
+  
+    </div>
+  
+    </div>
+  
+    <div class="h3">
+      
+      
+        <h3>
+          <a name="@web Method Level Tag Usage">@web Method Level Tag Usage</a>
+        </h3>
+      
+      
+    </div>
+  
+    <div class="h3">
+      
+      
+        <h3>
+          <a name="@web Field Level Tag Usage">@web Field Level Tag Usage</a>
+        </h3>
+      
+      
+    </div>
+  
+    <div class="h3">
+      
+      
+        <h3>
+          <a name="@jsp Tag Reference">@jsp Tag Reference</a>
+        </h3>
+      
+      
+    <p>
+      
+     These tags are used to give information about JSP custom tags
+   
+     
+    and tag library validators, used in generating the tag library descriptor (TLD)
+   
+     
+    file.
+   
+    </p>
+   
+    <p>
+      
+     Applies to: JSP Tag or Tag Library Validator
+   
+    </p>
+   
+    <div id="source">
+      
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@jsp Class Level Tags">@jsp Class Level Tags</a>
+        </h4>
+      
+      
+    <a href="#@jsp.tag (0..1)" title="Declares the class as a class implementing a JSP tag and specifies various properties of that tag">
+     @jsp.tag
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    <a href="#@jsp.validator-init-param (0..1)" title="Declares init parameters for the Validator with the specified parameter name, value and description">
+     @jsp.validator-init-param
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    <a href="#@jsp.variable (0..1)" title="Declares a JSP tag variable and information on the scripting variables defined.">
+     @jsp.variable
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    </div>
+  
+    </div>
+   
+    <div id="source">
+      
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@jsp Method Level Tags">@jsp Method Level Tags</a>
+        </h4>
+      
+      
+    <a href="#@jsp.attribute (0..1)" title="Declares the specified field a JSP tag attribute. This tag should be placed on getter methods">
+     @jsp.attribute
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    </div>
+  
+    </div>
+   
+    <div id="source">
+      
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@jsp Field Level Tags">@jsp Field Level Tags</a>
+        </h4>
+      
+      
+    </div>
+  
+    </div>
+   
+    </div>
+  
+    <div class="h3">
+      
+      
+        <h3>
+          <a name="@jsp Class Level Tag Usage">@jsp Class Level Tag Usage</a>
+        </h3>
+      
+      
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@jsp.tag (0..1)">@jsp.tag (0..1)</a>
+        </h4>
+      
+      
+    <p>
+      
+     Declares the class as a class implementing a
+   
+     
+                JSP tag and specifies various properties of that tag
+   
+    </p>
+   
+    <p>
+      
+     Applies to: Tag
+   
+    </p>
+   
+    
+    <table border="1" width="100%" cellspacing="2" cellpadding="3">
+      
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b">
+    <th>
+      
+     Parameter
+   
+    </th>
+   
+    <th>
+      
+     Type
+   
+    </th>
+   
+    <th>
+      
+     Applicability
+   
+    </th>
+   
+    <th>
+      
+     Description
+   
+    </th>
+   
+    <th>
+      
+     Mandatory
+   
+    </th>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     name
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The name of the JSP tag
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+    <b>
+      
+     true
+   
+    </b>
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     tei-class
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The tei class for the JSP
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     body-content
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The body content field for the tag.
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    <br>
+      
+     Valid options are:
+   
+    </br>
+   
+    <br>
+      
+     tagdependent
+   
+    </br>
+   
+    <br>
+      
+     JSP
+   
+    </br>
+   
+    <br>
+      
+     empty
+   
+    </br>
+   
+    <br>
+      
+     Default value(s):
+   
+    </br>
+   
+    <br>
+      
+     JSP
+   
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     display-name
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     An optional display name for the tag
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     small-icon
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     An optional small icon for the tag
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     large-icon
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     An optional large icon for the tag
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     description
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     An optional description for the tag
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    </table>
+  
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@jsp.validator-init-param (0..1)">@jsp.validator-init-param (0..1)</a>
+        </h4>
+      
+      
+    <p>
+      
+     Declares init parameters for the Validator
+   
+     
+                with the specified parameter name, value and description
+   
+    </p>
+   
+    <p>
+      
+     Applies to: Tag Library Validator
+   
+    </p>
+   
+    
+    <table border="1" width="100%" cellspacing="2" cellpadding="3">
+      
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b">
+    <th>
+      
+     Parameter
+   
+    </th>
+   
+    <th>
+      
+     Type
+   
+    </th>
+   
+    <th>
+      
+     Applicability
+   
+    </th>
+   
+    <th>
+      
+     Description
+   
+    </th>
+   
+    <th>
+      
+     Mandatory
+   
+    </th>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     name
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The name of the validator init param
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+    <b>
+      
+     true
+   
+    </b>
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     value
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The value of the validator init param
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+    <b>
+      
+     true
+   
+    </b>
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     description
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     An optional description for the validator
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    </table>
+  
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@jsp.variable (0..1)">@jsp.variable (0..1)</a>
+        </h4>
+      
+      
+    <p>
+      
+     Declares a JSP tag variable and information
+   
+     
+                on the scripting variables defined.
+   
+    </p>
+   
+    <p>
+      
+     Applies to: Tag
+   
+    </p>
+   
+    
+    <table border="1" width="100%" cellspacing="2" cellpadding="3">
+      
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b">
+    <th>
+      
+     Parameter
+   
+    </th>
+   
+    <th>
+      
+     Type
+   
+    </th>
+   
+    <th>
+      
+     Applicability
+   
+    </th>
+   
+    <th>
+      
+     Description
+   
+    </th>
+   
+    <th>
+      
+     Mandatory
+   
+    </th>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     name-given
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The variable name as a constant
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     name-from-attribute
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The name of an attribute whose
+   
+     
+                    (translation time) value will give the name of the variable.
+   
+     
+                    One of name-given or name-from-attribute is required
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     class
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     Name of the class of the variable.
+   
+     
+                    java.lang.String is default
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     java.lang.String
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     declare
+   
+    </td>
+   
+    <td>
+      
+     bool
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     Whether the variable is declared or not.
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     true
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     scope
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The scope of the scripting variable defined.
+   
+    <br>
+      
+     Valid options are:
+   
+    </br>
+   
+    <br>
+      
+     NESTED
+   
+    </br>
+   
+    <br>
+      
+     AT_BEGIN
+   
+    </br>
+   
+    <br>
+      
+     AT_END
+   
+    </br>
+   
+    <br>
+      
+     Default value(s):
+   
+    </br>
+   
+    <br>
+      
+     NESTED
+   
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     description
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     An optional description of the variable
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    </table>
+  
+    </div>
+  
+    </div>
+  
+    <div class="h3">
+      
+      
+        <h3>
+          <a name="@jsp Method Level Tag Usage">@jsp Method Level Tag Usage</a>
+        </h3>
+      
+      
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@jsp.attribute (0..1)">@jsp.attribute (0..1)</a>
+        </h4>
+      
+      
+    <p>
+      
+     Declares the specified field a JSP tag
+   
+     
+                attribute. This tag should be placed on getter methods
+   
+    </p>
+   
+    <p>
+      
+     Applies to: Tag
+   
+    </p>
+   
+    
+    <table border="1" width="100%" cellspacing="2" cellpadding="3">
+      
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a">
+    <th>
+      
+     Parameter
+   
+    </th>
+   
+    <th>
+      
+     Type
+   
+    </th>
+   
+    <th>
+      
+     Applicability
+   
+    </th>
+   
+    <th>
+      
+     Description
+   
+    </th>
+   
+    <th>
+      
+     Mandatory
+   
+    </th>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     required
+   
+    </td>
+   
+    <td>
+      
+     bool
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     Whether the attribute is required
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                      
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+    <b>
+      
+     true
+   
+    </b>
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     rtexprvalue
+   
+    </td>
+   
+    <td>
+      
+     bool
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     Whether the attribute is a runtime attribute
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                      
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+    <b>
+      
+     true
+   
+    </b>
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     type
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The type of the attribute
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                      
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+    <b>
+      
+     true
+   
+    </b>
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     description
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     An optional description of the attribute
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                      
+   
+    <br>
+      
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    </table>
+  
+    </div>
+  
+    </div>
+  
+    <div class="h3">
+      
+      
+        <h3>
+          <a name="@jsp Field Level Tag Usage">@jsp Field Level Tag Usage</a>
+        </h3>
+      
+      
+    </div>
+  
+                  
+                  
+                  
+                  
+                  
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <div id="footer">
+          <table border="0" style="width:100%" cellpadding="4" cellspacing="0">
+            
+            <tr>
+              <td>
+                
+                  
+                    
+                    
+                      © 2000-2004, XDoclet Team
+                    
+                  
+                  
+                
+
+                
+              </td>
+              
+            </tr>
+          </table>
+        </div>
+      </body>
+    </html>
+  

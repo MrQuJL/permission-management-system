@@ -1,0 +1,2556 @@
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  
+      
+  
+
+      
+      
+      
+      
+      
+      
+        
+         
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      
+
+      
+
+  
+  
+
+  
+  
+
+   
+   
+
+   
+   
+
+
+    
+	
+	
+
+    
+    
+      
+	
+	
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+    <html>
+      <head>
+        
+        
+          <title>
+            XDoclet: Attribute-Oriented Programming - 
+          Architecture
+        
+          </title>
+        
+        
+        
+        <style type="text/css">
+          @import url("../style/tigris.css");
+          @import url("../style/maven.css");
+        </style>
+        
+        
+        
+        
+        
+        <link rel="stylesheet" href="../style/print.css" type="text/css" media="print"></link>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
+        
+          <meta name="author" content="Aslak Hellesoy"></meta>
+          <meta name="email" content="aslak.nospam@users.sf.net"></meta>
+        
+        
+        
+    <link rel="shortcut icon" href="../favicon.ico">
+      
+    </link>
+   
+    <link rel="icon" href="../favicon.ico">
+      
+    </link>
+   
+        
+      </head>
+
+      <body class="composite">
+
+        <div id="banner">
+          <table border="0" width="100%" cellpadding="8" cellspacing="0">
+            <tr>
+              
+              <td>
+                
+                
+                  
+                  
+                  
+                    
+                  
+                  
+                  
+                  
+                  
+                    
+                  
+                  <a href="http://xdoclet.sourceforge.net/">
+                    <img border="0" alt="XDoclet Team" src="../images/logo.gif" align="left"></img>
+                  </a>
+                
+              </td>
+
+              
+              <td>
+                <div id="login" align="right">
+                  
+                  
+                    
+                    
+                    
+
+                    <a href="http://xdoclet.sourceforge.net/">
+                      <img border="0" alt="XDoclet" src="http://sourceforge.net/sflogo.php?group_id=31602&amp;type=5" align="right"></img>
+                    </a>
+                  
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="breadcrumbs">
+          <table border="0" width="100%" cellpadding="4" cellspacing="0">
+            <tr>
+              
+                
+                <td>Last published: 28 April 2004
+                  | Doc for 1.2.1
+                </td>
+              
+              <td>
+                <div align="right">
+                  
+                  
+                  
+                    
+    
+    
+      
+      
+      
+      <a href="http://xdoclet.sourceforge.net/"><img class="handle" src="../images/none.png" alt=""></img>Home Page</a>
+      
+    
+      |
+      
+      
+      <a href="http://sourceforge.net/projects/xdoclet/"><img class="handle" src="../images/none.png" alt=""></img>SourceForge Project Page</a>
+      
+    
+      |
+      
+      
+      <a href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/xdoclet/"><img class="handle" src="../images/none.png" alt=""></img>Browse CVS</a>
+      
+    
+      |
+      
+      
+      <a href="http://opensource.atlassian.com/projects/xdoclet/secure/CreateIssue!default.jspa"><img class="handle" src="../images/none.png" alt=""></img>Create an Issue</a>
+      
+    
+  
+                  
+                  
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        
+        <table border="0" width="100%" cellpadding="8" cellspacing="0"> 
+          <tr valign="top">
+            <td width="20%" id="leftcol">
+              <div id="navcolumn">
+                
+
+                
+                  
+    <div>
+      <strong>XDoclet</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../index.html"><img class="handle" src="../images/none.png" alt=""></img>Overview</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../status.html"><img class="handle" src="../images/none.png" alt=""></img>News and Status</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../install.html"><img class="handle" src="../images/none.png" alt=""></img>Download/Installation</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../using.html"><img class="handle" src="../images/none.png" alt=""></img>Using XDoclet</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../bp.html"><img class="handle" src="../images/none.png" alt=""></img>Best Practices</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../faq.html"><img class="handle" src="../images/none.png" alt=""></img>FAQ</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../licenses/xdoclet-license.html"><img class="handle" src="../images/none.png" alt=""></img>License</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Ant Task Reference</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/ejb/EjbDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;ejbdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/web/WebDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;webdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/hibernate/HibernateDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;hibernatedoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/mockobjects/MockObjectDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;mockdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/jdo/JdoDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;jdodoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/jmx/JMXDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;jmxdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/portlet/PortletDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;portletdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/DocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;doclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Tag Reference</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/apache-tags.html"><img class="handle" src="../images/none.png" alt=""></img>apache (@soap @struts)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/bea-tags.html"><img class="handle" src="../images/none.png" alt=""></img>bea (@weblogic)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/borland-tags.html"><img class="handle" src="../images/none.png" alt=""></img>borland (@bes)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/caucho-tags.html"><img class="handle" src="../images/none.png" alt=""></img>caucho (@resin)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/ejb-tags.html"><img class="handle" src="../images/none.png" alt=""></img>ejb (@ejb @dao)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/exolab-tags.html"><img class="handle" src="../images/none.png" alt=""></img>exolab (@castor)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/hp-tags.html"><img class="handle" src="../images/none.png" alt=""></img>hp (@hpas)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/hibernate-tags.html"><img class="handle" src="../images/none.png" alt=""></img>hibernate (@hibernate)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/ibm-tags.html"><img class="handle" src="../images/none.png" alt=""></img>ibm (@websphere)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/java-tags.html"><img class="handle" src="../images/none.png" alt=""></img>java (@javabean)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/jboss-tags.html"><img class="handle" src="../images/none.png" alt=""></img>jboss (@jboss)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/jdo-tags.html"><img class="handle" src="../images/none.png" alt=""></img>jdo (@jdo)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/jmx-tags.html"><img class="handle" src="../images/none.png" alt=""></img>jmx (@jmx)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/macromedia-tags.html"><img class="handle" src="../images/none.png" alt=""></img>macromedia (@jrun)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/mockobjects-tags.html"><img class="handle" src="../images/none.png" alt=""></img>mockobjects (@mock)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/mvcsoft-tags.html"><img class="handle" src="../images/none.png" alt=""></img>mvcsoft (@mvcsoft)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/mx4j-tags.html"><img class="handle" src="../images/none.png" alt=""></img>mx4j (@mx4j)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/objectweb-tags.html"><img class="handle" src="../images/none.png" alt=""></img>objectweb (@jonas)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/oracle-tags.html"><img class="handle" src="../images/none.png" alt=""></img>oracle (@oc4j)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/orion-tags.html"><img class="handle" src="../images/none.png" alt=""></img>orion (@orion)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/portlet-tags.html"><img class="handle" src="../images/none.png" alt=""></img>portlet (@portlet)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/pramati-tags.html"><img class="handle" src="../images/none.png" alt=""></img>pramati (@pramati)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/sun-tags.html"><img class="handle" src="../images/none.png" alt=""></img>sun (@sunone)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/sybase-tags.html"><img class="handle" src="../images/none.png" alt=""></img>sybase (@easerver)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/tjdo-tags.html"><img class="handle" src="../images/none.png" alt=""></img>tjdo (@tjdo)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/web-tags.html"><img class="handle" src="../images/none.png" alt=""></img>web (@web @jsp)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/webwork-tags.html"><img class="handle" src="../images/none.png" alt=""></img>webwork (@webwork)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/xdoclet-tags.html"><img class="handle" src="../images/none.png" alt=""></img>xdoclet (@xdoclet @doc)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Feature Documentation</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../valueobjects.html"><img class="handle" src="../images/none.png" alt=""></img>Using Value Objects</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Advanced</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../maven-plugin.html"><img class="handle" src="../images/none.png" alt=""></img>Maven Plug-in</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../merge.html"><img class="handle" src="../images/none.png" alt=""></img>Merge Points</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ide/index.html"><img class="handle" src="../images/none.png" alt=""></img>IDE Integration</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../migration.html"><img class="handle" src="../images/none.png" alt=""></img>Migration from EJBDoclet</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant15.html"><img class="handle" src="../images/none.png" alt=""></img>Ant 1.5 Troubleshooting</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Community</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../feedback.html"><img class="handle" src="../images/none.png" alt=""></img>Feedback</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../resources.html"><img class="handle" src="../images/none.png" alt=""></img>Resources</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tools.html"><img class="handle" src="../images/none.png" alt=""></img>Tools</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Development</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../development/index.html"><img class="handle" src="../images/none.png" alt=""></img>Developer Guide</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../api/index.html"><img class="handle" src="../images/none.png" alt=""></img>Javadoc (API)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../templates/index.html"><img class="handle" src="../images/none.png" alt=""></img>Template Language (*.xdt)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="http://xdoclet.sourceforge.net/xjavadoc/"><img class="handle" src="../images/none.png" alt=""></img>XJavaDoc Site</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    
+    
+    
+    <div>
+      <strong>Search XDoclet</strong>
+      <form action="http://www.google.com/search" method="get">
+        <a href="http://www.google.com" class="navlink">
+          <img border="0" alt="Google" src="http://www.google.com/logos/Logo_25wht.gif"></img>
+        </a><p></p>
+        
+        
+        
+          
+          
+        
+        <input name="q" maxlength="255" size="15" type="text" value=""></input>
+        <input name="btnG" type="submit" value="Go"></input>
+        <input name="domains" type="hidden" value="http://xdoclet.sourceforge.net"></input>
+        <input name="sitesearch" type="hidden" value="http://xdoclet.sourceforge.net" id="search"></input>
+      </form>
+    </div>
+  
+                
+
+				
+    <div>
+      <strong>Project Documentation</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../index.html"><img class="handle" src="../images/none.png" alt=""></img>About XDoclet</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		
+		
+          
+		
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../project-info.html"><img class="handle" src="../images/collapsed.png" alt=""></img>Project Info</a>
+      	
+      </small>
+	  
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		
+		
+          
+		
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../maven-reports.html"><img class="handle" src="../images/collapsed.png" alt=""></img>Project Reports</a>
+      	
+      </small>
+	  
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="http://maven.apache.org/development-process.html"><img class="handle" src="../images/none.png" alt=""></img>Development Process</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+                
+                
+                
+
+                
+                
+                
+                
+                	<div style="margin-top: 20px; width: 100%; text-align: center;">
+                		<a href="http://maven.apache.org/" title="Powered by Maven"><img style="border: 1px solid black" alt="Powered by Maven" src="../images/logos/maven-propaganda.png"></img></a>
+                	</div>
+                
+              
+                
+              </div>
+            </td>
+            <td rowspan="2">
+              <div id="bodycol">
+                
+                <div class="app">
+                  
+                  
+    <div class="h3">
+      
+      
+        <h3>
+          <a name="Architecture">Architecture</a>
+        </h3>
+      
+      
+    <p>
+      
+     
+                This section is for those who want to develop new modules for XDoclet. End users
+   
+     
+                who just use the tool do not need to read this section, but it's an essential read for
+   
+     
+                those who want to write custom modules or want to contribute.
+   
+     
+            
+   
+    </p>
+   
+    <p>
+      
+     
+                XDoclet mainly consists out of five components:
+   
+     
+                
+   
+    <ul>
+      
+     
+                    
+   
+    <li>
+      
+     XDoclet Engine
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     XJavaDoc Engine
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     Subtasks (contained in modules)
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     Templates (contained in modules)
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     Tag Handlers (contained in modules)
+   
+    </li>
+   
+     
+                
+   
+    </ul>
+   
+     
+
+                Although there are several modules (and therefore several subtasks and tag handlers), all sub tasks
+   
+     
+                are built for the same framework: the framework provided by the XDoclet and the XJavaDoc engines.
+   
+     
+            
+   
+    </p>
+   
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="XDoclet Engine">XDoclet Engine</a>
+        </h4>
+      
+      
+    <p>
+      
+     
+                    The XDoclet engine provides the template engine that
+   
+     
+                    transforms a template to a file. A template consists of static content and dynamic
+   
+     
+                    content, very much in the same way as a JSP page or a Velocity template.
+   
+     
+                
+   
+    </p>
+   
+    <p>
+      
+     
+                    Further, XDoclet contains a 
+   
+    <a href="http://ant.apache.org/">
+     Jakarta Ant
+   </a>
+  
+      task
+   
+     
+                    that will invoke the templates (via subtasks). Part of XDoclet is also a loader that
+   
+     
+                    will dynamically discover and plug in XDoclet modules (via 
+   
+    <code>
+      
+     xdoclet.xml
+   
+    </code>
+   
+      file
+   
+     
+            
+   
+             contained in the module's jar file).
+   
+     
+                
+   
+    </p>
+   
+    <p>
+      
+     
+                    The XDoclet engine also contains general-purpose tag handlers that act as a bridge between
+   
+     
+                    templates and XJavaDoc. This makes it possible for the templates to access the information in the
+   
+     
+                    XJavaDoc beans.
+   
+     
+                
+   
+    </p>
+   
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="XJavaDoc Engine">XJavaDoc Engine</a>
+        </h4>
+      
+      
+    <p>
+      
+     
+                    The XJavaDoc engine is a complete rewrite of Sun's JavaDoc engine that is faster
+   
+     
+                    and more suited for XDoclet (although it is completely stand alone). It scans java source code
+   
+     
+                    and makes information about a class available via special java beans that are part of the
+   
+     
+                    XJavaDoc core. These beans provide the same information about a class as Sun's JavaDoc API,
+   
+     
+                    and some nice extra features.
+   
+     
+                
+   
+    </p>
+   
+    <p>
+      
+     
+                    The extra features of XJavaDoc is the possibility to programmatically modify the javadoc
+   
+     
+                    tags and save the source code, as well as an extra API for extracting information from @tags
+   
+     
+                    that are using an XML-like attribute scheme.
+   
+     
+                
+   
+    </p>
+   
+    <p>
+      
+     
+                    XJavaDoc was written because Sun's classic JavaDoc engine was too slow, printed
+   
+     
+                    too many warnings to standard output and wasn't well suited for XDoclet's purposes
+   
+     
+                    (nobody knew by the time of JavaDoc's writing that a tool like XDoclet would show up).
+   
+     
+                    XJavaDoc is approximately 
+   
+    <b>
+      
+     5 times faster
+   
+    </b>
+   
+      than JavaDoc and is based on
+   
+     
+                    
+   
+    <a href="http://www.experimentalstuff.com/Technologies/JavaCC/">
+     JavaCC
+   </a>
+  
+     .
+   
+     
+                
+   
+    </p>
+   
+    <p>
+      
+     
+                    Further, XJavaDoc has its own Jakarta Ant task (which XDoclet's Ant task inherits from) that
+   
+     
+                    makes it easier 
+   
+     to deal with than the Ant javadoc task.
+   
+     
+                
+   
+    </p>
+   
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="Subtasks">Subtasks</a>
+        </h4>
+      
+      
+    <p>
+      
+     
+                    A subtask is a class that tells the XDoclet engine what templates to invoke and how to invoke them.
+   
+     
+                    Each subtask specifies a name and a parent task. Subtasks are invoked by nesting an element under
+   
+     
+                    an XDoclet ant task invocation:
+   
+     
+                
+   
+    </p>
+   
+    <div id="source">
+      <pre>&lt;ejbdoclet ...&gt;
+    &lt;remoteinterface/&gt;
+&lt;/ejbdoclet&gt;</pre>
+    </div>
+  
+    <p>
+      
+     
+                    Subtasks have logical names and belong under certain tasks. This information is included
+   
+     
+                    in special tags in the header of the subtask. Let's take a look at the RemoteInterfaceSubTask
+   
+     
+                    that is located in the ejb module:
+   
+     
+                
+   
+    </p>
+   
+    <div id="source">
+      <pre>
+/**
+ * @ant.element
+ *    display-name="Remote Interface"
+ *    name="remoteinterface"
+ *    parent="xdoclet.modules.ejb.EjbDocletTask"
+ */
+public class RemoteInterfaceSubTask extends AbstractEjbCodeGeneratorSubTask
+{
+...</pre>
+    </div>
+  
+    <p>
+      
+     
+                    The information in the 
+   
+    <code>
+      
+     @ant.element
+   
+    </code>
+   
+      is used during build of the module to generate a special
+   
+     
+                    deployment descriptor for the module. Take a look at the 
+   
+    <code>
+      
+     xdoclet.xml
+   
+    </code>
+   
+      file inside the
+   
+     
+                    
+   
+    <code>
+      
+     xdoclet-ejb-module.jar
+   
+    </code>
+   
+     , and you'll see the following entry:
+   
+     
+                
+   
+    </p>
+   
+    <div id="source">
+      <pre>
+&lt;subtask
+   name="remoteinterface"
+   implementation-class="xdoclet.modules.ejb.intf.RemoteInterfaceSubTask"
+   parent-task-class="xdoclet.modules.ejb.EjbDocletTask"
+/&gt;</pre>
+    </div>
+  
+    <p>
+      
+     
+                    The XDoclet core reads this deployment descriptor at start-up and uses the information
+   
+     
+                    to map a logical name to a class name. It instantiates the corresponding class and invokes
+   
+     
+                    the 
+   
+    <code>
+      
+     execute()
+   
+    </code>
+   
+      method to start the 
+   
+     subtask.
+   
+     
+                
+   
+    </p>
+   
+    <p>
+      
+     
+                    As you see, XDoclet itself is used during the build of the modules, and all this functionality is
+   
+     
+                    in the XDoclet core. This makes it easy to write new sub tasks. Just extend 
+   
+    <code>
+      
+     xdoclet.SubTask
+   
+    </code>
+   
+     
+                    and put the 
+   
+    <code>
+      
+     @ant.element
+   
+    </code>
+   
+      tag in the class header. Looking at other subtasks and the javadocs should give
+   
+     
+                    you a good starting point.
+   
+     
+                
+   
+    </p>
+   
+    <p>
+      
+     
+                    Last, but not least, the information in the same tag is used when generating the documentation.
+   
+     
+                
+   
+    </p>
+   
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="Templates">Templates</a>
+        </h4>
+      
+      
+    <p>
+      
+     
+                    At the core of XDoclet's extensibility are the template files. An XDoclet template is a file that contains
+   
+     
+                    static parts and dynamic parts. The static parts will be rendered "as is", and the dynamic parts will be substituted
+   
+     
+                    by content provided by a tag handler.
+   
+     
+                
+   
+    </p>
+   
+    <p>
+      
+     
+                    The XDoclet templates are not XML files, but they're using an XML-like syntax to add logic and content
+   
+     
+                    to the templates. Here is a part of a template that generates a method in a Java source file (slightly reformatted
+   
+     
+                    for the sake of readability):
+   
+     
+                
+   
+    </p>
+   
+    <div id="source">
+      <pre>
+/**
+ * &lt;XDtI18n:getString bundle="xdoclet.modules.ejb" resource="util_obtain_localhome_def_ic"/&gt;
+ * @return &lt;XDtI18n:getString
+    bundle="xdoclet.modules.ejb"
+    resource="local_home_interface_for"
+    arguments="&lt;XDtEjb:ejbName/&gt;"/&gt;
+    &lt;XDtI18n:getString
+    bundle="xdoclet.modules.ejb"
+    resource="util_lookup_using"
+    arguments="&lt;XDtEjbUtilObj:lookupKind/&gt;"/&gt;
+ */
+public static &lt;XDtEjbHome:homeInterface type="local"/&gt; getLocalHome() throws NamingException
+{
+   // &lt;XDtI18n:getString bundle="xdoclet.modules.ejb" resource="util_localhome_not_narrowed"/&gt;
+   &lt;XDtConfig:ifConfigParamEquals paramName="cacheHomes" value="true"&gt;
+   if (cachedLocalHome == null) {
+      // &lt;XDtI18n:getString bundle="xdoclet.modules.ejb" resource="util_obtain_ic"/&gt;
+      InitialContext initialContext = new InitialContext();
+      try {
+         cachedLocalHome = (&lt;XDtEjbHome:homeInterface type="local"/&gt;)
+            initialContext.lookup(&lt;XDtEjbHome:homeInterface type="local"/&gt;.&lt;XDtEjbUtilObj:lookupKind/&gt;);
+      } finally {
+         initialContext.close();
+      }
+   }
+   return cachedLocalHome;
+   &lt;/XDtConfig:ifConfigParamEquals&gt;
+   &lt;XDtConfig:ifConfigParamNotEquals paramName="cacheHomes" value="true"&gt;
+   // &lt;XDtI18n:getString bundle="xdoclet.modules.ejb" resource="util_obtain_ic"/&gt;
+   InitialContext initialContext = new InitialContext();
+   try {
+      return (&lt;XDtEjbHome:homeInterface type="local"/&gt;)
+         initialContext.lookup(&lt;XDtEjbHome:homeInterface type="local"/&gt;.&lt;XDtEjbUtilObj:lookupKind/&gt;);
+   } finally {
+      initialContext.close();
+   }
+   &lt;/XDtConfig:ifConfigParamNotEquals&gt;
+}</pre>
+    </div>
+  
+    <p>
+      
+     
+                    And this one shows a template file that generates parts of an XML file:
+   
+     
+                
+   
+    </p>
+   
+    <div id="source">
+      <pre>
+&lt;!-- Entity Beans --&gt;
+&lt;XDtClass:forAllClasses type="javax.ejb.EntityBean"&gt;
+ &lt;XDtEjb:ifIsAConcreteEJBean&gt;
+  &lt;XDtEjbCmp:ifEntityIsCmp&gt;
+   &lt;entity &lt;XDtId:prefixedId prefix="ContainerManagedEntity"/&gt;&gt;
+  &lt;/XDtEjbCmp:ifEntityIsCmp&gt;
+  &lt;XDtEjbBmp:ifEntityIsBmp&gt;
+   &lt;entity &lt;XDtId:prefixedId prefix="BeanManagedEntity"/&gt;&gt;
+  &lt;/XDtEjbBmp:ifEntityIsBmp&gt;
+     &lt;XDtMerge:merge file="xdoclet/modules/ejb/dd/resources/ejb-body.xdt"&gt;
+     &lt;/XDtMerge:merge&gt;
+   &lt;/entity&gt;
+ &lt;/XDtEjb:ifIsAConcreteEJBean&gt;
+&lt;/XDtClass:forAllClasses&gt;</pre>
+    </div>
+  
+    <p>
+      
+     
+                    The XDoclet template engine can generate any kind of file. It isn't limited to Java or XML.
+   
+     
+                    A perfect example of this is XDoclet's ability to generate a todo list from @todo tags in your
+   
+     
+                 
+   
+        code. But let's get back to the first template.
+   
+     
+                
+   
+    </p>
+   
+    <p>
+      
+     
+                    When the first template has been rendered, you'll end up with a Java source file that
+   
+     
+                    contains this fragment:
+   
+     
+                
+   
+    </p>
+   
+    <div id="source">
+      <pre>
+/**
+ * Obtain local home interface from default initial context
+ * @return Local home interface for Person. Lookup using JNDI_NAME
+ */
+public static airline.ejb.interfaces.PersonLocalHome getLocalHome() throws NamingException
+{
+   // Local homes shouldn't be narrowed, as there is no RMI involved.
+   // Obtain initial context
+   InitialContext initialContext = new InitialContext();
+   try {
+      return (airline.ejb.interfaces.PersonLocalHome)
+            initialContext.lookup(airline.ejb.interfaces.PersonLocalHome.JNDI_NAME);
+   } finally {
+      initialContext.close();
+   }
+}</pre>
+    </div>
+  
+    <p>
+      
+     
+                    Here you see several tags. A tag is an XML-like element that consists of a namespace (followed by a . (dot))
+   
+     
+                    and then by a tag name. Further, each tag can have an arbitrary number of attributes (also referred to as parameters).
+   
+     
+                    Don't get confused, these tags have nothing to do with javadoc @tags.
+   
+     
+                
+   
+    </p>
+   
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="Tag Handlers">Tag Handlers</a>
+        </h4>
+      
+      
+    <p>
+      
+     
+                    When XDoclet's template engine encounters a tag, it will use the namespace to obtain a reference to an object whose
+   
+     
+                    class is a subclass of 
+   
+    <code>
+      
+     xdoclet.TagHandler
+   
+    </code>
+   
+     . Then it will use reflection to invoke a method on that
+   
+     
+                    tag handler that corresponds to the name of the tag (the part following the :).
+   
+     
+                
+   
+    </p>
+   
+    <p>
+      
+     
+                    So how does the template engine know what tag handler java object to use? This is done by looking at a map that
+   
+     
+                    maps the namespace to a class. This information is also included in the 
+   
+    <code>
+      
+     xdoclet.xml
+   
+    </code>
+   
+      file of a module:
+   
+     
+                
+   
+    </p>
+   
+    <div id="source">
+      <pre>
+&lt;taghandler
+   namespace="EjbUtilObj"
+   class="xdoclet.modules.ejb.lookup.LookupUtilTagsHandler"
+/&gt;</pre>
+    </div>
+  
+    <p>
+      
+     
+                    So when the template engine encounters 
+   
+    <code>
+      
+     &lt;
+   
+     XDtEjbUtilObj:lookupKind/
+   
+     &gt;
+   
+    </code>
+   
+      it will invoke the
+   
+     
+                    lookupKind on an instance of 
+   
+    <code>
+      
+     xdoclet.modules.ejb.lookup.LookupUtilTagsHandler
+   
+    </code>
+   
+     . (The XDt part is stripped away
+   
+     
+                    before looking in the namespace-&gt;taghandler object map).
+   
+     
+                
+   
+    </p>
+   
+    <p>
+      
+     
+                    If you look closely at this template fragment, you'll see that there are two kinds of tags: Tags that have
+   
+     
+                    a body, and tags that don't. These are respectively known as block tags and content tags. Block tags "do"
+   
+     
+                    something, and content tags "return" something.
+   
+     
+                
+   
+    </p>
+   
+    <p>
+      
+     
+                    A block tag can evaluate its body or it cannot. It can do this as many times as it wants. Block tags
+   
+     
+                    are used to loop or to have conditional evaluation of the tag's body. The methods that implement block
+   
+     
+                    tags are 
+   
+    <code>
+      
+     void
+   
+    </code>
+   
+      methods.
+   
+     
+                
+   
+    </p>
+   
+    <p>
+      
+     
+                    A content tag is a tag that returns a value, and every occurrence of a content tag will be substituted by
+   
+     
+                    a String value.
+   
+     
+                
+   
+    </p>
+   
+    <p>
+      
+     
+                    Tag handler classes are documented with special javadoc tags too. This is in order to generate the taghandler
+   
+     
+                    elements in the 
+   
+    <code>
+      
+     xdoclet.xml
+   
+    </code>
+   
+      deployment descriptor. The 
+   
+    <code>
+      
+     xdoclet.modules.ejb.lookup.LookupUtilTagsHandler
+   
+    </code>
+   
+     
+                    class has the following header:
+   
+     
+                
+   
+    </p>
+   
+    <div id="source">
+      <pre>
+/**
+ * @xdoclet.taghandler namespace="EjbUtilObj"
+ */
+public class LookupUtilTagsHandler extends EjbTagsHandler
+{
+   ...</pre>
+    </div>
+  
+    </div>
+  
+    </div>
+  
+                  
+                  
+                  
+                  
+                  
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <div id="footer">
+          <table border="0" style="width:100%" cellpadding="4" cellspacing="0">
+            
+            <tr>
+              <td>
+                
+                  
+                    
+                    
+                      © 2000-2004, XDoclet Team
+                    
+                  
+                  
+                
+
+                
+              </td>
+              
+            </tr>
+          </table>
+        </div>
+      </body>
+    </html>
+  

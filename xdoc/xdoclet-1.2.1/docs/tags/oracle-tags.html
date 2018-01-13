@@ -1,0 +1,4535 @@
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  
+      
+  
+
+      
+      
+      
+      
+      
+      
+        
+         
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      
+
+      
+
+  
+  
+
+  
+  
+
+   
+   
+
+   
+   
+
+
+    
+	
+	
+
+    
+    
+      
+	
+	
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+    <html>
+      <head>
+        
+        
+          <title>
+            XDoclet: Attribute-Oriented Programming - 
+          Tag Reference
+        
+          </title>
+        
+        
+        
+        <style type="text/css">
+          @import url("../style/tigris.css");
+          @import url("../style/maven.css");
+        </style>
+        
+        
+        
+        
+        
+        <link rel="stylesheet" href="../style/print.css" type="text/css" media="print"></link>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
+        
+        
+        
+    <link href="../favicon.ico" rel="shortcut icon">
+      
+    </link>
+   
+    <link href="../favicon.ico" rel="icon">
+      
+    </link>
+   
+        
+      </head>
+
+      <body class="composite">
+
+        <div id="banner">
+          <table border="0" width="100%" cellpadding="8" cellspacing="0">
+            <tr>
+              
+              <td>
+                
+                
+                  
+                  
+                  
+                    
+                  
+                  
+                  
+                  
+                  
+                    
+                  
+                  <a href="http://xdoclet.sourceforge.net/">
+                    <img border="0" alt="XDoclet Team" src="../images/logo.gif" align="left"></img>
+                  </a>
+                
+              </td>
+
+              
+              <td>
+                <div id="login" align="right">
+                  
+                  
+                    
+                    
+                    
+
+                    <a href="http://xdoclet.sourceforge.net/">
+                      <img border="0" alt="XDoclet" src="http://sourceforge.net/sflogo.php?group_id=31602&amp;type=5" align="right"></img>
+                    </a>
+                  
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="breadcrumbs">
+          <table border="0" width="100%" cellpadding="4" cellspacing="0">
+            <tr>
+              
+                
+                <td>Last published: 28 April 2004
+                  | Doc for 1.2.1
+                </td>
+              
+              <td>
+                <div align="right">
+                  
+                  
+                  
+                    
+    
+    
+      
+      
+      
+      <a href="http://xdoclet.sourceforge.net/"><img class="handle" src="../images/none.png" alt=""></img>Home Page</a>
+      
+    
+      |
+      
+      
+      <a href="http://sourceforge.net/projects/xdoclet/"><img class="handle" src="../images/none.png" alt=""></img>SourceForge Project Page</a>
+      
+    
+      |
+      
+      
+      <a href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/xdoclet/"><img class="handle" src="../images/none.png" alt=""></img>Browse CVS</a>
+      
+    
+      |
+      
+      
+      <a href="http://opensource.atlassian.com/projects/xdoclet/secure/CreateIssue!default.jspa"><img class="handle" src="../images/none.png" alt=""></img>Create an Issue</a>
+      
+    
+  
+                  
+                  
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        
+        <table border="0" width="100%" cellpadding="8" cellspacing="0"> 
+          <tr valign="top">
+            <td width="20%" id="leftcol">
+              <div id="navcolumn">
+                
+
+                
+                  
+    <div>
+      <strong>XDoclet</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../index.html"><img class="handle" src="../images/none.png" alt=""></img>Overview</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../status.html"><img class="handle" src="../images/none.png" alt=""></img>News and Status</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../install.html"><img class="handle" src="../images/none.png" alt=""></img>Download/Installation</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../using.html"><img class="handle" src="../images/none.png" alt=""></img>Using XDoclet</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../bp.html"><img class="handle" src="../images/none.png" alt=""></img>Best Practices</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../faq.html"><img class="handle" src="../images/none.png" alt=""></img>FAQ</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../licenses/xdoclet-license.html"><img class="handle" src="../images/none.png" alt=""></img>License</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Ant Task Reference</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/ejb/EjbDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;ejbdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/web/WebDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;webdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/hibernate/HibernateDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;hibernatedoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/mockobjects/MockObjectDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;mockdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/jdo/JdoDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;jdodoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/jmx/JMXDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;jmxdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/portlet/PortletDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;portletdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/DocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;doclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Tag Reference</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/apache-tags.html"><img class="handle" src="../images/none.png" alt=""></img>apache (@soap @struts)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/bea-tags.html"><img class="handle" src="../images/none.png" alt=""></img>bea (@weblogic)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/borland-tags.html"><img class="handle" src="../images/none.png" alt=""></img>borland (@bes)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/caucho-tags.html"><img class="handle" src="../images/none.png" alt=""></img>caucho (@resin)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/ejb-tags.html"><img class="handle" src="../images/none.png" alt=""></img>ejb (@ejb @dao)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/exolab-tags.html"><img class="handle" src="../images/none.png" alt=""></img>exolab (@castor)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/hp-tags.html"><img class="handle" src="../images/none.png" alt=""></img>hp (@hpas)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/hibernate-tags.html"><img class="handle" src="../images/none.png" alt=""></img>hibernate (@hibernate)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/ibm-tags.html"><img class="handle" src="../images/none.png" alt=""></img>ibm (@websphere)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/java-tags.html"><img class="handle" src="../images/none.png" alt=""></img>java (@javabean)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/jboss-tags.html"><img class="handle" src="../images/none.png" alt=""></img>jboss (@jboss)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/jdo-tags.html"><img class="handle" src="../images/none.png" alt=""></img>jdo (@jdo)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/jmx-tags.html"><img class="handle" src="../images/none.png" alt=""></img>jmx (@jmx)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/macromedia-tags.html"><img class="handle" src="../images/none.png" alt=""></img>macromedia (@jrun)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/mockobjects-tags.html"><img class="handle" src="../images/none.png" alt=""></img>mockobjects (@mock)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/mvcsoft-tags.html"><img class="handle" src="../images/none.png" alt=""></img>mvcsoft (@mvcsoft)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/mx4j-tags.html"><img class="handle" src="../images/none.png" alt=""></img>mx4j (@mx4j)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/objectweb-tags.html"><img class="handle" src="../images/none.png" alt=""></img>objectweb (@jonas)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      		<b><a href="../tags/oracle-tags.html"><img class="handle" src="../images/none.png" alt=""></img>oracle (@oc4j)</a></b>
+      	
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/orion-tags.html"><img class="handle" src="../images/none.png" alt=""></img>orion (@orion)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/portlet-tags.html"><img class="handle" src="../images/none.png" alt=""></img>portlet (@portlet)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/pramati-tags.html"><img class="handle" src="../images/none.png" alt=""></img>pramati (@pramati)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/sun-tags.html"><img class="handle" src="../images/none.png" alt=""></img>sun (@sunone)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/sybase-tags.html"><img class="handle" src="../images/none.png" alt=""></img>sybase (@easerver)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/tjdo-tags.html"><img class="handle" src="../images/none.png" alt=""></img>tjdo (@tjdo)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/web-tags.html"><img class="handle" src="../images/none.png" alt=""></img>web (@web @jsp)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/webwork-tags.html"><img class="handle" src="../images/none.png" alt=""></img>webwork (@webwork)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/xdoclet-tags.html"><img class="handle" src="../images/none.png" alt=""></img>xdoclet (@xdoclet @doc)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Feature Documentation</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../valueobjects.html"><img class="handle" src="../images/none.png" alt=""></img>Using Value Objects</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Advanced</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../maven-plugin.html"><img class="handle" src="../images/none.png" alt=""></img>Maven Plug-in</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../merge.html"><img class="handle" src="../images/none.png" alt=""></img>Merge Points</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ide/index.html"><img class="handle" src="../images/none.png" alt=""></img>IDE Integration</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../migration.html"><img class="handle" src="../images/none.png" alt=""></img>Migration from EJBDoclet</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant15.html"><img class="handle" src="../images/none.png" alt=""></img>Ant 1.5 Troubleshooting</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Community</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../feedback.html"><img class="handle" src="../images/none.png" alt=""></img>Feedback</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../resources.html"><img class="handle" src="../images/none.png" alt=""></img>Resources</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tools.html"><img class="handle" src="../images/none.png" alt=""></img>Tools</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Development</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../development/index.html"><img class="handle" src="../images/none.png" alt=""></img>Developer Guide</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../api/index.html"><img class="handle" src="../images/none.png" alt=""></img>Javadoc (API)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../templates/index.html"><img class="handle" src="../images/none.png" alt=""></img>Template Language (*.xdt)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="http://xdoclet.sourceforge.net/xjavadoc/"><img class="handle" src="../images/none.png" alt=""></img>XJavaDoc Site</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    
+    
+    
+    <div>
+      <strong>Search XDoclet</strong>
+      <form action="http://www.google.com/search" method="get">
+        <a href="http://www.google.com" class="navlink">
+          <img border="0" alt="Google" src="http://www.google.com/logos/Logo_25wht.gif"></img>
+        </a><p></p>
+        
+        
+        
+          
+          
+        
+        <input name="q" maxlength="255" size="15" type="text" value=""></input>
+        <input name="btnG" type="submit" value="Go"></input>
+        <input name="domains" type="hidden" value="http://xdoclet.sourceforge.net"></input>
+        <input name="sitesearch" type="hidden" value="http://xdoclet.sourceforge.net" id="search"></input>
+      </form>
+    </div>
+  
+                
+
+				
+    <div>
+      <strong>Project Documentation</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../index.html"><img class="handle" src="../images/none.png" alt=""></img>About XDoclet</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		
+		
+          
+		
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../project-info.html"><img class="handle" src="../images/collapsed.png" alt=""></img>Project Info</a>
+      	
+      </small>
+	  
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		
+		
+          
+		
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../maven-reports.html"><img class="handle" src="../images/collapsed.png" alt=""></img>Project Reports</a>
+      	
+      </small>
+	  
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="http://maven.apache.org/development-process.html"><img class="handle" src="../images/none.png" alt=""></img>Development Process</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+                
+                
+                
+
+                
+                
+                
+                
+                	<div style="margin-top: 20px; width: 100%; text-align: center;">
+                		<a href="http://maven.apache.org/" title="Powered by Maven"><img style="border: 1px solid black" alt="Powered by Maven" src="../images/logos/maven-propaganda.png"></img></a>
+                	</div>
+                
+              
+                
+              </div>
+            </td>
+            <td rowspan="2">
+              <div id="bodycol">
+                
+                <div class="app">
+                  
+                  
+    <div class="h3">
+      
+      
+        <h3>
+          <a name="@oc4j Tag Reference">@oc4j Tag Reference</a>
+        </h3>
+      
+      
+    <p>
+      
+     Oracle Application Server (OC4J) specific tags for EJB.
+   
+    </p>
+   
+    <p>
+      
+     Applies to: all EJB types
+   
+    </p>
+   
+    <div id="source">
+      
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@oc4j Class Level Tags">@oc4j Class Level Tags</a>
+        </h4>
+      
+      
+    <a href="#@oc4j.bean (0..1)" title="All attributes of session-deployment, entity-deployment and message-driven-deployment are placed under this class level tag.">
+     @oc4j.bean
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    </div>
+  
+    </div>
+   
+    <div id="source">
+      
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@oc4j Method Level Tags">@oc4j Method Level Tags</a>
+        </h4>
+      
+      
+    <a href="#@oc4j.field-persistence-manager (0..*)" title="If @oc4j.persistence field-persistence-manager specified and there&apos;s some properties for the persistence manager, specify it as one or more @oc4j.field-persistence-manager-property tags for the persistent field.">
+     @oc4j.field-persistence-manager
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    <a href="#@oc4j.field-persistence-manager-property (0..*)" title="Specify properties for field-persistence-manager. Must have a @oc4j.field-persistence-manager &quot;class&quot; param set.">
+     @oc4j.field-persistence-manager-property
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    <a href="#@oc4j.persistence (0..*)" title="Use these tags to specify persistence details for Container Managed Entity Beans.">
+     @oc4j.persistence
+   </a>
+  
+    <br>
+      
+    </br>
+   
+    </div>
+  
+    </div>
+   
+    <div id="source">
+      
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@oc4j Field Level Tags">@oc4j Field Level Tags</a>
+        </h4>
+      
+      
+    </div>
+  
+    </div>
+   
+    </div>
+  
+    <div class="h3">
+      
+      
+        <h3>
+          <a name="@oc4j Class Level Tag Usage">@oc4j Class Level Tag Usage</a>
+        </h3>
+      
+      
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@oc4j.bean (0..1)">@oc4j.bean (0..1)</a>
+        </h4>
+      
+      
+    <p>
+      
+     
+
+          All attributes of session-deployment, entity-deployment and
+   
+     
+
+          message-driven-deployment are placed under this class level tag.
+   
+     
+
+        
+   
+    </p>
+   
+    <p>
+      
+     Applies to: All EJB types, class level
+   
+    </p>
+   
+    
+    <table border="1" width="100%" cellspacing="2" cellpadding="3">
+      
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b">
+    <th>
+      
+     Parameter
+   
+    </th>
+   
+    <th>
+      
+     Type
+   
+    </th>
+   
+    <th>
+      
+     Applicability
+   
+    </th>
+   
+    <th>
+      
+     Description
+   
+    </th>
+   
+    <th>
+      
+     Mandatory
+   
+    </th>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     jndi-name
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+     Applicable to session and entity beans
+   
+    </td>
+   
+    <td>
+      
+     
+
+            This parameter specifies the JNDI name to be used for lookup. It
+   
+     
+
+            uses the 'ejb-name' by default.
+   
+     
+
+          
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     pool-cache-timeout
+   
+    </td>
+   
+    <td>
+      
+     int
+   
+    </td>
+   
+    <td>
+      
+     Applicable to session (stateless) and entity beans
+   
+    </td>
+   
+    <td>
+      
+     
+
+             This parameter specifies how long (in seconds) to keep beans cached in the
+   
+     
+
+             pool. For stateless session beans, if you specify a pool-cache-timeout,
+   
+     
+
+             then at every pool-cache-timeout interval, all beans in the pool, of the
+   
+     
+
+             corresponding bean type, are removed. If the value specified is zero or
+   
+     
+
+             negative, then the pool-cache-timeout is disabled and beans are
+   
+     
+
+             not removed from the pool.
+   
+     
+
+          
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     60
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     call-timeout
+   
+    </td>
+   
+    <td>
+      
+     int
+   
+    </td>
+   
+    <td>
+      
+     Applicable to session and entity beans.
+   
+    </td>
+   
+    <td>
+      
+     
+
+          This parameter specifies the maximum time (in milli seconds) to wait for
+   
+     
+
+          any resource to make a business/life-cycle method invocation. This is not a
+   
+     
+
+          timeout for how long a business method invocation can take.
+   
+     
+
+          If the timeout is reached, a TimedOutException is thrown. This excludes
+   
+     
+
+          database connections. Set to 0 if you want the timeout to be forever.
+   
+     
+
+          
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     90000
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     copy-by-value
+   
+    </td>
+   
+    <td>
+      
+     bool
+   
+    </td>
+   
+    <td>
+      
+     Applicable to session and entity beans
+   
+    </td>
+   
+    <td>
+      
+     
+
+            Whether or not to copy (clone) all the incoming/outgoing parameters
+   
+     
+
+            in EJB calls. Set this to 'false' if you're certain your application
+   
+     
+
+            doesn't assume copy-by-value semantics for a speed-up. The
+   
+     
+
+            default is 'true'. 
+   
+     
+
+          
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     true
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     max-instances
+   
+    </td>
+   
+    <td>
+      
+     int
+   
+    </td>
+   
+    <td>
+      
+     Applicable to session (stateless) and entity beans
+   
+    </td>
+   
+    <td>
+      
+     
+
+            The number of maximum b
+   
+     ean implementation instances to be kept
+   
+     
+
+            instantiated or pooled. The default is 100. This setting is valid for
+   
+     
+
+            session beans (stateless) and entity beans only.
+   
+     
+
+          
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     100
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     min-instances
+   
+    </td>
+   
+    <td>
+      
+     int
+   
+    </td>
+   
+    <td>
+      
+     Applicable to session (stateless) and entity beans
+   
+    </td>
+   
+    <td>
+      
+     
+
+            The number of minimum bean implementation instances to be kept
+   
+     
+
+            instantiated or pooled. The default is 0. This setting is valid for
+   
+     
+
+            session (stateless) and entity beans only.
+   
+     
+
+          
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     0
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     max-instances-per-pk
+   
+    </td>
+   
+    <td>
+      
+     int
+   
+    </td>
+   
+    <td>
+      
+     Applicable to entity beans
+   
+    </td>
+   
+    <td>
+      
+     
+
+            Sets the maximum entity bean wrapper instances allowed in its pool
+   
+     
+
+            for a given primary key.
+   
+     
+
+          
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     50
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     min-instances-per-pk
+   
+    </td>
+   
+    <td>
+      
+     int
+   
+    </td>
+   
+    <td>
+      
+     Applicable to entity beans
+   
+    </td>
+   
+    <td>
+      
+     
+
+            Sets the minimum entity bean wrapper instances allowed in its pool
+   
+     
+
+            for a given primary key.
+   
+     
+
+          
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     0
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     max-tx-retries
+   
+    </td>
+   
+    <td>
+      
+     int
+   
+    </td>
+   
+    <td>
+      
+     Applicable to session and entity beans
+   
+    </td>
+   
+    <td>
+      
+     
+
+            The number of times to retry a transaction that was rolled back due
+   
+     
+
+            to system-level failures. The default is 3.            
+   
+     
+
+          
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     3
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     persistence-filename
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+     Applicable to session beans
+   
+    </td>
+   
+    <td>
+      
+     
+
+             Path to file where sessions are stored across restarts. 
+   
+     
+
+          
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     timeout
+   
+    </td>
+   
+    <td>
+      
+     int
+   
+    </td>
+   
+    <td>
+      
+     applicable to session beans
+   
+    </td>
+   
+    <td>
+      
+     
+
+            Inactivity timeout in seconds. If the value is zero or negative timeouts
+   
+     
+
+            will be disabled. 
+   
+     
+
+          
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     0
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     clustering-schema
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+     Applicable to entity beans.
+   
+    </td>
+   
+    <td>
+      
+     
+
+             This parameter should be set to "asynchronous-cache" in order to
+   
+     
+
+             cluster-enable an Entity bean.
+   
+     
+
+          
+   
+    <br>
+      
+     Valid options are:
+   
+    </br>
+   
+    <br>
+      
+     default
+   
+    </br>
+   
+    <br>
+      
+     asynchronous-cache
+   
+    </br>
+   
+    <br>
+      
+     Default value(s):
+   
+    </br>
+   
+    <br>
+      
+     default
+   
+    </br>
+   
+    </td>
+   
+    <td>
+      
+    <b>
+      
+     true
+   
+    </b>
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     data-source
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+     Applicable to entity beans.
+   
+    </td>
+   
+    <td>
+      
+     
+
+            The name of the data-source used if using container-managed
+   
+     
+
+            persistence. Use the 'ejb-location' attribute of the data-source entry.
+   
+     
+
+          
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     jdbc/OracleDS
+   
+    </td>
+   
+    <td>
+      
+    <b>
+      
+     true
+   
+    </b>
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     exclusive-write-access
+   
+    </td>
+   
+    <td>
+      
+     bool
+   
+    </td>
+   
+    <td>
+      
+     Applicable to entity beans.
+   
+    </td>
+   
+    <td>
+      
+     
+
+             Whether or not the EJB-server has exclusive write (update) access
+   
+     
+
+             to the database backend. This can be used only for entity
+   
+     
+
+             beans that use a "read_only" locking mode. In this case, it
+   
+     
+
+             increases the performance for common bean operations and enables
+   
+     
+
+             better caching.  Default is false for beans with locking-mode=optimistic
+   
+     
+
+             or pessimistic and true for locking-mode=read-only. 
+   
+     
+
+          
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     Default is false for beans with locking-mode=optimistic or pessimistic and true for locking-mode=read-only.
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     instance-cache-timeout
+   
+    </td>
+   
+    <td>
+      
+     int
+   
+    </td>
+   
+    <td>
+      
+     Applicable to entity beans.
+   
+    </td>
+   
+    <td>
+      
+     
+
+          The amount of time in seconds that entity wrapper instances are
+   
+     
+
+       
+   
+        assigned to an identity. If you specify 'never', you retain the wrapper
+   
+     
+
+          instances until they are garbage collected. The default is 60 seconds.
+   
+     
+
+          
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     60
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     isolation
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+     Applicable to entity beans.
+   
+    </td>
+   
+    <td>
+      
+     
+
+             Specifies the isolation-level for database actions. The valid
+   
+     
+
+             values for Oracle databases are 'serializable' and 'committed'. The
+   
+     
+
+             default is 'committed'. Non-Oracle databases can be the following:
+   
+     
+
+             'none', 'committed', 'serializable', 'uncommitted', and
+   
+     
+
+             'repeatable_reads'.   
+   
+     
+
+          
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     committed
+   
+    <br>
+      
+     Valid options are:
+   
+    </br>
+   
+    <br>
+      
+     none
+   
+    </br>
+   
+    <br>
+      
+     committed
+   
+    </br>
+   
+    <br>
+      
+     serializable
+   
+    </br>
+   
+    <br>
+      
+     uncommitted
+   
+    </br>
+   
+    <br>
+      
+     repeatable_reads
+   
+    </br>
+   
+    <br>
+      
+     Default value(s):
+   
+    </br>
+   
+    <br>
+      
+     committed
+   
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     table
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+     Applicable to entity beans.
+   
+    </td>
+   
+    <td>
+      
+     
+
+            The name of the table in the database if using
+   
+     
+
+            container-managed persistence. Applicable to entity beans.
+   
+     
+
+          
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     validity-timeout
+   
+    </td>
+   
+    <td>
+      
+     int
+   
+    </td>
+   
+    <td>
+      
+     Applicable to entity beans.
+   
+    </td>
+   
+    <td>
+      
+     
+
+            The maximum amount of time (in millis) that an entity is valid in
+   
+     
+
+            the cache (before being reloaded).  Useful for loosely coupled
+   
+     
+
+            environments where rare updates from legacy systems occur. This
+   
+     
+
+            attribute is only valid when exclusive-write-access="true" (the
+   
+     
+
+            default). Applicable to entity beans.
+   
+     
+
+          
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     instance-cache-timeout
+   
+    </td>
+   
+    <td>
+      
+     int
+   
+    </td>
+   
+    <td>
+      
+     Applicable to entity beans.
+   
+    </td>
+   
+    <td>
+      
+     
+
+            The amount of time in seconds that entity wrapper instances are
+   
+     
+
+            assigned to an identity. If you specify 'never', you retain the wrapper
+   
+     
+
+   
+   
+              instances until they are garbage collected. The default is 60 seconds.
+   
+     
+
+          
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     60
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     do-select-before-insert
+   
+    </td>
+   
+    <td>
+      
+     bool
+   
+    </td>
+   
+    <td>
+      
+     Applicable to entity beans.
+   
+    </td>
+   
+    <td>
+      
+     
+
+           Recommend setting to false to avoid the extra select before insert
+   
+     
+
+           which checks if the entity already exists before doing the insert.
+   
+     
+
+           This will then detect a duplicate, if there is one, during the insert.
+   
+     
+
+           Default Value: true
+   
+     
+
+          
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     true
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     locking-mode
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+     Applicable to entity beans.
+   
+    </td>
+   
+    <td>
+      
+     
+
+           Configures the handling of resource contention and parallel execution
+   
+     
+
+           within CMP entity beans.
+   
+     
+
+           PESSIMISTIC uses "select for update" to manage resource contention and
+   
+     
+
+           only allows one user at a time to execute the entity bean. 
+   
+     
+
+           OPTIMISTIC allows multiple users to execute the entity bean in parallel.
+   
+     
+
+           It does not monitor resource contention; thus, the burden of the data
+   
+     
+
+           consistency is placed on the database isolation modes.
+   
+     
+
+           READ-ONLY allows multiple users to execute the entity bean in parallel.
+   
+     
+
+           The container does not allow any updates to the bean's state.
+   
+     
+
+           OLD_PESSIMISTIC is maintained for backward compatibility with OC4J
+   
+     
+
+           1.0.2.2 and for use with non-Oracle databases.
+   
+     
+
+          
+   
+    <br>
+      
+     Valid options are:
+   
+    </br>
+   
+    <br>
+      
+     pessimistic
+   
+    </br>
+   
+    <br>
+      
+     optimistic
+   
+    </br>
+   
+    <br>
+      
+     read-only
+   
+    </br>
+   
+    <br>
+      
+     old_pessimistic
+   
+    </br>
+   
+    <br>
+      
+     Default value(s):
+   
+    </br>
+   
+    <br>
+      
+     optimistic
+   
+    </br>
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     update-changed-fields-only
+   
+    </td>
+   
+    <td>
+      
+     bool
+   
+    </td>
+   
+    <td>
+      
+     Applicable to entity beans.
+   
+    </td>
+   
+    <td>
+      
+     
+
+           Specifies whether the container updates only modified fields or
+   
+     
+
+           all fields to persistence storage for CM
+   
+     P entity beans when
+   
+     
+
+           ejbStore is invoked. The default is true, which specifies to only
+   
+     
+
+           update modified fields. 
+   
+     
+
+          
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     true
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     disable-wrapper-cache
+   
+    </td>
+   
+    <td>
+      
+     bool
+   
+    </td>
+   
+    <td>
+      
+     Applicable to entity beans.
+   
+    </td>
+   
+    <td>
+      
+     
+
+          If true, a pool of wrapper instances is not maintained. The default is true.
+   
+     
+
+          
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     true
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     delay-updates-until-commit
+   
+    </td>
+   
+    <td>
+      
+     bool
+   
+    </td>
+   
+    <td>
+      
+     Applicable to entity (CMP) beans.
+   
+    </td>
+   
+    <td>
+      
+     
+
+           This attribute is valid only for CMP entity beans. Defers the
+   
+     
+
+           flushing of transactional data until commit time or not. The default is
+   
+     
+
+           true. Set this value to false to update persistence data after completion
+   
+     
+
+           of every EJB method invocation - except ejbRemove() and
+   
+     
+
+           the finder methods.
+   
+     
+
+          
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     false
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     connection-factory-location
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+     Applicable to message driven beans.
+   
+    </td>
+   
+    <td>
+      
+     
+
+          The JMS Destination Connection Factory is specified in the
+   
+     
+
+          connection-factory-location attribute. The syntax for database
+   
+     
+
+          queue/topic is "java:comp/resource" + resource provider name +
+   
+     
+
+          "TopicConnectionFactories" or "QueueConnectionFactories" + user
+   
+     
+
+          defined name. The xxxConnectionFactories details
+   
+     
+
+          what type of factory is being defined.
+   
+     
+
+          
+   
+    </td>
+   
+    <td>
+      
+    <b>
+      
+     true
+   
+    </b>
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     destination-location
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+     Applicable to message driven beans.
+   
+    </td>
+   
+    <td>
+      
+     
+
+           The JNDI location of the destination (queue/topic) to use. The
+   
+     
+
+           JMS Destination is specified in the destination-location
+   
+     
+
+           attribute. The syntax for database queue/topic i
+   
+     s "java:comp/resource" +
+   
+     
+
+           resource provider name + "Topics" or "Queues" + Destination name. The
+   
+     
+
+           Topic or Queue details what type of Destination is being defined.
+   
+     
+
+           The Destination name is the actual queue or topic name
+   
+     
+
+           defined in the database.
+   
+     
+
+          
+   
+    </td>
+   
+    <td>
+      
+    <b>
+      
+     true
+   
+    </b>
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     subscription-name
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+     Applicable to message driven beans.
+   
+    </td>
+   
+    <td>
+      
+     
+
+            If this is a topic, the subscription name is defined in the subscription-name attribute.
+   
+     
+
+          
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     listener-threads
+   
+    </td>
+   
+    <td>
+      
+     int
+   
+    </td>
+   
+    <td>
+      
+     Applicable to message driven beans.
+   
+    </td>
+   
+    <td>
+      
+     
+
+          The listener threads are used to concurrently consume JMS messages. The default is one thread.
+   
+     
+
+          
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     1
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     transaction-timeout
+   
+    </td>
+   
+    <td>
+      
+     int
+   
+    </td>
+   
+    <td>
+      
+     Applicable to message driven beans.
+   
+    </td>
+   
+    <td>
+      
+     
+
+          This attribute controls the transaction timeout interval for any
+   
+     
+
+          container-managed transactional MDB. The default is one day. If the
+   
+     
+
+          transaction has not completed in this timeframe, the transaction is rolled back.
+   
+     
+
+          
+   
+    <br>
+      
+    </br>
+   
+     Default value(s):
+   
+     
+                                                  
+   
+    <br>
+      
+    </br>
+   
+     1
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    </table>
+  
+    </div>
+  
+    </div>
+  
+    <div class="h3">
+      
+      
+        <h3>
+          <a name="@oc4j Method Level Tag Usage">@oc4j Method Level Tag Usage</a>
+        </h3>
+      
+      
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@oc4j.field-persistence-manager (0..*)">@oc4j.field-persistence-manager (0..*)</a>
+        </h4>
+      
+      
+    <p>
+      
+     
+
+            If @oc4j.persistence field-persistence-manager
+   
+     
+
+            specified and there's some properties for the persistence manager, specify it
+   
+     
+
+            as one or more
+   
+     
+
+            @oc4j.field-persistence-manager-property tags for the
+   
+     
+
+            persistent field.
+   
+     
+
+        
+   
+    </p>
+   
+    <p>
+      
+     Applies to: Method level, entity beans
+   
+    </p>
+   
+    
+    <table border="1" width="100%" cellspacing="2" cellpadding="3">
+      
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b">
+    <th>
+      
+     Parameter
+   
+    </th>
+   
+    <th>
+      
+     Type
+   
+    </th>
+   
+    <th>
+      
+     Applicability
+   
+    </th>
+   
+    <th>
+      
+     Description
+   
+    </th>
+   
+    <th>
+      
+     Mandatory
+   
+    </th>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     class
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     
+
+         
+   
+      The class that implements a custom persistence handler for this CMP-field.
+   
+     
+
+          
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    </table>
+  
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@oc4j.field-persistence-manager-property (0..*)">@oc4j.field-persistence-manager-property (0..*)</a>
+        </h4>
+      
+      
+    <p>
+      
+     
+
+        Specify properties for field-persistence-manager. Must have a @oc4j.field-persistence-manager "class" param set.
+   
+     
+
+        
+   
+    </p>
+   
+    <p>
+      
+     Applies to: Method level, entity beans
+   
+    </p>
+   
+    
+    <table border="1" width="100%" cellspacing="2" cellpadding="3">
+      
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b">
+    <th>
+      
+     Parameter
+   
+    </th>
+   
+    <th>
+      
+     Type
+   
+    </th>
+   
+    <th>
+      
+     Applicability
+   
+    </th>
+   
+    <th>
+      
+     Description
+   
+    </th>
+   
+    <th>
+      
+     Mandatory
+   
+    </th>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     name
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The name of the property.
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     value
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The value of the property.
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    </table>
+  
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="@oc4j.persistence (0..*)">@oc4j.persistence (0..*)</a>
+        </h4>
+      
+      
+    <p>
+      
+     
+
+          Use these tags to specify persistence details for Container Managed Entity Beans.
+   
+     
+
+        
+   
+    </p>
+   
+    <p>
+      
+     Applies to: Applicable to entity (CMP) beans.
+   
+    </p>
+   
+    
+    <table border="1" width="100%" cellspacing="2" cellpadding="3">
+      
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a">
+    <th>
+      
+     Parameter
+   
+    </th>
+   
+    <th>
+      
+     Type
+   
+    </th>
+   
+    <th>
+      
+     Applicability
+   
+    </th>
+   
+    <th>
+      
+     Description
+   
+    </th>
+   
+    <th>
+      
+     Mandatory
+   
+    </th>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     persistence-name
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The name of the field in the database table.
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     persistence-type
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The database type (valid values varies from database to database) of the field.
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+        
+      
+      
+    
+
+    
+    <tr class="b" valign="top">
+    <td>
+      
+     table-name
+   
+    </td>
+   
+    <td>
+      
+     text
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     The database table name for this field
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    
+      
+      
+        
+      
+    
+
+    
+    <tr class="a" valign="top">
+    <td>
+      
+     immutable
+   
+    </td>
+   
+    <td>
+      
+     bool
+   
+    </td>
+   
+    <td>
+      
+    </td>
+   
+    <td>
+      
+     
+
+          Whether or not the value can be trusted to be immutable once added to
+   
+     
+
+          the Collection/Map. Setting this to true will optimize database
+   
+     
+
+          operations extensively. The default value is "true" for set-mapping
+   
+     
+
+          and map-mappings and "false" for collection-mapping and list-mapping.
+   
+     
+
+         
+   
+    </td>
+   
+    <td>
+      
+     false
+   
+    </td>
+   </tr>
+  
+    </table>
+  
+    </div>
+  
+    </div>
+  
+    <div class="h3">
+      
+      
+        <h3>
+          <a name="@oc4j Field Level Tag Usage">@oc4j Field Level Tag Usage</a>
+        </h3>
+      
+      
+    </div>
+  
+                  
+                  
+                  
+                  
+                  
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <div id="footer">
+          <table border="0" style="width:100%" cellpadding="4" cellspacing="0">
+            
+            <tr>
+              <td>
+                
+                  
+                    
+                    
+                      © 2000-2004, XDoclet Team
+                    
+                  
+                  
+                
+
+                
+              </td>
+              
+            </tr>
+          </table>
+        </div>
+      </body>
+    </html>
+  

@@ -1,0 +1,165 @@
+
+<html>
+<head>
+</head>
+<body bgcolor="#ffffff">
+
+<h2>Config</h2>
+
+<p>Implemented in class <a href="../api/xdoclet/tagshandler/ConfigTagsHandler.html">xdoclet.tagshandler.ConfigTagsHandler</a>.</p>
+<ul>
+  <li><a href="#block">Block Tags</a>
+  <li><a href="#content">Content Tags</a>
+</ul>
+
+<h3><a name="block">Block Tags:</a></h3>
+
+<h4><a name="ifHasConfigParam">ifHasConfigParam</a> (block template)</h4>
+<p>Evaluates the body if config parameter specified is not null.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           paramName
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The config parameter name, it's a parameter settable from within build file.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="forAllConfigParameters">forAllConfigParameters</a> (block template)</h4>
+<p>Evaluate the body for all configuration parameters with the name paramName. It's basically used for java.util.ArrayList-based parameter types, and the body is evaluated for all items of the ArrayList.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           paramName
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The config parameter name, it's a parameter settable from within build file.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="ifConfigParamGreaterOrEquals">ifConfigParamGreaterOrEquals</a> (block template)</h4>
+<p>Evaluate the body if the value of the configuration parameter is greater or equal to value.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           paramName
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The config parameter name, it's a parameter settable from within build file.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           value
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The desired value.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="ifConfigParamNotGreaterOrEquals">ifConfigParamNotGreaterOrEquals</a> (block template)</h4>
+<p>Evaluate the body if the value of the configuration parameter is not greater or equal to value.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           paramName
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The config parameter name, it's a parameter settable from within build file.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           value
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The desired value.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="ifConfigParamEquals">ifConfigParamEquals</a> (block template)</h4>
+<p>Evaluate the body if the value of the configuration parameter equals value.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           paramName
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The config parameter name, it's a parameter settable from within build file.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           value
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The desired value.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="ifConfigParamNotEquals">ifConfigParamNotEquals</a> (block template)</h4>
+<p>Evaluate the body if the value of the configuration parameter doesn't equal value.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           paramName
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The config parameter name, it's a parameter settable from within build file.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           value
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The desired value.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h3><a name="content">Content templates:</a></h3>
+
+<h4><a name="configParameterValue">configParameterValue</a> (content template)</h4>
+<p>Returns the values of a configuration parameter with the name paramName.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           paramName
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The config parameter name, it's a parameter settable from within build file.<br></br>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

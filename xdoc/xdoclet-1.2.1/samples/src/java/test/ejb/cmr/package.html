@@ -1,0 +1,40 @@
+<BODY>
+The classes in this package serve as test classes for CMP and CMR (EJB 2.0)<BR>
+
+<PRE>
+
+####################################################################################################################################
+
+You should create this schema and make it available from a datasource with the JNDI name "xdoclet.database"
+You can fill the tables manually with some test data.
+
+# means primary key (they are all BIGINT)
+foreign keys end with _fk. (they are all BIGINT)
+the name fields are VARCHAR
+
+                                                              This is a join table
+                                                              It will not be mapped                  Unidirectional
+                                                              to an entity bean                         <-----
+
+                                                                     |                                     |
+                                                                     |                                     |
+                                                                     V                                     V
+
+                              +---------------------+        +----------------+
+  +------------------+        | LANGUAGE            |        | LANGUAGE_CITY  |        +---------------+
+  |  LANGUAGE_CODE   |        +---------------------+        +----------------+        | CITY          |        +-------------+
+  +------------------+        |#language_id         |-1----*-|#language_id_fk |        +---------------+        | COUNTRY     |
+  |#language_code_id |-1----1-| language_code_id_fk |        |#city_id_fk     |-*----1-|#city_id       |        +-------------+
+  | name             |        | name                |        +----------------+        | country_id_fk |-*----1-|#country_id  |-1--+
+  +------------------+        +---------------------+                                  | name          |        | name        |    |
+                                                                                       +---------------+        | owner_id_fk |-*--+
+                                                                                                                +-------------+
+
+            <-----------1:1------------>   <----------------------- m:n --------------------->   <-------- 1:n------->
+
+
+####################################################################################################################################
+
+
+<PRE>
+<BODY>

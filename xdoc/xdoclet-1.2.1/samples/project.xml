@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project>
+
+  <pomVersion>3</pomVersion>
+  <id>xdoclet-sample</id>
+
+  <dependencies>
+    <dependency>
+        <id>xdoclet+ejb-module</id>
+        <version>1.2b2</version>
+    </dependency>
+
+    <dependency>
+        <id>xdoclet+web-module</id>
+        <version>1.2b2</version>
+    </dependency>
+
+    <dependency>
+        <id>xdoclet+hibernate-module</id>
+        <version>1.2b2</version>
+    </dependency>
+
+    <dependency>
+        <id>xdoclet+xdoclet-module</id>
+        <version>1.2b2</version>
+    </dependency>
+
+    <dependency>
+        <id>servletapi</id>
+        <version>2.3</version>
+    </dependency>
+
+    <dependency>
+        <id>ejb</id>
+        <jar>ejb.jar</jar>
+        <version>2.0</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <sourceDirectory>src/java</sourceDirectory>
+  </build>
+
+</project>
+

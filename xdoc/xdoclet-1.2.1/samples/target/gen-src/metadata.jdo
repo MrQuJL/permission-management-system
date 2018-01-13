@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jdo PUBLIC "-//Sun Microsystems, Inc.//DTD Java Data Objects Metadata 1.0//EN" "http://java.sun.com/dtd/jdo_1_0.dtd">
+
+<jdo>
+  <package name="test.jdo">
+    <class name="MapKey"
+           identity-type="datastore"
+           objectid-class="java.lang.Long"
+           requires-extent="false"
+    > <!-- end class tag -->
+      <field name="owner" 
+             embedded="true"
+      > <!-- end field tag -->
+      </field>
+    </class>
+    <class name="MapValue"
+           identity-type="datastore"
+           requires-extent="true"
+    > <!-- end class tag -->
+      <field name="owner" 
+             embedded="true"
+      > <!-- end field tag -->
+      </field>
+      <field name="tjdoOwner" 
+      > <!-- end field tag -->
+        <extension vendor-name="triactive" key="map-field" value="superMap"/>
+      </field>
+    </class>
+    <class name="Sub"
+           identity-type="datastore"
+           persistence-capable-superclass="test.jdo.Super"
+    > <!-- end class tag -->
+      <field name="subInt" 
+             null-value="default"
+             embedded="true"
+      > <!-- end field tag -->
+      </field>
+      <field name="subString" 
+      > <!-- end field tag -->
+      </field>
+      <field name="subList" 
+             default-fetch-group="true"
+      > <!-- end field tag -->
+             <collection
+                 element-type="test.jdo.SubChild"
+              > <!-- end collection tag -->
+             </collection>
+      </field>
+      <field name="subMap" 
+      > <!-- end field tag -->
+              <map
+                 key-type="test.jdo.MapKey"
+                 embedded-key="true"
+                 value-type="test.jdo.MapValue"
+                 embedded-value="true"
+              > <!-- end map tag -->
+             </map>
+      </field>
+      <field name="subChildren" 
+             default-fetch-group="false"
+      > <!-- end field tag -->
+             <array
+                 embedded-element="false"
+             > <!-- end array tag -->
+             </array>
+      </field>
+    </class>
+    <class name="Super"
+           identity-type="datastore"
+    > <!-- end class tag -->
+    <extension vendor-name="test"
+               key="class-key1"
+               value="class-value1">
+   </extension>
+    <extension vendor-name="test"
+               key="class-key2"
+               value="class-value2">
+     <extension vendor-name="test" key="class-nested-key" value="class-value3">
+   </extension>
+      <field name="superInt" 
+             null-value="exception"
+             default-fetch-group="true"
+      > <!-- end field tag -->
+    <extension vendor-name="test"
+               key="field-key1"
+               value="field-value1">
+   </extension>
+    <extension vendor-name="test"
+               key="field-key2"
+               value="field-value2">
+     <extension vendor-name="test" key="field-nested-key" value="field-value3">
+   </extension>
+      </field>
+      <field name="superString" 
+             default-fetch-group="true"
+      > <!-- end field tag -->
+        <extension vendor-name="triactive" key="length" value="200"/>
+      </field>
+      <field name="superBigDecimal" 
+             default-fetch-group="true"
+      > <!-- end field tag -->
+        <extension vendor-name="triactive" key="length" value="15"/>
+        <extension vendor-name="triactive" key="precision" value="15"/>
+        <extension vendor-name="triactive" key="scale" value="5"/>
+      </field>
+      <field name="superList" 
+             default-fetch-group="true"
+      > <!-- end field tag -->
+             <collection
+                 element-type="test.jdo.SuperChild"
+                 embedded-element="false"
+              > <!-- end collection tag -->
+    <extension vendor-name="test"
+               key="collection-key1"
+               value="collection-value1">
+   </extension>
+    <extension vendor-name="test"
+               key="collection-key2"
+               value="collection-value2">
+     <extension vendor-name="test" key="collection-nested-key" value="collection-value3">
+   </extension>
+                <extension vendor-name="triactive" key="owner-field" value="tjdoOwner"/>
+             </collection>
+      </field>
+      <field name="superMap" 
+             default-fetch-group="true"
+      > <!-- end field tag -->
+              <map
+                 key-type="test.jdo.MapKey"
+                 embedded-key="true"
+                 value-type="test.jdo.MapValue"
+                 embedded-value="false"
+              > <!-- end map tag -->
+    <extension vendor-name="test"
+               key="map-key1"
+               value="map-value1">
+   </extension>
+    <extension vendor-name="test"
+               key="map-key2"
+               value="map-value2">
+     <extension vendor-name="test" key="map-nested-key" value="map-value3">
+   </extension>
+                <extension vendor-name="triactive" key="owner-field" value="tjdoOwner"/>
+                <extension vendor-name="triactive" key="key-field" value="tjdoKey"/>
+             </map>
+      </field>
+      <field name="superChildren" 
+             default-fetch-group="true"
+             embedded="false"
+      > <!-- end field tag -->
+             <array
+                 embedded-element="true"
+             > <!-- end array tag -->
+    <extension vendor-name="test"
+               key="array-key1"
+               value="array-value1">
+   </extension>
+    <extension vendor-name="test"
+               key="array-key2"
+               value="array-value2">
+     <extension vendor-name="test" key="array-nested-key" value="array-value3">
+   </extension>
+             </array>
+      </field>
+      <field name="StringList" 
+             default-fetch-group="true"
+      > <!-- end field tag -->
+             <collection
+                 element-type="java.lang.String"
+                 embedded-element="true"
+              > <!-- end collection tag -->
+                <extension vendor-name="triactive" key="owner-field" value="tjdoOwner"/>
+                <extension vendor-name="triactive" key="length" value="256"/>
+             </collection>
+      </field>
+      <field name="lengthMap" 
+             default-fetch-group="true"
+      > <!-- end field tag -->
+              <map
+                 key-type="java.lang.String"
+                 embedded-key="true"
+                 value-type="java.math.BigDecimal"
+                 embedded-value="true"
+              > <!-- end map tag -->
+                <extension vendor-name="triactive" key="owner-field" value="tjdoOwner"/>
+                <extension vendor-name="triactive" key="key-field" value="tjdoKey"/>
+                <extension vendor-name="triactive" key="key-length" value="30"/>
+                <extension vendor-name="triactive" key="value-precision" value="18"/>
+                <extension vendor-name="triactive" key="value-scale" value="6"/>
+             </map>
+      </field>
+    </class>
+    <class name="SubChild"
+           identity-type="datastore"
+           persistence-capable-superclass="test.jdo.SuperChild"
+    > <!-- end class tag -->
+      <field name="subParents" 
+             default-fetch-group="true"
+      > <!-- end field tag -->
+      </field>
+      <field name="friends" 
+      > <!-- end field tag -->
+      </field>
+    </class>
+    <class name="SuperChild"
+           identity-type="datastore"
+           requires-extent="true"
+    > <!-- end class tag -->
+      <field name="superParent" 
+             default-fetch-group="true"
+             embedded="false"
+      > <!-- end field tag -->
+      </field>
+      <field name="tjdoOwner" 
+      > <!-- end field tag -->
+        <extension vendor-name="triactive" key="collection-field" value="superList"/>
+        <extension vendor-name="triactive" key="map-field" value="superMap"/>
+      </field>
+    </class>
+  </package> 
+
+    <!--
+    To use additional vendor extensions, create a vendor-extensions.xml file that
+    contains the additional extensions (in extension tags) and place it in your
+    projects merge dir.  
+    -->
+
+</jdo>
+

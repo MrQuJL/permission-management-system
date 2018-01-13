@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+
+<section>
+  <title>test.jmx.JBossXMLExample</title>
+  <subtitle>Default ObjectName: jboss.test.xdoclet:service=Sample</subtitle>
+    <para>sample for jboss xmbean.dtd</para>
+    <table>
+      <title>Descriptors</title>
+      <tgroup cols="3">
+        <colspec colname="descriptor"/>
+        <colspec colname="value"/>
+        <thead>
+          <row>
+            <entry>Descriptor</entry>
+            <entry>Value</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>persistPolicy</entry>
+            <entry>Never</entry>
+          </row>
+
+          <row>
+            <entry>persistPeriod</entry>
+            <entry>10</entry>
+          </row>
+
+          <row>
+            <entry>persistLocation</entry>
+            <entry>pl1</entry>
+          </row>
+
+          <row>
+            <entry>persistName</entry>
+            <entry>JBossXMLExample1</entry>
+          </row>
+
+          <row>
+            <entry>currencyTimeLimit</entry>
+            <entry>10</entry>
+          </row>
+
+          <row>
+            <entry>state-action-on-update</entry>
+            <entry>RESTART</entry>
+          </row>
+
+        </tbody>
+      </tgroup>
+    </table>
+
+  <section>
+    <title>Managed Constructors</title>
+
+    <formalpara>
+      <title>Managed Constructor ()</title>
+    <para>default constructor
+        <orderedlist>
+        </orderedlist>
+      </para>
+    </formalpara>
+    <formalpara>
+      <title>Managed Constructor (java.lang.String string,java.lang.Integer id)</title>
+    <para>(no description)
+        <orderedlist>
+          <listitem>
+            <para>(no description)</para>
+            <para>stringParam</para>
+            <para>java.lang.String</para>
+          </listitem>
+          <listitem>
+            <para>(no description)</para>
+            <para>intParam</para>
+            <para>java.lang.Integer</para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </formalpara>
+  </section>
+
+  <!--attributes-->
+    <section>
+      <title>Managed Attributes</title>
+    <table>
+      <!--title></title-->
+      <tgroup cols="3">
+        <colspec colname="attribute"/>
+        <colspec colname="type"/>
+        <colspec colname="access"/>
+        <colspec colname="description" align="center"/>
+        <thead>
+          <row>
+            <entry>Attribute</entry>
+            <entry>Type</entry>
+            <entry>Access</entry>
+            <entry align="center">Description</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>String</entry>
+            <entry>java.lang.String</entry>
+            <entry>read-only</entry>
+            <entry>string attribute</entry>
+          </row>
+          <row>
+            <entry>Strings</entry>
+            <entry>java.lang.String[][]</entry>
+            <entry>read-only</entry>
+            <entry>strings attribute</entry>
+          </row>
+          <row>
+            <entry>Id</entry>
+            <entry>java.lang.Integer</entry>
+            <entry>write-only</entry>
+            <entry>id attribute</entry>
+          </row>
+          <row>
+            <entry>Value</entry>
+            <entry>java.lang.Integer</entry>
+            <entry>read-write</entry>
+            <entry>id attribute</entry>
+          </row>
+          <row>
+            <entry>Ref</entry>
+            <entry>javax.management.ObjectName</entry>
+            <entry>read-write</entry>
+            <entry>Object Name attribute</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+
+  </section>
+
+<!--operations -->
+    <section>
+      <title>Managed Operations</title>
+      <formalpara>
+        <title>doSomething</title>
+        <para>operation with 2 arguments
+          <orderedlist>
+            <listitem>
+              <para>first string param</para>
+              <para>stringParam1</para>
+              <para>java.lang.String</para>
+            </listitem>
+            <listitem>
+              <para>other param</para>
+              <para>integerParam2</para>
+              <para>java.lang.Integer</para>
+            </listitem>
+            <listitem>
+              <para>return type: java.lang.String</para>
+            </listitem>
+          </orderedlist>
+        </para>
+
+    </formalpara>
+  </section>
+
+<!--notifications -->
+    <section>
+      <title>Notifications</title>
+    <table>
+      <!--title></title-->
+      <tgroup cols="3">
+        <colspec colname="name"/>
+        <colspec colname="type"/>
+        <colspec colname="description" align="center"/>
+        <thead>
+          <row>
+            <entry>Name</entry>
+            <entry>Type</entry>
+            <entry align="center">Description</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>javax.management.SomeEvent</entry>
+            <entry>xd.example.first,xd.example.second</entry>
+            <entry>first notification</entry>
+          </row>
+
+          <row>
+            <entry>javax.management.SomeOtherEvent</entry>
+            <entry>xd.example.third,xd.example.fourth</entry>
+            <entry>second notification</entry>
+          </row>
+
+        </tbody>
+      </tgroup>
+    </table>
+
+    </section>
+
+</section>
+

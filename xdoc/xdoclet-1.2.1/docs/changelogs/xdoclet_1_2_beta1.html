@@ -1,0 +1,4300 @@
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  
+      
+  
+
+      
+      
+      
+      
+      
+      
+        
+         
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      
+
+      
+
+  
+  
+
+  
+  
+
+   
+   
+
+   
+   
+
+
+    
+	
+	
+
+    
+    
+      
+	
+	
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+    <html>
+      <head>
+        
+        
+          <title>
+            XDoclet: Attribute-Oriented Programming - 
+          XDoclet 1.2 Beta 1 Change Log
+        
+          </title>
+        
+        
+        
+        <style type="text/css">
+          @import url("../style/tigris.css");
+          @import url("../style/maven.css");
+        </style>
+        
+        
+        
+        
+        
+        <link rel="stylesheet" href="../style/print.css" type="text/css" media="print"></link>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
+        
+        
+        
+    <link rel="shortcut icon" href="../favicon.ico">
+      
+    </link>
+   
+    <link rel="icon" href="../favicon.ico">
+      
+    </link>
+   
+        
+      </head>
+
+      <body class="composite">
+
+        <div id="banner">
+          <table border="0" width="100%" cellpadding="8" cellspacing="0">
+            <tr>
+              
+              <td>
+                
+                
+                  
+                  
+                  
+                    
+                  
+                  
+                  
+                  
+                  
+                    
+                  
+                  <a href="http://xdoclet.sourceforge.net/">
+                    <img border="0" alt="XDoclet Team" src="../images/logo.gif" align="left"></img>
+                  </a>
+                
+              </td>
+
+              
+              <td>
+                <div id="login" align="right">
+                  
+                  
+                    
+                    
+                    
+
+                    <a href="http://xdoclet.sourceforge.net/">
+                      <img border="0" alt="XDoclet" src="http://sourceforge.net/sflogo.php?group_id=31602&amp;type=5" align="right"></img>
+                    </a>
+                  
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="breadcrumbs">
+          <table border="0" width="100%" cellpadding="4" cellspacing="0">
+            <tr>
+              
+                
+                <td>Last published: 28 April 2004
+                  | Doc for 1.2.1
+                </td>
+              
+              <td>
+                <div align="right">
+                  
+                  
+                  
+                    
+    
+    
+      
+      
+      
+      <a href="http://xdoclet.sourceforge.net/"><img class="handle" src="../images/none.png" alt=""></img>Home Page</a>
+      
+    
+      |
+      
+      
+      <a href="http://sourceforge.net/projects/xdoclet/"><img class="handle" src="../images/none.png" alt=""></img>SourceForge Project Page</a>
+      
+    
+      |
+      
+      
+      <a href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/xdoclet/"><img class="handle" src="../images/none.png" alt=""></img>Browse CVS</a>
+      
+    
+      |
+      
+      
+      <a href="http://opensource.atlassian.com/projects/xdoclet/secure/CreateIssue!default.jspa"><img class="handle" src="../images/none.png" alt=""></img>Create an Issue</a>
+      
+    
+  
+                  
+                  
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        
+        <table border="0" width="100%" cellpadding="8" cellspacing="0"> 
+          <tr valign="top">
+            <td width="20%" id="leftcol">
+              <div id="navcolumn">
+                
+
+                
+                  
+    <div>
+      <strong>XDoclet</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../index.html"><img class="handle" src="../images/none.png" alt=""></img>Overview</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../status.html"><img class="handle" src="../images/none.png" alt=""></img>News and Status</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../install.html"><img class="handle" src="../images/none.png" alt=""></img>Download/Installation</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../using.html"><img class="handle" src="../images/none.png" alt=""></img>Using XDoclet</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../bp.html"><img class="handle" src="../images/none.png" alt=""></img>Best Practices</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../faq.html"><img class="handle" src="../images/none.png" alt=""></img>FAQ</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../licenses/xdoclet-license.html"><img class="handle" src="../images/none.png" alt=""></img>License</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Ant Task Reference</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/ejb/EjbDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;ejbdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/web/WebDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;webdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/hibernate/HibernateDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;hibernatedoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/mockobjects/MockObjectDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;mockdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/jdo/JdoDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;jdodoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/jmx/JMXDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;jmxdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/modules/portlet/PortletDocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;portletdoclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant/xdoclet/DocletTask.html"><img class="handle" src="../images/none.png" alt=""></img>&lt;doclet .. /&gt;</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Tag Reference</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/apache-tags.html"><img class="handle" src="../images/none.png" alt=""></img>apache (@soap @struts)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/bea-tags.html"><img class="handle" src="../images/none.png" alt=""></img>bea (@weblogic)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/borland-tags.html"><img class="handle" src="../images/none.png" alt=""></img>borland (@bes)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/caucho-tags.html"><img class="handle" src="../images/none.png" alt=""></img>caucho (@resin)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/ejb-tags.html"><img class="handle" src="../images/none.png" alt=""></img>ejb (@ejb @dao)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/exolab-tags.html"><img class="handle" src="../images/none.png" alt=""></img>exolab (@castor)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/hp-tags.html"><img class="handle" src="../images/none.png" alt=""></img>hp (@hpas)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/hibernate-tags.html"><img class="handle" src="../images/none.png" alt=""></img>hibernate (@hibernate)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/ibm-tags.html"><img class="handle" src="../images/none.png" alt=""></img>ibm (@websphere)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/java-tags.html"><img class="handle" src="../images/none.png" alt=""></img>java (@javabean)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/jboss-tags.html"><img class="handle" src="../images/none.png" alt=""></img>jboss (@jboss)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/jdo-tags.html"><img class="handle" src="../images/none.png" alt=""></img>jdo (@jdo)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/jmx-tags.html"><img class="handle" src="../images/none.png" alt=""></img>jmx (@jmx)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/macromedia-tags.html"><img class="handle" src="../images/none.png" alt=""></img>macromedia (@jrun)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/mockobjects-tags.html"><img class="handle" src="../images/none.png" alt=""></img>mockobjects (@mock)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/mvcsoft-tags.html"><img class="handle" src="../images/none.png" alt=""></img>mvcsoft (@mvcsoft)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/mx4j-tags.html"><img class="handle" src="../images/none.png" alt=""></img>mx4j (@mx4j)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/objectweb-tags.html"><img class="handle" src="../images/none.png" alt=""></img>objectweb (@jonas)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/oracle-tags.html"><img class="handle" src="../images/none.png" alt=""></img>oracle (@oc4j)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/orion-tags.html"><img class="handle" src="../images/none.png" alt=""></img>orion (@orion)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/portlet-tags.html"><img class="handle" src="../images/none.png" alt=""></img>portlet (@portlet)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/pramati-tags.html"><img class="handle" src="../images/none.png" alt=""></img>pramati (@pramati)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/sun-tags.html"><img class="handle" src="../images/none.png" alt=""></img>sun (@sunone)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/sybase-tags.html"><img class="handle" src="../images/none.png" alt=""></img>sybase (@easerver)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/tjdo-tags.html"><img class="handle" src="../images/none.png" alt=""></img>tjdo (@tjdo)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/web-tags.html"><img class="handle" src="../images/none.png" alt=""></img>web (@web @jsp)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/webwork-tags.html"><img class="handle" src="../images/none.png" alt=""></img>webwork (@webwork)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tags/xdoclet-tags.html"><img class="handle" src="../images/none.png" alt=""></img>xdoclet (@xdoclet @doc)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Feature Documentation</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../valueobjects.html"><img class="handle" src="../images/none.png" alt=""></img>Using Value Objects</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Advanced</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../maven-plugin.html"><img class="handle" src="../images/none.png" alt=""></img>Maven Plug-in</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../merge.html"><img class="handle" src="../images/none.png" alt=""></img>Merge Points</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ide/index.html"><img class="handle" src="../images/none.png" alt=""></img>IDE Integration</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../migration.html"><img class="handle" src="../images/none.png" alt=""></img>Migration from EJBDoclet</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../ant15.html"><img class="handle" src="../images/none.png" alt=""></img>Ant 1.5 Troubleshooting</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Community</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../feedback.html"><img class="handle" src="../images/none.png" alt=""></img>Feedback</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../resources.html"><img class="handle" src="../images/none.png" alt=""></img>Resources</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../tools.html"><img class="handle" src="../images/none.png" alt=""></img>Tools</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    <div>
+      <strong>Development</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../development/index.html"><img class="handle" src="../images/none.png" alt=""></img>Developer Guide</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../api/index.html"><img class="handle" src="../images/none.png" alt=""></img>Javadoc (API)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../templates/index.html"><img class="handle" src="../images/none.png" alt=""></img>Template Language (*.xdt)</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="http://xdoclet.sourceforge.net/xjavadoc/"><img class="handle" src="../images/none.png" alt=""></img>XJavaDoc Site</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+    
+    
+    
+    <div>
+      <strong>Search XDoclet</strong>
+      <form action="http://www.google.com/search" method="get">
+        <a href="http://www.google.com" class="navlink">
+          <img border="0" alt="Google" src="http://www.google.com/logos/Logo_25wht.gif"></img>
+        </a><p></p>
+        
+        
+        
+          
+          
+        
+        <input name="q" maxlength="255" size="15" type="text" value=""></input>
+        <input name="btnG" type="submit" value="Go"></input>
+        <input name="domains" type="hidden" value="http://xdoclet.sourceforge.net"></input>
+        <input name="sitesearch" type="hidden" value="http://xdoclet.sourceforge.net" id="search"></input>
+      </form>
+    </div>
+  
+                
+
+				
+    <div>
+      <strong>Project Documentation</strong>
+      
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../index.html"><img class="handle" src="../images/none.png" alt=""></img>About XDoclet</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		
+		
+          
+		
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../project-info.html"><img class="handle" src="../images/collapsed.png" alt=""></img>Project Info</a>
+      	
+      </small>
+	  
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		
+		
+          
+		
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="../maven-reports.html"><img class="handle" src="../images/collapsed.png" alt=""></img>Project Reports</a>
+      	
+      </small>
+	  
+    </div>
+  
+    
+    
+    
+    
+	
+	
+	
+	
+	
+		   
+	
+    <div>
+      <small>
+      	
+      	
+      		<a href="http://maven.apache.org/development-process.html"><img class="handle" src="../images/none.png" alt=""></img>Development Process</a>
+      	
+      </small>
+	  
+        
+      
+    </div>
+  
+    </div>
+  
+                
+                
+                
+
+                
+                
+                
+                
+                	<div style="margin-top: 20px; width: 100%; text-align: center;">
+                		<a href="http://maven.apache.org/" title="Powered by Maven"><img style="border: 1px solid black" alt="Powered by Maven" src="../images/logos/maven-propaganda.png"></img></a>
+                	</div>
+                
+              
+                
+              </div>
+            </td>
+            <td rowspan="2">
+              <div id="bodycol">
+                
+                <div class="app">
+                  
+                  
+    <div class="h3">
+      
+      
+        <h3>
+          <a name="XDoclet 1.2 Beta 1 Change Log">XDoclet 1.2 Beta 1 Change Log</a>
+        </h3>
+      
+      
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="Core">Core</a>
+        </h4>
+      
+      
+    <ul>
+      
+     
+                    
+   
+    <li>
+      
+    <b>
+      
+     XDoclet now requires Jakarta Ant v1.5 or higher.
+   
+    </b>
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     Refactoring work to make more modular.  The bad news is there's a lot more
+   
+     
+                    jars for you to include in the classpath.  The good news is you don't need all
+   
+     
+                    of them, depending on what tasks and subtasks you're using.  There's an open
+   
+     
+                    enhancement request to build all modules into a single jar.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     We no longer use JavaDoc, but instead our own XJavaDoc module.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     The documentation has been reworked.  A lot of it is now generated
+   
+     
+                    from the code, so should keep up to date better.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     We now use the 
+   
+    <a href="http://jakarta.apache.org/commons/logging.html">
+     Jakarta Commons Logging
+   </a>
+  
+     
+                    rather than Log4J directly.
+   
+    </li>
+   
+     
+                
+   
+    </ul>
+   
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="EJB Module">EJB Module</a>
+        </h4>
+      
+      
+    <ul>
+      
+     
+                    
+   
+    <li>
+      
+     Added 
+   
+     &lt;
+   
+     valueobject
+   
+     &gt;
+   
+      subtask. This is a much more flexible version of dataobjects,
+   
+     
+                    allowing finer grained control and relation following. The dataobject subtask
+   
+     
+                    is now deprecated in favour of this.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     Documentation fix - DAOs work with session EJBs as well as entity EJBs.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [500756
+   
+     ]
+   
+      Self-referencing error with CMP EJB
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [511669
+   
+     ]
+   
+      Enhancements to lookup util class
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [516890
+   
+     ]
+   
+      "Component inheritence" problem?
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [517372
+   
+     ]
+   
+      Wrong transact. me
+   
+     thod-intf for local bean
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [519011
+   
+     ]
+   
+      Duplicate finder in inherited Home i/f
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [521571
+   
+     ]
+   
+      Remote/Local Home finders ignore types
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [523907
+   
+     ]
+   
+      @ejb-external-ref (docs 
+   
+     &amp;
+   
+      exception)
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [525797
+   
+     ]
+   
+      @ejb.permission role-name="a,b"
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [528945
+   
+     ]
+   
+      Business-Interface support accidentally removed
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [530900
+   
+     ]
+   
+      misplaced message-selector
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [531310
+   
+     ]
+   
+      Data Object hashcode() fails with byte[
+   
+     ]
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [532498
+   
+     ]
+   
+      Bad generation of findByPrimaryKey f
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [532832
+   
+     ]
+   
+      Primary Key class bug
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [535221
+   
+     ]
+   
+      ejbCreate for local interface only wrong
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [539614
+   
+     ]
+   
+      method permissions for findByPrimaryKey
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [539770
+   
+     ]
+   
+      Relations generated on all ValueObjects
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [545622
+   
+     ]
+   
+      dao:call to handle create methods
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [550058
+   
+     ]
+   
+      (patch) Using of PK in ValueObjects do not work  Thanks to Ingo Brüll.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [550404
+   
+     ]
+   
+      Subclass's home iface extends super's  Thanks to Paul Cantrell for fix.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [566941
+   
+     ]
+   
+      (FR) Beans' description in DD
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [570833
+   
+     ]
+   
+      Inconsistent attribute for resource-ref
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [574883
+   
+     ]
+   
+      env-entry-value should not be mandatory.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [577891
+   
+     ]
+   
+      soft-locking version field long or int?
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [578031
+   
+     ]
+   
+      (patch) Dataobj-&gt;vobj transition patch
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [578820
+   
+     ]
+   
+      ejbRemove() no RemoveException
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [579172
+   
+     ]
+   
+      (patch) ejb:external-ref dies if view-type=local
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [579717
+   
+     ]
+   
+      (FR) [patch
+   
+     ]
+   
+      assembly-descriptor merge point  Thanks to Toby Cabot.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [579790
+   
+     ]
+   
+      (patch) ejb:finder ignores view-type
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [580766
+   
+     ]
+   
+      valueobject generates incorrect toString.  Thank
+   
+     s to John Barbee for fix.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [580678
+   
+     ]
+   
+      (patch) value objects of type Set  Thanks to John Barbee.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [587587
+   
+     ]
+   
+      (patch) Rev. fix for 1-valued ejb:finder returns
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     ejb.env-entry now takes an optional description parameter
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     &lt;
+   
+     trans-attribute
+   
+     &gt;
+   
+      was empty for class tag ejb.finder
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     Added support for caching homes in the util class.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     Added a GUID generator in the util object (disabled by default).
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [597698
+   
+     ]
+   
+      Finder bug!
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [603610
+   
+     ]
+   
+      (patch) slsb ejbCreate() not called  Thanks to Chris Harris.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [604391
+   
+     ]
+   
+      entity-body.xdt - ejbRemove() body
+   
+    </li>
+   
+     
+                
+   
+    </ul>
+   
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="JMX Module">JMX Module</a>
+        </h4>
+      
+      
+    <ul>
+      
+     
+                    
+   
+    <li>
+      
+     [574564
+   
+     ]
+   
+      (patch) JMX operations/constructor parameters  Thanks to Simone Bordet.
+   
+    </li>
+   
+     
+                
+   
+    </ul>
+   
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="Web Module">Web Module</a>
+        </h4>
+      
+      
+    <ul>
+      
+     
+                    
+   
+    <li>
+      
+     [511612
+   
+     ]
+   
+      Catalina fails to deploy web.xml
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [522195
+   
+     ]
+   
+      JSP Tablib Merge File for tags
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [527254
+   
+     ]
+   
+      Duplicate Entries for resource-ref
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [531980
+   
+     ]
+   
+      no lf/cr in generated taglib.tld
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [577343
+   
+     ]
+   
+      Wrong 
+   
+     &lt;
+   
+     run-as
+   
+     &gt;
+   
+      element
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [579459
+   
+     ]
+   
+      @web:listener doesn't.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [581857
+   
+     ]
+   
+      typo in web_xml.j
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [585726
+   
+     ]
+   
+      Webdoc shouldn't default session-timeout. Thanks to William Ferguson for fix.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     Add missing ejb.servlet load-on-startup parameter
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [602028
+   
+     ]
+   
+      ejb-ref/ejb-local-ref merge points 
+   
+    </li>
+   
+     
+                
+   
+    </ul>
+   
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="Apache Module">Apache Module</a>
+        </h4>
+      
+      
+    <ul>
+      
+     
+                    
+   
+    <li>
+      
+     [529752
+   
+     ]
+   
+      Missing Fie
+   
+     ld in Form
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [529937
+   
+     ]
+   
+      (patch) Add setData to struts forms
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [533754
+   
+     ]
+   
+      Apache Soap Support
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [546139
+   
+     ]
+   
+      @struts:action-forward and redirect
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     Added Struts 1.1 support.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [561172
+   
+     ]
+   
+      (patch) Struts 1.1 Global Exceptions. Thanks to Vladimir Dias.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [567058
+   
+     ]
+   
+      unmeant get/set methods
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [574466
+   
+     ]
+   
+      New Merge Points for struts-config  Thanks to Volker Krebs.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [577635
+   
+     ]
+   
+      (patch) 
+   
+     &lt;
+   
+     strutscfg
+   
+     &gt;
+   
+      patch for 
+   
+     &lt;
+   
+     message-resources
+   
+     &gt;
+   
+       Thanks to Brian Topping.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     Fixed bug causing duplicate parameter attributes
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [581217
+   
+     ]
+   
+      Ignored @struts:form-field
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [583106
+   
+     ]
+   
+      (patch) Patch for 
+   
+     &lt;
+   
+     action-mappings/
+   
+     &gt;
+   
+       Thanks to Thanks to Brian Topping.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [599350
+   
+     ]
+   
+      (patch) Struts Validator validation.xml gen.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [604590
+   
+     ]
+   
+      (patch) Validator patches
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [605231
+   
+     ]
+   
+      Struts 1.1 DTD out of date
+   
+    </li>
+   
+     
+                
+   
+    </ul>
+   
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="Bluestone Module">Bluestone Module</a>
+        </h4>
+      
+      
+    <ul>
+      
+     
+                    
+   
+    <li>
+      
+     Fixed missing '/' in closing template tag.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     Subtask renamed to 
+   
+     &lt;
+   
+     hpas
+   
+     &gt;
+   
+     .
+   
+    </li>
+   
+     
+                
+   
+    </ul>
+   
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="Castor Module">Castor Module</a>
+        </h4>
+      
+      
+    <ul>
+      
+     
+                    
+   
+    <li>
+      
+     [504332
+   
+     ]
+   
+      Problem with m:n mapping and Castor
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [536768
+   
+     ]
+   
+      mapping-body.j reference typo
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [537505
+   
+     ]
+   
+      (patch) Castor mapping patches. Thanks to Bart Guijt.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [538600
+   
+     ]
+   
+      order of classes in castor mapping file
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [538602
+   
+     ]
+   
+      inherited fields added to mapping file
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [538646
+   
+     ]
+   
+      cannot specify @castor:class xml="..."
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [542172
+   
+     ]
+   
+      Castor mapping-
+   
+     body.j collection types
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [542175
+   
+     ]
+   
+      Castor mapping-body.j handler
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [542498
+   
+     ]
+   
+      Castor mapping-body.j map-to.  Thanks to Theo Harper for fix.
+   
+    </li>
+   
+     
+                
+   
+    </ul>
+   
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="JBoss Module">JBoss Module</a>
+        </h4>
+      
+      
+    <ul>
+      
+     
+                    
+   
+    <li>
+      
+     [513489
+   
+     ]
+   
+      jaws.xml generated with jboss3/cmp2
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [536336
+   
+     ]
+   
+      (patch) Issues with JBoss CMP descriptors  Thanks to Ludovic Claude.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [539387
+   
+     ]
+   
+      JBoss CMP fields issues
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [548641
+   
+     ]
+   
+      (patch) jboss-service-template.j  Thanks to Theo Harper.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [559114
+   
+     ]
+   
+      (FR) Support 
+   
+     &lt;
+   
+     resource-env-ref
+   
+     &gt;
+   
+      in jboss.xml
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [563717
+   
+     ]
+   
+      missing empty key-fields element
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [563718
+   
+     ]
+   
+      problem with ant props in jboss cmr's
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [568535
+   
+     ]
+   
+      
+   
+     &lt;
+   
+     jboss
+   
+     &gt;
+   
+      task crashes without 
+   
+     &lt;
+   
+     entitycmp
+   
+     &gt;
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [569371
+   
+     ]
+   
+      jboss fk-constraints have been reversed
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [570832
+   
+     ]
+   
+      Misalignment in @jboss.resource-ref
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [579235
+   
+     ]
+   
+      JBoss resource-manager fails
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [579236
+   
+     ]
+   
+      (patch) JBoss resource-manager fails (bug 579235
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     added read-ahead to jboss.query and jboss.declared-sql
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     removed result-type-mapping attribute from @jboss.declared-sql
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     added from attribute to @jboss.declared-sql
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [580180
+   
+     ]
+   
+      m-&gt;1 uni invalid in jbosscmp-jdbc.xml
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [580634
+   
+     ]
+   
+      (patch) JBoss version vs. ejb/CMP spec problems
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [582345
+   
+     ]
+   
+      DVC column-name issue
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [583799
+   
+     ]
+   
+      (FR) JBoss m:n relationship table naming
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [584257
+   
+     ]
+   
+      @ejb.persistent-field still needed
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [599000
+   
+     ]
+   
+      Default mapping element missing
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [591133
+   
+     ]
+   
+      xdoclet igno
+   
+     ring deprecated jboss:column
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [591141
+   
+     ]
+   
+      Document the @jboss.relation-table tag
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [600180
+   
+     ]
+   
+      (patch) jboss clustering support  Thanks to Oskari Kettunen.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [601059
+   
+     ]
+   
+      (patch) Explicit home interface parameter names  Thanks to Gerald Turner.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [603946
+   
+     ]
+   
+      merge and tags mutully exclusive for DVC  Thanks to Oskari Kettunen for fix.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [604419
+   
+     ]
+   
+      jbosscmp-jdbc_xml.xdt bug
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [604529
+   
+     ]
+   
+      jboss-web.xml: dupliacated 
+   
+     &lt;
+   
+     ejb-ref
+   
+     &gt;
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [605055
+   
+     ]
+   
+      (patch) @jboss:security-proxy support
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [606245
+   
+     ]
+   
+      (patch) order of xtags elements for jboss  Thanks to Kevin ONeill.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [607780
+   
+     ]
+   
+      jaws.xml is broken if no typemapping
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [607791
+   
+     ]
+   
+      Wrong DTD for jboss2.4 in jboss-web-xml
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [608315
+   
+     ]
+   
+      Local interfaces not possible jboss 2.4
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     added support for JMX persistence-manager element
+   
+    </li>
+   
+     
+                
+   
+    </ul>
+   
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="MVCSoft Module">MVCSoft Module</a>
+        </h4>
+      
+      
+    <ul>
+      
+     
+                    
+   
+    <li>
+      
+     [585458
+   
+     ]
+   
+      (patch) Patch to MVCSoft-new tags  Thanks to Daniel OConnor.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [601485
+   
+     ]
+   
+      (patch) bug fixes for MVCSoft vendor module. Thanks to Daniel O'Connor.
+   
+    </li>
+   
+     
+                
+   
+    </ul>
+   
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="OpenJMX Module">OpenJMX Module</a>
+        </h4>
+      
+      
+    <ul>
+      
+     
+                    
+   
+    <li>
+      
+     Subtask renamed to MX4J, due to OpenJMX project's name changing.
+   
+    </li>
+   
+     
+                
+   
+    </ul>
+   
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="Orion Module">Orion Module</a>
+        </h4>
+      
+      
+    <ul>
+      
+     
+                    
+   
+    <li>
+      
+     orion.bean location was replaced by ejb.bean jndi-name
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     Added version 1.5.4 support.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [595280
+   
+     ]
+   
+      Incorrect orion-ejb-jar.xml generated
+   
+    </li>
+   
+     
+                
+   
+    </ul>
+   
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="Weblogic Module">Weblogic Module</a>
+        </h4>
+      
+      
+    <ul>
+      
+     
+                    
+   
+    <li>
+      
+     [513641
+   
+     ]
+   
+      transaction-isolation element
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [516909
+   
+     ]
+   
+      Empty datasource generated
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [524003
+   
+     ]
+   
+      Weblogic cmp dd generated with MVCSoft
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [569023
+   
+     ]
+   
+      (patch) Wrapped weblogic-ql in CDATA
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [579939
+   
+     ]
+   
+      weblogic.pool forces both atts to be set
+   
+    </li>
+   
+     
+                
+   
+    </ul>
+   
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="New tasks and sub-tasks">New tasks and sub-tasks</a>
+        </h4>
+      
+      
+    <ul>
+      
+     
+                    
+   
+    <li>
+      
+     [565609
+   
+     ]
+   
+      (patch) Caucho (Resin) Module. Thanks to Yoritaka Sakakura.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [532839
+   
+     ]
+   
+      (FR)/[576134
+   
+     ]
+   
+      (patch) JavaBean BeanInfo module  Thanks to Laurent Etiemble.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [541511
+   
+     ]
+   
+      (FR) Add Sybase EAServer support
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [575905
+   
+     ]
+   
+      (patch) JDO module  Thanks to Ludovic Claude.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [581243
+   
+     ]
+   
+      (FR) Support for Struts validation framework
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [594029
+   
+     ]
+   
+      (patch) JOnAS application server support. Thanks to Mathieu Peltier and Richard Chuo.
+   
+    </li>
+   
+     
+                
+   
+    </ul>
+   
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="Misc">Misc</a>
+        </h4>
+      
+      
+    <ul>
+      
+     
+                    
+   
+    <li>
+      
+     samples converted to dotted tag format.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     assorted fixes and enhancements to relation handling in ejbdoclet and vendor-specific subtasks.
+   
+    </li>
+   
+     
+                
+   
+    </ul>
+   
+    </div>
+  
+    <div class="h4">
+      
+      
+        <h4>
+          <a name="Bug Fixes">Bug Fixes</a>
+        </h4>
+      
+      
+    <ul>
+      
+     
+                    
+   
+    <li>
+      
+     [512180
+   
+     ]
+   
+      (FR) make ejb.select a method level @tag
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [516425
+   
+     ]
+   
+      support field/constructor tags in info
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [520066
+   
+     ]
+   
+      empty merge file stop xml generation
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [522357
+   
+     ]
+   
+      Make temp file name depend on username  Thanks to Daniel Bratell.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [523008
+   
+     ]
+   
+      (patch) @ejb.finder result-type-mapping  Thanks to Zak Jacobson.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [523372
+   
+     ]
+   
+      Ant property specified val
+   
+     ues
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [524219
+   
+     ]
+   
+      load-on-startup missing from docs
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [529243
+   
+     ]
+   
+      ejb examples use illegal ejb-names
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [529784
+   
+     ]
+   
+      Merge Files don't work with 1.1.2.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [530110
+   
+     ]
+   
+      Template errors throw exception not msg
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [530297
+   
+     ]
+   
+      Generated data.toString() needs space
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [536333
+   
+     ]
+   
+      (patch) 
+   
+     &lt;
+   
+     If
+   
+     &gt;
+   
+      tags not working  Thanks to Ludovic Claude.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [536440
+   
+     ]
+   
+      (patch) DefaultXTag.parse() optimizations
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [536453
+   
+     ]
+   
+      (patch) xdoclet buildsystem CNFE fixed  Thanks to Bart Guijt.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [537777
+   
+     ]
+   
+      (patch) Multiple tag and parameters in templates
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [541614
+   
+     ]
+   
+      error building todo listing
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [547633
+   
+     ]
+   
+      ejb.home generate="none" fails
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [564382
+   
+     ]
+   
+      user context being clobbered
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [570176
+   
+     ]
+   
+      (patch) Turning on debugging requires recompile
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [571776
+   
+     ]
+   
+      CMP xdt incorrectly refs DataObject
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [573624
+   
+     ]
+   
+      (patch) protect description with 
+   
+     &lt;
+   
+     ![CDATA[
+   
+     ]]
+   
+     &gt;
+   
+     . Thanks to Neale Swinnerton.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [576125
+   
+     ]
+   
+      Generation of DAO Calls for Set Methods
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [576483
+   
+     ]
+   
+      valueobject template - pk problem and fix.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [577374
+   
+     ]
+   
+      @ejb-transaction local/remote handling
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [577679
+   
+     ]
+   
+      array becomes 2 dimensional in SFSB i/f
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [579252
+   
+     ]
+   
+      (patch) missing @ on doc tags in generated code  Thanks to Michael Newcomb.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [582804
+   
+     ]
+   
+      Session problem with web.xml generated
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [584963
+   
+     ]
+   
+      (patch) Fix for ClassNotFoundException. Thanks to Marc Breslow.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [586168
+   
+     ]
+   
+      latest release jarkartacommon not compat
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [586890
+   
+     ]
+   
+      data objects and getter methods
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [587587
+   
+     ]
+   
+      (pat
+   
+     ch) Rev. fix for 1-valued ejb.finder returns
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [587872
+   
+     ]
+   
+      TemplateTask cannot override destdir
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [588075
+   
+     ]
+   
+      Unhandled exception in XJavaDoc
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [589232
+   
+     ]
+   
+      XDOclet not getting tags from a parent
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [597705
+   
+     ]
+   
+      ant properties ignored by ejbdoclet task
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [594780
+   
+     ]
+   
+      (FR) Merge files backwards compatibility
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [600486
+   
+     ]
+   
+      (patch) BeanInfo: Java expression for attribute. Thanks to Laurent Etiemble.
+   
+    </li>
+   
+     
+                    
+   
+    <li>
+      
+     [608443
+   
+     ]
+   
+      (patch) jonas tags for the xdoclet samples  Thanks to Mathieu Peltier.
+   
+    </li>
+   
+     
+                
+   
+    </ul>
+   
+    </div>
+  
+    </div>
+  
+                  
+                  
+                  
+                  
+                  
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <div id="footer">
+          <table border="0" style="width:100%" cellpadding="4" cellspacing="0">
+            
+            <tr>
+              <td>
+                
+                  
+                    
+                    
+                      © 2000-2004, XDoclet Team
+                    
+                  
+                  
+                
+
+                
+              </td>
+              
+            </tr>
+          </table>
+        </div>
+      </body>
+    </html>
+  

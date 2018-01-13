@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jboss PUBLIC "-//JBoss//DTD JBOSS 3.2//EN" "http://www.jboss.org/j2ee/dtd/jboss_3_2.dtd">
+
+<jboss>
+
+   <unauthenticated-principal>nobody</unauthenticated-principal>
+
+   <enterprise-beans>
+
+     <!--
+       To add beans that you have deployment descriptor info for, add
+       a file to your XDoclet merge directory called jboss-beans.xml that contains
+       the <session></session>, <entity></entity> and <message-driven></message-driven>
+       markup for those beans.
+     -->
+
+      <entity>
+         <ejb-name>Customer</ejb-name>
+         <jndi-name>blah/bank/Customer</jndi-name>
+         <ejb-ref>
+            <ejb-ref-name>ejb/bank/Account</ejb-ref-name>
+            <jndi-name>ejb/bank/Account</jndi-name>
+         </ejb-ref>
+
+        <method-attributes>
+        </method-attributes>
+
+      </entity>
+      <entity>
+         <ejb-name>LanguageCode</ejb-name>
+         <local-jndi-name>airline.LanguageCodeLocalHome</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
+
+      </entity>
+      <entity>
+         <ejb-name>Account</ejb-name>
+         <jndi-name>ejb/bank/Account</jndi-name>
+         <local-jndi-name>AccountLocal</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
+
+      </entity>
+      <entity>
+         <ejb-name>City</ejb-name>
+         <local-jndi-name>airline.CityLocalHome</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
+
+      </entity>
+      <entity>
+         <ejb-name>AllTypesEntity</ejb-name>
+         <jndi-name>test/AllTypesEntity</jndi-name>
+         <local-jndi-name>test/LocalAllTypesEntity</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
+
+      </entity>
+      <entity>
+         <ejb-name>Country</ejb-name>
+         <local-jndi-name>airline.CountryLocalHome</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
+
+      </entity>
+      <entity>
+         <ejb-name>Address</ejb-name>
+         <local-jndi-name>AddressLocal</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
+
+      </entity>
+      <entity>
+         <ejb-name>Employee</ejb-name>
+         <local-jndi-name>EmployeeLocal</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
+
+      </entity>
+      <entity>
+         <ejb-name>CustomerBMP</ejb-name>
+         <jndi-name>ejb/bank/CustomerBMP</jndi-name>
+         <ejb-ref>
+            <ejb-ref-name>ejb/bank/Account</ejb-ref-name>
+            <jndi-name>ejb/bank/Account</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/bank/Account</ejb-ref-name>
+            <jndi-name>ejb/bank/Account</jndi-name>
+         </ejb-ref>
+
+        <method-attributes>
+        </method-attributes>
+
+      </entity>
+      <entity>
+         <ejb-name>Language</ejb-name>
+         <local-jndi-name>airline.LanguageLocalHome</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
+
+      </entity>
+      <entity>
+         <ejb-name>File</ejb-name>
+         <local-jndi-name>blah/File</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
+
+      </entity>
+      <entity>
+         <ejb-name>EmployeeAddress</ejb-name>
+         <local-jndi-name>EmployeeAddressLocal</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
+
+      </entity>
+
+      <session>
+         <ejb-name>Stateful</ejb-name>
+         <jndi-name>Stateful</jndi-name>
+         <local-jndi-name>StatefulLocal</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
+      </session>
+      <session>
+         <ejb-name>Teller</ejb-name>
+         <jndi-name>ejb/bank/Teller</jndi-name>
+         <local-jndi-name>TellerLocal</local-jndi-name>
+         <configuration-name>Standard Stateless SessionBean</configuration-name>
+         <ejb-ref>
+            <ejb-ref-name>ejb/bank/Account</ejb-ref-name>
+            <jndi-name>ejb/bank/Account</jndi-name>
+         </ejb-ref>
+         <resource-ref>
+            <res-ref-name>jdbc/DBPool</res-ref-name>
+            <resource-name>MyDataSourceManager</resource-name>
+         </resource-ref>
+
+        <method-attributes>
+        </method-attributes>
+      </session>
+
+      <message-driven>
+         <ejb-name>QueueBean</ejb-name>
+         <destination-jndi-name>queue/testQueue</destination-jndi-name>
+      </message-driven>
+
+   </enterprise-beans>
+
+   <resource-managers>
+   </resource-managers>
+
+</jboss>

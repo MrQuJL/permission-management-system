@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+    <class
+        name="test.hibernate.LineItem"
+        table="ITEMS"
+        schema="SHOP"
+        proxy="LineItem"
+        dynamic-update="false"
+        dynamic-insert="false"
+        mutable="false"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="table">HIVAL</param>
+                <param name="column">NEXT</param>
+            </generator>
+        </id>
+
+        <version
+            name="version"
+            type="int"
+            column="version"
+            access="property"
+            unsaved-value="undefined"
+        />
+
+        <many-to-one
+            name="order"
+            class="test.hibernate.Order"
+            cascade="save-update"
+            outer-join="true"
+            update="true"
+            insert="true"
+            access="property"
+            column="ORDER_ID"
+            not-null="true"
+        />
+
+        <property
+            name="quantity"
+            type="int"
+            update="true"
+            insert="true"
+            access="property"
+            column="AMOUNT"
+            not-null="true"
+            unique="false"
+        />
+
+        <many-to-one
+            name="product"
+            class="test.hibernate.Product"
+            cascade="none"
+            outer-join="true"
+            update="true"
+            insert="true"
+            access="property"
+            column="PRODUCT_ID"
+            not-null="true"
+        />
+
+        <property
+            name="created"
+            type="timestamp"
+            update="false"
+            insert="true"
+            access="property"
+            column="created"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-LineItem.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

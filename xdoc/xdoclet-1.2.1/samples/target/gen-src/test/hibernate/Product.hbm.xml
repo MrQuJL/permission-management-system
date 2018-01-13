@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+    <class
+        name="test.hibernate.Product"
+        table="PRODUCTS"
+        dynamic-update="true"
+        dynamic-insert="false"
+        discriminator-value="null"
+    >
+
+        <jcs-cache usage="read-only" />
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+            unsaved-value="null"
+        >
+            <generator class="sequence">
+                <param name="table">HIVAL</param>
+                <param name="column">NEXT</param>
+            </generator>
+        </id>
+
+        <discriminator
+            column="PRODUCT_TYPE"
+            type="string"
+            length="16"
+        />
+
+        <version
+            name="version"
+            type="int"
+            column="version"
+            access="property"
+            unsaved-value="undefined"
+        />
+
+        <property
+            name="description"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="description"
+            length="512"
+        />
+
+        <property
+            name="code"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="code"
+            length="16"
+            unique="true"
+        />
+
+        <property
+            name="image"
+            type="byte[]"
+            update="true"
+            insert="true"
+            access="property"
+            column="image"
+            length="4096"
+        />
+
+        <property
+            name="price"
+            type="java.math.BigDecimal"
+            update="true"
+            insert="true"
+            access="property"
+            column="price"
+        />
+
+        <property
+            name="updateComment"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="LAST_UPDATED_BY"
+        />
+
+        <property
+            name="created"
+            type="timestamp"
+            update="false"
+            insert="true"
+            access="property"
+            column="created"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Product.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+        <subclass
+            name="test.hibernate.Pet"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="pet"
+        >
+
+        <one-to-one
+            name="animal"
+            class="test.hibernate.Animal"
+            cascade="none"
+            outer-join="auto"
+            constrained="false"
+        />
+
+	    <!--
+            	To add non XDoclet property mappings, create a file named
+                hibernate-properties-Pet.xml
+		containing the additional properties and place it in your merge dir.
+	    -->
+
+        </subclass>
+        <subclass
+            name="test.hibernate.ImportedProduct"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="imported"
+        >
+        <property
+            name="origin"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="origin"
+            not-null="true"
+        />
+
+        <property
+            name="locale"
+            type="java.util.Locale"
+            update="true"
+            insert="true"
+            access="property"
+            column="locale"
+        />
+
+	    <!--
+            	To add non XDoclet property mappings, create a file named
+                hibernate-properties-ImportedProduct.xml
+		containing the additional properties and place it in your merge dir.
+	    -->
+        <subclass
+            name="test.hibernate.Contraband"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="contraband"
+        >
+	    <!--
+            	To add non XDoclet property mappings, create a file named
+                hibernate-properties-Contraband.xml
+		containing the additional properties and place it in your merge dir.
+	    -->
+
+        </subclass>
+
+        </subclass>
+
+    </class>
+
+</hibernate-mapping>

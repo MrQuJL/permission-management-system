@@ -1,0 +1,258 @@
+
+<html>
+<head>
+</head>
+<body bgcolor="#ffffff">
+
+<h2>EjbHome</h2>
+
+<p>Implemented in class <a href="../api/xdoclet/modules/ejb/home/HomeTagsHandler.html">xdoclet.modules.ejb.home.HomeTagsHandler</a>.</p>
+<ul>
+  <li><a href="#block">Block Tags</a>
+  <li><a href="#content">Content Tags</a>
+</ul>
+
+<h3><a name="block">Block Tags:</a></h3>
+
+<h4><a name="ifIsCreateMethod">ifIsCreateMethod</a> (block template)</h4>
+<p>Evaluates the body block if current method is a create method. Create methods should have ejb:create-method defined.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [superclasses]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       Traverse superclasses too. With false value used in remote/local home interface templates. Default is False.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="ifDoesntHavePostCreateMethod">ifDoesntHavePostCreateMethod</a> (block template)</h4>
+<p>Evaluates the body block if current create method's ejbPostCreate method does not exist.</p>
+
+<h4><a name="ifIsHomeMethod">ifIsHomeMethod</a> (block template)</h4>
+<p>Evaluates the body block if current method is a home method. Home methods should have ejb:home-method defined.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [superclasses]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       Traverse superclasses too. With false value used in remote/local home interface templates. Default is False.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="ifNotRemoveMethod">ifNotRemoveMethod</a> (block template)</h4>
+<p>Evaluates the body block if current method is ejbRemove method.</p>
+
+<h4><a name="ifIsFinderMethod">ifIsFinderMethod</a> (block template)</h4>
+<p>Evaluates the body block if current method is a ejbFind method.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [superclasses]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       Traverse superclasses too. With false value used in remote/local home interface templates. Default is False.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="forAllHomeMethods">forAllHomeMethods</a> (block template)</h4>
+<p>Iterates over all home methods of specified type (finder or create method) defined in a class and super classes.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           tagName
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The tag name for the method type to iterate over.<br></br>
+        Valid Values = {ejb:finder,ejb:create-method}
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [superclasses]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       If true then traverse superclasses also, otherwise look up the tag in current concrete class only.<br></br>
+        Valid Values = {true,false}
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [tagKey]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       A tag property that will be used as a unique key. This is used to avoid duplicate code due to similar tags in superclasses.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="ifIsCollectionType">ifIsCollectionType</a> (block template)</h4>
+<p>Whether current finder return collection.</p>
+
+<h4><a name="ifIsEnumerationType">ifIsEnumerationType</a> (block template)</h4>
+<p>Whether current finder return enumeration.</p>
+
+<h4><a name="ifIsInterfaceType">ifIsInterfaceType</a> (block template)</h4>
+<p>Whether current finder return interface.</p>
+
+<h4><a name="forAllBeans">forAllBeans</a> (block template)</h4>
+<p>Evaluates the body block for each EJBean derived from one of the three EJB types: EntityBean, SessionBean or MessageDrivenBean.</p>
+
+<h4><a name="ifIsAConcreteEJBean">ifIsAConcreteEJBean</a> (block template)</h4>
+<p>Evaluates the body block if current bean is a concrete bean meaning the generate parameter of ejb:bean is either not specified or equals to "true", otherwise the bean is just an abstract base class bean not meant to be used as a EJBean but serve as the base for other EJBeans.</p>
+
+<h4><a name="ifLocalEjb">ifLocalEjb</a> (block template)</h4>
+<p></p>
+
+<h4><a name="ifRemoteEjb">ifRemoteEjb</a> (block template)</h4>
+<p></p>
+
+<h4><a name="ifNotLocalEjb">ifNotLocalEjb</a> (block template)</h4>
+<p></p>
+
+<h4><a name="ifNotRemoteEjb">ifNotRemoteEjb</a> (block template)</h4>
+<p></p>
+
+<h3><a name="content">Content templates:</a></h3>
+
+<h4><a name="homeInterface">homeInterface</a> (content template)</h4>
+<p>Returns the full qualified local or remote home interface name for the bean, depending on the value of type parameter.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           type
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       Specifies the type of component home interface.<br></br>
+        Valid Values = {remote,local}
+    </td>
+  </tr>
+</table>
+
+<h4><a name="ejbPostCreateSignature">ejbPostCreateSignature</a> (content template)</h4>
+<p>Returns the appropriate ejbPostCreate method name for the current ejbCreate method.</p>
+
+<h4><a name="compName">compName</a> (content template)</h4>
+<p></p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [prefixWithEjbSlash]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       Specifies whether to prefix it with ejb/ or not. False by default.<br></br>
+        Valid Values = {true,false}
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           type
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       Specifies if we want the jndi name value for local or remote lookup.<br></br>
+        Valid Values = {remote,local}
+    </td>
+  </tr>
+</table>
+
+<h4><a name="jndiName">jndiName</a> (content template)</h4>
+<p></p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           type
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       Specifies if we want the jndi name value for local or remote lookup.<br></br>
+        Valid Values = {remote,local}
+    </td>
+  </tr>
+</table>
+
+<h4><a name="extendsFrom">extendsFrom</a> (content template)</h4>
+<p>Returns the name of the class home interface extends.</p>
+
+<h4><a name="currentPermission">currentPermission</a> (content template)</h4>
+<p>Return permission for current home method.</p>
+
+<h4><a name="currentType">currentType</a> (content template)</h4>
+<p>Return type of current home method.</p>
+
+<h4><a name="finderClass">finderClass</a> (content template)</h4>
+<p>generates name for finder utility class backing current finder</p>
+
+<h4><a name="currentMethod">currentMethod</a> (content template)</h4>
+<p>Return name of current home method.</p>
+
+<h4><a name="parameterListDefinition">parameterListDefinition</a> (content template)</h4>
+<p>Return definition of parameter list for current home method.</p>
+
+<h4><a name="parameterList">parameterList</a> (content template)</h4>
+<p>Return parameter list for current home method.</p>
+
+<h4><a name="currentExceptions">currentExceptions</a> (content template)</h4>
+<p>Return exceptions for current home method.</p>
+
+<h4><a name="ejbRefName">ejbRefName</a> (content template)</h4>
+<p>Returns the name of EJB ref.</p>
+
+<h4><a name="ejbName">ejbName</a> (content template)</h4>
+<p>Returns the name of current EJB bean.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [prefixWithEjbSlash]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       Specifies whether to prefix it with ejb/ or not. False by default.<br></br>
+        Valid Values = {true,false}
+    </td>
+  </tr>
+</table>
+
+<h4><a name="ejbExternalRefName">ejbExternalRefName</a> (content template)</h4>
+<p>Returns the name of EJB ref.</p>
+
+<h4><a name="symbolicClassName">symbolicClassName</a> (content template)</h4>
+<p>Returns the symbolic name of the current class. For an EJBean it's the value of ejb:bean's name parameter.</p>
+
+<h4><a name="shortEjbName">shortEjbName</a> (content template)</h4>
+<p>Returns short version of ejbName(). Example: "foo.bar.MyBean" ->"MyBean", "foo/bar/MyBean" ->"MyBean"</p>
+
+<h4><a name="beanType">beanType</a> (content template)</h4>
+<p>Returns Bean type : "Entity", "Session" or "Message Driven".</p>
+
+<h4><a name="concreteFullClassName">concreteFullClassName</a> (content template)</h4>
+<p>Returns the full-qualified name of the current class's concrete class. This is the class that is generated and is derived from current class.</p>
+
+<h4><a name="id">id</a> (content template)</h4>
+<p>Returns unique id for current ejb.</p>
+
+</body>
+</html>

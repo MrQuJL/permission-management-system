@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jonas-ejb-jar PUBLIC "-//ObjectWeb//DTD JOnAS 2.5//EN" "http://www.objectweb.org/jonas/dtds/jonas-ejb-jar_2_5.dtd">
+
+<jonas-ejb-jar>
+
+  <!-- Session Beans -->
+  <jonas-session>
+
+    <ejb-name>Stateful</ejb-name>
+
+    <jndi-name>StatefulHome</jndi-name>
+
+  </jonas-session>
+
+  <jonas-session>
+
+    <ejb-name>Teller</ejb-name>
+
+    <jndi-name>TellerHome</jndi-name>
+
+    <jonas-resource>
+      <res-ref-name>jdbc/DBPool</res-ref-name>
+      <jndi-name>jdbc_1</jndi-name>
+    </jonas-resource>
+
+    <jonas-ejb-ref>	       
+      <ejb-ref-name>ejb/bank/Account</ejb-ref-name>
+      <jndi-name>Account</jndi-name>
+    </jonas-ejb-ref>
+
+    <jonas-ejb-ref>	       
+      <ejb-ref-name>ejb/Customer</ejb-ref-name>
+      <jndi-name>Customer</jndi-name>
+    </jonas-ejb-ref>
+
+  </jonas-session>
+
+  <!-- Entity Beans -->
+  <jonas-entity>      
+
+    <ejb-name>Customer</ejb-name>
+    <jndi-name>CustomerHome</jndi-name>
+
+    <jonas-ejb-ref>		
+      <ejb-ref-name>ejb/bank/Account</ejb-ref-name>
+      <jndi-name>Account</jndi-name>
+    </jonas-ejb-ref>
+
+    <shared>true</shared>
+
+    <jdbc-mapping>
+      <jndi-name>jdbc_1</jndi-name>
+        <jdbc-table-name>
+        customer</jdbc-table-name>
+        <cmp-field-jdbc-mapping>
+         <field-name>id</field-name>
+         <jdbc-field-name>id</jdbc-field-name>
+        </cmp-field-jdbc-mapping>
+        <cmp-field-jdbc-mapping>
+         <field-name>name</field-name>
+         <jdbc-field-name>name</jdbc-field-name>
+        </cmp-field-jdbc-mapping>
+        <cmp-field-jdbc-mapping>
+         <field-name>firstName</field-name>
+         <jdbc-field-name>first_name</jdbc-field-name>
+        </cmp-field-jdbc-mapping>
+        <cmp-field-jdbc-mapping>
+         <field-name>phone</field-name>
+         <jdbc-field-name>phone</jdbc-field-name>
+        </cmp-field-jdbc-mapping>
+        <cmp-field-jdbc-mapping>
+         <field-name>fax</field-name>
+         <jdbc-field-name>fax</jdbc-field-name>
+        </cmp-field-jdbc-mapping>
+        <finder-method-jdbc-mapping>		  
+        <jonas-method>		    
+         <method-name>findAll</method-name>
+        </jonas-method>
+         <jdbc-where-clause><![CDATA[]]></jdbc-where-clause>
+         </finder-method-jdbc-mapping>
+    </jdbc-mapping>
+
+  </jonas-entity>
+
+  <jonas-entity>      
+
+    <ejb-name>Account</ejb-name>
+    <jndi-name>AccountHome</jndi-name>
+
+    <jdbc-mapping>
+      <jndi-name>jdbc_1</jndi-name>
+    </jdbc-mapping>
+
+  </jonas-entity>
+
+  <jonas-entity>      
+
+    <ejb-name>Address</ejb-name>
+    <jndi-name>AddressHome</jndi-name>
+
+    <jdbc-mapping>
+      <jndi-name>jdbc_1</jndi-name>
+    </jdbc-mapping>
+
+  </jonas-entity>
+
+  <jonas-entity>      
+
+    <ejb-name>CustomerBMP</ejb-name>
+    <jndi-name>CustomerBMPHome</jndi-name>
+
+    <jonas-ejb-ref>		
+      <ejb-ref-name>ejb/CustomerBMP</ejb-ref-name>
+      <jndi-name>CustomerBMP</jndi-name>
+    </jonas-ejb-ref>
+
+    <jonas-ejb-ref>		
+      <ejb-ref-name>ejb/bank/Account</ejb-ref-name>
+      <jndi-name>Account</jndi-name>
+    </jonas-ejb-ref>
+
+    <shared>true</shared>
+
+  </jonas-entity>
+
+  <!-- Message Driven Beans -->
+  <jonas-message-driven>
+
+    <ejb-name>QueueBean</ejb-name>
+    <jonas-message-driven-destination>
+      <jndi-name>queue/testQueue</jndi-name>
+    </jonas-message-driven-destination>
+
+  </jonas-message-driven>
+
+</jonas-ejb-jar>

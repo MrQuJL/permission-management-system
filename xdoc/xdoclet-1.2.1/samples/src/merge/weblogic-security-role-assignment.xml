@@ -1,0 +1,18 @@
+<security-role-assignment>
+    <role-name>Administrator</role-name>
+    <principal-name>Fred</principal-name>
+    <principal-name>system</principal-name>
+</security-role-assignment>
+<security-role-assignment>
+    <role-name>IRS</role-name>
+    <principal-name>Tanya</principal-name>
+</security-role-assignment>
+<security-role-assignment>
+    <role-name>Customer</role-name>
+    <principal-name>Tanya</principal-name>
+    <principal-name>system</principal-name>
+</security-role-assignment>
+<security-role-assignment>
+    <role-name>Teller</role-name>
+    <principal-name>Tanya</principal-name>
+</security-role-assignment>

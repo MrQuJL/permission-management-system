@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jbosscmp-jdbc PUBLIC "-//JBoss//DTD JBOSSCMP-JDBC 3.2//EN" "http://www.jboss.org/j2ee/dtd/jbosscmp-jdbc_3_2.dtd">
+
+<jbosscmp-jdbc>
+   <defaults>
+     <preferred-relation-mapping>relation-table</preferred-relation-mapping>
+   </defaults>
+
+   <enterprise-beans>
+
+     <!--
+       To add beans that you have deployment descriptor info for, add
+       a file to your XDoclet merge directory called jbosscmp-jdbc-beans.xml
+       that contains the <entity></entity> markup for those beans.
+     -->
+
+      <entity>
+         <ejb-name>LanguageCode</ejb-name>
+
+         <table-name>language_code</table-name>
+
+         <cmp-field>
+            <field-name>languageCodeId</field-name>
+            <column-name>language_code_id</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>name</field-name>
+            <column-name>name</column-name>
+
+        </cmp-field>
+
+<!-- jboss 3.2 features -->
+<!-- optimistic locking does not express the exclusions needed -->
+      </entity>
+
+      <entity>
+         <ejb-name>Account</ejb-name>
+         <create-table>${jboss.create.table}</create-table>
+         <remove-table>${jboss.remove.table}</remove-table>
+
+         <read-only>${jboss.read.only}</read-only>
+         <table-name>acct</table-name>
+
+         <cmp-field>
+            <field-name>id</field-name>
+            <column-name>account_id</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>owner</field-name>
+            <column-name>last_modif</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>balance</field-name>
+
+            <jdbc-type>DOUBLE</jdbc-type>
+            <sql-type>DOUBLE</sql-type>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>lastModificationDate</field-name>
+            <column-name>last_modif</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>accountId</field-name>
+            <column-name>accountid</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>creationDate</field-name>
+            <column-name>creationDate</column-name>
+
+        </cmp-field>
+
+	<unknown-pk>
+		<unknown-pk-class>java.lang.Integer</unknown-pk-class>
+		<column-name>generated_id</column-name>
+		<jdbc-type>INTEGER</jdbc-type>
+		<sql-type>INTEGER</sql-type>
+		<auto-increment/>
+	</unknown-pk>
+	<entity-command name="pk-sql">
+		<attribute name="pk-sql">SELECT SEQ_ACCOUNT.nextval FROM DUAL</attribute>
+	</entity-command>
+<!-- jboss 3.2 features -->
+<!-- optimistic locking does not express the exclusions needed -->
+        <optimistic-locking>
+            <key-generator-factory>java:/keygenererator</key-generator-factory>
+            <field-type>java.lang.Integer</field-type>
+            <field-name>Id</field-name>
+            <column-name>ID</column-name>
+            <jdbc-type>INTEGER</jdbc-type>
+            <sql-type>DECIMAL(18)</sql-type>
+        </optimistic-locking>
+        <audit>
+            <created-by>
+                <field-name>createdBy</field-name>
+                <column-name>CREATED_BY</column-name>
+                <jdbc-type>VARCHAR</jdbc-type>
+                <sql-type>VARCHAR(128)</sql-type>
+            </created-by>
+            <created-time>
+                <field-name>createdTime</field-name>
+                <column-name>CREATED_TIMESTAMP</column-name>
+                <jdbc-type>TIMESTAMP</jdbc-type>
+                <sql-type>TIMESTAMP</sql-type>
+            </created-time>
+            <updated-by>
+                <field-name>updatedBy</field-name>
+                <column-name>UPDATED_BY</column-name>
+                <jdbc-type>VARCHAR</jdbc-type>
+                <sql-type>VARCHAR(128)</sql-type>
+            </updated-by>
+            <updated-time>
+                <field-name>updatedTime</field-name>
+                <column-name>UPDATED_TIME</column-name>
+                <jdbc-type>TIMESTAMP</jdbc-type>
+                <sql-type>TIMESTAMP</sql-type>
+            </updated-time>
+        </audit>
+      </entity>
+
+      <entity>
+         <ejb-name>City</ejb-name>
+
+         <table-name>city</table-name>
+
+         <cmp-field>
+            <field-name>cityId</field-name>
+            <column-name>city_id</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>countryIdFk</field-name>
+            <column-name>country_id_fk</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>name</field-name>
+            <column-name>name</column-name>
+
+        </cmp-field>
+
+<!-- jboss 3.2 features -->
+<!-- optimistic locking does not express the exclusions needed -->
+      </entity>
+
+      <entity>
+         <ejb-name>AllTypesEntity</ejb-name>
+
+         <table-name>alltypes</table-name>
+
+         <cmp-field>
+            <field-name>IVOwnerHdl</field-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>id</field-name>
+            <column-name>types_id</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>ABoolean</field-name>
+            <column-name>boolean</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>AByte</field-name>
+            <column-name>byte</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>AShort</field-name>
+            <column-name>short</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>AChar</field-name>
+            <column-name>char</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>anInt</field-name>
+            <column-name>int</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>ALong</field-name>
+            <column-name>long</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>AFloat</field-name>
+            <column-name>float</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>ADouble</field-name>
+            <column-name>double</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>anObject</field-name>
+            <column-name>object</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>anObjectArray</field-name>
+            <column-name>objectArray</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>ABooleanArray</field-name>
+            <column-name>booleanArray</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>AByteArray</field-name>
+            <column-name>byteArray</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>ACharArray</field-name>
+            <column-name>charArray</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>AShortArray</field-name>
+            <column-name>shortArray</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>anIntArray</field-name>
+            <column-name>intArray</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>ALongArray</field-name>
+            <column-name>longArray</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>AFloatArray</field-name>
+            <column-name>floatArray</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>ADoubleArray</field-name>
+            <column-name>doubleArray</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>creationDate</field-name>
+            <column-name>creationDate</column-name>
+
+        </cmp-field>
+
+<!-- jboss 3.2 features -->
+<!-- optimistic locking does not express the exclusions needed -->
+      </entity>
+
+      <entity>
+         <ejb-name>Country</ejb-name>
+
+         <cmp-field>
+            <field-name>countryId</field-name>
+            <column-name>country_id</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>ownerIdFk</field-name>
+            <column-name>owner_id_fk</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>name</field-name>
+            <column-name>name</column-name>
+
+        </cmp-field>
+
+<!-- jboss 3.2 features -->
+<!-- optimistic locking does not express the exclusions needed -->
+      </entity>
+
+      <entity>
+         <ejb-name>Address</ejb-name>
+
+         <table-name>address</table-name>
+
+         <cmp-field>
+            <field-name>id</field-name>
+            <column-name>id</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>street</field-name>
+            <column-name>street</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>city</field-name>
+            <column-name>city</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>creationDate</field-name>
+            <column-name>creationDate</column-name>
+
+        </cmp-field>
+
+<!-- jboss 3.2 features -->
+<!-- optimistic locking does not express the exclusions needed -->
+      </entity>
+
+      <entity>
+         <ejb-name>Employee</ejb-name>
+
+         <table-name>employee</table-name>
+
+         <cmp-field>
+            <field-name>id</field-name>
+            <column-name>employee_id</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>name</field-name>
+            <column-name>employee_name</column-name>
+
+        </cmp-field>
+
+<!-- jboss 3.2 features -->
+<!-- optimistic locking does not express the exclusions needed -->
+      </entity>
+
+      <entity>
+         <ejb-name>Language</ejb-name>
+
+         <table-name>language</table-name>
+
+         <cmp-field>
+            <field-name>languageId</field-name>
+            <column-name>language_id</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>languageCodeIdFk</field-name>
+            <column-name>language_code_id_fk</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>name</field-name>
+            <column-name>name</column-name>
+
+        </cmp-field>
+
+<!-- jboss 3.2 features -->
+<!-- optimistic locking does not express the exclusions needed -->
+      </entity>
+
+      <entity>
+         <ejb-name>File</ejb-name>
+         <create-table>true</create-table>
+         <remove-table>true</remove-table>
+
+	     <read-ahead>
+	        <strategy>on-load</strategy>
+			<page-size>10</page-size>
+			<eager-load-group>lightweight</eager-load-group>
+         </read-ahead>
+
+         <cmp-field>
+            <field-name>id</field-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>content</field-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>contentType</field-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>creationDate</field-name>
+
+        </cmp-field>
+
+         <load-groups>
+               <load-group>
+                     <description/>
+                  <load-group-name>lightweight</load-group-name>
+                           <field-name>id</field-name>
+                           <field-name>contentType</field-name>
+                           <field-name>creationDate</field-name>
+               </load-group>
+               <load-group>
+                     <description/>
+                  <load-group-name>heavyweight</load-group-name>
+                           <field-name>id</field-name>
+                           <field-name>content</field-name>
+                           <field-name>contentType</field-name>
+                           <field-name>creationDate</field-name>
+               </load-group>
+         </load-groups>
+
+         <eager-load-group>lightweight</eager-load-group>
+
+         <lazy-load-groups>
+               <load-group-name>heavyweight</load-group-name>
+         </lazy-load-groups>
+
+         <query>
+            <query-method>
+               <method-name>findRangeOrderById</method-name>
+               <method-params>
+                  <method-param>java.lang.Integer</method-param>
+                  <method-param>java.lang.Integer</method-param>
+               </method-params>
+            </query-method>
+			<jboss-ql><![CDATA[SELECT OBJECT(f) FROM file AS f ORDER BY f.id OFFSET ?1 LIMIT ?2]]></jboss-ql>
+
+	     </query>
+         <query>
+            <query-method>
+               <method-name>findRangeOrderByCreationDate</method-name>
+               <method-params>
+                  <method-param>java.lang.Integer</method-param>
+                  <method-param>java.lang.Integer</method-param>
+               </method-params>
+            </query-method>
+			<jboss-ql><![CDATA[SELECT OBJECT(f) FROM file AS f ORDER BY f.creationDate OFFSET ?1 LIMIT ?2]]></jboss-ql>
+
+	     </query>
+         <query>
+            <query-method>
+               <method-name>findRangeOrderByContentType</method-name>
+               <method-params>
+                  <method-param>java.lang.Integer</method-param>
+                  <method-param>java.lang.Integer</method-param>
+               </method-params>
+            </query-method>
+			<jboss-ql><![CDATA[SELECT OBJECT(f) FROM file AS f ORDER BY f.contentType OFFSET ?1 LIMIT ?2]]></jboss-ql>
+
+	     </query>
+
+<!-- jboss 3.2 features -->
+<!-- optimistic locking does not express the exclusions needed -->
+      </entity>
+
+      <entity>
+         <ejb-name>EmployeeAddress</ejb-name>
+
+         <table-name>address</table-name>
+
+         <cmp-field>
+            <field-name>id</field-name>
+            <column-name>addr_id</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>description</field-name>
+            <column-name>addr_description</column-name>
+
+        </cmp-field>
+
+<!-- jboss 3.2 features -->
+<!-- optimistic locking does not express the exclusions needed -->
+      </entity>
+
+   </enterprise-beans>
+
+  <relationships>
+    <ejb-relation>
+      <ejb-relation-name>city-language</ejb-relation-name>
+      <relation-table-mapping>
+      </relation-table-mapping>
+
+      <ejb-relationship-role>
+          <ejb-relationship-role-name>city-has-language</ejb-relationship-role-name>
+          <key-fields>
+             <key-field>
+               <field-name>cityId</field-name>
+               <column-name>city_id_fk</column-name>
+             </key-field>
+          </key-fields>
+
+      </ejb-relationship-role>
+      <ejb-relationship-role>
+          <ejb-relationship-role-name>language-has-city</ejb-relationship-role-name>
+          <key-fields>
+             <key-field>
+               <field-name>languageId</field-name>
+               <column-name>language_id_fk</column-name>
+             </key-field>
+          </key-fields>
+
+      </ejb-relationship-role>
+    </ejb-relation>
+    <ejb-relation>
+      <ejb-relation-name>country-country</ejb-relation-name>
+
+      <ejb-relationship-role>
+          <ejb-relationship-role-name>country-has-country2</ejb-relationship-role-name>
+		  <key-fields/>
+
+      </ejb-relationship-role>
+      <ejb-relationship-role>
+          <ejb-relationship-role-name>country-has-country1</ejb-relationship-role-name>
+          <key-fields>
+             <key-field>
+               <field-name>countryId</field-name>
+               <column-name>owner_id_fk</column-name>
+             </key-field>
+          </key-fields>
+
+      </ejb-relationship-role>
+    </ejb-relation>
+    <ejb-relation>
+      <ejb-relation-name>Employee-HomeAddress</ejb-relation-name>
+
+      <ejb-relationship-role>
+          <ejb-relationship-role-name></ejb-relationship-role-name>
+		  <key-fields/>
+
+      </ejb-relationship-role>
+      <ejb-relationship-role>
+          <ejb-relationship-role-name>address-belongs-to-employee</ejb-relationship-role-name>
+		  <key-fields/>
+
+      </ejb-relationship-role>
+    </ejb-relation>
+    <ejb-relation>
+      <ejb-relation-name>city-country</ejb-relation-name>
+
+      <ejb-relationship-role>
+          <ejb-relationship-role-name>country-has-city</ejb-relationship-role-name>
+          <key-fields>
+             <key-field>
+               <field-name>countryId</field-name>
+               <column-name>country_id_fk</column-name>
+             </key-field>
+          </key-fields>
+
+      </ejb-relationship-role>
+      <ejb-relationship-role>
+          <ejb-relationship-role-name>city-has-country</ejb-relationship-role-name>
+		  <key-fields/>
+
+      </ejb-relationship-role>
+    </ejb-relation>
+    <ejb-relation>
+      <ejb-relation-name>language-language_code</ejb-relation-name>
+
+      <ejb-relationship-role>
+          <ejb-relationship-role-name>language_code-has-language</ejb-relationship-role-name>
+          <key-fields>
+             <key-field>
+               <field-name>languageCodeId</field-name>
+               <column-name>language_code_id_fk</column-name>
+             </key-field>
+          </key-fields>
+
+      </ejb-relationship-role>
+      <ejb-relationship-role>
+          <ejb-relationship-role-name>language-has-language_code</ejb-relationship-role-name>
+		  <key-fields/>
+
+      </ejb-relationship-role>
+    </ejb-relation>
+    <ejb-relation>
+      <ejb-relation-name>Employee-WorkAddress</ejb-relation-name>
+
+      <ejb-relationship-role>
+          <ejb-relationship-role-name></ejb-relationship-role-name>
+		  <key-fields/>
+
+      </ejb-relationship-role>
+      <ejb-relationship-role>
+          <ejb-relationship-role-name>address-belongs-to-employee</ejb-relationship-role-name>
+		  <key-fields/>
+
+      </ejb-relationship-role>
+    </ejb-relation>
+     <!-- 
+       To add jboss relationships for beans not managed by XDoclet, add
+       a file to your XDoclet merge directory called jbosscmp-jdbc-relationships.xml that contains
+       the <ejb-relation></ejb-relation> markups for those beans.
+     --> 
+  </relationships>
+
+</jbosscmp-jdbc>

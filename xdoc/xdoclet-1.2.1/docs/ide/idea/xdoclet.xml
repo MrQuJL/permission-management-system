@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templateSet group="user">
+  <template name="ejb.bmp" value="@ejb.bean   type=&quot;BMP&quot;&#10;*             name=&quot;$CLASS_NAME$&quot;&#10;*             jndi-name=&quot;ejb/$CLASS_NAME$&quot;" description="BMP Entity Bean" toReformat="true" toShortenFQNames="true">
+    <variable name="CLASS_NAME" expression="className()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_COMMENT" value="true" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="XML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="ejb.cmp" value="@ejb.bean   type=&quot;CMP&quot;&#10;*             name=&quot;$CLASS_NAME$&quot;&#10;*             jndi-name=&quot;ejb/$CLASS_NAME$&quot;" description="CMP Entity Bean" toReformat="true" toShortenFQNames="true">
+    <variable name="CLASS_NAME" expression="className()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_COMMENT" value="true" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="XML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="ejb.create" value="/**&#10; * @ejb.create-method&#10; */&#10;public $CLASS_NAME$ ejbCreate($END$) {&#10;&#9;return null;&#10;}" description="ejbCreate method" toReformat="true" toShortenFQNames="true">
+    <variable name="CLASS_NAME" expression="className()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_CODE" value="true" />
+      <option name="JAVA_COMMENT" value="false" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="XML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="ejb.ejb-ref" value="@ejb.ejb-ref ejb-name=&quot;$END$&quot;" description="ejb-ref" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_COMMENT" value="true" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="XML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="ejb.env" value="@ejb.env-entry name=&quot;$NAME$&quot; value=&quot;$VALUE$&quot; type=&quot;$TYPE$&quot;" description="env-entry" toReformat="true" toShortenFQNames="true">
+    <variable name="NAME" expression="&quot;blabla&quot;" defaultValue="blabla" alwaysStopAt="true" />
+    <variable name="VALUE" expression="&quot;12345&quot;" defaultValue="12345" alwaysStopAt="true" />
+    <variable name="TYPE" expression="&quot;java.lang.Integer&quot;" defaultValue="java.lang.Integer" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_COMMENT" value="true" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="XML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="ejb.finder" value="@ejb.finder signature=&quot;$RET_TYPE$ findBy($PARAM_TYPE$ $VAR$)&quot;" description="ejb.finder for CMP Entity Bean" toReformat="true" toShortenFQNames="true">
+    <variable name="RET_TYPE" expression="&quot;Collection&quot;" defaultValue="Collection" alwaysStopAt="true" />
+    <variable name="PARAM_TYPE" expression="&quot;int&quot;" defaultValue="int" alwaysStopAt="true" />
+    <variable name="VAR" expression="variableOfType(&quot;&quot;)" defaultValue="id" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_COMMENT" value="true" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="XML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="ejb.intf" value="@ejb.interface-method" description="interface method" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_COMMENT" value="true" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="XML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="ejb.lintf" value="@ejb.interface-method view-type=&quot;local&quot;" description="local interface method" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_COMMENT" value="true" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="XML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="ejb.mdb" value="@ejb.bean   acknowledge-mode=&quot;Auto-acknowledge&quot;&#10;*             destination-type=&quot;javax.jms.Queue&quot;&#10;*             subscription-durability=&quot;NonDurable&quot;" description="Message Driven Bean" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_COMMENT" value="true" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="XML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="ejb.perm" value="@ejb.permission role-name=&quot;$END$&quot;" description="permission" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_COMMENT" value="true" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="XML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="ejb.pf" value="/**&#10; * @ejb.persistent-field&#10; * @ejb.interface-method&#10; */&#10;public abstract $TYPE$ get$EXPR$();&#10;&#10;/**&#10; * @ejb.interface-method&#10; */&#10;public abstract void set$EXPR$($TYPE$ $PARAM_NAME$);&#10;&#10;$END$" description="persistent field with getter and setter in interface" toReformat="true" toShortenFQNames="true">
+    <variable name="TYPE" expression="&quot;&quot;" defaultValue="" alwaysStopAt="true" />
+    <variable name="EXPR" expression="&quot;&quot;" defaultValue="" alwaysStopAt="true" />
+    <variable name="PARAM_NAME" expression="decapitalize(EXPR)" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="JAVA_CODE" value="true" />
+      <option name="JAVA_COMMENT" value="false" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="XML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="ejb.pfg" value="/**&#10; * @ejb.persistent-field&#10; * @ejb.interface-method&#10; */&#10;public abstract $TYPE$ get$EXPR$();&#10;&#10;public abstract void set$EXPR$($TYPE$ $PARAM_NAME$);&#10;&#10;$END$" description="persistent field with getter in interface" toReformat="true" toShortenFQNames="true">
+    <variable name="TYPE" expression="&quot;&quot;" defaultValue="" alwaysStopAt="true" />
+    <variable name="EXPR" expression="&quot;&quot;" defaultValue="" alwaysStopAt="true" />
+    <variable name="PARAM_NAME" expression="decapitalize(EXPR)" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="JAVA_CODE" value="true" />
+      <option name="JAVA_COMMENT" value="false" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="XML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="ejb.pk" value="/**&#10; * @ejb.pk-field&#10; * @ejb.persistent-field&#10; * @ejb.interface-method&#10; */&#10;public abstract $TYPE$ get$EXPR$();&#10;&#10;public abstract void set$EXPR$($TYPE$ $PARAM_NAME$);&#10;&#10;$END$" description="pk field with getter in interface" toReformat="true" toShortenFQNames="true">
+    <variable name="TYPE" expression="&quot;&quot;" defaultValue="" alwaysStopAt="true" />
+    <variable name="EXPR" expression="&quot;&quot;" defaultValue="" alwaysStopAt="true" />
+    <variable name="PARAM_NAME" expression="decapitalize(EXPR)" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="JAVA_CODE" value="true" />
+      <option name="JAVA_COMMENT" value="false" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="XML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="ejb.rintf" value="@ejb.interface-method view-type=&quot;remote&quot;" description="remote interface method" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_COMMENT" value="true" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="XML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="ejb.sec" value="@ejb.security-role-ref role-name=&quot;$role_name$&quot; role-link=&quot;$role_link$&quot;" description="sec-role-ref" toReformat="true" toShortenFQNames="true">
+    <variable name="role_name" expression="&quot;admin&quot;" defaultValue="&quot;admin&quot;" alwaysStopAt="true" />
+    <variable name="role_link" expression="&quot;Administrator&quot;" defaultValue="&quot;Administrator&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_COMMENT" value="true" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="XML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="ejb.sfsb" value="@ejb.bean   type=&quot;Stateful&quot;&#10;*             name=&quot;$CLASS_NAME$&quot;&#10;*             jndi-name=&quot;ejb/$CLASS_NAME$&quot;" description="Stateful Session Bean" toReformat="true" toShortenFQNames="true">
+    <variable name="CLASS_NAME" expression="className()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_COMMENT" value="true" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="XML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="ejb.slsb" value="@ejb.bean   type=&quot;Stateless&quot;&#10;*             name=&quot;$CLASS_NAME$&quot;&#10;*             jndi-name=&quot;ejb/$CLASS_NAME$&quot;" description="Stateless Session Bean" toReformat="true" toShortenFQNames="true">
+    <variable name="CLASS_NAME" expression="className()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_COMMENT" value="true" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="XML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="ejb.trans" value="@ejb.transaction type=&quot;Supports&quot;" description="transaction" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_COMMENT" value="true" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="XML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+</templateSet>
+

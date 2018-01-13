@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project name="XDoclet Examples" default="jar" basedir=".">
+    <property name="xdoclet.root.dir" value="${basedir}/.."/>
+    <property file="${xdoclet.root.dir}/build.properties"/>
+
+    <!-- Include the build-dist properties. Since properties are immutable,
+    this will not override available properties. You do not have to include
+    this in your own build file. -->
+    <property file="build-dist.properties"/>
+
+    <!-- See CustomerBean. This is to demonstrate property substitution. -->
+    <property name="ejb.prefix" value="blah"/>
+
+    <!-- =================================================================== -->
+    <!-- Define the class path                                               -->
+    <!-- =================================================================== -->
+    <path id="samples.class.path">
+        <fileset dir="${lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${samples.lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${dist.lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <!-- =================================================================== -->
+    <!-- Initialise                                                          -->
+    <!-- =================================================================== -->
+    <target name="init">
+        <tstamp>
+            <format property="TODAY" pattern="d-MM-yy"/>
+        </tstamp>
+        <taskdef
+            name="xdoclet"
+            classname="xdoclet.DocletTask"
+            classpathref="samples.class.path"
+            />
+        <taskdef
+            name="ejbdoclet"
+            classname="xdoclet.modules.ejb.EjbDocletTask"
+            classpathref="samples.class.path"
+            />
+        <taskdef
+            name="webdoclet"
+            classname="xdoclet.modules.web.WebDocletTask"
+            classpathref="samples.class.path"
+            />
+        <taskdef
+            name="jmxdoclet"
+            classname="xdoclet.modules.jmx.JMXDocletTask"
+            classpathref="samples.class.path"
+            />
+        <taskdef
+            name="jdodoclet"
+            classname="xdoclet.modules.jdo.JdoDocletTask"
+            classpathref="samples.class.path"
+            />
+         <taskdef
+            name="hibernatedoclet"
+            classname="xdoclet.modules.hibernate.HibernateDocletTask"
+            classpathref="samples.class.path"
+            />
+    </target>
+
+	    <!-- =================================================================== -->
+    <!-- Beautify the code                                                   -->
+    <!-- =================================================================== -->
+    <target name="beautify" depends="init" unless="module.jar.uptodate">
+
+        <taskdef name="pretty2" classname="org.acm.seguin.ant.Pretty"
+                 classpath="${lib.dir}/prettyprinter.jar"/>
+
+        <pretty2 settingsDir="${config.dir}" cvs="true" compileDir="${module.classes.dir}">
+            <fileset dir="${samples.java.dir}">
+                <include name="**/*.java" />
+            </fileset>
+        </pretty2>
+
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Prepares the directory structure                                    -->
+    <!-- =================================================================== -->
+    <target name="prepare" depends="init">
+        <mkdir dir="${samples.classes.dir}"/>
+        <mkdir dir="${samples.gen-src.dir}"/>
+        <mkdir dir="${samples.meta-inf.dir}"/>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Invoke XDoclet's ejbdoclet                                          -->
+    <!-- =================================================================== -->
+    <target name="ejbdoclet" depends="prepare">
+
+        <echo>+---------------------------------------------------+</echo>
+        <echo>|                                                   |</echo>
+        <echo>| R U N N I N G   E J B D O C L E T                 |</echo>
+        <echo>|                                                   |</echo>
+        <echo>+---------------------------------------------------+</echo>
+
+        <ejbdoclet
+            destdir="${samples.gen-src.dir}"
+            mergedir="parent-fake-to-debug"
+            excludedtags="@version,@author,@todo"
+            addedtags="@xdoclet-generated at ${TODAY},@copyright The XDoclet Team,@author XDoclet,@version ${version}"
+            ejbspec="2.0"
+            force="${samples.xdoclet.force}"
+            verbose="false"
+            >
+
+            <fileset dir="${samples.java.dir}">
+                <include name="test/ejb/*Bean.java"/>
+                <include name="test/ejb/cmr/*Bean.java"/>
+                <include name="test/ejb/jdo/*.java"/>
+                <exclude name="test/ejb/Base*.java"/>
+                <exclude name="test/ejb/SecurityOfficerBean.java"/>
+            </fileset>
+
+            <packageSubstitution packages="ejb" substituteWith="interfaces"/>
+
+            <remoteinterface/>
+            <localinterface/>
+            <homeinterface/>
+            <localhomeinterface/>
+
+            <dataobject/>
+            <valueobject/>
+
+            <entitypk/>
+
+            <entitycmp/>
+            <entitybmp/>
+
+            <session/>
+
+            <dao>
+                <packageSubstitution packages="ejb" substituteWith="dao"/>
+            </dao>
+
+            <utilobject cacheHomes="true" includeGUID="true"/>
+
+            <deploymentdescriptor
+                destdir="${samples.meta-inf.dir}"
+                validatexml="true"
+                mergedir="fake-to-debug"
+                description="bæbæ"
+                >
+                <configParam name="clientjar" value="blah.jar"/>
+            </deploymentdescriptor>
+
+
+            <jboss
+                version="3.2"
+                unauthenticatedPrincipal="nobody"
+                xmlencoding="UTF-8"
+                destdir="${samples.meta-inf.dir}"
+                validatexml="true"
+                preferredrelationmapping="relation-table"
+                />
+
+            <weblogic
+                version="6.1"
+                xmlencoding="UTF-8"
+                destdir="${samples.meta-inf.dir}"
+                validatexml="true"
+                datasource="java:/samplesDataSource"
+                mergedir="${samples.merge.dir}"
+                persistence="weblogic"
+                />
+
+            <jrun
+                version="4.0"
+                xmlencoding="UTF-8"
+                destdir="${samples.meta-inf.dir}"
+                validatexml="true"
+                />
+
+            <webSphere destdir="${samples.meta-inf.dir}"/>
+
+            <jonas
+                version="2.5"
+                xmlencoding="UTF-8"
+                destdir="${samples.meta-inf.dir}"
+                validatexml="false"
+                mergedir="${samples.merge.dir}"
+                />
+
+            <orion destdir="${samples.meta-inf.dir}"/>
+
+            <apachesoap destdir="${samples.meta-inf.dir}"/>
+
+            <strutsform/>
+
+            <castormapping destdir="${samples.meta-inf.dir}" validatexml="false"/>
+
+        </ejbdoclet>
+
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Invoke XDoclet's webdoclet                                          -->
+    <!-- =================================================================== -->
+    <target name="webdoclet" depends="prepare">
+
+        <echo>+---------------------------------------------------+</echo>
+        <echo>|                                                   |</echo>
+        <echo>| R U N N I N G   W E B D O C L E T                 |</echo>
+        <echo>|                                                   |</echo>
+        <echo>+---------------------------------------------------+</echo>
+
+        <webdoclet
+            destdir="${samples.gen-src.dir}"
+            mergedir="parent-fake-to-debug"
+            excludedtags="@version,@author,@todo"
+            addedtags="@xdoclet-generated at ${TODAY},@copyright The XDoclet Team,@author XDoclet,@version ${version}"
+            force="${samples.xdoclet.force}"
+            verbose="false"
+            >
+
+            <fileset dir="${samples.java.dir}">
+                <include name="**/*Servlet.java"/>
+                <include name="**/*Filter.java"/>
+                <include name="**/*Tag.java"/>
+                <include name="**/*Action.java"/>
+            </fileset>
+
+            <deploymentdescriptor
+                servletspec="2.3"
+                destdir="${samples.web-inf.dir}"
+                >
+
+                <taglib
+                    uri="http://java.sun.com/jstl/ea/core"
+                    location="/WEB-INF/c.tld"
+                    />
+
+            </deploymentdescriptor>
+
+            <strutsconfigxml
+                destdir="${samples.web-inf.dir}"
+                />
+
+            <jsptaglib
+                jspversion="1.2"
+                destdir="${samples.web-inf.dir}"
+                shortname="j2ee"
+                validateXml="false"
+                />
+
+            <jbosswebxml destdir="${samples.web-inf.dir}"/>
+
+            <jrunwebxml destdir="${samples.web-inf.dir}" mergedir="${samples.merge.dir}"/>
+
+            <weblogicwebxml
+                destdir="${samples.web-inf.dir}"
+                contextRoot="/samples"
+                validateXml="true"
+                />
+
+            <webWorkConfigProperties/>
+            <webWorkActionDocs javadocdir="api" mergedir="${samples.merge.dir}"/>
+
+        </webdoclet>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Invoke XDoclet's jmxdoclet                                          -->
+    <!-- =================================================================== -->
+    <target name="jmxdoclet" depends="prepare">
+
+        <echo>+---------------------------------------------------+</echo>
+        <echo>|                                                   |</echo>
+        <echo>| R U N N I N G   J M X D O C L E T                 |</echo>
+        <echo>|                                                   |</echo>
+        <echo>+---------------------------------------------------+</echo>
+
+        <jmxdoclet
+            destdir="${samples.gen-src.dir}"
+            mergedir="${samples.merge.dir}"
+            excludedtags="@version,@author,@todo"
+            addedtags="@xdoclet-generated at ${TODAY},@copyright The XDoclet Team,@author XDoclet,@version ${version}"
+            force="${samples.xdoclet.force}"
+            verbose="false"
+            >
+
+            <fileset dir="${samples.java.dir}">
+                <include name="test/jmx/*.java"/>
+            </fileset>
+
+            <mbeaninterface/>
+
+            <!--
+                        <mx4jDescription />
+            -->
+
+            <jbossxmbean/>
+
+            <jbossXmlServiceTemplate servicefile="jboss"/>
+            <jbossXmlServiceTemplate servicefile="jboss-simple"/>
+            <jbossXmlDoc/>
+
+        </jmxdoclet>
+
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Invoke XDoclet's jdodoclet                                          -->
+    <!-- =================================================================== -->
+    <target name="jdodoclet" depends="prepare">
+
+        <echo>+---------------------------------------------------+</echo>
+        <echo>|                                                   |</echo>
+        <echo>| R U N N I N G   J D O D O C L E T                 |</echo>
+        <echo>|                                                   |</echo>
+        <echo>+---------------------------------------------------+</echo>
+
+        <jdodoclet
+            destdir="${samples.gen-src.dir}"
+            mergedir="${samples.src.dir}"
+            excludedtags="@version,@author,@todo"
+            addedtags="@xdoclet-generated at ${TODAY},@copyright The XDoclet Team,@author XDoclet,@version ${version}"
+            force="${samples.xdoclet.force}"
+            verbose="false"
+            >
+
+            <fileset dir="${samples.java.dir}">
+                <include name="test/jdo/*.java"/>
+            </fileset>
+
+            <jdometadata project="metadata" generation="project"/>
+            <triactive/>
+
+        </jdodoclet>
+
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Process javabeans                                                   -->
+    <!-- =================================================================== -->
+    <target name="javabeans" depends="prepare">
+
+        <xdoclet
+            destdir="${samples.gen-src.dir}"
+            mergedir="parent-fake-to-debug"
+            excludedtags="@version,@author,@todo"
+            addedtags="@xdoclet-generated at ${TODAY},@copyright The XDoclet Team,@author XDoclet,@version ${version}"
+            force="${samples.xdoclet.force}"
+            verbose="false"
+            >
+            <fileset dir="${samples.java.dir}">
+                <include name="test/javabean/SimpleBean.java"/>
+            </fileset>
+
+            <beaninfo/>
+        </xdoclet>
+
+        <xdoclet
+            destdir="${samples.gen-src.dir}"
+            mergedir="parent-fake-to-debug"
+            excludedtags="@version,@author,@todo"
+            addedtags="@xdoclet-generated at ${TODAY},@copyright The XDoclet Team,@author XDoclet,@version ${version}"
+            force="${samples.xdoclet.force}"
+            verbose="false"
+            >
+            <fileset dir="${samples.java.dir}">
+                <include name="test/javabean/SimpleI18NBean.java"/>
+            </fileset>
+
+            <beaninfo i18n="true"/>
+        </xdoclet>
+    </target>
+
+
+    <!-- =================================================================== -->
+    <!-- Invoke XDoclet's hibernate                                          -->
+    <!-- =================================================================== -->
+    <target name="hibernate" depends="prepare" description="Generate mapping documents (run jar first)">
+
+        <echo>+---------------------------------------------------+</echo>
+        <echo>|                                                   |</echo>
+        <echo>| R U N N I N G   H I B E R N A T E D O C L E T     |</echo>
+        <echo>|                                                   |</echo>
+        <echo>+---------------------------------------------------+</echo>
+
+        <hibernatedoclet
+            destdir="${samples.gen-src.dir}"
+            mergedir="${samples.src.dir}"
+            excludedtags="@version,@author,@todo,@see"
+            addedtags="@xdoclet-generated at ${TODAY},@copyright The XDoclet Team,@author XDoclet,@version ${version}"
+            force="${samples.xdoclet.force}"
+            verbose="false">
+
+            <fileset dir="${samples.java.dir}">
+                <include name="test/hibernate/*.java"/>
+            </fileset>
+
+            <hibernate version="2.0"/>
+
+            <jbossservice
+                destdir="${samples.meta-inf.dir}"
+                jndiname="java:/hibernate/Samples"
+                servicename="HibernateSamples"
+                dialect="net.sf.hibernate.dialect.HSQLDialect"
+                datasource="java:/DefaultDS"
+                username="foo bar"
+                password="blurge"/>
+
+        </hibernatedoclet>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Compiles all the classes                                            -->
+    <!-- =================================================================== -->
+
+    <target name="compile" depends="ejbdoclet,webdoclet,jmxdoclet,jdodoclet,javabeans,hibernate">
+
+        <echo>+---------------------------------------------------+</echo>
+        <echo>|                                                   |</echo>
+        <echo>| C O M P I L I N G   S O U R C E S                 |</echo>
+        <echo>|                                                   |</echo>
+        <echo>+---------------------------------------------------+</echo>
+
+        <javac
+            destdir="${samples.classes.dir}"
+            classpathref="samples.class.path"
+            debug="on"
+            deprecation="on"
+            optimize="off"
+            >
+
+            <src path="${samples.java.dir}"/>
+            <src path="${samples.gen-src.dir}"/>
+
+        </javac>
+
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Main                                                                -->
+    <!-- =================================================================== -->
+    <target name="jar" depends="compile">
+        <echo>You can find the generated sources in the /samples/target/gen-src</echo>
+        <echo>directory and the compiled classes in the /samples/target/classes</echo>
+        <echo>directory. Enjoy!</echo>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Clean                                                               -->
+    <!-- =================================================================== -->
+    <target name="clean">
+        <delete dir="${samples.dist.dir}"/>
+    </target>
+
+</project>

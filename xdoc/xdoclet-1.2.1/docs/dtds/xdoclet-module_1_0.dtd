@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Typical usage:
+
+    <?xml version="1.0"?>
+
+    <!DOCTYPE module PUBLIC "-//XDoclet Team//DTD XDoclet Module 1.0//EN" "http://xdoclet.sourceforge.net/dtds/xdoclet-module_1_0.dtd">
+
+    <module>
+    ...
+    </module>
+-->
+
+<!--
+Root element.
+-->
+<!ELEMENT module (module-dependency)*>
+
+<!--- Indicates the module has a dependency on another module (specified by the module-name attribute). -->
+<!ELEMENT module-dependency EMPTY>
+<!ATTLIST module-dependency
+    module-name CDATA #IMPLIED
+>

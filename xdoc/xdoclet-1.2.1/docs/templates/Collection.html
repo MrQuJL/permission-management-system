@@ -1,0 +1,226 @@
+
+<html>
+<head>
+</head>
+<body bgcolor="#ffffff">
+
+<h2>Collection</h2>
+
+<p>Implemented in class <a href="../api/xdoclet/modules/util/CollectionTagsHandler.html">xdoclet.modules.util.CollectionTagsHandler</a>.</p>
+<ul>
+  <li><a href="#block">Block Tags</a>
+  <li><a href="#content">Content Tags</a>
+</ul>
+
+<h3><a name="block">Block Tags:</a></h3>
+
+<h4><a name="ifContains">ifContains</a> (block template)</h4>
+<p>Generates the contained template code if the specified collection contains the key or value passed as attributes. If the collection is a set, only the 'value' attribute should be specified. If the collection is a map, the 'key' attribute should be specifed and if the 'value' attribute is also specified, an additional check for equality will be made.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           name
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The collection to operate on.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [key]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The key to check, if the collection is a map.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [value]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The valu to check, if the collection is a set. If the collection is a map, the value to check for equality.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="ifDoesntContain">ifDoesntContain</a> (block template)</h4>
+<p>Generates the contained template code if the specified collection doesn't contain the key or value passed as attributes. If the collection is a set, only the 'value' attribute should be specified. If the collection is a map, the 'key' attribute should be specifed and if the 'value' attribute is also specified, an additional check for equality will be made.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           name
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The collection to operate on.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [key]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The key to check, if the collection is a map.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [value]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The valu to check, if the collection is a set. If the collection is a map, the value to check for equality.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h3><a name="content">Content templates:</a></h3>
+
+<h4><a name="get">get</a> (content template)</h4>
+<p>Obtains one value contained in the collection. This tag only apply to map valued collections, and an xdoclet exception will be throw if the specified collection is not a map.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           key
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The collection to operate on.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           name
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The key to retrive.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="create">create</a> (content template)</h4>
+<p>Creates a new utility collection that will store template data. If a collection with the specified name already exists, an XDocletException will be thrown.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           name
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The name for the newly created collection<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [type]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The type of the collection to create. Default value is set<br></br>
+        Valid Values = {map,set}
+    </td>
+  </tr>
+</table>
+
+<h4><a name="put">put</a> (content template)</h4>
+<p>Puts a new element into the specified collection. If the collection is a set, only the 'name' and 'value' attributes should be specified. If the collection is a map, the 'key' value should also be specified. If the 'key' is specified and the collection is a set, or if 'key' is not specified and the collection is a map, an XDocletException will be thrown.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           name
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The name of the collection to operate on. If the collection does not exists, an execption will be thrown.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [key]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The key to the new value. Should only be specified if the collection is a map.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           value
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The value to put into the collection.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="remove">remove</a> (content template)</h4>
+<p>Removes an element from the specified collection. One of 'key' or 'value' attributes should be specified, depending if the collection is a map or a set.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           name
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The name of the collection to operate on. If the collection does not exists, an execption will be thrown.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [key]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The key to remove from the map. Invalid if the collection is a set.<br></br>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+           [value]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The value to remove from the set. Invalid if the collection is a map.<br></br>
+    </td>
+  </tr>
+</table>
+
+<h4><a name="destroy">destroy</a> (content template)</h4>
+<p>Destroys the specified collection. The collection must exists or an exception will be thrown.</p>
+<table border="1" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="25%" valign="top">
+      <i>
+          [name]
+      </i>
+    </td>
+    <td width="75%" valign="top">
+       The collection to destroy.<br></br>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
