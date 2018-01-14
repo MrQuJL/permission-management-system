@@ -120,8 +120,8 @@ String path = request.getContextPath();
 						<li id="userInfo" class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="个人信息">您好, 系统超级管理员&nbsp;</a>
 							<ul class="dropdown-menu">
-								<li><a href="userInfo.html" target="mainFrame"><i class="icon-user"></i>&nbsp; 个人信息</a></li>
-								<li><a href="changePwd.html" target="mainFrame"><i class="icon-lock"></i>&nbsp;  修改密码</a></li>
+								<li><a href="${ctx}/sysmgr/userInfo.action" target="mainFrame"><i class="icon-user"></i>&nbsp; 个人信息</a></li>
+								<li><a href="${ctx}/sysmgr/changePwd.action" target="mainFrame"><i class="icon-lock"></i>&nbsp;  修改密码</a></li>
 							</ul>
 						</li>
 						<li><a href="login.html" title="退出登录">退出</a></li>
@@ -150,10 +150,10 @@ String path = request.getContextPath();
 			    <div id="collapse-28" class="accordion-body in collapse" style="height: auto;">
 					<div class="accordion-inner">
 						<ul class="nav nav-list">
-							<li class=""><a data-href=".menu3-29" href="userInfo.html" target="mainFrame"><i class="icon-user"></i>&nbsp;个人信息</a>
+							<li class=""><a data-href=".menu3-29" href="${ctx}/sysmgr/userInfo.action" target="mainFrame"><i class="icon-user"></i>&nbsp;个人信息</a>
 								<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
 								</ul></li>
-							<li class="active"><a data-href=".menu3-30" href="changePwd.html" target="mainFrame"><i class="icon-lock icon-white"></i>&nbsp;修改密码</a>
+							<li class="active"><a data-href=".menu3-30" href="${ctx}/sysmgr/changePwd.action" target="mainFrame"><i class="icon-lock icon-white"></i>&nbsp;修改密码</a>
 								<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
 								</ul></li></ul>
 					</div>

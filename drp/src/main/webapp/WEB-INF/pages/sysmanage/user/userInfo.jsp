@@ -8,11 +8,9 @@ String path = request.getContextPath();
 <html>
 <head>
 	<title>用户信息页面</title>
-	
-<meta charset="utf-8" />
-<meta name="renderer" content="webkit">
-
-<%@ include file="/WEB-INF/pages/include/head.jsp" %>
+	<meta charset="utf-8" />
+	<meta name="renderer" content="webkit">
+	<%@ include file="/WEB-INF/pages/include/head.jsp" %>
 	<script type="text/javascript">
 		$(function() {
 			$("#inputForm").validate({
@@ -35,8 +33,8 @@ String path = request.getContextPath();
 </head>
 <body>
 	<ul class="nav nav-tabs">
-		<li class="active"><a href="userInfo.html">个人信息</a></li>
-		<li><a href="changePwd.html">修改密码</a></li>
+		<li class="active"><a href="javascript:void(0);">个人信息</a></li>
+		<li><a href="${ctx}/sysmgr/changePwd.action">修改密码</a></li>
 	</ul><br/>
 	<form id="inputForm" class="form-horizontal" action="#" method="post">
 	<script type="text/javascript">top.$.jBox.closeTip();</script>

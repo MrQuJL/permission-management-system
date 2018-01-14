@@ -41,8 +41,8 @@ String path = request.getContextPath();
 </head>
 <body>
 	<ul class="nav nav-tabs">
-		<li><a href="userInfo.html">个人信息</a></li>
-		<li class="active"><a href="changePwd.html">修改密码</a></li>
+		<li><a href="${ctx}/sysmgr/userInfo.action">个人信息</a></li>
+		<li class="active"><a href="javascript:void(0);">修改密码</a></li>
 	</ul><br/>
 	<form id="inputForm" class="form-horizontal" action="#" method="post">
 		<input id="id" name="id" type="hidden" value="1"/>
