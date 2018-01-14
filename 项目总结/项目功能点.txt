@@ -18,6 +18,13 @@
 response.sendRedirect(request.getContextPath() + "/toLogin.action");
 %>
 
+2018/1/14
 
+1. 将登陆的action配置与系统模块分离开来
 
+2. 页面引入的js文件过多，为了简化页面，把这些script标签再放到一个
+jsp页面里面，引入这个jsp页面
+
+3. 在使用jsp的include标签引入文件时一定要使用绝对路径，否则，在页面来回
+切换的时候会由于相对路径的问题找不到js和css文件
 
