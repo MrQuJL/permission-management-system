@@ -1,10 +1,10 @@
-package com.qjl.drp.sysmanage.action;
+package com.lyu.drp.sysmanage.action;
 
 /**
  * 类名称: 用户管理业务控制类
  * 类描述: 用于用户的管理
- * 全限定性类名: com.qjl.drp.sysmanage.action.UserAction
- * @author MrQJL
+ * 全限定性类名: com.lyu.drp.sysmanage.action.UserAction
+ * @author 曲健磊
  * @date 2018年1月14日 下午11:00:15
  * @version V1.0
  */

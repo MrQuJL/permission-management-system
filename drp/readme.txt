@@ -40,28 +40,19 @@ drp分销系统:
 项目的前台页面：待完善...
 
 项目的后台包结构：
-	com.qjl.drp.util
-	com.qjl.drp.common
-	com.qjl.drp.test
-	com.qjl.drp.sysmanage.entity
-	com.qjl.drp.sysmanage.mapper
-	com.qjl.drp.sysmanage.service
-	com.qjl.drp.sysmanage.action
+	com.company.projectName.util
+	com.company.projectName.common
+	com.company.projectName.test
+	com.company.projectName.moduleName.entity
+	com.company.projectName.moduleName.mapper
+	com.company.projectName.moduleName.service
+	com.company.projectName.moduleName.action
 项目的前台页面结构:
 	webapp/index.jsp 引导页面，通过后台跳转到登陆页面
 	webapp/jsAndCss/js 一些js文件
 	webapp/jsAndCss/css 一些css文件
 	webapp/jsAndCss/img 一些图片文件
 	webapp/WEB-INF/pages 放页面
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
 

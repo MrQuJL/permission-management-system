@@ -1,12 +1,12 @@
-package com.qjl.drp.sysmanage.action;
+package com.lyu.drp.sysmanage.action;
 
 import com.alibaba.druid.util.StringUtils;
 
 /**
  * 类名称: struts2登录业务控制类
  * 类描述: struts2登录业务控制类
- * 全限定性类名: com.qjl.drp.sysmanage.action.LoginAction
- * @author MrQJL
+ * 全限定性类名: com.lyu.drp.sysmanage.action.LoginAction
+ * @author 曲健磊
  * @date 2018年1月12日 上午11:02:37
  * @version V1.0
  */

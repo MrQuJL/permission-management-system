@@ -1,4 +1,4 @@
-package com.qjl.drp.sysmanage.mapper;
+package com.lyu.drp.sysmanage.mapper;
 
 /**
  * 类名称:
