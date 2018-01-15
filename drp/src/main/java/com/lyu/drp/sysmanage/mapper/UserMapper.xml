@@ -22,14 +22,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			AND PASSWORD= #{password}
 		</if>		
 	</sql>
-	<!--根据条件查询 用户列表   -->
-	<select id="getUserList" parameterType="user" resultType="user">
+	<!-- 验证用户登录  -->
+	<select id="loginUser" resultType="user">
 		SELECT
 		<include refid="all_user_columns"></include>
 		FROM PM_SYS_USER
 		<where>
 			<include refid="query_user_sql_where"></include>		
 		</where>
+		where login_name = {0};
+		
+		
 	</select> 
 	 
 </mapper>
