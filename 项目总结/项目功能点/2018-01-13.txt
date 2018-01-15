@@ -1,0 +1,7 @@
+2018/1/13
+
+1. webapp目录下面就留一个index.jsp页面来重定向到后台的toLogin请求，
+最为项目的入口
+<%
+response.sendRedirect(request.getContextPath() + "/toLogin.action");
+%>
