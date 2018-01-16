@@ -14,9 +14,8 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">
   	
-  	
 	<!--扫描当前的包路径下面的所有类 用于注解  -->
-	<context:component-scan base-package="com.qjl.drp.*"/>
+	<context:component-scan base-package="com.lyu.drp.*"/>
 	 
  	<!--从配置文件读取数据源配置信息 -->
     <context:property-placeholder location="classpath:jdbc.properties" />  
@@ -37,7 +36,7 @@
 	
 	<bean class = "org.mybatis.spring.mapper.MapperScannerConfigurer">
 	 	<!--如果有多个报路径,用逗号分开即可  -->
-	 	<property name="basePackage" value="com.tz.oa.*.mapper"/>
+	 	<property name="basePackage" value="com.lyu.drp.*.mapper"/>
 	 	<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
 	 </bean>
  
@@ -48,5 +47,8 @@
 	
 	<!--开启事物注解驱动  -->
 	<tx:annotation-driven  transaction-manager="txManager" />
- 
+ 	
+ 	
+ 	
+ 	
 </beans>

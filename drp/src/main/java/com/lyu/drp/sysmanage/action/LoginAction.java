@@ -1,6 +1,11 @@
 package com.lyu.drp.sysmanage.action;
 
-import com.alibaba.druid.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import com.lyu.drp.sysmanage.entity.User;
+import com.lyu.drp.sysmanage.service.IUserService;
 
 /**
  * 类名称: struts2登录业务控制类
@@ -11,19 +16,31 @@ import com.alibaba.druid.util.StringUtils;
  * @version V1.0
  */
 public class LoginAction {
+	// 打印日志
+	private Log logger = LogFactory.getLog(LoginAction.class);
 	// 获取页面传过来的用户名
-	private String username;
+	private String loginName;
 	// 获取页面传过来的密码
 	private String password;
 	// 登录出错的时候返回页面的提示信息
 	private String loginErrorMsg;
+	// 用户服务类,spring容器会自动注入
+	private IUserService userService;
 	
-	public String getUsername() {
-		return username;
+	public IUserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(IUserService userService) {
+		this.userService = userService;
+	}
+
+	public String getLoginName() {
+		return loginName;
 	}
 	
-	public void setUsername(String username) {
-		this.username = username;
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
 	}
 	
 	public String getPassword() {
@@ -66,9 +83,13 @@ public class LoginAction {
 	 * @return
 	 */
 	public String login() {
-		// 判断一下username和password是不是为空
-		if (!StringUtils.isEmpty(username) && !StringUtils.isEmpty(password)) {
-			if ("admin".equals(username) && "123456".equals(password)) {
+		logger.info("loginName:" + loginName);
+		logger.info("password:" + password);
+		
+		// 判断一下loginName和password是不是为空
+		if (!StringUtils.isEmpty(loginName) && !StringUtils.isEmpty(password)) {
+			User user = userService.loginUser(loginName, password);
+			if (user != null) {
 				return "main";
 			} else {
 				loginErrorMsg = "用户名和密码不匹配";

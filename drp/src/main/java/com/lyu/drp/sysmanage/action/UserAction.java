@@ -9,7 +9,6 @@ package com.lyu.drp.sysmanage.action;
  * @version V1.0
  */
 public class UserAction {
-	
 	/**
 	 * 进入用户个人信息页面
 	 * @param 
