@@ -3,11 +3,12 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 
-<mapper namespace = "com.qjl.drp.sysmanage.mapper.UserMapper"> 
+<mapper namespace = "com.lyu.drp.sysmanage.mapper.UserMapper"> 
+	<!-- 所有的用户字段 -->
 	<sql id = "all_user_columns">
-	 	USER_ID,DEPT_ID,LOGIN_NAME,PASSWORD,
-  		USER_NO,USER_NAME,EMAIL,PHONE,MOBILE,
-  		UPDATE_BY,UPDATE_DATE,REMARKS
+	    id, company_id, office_id, login_name, password, no, name, email, phone, mobile, 
+	    login_ip, login_date, login_flag, create_by, create_date, update_by, update_date, 
+	    remarks, del_flag
 	</sql>
  
 	<!--将通用的sql查询条件抽取出来,成为sql片段 ,给不同方法应用  -->
@@ -22,17 +23,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			AND PASSWORD= #{password}
 		</if>		
 	</sql>
+	
 	<!-- 验证用户登录  -->
 	<select id="loginUser" resultType="user">
 		SELECT
 		<include refid="all_user_columns"></include>
-		FROM PM_SYS_USER
-		<where>
-			<include refid="query_user_sql_where"></include>		
-		</where>
-		where login_name = {0};
-		
-		
+		FROM drp_sys_user
+		where login_name = #{0} and del_flag = 0;
 	</select> 
 	 
 </mapper>

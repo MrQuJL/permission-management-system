@@ -62,10 +62,14 @@ public class UserService implements IUserService {
      * @return
      */
     public boolean validatePassword (String plainPsd, String encryptPsd) {
-    	//将密文逆转 ，截取 salt盐的明文
+    	//将密文逆转 ，截取 salt盐的明文,用hex加密后的密文的位数是原位数的2倍
     	byte[] salt = EncryptUtil.decodeHex(encryptPsd.substring(0, SALT_SIZE*2));
     	//重新拼凑 盐+密码   进行sha1的加密
         byte[] hashPass = EncryptUtil.sha1(plainPsd.getBytes(), salt, HASH_ITERATIONS);
+        
+        System.out.println("DB密码：" + encryptPsd);
+        System.out.println("原   密码：" + EncryptUtil.encodeHex(salt) + EncryptUtil.encodeHex(hashPass));
+        
         return encryptPsd.equals(EncryptUtil.encodeHex(salt) + EncryptUtil.encodeHex(hashPass));
     }
 

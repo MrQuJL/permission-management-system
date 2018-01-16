@@ -96,7 +96,7 @@ public class EncryptTest {
 		// 5. 将第2步和第四步的值拼凑
 		String encryptPsd = randomHex + sha1Psd;
 		
-		// 7984f3eb6c950be122c6ad436239b92bd518bd10ea2801550a3a4348
+		// d69b3e3983365aecfa39b7f23b0ae06d57f6200f0e6a12e3292aa73f
 		System.out.println(encryptPsd);
 		
 	}
@@ -105,7 +105,7 @@ public class EncryptTest {
 	@Test
 	public void testPsdValidator() {
 		String password = "123456";
-		String encryptPsd = "7984f3eb6c950be122c6ad436239b92bd518bd10ea2801550a3a4348";
+		String encryptPsd = "d69b3e3983365aecfa39b7f23b0ae06d57f6200f0e6a12e3292aa73f";
 		// 将密文逆转，截取salt盐的明文
 		byte[] salt = EncryptUtil.decodeHex(encryptPsd.substring(0, 16));
 		
