@@ -3,7 +3,7 @@
    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-	<package name = "sysmgr" namespace ="/sysmgr" extends ="struts-default" >	
+	<package name = "sysmgr" namespace ="/sysmgr" extends ="mydefault-package" >	
 		
 		<action name = "userInfo" class= "com.lyu.drp.sysmanage.action.UserAction" method = "userInfo">
 			<result name = "userInfo">/WEB-INF/pages/sysmanage/user/userInfo.jsp</result>
@@ -12,6 +12,16 @@
 		<action name = "changePwd" class= "com.lyu.drp.sysmanage.action.UserAction" method = "changePwd">
 			<result name = "changePwd">/WEB-INF/pages/sysmanage/user/changePwd.jsp</result>
 		</action>
+		
+		<!-- 修改用户密码 -->
+		<action name = "saveChangePwd" class= "com.lyu.drp.sysmanage.action.UserAction" method = "saveChangePwd">
+			<result type="json" name = "saveChangePwd">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
+		
+		
 		
 		<!-- <action name = "addUser"  class = "com.tz.strutsstudy.sysmgr.action.UserAction" method="add">
  			<result name = "returnPage" >/WEB-INF/pages/usermgr/userOperator.jsp</result> 			

@@ -4,6 +4,18 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
+
+	<package name="mydefault-package" extends="json-default" abstract="true">
+		<!-- 定义拦截器 -->
+		<interceptors>
+			<interceptor-stack name="mydefault-interceptors">
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="mydefault-interceptors" />
+		
+	</package>
+
 	 <package name="loginPackage" extends="struts-default">
 	 	<!-- 前往登录页面 -->
 	 	<action name="toLogin" class="com.lyu.drp.sysmanage.action.LoginAction" method="toLogin">

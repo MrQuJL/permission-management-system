@@ -30,9 +30,15 @@ String path = request.getContextPath();
 					// 用ajax提交
 					$.ajax({
 						type : "post",
-						url : '${ctx}/sysmgr'
+						url : '${ctx}/sysmgr/saveChangePwd.action',
+						data : {"oldPassword" : oldPassword, "newPassword" : newPassword},
+						success : function(data) {
+							// 干掉正在提交的等待框
+							top.$.jBox.closeTip();
+							alert(data.message);
+						}
 					});
-					
+					form.reset();
 				},
 				errorContainer: "#messageBox",
 				errorPlacement: function(error, element) {
@@ -54,7 +60,6 @@ String path = request.getContextPath();
 	</ul><br/>
 	<form id="userChangePwdForm" class="form-horizontal" action="#" method="post">
 		<input id="id" name="id" type="hidden" value="1"/>
-<script type="text/javascript">top.$.jBox.closeTip();</script>
 
 		<div class="control-group">
 			<label class="control-label">旧密码:</label>

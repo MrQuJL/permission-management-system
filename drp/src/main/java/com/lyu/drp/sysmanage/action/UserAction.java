@@ -98,7 +98,7 @@ public class UserAction {
 				this.message = "新密码不能为空";
 			}
 		}
-		return "changePwd";
+		return "saveChangePwd";
 	}
 	
 }
