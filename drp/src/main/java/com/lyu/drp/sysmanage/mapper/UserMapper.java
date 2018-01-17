@@ -12,6 +12,26 @@ import com.lyu.drp.sysmanage.entity.User;
  */
 public interface UserMapper {
 	
+	/**
+	 * 验证用户的登录
+	 * @param 登录名称和密码
+	 * @return 用户存在则返回该用户
+	 */
 	public User loginUser(String loginName, String password);
+	
+	/**
+	 * 根据用户id获取用户对象
+	 * @param 
+	 * @return
+	 */
+	public User getUserById(Long userId);
+	
+	/**
+	 * 更新指定id的用户的密码
+	 * @param userId 用户的id
+	 * @param newPassword 用户的新密码
+	 * @return 修改成功与否
+	 */
+	public int updateUserPassword(Long userId, String newPassword);
 	
 }

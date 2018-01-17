@@ -53,8 +53,8 @@ String path = request.getContextPath();
 		</div>
 		<h1 class="form-signin-heading">分销系统</h1>
 		<form id="loginForm" class="form-signin" action="${ctx}/login.action" method="post">
-			<label class="input-label" for="username">登录名</label>
-			<input type="text" id="username" name="username" class="input-block-level required" value="">
+			<label class="input-label" for="loginName">登录名</label>
+			<input type="text" id="loginName" name="loginName" class="input-block-level required" value="">
 			<label class="input-label" for="password">密码</label>
 			<input type="password" id="password" name="password" class="input-block-level required">
 			<input class="btn btn-large btn-primary" type="submit" value="登 录">&nbsp;&nbsp;

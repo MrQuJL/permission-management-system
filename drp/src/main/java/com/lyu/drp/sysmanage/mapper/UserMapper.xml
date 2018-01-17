@@ -26,10 +26,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 验证用户登录  -->
 	<select id="loginUser" resultType="user">
-		SELECT
-		<include refid="all_user_columns"></include>
+		SELECT <include refid="all_user_columns"></include>
 		FROM drp_sys_user
-		where login_name = #{0} and del_flag = 0;
+		WHERE login_name = #{0} and del_flag = 0;
 	</select> 
+	
+	<!-- 通过id获取用户 -->
+	<select id="getUserById" resultType="user" parameterType="long">
+		SELECT <include refid="all_user_columns"></include>
+		FROM drp_sys_user
+		WHERE id = #{userId}
+	</select>
+	
+	<!-- 修改用户的密码 -->
+	<update id="updateUserPassword">
+		UPDATE drp_sys_user SET password = #{1} WHERE id = #{0}
+	</update>
 	 
 </mapper>

@@ -16,15 +16,23 @@ String path = request.getContextPath();
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#oldPassword").focus();
-			$("#inputForm").validate({
+			$("#userChangePwdForm").validate({
 				rules: {
 				},
 				messages: {
 					confirmNewPassword: {equalTo: "输入与上面相同的密码"}
 				},
 				submitHandler: function(form){
+					var oldPassword = $("#oldPassword").val();
+					var newPassword = $("#newPassword").val();
 					loading('正在提交，请稍等...');
-					form.submit();
+					/* form.submit(); */
+					// 用ajax提交
+					$.ajax({
+						type : "post",
+						url : '${ctx}/sysmgr'
+					});
+					
 				},
 				errorContainer: "#messageBox",
 				errorPlacement: function(error, element) {
@@ -44,7 +52,7 @@ String path = request.getContextPath();
 		<li><a href="${ctx}/sysmgr/userInfo.action">个人信息</a></li>
 		<li class="active"><a href="javascript:void(0);">修改密码</a></li>
 	</ul><br/>
-	<form id="inputForm" class="form-horizontal" action="#" method="post">
+	<form id="userChangePwdForm" class="form-horizontal" action="#" method="post">
 		<input id="id" name="id" type="hidden" value="1"/>
 <script type="text/javascript">top.$.jBox.closeTip();</script>
 

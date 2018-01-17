@@ -40,6 +40,24 @@ public class UserService implements IUserService {
 		return user;
 	}
 	
+	@Override
+	public User getUserById(Long userId) {
+		return userMapper.getUserById(userId);
+	}
+	
+	@Override
+	public boolean updateUserPassword(Long userId, String newPassword) {
+		// 记录修改密码是否成功
+		boolean flag = false;
+		// 对新密码加密
+		String encryptPassword = this.encyptPassword(newPassword);
+		// 返回受影响的行数，大于0更新成功
+		int rows = userMapper.updateUserPassword(userId, newPassword);
+		if (rows > 0) {
+			flag = true;
+		}
+		return flag;
+	}
 	
 	/**
      * 对密码进行加密 SHA-1
@@ -61,6 +79,7 @@ public class UserService implements IUserService {
      * @param encryptPsd 密文密码
      * @return
      */
+    @Override
     public boolean validatePassword (String plainPsd, String encryptPsd) {
     	//将密文逆转 ，截取 salt盐的明文,用hex加密后的密文的位数是原位数的2倍
     	byte[] salt = EncryptUtil.decodeHex(encryptPsd.substring(0, SALT_SIZE*2));
