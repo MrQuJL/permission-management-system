@@ -21,4 +21,13 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 
 4. 前台用ajax提交，后台通过json返回的时候要设置result类型
-为json，并且要继承json-default的包
+为json，因为json类型是在json-default包下定义的，所以要继承json-default
+但是一继承json-default包，struts-default包下的defaultStack拦截器就没法
+继承了，所以需要再新建一个包继承json-default，然后在包内定义拦截器栈引
+用defaultStack拦截器，最后继承这个包即可
+
+5. 为了减少后台传送无用的数据到前台，在返回json数据的result标签里面使用
+<param name="includeProperties">message</param>来指定发往前台的数据
+
+6. 修改密码完毕后，前台要注意把那个loading框给干掉，否则影响用户体验
+还要form.reset()把表单清空一下

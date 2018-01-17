@@ -52,7 +52,7 @@ public class UserService implements IUserService {
 		// 对新密码加密
 		String encryptPassword = this.encyptPassword(newPassword);
 		// 返回受影响的行数，大于0更新成功
-		int rows = userMapper.updateUserPassword(userId, newPassword);
+		int rows = userMapper.updateUserPassword(userId, encryptPassword);
 		if (rows > 0) {
 			flag = true;
 		}
