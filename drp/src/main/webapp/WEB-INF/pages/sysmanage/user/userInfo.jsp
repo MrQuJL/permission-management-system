@@ -37,8 +37,17 @@ String path = request.getContextPath();
 					data : {},
 					dataType : "json",
 					success : function(data) {
-						//alert(data);
-						alert(data);
+						alert(JSON.stringify(data));
+						data = JSON.parse(data.jsonObj);
+						$("#deptName").html(data.name);
+						$("#loginName").html(data.loginName);
+						
+						$("#userName").val(data.userName);
+						$("#userNo").val(data.userNo);
+						$("#email").val(data.email);
+						$("#phone").val(data.phone);
+						$("#mobile").val(data.mobile);
+						$("#remarks").val(data.remarks);
 					}
 				});
 			}
@@ -52,29 +61,37 @@ String path = request.getContextPath();
 	</ul><br/>
 	<form id="userInfoChangeForm" class="form-horizontal" action="#" method="post">
 	<script type="text/javascript">top.$.jBox.closeTip();</script>
-
-		<div class="control-group">
-			<label class="control-label">所属公司:</label>
-			<div class="controls">
-				<label class="lbl">山东省总公司</label>
-			</div>
-		</div>
+		<input type = "hidden" id = "userId" name = "userId"/>
+		
 		<div class="control-group">
 			<label class="control-label">所属部门:</label>
 			<div class="controls">
-				<label class="lbl">公司领导</label>
+				<label class="lbl" id="deptName"></label>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">姓名:</label>
+			<label class="control-label">登陆名称:</label>
 			<div class="controls">
-				<input id="name" name="name" class="required" readonly="readonly" type="text" value="系统超级管理员" maxlength="50"/>
+				<!-- <input id="loginName" name="loginName" class="required" readonly="readonly" type="text"  maxlength="50"/> -->
+				<label class="lbl" id="loginName"></label>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">用户名称:</label>
+			<div class="controls">
+				<input id="userName" name="userName" class="required" type="text" value="" maxlength="50"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">工号:</label>
+			<div class="controls">
+				<input id="userNo" name="userNo" class="required" type="text"  maxlength="50"/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">邮箱:</label>
 			<div class="controls">
-				<input id="email" name="email" class="email" type="text" value="colin@163.com" maxlength="50"/>
+				<input id="email" name="email" class="email" type="text" value="" maxlength="50"/>
 			</div>
 		</div>
 		<div class="control-group">
@@ -86,25 +103,19 @@ String path = request.getContextPath();
 		<div class="control-group">
 			<label class="control-label">手机:</label>
 			<div class="controls">
-				<input id="mobile" name="mobile" type="text" value="18888888888" maxlength="50"/>
+				<input id="mobile" name="mobile" type="text" value="" maxlength="50"/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">备注:</label>
 			<div class="controls">
-				<textarea id="remarks" name="remarks" maxlength="200" class="input-xlarge" rows="3">最高管理员</textarea>
+				<textarea id="remarks" name="remarks" maxlength="200" class="input-xlarge" rows="3"></textarea>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">用户角色:</label>
 			<div class="controls">
 				<label class="lbl">公司管理员,系统管理员</label>
-			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label">上次登录:</label>
-			<div class="controls">
-				<label class="lbl">IP: 0:0:0:0:0:0:0:1&nbsp;&nbsp;&nbsp;&nbsp;时间：2015年7月20日 星期一 19:35:28</label>
 			</div>
 		</div>
 		<div class="form-actions">

@@ -22,5 +22,5 @@
 6. 使用阿里的fastjson来将java对象转换成json字符串
 JSON.toJSONString(Object obj);
 
-
+7. 从后台获得数据后分别给表单赋值（form）以及给页面赋值（html）
 

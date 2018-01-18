@@ -6,9 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace = "com.lyu.drp.sysmanage.mapper.UserMapper"> 
 	<!-- 所有的用户字段 -->
 	<sql id = "all_user_columns">
-	    id, company_id, office_id, login_name, password, no, name, email, phone, mobile, 
-	    login_ip, login_date, login_flag, create_by, create_date, update_by, update_date, 
-	    remarks, del_flag
+	    user_id, dept_id, login_name, password, user_no, user_name, email, phone, mobile, 
+    	update_by, update_date, remarks, del_flag
 	</sql>
  
 	<!--将通用的sql查询条件抽取出来,成为sql片段 ,给不同方法应用  -->
@@ -35,12 +34,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getUserById" resultType="user" parameterType="long">
 		SELECT <include refid="all_user_columns"></include>
 		FROM drp_sys_user
-		WHERE id = #{userId}
+		WHERE user_id = #{userId}
+	</select>
+	
+	<!-- 通过userId获得用户对象包括部门名称，公司名称... -->
+	<select id="getUserInfoById" resultType="userDto" parameterType="long">
+		SELECT a.name, b.login_name, b.user_name, b.user_no, b.email,
+		b.phone, b.mobile, b.remarks
+		FROM drp_sys_dept a, drp_sys_user b
+		WHERE a.id = b.dept_id AND b.user_id = #{userId};
 	</select>
 	
 	<!-- 修改用户的密码 -->
 	<update id="updateUserPassword">
-		UPDATE drp_sys_user SET password = #{1} WHERE id = #{0}
+		UPDATE drp_sys_user SET password = #{1} WHERE user_id = #{0}
 	</update>
 	 
 </mapper>

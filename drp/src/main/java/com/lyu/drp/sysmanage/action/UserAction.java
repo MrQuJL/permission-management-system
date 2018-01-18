@@ -24,7 +24,7 @@ public class UserAction {
 	private String message;
 	// 用于接收返回的json字符串
 	private String jsonObj;
-	
+	// spring和struts2的整合包会将该属性以名称匹配的凡是注入
 	private IUserService userService;
 	
 	public String getOldPassword() {

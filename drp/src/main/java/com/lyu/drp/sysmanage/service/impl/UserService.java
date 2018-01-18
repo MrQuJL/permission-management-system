@@ -52,7 +52,7 @@ public class UserService implements IUserService {
 		
 		
 		
-		return null;
+		return userMapper.getUserInfoById(userId);
 	}
 	
 	@Override

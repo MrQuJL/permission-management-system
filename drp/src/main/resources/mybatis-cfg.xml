@@ -16,6 +16,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAliases>
 		<!-- 批量定义别名 -->
 		<package name="com.lyu.drp.sysmanage.entity" />
+		<package name="com.lyu.drp.sysmanage.dto" />
 	</typeAliases>
 	 
 	<!-- 配置pageHelper分页插件 -->

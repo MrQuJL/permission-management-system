@@ -1,5 +1,6 @@
 package com.lyu.drp.sysmanage.mapper;
 
+import com.lyu.drp.sysmanage.dto.UserDto;
 import com.lyu.drp.sysmanage.entity.User;
 
 /**
@@ -25,6 +26,13 @@ public interface UserMapper {
 	 * @return
 	 */
 	public User getUserById(Long userId);
+	
+	/**
+	 * 根据用户id获取用户对象的详细信息，包括部门名称，角色集合
+	 * @param 
+	 * @return
+	 */
+	public UserDto getUserInfoById(Long userId);
 	
 	/**
 	 * 更新指定id的用户的密码

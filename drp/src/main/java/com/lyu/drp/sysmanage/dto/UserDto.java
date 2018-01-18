@@ -18,24 +18,15 @@ public class UserDto extends User implements Serializable {
 
 	private static final long serialVersionUID = 4282362845767317022L;
 	
-	private String companyName;
-	private String officeName;
+	private String name;
 	private List<Role> roleList;
 	
-	public String getCompanyName() {
-		return companyName;
+	public String getName() {
+		return name;
 	}
-	
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
-	}
-	
-	public String getOfficeName() {
-		return officeName;
-	}
-	
-	public void setOfficeName(String officeName) {
-		this.officeName = officeName;
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	public List<Role> getRoleList() {
