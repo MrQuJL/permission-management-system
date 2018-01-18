@@ -19,3 +19,8 @@
 	角色创建完毕后可以置为true解冻，当这个角色不再使用的时候置为false，
 	不进行物理删除
 
+6. 使用阿里的fastjson来将java对象转换成json字符串
+JSON.toJSONString(Object obj);
+
+
+

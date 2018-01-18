@@ -3,6 +3,7 @@ package com.lyu.drp.sysmanage.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.lyu.drp.sysmanage.dto.UserDto;
 import com.lyu.drp.sysmanage.entity.User;
 import com.lyu.drp.sysmanage.mapper.UserMapper;
 import com.lyu.drp.sysmanage.service.IUserService;
@@ -43,6 +44,15 @@ public class UserService implements IUserService {
 	@Override
 	public User getUserById(Long userId) {
 		return userMapper.getUserById(userId);
+	}
+	
+	@Override
+	public UserDto getUserInfoById(Long userId) {
+		
+		
+		
+		
+		return null;
 	}
 	
 	@Override

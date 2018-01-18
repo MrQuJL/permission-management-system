@@ -31,13 +31,14 @@ String path = request.getContextPath();
 		});
 		var userInfoMgr = {
 			init : function() {
-				//alert("page finished");
 				$.ajax({
 					type : "post",
 					url : "${ctx}/sysmgr/getUserInfoById.action",
 					data : {},
+					dataType : "json",
 					success : function(data) {
-						alert("data load successfuly");
+						//alert(data);
+						alert(data);
 					}
 				});
 			}

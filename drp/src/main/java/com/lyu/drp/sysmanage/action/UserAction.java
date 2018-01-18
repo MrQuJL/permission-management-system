@@ -2,6 +2,8 @@ package com.lyu.drp.sysmanage.action;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.alibaba.fastjson.JSON;
+import com.lyu.drp.sysmanage.dto.UserDto;
 import com.lyu.drp.sysmanage.entity.User;
 import com.lyu.drp.sysmanage.service.IUserService;
 
@@ -20,6 +22,8 @@ public class UserAction {
 	private String newPassword;
 	// 用于为ajax返回提示消息
 	private String message;
+	// 用于接收返回的json字符串
+	private String jsonObj;
 	
 	private IUserService userService;
 	
@@ -55,6 +59,14 @@ public class UserAction {
 		this.message = message;
 	}
 	
+	public String getJsonObj() {
+		return jsonObj;
+	}
+
+	public void setJsonObj(String jsonObj) {
+		this.jsonObj = jsonObj;
+	}
+
 	/**
 	 * 进入用户个人信息页面
 	 * @param 
@@ -109,12 +121,10 @@ public class UserAction {
 	public String getUserInfoById() {
 		// 1.通过session或者其他组件获取当前用户对象
 		Long userId = 1L;
-		User user = userService.getUserById(userId);
-		
-		
-		
-		
-		
+		UserDto userDto = userService.getUserInfoById(userId);
+		// 2.将java对象转换成json字符串
+		String obj = JSON.toJSONString(userDto);
+		this.jsonObj = obj;
 		return "getUserInfoById";
 	}
 	
