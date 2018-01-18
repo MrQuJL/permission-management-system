@@ -101,4 +101,21 @@ public class UserAction {
 		return "saveChangePwd";
 	}
 	
+	/**
+	 * 修改用户个人信息
+	 * @param 
+	 * @return
+	 */
+	public String getUserInfoById() {
+		// 1.通过session或者其他组件获取当前用户对象
+		Long userId = 1L;
+		User user = userService.getUserById(userId);
+		
+		
+		
+		
+		
+		return "getUserInfoById";
+	}
+	
 }

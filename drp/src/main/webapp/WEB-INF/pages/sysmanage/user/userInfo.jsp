@@ -13,7 +13,7 @@ String path = request.getContextPath();
 	<%@ include file="/WEB-INF/pages/include/head.jsp" %>
 	<script type="text/javascript">
 		$(function() {
-			$("#inputForm").validate({
+			$("#userInfoChangeForm").validate({
 				submitHandler: function(form){
 					loading('......');
 					form.submit();
@@ -29,6 +29,19 @@ String path = request.getContextPath();
 				}
 			});
 		});
+		var userInfoMgr = {
+			init : function() {
+				//alert("page finished");
+				$.ajax({
+					type : "post",
+					url : "${ctx}/sysmgr/getUserInfoById.action",
+					data : {},
+					success : function(data) {
+						alert("data load successfuly");
+					}
+				});
+			}
+		}
 	</script>
 </head>
 <body>
@@ -36,7 +49,7 @@ String path = request.getContextPath();
 		<li class="active"><a href="javascript:void(0);">个人信息</a></li>
 		<li><a href="${ctx}/sysmgr/changePwd.action">修改密码</a></li>
 	</ul><br/>
-	<form id="inputForm" class="form-horizontal" action="#" method="post">
+	<form id="userInfoChangeForm" class="form-horizontal" action="#" method="post">
 	<script type="text/javascript">top.$.jBox.closeTip();</script>
 
 		<div class="control-group">
@@ -87,9 +100,21 @@ String path = request.getContextPath();
 				<label class="lbl">公司管理员,系统管理员</label>
 			</div>
 		</div>
+		<div class="control-group">
+			<label class="control-label">上次登录:</label>
+			<div class="controls">
+				<label class="lbl">IP: 0:0:0:0:0:0:0:1&nbsp;&nbsp;&nbsp;&nbsp;时间：2015年7月20日 星期一 19:35:28</label>
+			</div>
+		</div>
 		<div class="form-actions">
 			<input id="btnSubmit" class="btn btn-primary" type="submit" value="保 存"/>
 		</div>
 	</form>
+	<%-- 页面加载完毕，就初始化组件信息 --%>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			userInfoMgr.init();
+		});
+	</script>
 </body>
 </html>

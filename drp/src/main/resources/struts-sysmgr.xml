@@ -20,6 +20,13 @@
 			</result>
 		</action>
 		
+		<!-- 修改用户个人信息 -->
+		<action name = "getUserInfoById" class= "com.lyu.drp.sysmanage.action.UserAction" method = "getUserInfoById">
+			<result type="json" name = "getUserInfoById">
+				<param name="includeProperties">jsonObj</param>
+			</result>
+		</action>
+		
 		
 		
 		
