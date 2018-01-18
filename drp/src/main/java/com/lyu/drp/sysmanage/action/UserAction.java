@@ -1,6 +1,7 @@
 package com.lyu.drp.sysmanage.action;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 
 import com.alibaba.fastjson.JSON;
 import com.lyu.drp.sysmanage.dto.UserDto;
@@ -16,13 +17,15 @@ import com.lyu.drp.sysmanage.service.IUserService;
  * @version V1.0
  */
 public class UserAction {
+	// log4j打印日志
+	Logger logger = Logger.getLogger(this.getClass());
 	// 前台接收 的旧密码
 	private String oldPassword;
 	// 接收前台的新密码
 	private String newPassword;
 	// 用于为ajax返回提示消息
 	private String message;
-	// 用于接收返回的json字符串
+	// 用于发往前台的json字符串
 	private String jsonObj;
 	// spring和struts2的整合包会将该属性以名称匹配的凡是注入
 	private IUserService userService;
@@ -114,7 +117,7 @@ public class UserAction {
 	}
 	
 	/**
-	 * 修改用户个人信息
+	 * 根据id获取用户的详细信息，包括部门名称，id
 	 * @param 
 	 * @return
 	 */
@@ -126,6 +129,25 @@ public class UserAction {
 		String obj = JSON.toJSONString(userDto);
 		this.jsonObj = obj;
 		return "getUserInfoById";
+	}
+	
+	/**
+	 * 修改用户个人信息
+	 * @param 
+	 * @return
+	 */
+	public String saveUserInfo() {
+		this.message = "更新用户信息失败";
+		System.out.println(jsonObj);
+		
+		User user = JSON.parseObject(jsonObj, User.class);
+		
+		boolean falg = userService.saveUserInfo(user);
+		if (falg) {
+			this.message = "更新用户信息成功";
+		}
+		
+		return "saveUserInfo";
 	}
 	
 }

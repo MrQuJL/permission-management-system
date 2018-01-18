@@ -5,7 +5,7 @@ import com.lyu.drp.sysmanage.entity.User;
 
 /**
  * 类名称: 用户业务处理接口 
- * 类描述: 
+ * 类描述: 用于对用户的一些操作
  * 全限定性类名: com.lyu.drp.sysmanage.service.IUserService
  * @author 曲健磊
  * @date 2018年1月15日 下午11:28:49
@@ -33,6 +33,20 @@ public interface IUserService {
 	 * @return
 	 */
 	public UserDto getUserInfoById(Long userId);
+	
+	/**
+	 * 保存用户修改的信息
+	 * @param 
+	 * @return
+	 */
+	public boolean saveUserInfo(User user);
+	
+	/**
+     * 对密码进行加密 SHA-1
+     * @param plainPassword 明文密码
+     * @return
+     */
+    public String encyptPassword (String plainPassword);
 	
 	/**
 	 * 验证用户输入密码是否与数据库中的密码匹配

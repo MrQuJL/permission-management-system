@@ -24,3 +24,28 @@ JSON.toJSONString(Object obj);
 
 7. 从后台获得数据后分别给表单赋值（form）以及给页面赋值（html）
 
+8. 查询用户的个人信息的时候，要把用户的id也查出来，放到页面的
+hidden域中（用于修改用户信息）
+
+9. 通过$.serializeArray函数先把表单对象先序列化成json数组
+再通过$.each函数取出数组中的每一个对象，把对象的name和value
+赋值个一个空的对象，然后调用JSON.stringify(obj)把该js对象转化
+成json格式的字符串，发往后台，后台通过一个String类型的变量接收
+var jsonObj = {};
+var formArray = $("#userInfoChangeForm").serializeArray();
+$.each(formArray,function(i, item) {
+	jsonObj[item.name] = item.value;
+});
+jsonObj = JSON.stringify(jsonObj);
+详细用法参见：http://blog.csdn.net/a909301740/article/details/78809567
+
+10. 在后台通过fastjson的JSON.parseObject(obj, Class.class)解析该json字符串
+
+注：用户的所属部门，登录名称，工号不能修改，前台不能把这些参数传到后台，
+后台mapper的sql里面也不能对这些字段做修改
+
+11. 修改完用户的信息之后要再查询一下，这个查询动作要写在jquery的ajax的complete
+方法里面，如果写在ajax调用以外的地方，那么查询出来的就有可能不是更新完的数据
+因为ajax请求是异步的，后面的语句不会等待ajax请求完才执行，ajax执行的过程中
+后面的语句就会执行。
+

@@ -20,15 +20,19 @@
 			</result>
 		</action>
 		
-		<!-- 修改用户个人信息 -->
+		<!-- 根据id获取用户的详细信息包括部门名称 -->
 		<action name = "getUserInfoById" class= "com.lyu.drp.sysmanage.action.UserAction" method = "getUserInfoById">
 			<result type="json" name = "getUserInfoById">
 				<param name="includeProperties">jsonObj</param>
 			</result>
 		</action>
 		
-		
-		
+		<!-- 保存用户个人信息 -->
+		<action name = "saveUserInfo" class= "com.lyu.drp.sysmanage.action.UserAction" method = "saveUserInfo">
+			<result type="json" name="saveUserInfo">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
 		
 		<!-- <action name = "addUser"  class = "com.tz.strutsstudy.sysmgr.action.UserAction" method="add">
  			<result name = "returnPage" >/WEB-INF/pages/usermgr/userOperator.jsp</result> 			

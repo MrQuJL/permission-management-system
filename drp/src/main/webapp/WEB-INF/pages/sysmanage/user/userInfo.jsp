@@ -29,7 +29,10 @@ String path = request.getContextPath();
 				}
 			});
 		});
+		
+		// 封装了一些对用户操作的函数
 		var userInfoMgr = {
+			// 加载用户的个人信息
 			init : function() {
 				$.ajax({
 					type : "post",
@@ -37,17 +40,44 @@ String path = request.getContextPath();
 					data : {},
 					dataType : "json",
 					success : function(data) {
-						alert(JSON.stringify(data));
+						//alert(JSON.stringify(data));
 						data = JSON.parse(data.jsonObj);
 						$("#deptName").html(data.name);
 						$("#loginName").html(data.loginName);
-						
+
+						$("#userId").val(data.userId);
 						$("#userName").val(data.userName);
 						$("#userNo").val(data.userNo);
 						$("#email").val(data.email);
 						$("#phone").val(data.phone);
 						$("#mobile").val(data.mobile);
 						$("#remarks").val(data.remarks);
+					}
+				});
+			},
+			// 保存(修改)用户的个人信息
+			saveUserInfo : function() {
+				// 1.将表单中的所有元素通过$.each函数封装成一个json字符串
+				var jsonObj = {};
+				var formArray = $("#userInfoChangeForm").serializeArray();
+				$.each(formArray,function(i, item) {
+					if (item.name != "userNo") {
+						jsonObj[item.name] = item.value;
+					}
+				});
+				jsonObj = JSON.stringify(jsonObj);
+				// 2.通过ajax异步发往后台
+				$.ajax({
+					type : "post",
+					url : "${ctx}/sysmgr/saveUserInfo.action",
+					data : {"jsonObj" : jsonObj},
+					dataType : "json",
+					success : function(data) {
+						alert(data.message);							
+					},
+					complete : function() {
+						// 修改完了用户信息之后重新加载一下用户数据
+						userInfoMgr.init();
 					}
 				});
 			}
@@ -85,7 +115,7 @@ String path = request.getContextPath();
 		<div class="control-group">
 			<label class="control-label">工号:</label>
 			<div class="controls">
-				<input id="userNo" name="userNo" class="required" type="text"  maxlength="50"/>
+				<input id="userNo" name="userNo" readonly class="required" type="text"  maxlength="50"/>
 			</div>
 		</div>
 		<div class="control-group">
@@ -119,9 +149,10 @@ String path = request.getContextPath();
 			</div>
 		</div>
 		<div class="form-actions">
-			<input id="btnSubmit" class="btn btn-primary" type="submit" value="保 存"/>
+			<input id="btnSubmit" class="btn btn-primary" type="button" onclick="userInfoMgr.saveUserInfo();" value="保 存"/>
 		</div>
 	</form>
+	
 	<%-- 页面加载完毕，就初始化组件信息 --%>
 	<script type="text/javascript">
 		$(document).ready(function() {

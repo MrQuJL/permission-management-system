@@ -21,7 +21,9 @@ import com.lyu.drp.util.EncryptUtil;
 public class UserService implements IUserService {
 	@Autowired
 	private UserMapper userMapper;
+	
 	public static final int HASH_ITERATIONS = 1024;
+	
     public static final int SALT_SIZE = 8;
 	
 	@Override
@@ -48,32 +50,20 @@ public class UserService implements IUserService {
 	
 	@Override
 	public UserDto getUserInfoById(Long userId) {
-		
-		
-		
-		
 		return userMapper.getUserInfoById(userId);
 	}
 	
 	@Override
-	public boolean updateUserPassword(Long userId, String newPassword) {
-		// 记录修改密码是否成功
+	public boolean saveUserInfo(User user) {
 		boolean flag = false;
-		// 对新密码加密
-		String encryptPassword = this.encyptPassword(newPassword);
-		// 返回受影响的行数，大于0更新成功
-		int rows = userMapper.updateUserPassword(userId, encryptPassword);
+		int rows = userMapper.saveUserInfo(user);
 		if (rows > 0) {
 			flag = true;
 		}
 		return flag;
 	}
 	
-	/**
-     * 对密码进行加密 SHA-1
-     * @param plainPassword 明文密码
-     * @return
-     */
+	@Override
     public String encyptPassword (String plainPassword) {
     	//生成一个随机数 ，所谓的salt 盐
         byte[] salt = EncryptUtil.generateSalt(SALT_SIZE);
@@ -83,12 +73,6 @@ public class UserService implements IUserService {
         return EncryptUtil.encodeHex(salt) + EncryptUtil.encodeHex(hashPass);
     } 
 	
-	 /**
-     * 校验密码是否有效
-     * @param plainPsd 原明文密码
-     * @param encryptPsd 密文密码
-     * @return
-     */
     @Override
     public boolean validatePassword (String plainPsd, String encryptPsd) {
     	//将密文逆转 ，截取 salt盐的明文,用hex加密后的密文的位数是原位数的2倍
@@ -102,4 +86,18 @@ public class UserService implements IUserService {
         return encryptPsd.equals(EncryptUtil.encodeHex(salt) + EncryptUtil.encodeHex(hashPass));
     }
 
+    @Override
+	public boolean updateUserPassword(Long userId, String newPassword) {
+		// 记录修改密码是否成功
+		boolean flag = false;
+		// 对新密码加密
+		String encryptPassword = this.encyptPassword(newPassword);
+		// 返回受影响的行数，大于0更新成功
+		int rows = userMapper.updateUserPassword(userId, encryptPassword);
+		if (rows > 0) {
+			flag = true;
+		}
+		return flag;
+	}
+    
 }

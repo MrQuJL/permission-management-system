@@ -42,4 +42,11 @@ public interface UserMapper {
 	 */
 	public int updateUserPassword(Long userId, String newPassword);
 	
+	/**
+	 * 保存用户修改的信息
+	 * @param 
+	 * @return
+	 */
+	public int saveUserInfo(User user);
+	
 }

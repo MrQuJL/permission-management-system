@@ -39,7 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 通过userId获得用户对象包括部门名称，公司名称... -->
 	<select id="getUserInfoById" resultType="userDto" parameterType="long">
-		SELECT a.name, b.login_name, b.user_name, b.user_no, b.email,
+		SELECT a.name, b.user_id, b.login_name, b.user_name, b.user_no, b.email,
 		b.phone, b.mobile, b.remarks
 		FROM drp_sys_dept a, drp_sys_user b
 		WHERE a.id = b.dept_id AND b.user_id = #{userId};
@@ -49,5 +49,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateUserPassword">
 		UPDATE drp_sys_user SET password = #{1} WHERE user_id = #{0}
 	</update>
-	 
+	
+	<!-- 保存用户修改的信息 -->
+	<update id="saveUserInfo" parameterType="user">
+		UPDATE drp_sys_user
+		<set>
+			<if test="userName != null">
+				user_name = #{userName},
+			</if>
+			<if test="email != null">
+				email = #{email},
+			</if>
+			<if test="phone != null">
+				phone = #{phone},
+			</if>
+			<if test="mobile != null">
+				mobile = #{mobile},
+			</if>
+			<if test="remarks != null">
+				remarks = #{remarks},
+			</if>
+		</set>
+		WHERE user_id = #{userId}
+	</update>
+	
 </mapper>
