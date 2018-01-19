@@ -12,7 +12,6 @@ String path = request.getContextPath();
 <meta name="renderer" content="webkit">
 
 <%@ include file="/WEB-INF/pages/include/head.jsp" %>
-<script type="text/javascript">var ctx = '', ctxStatic='/static';</script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#oldPassword").focus();

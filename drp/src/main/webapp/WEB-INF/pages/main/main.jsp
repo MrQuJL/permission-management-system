@@ -195,13 +195,13 @@ String path = request.getContextPath();
 							<li class=""><a data-href=".menu3-7" href="roleList.html" target="mainFrame"><i class="icon-lock"></i>&nbsp;角色管理</a>
 								<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
 								</ul></li>
-							<li class=""><a data-href=".menu3-10" href="dictList.html" target="mainFrame"><i class="icon-th-list"></i>&nbsp;字典管理</a>
+							<li class=""><a data-href=".menu3-10" href="${ctx}/sysmgr/gotoDictList.action" target="mainFrame"><i class="icon-th-list"></i>&nbsp;字典管理</a>
 								<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
 								</ul></li></ul>
 					</div>
 			    </div>
 			</div>
-		
+			
 			<div class="accordion-group">
 			    <div class="accordion-heading">
 			    	<a class="accordion-toggle" data-toggle="collapse" data-parent="#menu-2" data-href="#collapse-67" href="#collapse-67" title=""><i class="icon-chevron-right"></i>&nbsp;日志查询</a>

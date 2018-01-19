@@ -4,7 +4,7 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<package name = "sysmgr" namespace ="/sysmgr" extends ="mydefault-package" >	
-		
+		<!-- 用户管理 -->
 		<action name = "userInfo" class= "com.lyu.drp.sysmanage.action.UserAction" method = "userInfo">
 			<result name = "userInfo">/WEB-INF/pages/sysmanage/user/userInfo.jsp</result>
 		</action>
@@ -13,46 +13,33 @@
 			<result name = "changePwd">/WEB-INF/pages/sysmanage/user/changePwd.jsp</result>
 		</action>
 		
-		<!-- 修改用户密码 -->
 		<action name = "saveChangePwd" class= "com.lyu.drp.sysmanage.action.UserAction" method = "saveChangePwd">
 			<result type="json" name = "saveChangePwd">
 				<param name="includeProperties">message</param>
 			</result>
 		</action>
 		
-		<!-- 根据id获取用户的详细信息包括部门名称 -->
 		<action name = "getUserInfoById" class= "com.lyu.drp.sysmanage.action.UserAction" method = "getUserInfoById">
 			<result type="json" name = "getUserInfoById">
 				<param name="includeProperties">jsonObj</param>
 			</result>
 		</action>
 		
-		<!-- 保存用户个人信息 -->
 		<action name = "saveUserInfo" class= "com.lyu.drp.sysmanage.action.UserAction" method = "saveUserInfo">
 			<result type="json" name="saveUserInfo">
 				<param name="includeProperties">message</param>
 			</result>
 		</action>
 		
-		<!-- <action name = "addUser"  class = "com.tz.strutsstudy.sysmgr.action.UserAction" method="add">
- 			<result name = "returnPage" >/WEB-INF/pages/usermgr/userOperator.jsp</result> 			
- 		</action>
+		<!-- 字典管理 -->
+		<action name = "gotoDictList" class= "com.lyu.drp.sysmanage.action.DictAction" method = "gotoDictList">
+			<result name = "dictList">/WEB-INF/pages/sysmanage/dict/dictList.jsp</result>
+		</action>
 		
-		<action name = "delUser"  class = "com.tz.strutsstudy.sysmgr.action.UserAction" method="del">
-			<interceptor-ref name = "loginInterceptor" />
-			<result name = "returnPage" >/WEB-INF/pages/usermgr/userOperator.jsp</result>
- 		</action>	
+		<action name = "gotoDictEdit" class= "com.lyu.drp.sysmanage.action.DictAction" method = "gotoDictEdit">
+			<result name = "dictEdit">/WEB-INF/pages/sysmanage/dict/dictEdit.jsp</result>
+		</action>
 		
-		<action name = "upateUser"  class = "com.tz.strutsstudy.sysmgr.action.UserAction" method="update">
-			<interceptor-ref name = "loginInterceptor" />		
-			<result name = "returnPage" >/WEB-INF/pages/usermgr/userOperator.jsp</result>
- 		</action>
-		
-		<action name = "queryUser"  class = "com.tz.strutsstudy.sysmgr.action.UserAction" method="query">
-			<interceptor-ref name = "loginInterceptor" />		
-			<result name = "returnPage" >/WEB-INF/pages/usermgr/userOperator.jsp</result>
- 		</action> -->	
-				
 	</package>
 
 </struts>
