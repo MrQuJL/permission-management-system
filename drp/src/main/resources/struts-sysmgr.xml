@@ -40,6 +40,12 @@
 			<result name = "dictEdit">/WEB-INF/pages/sysmanage/dict/dictEdit.jsp</result>
 		</action>
 		
+		<action name = "getDictList" class= "com.lyu.drp.sysmanage.action.DictAction" method = "getDictList">
+			<result type="json">
+				<param name="includeProperties">jsonObj</param>
+			</result>
+		</action>
+		
 	</package>
 
 </struts>

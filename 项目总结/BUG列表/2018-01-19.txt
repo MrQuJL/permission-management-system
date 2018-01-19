@@ -1,0 +1,32 @@
+2018/1/19
+
+1. 如果在设置了struts.devMode=true，则会在日志中出现以下信息：
+*******************************************************************************
+**                                                                           **
+**                               WARNING                                     **
+**                YOU USE DEPRECATED / UNKNOWN CONSTANTS                     **
+**                                                                           **
+**  -> struts.class.reloading.acceptClasses                                  **
+**  -> struts.class.reloading.watchList                                      **
+**  -> struts.class.reloading.reloadConfig                                   **
+*******************************************************************************
+解法一：把devMode设为false就可以解决，这个devMode最好在开发阶段设为true，便于调错，但是正式
+的生产环境要设为false，不然会浪费性能。
+
+解法二：struts2的版本过低，我用的是2.3.16版本的，换为最新版本就可以了，现在最新
+的版本是2.5.14.1，最新版本的过滤器的位置变了，要记得修改一下
+原来的过滤器位置：org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
+新版本过滤器位置：org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter
+
+
+2. 项目启动的时候扫了一眼控制台发现出现了下面的错误提示信息：
+2018/01/19/21:44:46 DEBUG [localhost-startStop-1] org.springframework.core.type.classreading.RecursiveAnnotationAttributesVisitor.visitEnd(RecursiveAnnotationAttributesVisitor.java:51) - Failed to class-load type while reading annotation metadata. This is a non-fatal error, but certain annotation metadata may be unavailable.
+java.lang.ClassNotFoundException: org.junit.Test
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1339)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1167)
+	at org.springframework.core.type.classreading.RecursiveAnnotationAttributesVisitor.visitEnd(RecursiveAnnotationAttributesVisitor.java:47)
+	at org.springframework.asm.ClassReader.readAnnotationValues(ClassReader.java:1802)
+	at org.springframework.asm.ClassReader.readMethod(ClassReader.java:976)
+
+原因：maven添加junit依赖的时候，junit的scope配置为test，使得测试类不会和项目一起发布，但是并不影响程序的运行.
+

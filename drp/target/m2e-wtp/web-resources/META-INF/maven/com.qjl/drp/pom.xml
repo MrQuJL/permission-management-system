@@ -14,7 +14,6 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
-			<scope>test</scope>
 		</dependency>
 		<!-- 引入servlet的包 -->
 		<dependency>
@@ -81,6 +80,11 @@
 		    <artifactId>struts2-core</artifactId>
 		    <version>2.3.16</version>
 		</dependency>
+		<!-- <dependency>
+		    <groupId>org.apache.struts</groupId>
+		    <artifactId>struts2-core</artifactId>
+		    <version>2.5.14.1</version>
+		</dependency> -->
 		<dependency>
 		    <groupId>org.apache.struts</groupId>
 		    <artifactId>struts2-spring-plugin</artifactId>

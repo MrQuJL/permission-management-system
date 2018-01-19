@@ -15,16 +15,27 @@ public class Role implements Serializable {
 	private static final long serialVersionUID = 7372493617787195608L;
 	
 	private Integer id;
+	
     private Integer officeId;
+    
     private String name;
+    
     private String dataScope;
+    
     private String isSys;
+    
     private String useable;
+    
     private String createBy;
+    
     private Date createDate;
+    
     private String updateBy;
+    
     private Date updateDate;
+    
     private String remarks;
+    
     private String delFlag;
 
     public Integer getId() {
