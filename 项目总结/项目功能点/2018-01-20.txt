@@ -8,6 +8,14 @@
 注：dictTypeList为放入session里面的字典列表的key
 var为单个字典类型（String）
 
+2. 增加和修改字典公用一套业务逻辑公用一套页面，根据有无id来区分
+是新增还是修改，如果是修改则在后台先查询一下该字典的详细信息，然后
+通过ServletActionContext放到session里面，如果是新增则将session里面
+相应的key置为空，跳转到编辑页面的时候如果是修改则通过EL表达式获取
+相应的值。
+
+3. 在保存字典的时候要通过编辑页面的隐藏域hidden上是否有dictId来判断是
+insert还是update
 
 
 

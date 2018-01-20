@@ -29,4 +29,11 @@ public interface DictMapper {
 	 */
 	public List<String> getDictTypeList();
 	
+	/**
+	 * 获取指定id的字典
+	 * @param dictId 字典的id
+	 * @return id为dictId的字典
+	 */
+	public Dict getDictById(Long dictId);
+	
 }

@@ -26,7 +26,17 @@ public class DictAction {
 	private String description;
 	// 整合包会负责注入
 	private IDictService dictService;
+	// 判断是添加字典还是修改字典的标记位
+	private Long dictId;
 	
+	public Long getDictId() {
+		return dictId;
+	}
+
+	public void setDictId(Long dictId) {
+		this.dictId = dictId;
+	}
+
 	public String getJsonObj() {
 		return jsonObj;
 	}
@@ -80,6 +90,13 @@ public class DictAction {
 	 * @return
 	 */
 	public String gotoDictEdit() {
+		if (dictId != null) { // 修改，将该id的字典信息查询出来放到session里面
+			Dict dict = dictService.getDictById(dictId);
+			ServletActionContext.getRequest().getSession().setAttribute("dict", dict);
+		} else {
+			ServletActionContext.getRequest().getSession().setAttribute("dict", null);
+		}
+		
 		return "dictEdit";
 	}
 	

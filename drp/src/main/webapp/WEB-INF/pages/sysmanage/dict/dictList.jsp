@@ -22,6 +22,7 @@ String path = request.getContextPath();
     </script>
     <script type="text/javascript">
     	var dictMgr = {
+    		// 获取字典列表
 	    	getDictList : function() {
 	    		var type = $("#type").val();
 	    		var description = $("#description").val();
@@ -53,7 +54,7 @@ String path = request.getContextPath();
 		    					htmlTable = htmlTable + data[i].sort;
 		    					htmlTable = htmlTable + "</td>";
 		    					htmlTable = htmlTable + "<td>";
-		    					htmlTable = htmlTable + "<a href='dictAdd.html'>修改</a> <a href='dictDel'>删除</a>";
+		    					htmlTable = htmlTable + "<a href='${ctx}/sysmgr/gotoDictEdit.action?dictId=" + data[i].id + "'>修改</a> <a href='dictDel' onclick=''>删除</a>";
 		    					htmlTable = htmlTable + "</td>";
 		    					htmlTable = htmlTable + "</tr>";
 		    				}
@@ -63,7 +64,15 @@ String path = request.getContextPath();
 	    				$("#dictTable").find("tbody").html(htmlTable);
 	    			}
 	    		});
-	    	}
+	    	},
+	    	// 编辑字典
+    		editDict : function(dictId) {
+    			
+    		},
+    		// 删除字典
+    		delDict : function(dictId) {
+    			
+    		}
     	};
     </script>
 </head>
@@ -102,21 +111,7 @@ String path = request.getContextPath();
     </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>0</td>
-            <td><a href="#">正常</a></td>
-            <td><a href="javascript:"
-                   onclick="$('#type').val('del_flag');$('#searchForm').submit();return false;">del_flag</a>
-            </td>
-            <td>删除标记</td>
-            <td>10</td>
-            <td>
-                <a href="dictAdd.html">修改</a>
-                <a href="#" onclick="return confirmx('确认要删除该字典吗？', this.href)">删除</a>
-                <a href="dictAdd.html">添加键值</a>
-            </td>
-        </tr>
-
+		
     </tbody>
 </table>
 <div class="pagination"><ul>

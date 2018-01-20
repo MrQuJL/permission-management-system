@@ -36,6 +36,7 @@ public class DictServiceTest {
 		
 		System.out.println(dictList.size());
 	}
+	
 	// 查询所有的字典类型
 	@Test
 	public void testGetDictTypeList() {
@@ -43,6 +44,15 @@ public class DictServiceTest {
 		List<String> dictTypeList = dictService.getDictTypeList();
 		
 		System.out.println(dictTypeList.size());
+	}
+	
+	// 查询指定id的字典
+	@Test
+	public void testGetDictById() {
+		
+		Dict dict = dictService.getDictById(1L);
+		
+		System.out.println(dict);
 	}
 	
 }
