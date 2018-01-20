@@ -36,5 +36,13 @@ public class DictServiceTest {
 		
 		System.out.println(dictList.size());
 	}
+	// 查询所有的字典类型
+	@Test
+	public void testGetDictTypeList() {
+		
+		List<String> dictTypeList = dictService.getDictTypeList();
+		
+		System.out.println(dictTypeList.size());
+	}
 	
 }

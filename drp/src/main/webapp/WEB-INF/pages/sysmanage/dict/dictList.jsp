@@ -7,8 +7,7 @@ String path = request.getContextPath();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>字典管理</title>
-    
+<title>字典管理</title>
 <meta charset="utf-8" />
 <meta name="renderer" content="webkit">
 <%@ include file="/WEB-INF/pages/include/head.jsp" %>
@@ -81,16 +80,9 @@ String path = request.getContextPath();
     <label>类型：</label>
         <select id="type" name="type" class="input-medium">
             <option value="">所有类型</option>
-            <option value="del_flag">del_flag</option>
-            <option value="sex">sex</option>
-            <option value="show_hide">show_hide</option>
-            <option value="sys_area_type">sys_area_type</option>
-            <option value="sys_data_scope">sys_data_scope</option>
-            <option value="sys_log_type">sys_log_type</option>
-            <option value="sys_office_grade">sys_office_grade</option>
-            <option value="sys_office_type">sys_office_type</option>
-            <option value="sys_user_type">sys_user_type</option>
-            <option value="yes_no">yes_no</option>
+            <c:forEach items="${dictTypeList}" var="dictType">
+	        	<option value="${dictType}">${dictType}</option>
+            </c:forEach>
         </select>
     	&nbsp;&nbsp;<label>描述 ：</label>
         <input id="description" name="description" class="input-medium" type="text" value="" maxlength="50"/>
@@ -125,50 +117,6 @@ String path = request.getContextPath();
             </td>
         </tr>
 
-        <tr>
-            <td>1</td>
-            <td><a href="/sys/dict/toEdit?id=2">删除</a></td>
-            <td><a href="javascript:"
-                   onclick="$('#type').val('del_flag');$('#searchForm').submit();return false;">del_flag</a>
-            </td>
-            <td>删除标记</td>
-            <td>20</td>
-            <td>
-                <a href="dictAdd.html">修改</a>
-                <a href="#" onclick="return confirmx('确认要删除该字典吗？', this.href)">删除</a>
-                <a href="dictAdd.html">添加键值</a>
-            </td>
-        </tr>
-    
-        <tr>
-            <td>1</td>
-            <td><a href="/sys/dict/toEdit?id=96">男</a></td>
-            <td><a href="javascript:"
-                   onclick="$('#type').val('sex');$('#searchForm').submit();return false;">sex</a>
-            </td>
-            <td>性别</td>
-            <td>10</td>
-            <td>
-                <a href="dictAdd.html">修改</a>
-                <a href="#" onclick="return confirmx('确认要删除该字典吗？', this.href)">删除</a>
-                <a href="dictAdd.html">添加键值</a>
-            </td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td><a href="/sys/dict/toEdit?id=97">女</a></td>
-            <td><a href="javascript:"
-                   onclick="$('#type').val('sex');$('#searchForm').submit();return false;">sex</a>
-            </td>
-            <td>性别</td>
-            <td>20</td>
-            
-            <td>
-                <a href="dictAdd.html">修改</a>
-                <a href="#" onclick="return confirmx('确认要删除该字典吗？', this.href)">删除</a>
-                <a href="dictAdd.html">添加键值</a>
-            </td>
-        </tr>
     </tbody>
 </table>
 <div class="pagination"><ul>

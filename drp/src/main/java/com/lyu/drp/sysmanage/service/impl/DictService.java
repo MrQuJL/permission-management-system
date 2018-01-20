@@ -18,5 +18,10 @@ public class DictService implements IDictService {
 	public List<Dict> getDictList(String type, String description) {
 		return dictMapper.getDictList(type, description);
 	}
+
+	@Override
+	public List<String> getDictTypeList() {
+		return dictMapper.getDictTypeList();
+	}
     
 }

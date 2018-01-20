@@ -22,4 +22,11 @@ public interface DictMapper {
 	 */
 	public List<Dict> getDictList(String type, String description);
 	
+	/**
+	 * 获取所有的字典类型
+	 * @param 
+	 * @return
+	 */
+	public List<String> getDictTypeList();
+	
 }

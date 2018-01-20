@@ -3,6 +3,7 @@ package com.lyu.drp.sysmanage.action;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.struts2.ServletActionContext;
 
 import com.alibaba.fastjson.JSONArray;
 import com.lyu.drp.sysmanage.entity.Dict;
@@ -64,6 +65,12 @@ public class DictAction {
 	 * @return
 	 */
 	public String gotoDictList() {
+		// 1.加载所有的字典类型
+		List<String> dictTypeList = dictService.getDictTypeList();
+		
+		// 2.放入session里面
+		ServletActionContext.getRequest().getSession().setAttribute("dictTypeList", dictTypeList);
+		
 		return "dictList";
 	}
 	
@@ -82,15 +89,12 @@ public class DictAction {
 	 * @return
 	 */
 	public String getDictList() {
-		
 		if (dictService == null) {
 			System.out.println("dictService is null");
 		}
-		
 		if (StringUtils.isEmpty(type)) {
 			type = null;
 		}
-		
 		if (StringUtils.isEmpty(description)) {
 			description = null;
 		}
@@ -98,8 +102,6 @@ public class DictAction {
 		List<Dict> dictList = dictService.getDictList(type, description);
 		
 		this.jsonObj =  JSONArray.toJSONString(dictList);
-		
-		
 		
 		return "success";
 	}

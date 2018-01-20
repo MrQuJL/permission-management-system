@@ -1,0 +1,13 @@
+2018/1/20
+
+1. 一打开字典列表的时候就加载所有的字典列表放到session里面
+在前台页面通过jstl的forEach标签获取
+<c:forEach items="${dictTypeList}" var="dictType">
+	<option value="${dictType}">${dictType}</option>
+</c:forEach>
+注：dictTypeList为放入session里面的字典列表的key
+var为单个字典类型（String）
+
+
+
+
