@@ -18,7 +18,23 @@ String path = request.getContextPath();
 			$("#dictSaveChangeForm").validate({
 				submitHandler: function(form){
 					loading('正在提交，请稍等...');
-					
+					var obj = $("#dictSaveChangeForm").serializeArray();
+					var jsonObj = {};
+					$.each(obj, function(i, item) {
+						jsonObj[item.name] = item.value;
+					});
+					jsonObj = JSON.stringify(jsonObj);
+					alert(jsonObj);
+					$.ajax({
+						type : "post",
+						url : "${ctx}/sysmgr/saveDict.action",
+						data : {"jsonObj" : jsonObj},
+						dataType : "json",
+						success : function(data) {
+							top.$.jBox.closeTip();
+							alert(data.message);
+						}
+					});
 				},
 				errorContainer: "#messageBox",
 				errorPlacement: function(error, element) {
@@ -32,8 +48,8 @@ String path = request.getContextPath();
 			});
 		});
 		var dictMgr = {
-			// 保存字典
-			editDict :function() {
+			// 删除字典
+			delDict :function() {
 				
 			}
 		};
@@ -46,7 +62,7 @@ String path = request.getContextPath();
 	</ul><br/>
 	<form id="dictSaveChangeForm" class="form-horizontal" action="#" method="post">
 		<input id="id" name="id" type="hidden" value="${dict.id}"/>
-<script type="text/javascript">top.$.jBox.closeTip();</script>
+
 		<div class="control-group">
 			<label class="control-label">键值:</label>
 			<div class="controls">
@@ -89,7 +105,7 @@ String path = request.getContextPath();
 			</div>
 		</div>
 		<div class="form-actions">
-			<input id="btnSubmit" class="btn btn-primary" type="button" onclick="" value="保 存"/>&nbsp;
+			<input id="btnSubmit" class="btn btn-primary" type="submit" value="保 存"/>&nbsp;
 			<input id="btnCancel" class="btn" type="button" value="返 回" onclick="history.go(-1)"/>
 		</div>
 	</form>

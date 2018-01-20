@@ -36,4 +36,17 @@ public interface DictMapper {
 	 */
 	public Dict getDictById(Long dictId);
 	
+	/**
+	 * 新增字典
+	 * @param 
+	 * @return
+	 */
+	public int saveDict(Dict dict);
+	
+	/**
+	 * 修改字典
+	 * @param 
+	 * @return
+	 */
+	public int updateDict(Dict dict);
 }

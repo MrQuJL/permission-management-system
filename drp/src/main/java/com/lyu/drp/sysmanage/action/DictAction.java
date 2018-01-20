@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.lyu.drp.sysmanage.entity.Dict;
 import com.lyu.drp.sysmanage.service.IDictService;
@@ -28,7 +29,17 @@ public class DictAction {
 	private IDictService dictService;
 	// 判断是添加字典还是修改字典的标记位
 	private Long dictId;
+	// 返回给前台的消息
+	private String message;
 	
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
 	public Long getDictId() {
 		return dictId;
 	}
@@ -85,22 +96,6 @@ public class DictAction {
 	}
 	
 	/**
-	 * 进入字典编辑页面
-	 * @param 
-	 * @return
-	 */
-	public String gotoDictEdit() {
-		if (dictId != null) { // 修改，将该id的字典信息查询出来放到session里面
-			Dict dict = dictService.getDictById(dictId);
-			ServletActionContext.getRequest().getSession().setAttribute("dict", dict);
-		} else {
-			ServletActionContext.getRequest().getSession().setAttribute("dict", null);
-		}
-		
-		return "dictEdit";
-	}
-	
-	/**
 	 * 获取字典列表
 	 * @param 
 	 * @return
@@ -120,6 +115,47 @@ public class DictAction {
 		
 		this.jsonObj =  JSONArray.toJSONString(dictList);
 		
+		return "success";
+	}
+	
+	/**
+	 * 进入字典编辑页面
+	 * @param 
+	 * @return
+	 */
+	public String gotoDictEdit() {
+		if (dictId != null) { // 修改，将该id的字典信息查询出来放到session里面
+			Dict dict = dictService.getDictById(dictId);
+			ServletActionContext.getRequest().getSession().setAttribute("dict", dict);
+		} else {
+			ServletActionContext.getRequest().getSession().setAttribute("dict", null);
+		}
+		
+		return "dictEdit";
+	}
+	
+	/**
+	 * 保存字典
+	 * @param 
+	 * @return
+	 */
+	public String saveDict() {
+		// 将前台传来的json字符串解析成Dict对象
+		Dict dict = JSON.parseObject(jsonObj, Dict.class);
+		System.out.println(dict);
+		if (dict.getId() != null) { // 修改字典
+			int rows = dictService.updateDict(dict);
+			this.message = "修改字典失败";
+			if (rows > 0) {
+				this.message = "修改字典成功";
+			}
+		} else { // 新增字典
+			int rows = dictService.saveDict(dict);
+			this.message = "新增字典失败";
+			if (rows > 0) {
+				this.message = "新增字典成功";
+			}
+		}
 		return "success";
 	}
 	

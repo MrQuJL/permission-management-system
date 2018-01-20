@@ -1,7 +1,7 @@
 package com.lyu.drp.sysmanage.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
 
 /**
  * 类名称: 字典类
@@ -31,7 +31,7 @@ public class Dict implements Serializable {
 
     private String updateBy;
 
-    private Date updateDate;
+    private Timestamp updateDate;
 
     private String remarks;
 
@@ -101,11 +101,11 @@ public class Dict implements Serializable {
         this.updateBy = updateBy == null ? null : updateBy.trim();
     }
 
-    public Date getUpdateDate() {
+    public Timestamp getUpdateDate() {
         return updateDate;
     }
 
-    public void setUpdateDate(Date updateDate) {
+    public void setUpdateDate(Timestamp updateDate) {
         this.updateDate = updateDate;
     }
 
@@ -124,5 +124,12 @@ public class Dict implements Serializable {
     public void setDelFlag(String delFlag) {
         this.delFlag = delFlag == null ? null : delFlag.trim();
     }
+
+	@Override
+	public String toString() {
+		return "Dict [id=" + id + ", value=" + value + ", label=" + label + ", type=" + type + ", description="
+				+ description + ", sort=" + sort + ", parentId=" + parentId + ", updateBy=" + updateBy + ", updateDate="
+				+ updateDate + ", remarks=" + remarks + ", delFlag=" + delFlag + "]";
+	}
 	
 }

@@ -40,4 +40,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE id = #{dictId} AND del_flag = 0
 	</select>
 	
+	<!-- 新增字典 -->
+	<insert id="saveDict" parameterType="dict">
+		INSERT INTO drp_sys_dict(value, label, type, description, sort, parent_id,
+	    update_by, update_date, remarks, del_flag)
+	    VALUES(#{value}, #{label}, #{type}, #{description}, #{sort}, #{parent_id}, 
+	    #{update_by}, #{update_date}, #{remarks}, #{del_flag})
+	</insert>
+	
+	<!-- 修改字典 -->
+	<update id="updateDict" parameterType="dict">
+		UPDATE drp_sys_dict SET 
+		value = #{value},
+		label = #{label},
+		type = #{type},
+		description = #{description},
+		sort = #{sort},
+		parent_id = #{parentId},
+		update_by = #{updateBy},
+		update_date = #{updateDate},
+		remarks = #{remarks},
+		del_flag = #{delFlag}
+		WHERE id = #{id}
+	</update>
 </mapper>

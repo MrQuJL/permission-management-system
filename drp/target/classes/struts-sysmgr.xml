@@ -46,6 +46,12 @@
 			</result>
 		</action>
 		
+		<action name = "saveDict" class= "com.lyu.drp.sysmanage.action.DictAction" method = "saveDict">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
 	</package>
 
 </struts>

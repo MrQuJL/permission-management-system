@@ -1,5 +1,6 @@
 package com.lyu.drp.test;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.junit.Before;
@@ -53,6 +54,13 @@ public class DictServiceTest {
 		Dict dict = dictService.getDictById(1L);
 		
 		System.out.println(dict);
+	}
+	
+	// 测试时间bug
+	@Test
+	public void testBugOfDatetime() {
+		System.out.println(new Date(System.currentTimeMillis()));
+		
 	}
 	
 }
