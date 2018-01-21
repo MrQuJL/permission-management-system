@@ -33,27 +33,23 @@ public class DictService implements IDictService {
 
 	@Override
 	public int saveDict(Dict dict) {
-		dict.setParentId("0");
 		dict.setUpdateBy("1");
 		dict.setUpdateDate(new Timestamp(System.currentTimeMillis()));
-		dict.setDelFlag("0");
-		
 		return dictMapper.saveDict(dict);
 	}
 
 	@Override
 	public int updateDict(Dict dict) {
 		dict.setParentId("0");
-		System.out.println("parentID finished:" + dict);
-		
 		dict.setUpdateBy("1");
-		System.out.println("updateBy finished:" + dict);
-		
 		dict.setUpdateDate(new Timestamp(System.currentTimeMillis()));
 		
-		System.out.println("date finished:" + dict);
-		
 		return dictMapper.updateDict(dict);
+	}
+
+	@Override
+	public int delDictById(Long dictId) {
+		return dictMapper.delDictById(dictId);
 	}
     
 }

@@ -49,4 +49,11 @@ public interface DictMapper {
 	 * @return
 	 */
 	public int updateDict(Dict dict);
+	
+	/**
+	 * 根据字典id删除字典
+	 * @param 
+	 * @return
+	 */
+	public int delDictById(Long dictId);
 }

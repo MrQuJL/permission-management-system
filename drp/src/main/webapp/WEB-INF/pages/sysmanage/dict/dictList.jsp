@@ -54,7 +54,8 @@ String path = request.getContextPath();
 		    					htmlTable = htmlTable + data[i].sort;
 		    					htmlTable = htmlTable + "</td>";
 		    					htmlTable = htmlTable + "<td>";
-		    					htmlTable = htmlTable + "<a href='${ctx}/sysmgr/gotoDictEdit.action?dictId=" + data[i].id + "'>修改</a> <a href='dictDel' onclick=''>删除</a>";
+		    					htmlTable = htmlTable + "<a href='${ctx}/sysmgr/gotoDictEdit.action?dictId=" + data[i].id + 
+		    						"'>修改</a> <a href='javascript:void(0);' onclick='dictMgr.delDict(" + data[i].id + ")'>删除</a>";
 		    					htmlTable = htmlTable + "</td>";
 		    					htmlTable = htmlTable + "</tr>";
 		    				}
@@ -65,13 +66,25 @@ String path = request.getContextPath();
 	    			}
 	    		});
 	    	},
-	    	// 编辑字典
-    		editDict : function(dictId) {
-    			
-    		},
     		// 删除字典
     		delDict : function(dictId) {
-    			
+    			if (confirm("您确定要删除该字典吗？")) {
+    				loading('正在提交，请稍等...');
+        			$.ajax({
+        				type : "post",
+        				url : "${ctx}/sysmgr/delDict.action",
+        				data : {"dictId" : dictId},
+        				dataType : "json",
+        				success : function(data){
+    	    				alert(data.message);
+        				},
+        				complete : function(){
+        					top.$.jBox.closeTip();
+        					// 删除完了之后重新查询一下字典列表
+        					dictMgr.getDictList();
+        				}
+        			});
+    			}
     		}
     	};
     </script>

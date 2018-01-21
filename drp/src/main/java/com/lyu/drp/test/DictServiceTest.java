@@ -1,6 +1,5 @@
 package com.lyu.drp.test;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.junit.Before;
@@ -56,10 +55,16 @@ public class DictServiceTest {
 		System.out.println(dict);
 	}
 	
-	// 测试时间bug
+	// 测试删除字典(逻辑删除)
 	@Test
-	public void testBugOfDatetime() {
-		System.out.println(new Date(System.currentTimeMillis()));
+	public void testDelDictById() {
+		int rows = dictService.delDictById(101L);
+		
+		if (rows > 0) {
+			System.out.println("逻辑删除表数据成功");
+		} else {
+			System.out.println("逻辑删除表数据失败");
+		}
 		
 	}
 	

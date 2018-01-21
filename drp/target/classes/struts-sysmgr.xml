@@ -52,6 +52,12 @@
 			</result>
 		</action>
 		
+		<action name = "delDict" class= "com.lyu.drp.sysmanage.action.DictAction" method = "delDict">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
 	</package>
 
 </struts>

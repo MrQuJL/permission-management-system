@@ -159,4 +159,18 @@ public class DictAction {
 		return "success";
 	}
 	
+	/**
+	 * 删除字典(逻辑删除)
+	 * @param 
+	 * @return
+	 */
+	public String delDict() {
+		int rows = dictService.delDictById(dictId);
+		this.message = "删除字典失败";
+		if (rows > 0) {
+			this.message = "删除字典成功";
+		}
+		return "success";
+	}
+	
 }

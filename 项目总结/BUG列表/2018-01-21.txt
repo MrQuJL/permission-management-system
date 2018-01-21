@@ -1,0 +1,20 @@
+2018/1/21
+
+1. mapper的查询语句写错了导致后台一直没反应
+（一些字段的数据类型搞错了，mysql的datetime对应java的Timestamp）
+当然，我的log4j也没开debug模式...所以就看不到
+经验教训：mapper上写的sql一定要在Navicat上测试一下
+
+2. mapper中判断字段是否为空要使用java的属性而不能使用数据库的字段
+正例：
+<if test="updateDate != null">
+	update_date = #{updateDate},
+</if>
+反例：
+<if test="update_date != null">
+	update_date = #{updateDate},
+</if>
+
+
+
+
