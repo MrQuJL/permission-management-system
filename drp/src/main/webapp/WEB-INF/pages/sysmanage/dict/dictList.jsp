@@ -13,25 +13,21 @@ String path = request.getContextPath();
 <%@ include file="/WEB-INF/pages/include/head.jsp" %>
     <meta name="decorator" content="default"/>
     <script type="text/javascript">
-        function page(n, s) {
-            $("#pageNo").val(n);
-            $("#pageSize").val(s);
-            $("#searchForm").submit();
-            return false;
-        }
-    </script>
-    <script type="text/javascript">
     	var dictMgr = {
-    		// 获取字典列表
-	    	getDictList : function() {
+    		// 获取分页后的字典列表
+	    	getDictListPage : function(pageNo, pageSize) {
 	    		var type = $("#type").val();
 	    		var description = $("#description").val();
 	    		$.ajax({
 	    			type : "post",
-	    			url : "${ctx}/sysmgr/getDictList.action",
-	    			data : {"type":type,"description":description},
+	    			url : "${ctx}/sysmgr/getDictListPage.action",
+	    			data : {"type":type,"description":description,"pageParam.pageNo":pageNo,"pageParam.pageSize":pageSize},
 	    			dataType : "json",
 	    			success : function(data) {
+	    				//alert(data.jsonObj);
+	    				// 获取分页条
+	    				var pageBar = data.pageBar;
+	    				// 获取字典列表
 	    				data = JSON.parse(data.jsonObj);
 	    				var htmlTable = "";
 	    				if (data.length != 0) {
@@ -63,6 +59,7 @@ String path = request.getContextPath();
 	    					htmlTable = "没有查询到数据";
 	    				}
 	    				$("#dictTable").find("tbody").html(htmlTable);
+	    				$("#dictPageBar").html(pageBar);
 	    			}
 	    		});
 	    	},
@@ -108,7 +105,7 @@ String path = request.getContextPath();
         </select>
     	&nbsp;&nbsp;<label>描述 ：</label>
         <input id="description" name="description" class="input-medium" type="text" value="" maxlength="50"/>
-    &nbsp;<input id="btnSubmit" class="btn btn-primary" type="button" onclick="dictMgr.getDictList();" value="查询"/>
+    &nbsp;<input id="btnSubmit" class="btn btn-primary" type="button" onclick="dictMgr.getDictListPage(1, 10);" value="查询"/>
 </form>
 <script type="text/javascript">top.$.jBox.closeTip();</script>
 
@@ -127,12 +124,16 @@ String path = request.getContextPath();
 		
     </tbody>
 </table>
-<div class="pagination"><ul>
+
+<div class="pagination" id="dictPageBar">
+<!-- <ul>
 <li class="disabled"><a href="javascript:">&#171; 上一页</a></li>
 <li class="active"><a href="javascript:">1</a></li>
 <li class="disabled"><a href="javascript:">下一页 &#187;</a></li>
 <li class="disabled controls"><a href="javascript:">当前 <input type="text" value="1" onkeypress="var e=window.event||this;var c=e.keyCode||e.which;if(c==13)page(this.value,15,'');" onclick="this.select();"/> / <input type="text" value="15" onkeypress="var e=window.event||this;var c=e.keyCode||e.which;if(c==13)page(1,this.value,'');" onclick="this.select();"/> 条，共 0 条</a></li>
 </ul>
-<div style="clear:both;"></div></div>
+<div style="clear:both;"></div> -->
+</div>
+
 </body>
 </html>

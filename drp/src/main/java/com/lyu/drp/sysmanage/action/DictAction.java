@@ -7,6 +7,9 @@ import org.apache.struts2.ServletActionContext;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.github.pagehelper.PageInfo;
+import com.lyu.drp.common.dto.PageParam;
+import com.lyu.drp.common.util.PageUtils;
 import com.lyu.drp.sysmanage.entity.Dict;
 import com.lyu.drp.sysmanage.service.IDictService;
 
@@ -31,6 +34,26 @@ public class DictAction {
 	private Long dictId;
 	// 返回给前台的消息
 	private String message;
+	// 接收前台的分页信息：第几页，每页多少条
+	private PageParam pageParam;
+	// 返回给前台的分页条对象
+	private String pageBar;
+	
+	public String getPageBar() {
+		return pageBar;
+	}
+
+	public void setPageBar(String pageBar) {
+		this.pageBar = pageBar;
+	}
+
+	public PageParam getPageParam() {
+		return pageParam;
+	}
+
+	public void setPageParam(PageParam pageParam) {
+		this.pageParam = pageParam;
+	}
 	
 	public String getMessage() {
 		return message;
@@ -96,11 +119,11 @@ public class DictAction {
 	}
 	
 	/**
-	 * 获取字典列表
+	 * 获取分页的字典列表
 	 * @param 
 	 * @return
 	 */
-	public String getDictList() {
+	public String getDictListPage() {
 		if (StringUtils.isEmpty(type)) {
 			type = null;
 		}
@@ -112,21 +135,12 @@ public class DictAction {
 		dict.setType(type);
 		dict.setDescription(description);
 		
-		List<Dict> dictList = dictService.getDictList(dict);
-		
-		this.jsonObj =  JSONArray.toJSONString(dictList);
-		
-		return "success";
-	}
-	
-	/**
-	 * 获取分页的字典列表
-	 * @param 
-	 * @return
-	 */
-	public String getDictListPage() {
-		
-		
+		PageInfo<Dict> pageInfo = dictService.getDictListPage(dict, pageParam);
+		// 1.获取字典列表
+		List<Dict> dictList = pageInfo.getList();
+		this.jsonObj = JSONArray.toJSONString(dictList);
+		// 2.获取分页条
+		this.pageBar = PageUtils.pageStr(pageInfo, "dictMgr.getDictListPage"); 
 		
 		return "success";
 	}

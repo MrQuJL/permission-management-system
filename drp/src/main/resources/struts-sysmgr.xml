@@ -40,9 +40,9 @@
 			<result name = "dictEdit">/WEB-INF/pages/sysmanage/dict/dictEdit.jsp</result>
 		</action>
 		
-		<action name = "getDictList" class= "com.lyu.drp.sysmanage.action.DictAction" method = "getDictList">
+		<action name = "getDictListPage" class= "com.lyu.drp.sysmanage.action.DictAction" method = "getDictListPage">
 			<result type="json">
-				<param name="includeProperties">jsonObj</param>
+				<param name="includeProperties">jsonObj,pageBar</param>
 			</result>
 		</action>
 		
@@ -57,7 +57,6 @@
 				<param name="includeProperties">message</param>
 			</result>
 		</action>
-		
 	</package>
-
+	
 </struts>

@@ -7,7 +7,6 @@
 	* 在后台编写分页的工具类，屏蔽翻页动作带来的查询差异(mybatis已经完成)
 	* 在后台编写分页条的java代码，方便页面统一生成分页条，减少页面代码重复
 
-
 mysql: limit
 SELECT * FROM TABLE A LIMIT beginrow, pagesize
 beginrow从0开始,pagesize表示一页多少条记录
@@ -25,4 +24,35 @@ Connection con = DriverManager.getConnection(url, "admin", "admin"); // 连接�
 DatabaseMetaData dm = con.getMetaData();
 dm.getDatabaseProductName();
 dm.getDatabaseProductVersion();
+
+2. 在后台根据前台使用的框架用StringBuffer统一封装分页条
+String,StringBuffer,StringBuilder的区别?
+
+1) 可变性：
+String被final修饰，而且底层的char类型的数组也被final修饰，所以String不可变
+StringBuffer和StringBuilder都继承自AbstractStringBuilder，它们的底层也是char
+类型的数组，但是没有被final修饰，所以都是可变的
+
+2）线程安全性：
+String对象不可变，也可以理解为常量，所以是线程安全的
+StringBuffer对方法加了同步锁，所以线程安全
+StringBuilder没有对方法加同步锁，所以线程不安全
+
+3）性能：
+每次改变String类型的变量时（例如：+）都会生成一个新的对象，性能较低
+StringBuffer每次都是改变自身的char数组所以不会生成新对象，性能比较好
+StringBuilder和StringBuffer相比方法没有加同步锁，所以性能相对快一些，
+但是，却要冒线程不安全的风险，所以还是推荐StringBuffer
+
+StringBuilder(不安全) > StringBuffer(安全) > String(安全)
+
+3. 分页查询的流程：
+
+1）前台向后台传递查询条件，页数，每页的记录数
+2）action调用service方法获取PageInfo对象
+3）从PageInfo中获取dictList对象
+4）通过封装的分页条工具类，根据pageInfo的相关信息封装分页条
+5）将上面两部分内容转化成json字符串发往前台
+6）前台通过jquery操作DOM填充页面
+
 
