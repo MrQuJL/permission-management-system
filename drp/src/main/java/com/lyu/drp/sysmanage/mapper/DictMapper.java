@@ -20,7 +20,7 @@ public interface DictMapper {
 	 * @param description 字典的描述
 	 * @return 字典列表
 	 */
-	public List<Dict> getDictList(String type, String description);
+	public List<Dict> getDictList(Dict dict);
 	
 	/**
 	 * 获取所有的字典类型

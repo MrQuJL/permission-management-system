@@ -1,0 +1,28 @@
+2018/1/22
+
+1. 分页功能
+
+轻量级的分页组件（现在分页一般由前台分页组件+后台模型组件<hibernate/mybatis方言差异>）
+	* 在后台编写数据库工具方言，屏蔽数据库分页方法的差异(mybatis已经完成)
+	* 在后台编写分页的工具类，屏蔽翻页动作带来的查询差异(mybatis已经完成)
+	* 在后台编写分页条的java代码，方便页面统一生成分页条，减少页面代码重复
+
+
+mysql: limit
+SELECT * FROM TABLE A LIMIT beginrow, pagesize
+beginrow从0开始,pagesize表示一页多少条记录
+
+oracle: rownum
+SELECT B.* FROM 
+(SELECT rownum rn a.* FROM table a) B
+WHERE B.rn BETWEEN beginrow AND endrow
+
+sqlserver: top
+SELECT TOP 100 id, name, sex FROM TABLE
+
+可以在连接里面获取数据库的类型:
+Connection con = DriverManager.getConnection(url, "admin", "admin"); // 连接到数据库
+DatabaseMetaData dm = con.getMetaData();
+dm.getDatabaseProductName();
+dm.getDatabaseProductVersion();
+

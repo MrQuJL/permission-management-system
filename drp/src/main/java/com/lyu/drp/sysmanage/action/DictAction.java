@@ -101,9 +101,6 @@ public class DictAction {
 	 * @return
 	 */
 	public String getDictList() {
-		if (dictService == null) {
-			System.out.println("dictService is null");
-		}
 		if (StringUtils.isEmpty(type)) {
 			type = null;
 		}
@@ -111,9 +108,25 @@ public class DictAction {
 			description = null;
 		}
 		
-		List<Dict> dictList = dictService.getDictList(type, description);
+		Dict dict = new Dict();
+		dict.setType(type);
+		dict.setDescription(description);
+		
+		List<Dict> dictList = dictService.getDictList(dict);
 		
 		this.jsonObj =  JSONArray.toJSONString(dictList);
+		
+		return "success";
+	}
+	
+	/**
+	 * 获取分页的字典列表
+	 * @param 
+	 * @return
+	 */
+	public String getDictListPage() {
+		
+		
 		
 		return "success";
 	}
@@ -170,6 +183,7 @@ public class DictAction {
 		if (rows > 0) {
 			this.message = "删除字典成功";
 		}
+		
 		return "success";
 	}
 	

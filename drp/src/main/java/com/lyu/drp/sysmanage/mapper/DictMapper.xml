@@ -11,15 +11,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</sql>
 	
 	<!-- 获得字典列表 -->
-	<select id="getDictList" resultType="dict">
+	<select id="getDictList" resultType="dict" parameterType="dict">
 		SELECT <include refid="all_dict_columns" />
 		FROM drp_sys_dict
 		<where>
-			<if test="param1 != null">
-				AND type = #{param1}
+			<if test="type != null">
+				AND type = #{type}
 			</if>
-			<if test="param2 != null">
-				AND description LIKE '%${param2}%'
+			<if test="description != null">
+				AND description LIKE '%${description}%'
 			</if>
 			<if test="1 == 1">
 				AND del_flag = 0

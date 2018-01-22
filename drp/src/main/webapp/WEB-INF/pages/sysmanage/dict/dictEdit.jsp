@@ -24,7 +24,6 @@ String path = request.getContextPath();
 						jsonObj[item.name] = item.value;
 					});
 					jsonObj = JSON.stringify(jsonObj);
-					alert(jsonObj);
 					$.ajax({
 						type : "post",
 						url : "${ctx}/sysmgr/saveDict.action",

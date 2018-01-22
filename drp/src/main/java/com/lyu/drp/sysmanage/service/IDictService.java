@@ -2,6 +2,8 @@ package com.lyu.drp.sysmanage.service;
 
 import java.util.List;
 
+import com.github.pagehelper.PageInfo;
+import com.lyu.drp.common.dto.PageParam;
 import com.lyu.drp.sysmanage.entity.Dict;
 
 /**
@@ -20,7 +22,14 @@ public interface IDictService {
 	 * @param description 字典的描述
 	 * @return 字典列表
 	 */
-	public List<Dict> getDictList(String type, String description);
+	public List<Dict> getDictList(Dict dict);
+	
+	/**
+	 * 获取分页的字典列表
+	 * @param 
+	 * @return
+	 */
+	public PageInfo<Dict> getDictListPage(Dict dict, PageParam pageParam);
 	
 	/**
 	 * 获取所有的字典类型
@@ -56,4 +65,5 @@ public interface IDictService {
 	 * @return
 	 */
 	public int delDictById(Long dictId);
+	
 }
