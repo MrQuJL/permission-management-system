@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.github.pagehelper.PageInfo;
+import com.lyu.drp.common.dto.PageParam;
 import com.lyu.drp.sysmanage.entity.Dict;
 import com.lyu.drp.sysmanage.service.IDictService;
 
@@ -30,11 +32,11 @@ public class DictServiceTest {
 	
 	// 查询字典列表
 	@Test
-	public void testGetDictList() {
+	public void testGetDictListPage() {
 		
-		List<Dict> dictList = dictService.getDictList("", ""); 
+		PageInfo<Dict> pageInfo =  dictService.getDictListPage(null, new PageParam()); 
 		
-		System.out.println(dictList.size());
+		System.out.println(pageInfo.getList().size());
 	}
 	
 	// 查询所有的字典类型

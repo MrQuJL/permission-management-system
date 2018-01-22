@@ -9,9 +9,9 @@ package com.lyu.drp.common.dto;
  * @version V1.0
  */
 public class PageParam {
-	// 第几页
+	// 第几页，默认第一页
 	private Integer pageNo = 1;
-	// 每页多少条
+	// 每页多少条，默认10条
 	private Integer pageSize = 10;
 	
 	public Integer getPageNo() {

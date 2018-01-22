@@ -28,7 +28,7 @@ public class DictAction {
 	private String type;
 	// 字典的描述
 	private String description;
-	// 整合包会负责注入
+	// spring负责注入
 	private IDictService dictService;
 	// 判断是添加字典还是修改字典的标记位
 	private Long dictId;
@@ -197,7 +197,6 @@ public class DictAction {
 		if (rows > 0) {
 			this.message = "删除字典成功";
 		}
-		
 		return "success";
 	}
 	
