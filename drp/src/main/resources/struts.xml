@@ -8,9 +8,11 @@
 		<!-- 定义拦截器 -->
 		<interceptors>
 			<interceptor name="loginInterceptor" class="com.lyu.drp.interceptor.LoginInterceptor"></interceptor>
+			<interceptor name="authorizationInterceptor" class="com.lyu.drp.interceptor.AuthorizationInterceptor"></interceptor>
 			<interceptor-stack name="mydefault-interceptors">
 				<interceptor-ref name="defaultStack" />
 				<interceptor-ref name="loginInterceptor" />
+				<interceptor-ref name="authorizationInterceptor" />
 			</interceptor-stack>
 		</interceptors>
 		<default-interceptor-ref name="mydefault-interceptors" />
@@ -18,6 +20,7 @@
 		<!-- 定义一个全局的result -->
 		<global-results>
 			<result name="loginPage" type="redirect">toLogin</result>
+			<result name="refusePage">/WEB-INF/pages/refusePage.jsp</result>
 		</global-results>
 		
 	</package>

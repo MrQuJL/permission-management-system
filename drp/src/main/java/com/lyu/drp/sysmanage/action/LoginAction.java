@@ -9,6 +9,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.lyu.drp.sysmanage.dto.Principle;
 import com.lyu.drp.sysmanage.entity.User;
+import com.lyu.drp.sysmanage.service.IMenuService;
 import com.lyu.drp.sysmanage.service.IUserService;
 
 /**
@@ -30,7 +31,17 @@ public class LoginAction {
 	private String loginErrorMsg;
 	// 用户服务类,spring容器会自动注入
 	private IUserService userService;
+	// 菜单服务类，spring会自动注入
+	private IMenuService menuService;
 	
+	public IMenuService getMenuService() {
+		return menuService;
+	}
+
+	public void setMenuService(IMenuService menuService) {
+		this.menuService = menuService;
+	}
+
 	public IUserService getUserService() {
 		return userService;
 	}
@@ -99,6 +110,8 @@ public class LoginAction {
 				principle.setUserId(user.getUserId());
 				principle.setLoginName(user.getLoginName());
 				principle.setUserName(user.getUserName());
+				// 为了授权拦截器能够匹配用户所拥有的权限，在登录成功以后将该用户所能访问的菜单url放入身份信息中
+				principle.setMenuList(menuService.getMenuListByUser(user.getUserId()));
 				
 				HttpSession session = ServletActionContext.getRequest().getSession();
 				session.setAttribute("principle", principle);

@@ -19,11 +19,12 @@ import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 public class LoginInterceptor extends AbstractInterceptor {
 	
 	private static final long serialVersionUID = 3392064468921025712L;
-
+	
 	private Logger log = Logger.getLogger(this.getClass());
 	
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
+		log.info("进入用户认证拦截器");
 		// 1.判断是否是匿名访问的地址
 		String returnCode = "";
 		String uri = ServletActionContext.getRequest().getRequestURI();
@@ -39,6 +40,7 @@ public class LoginInterceptor extends AbstractInterceptor {
 				returnCode = "loginPage";
 			}
 		}
+		log.info("退出用户认证拦截器");
 		return returnCode;
 	}
 }
