@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace = "com.lyu.drp.sysmanage.mapper.MenuMapper"> 
+	
+	<!-- 所有的菜单字段 -->
+	<sql id="all_menu_columns">
+		id, value, label, type, description, sort, parent_id, update_by,
+		update_date, remarks, del_flag
+	</sql>
+	
+	<!-- 所有菜单字段的别名 -->
+	<sql id="all_menu_columns_aliases">
+		A.id, A.value, A.label, A.type, A.description, A.sort, A.parent_id, A.update_by,
+		A.update_date, A.remarks, A.del_flag
+	</sql>
+	
+	<!-- 根据用户的id获取用户所能够操作的用户列表 -->
+	<select id="getMenuListByUser" parameterType="long" resultType="menu">
+		SELECT A.id, A.parent_id, A.name, A.sort, A.href, A.target, A.icon,
+		A.is_show, A.permission, A.update_by, A.update_date, A.remarks, A.del_flag
+		FROM drp_sys_menu A, drp_sys_user_role B, drp_sys_role_menu C
+		WHERE B.user_id = 1 AND  B.role_id = C.role_id AND C.menu_id = A.id AND A.del_flag = 0
+	</select>
+	
+</mapper>

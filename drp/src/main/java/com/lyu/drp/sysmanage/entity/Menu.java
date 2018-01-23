@@ -9,7 +9,7 @@ public class Menu implements Serializable {
 
 	private Long id;
 
-    private Integer parentId;
+    private Long parentId;
 
     private String name;
 
@@ -41,11 +41,11 @@ public class Menu implements Serializable {
         this.id = id;
     }
 
-    public Integer getParentId() {
+    public Long getParentId() {
         return parentId;
     }
 
-    public void setParentId(Integer parentId) {
+    public void setParentId(Long parentId) {
         this.parentId = parentId;
     }
 
@@ -136,5 +136,13 @@ public class Menu implements Serializable {
     public void setDelFlag(String delFlag) {
         this.delFlag = delFlag == null ? null : delFlag.trim();
     }
+
+	@Override
+	public String toString() {
+		return "Menu [id=" + id + ", parentId=" + parentId + ", name=" + name + ", sort=" + sort + ", href=" + href
+				+ ", target=" + target + ", icon=" + icon + ", isShow=" + isShow + ", permission=" + permission
+				+ ", updateBy=" + updateBy + ", updateDate=" + updateDate + ", remarks=" + remarks + ", delFlag="
+				+ delFlag + "]";
+	}
     
 }

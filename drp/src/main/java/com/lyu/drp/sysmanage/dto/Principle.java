@@ -16,31 +16,31 @@ import com.lyu.drp.sysmanage.entity.Menu;
 public class Principle implements Serializable {
 	
 	private static final long serialVersionUID = -8011071300503310539L;
-
+	
 	private Long userId;
 	
 	private String loginName;
 	
 	private String userName;
-
+	
 	private List<Menu> menuList;
 	
 	public List<Menu> getMenuList() {
 		return menuList;
 	}
-
+	
 	public void setMenuList(List<Menu> menuList) {
 		this.menuList = menuList;
 	}
-
+	
 	public Long getUserId() {
 		return userId;
 	}
-
+	
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-
+	
 	public String getLoginName() {
 		return loginName;
 	}
