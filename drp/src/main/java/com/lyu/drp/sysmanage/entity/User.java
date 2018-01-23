@@ -14,7 +14,7 @@ import java.util.Date;
 public class User implements Serializable {
 	private static final long serialVersionUID = 7372493617787195608L;
 	
-	private Integer userId;
+	private Long userId;
 
     private Integer deptId;
 
@@ -40,11 +40,11 @@ public class User implements Serializable {
 
     private String delFlag;
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 

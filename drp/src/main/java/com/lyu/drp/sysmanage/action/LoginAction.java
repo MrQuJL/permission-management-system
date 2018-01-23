@@ -1,9 +1,13 @@
 package com.lyu.drp.sysmanage.action;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.struts2.ServletActionContext;
 
+import com.lyu.drp.sysmanage.dto.Principle;
 import com.lyu.drp.sysmanage.entity.User;
 import com.lyu.drp.sysmanage.service.IUserService;
 
@@ -90,6 +94,14 @@ public class LoginAction {
 		if (!StringUtils.isEmpty(loginName) && !StringUtils.isEmpty(password)) {
 			User user = userService.loginUser(loginName, password);
 			if (user != null) {
+				// 认证成功把用户信息放入session中
+				Principle principle = new Principle();
+				principle.setUserId(user.getUserId());
+				principle.setLoginName(user.getLoginName());
+				principle.setUserName(user.getUserName());
+				
+				HttpSession session = ServletActionContext.getRequest().getSession();
+				session.setAttribute("principle", principle);
 				return "main";
 			} else {
 				loginErrorMsg = "用户名和密码不匹配";

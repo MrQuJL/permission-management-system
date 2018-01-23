@@ -4,18 +4,25 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-
 	<package name="mydefault-package" extends="json-default" abstract="true">
 		<!-- 定义拦截器 -->
 		<interceptors>
+			<interceptor name="loginInterceptor" class="com.lyu.drp.interceptor.LoginInterceptor"></interceptor>
 			<interceptor-stack name="mydefault-interceptors">
 				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="loginInterceptor" />
 			</interceptor-stack>
 		</interceptors>
 		<default-interceptor-ref name="mydefault-interceptors" />
+		
+		<!-- 定义一个全局的result -->
+		<global-results>
+			<result name="loginPage" type="redirect">toLogin</result>
+		</global-results>
+		
 	</package>
 
-	<package name="loginPackage" extends="struts-default">
+	<package name="loginPackage" extends="mydefault-package">
 		<!-- 前往登录页面 -->
 		<action name="toLogin" class="com.lyu.drp.sysmanage.action.LoginAction" method="toLogin">
 			<result name="loginPage" type="dispatcher">/WEB-INF/pages/login.jsp</result>
