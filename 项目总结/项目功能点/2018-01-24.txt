@@ -1,0 +1,39 @@
+2018/1/24
+
+1. shiro简介
+	shiro是apache下面的一个开源框架，他实现了用户身份认证，权限授权 ，加密等功能，组成了一个系统级的安全认证框架
+
+shiro的优势
+	shiro是将安全认证相关的功能抽取出来组成一个框架，使用简单，灵活，可以非常快速的完成认证，授权等功能开发，降低系统
+	集成难度，使用广泛，不仅可以运行在web应用，非web应用也可以，而且还支持分布式集群方式
+
+2. shiro的构成以及相关的概念	
+	* Subject:主体，它在shiro里面是一个接口，外部系统通过subject进行认证授权
+		subject其实是通过Security Manager来完成身份认证的操作
+
+	* SecurityManager:安全管理器，是shiro的核心，管理所有的subject
+		它是通过Authenticator进行身份认证，通过Authorizer进行授权，通过sessionManager进行会话管理
+		SecurityManger也是一个接口 ，继承了	Authenticator，Authorizer，sessionManager三个接口
+
+	* Authenticator 认证器，用来对用户身份进行认证，他也是一个接口
+
+	* Authorizer 	 授权器，用户通过认证器认证以后，在访问资源时，需要通过授权器判断此用户是否有操作权限
+
+	* SessionManager 会话管理，不依赖于web容器的session,所以shiro能在非web系统中应用	
+
+	* realm  :认证和授权需要通过realm获取用户的权限数据，相当于数据源
+	
+	* CacheManager:缓存管理，将用户的权限数据存储在缓存，提高系统性能(Ehcache)
+ 
+3. shiro的开发环境搭建	
+	* shiro的核心包		  shiro-core-1.2.3.jar
+	* shiro与web整合的包	  shiro-web-1.2.3.jar
+	* shiro与spring整合的包       shiro-spring-1.2.3.jar
+	* shiro与quartz整合的包       quartz-1.6.1.jar shiro-quartz-1.2.3.jar
+	* shiro与ehcache整合的包       ehcache-core-2.5.0.jar  shiro-ehcache-1.2.3.jar
+
+
+
+
+
+
