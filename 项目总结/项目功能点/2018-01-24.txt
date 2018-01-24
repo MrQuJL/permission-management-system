@@ -53,7 +53,12 @@ shiro的优势
 	6)认证通过则进入系统，否则抛出异常
 
 6. shiro的授权流程
-	
+	1)主体subject登录
+	2)SecurityManager来对主体的登录进行认证
+	3)SecurityManager调用Authenticator来进行认证
+	4)认证通过进行授权
+	4)SecurityManager调用Authorier来进行授权
+	6)授权成功访问系统资源
 
 7. shiro在用户认证之后就会把用户的身份信息放入它自己的session里面，在进行用户
 授权的时候它就会直接去session里面去（缓存起来，提高检索效率）
