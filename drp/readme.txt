@@ -53,4 +53,11 @@ drp分销系统:
 	webapp/jsAndCss/css 一些css文件
 	webapp/jsAndCss/img 一些图片文件
 	webapp/WEB-INF/pages 放页面
-	
+
+项目功能的完成顺序：
+	菜单的维护
+	角色的维护
+	区域的维护
+	部门的维护
+	用户的维护
+

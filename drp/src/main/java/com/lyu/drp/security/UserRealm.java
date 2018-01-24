@@ -1,10 +1,14 @@
 package com.lyu.drp.security;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
@@ -23,10 +27,21 @@ public class UserRealm extends AuthorizingRealm {
 	// 用户授权
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-		// TODO Auto-generated method stub
-		return null;
+		// 获取用户身份信息
+		String userName = (String) principals.getPrimaryPrincipal();
+		// 模拟根据得到的user对象里面的userName或userId去数据库查询这个用户存在哪些资源操作权限
+		Set<String> permissions = new HashSet<String>();
+		permissions.add("user:add");
+		permissions.add("user:delete");
+		permissions.add("user:update");
+		
+		// 获得授权信息
+		SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
+		simpleAuthorizationInfo.setStringPermissions(permissions);
+		
+		return simpleAuthorizationInfo;
 	}
-
+	
 	// 身份认证
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {

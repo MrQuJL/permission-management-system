@@ -33,10 +33,39 @@ shiro的优势
 	* shiro与ehcache整合的包       ehcache-core-2.5.0.jar  shiro-ehcache-1.2.3.jar
 
 4. shiro的身份认证流程
-	
+	1)主体subject登录
+	2)SecurityManager来对主体的登录进行认证
+	3)SecurityManager调用Authenticator来进行认证
+	4)Authenticator调用默认的realm（相当于一个数据源）来访问数据进行验证
+	5)在realm里面会返回一个能够认证通过的AuthenticationInfo认证信息
+	6)认证通过则进入系统，否则抛出异常
 
 5. shiro的身份认证 自定义realm
+	1)主体subject登录
+	2)SecurityManager来对主体的登录进行认证
+	3)SecurityManager调用Authenticator来进行认证
+	4)Authenticator调用自定义的realm（相当于一个数据源）来访问数据进行验证
+
+	注：自定义realm需要继承AuthorizingRealm实现doGetAuthorizationInfo和
+	doGetAuthenticationInfo方法来完成认证
 	
+	5)在realm里面会返回一个能够认证通过的AuthenticationInfo认证信息
+	6)认证通过则进入系统，否则抛出异常
+
+6. shiro的授权流程
+	
+
+7. shiro在用户认证之后就会把用户的身份信息放入它自己的session里面，在进行用户
+授权的时候它就会直接去session里面去（缓存起来，提高检索效率）
+
+8. 缓存 --> 大数据 --> 宕机 --> 分布式存储 --> 文件系统 --> HDFS
+
+
+知识点：Arrays.asList("role1","role2")获得的list的长度是不能变的，当向其中add
+或remove元素的时候就会抛出异常，因为获得的这个list是Arrays类的一个内部类当调用add
+或remove方法的时候其实是调用的他的父类AbstractList的add和remove方法，而调用这两个
+方法是会直接抛出异常的：UnsupportedOperationException
+
 
 
 
