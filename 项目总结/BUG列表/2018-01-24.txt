@@ -1,0 +1,18 @@
+2018/1/24
+
+1. 非web环境下测试shiro登录（用户名：admin,密码：123）的时候抛出
+org.apache.shiro.authc.IncorrectCredentialsException
+Submitted credentials for token [org.apache.shiro.authc.UsernamePasswordToken - admin, 
+rememberMe=false] did not match the expected credentials.
+
+原因：在shiro.ini文件中配置的用户名为:admin，密码为：123456
+
+解决：修改输入的密码
+
+2. 尝试输入不存在的用户，抛出：
+org.apache.shiro.authc.UnknownAccountException: Realm [org.apache.shiro.realm.text.IniRealm@103f852] was unable
+to find account data for the submitted AuthenticationToken 
+[org.apache.shiro.authc.UsernamePasswordToken - 1admin, rememberMe=false].
+
+解决：输入存在的用户名：admin
+

@@ -32,8 +32,11 @@ shiro的优势
 	* shiro与quartz整合的包       quartz-1.6.1.jar shiro-quartz-1.2.3.jar
 	* shiro与ehcache整合的包       ehcache-core-2.5.0.jar  shiro-ehcache-1.2.3.jar
 
+4. shiro的身份认证流程
+	
 
-
+5. shiro的身份认证 自定义realm
+	
 
 
 
