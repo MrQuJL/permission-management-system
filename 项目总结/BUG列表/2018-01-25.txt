@@ -76,4 +76,33 @@ Caused by: org.apache.catalina.LifecycleException: Failed to start component [or
 
 解决：全部把jar包换成1.2.1就ok了
 
+8. bug:在输入完用户名和密码时进行登录，但是任然被拦在了登录页面
+
+原因：shiro的过滤链配置错误（搞了一晚上...）
+
+解决：main.action为登录成功的页面，已经在successUrl里面配置了main.action
+就不要在过滤链里面再配，正确配置如下：
+
+	<!-- web.xml配置的过滤器对应的bean -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager"></property>
+		<!-- loginUrl为登录页面，并不是登录请求 -->
+		<property name="loginUrl" value="/toLogin.action"></property>
+		<!-- successUrl为登录成功后的页面 -->
+		<property name="successUrl" value="/main.action"></property>
+		<property name="filterChainDefinitions">
+			<value>
+				<!-- 静态资源可以匿名访问 -->
+				/jsAndCss/** = anon
+				<!-- 登录的请求为匿名（这个都拦截那这系统就没法进了） -->
+				/login.action = anon
+				<!-- 所有的请求都需要认证，放在最后 -->
+				/** = authc
+			</value>
+		</property>
+	</bean>
+
+
+
+
 

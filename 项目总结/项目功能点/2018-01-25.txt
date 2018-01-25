@@ -38,8 +38,36 @@
 	realm
 	SessionManager
 
+	<!-- web.xml配置的过滤器对应的bean -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager"></property>
+		<!-- loginUrl为登录页面，并不是登录请求 -->
+		<property name="loginUrl" value="/toLogin.action"></property>
+		<!-- successUrl为登录成功后的页面 -->
+		<property name="successUrl" value="/main.action"></property>
+		<property name="filterChainDefinitions">
+			<value>
+				<!-- 静态资源可以匿名访问 -->
+				/jsAndCss/** = anon
+				<!-- 登录的请求为匿名（这个都拦截那这系统就没法进了） -->
+				/login.action = anon
+				<!-- 所有的请求都需要认证，放在最后 -->
+				/** = authc
+			</value>
+		</property>
+	</bean>
+	
+	<!-- 安全管理器SecurityManager -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="userRealm"></property>
+	</bean>
+	
+	<!-- 自定义的realm -->
+	<bean id="userRealm" class="com.lyu.drp.security.UserRealm"></bean>
 
-
+5. shiro配置退出的url，在过滤器链里面配置logout过滤器：
+/logout.action = logout
+然后在相应的action里面subject.logout一下
 
 
 

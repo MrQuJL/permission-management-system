@@ -116,7 +116,7 @@ String path = request.getContextPath();
 				<div class="navbar-inner">
 					<div class="brand"><span id="productName">分销系统</span></div>
 					<ul id="userControl" class="nav pull-right">
-	
+
 						<li id="userInfo" class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="个人信息">您好, 系统超级管理员&nbsp;</a>
 							<ul class="dropdown-menu">
@@ -124,7 +124,7 @@ String path = request.getContextPath();
 								<li><a href="${ctx}/sysmgr/changePwd.action" target="mainFrame"><i class="icon-lock"></i>&nbsp;  修改密码</a></li>
 							</ul>
 						</li>
-						<li><a href="login.html" title="退出登录">退出</a></li>
+						<li><a href="${ctx}/logout.action" title="退出登录">退出</a></li>
 						<li>&nbsp;</li>
 					</ul>
 	

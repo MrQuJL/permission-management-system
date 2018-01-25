@@ -22,9 +22,7 @@
 		<property name="filterChainDefinitions">
 			<value>
 				/jsAndCss/** = anon
-				/login.action = anon
-				/main.action = anon
-				<!-- 所有的请求都需要认证 -->
+				/login = anon
 				/** = authc
 			</value>
 		</property>

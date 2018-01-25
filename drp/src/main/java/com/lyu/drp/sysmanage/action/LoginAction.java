@@ -1,14 +1,15 @@
 package com.lyu.drp.sysmanage.action;
 
-import javax.servlet.http.HttpSession;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.struts2.ServletActionContext;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.ExcessiveAttemptsException;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 
-import com.lyu.drp.sysmanage.dto.Principle;
-import com.lyu.drp.sysmanage.entity.User;
 import com.lyu.drp.sysmanage.service.IMenuService;
 import com.lyu.drp.sysmanage.service.IUserService;
 
@@ -93,6 +94,19 @@ public class LoginAction {
 	}
 	
 	/**
+	 * 退出系统
+	 * @param 
+	 * @return
+	 */
+	public String logout() {
+//		Subject subject = SecurityUtils.getSubject();
+//		subject.logout();
+		
+		System.out.println("进入这里");
+		return "success";
+	}
+	
+	/**
 	 * 登录验证
 	 * @param 
 	 * @return
@@ -103,23 +117,42 @@ public class LoginAction {
 		
 		// 判断一下loginName和password是不是为空
 		if (!StringUtils.isEmpty(loginName) && !StringUtils.isEmpty(password)) {
-			User user = userService.loginUser(loginName, password);
-			if (user != null) {
-				// 认证成功把用户信息放入session中
-//				Principle principle = new Principle();
-//				principle.setUserId(user.getUserId());
-//				principle.setLoginName(user.getLoginName());
-//				principle.setUserName(user.getUserName());
-				// 为了授权拦截器能够匹配用户所拥有的权限，在登录成功以后将该用户所能访问的菜单url放入身份信息中
-//				principle.setMenuList(menuService.getMenuListByUser(user.getUserId()));
-				
-//				HttpSession session = ServletActionContext.getRequest().getSession();
-//				session.setAttribute("principle", principle);
-				return "main";
-			} else {
-				loginErrorMsg = "用户名和密码不匹配";
+//			User user = userService.loginUser(loginName, password);
+			
+			UsernamePasswordToken token = new UsernamePasswordToken(loginName, password);
+			Subject subject = SecurityUtils.getSubject();
+			try {
+	            subject.login(token);
+	        } catch (IncorrectCredentialsException ice) {
+	            // 捕获密码错误异常
+	        	loginErrorMsg = "密码不匹配";
 				return "loginPage";
-			}
+	        } catch (UnknownAccountException uae) {
+	            // 捕获未知用户名异常
+	        	loginErrorMsg = "未知的用户";
+				return "loginPage";
+	        } catch (ExcessiveAttemptsException eae) {
+	            // 捕获错误登录过多的异常
+	        	loginErrorMsg = "错误登录过多";
+				return "loginPage";
+	        }
+			return "main";
+//			if ("" != null) {
+//				// 认证成功把用户信息放入session中
+////				Principle principle = new Principle();
+////				principle.setUserId(user.getUserId());
+////				principle.setLoginName(user.getLoginName());
+////				principle.setUserName(user.getUserName());
+//				// 为了授权拦截器能够匹配用户所拥有的权限，在登录成功以后将该用户所能访问的菜单url放入身份信息中
+////				principle.setMenuList(menuService.getMenuListByUser(user.getUserId()));
+//				
+////				HttpSession session = ServletActionContext.getRequest().getSession();
+////				session.setAttribute("principle", principle);
+//				return "main";
+//			} else {
+//				loginErrorMsg = "用户名和密码不匹配";
+//				return "loginPage";
+//			}
 		} else {
 			loginErrorMsg = "用户名和密码不匹配";
 			return "loginPage";
