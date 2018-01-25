@@ -1,0 +1,46 @@
+2018/1/25
+
+1. 注释掉之前在struts2里面注册的拦截器
+
+2. shiro的开发环境搭建	
+	* shiro的核心包		  shiro-core-1.2.3.jar
+	* shiro与web整合的包	  shiro-web-1.2.3.jar
+	* shiro与spring整合的包       shiro-spring-1.2.3.jar
+	* shiro与quartz整合的包       quartz-1.6.1.jar shiro-quartz-1.2.3.jar
+	* shiro与ehcache整合的包       ehcache-core-2.5.0.jar  shiro-ehcache-1.2.3.jar
+
+3. shiro与web整合（org.springframework.web.filter.DelegatingFilterProxy是spring的代理
+，它会从spring的配置文件找shiro）	
+<!-- shiro的过滤器 -->
+<filter>
+	<filter-name>shiroFilter</filter-name>
+	<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	<init-param>
+		<!-- 这个参数为true表示由web容器来控制filter的生命周期 -->
+		<!-- 如果让spring管理就是false -->
+		<param-name>targetFilterLifecycle</param-name>
+		<param-value>true</param-value>
+	</init-param>
+	<init-param>
+		<param-name>targetBeanName</param-name>
+		<!-- 默认就是shiroFilter -->
+		<param-value>shiroFilter</param-value>
+	</init-param>
+</filter>
+<filter-mapping>
+	<filter-name>shiroFilter</filter-name>
+	<url-pattern>/*</url-pattern>
+</filter-mapping>
+
+4. 在spring文件里面配置
+	shiroFilter
+	SecurityManager
+	realm
+	SessionManager
+
+
+
+
+
+
+

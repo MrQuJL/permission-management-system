@@ -7,12 +7,13 @@
 	<package name="mydefault-package" extends="json-default" abstract="true">
 		<!-- 定义拦截器 -->
 		<interceptors>
-			<interceptor name="loginInterceptor" class="com.lyu.drp.interceptor.LoginInterceptor"></interceptor>
+			<!-- <interceptor name="loginInterceptor" class="com.lyu.drp.interceptor.LoginInterceptor"></interceptor>
 			<interceptor name="authorizationInterceptor" class="com.lyu.drp.interceptor.AuthorizationInterceptor"></interceptor>
-			<interceptor-stack name="mydefault-interceptors">
+			 -->
+			 <interceptor-stack name="mydefault-interceptors">
+				<!-- <interceptor-ref name="loginInterceptor" />
+				<interceptor-ref name="authorizationInterceptor" /> -->
 				<interceptor-ref name="defaultStack" />
-				<interceptor-ref name="loginInterceptor" />
-				<interceptor-ref name="authorizationInterceptor" />
 			</interceptor-stack>
 		</interceptors>
 		<default-interceptor-ref name="mydefault-interceptors" />
