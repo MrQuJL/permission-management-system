@@ -20,7 +20,7 @@
 		
 		<!-- 定义一个全局的result -->
 		<global-results>
-			<result name="loginPage" type="redirect">toLogin</result>
+			<result name="loginPage" type="redirect">/toLogin.action</result>
 			<result name="refusePage">/WEB-INF/pages/refusePage.jsp</result>
 		</global-results>
 		

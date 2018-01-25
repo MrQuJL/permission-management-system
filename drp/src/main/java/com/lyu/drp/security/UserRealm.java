@@ -39,7 +39,7 @@ public class UserRealm extends AuthorizingRealm {
 		SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
 		simpleAuthorizationInfo.setStringPermissions(permissions);
 		
-		return simpleAuthorizationInfo;
+		return null;
 	}
 	
 	// 身份认证

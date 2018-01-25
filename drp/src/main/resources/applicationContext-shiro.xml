@@ -15,13 +15,27 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd">
   	
 	<!-- web.xml配置的过滤器对应的bean -->
-	<!-- <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
-		<property name=""></property>
-	</bean> -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager"></property>
+		<property name="loginUrl" value="/toLogin.action"></property>
+		<property name="successUrl" value="/main.action"></property>
+		<property name="filterChainDefinitions">
+			<value>
+				/jsAndCss/** = anon
+				/login.action = anon
+				/main.action = anon
+				<!-- 所有的请求都需要认证 -->
+				/** = authc
+			</value>
+		</property>
+	</bean>
 	
 	<!-- 安全管理器SecurityManager -->
-	
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="userRealm"></property>
+	</bean>
 	
 	<!-- 自定义的realm -->
-	 	
+	<bean id="userRealm" class="com.lyu.drp.security.UserRealm"></bean>
+	 
 </beans>

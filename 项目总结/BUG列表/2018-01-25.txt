@@ -71,8 +71,9 @@ Caused by: org.apache.catalina.LifecycleException: Failed to start component [or
 
 项目终于可以继续往下进行了！！！
 
+7. bug:shiro-spring-1.2.3包中的类（org.apache.shiro.spring.web.ShiroFilterFactoryBean）无法引用，
+换成1.2.2吧shiro-core核心包里面的类又引用不了
 
-
-
+解决：全部把jar包换成1.2.1就ok了
 
 
