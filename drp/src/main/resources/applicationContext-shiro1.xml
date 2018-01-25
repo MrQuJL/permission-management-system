@@ -15,9 +15,9 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd">
   	
 	<!-- web.xml配置的过滤器对应的bean -->
-	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+	<!-- <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name=""></property>
-	</bean>
+	</bean> -->
 	
 	<!-- 安全管理器SecurityManager -->
 	

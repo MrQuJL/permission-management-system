@@ -66,6 +66,12 @@ Caused by: org.apache.catalina.LifecycleException: Failed to start component [or
 	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:145)
 	... 10 more
 
+原因：因为项目中使用shiro来进行权限管理，shiro的配置信息还没有配置完，注释掉之后再次登录系统
+成了！！！
+
+项目终于可以继续往下进行了！！！
+
+
 
 
 
