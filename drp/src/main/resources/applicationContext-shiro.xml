@@ -22,7 +22,8 @@
 		<property name="filterChainDefinitions">
 			<value>
 				/jsAndCss/** = anon
-				/login = anon
+				/login.action = anon
+				/logout.action = anon
 				/** = authc
 			</value>
 		</property>

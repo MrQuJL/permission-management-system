@@ -48,7 +48,6 @@
 			<result name="mainPage" type="dispatcher">/WEB-INF/pages/main/main.jsp</result>
 		</action>
 		
-		
 	</package>
 	
 	<include file="struts-sysmgr.xml"></include>
