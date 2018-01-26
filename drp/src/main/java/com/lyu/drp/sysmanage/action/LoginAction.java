@@ -102,7 +102,7 @@ public class LoginAction {
 //		Subject subject = SecurityUtils.getSubject();
 //		subject.logout();
 		
-		System.out.println("进入这里");
+		System.out.println("进入logout的action");
 		return "success";
 	}
 	

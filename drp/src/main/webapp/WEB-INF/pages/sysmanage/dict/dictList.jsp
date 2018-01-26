@@ -16,6 +16,7 @@ String path = request.getContextPath();
     	var dictMgr = {
     		// 获取分页后的字典列表
 	    	getDictListPage : function(pageNo, pageSize) {
+	    		loading("正在查询...");
 	    		var type = $("#type").val();
 	    		var description = $("#description").val();
 	    		$.ajax({
@@ -24,6 +25,7 @@ String path = request.getContextPath();
 	    			data : {"type":type,"description":description,"pageParam.pageNo":pageNo,"pageParam.pageSize":pageSize},
 	    			dataType : "json",
 	    			success : function(data) {
+	    				top.$.jBox.closeTip();
 	    				//alert(data.jsonObj);
 	    				// 获取分页条
 	    				var pageBar = data.pageBar;
@@ -60,6 +62,10 @@ String path = request.getContextPath();
 	    				}
 	    				$("#dictTable").find("tbody").html(htmlTable);
 	    				$("#dictPageBar").html(pageBar);
+	    			},
+	    			error : function(data, status, errorThrown) {
+	    				top.$.jBox.closeTip();
+	    				alert("您没有权限操作此功能，请联系系统管理员进行授权");
 	    			}
 	    		});
 	    	},
@@ -91,11 +97,10 @@ String path = request.getContextPath();
     <li class="active"><a href="javascript:void(0);">字典列表</a></li>
     
     <li><a href="${ctx}/sysmgr/gotoDictEdit.action">字典添加</a></li>
-    
 </ul>
 <form id="searchForm" class="breadcrumb form-search" action="#" method="post">
-    <input id="pageNo" name="pageNo" type="hidden" value="1"/>
-    <input id="pageSize" name="pageSize" type="hidden" value="15"/>
+    <!-- <input id="pageNo" name="pageNo" type="hidden" value="1"/>
+    <input id="pageSize" name="pageSize" type="hidden" value="15"/> -->
     <label>类型：</label>
         <select id="type" name="type" class="input-medium">
             <option value="">所有类型</option>
@@ -105,7 +110,10 @@ String path = request.getContextPath();
         </select>
     	&nbsp;&nbsp;<label>描述 ：</label>
         <input id="description" name="description" class="input-medium" type="text" value="" maxlength="50"/>
-    &nbsp;<input id="btnSubmit" class="btn btn-primary" type="button" onclick="dictMgr.getDictListPage(1, 10);" value="查询"/>
+    &nbsp;
+    	<shiro:hasPermission name="dict:query">
+    		<input id="btnSubmit" class="btn btn-primary" type="button" onclick="dictMgr.getDictListPage(1, 10);" value="查询"/>
+    	</shiro:hasPermission>
 </form>
 <script type="text/javascript">top.$.jBox.closeTip();</script>
 

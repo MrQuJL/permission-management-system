@@ -14,16 +14,27 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">
   	
+  	<!-- 1.开启cglib动态代理 -->
+  	<aop:config proxy-target-class="true"></aop:config>
+  	
+  	<!-- 2.开启shiro的授权代理 -->
+  	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+  		<property name="securityManager" ref="securityManager" />
+  	</bean>
+  	
 	<!-- web.xml配置的过滤器对应的bean -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager"></property>
 		<property name="loginUrl" value="/toLogin.action"></property>
 		<property name="successUrl" value="/main.action"></property>
+		<property name="unauthorizedUrl" value="/refusePage.jsp" />
+		
 		<property name="filterChainDefinitions">
 			<value>
 				/jsAndCss/** = anon
 				/login.action = anon
-				/logout.action = anon
+				<!-- /sysmgr/getDictListPage.action = perms[dict:query] -->
+				<!-- /sysmgr/changePwd.action = perms[user:chpwd] -->
 				/** = authc
 			</value>
 		</property>

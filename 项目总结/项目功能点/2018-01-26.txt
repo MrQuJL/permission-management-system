@@ -1,0 +1,41 @@
+2018/1/26
+
+1. 配置shiro的过滤链时一定要写全路径：
+例：
+/login.action = anon
+/logout.action = logout
+
+注：退出可以采用以上的方式，也可以交给struts2的action，在
+方法里面调用subject.logout(); 是一样的效果.
+
+2. 
+	1) 被shiro权限验证拦截器perms拦截的请求会进入自定义realm的doGetAuthorizationInfo
+方法里
+	2) 也可以这么配：
+		（1） 在Spring配置文件里面开启cglib动态代理
+			<!-- 1.开启cglib动态代理 -->
+  			<aop:config proxy-target-class="true"></aop:config>
+		（2） 开启shiro的授权顾问
+			<!-- 2.开启shiro的授权代理 -->
+			<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+				<property name="securityManager" ref="securityManager" />
+			</bean>
+		（3） 在对应的action方法头部加上注解：
+			@RequiresPermissions("dict:query")
+			public String getDictListPage() {
+				if (StringUtils.isEmpty(type)) {
+					type = null;
+				}
+				if (StringUtils.isEmpty(description)) {
+				......
+	然后该请求就同样可以进入自定义realm的doGetAuthorizationInfo方法里
+
+3. 使用shiro的标签，在前台也对请求加以控制
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+
+像下面这样把需要权限的按钮包起来：
+<shiro:hasPermission name="[dict:query]">
+	<input id="btnSubmit" class="btn btn-primary" type="button" onclick="dictMgr.getDictListPage(1, 10);" value="查询"/>
+</shiro:hasPermission>
+
+

@@ -3,6 +3,7 @@ package com.lyu.drp.security;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -24,9 +25,40 @@ import com.lyu.drp.sysmanage.entity.User;
  */
 public class UserRealm extends AuthorizingRealm {
 
-	// 用户授权
+	private Logger log = Logger.getLogger(UserRealm.class);
+	
+	// 身份认证
+		@Override
+		protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+			log.info("进入UserRealm的身份认证方法...");
+			
+			// 1.从传入的token获取身份信息(输入的userName)
+			String userName = (String) token.getPrincipal();
+			
+			// 2.模拟根据得到的userName去数据库查询这个用户是否存在
+			User user = new User();
+			user.setLoginName("admin");
+			user.setPassword("123456");
+			
+			// 3.如果传入的userName和数据 库查询出来的userName相同
+			SimpleAuthenticationInfo simpleAuthenticationInfo = null;
+			
+			if (userName.equals(user.getLoginName())) {
+				// 身份信息确认以后，凭证信息的确认由SimpleAuthenticationInfo的父类
+				// AuthenticationInfo进行验证
+				simpleAuthenticationInfo = new SimpleAuthenticationInfo(user.getLoginName(), 
+					user.getPassword(), this.getName());
+			}
+			
+			return simpleAuthenticationInfo;
+		}
+
+	
+	// 用户授权(被perms过滤器拦截的请求会进入该方法)
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+		log.info("进入UserRealm的权限认证方法...");
+		
 		// 获取用户身份信息
 		String userName = (String) principals.getPrimaryPrincipal();
 		// 模拟根据得到的user对象里面的userName或userId去数据库查询这个用户存在哪些资源操作权限
@@ -34,36 +66,13 @@ public class UserRealm extends AuthorizingRealm {
 		permissions.add("user:add");
 		permissions.add("user:delete");
 		permissions.add("user:update");
+		permissions.add("dict:query");
 		
 		// 获得授权信息
 		SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
 		simpleAuthorizationInfo.setStringPermissions(permissions);
 		
-		return null;
+		return simpleAuthorizationInfo;
 	}
 	
-	// 身份认证
-	@Override
-	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-		// 1.从传入的token获取身份信息(输入的userName)
-		String userName = (String) token.getPrincipal();
-		
-		// 2.模拟根据得到的userName去数据库查询这个用户是否存在
-		User user = new User();
-		user.setLoginName("admin");
-		user.setPassword("123456");
-		
-		// 3.如果传入的userName和数据 库查询出来的userName相同
-		SimpleAuthenticationInfo simpleAuthenticationInfo = null;
-		
-		if (userName.equals(user.getLoginName())) {
-			// 身份信息确认以后，凭证信息的确认由SimpleAuthenticationInfo的父类
-			// AuthenticationInfo进行验证
-			simpleAuthenticationInfo = new SimpleAuthenticationInfo(user.getLoginName(), 
-				user.getPassword(), this.getName());
-		}
-		
-		return simpleAuthenticationInfo;
-	}
-
 }

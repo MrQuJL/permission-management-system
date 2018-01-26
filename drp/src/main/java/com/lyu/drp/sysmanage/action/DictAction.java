@@ -3,6 +3,7 @@ package com.lyu.drp.sysmanage.action;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.struts2.ServletActionContext;
 
 import com.alibaba.fastjson.JSON;
@@ -123,10 +124,12 @@ public class DictAction {
 	 * @param 
 	 * @return
 	 */
+	@RequiresPermissions("dict:query")
 	public String getDictListPage() {
 		if (StringUtils.isEmpty(type)) {
 			type = null;
 		}
+		
 		if (StringUtils.isEmpty(description)) {
 			description = null;
 		}
