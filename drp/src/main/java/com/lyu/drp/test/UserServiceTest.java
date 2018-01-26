@@ -27,7 +27,7 @@ public class UserServiceTest {
 	
 	@Test
 	public void testUserLogin() {
-		System.out.println(userService.loginUser("admin", "123456"));
+		System.out.println(userService.loginUser("admin"));
 	}
 	
 }

@@ -18,7 +18,7 @@ public interface IUserService {
 	 * @param 
 	 * @return
 	 */
-	public User loginUser(String loginName, String password);
+	public User loginUser(String loginName);
 	
 	/**
 	 * 根据用户id获取用户对象

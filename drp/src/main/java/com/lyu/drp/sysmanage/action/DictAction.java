@@ -124,7 +124,7 @@ public class DictAction {
 	 * @param 
 	 * @return
 	 */
-	@RequiresPermissions("dict:query")
+	/*@RequiresPermissions("dict:query")*/
 	public String getDictListPage() {
 		if (StringUtils.isEmpty(type)) {
 			type = null;

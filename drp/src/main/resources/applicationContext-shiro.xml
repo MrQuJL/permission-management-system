@@ -15,12 +15,12 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd">
   	
   	<!-- 1.开启cglib动态代理 -->
-  	<aop:config proxy-target-class="true"></aop:config>
+  	<!-- <aop:config proxy-target-class="true"></aop:config> -->
   	
   	<!-- 2.开启shiro的授权代理 -->
-  	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+  	<!-- <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
   		<property name="securityManager" ref="securityManager" />
-  	</bean>
+  	</bean> -->
   	
 	<!-- web.xml配置的过滤器对应的bean -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
@@ -33,7 +33,7 @@
 			<value>
 				/jsAndCss/** = anon
 				/login.action = anon
-				<!-- /sysmgr/getDictListPage.action = perms[dict:query] -->
+				/sysmgr/getDictListPage.action = perms[dict:query]
 				<!-- /sysmgr/changePwd.action = perms[user:chpwd] -->
 				/** = authc
 			</value>
@@ -46,6 +46,17 @@
 	</bean>
 	
 	<!-- 自定义的realm -->
-	<bean id="userRealm" class="com.lyu.drp.security.UserRealm"></bean>
+	<bean id="userRealm" class="com.lyu.drp.security.UserRealm">
+		<!-- 注入凭证匹配器 -->
+		<property name="credentialsMatcher" ref="credentialsMatcher"></property>
+	</bean>
+	
+	<!-- 注册凭证匹配器 -->
+	<bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+		<property name="hashAlgorithmName" value="SHA-1" />
+		<property name="hashIterations" value="1024" />
+	</bean>
+	
+	
 	 
 </beans>

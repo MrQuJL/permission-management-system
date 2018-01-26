@@ -18,7 +18,7 @@ public interface UserMapper {
 	 * @param 登录名称和密码
 	 * @return 用户存在则返回该用户
 	 */
-	public User loginUser(String loginName, String password);
+	public User loginUser(String loginName);
 	
 	/**
 	 * 根据用户id获取用户对象

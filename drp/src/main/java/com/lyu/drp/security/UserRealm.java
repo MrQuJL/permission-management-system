@@ -1,19 +1,29 @@
 package com.lyu.drp.security;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import com.lyu.drp.sysmanage.dto.Principle;
+import com.lyu.drp.sysmanage.entity.Menu;
 import com.lyu.drp.sysmanage.entity.User;
+import com.lyu.drp.sysmanage.service.IMenuService;
+import com.lyu.drp.sysmanage.service.IUserService;
+import com.lyu.drp.util.EncryptUtil;
 
 /**
  * 类名称: 用户认证和用户授权的realm
@@ -24,7 +34,13 @@ import com.lyu.drp.sysmanage.entity.User;
  * @version V1.0
  */
 public class UserRealm extends AuthorizingRealm {
-
+	
+	@Autowired
+	private IUserService userService;
+	
+	@Autowired
+	private IMenuService menuService;
+	
 	private Logger log = Logger.getLogger(UserRealm.class);
 	
 	// 身份认证
@@ -33,21 +49,30 @@ public class UserRealm extends AuthorizingRealm {
 			log.info("进入UserRealm的身份认证方法...");
 			
 			// 1.从传入的token获取身份信息(输入的userName)
-			String userName = (String) token.getPrincipal();
+//			String userName = (String) token.getPrincipal();
+			
+			UsernamePasswordToken authcToken = (UsernamePasswordToken) token;
 			
 			// 2.模拟根据得到的userName去数据库查询这个用户是否存在
-			User user = new User();
+			/*User user = new User();
 			user.setLoginName("admin");
-			user.setPassword("123456");
+			user.setPassword("123456");*/
+			User user = this.userService.loginUser(authcToken.getUsername());
+			
+			Principle principle = new Principle(user.getUserId(), user.getLoginName(),
+				user.getUserName());
+			
+			// 从密码中拿到盐
+			byte[] salt = EncryptUtil.decodeHex(user.getPassword().substring(0, 16));
 			
 			// 3.如果传入的userName和数据 库查询出来的userName相同
 			SimpleAuthenticationInfo simpleAuthenticationInfo = null;
 			
-			if (userName.equals(user.getLoginName())) {
+			if (authcToken.getUsername().equals(user.getLoginName())) {
 				// 身份信息确认以后，凭证信息的确认由SimpleAuthenticationInfo的父类
 				// AuthenticationInfo进行验证
-				simpleAuthenticationInfo = new SimpleAuthenticationInfo(user.getLoginName(), 
-					user.getPassword(), this.getName());
+				simpleAuthenticationInfo = new SimpleAuthenticationInfo(principle, 
+					user.getPassword().substring(16), ByteSource.Util.bytes(salt), this.getName());
 			}
 			
 			return simpleAuthenticationInfo;
@@ -60,15 +85,26 @@ public class UserRealm extends AuthorizingRealm {
 		log.info("进入UserRealm的权限认证方法...");
 		
 		// 获取用户身份信息
-		String userName = (String) principals.getPrimaryPrincipal();
+		Principle principle = (Principle) principals.getPrimaryPrincipal();
+		
 		// 模拟根据得到的user对象里面的userName或userId去数据库查询这个用户存在哪些资源操作权限
 		Set<String> permissions = new HashSet<String>();
-		permissions.add("user:add");
-		permissions.add("user:delete");
-		permissions.add("user:update");
-		permissions.add("dict:query");
+//		permissions.add("user:add");
+//		permissions.add("user:delete");
+//		permissions.add("user:update");
+//		permissions.add("dict:query");
 		
-		// 获得授权信息
+		// 查询当前主体所拥有的权限信息
+		List<Menu> menuList = menuService.getMenuListByUser(principle.getUserId());
+		if (menuList != null && menuList.size() > 0) {
+			for (Menu menu : menuList) {
+				if (StringUtils.isNotEmpty(menu.getPermission())) {
+					permissions.add(menu.getPermission());
+				}
+			}
+		}
+		
+		// 把权限信息放入simpleAuthorizationInfo
 		SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
 		simpleAuthorizationInfo.setStringPermissions(permissions);
 		

@@ -15,3 +15,10 @@ error : function(data, status, errorThrown) {
 注：当将请求改成form的submit同步提交时，访问未授权的页面时成功显示了
 拒绝访问页面
 
+
+2. bug：当通过代理模式开启shiro的权限验证时，访问未授权的资源将不会跳转到
+unauthorizedUrl所指定的拒绝访问页面，而是在浏览器显示一堆异常
+
+解决：直接使用shiro的perms过滤器来配置需要授权访问的资源
+/sysmgr/getDictListPage.action = perms[dict:query]
+

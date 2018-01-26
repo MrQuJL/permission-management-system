@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.ExcessiveAttemptsException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -135,24 +136,11 @@ public class LoginAction {
 	            // 捕获错误登录过多的异常
 	        	loginErrorMsg = "错误登录过多";
 				return "loginPage";
+	        } catch (AuthenticationException ex) {
+	        	loginErrorMsg = "用户名和密码不匹配";
+				return "loginPage";
 	        }
 			return "main";
-//			if ("" != null) {
-//				// 认证成功把用户信息放入session中
-////				Principle principle = new Principle();
-////				principle.setUserId(user.getUserId());
-////				principle.setLoginName(user.getLoginName());
-////				principle.setUserName(user.getUserName());
-//				// 为了授权拦截器能够匹配用户所拥有的权限，在登录成功以后将该用户所能访问的菜单url放入身份信息中
-////				principle.setMenuList(menuService.getMenuListByUser(user.getUserId()));
-//				
-////				HttpSession session = ServletActionContext.getRequest().getSession();
-////				session.setAttribute("principle", principle);
-//				return "main";
-//			} else {
-//				loginErrorMsg = "用户名和密码不匹配";
-//				return "loginPage";
-//			}
 		} else {
 			loginErrorMsg = "用户名和密码不匹配";
 			return "loginPage";

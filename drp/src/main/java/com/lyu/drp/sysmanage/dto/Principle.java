@@ -25,6 +25,15 @@ public class Principle implements Serializable {
 	
 	private List<Menu> menuList;
 	
+	public Principle() {}
+
+	public Principle(Long userId, String loginName, String userName) {
+		super();
+		this.userId = userId;
+		this.loginName = loginName;
+		this.userName = userName;
+	}
+
 	public List<Menu> getMenuList() {
 		return menuList;
 	}

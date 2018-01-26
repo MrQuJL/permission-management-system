@@ -38,4 +38,28 @@
 	<input id="btnSubmit" class="btn btn-primary" type="button" onclick="dictMgr.getDictListPage(1, 10);" value="查询"/>
 </shiro:hasPermission>
 
+4. 使用shiro的加密功能：
+	1）在realm里面注入凭证匹配器
+	<!-- 自定义的realm -->
+	<bean id="userRealm" class="com.lyu.drp.security.UserRealm">
+		<!-- 注入凭证匹配器 -->
+		<property name="credentialsMatcher" ref="credentialsMatcher"></property>
+	</bean>
+	
+	<!-- 注册凭证匹配器 -->
+	<bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+		<property name="hashAlgorithmName" value="SHA-1" />
+		<property name="hashIterations" value="1024" />
+	</bean>
+
+shiro的SimpleAuthenticationInfo的一个构造器如下：
+包括身份信息，加密后的凭证信息，加密用到的盐，当前的realm
+public SimpleAuthenticationInfo(Object principal, Object hashedCredentials, ByteSource credentialsSalt, String realmName) {
+	this.principals = new SimplePrincipalCollection(principal, realmName);
+	this.credentials = hashedCredentials;
+	this.credentialsSalt = credentialsSalt;
+}
+
+
+
 

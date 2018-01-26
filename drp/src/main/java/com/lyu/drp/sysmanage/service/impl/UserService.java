@@ -27,20 +27,21 @@ public class UserService implements IUserService {
     public static final int SALT_SIZE = 8;
 	
 	@Override
-	public User loginUser(String loginName, String password) {
+	public User loginUser(String loginName) {
 		// 1.用户名是否存在
-		User user = userMapper.loginUser(loginName, password);
-		// 2.密码是否存在
-		if (user != null) {
-			boolean flag = this.validatePassword(password, user.getPassword());
-			if (flag) {
-				return user;
-			} else {
-				return null;
-			}
-		}
-		// 3.返回
-		return user;
+//		User user = userMapper.loginUser(loginName, password);
+//		// 2.密码是否存在
+//		if (user != null) {
+//			boolean flag = this.validatePassword(password, user.getPassword());
+//			if (flag) {
+//				return user;
+//			} else {
+//				return null;
+//			}
+//		}
+//		// 3.返回
+		
+		return this.userMapper.loginUser(loginName);
 	}
 	
 	@Override
