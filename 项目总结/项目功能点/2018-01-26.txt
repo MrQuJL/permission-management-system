@@ -60,6 +60,84 @@ public SimpleAuthenticationInfo(Object principal, Object hashedCredentials, Byte
 	this.credentialsSalt = credentialsSalt;
 }
 
+5. shiro缓存
+	用户访问资源的时候需要进行权限认证，而权限认证又需要访问数据库，
+	如果用户每次访问资源都去查询数据库，那就会严重拖慢系统响应时间，
+	怎么办？
+
+shiro提供了对认证信息和授权信息的缓存，认证信息的缓存默认是关闭的
+对于授权信息的缓存默认是开启的，shiro给用户第一次授权，调用realm
+查询数据库，第二次访问的时候，会直接从缓存取授权信息
+
+缓存 --> 文件系统(FS) --> 内存
+key - value
+(ehcache, radis)
+
+ehcache的配置：
+
+<!-- 安全管理器SecurityManager -->
+<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+	<property name="realm" ref="userRealm"></property>
+	<property name="cacheManager" ref="cacheManager" />
+</bean>
+
+<!-- 定义缓存管理器 -->
+<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+	<property name="cacheManagerConfigFile" value="classpath:ehcache.xml" />
+</bean>
+
+ehcache的配置文件chcache.xml:
+ehcache.xml
+<defaultCache
+		maxElementsInMemory="10000"
+		eternal="false"
+		timeToIdleSeconds="120"
+		timeToLiveSeconds="120"
+		overflowToDisk="false"
+		diskPersistent="false"
+		diskExpiryThreadIntervalSeconds="120"
+		/>
+
+mysql存用户信息，其余的数据存在缓存里
+
+tips：像一些实时采集和实时计算的系统都需要用到缓存
 
 
+6. shiro用sessionManager来管理自己的session，通过spring注入sessionManager
+
+
+<!-- 安全管理器SecurityManager -->
+<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+	<property name="realm" ref="userRealm"></property>
+	<property name="cacheManager" ref="cacheManager" />
+	<property name="sessionManager" ref="sessionManager" />
+</bean>
+
+
+<!-- 定义会话管理器 -->
+<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+	<!-- session的失效时间 -->
+	<property name="globalSessionTimeout" value="3600000" />
+	<!-- 定时清理失效的会话 -->
+	<property name="sessionValidationInterval" value="1800000" />		
+</bean>
+
+
+注：
+1）web容器tomcat中的session设置的时间单位是分钟
+
+2）servlet中的session的时间单位是秒
+/**
+     * Specifies the time, in seconds, between client requests before the 
+     * servlet container will invalidate this session. 
+     *
+     * <p>An <tt>interval</tt> value of zero or less indicates that the
+     * session should never timeout.
+     *
+     * @param interval		An integer specifying the number
+     * 				of seconds 
+     */    
+    public void setMaxInactiveInterval(int interval);
+
+3）shiro中的session时间的单位是毫秒
 

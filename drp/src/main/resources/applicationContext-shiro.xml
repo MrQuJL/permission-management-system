@@ -43,6 +43,8 @@
 	<!-- 安全管理器SecurityManager -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="userRealm"></property>
+		<property name="cacheManager" ref="cacheManager" />
+		<property name="sessionManager" ref="sessionManager" />
 	</bean>
 	
 	<!-- 自定义的realm -->
@@ -57,6 +59,17 @@
 		<property name="hashIterations" value="1024" />
 	</bean>
 	
+	<!-- 定义缓存管理器 -->
+	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManagerConfigFile" value="classpath:ehcache.xml" />
+	</bean>
 	
-	 
+	<!-- 定义会话管理器 -->
+	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+		<!-- session的失效时间 -->
+		<property name="globalSessionTimeout" value="3600000" />
+		<!-- 定时清理失效的会话 -->
+		<property name="sessionValidationInterval" value="1800000" />		
+	</bean>
+	
 </beans>
