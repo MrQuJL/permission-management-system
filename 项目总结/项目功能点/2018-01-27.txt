@@ -1,0 +1,32 @@
+2018/1/27
+
+1. 菜单管理：
+	注：此功能没有查询按钮，进入功能就会默认查询所有的记录，以树形表格的方式显示数据
+	* 页面的引入
+	* 页面切换的调整
+	* 修改/增加的判断
+	* 主页链接的修改
+
+	查询出所有的菜单列表，以树形表格来表示
+
+注意：之前登录一直用的是id为1的用户，shiro功能实现后，从subject主体中取出当前用户的
+身份信息中的userId，做成动态的。
+
+
+2. 使用tree table作为前台的树形组件，通过forEach来遍历后台发来的list集合
+
+复习jstl标签：
+1. forEach 
+<c:forEach items="${menuList}" var="menu">
+
+</c:forEach>
+
+2. choose
+<c:choose>
+	<c:when test="${menu.isShow==1}">
+		显示
+	</c:when>
+	<c:otherwise>不显示</c:otherwise>
+</c:choose>
+
+

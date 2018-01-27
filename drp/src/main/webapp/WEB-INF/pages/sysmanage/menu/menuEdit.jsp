@@ -1,27 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@ include file="/WEB-INF/pages/include/taglib.jsp" %>
+<%
+String path = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>菜单管理</title>
-	
+<title>菜单管理</title>
 <meta charset="utf-8" />
 <meta name="renderer" content="webkit">
-
-<script src="static/jquery/jquery-1.8.3.min.js" type="text/javascript"></script>
-<link href="static/bootstrap/2.3.1/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
-<script src="static/bootstrap/2.3.1/js/bootstrap.min.js" type="text/javascript"></script>
-<!--[if lte IE 6]>
-<link href="static/bootstrap/bsie/css/bootstrap-ie6.min.css" type="text/css" rel="stylesheet" />
-<script src="static/bootstrap/bsie/js/bootstrap-ie.min.js" type="text/javascript"></script>
-<![endif]-->
-<link href="static/jquery-select2/3.4/select2.min.css" rel="stylesheet" />
-<script src="static/jquery-select2/3.4/select2.min.js" type="text/javascript"></script>
-<link href="static/jquery-validation/1.11.0/jquery.validate.min.css" type="text/css" rel="stylesheet" />
-<script src="static/jquery-validation/1.11.0/jquery.validate.min.js" type="text/javascript"></script>
-<link href="static/jquery-jbox/2.3/Skins/Bootstrap/jbox.min.css" rel="stylesheet" />
-<script src="static/jquery-jbox/2.3/jquery.jBox-2.3.min.js" type="text/javascript"></script>
-<script src="static/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
-<link href="static/common/common.css" type="text/css" rel="stylesheet" />
-<script src="static/common/common.js" type="text/javascript"></script>
+<%@ include file="/WEB-INF/pages/include/head.jsp" %>
 	<script type="text/javascript">
 		$(function() {
 			$("#name").focus();
@@ -45,8 +34,15 @@
 </head>
 <body>
 	<ul class="nav nav-tabs">
-		<li><a href="menuList.html">菜单列表</a></li>
-		<li class="active"><a href="menuAdd.html">菜单添加</a></li>
+		<li><a href="${ctx}/sysmgr/gotoMenuList.action">菜单列表</a></li>
+		<li class="active"><a href="javascript:void(0);">菜单
+			<c:choose>
+				<c:when test="test=${editFlag==1}">
+					添加
+				</c:when>
+				<c:otherwise>修改</c:otherwise>
+			</c:choose>
+		</a></li>
 	</ul><br/>
 	<form id="inputForm" class="form-horizontal" action="#" method="post">
 		<input id="id" name="id" type="hidden" value=""/>

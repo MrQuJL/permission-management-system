@@ -1,7 +1,5 @@
 package com.lyu.drp.sysmanage.action;
 
-import javax.servlet.http.HttpSession;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -12,7 +10,6 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
-import org.apache.struts2.ServletActionContext;
 
 import com.lyu.drp.sysmanage.service.IMenuService;
 import com.lyu.drp.sysmanage.service.IUserService;
@@ -103,8 +100,8 @@ public class LoginAction {
 	 * @return
 	 */
 	public String logout() {
-//		Subject subject = SecurityUtils.getSubject();
-//		subject.logout();
+		Subject subject = SecurityUtils.getSubject();
+		subject.logout();
 		
 		System.out.println("进入logout的action");
 		return "success";

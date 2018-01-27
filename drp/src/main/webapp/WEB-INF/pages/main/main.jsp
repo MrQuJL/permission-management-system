@@ -189,7 +189,7 @@ String path = request.getContextPath();
 			    <div id="collapse-3" class="accordion-body  collapse" style="height: 0px;">
 					<div class="accordion-inner">
 						<ul class="nav nav-list">
-							<li class=""><a data-href=".menu3-4" href="menuList.html" target="mainFrame"><i class="icon-list-alt"></i>&nbsp;菜单管理</a>
+							<li class=""><a data-href=".menu3-4" href="${ctx}/sysmgr/gotoMenuList.action" target="mainFrame"><i class="icon-list-alt"></i>&nbsp;菜单管理</a>
 								<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
 								</ul></li>
 							<li class=""><a data-href=".menu3-7" href="roleList.html" target="mainFrame"><i class="icon-lock"></i>&nbsp;角色管理</a>

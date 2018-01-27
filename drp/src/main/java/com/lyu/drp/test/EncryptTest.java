@@ -5,7 +5,7 @@ import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Test;
 
-import com.lyu.drp.util.EncryptUtil;
+import com.lyu.drp.util.EncryptUtils;
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 
 /**
@@ -82,7 +82,7 @@ public class EncryptTest {
 	
 	@Test
 	public void testDrpEncrypt() {
-		EncryptUtil encryptUtil = new EncryptUtil();
+		EncryptUtils encryptUtil = new EncryptUtils();
 		// 原密码
 		String plainPsd = "123456";
 		// 1. 生成一个随机数
@@ -107,11 +107,11 @@ public class EncryptTest {
 		String password = "123456";
 		String encryptPsd = "d69b3e3983365aecfa39b7f23b0ae06d57f6200f0e6a12e3292aa73f";
 		// 将密文逆转，截取salt盐的明文
-		byte[] salt = EncryptUtil.decodeHex(encryptPsd.substring(0, 16));
+		byte[] salt = EncryptUtils.decodeHex(encryptPsd.substring(0, 16));
 		
 		// 重新拼凑盐和密码，进行sha1加密
-		byte[] hashPass = EncryptUtil.sha1(password.getBytes(), salt, 1024);
-		String newEncryptPsd = EncryptUtil.encodeHex(salt) + EncryptUtil.encodeHex(hashPass);
+		byte[] hashPass = EncryptUtils.sha1(password.getBytes(), salt, 1024);
+		String newEncryptPsd = EncryptUtils.encodeHex(salt) + EncryptUtils.encodeHex(hashPass);
 		System.out.println(newEncryptPsd);
 	}
 	

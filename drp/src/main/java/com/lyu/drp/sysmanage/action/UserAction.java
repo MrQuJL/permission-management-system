@@ -7,6 +7,7 @@ import com.alibaba.fastjson.JSON;
 import com.lyu.drp.sysmanage.dto.UserDto;
 import com.lyu.drp.sysmanage.entity.User;
 import com.lyu.drp.sysmanage.service.IUserService;
+import com.lyu.drp.util.UserUtils;
 
 /**
  * 类名称: 用户管理业务控制类
@@ -95,7 +96,8 @@ public class UserAction {
 	 */
 	public String saveChangePwd() {
 		// 1.通过session或者其他组件获取当前用户对象
-		Long userId = 1L;
+//		Long userId = 1L;
+		Long userId = UserUtils.getCurrentUserId();
 		User user = userService.getUserById(userId);
 		// 2.校验输入的密码是否与用户当前的密码匹配
 		boolean validOldPass = userService.validatePassword(oldPassword, user.getPassword());
@@ -123,7 +125,8 @@ public class UserAction {
 	 */
 	public String getUserInfoById() {
 		// 1.通过session或者其他组件获取当前用户对象
-		Long userId = 1L;
+//		Long userId = 1L;
+		Long userId = UserUtils.getCurrentUserId();
 		UserDto userDto = userService.getUserInfoById(userId);
 		// 2.将java对象转换成json字符串
 		String obj = JSON.toJSONString(userDto);

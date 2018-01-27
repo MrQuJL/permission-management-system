@@ -57,6 +57,16 @@
 				<param name="includeProperties">message</param>
 			</result>
 		</action>
+		
+		<!-- 菜单管理 -->
+		<action name = "gotoMenuList" class= "com.lyu.drp.sysmanage.action.MenuAction" method = "gotoMenuList">
+			<result name = "menuList">/WEB-INF/pages/sysmanage/menu/menuList.jsp</result>
+		</action>
+		
+		<action name = "gotoMenuEdit" class= "com.lyu.drp.sysmanage.action.MenuAction" method = "gotoMenuEdit">
+			<result name = "menuEdit">/WEB-INF/pages/sysmanage/menu/menuEdit.jsp</result>
+		</action>
+		
 	</package>
 	
 </struts>

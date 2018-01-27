@@ -23,7 +23,7 @@ import com.lyu.drp.sysmanage.entity.Menu;
 import com.lyu.drp.sysmanage.entity.User;
 import com.lyu.drp.sysmanage.service.IMenuService;
 import com.lyu.drp.sysmanage.service.IUserService;
-import com.lyu.drp.util.EncryptUtil;
+import com.lyu.drp.util.EncryptUtils;
 
 /**
  * 类名称: 用户认证和用户授权的realm
@@ -63,7 +63,7 @@ public class UserRealm extends AuthorizingRealm {
 				user.getUserName());
 			
 			// 从密码中拿到盐
-			byte[] salt = EncryptUtil.decodeHex(user.getPassword().substring(0, 16));
+			byte[] salt = EncryptUtils.decodeHex(user.getPassword().substring(0, 16));
 			
 			// 3.如果传入的userName和数据 库查询出来的userName相同
 			SimpleAuthenticationInfo simpleAuthenticationInfo = null;
@@ -110,5 +110,4 @@ public class UserRealm extends AuthorizingRealm {
 		
 		return simpleAuthorizationInfo;
 	}
-	
 }

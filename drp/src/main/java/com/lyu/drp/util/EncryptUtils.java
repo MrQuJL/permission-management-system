@@ -25,7 +25,7 @@ import java.security.SecureRandom;
  * @date 2018年1月15日 下午10:41:49
  * @version V1.0
  */
-public class EncryptUtil {
+public class EncryptUtils {
 
 	public static final String DEFAULT_URL_ENCODING = "UTF-8";
 	public static final String SHA1 = "SHA-1";

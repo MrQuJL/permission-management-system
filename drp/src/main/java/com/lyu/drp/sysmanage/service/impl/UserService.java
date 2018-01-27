@@ -7,7 +7,7 @@ import com.lyu.drp.sysmanage.dto.UserDto;
 import com.lyu.drp.sysmanage.entity.User;
 import com.lyu.drp.sysmanage.mapper.UserMapper;
 import com.lyu.drp.sysmanage.service.IUserService;
-import com.lyu.drp.util.EncryptUtil;
+import com.lyu.drp.util.EncryptUtils;
 
 /**
  * 类名称: 用户业务服务类
@@ -67,24 +67,24 @@ public class UserService implements IUserService {
 	@Override
     public String encyptPassword (String plainPassword) {
     	//生成一个随机数 ，所谓的salt 盐
-        byte[] salt = EncryptUtil.generateSalt(SALT_SIZE);
+        byte[] salt = EncryptUtils.generateSalt(SALT_SIZE);
         //盐+密码   进行sha1的加密
-        byte[] hashPass = EncryptUtil.sha1(plainPassword.getBytes(), salt, HASH_ITERATIONS);
+        byte[] hashPass = EncryptUtils.sha1(plainPassword.getBytes(), salt, HASH_ITERATIONS);
         //盐可逆加密+(盐+密码 sha1加密后)可逆加密
-        return EncryptUtil.encodeHex(salt) + EncryptUtil.encodeHex(hashPass);
+        return EncryptUtils.encodeHex(salt) + EncryptUtils.encodeHex(hashPass);
     } 
 	
     @Override
     public boolean validatePassword (String plainPsd, String encryptPsd) {
     	//将密文逆转 ，截取 salt盐的明文,用hex加密后的密文的位数是原位数的2倍
-    	byte[] salt = EncryptUtil.decodeHex(encryptPsd.substring(0, SALT_SIZE*2));
+    	byte[] salt = EncryptUtils.decodeHex(encryptPsd.substring(0, SALT_SIZE*2));
     	//重新拼凑 盐+密码   进行sha1的加密
-        byte[] hashPass = EncryptUtil.sha1(plainPsd.getBytes(), salt, HASH_ITERATIONS);
+        byte[] hashPass = EncryptUtils.sha1(plainPsd.getBytes(), salt, HASH_ITERATIONS);
         
         System.out.println("DB密码：" + encryptPsd);
-        System.out.println("原   密码：" + EncryptUtil.encodeHex(salt) + EncryptUtil.encodeHex(hashPass));
+        System.out.println("原   密码：" + EncryptUtils.encodeHex(salt) + EncryptUtils.encodeHex(hashPass));
         
-        return encryptPsd.equals(EncryptUtil.encodeHex(salt) + EncryptUtil.encodeHex(hashPass));
+        return encryptPsd.equals(EncryptUtils.encodeHex(salt) + EncryptUtils.encodeHex(hashPass));
     }
 
     @Override
