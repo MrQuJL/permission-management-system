@@ -21,4 +21,11 @@ public interface IMenuService {
 	 */
 	public List<Menu> getMenuListByUser(Long userId);
 	
+	/**
+	 * 获取所有的字典列表 
+	 * @param 
+	 * @return
+	 */
+	public List<Menu> getAllMenuList();
+	
 }

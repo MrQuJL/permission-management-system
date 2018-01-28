@@ -38,7 +38,7 @@ String path = request.getContextPath();
 		<li><a href="${ctx}/sysmgr/gotoMenuList.action">菜单列表</a></li>
 		<li class="active"><a href="javascript:void(0);">菜单
 			<c:choose>
-				<c:when test="test=${editFlag==1}">
+				<c:when test="${editFlag==1}">
 					添加
 				</c:when>
 				<c:otherwise>修改</c:otherwise>

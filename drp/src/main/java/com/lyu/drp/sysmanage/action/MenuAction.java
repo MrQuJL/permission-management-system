@@ -111,9 +111,15 @@ public class MenuAction {
 	public String gotoMenuList() {
 		// 获取当前的用户id
 		Long userId = UserUtils.getCurrentUserId();
+		
 		// 因为此功能没有查询按钮，进入功能的时候就要提前查询出所有数据，以对象的形式返回页面
 		List<Menu> menuListUnSort = menuService.getMenuListByUser(userId);
 		List<Menu> returnMenuList = new ArrayList<Menu>();
+		
+		// ---temp---
+		menuListUnSort = menuService.getAllMenuList();
+		// ---temp---
+		
 		// 因为前台的tree table必须按菜单的层级顺序显示才能达到顺序效果，所以要先递归排序一下
 		MenuUtils.sortMenuList(returnMenuList, menuListUnSort, 0L);
 		this.menuList = returnMenuList;
@@ -124,8 +130,12 @@ public class MenuAction {
 	 * 前往菜单编辑页面
 	 * @param 
 	 * @return
+	 * @throws InterruptedException 
 	 */
-	public String gotoMenuEdit() {
+	public String gotoMenuEdit() throws InterruptedException {
+		if (editFlag == 2) { // 修改
+			
+		}
 		return "menuEdit";
 	}
 	

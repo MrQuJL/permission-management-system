@@ -19,6 +19,13 @@ public interface MenuMapper {
 	 * @param userId 用户的id
 	 * @return 
 	 */
-	public List<Menu> getMenuListByUser(Long userId);
+	public List<Menu> getMenuListByUserId(Long userId);
+	
+	/**
+	 * 获取所有的字典列表 
+	 * @param 
+	 * @return
+	 */
+	public List<Menu> getAllMenuList();
 	
 }

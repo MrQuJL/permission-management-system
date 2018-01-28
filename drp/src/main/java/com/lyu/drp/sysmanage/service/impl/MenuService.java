@@ -24,7 +24,12 @@ public class MenuService implements IMenuService {
 	
 	@Override
 	public List<Menu> getMenuListByUser(Long userId) {
-		return menuMapper.getMenuListByUser(userId);
+		return menuMapper.getMenuListByUserId(userId);
+	}
+
+	@Override
+	public List<Menu> getAllMenuList() {
+		return menuMapper.getAllMenuList();
 	}
 	
 }
