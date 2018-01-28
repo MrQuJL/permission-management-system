@@ -1,8 +1,13 @@
 package com.lyu.drp.sysmanage.action;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
+
+import com.alibaba.fastjson.JSONArray;
 import com.lyu.drp.sysmanage.entity.Menu;
 import com.lyu.drp.sysmanage.service.IMenuService;
 import com.lyu.drp.util.MenuUtils;
@@ -29,6 +34,10 @@ public class MenuAction {
 	private IMenuService menuService;
 	// 菜单列表
 	private List<Menu> menuList;
+	//获取弹出属性菜单页面所需要的当前菜单的id
+	private String extId;
+	// 返回页面的json对象
+	private String jsonObj;
 	
 	public String getMessage() {
 		return message;
@@ -78,6 +87,22 @@ public class MenuAction {
 		this.menuList = menuList;
 	}
 
+	public String getExtId() {
+		return extId;
+	}
+
+	public void setExtId(String extId) {
+		this.extId = extId;
+	}
+	
+	public String getJsonObj() {
+		return jsonObj;
+	}
+
+	public void setJsonObj(String jsonObj) {
+		this.jsonObj = jsonObj;
+	}
+
 	/**
 	 * 前往菜单列表
 	 * @param 
@@ -102,6 +127,26 @@ public class MenuAction {
 	 */
 	public String gotoMenuEdit() {
 		return "menuEdit";
+	}
+	
+	
+	//获取属性菜单的数据
+	public String getMenuTree(){		
+		List<Map<String,Object>> mapList  = new ArrayList<Map<String,Object>>();
+		List<Menu> menuList = this.menuService.getMenuListByUser(UserUtils.getCurrentUserId());
+		for(Menu menu:menuList){	
+			if(StringUtils.isNotEmpty(extId)||
+					!menu.getId().equals(extId)){
+				Map<String,Object> map = new HashMap<String,Object>();
+				map.put("id", menu.getId());
+				map.put("pId", menu.getParentId());
+				map.put("name", menu.getName());
+				mapList.add(map);
+			}
+		}
+		this.jsonObj = JSONArray.toJSONString(mapList);
+		return "success";
+				
 	}
 
 }

@@ -67,6 +67,16 @@
 			<result name = "menuEdit">/WEB-INF/pages/sysmanage/menu/menuEdit.jsp</result>
 		</action>
 		
+		<action name = "menuTreeData" class= "com.lyu.drp.sysmanage.action.MenuAction" method = "getMenuTree">
+			<result type="json">
+				<param name="includeProperties">jsonObj</param>
+			</result>
+		</action>
+		<!-- zTree返回页面 -->
+		<action name = "treeSelect" class= "com.lyu.drp.sysmanage.action.TagAction" method = "treeSelect">
+			<result name = "treeSelect">/WEB-INF/pages/common/treeSelect.jsp</result>
+		</action>
+		
 	</package>
 	
 </struts>

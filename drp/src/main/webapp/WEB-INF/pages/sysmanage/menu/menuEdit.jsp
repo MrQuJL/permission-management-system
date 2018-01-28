@@ -32,6 +32,7 @@ String path = request.getContextPath();
 		});
 	</script>
 </head>
+<script type="text/javascript">top.$.jBox.closeTip();</script>
 <body>
 	<ul class="nav nav-tabs">
 		<li><a href="${ctx}/sysmgr/gotoMenuList.action">菜单列表</a></li>
@@ -47,17 +48,20 @@ String path = request.getContextPath();
 	<form id="inputForm" class="form-horizontal" action="#" method="post">
 		<input id="id" name="id" type="hidden" value=""/>
 
-<script type="text/javascript">top.$.jBox.closeTip();</script>
+
 
 		<div class="control-group">
 			<label class="control-label">上级菜单:</label>
 			<div class="controls">
-
-<div class="input-append">
-	<input id="menuId" name="parent.id" class="required" type="hidden" value="1"/>
-	<input id="menuName" name="parent.name" readonly="readonly" type="text" value="功能菜单" data-msg-required=""
-		class="required" style=""/><a id="menuButton" href="javascript:" class="btn  " style="">&nbsp;<i class="icon-search"></i>&nbsp;</a>&nbsp;&nbsp;
-</div>
+				<!-- <div class="input-append">
+					<input id="menuId" name="parent.id" class="required" type="hidden" value="1"/>
+					<input id="menuName" name="parent.name" readonly="readonly" type="text" value="功能菜单" data-msg-required=""
+						class="required" style=""/><a id="menuButton" href="javascript:" class="btn  " style="">&nbsp;<i class="icon-search"></i>&nbsp;</a>&nbsp;&nbsp;
+				</div> -->
+				<sys:treeSelect id="parent" name="parentId" value="${menu.parentId}"
+							labelName="parentName" labelValue="${menu.parentName}"
+							title="菜单" url="/sysmgr/menuTreeData.action" 
+							extId="${not empty menu.id ? menu.id : 0}" cssClass="required" />
 			</div>
 		</div>
 		<div class="control-group">
@@ -84,8 +88,8 @@ String path = request.getContextPath();
 		<div class="control-group">
 			<label class="control-label">图标:</label>
 			<div class="controls">
-<i id="iconIcon" class="icon- hide"></i>&nbsp;<label id="iconIconLabel">无</label>&nbsp;
-<input id="icon" name="icon" type="hidden" value=""/><a id="iconButton" href="javascript:" class="btn">选择</a>&nbsp;&nbsp;
+				<i id="iconIcon" class="icon- hide"></i>&nbsp;<label id="iconIconLabel">无</label>&nbsp;
+				<input id="icon" name="icon" type="hidden" value=""/><a id="iconButton" href="javascript:" class="btn">选择</a>&nbsp;&nbsp;
 
 			</div>
 		</div>
