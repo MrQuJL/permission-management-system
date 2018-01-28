@@ -25,61 +25,59 @@ public class TagAction extends ActionSupport{
 	
 	private String value;
 	
+	/**
+	 * 跳转到zTree的选择页面
+	 * @param 
+	 * @return
+	 */
     public String treeSelect () {
         return "treeSelect";
     }
     
-    
+    /**
+     * 跳转到icon页面
+     * @param 
+     * @return
+     */
     public String iconSelect(){
     	return "iconSelect";
     }
     
- 
-
 	public String getUrl() {
 		return url;
 	}
-
 
 	public void setUrl(String url) {
 		this.url = url;
 	}
 
-
 	public String getChecked() {
 		return checked;
 	}
-
 
 	public void setChecked(String checked) {
 		this.checked = checked;
 	}
 
-
 	public String getExtId() {
 		return extId;
 	}
-
 
 	public void setExtId(String extId) {
 		this.extId = extId;
 	}
 
-
 	public String getSelectIds() {
 		return selectIds;
 	}
-
 
 	public void setSelectIds(String selectIds) {
 		this.selectIds = selectIds;
 	}
 
-
 	public String getValue() {
 		return value;
 	}
-
 
 	public void setValue(String value) {
 		this.value = value;

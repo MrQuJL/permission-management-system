@@ -129,7 +129,6 @@ public class MenuAction {
 		return "menuEdit";
 	}
 	
-	
 	//获取属性菜单的数据
 	public String getMenuTree(){		
 		List<Map<String,Object>> mapList  = new ArrayList<Map<String,Object>>();
@@ -146,7 +145,6 @@ public class MenuAction {
 		}
 		this.jsonObj = JSONArray.toJSONString(mapList);
 		return "success";
-				
 	}
 
 }

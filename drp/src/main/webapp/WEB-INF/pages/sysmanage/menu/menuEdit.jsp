@@ -88,9 +88,10 @@ String path = request.getContextPath();
 		<div class="control-group">
 			<label class="control-label">图标:</label>
 			<div class="controls">
-				<i id="iconIcon" class="icon- hide"></i>&nbsp;<label id="iconIconLabel">无</label>&nbsp;
+				<sys:iconselect id="icon" name="icon" value="${menu.icon}" />
+				<!-- <i id="iconIcon" class="icon- hide"></i>&nbsp;<label id="iconIconLabel">无</label>&nbsp;
 				<input id="icon" name="icon" type="hidden" value=""/><a id="iconButton" href="javascript:" class="btn">选择</a>&nbsp;&nbsp;
-
+ -->
 			</div>
 		</div>
 		<div class="control-group">
