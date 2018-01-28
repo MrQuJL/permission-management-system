@@ -62,24 +62,6 @@ String path = request.getContextPath();
 						<a href="menuAdd.html">添加下级菜单</a>
 					</td>
 				</tr>
-			
-				 <tr id="28" pId="27">
-					<td nowrap><i class="icon- hide"></i><a href="#">个人信息</a></td>
-					<td title=""></td>
-					<td style="text-align:center;">
-						
-							<input type="hidden" name="ids" value="28"/>
-							<input name="sorts" type="text" value="10" style="width:50px;margin:0;padding:0;text-align:center;">
-						
-					</td>
-					<td>显示</td>
-					<td title=""></td>
-					<td nowrap>
-						<a href="menuAdd.html">修改</a>
-						<a href="#" onclick="return confirmx('要删除该菜单及所有子菜单项吗？', this.href)">删除</a>
-						<a href="menuAdd.html">添加下级菜单</a>
-					</td>
-				</tr>
 				-->
 				<c:forEach items="${menuList}" var="menu">
 					<tr id="${menu.id}" pId="${menu.parentId}">
