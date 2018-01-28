@@ -73,6 +73,12 @@
 			</result>
 		</action>
 		
+		<action name = "delMenu" class= "com.lyu.drp.sysmanage.action.MenuAction" method = "delMenu">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
 		<action name = "menuTreeData" class= "com.lyu.drp.sysmanage.action.MenuAction" method = "getMenuTree">
 			<result type="json">
 				<param name="includeProperties">jsonObj</param>

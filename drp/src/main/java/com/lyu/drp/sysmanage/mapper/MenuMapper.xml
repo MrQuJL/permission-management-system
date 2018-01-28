@@ -22,14 +22,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT <include refid="all_menu_columns_aliases" />, B.name parentName
 		FROM drp_sys_menu A LEFT JOIN drp_sys_menu B
 		ON A.parent_id = B.id
-		WHERE A.id = #{menuId}
+		WHERE A.id = #{menuId} AND A.del_flag = 0
 	</select>
 	
 	<!-- 根据用户的id获取用户所能够操作的用户列表 -->
 	<select id="getMenuListByUserId" parameterType="long" resultType="menu">
 		SELECT <include refid="all_menu_columns_aliases" />
 		FROM drp_sys_menu A, drp_sys_user_role B, drp_sys_role_menu C
-		WHERE B.user_id = #{userId} AND  B.role_id = C.role_id AND C.menu_id = A.id AND A.del_flag = 0
+		WHERE B.user_id = #{userId} AND  B.role_id = C.role_id 
+		AND C.menu_id = A.id AND A.del_flag = 0
 	</select>
 	
 	<!-- 获取所有的菜单列表 -->
@@ -81,7 +82,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				remarks = #{remarks},
 			</if>
 		</set>
-		WHERE id = #{id}
+		WHERE id = #{id} AND del_flag = 0
 	</update>
 	
+	<!-- 删除菜单 -->
+	<update id="delMenu" parameterType="long">
+		UPDATE drp_sys_menu SET del_flag = 1
+		WHERE id = #{menuId}
+	</update>
+		
 </mapper>

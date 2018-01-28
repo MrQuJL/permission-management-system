@@ -69,4 +69,14 @@ public class MenuService implements IMenuService {
 		return flag;
 	}
 
+	@Override
+	public boolean delMenu(Long menuId) {
+		boolean flag = false;
+		int rows = menuMapper.delMenu(menuId);
+		if (rows > 0) {
+			flag = true;
+		}
+		return flag;
+	}
+
 }

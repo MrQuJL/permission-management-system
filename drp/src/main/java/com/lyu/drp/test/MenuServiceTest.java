@@ -64,7 +64,6 @@ public class MenuServiceTest {
 		} else {
 			System.out.println("添加菜单失败!");
 		}
-		
 	}
 	
 	// 新增菜单
@@ -91,16 +90,20 @@ public class MenuServiceTest {
 		} else {
 			System.out.println("修改菜单失败!");
 		}
-		
 	}
 	
 	// 新增菜单
 	@Test
 	public void testGetMenuById() {
 		MenuDto menuDto = menuService.getMenuDetailById(1L);
-		
 		System.out.println(menuDto);
-		
+	}
+	
+	// 删除菜单
+	@Test
+	public void testDelMenu() {
+		boolean flag = menuService.delMenu(35L);
+		System.out.println(flag);
 	}
 	
 }

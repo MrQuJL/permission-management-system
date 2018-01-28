@@ -50,4 +50,11 @@ public interface IMenuService {
 	 */
 	public boolean updateMenu(Menu menu);
 	
+	/**
+	 * 删除指定id的菜单(逻辑删除，修改标识位)
+	 * @param 
+	 * @return
+	 */
+	public boolean delMenu(Long menuId);
+	
 }

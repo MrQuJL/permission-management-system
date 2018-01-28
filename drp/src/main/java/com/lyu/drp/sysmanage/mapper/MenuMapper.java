@@ -50,4 +50,11 @@ public interface MenuMapper {
 	 */
 	public int updateMenu(Menu menu);
 	
+	/**
+	 * 删除指定id的菜单(逻辑删除，修改标识位)
+	 * @param 
+	 * @return
+	 */
+	public int delMenu(Long menuId);
+	
 }

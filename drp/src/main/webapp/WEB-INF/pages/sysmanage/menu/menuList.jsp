@@ -17,13 +17,23 @@ String path = request.getContextPath();
 		$(function() {
 			$("#treeTable").treeTable({expandLevel : 3}).show();
 		});
-    	function updateSort() {
-			loading('正在提交，请稍等...');
-	    	$("#listForm").attr("action", "#");
-	    	$("#listForm").submit();
-    	}
+		var menuMgr = {
+			// 删除菜单前先查看是否有子菜单
+			delMenu : function(menuId) {
+				$.ajax({
+					type : "post",
+					url : "${ctx}/sysmgr/delMenu.action",
+					data : {"menuId" : menuId},
+					dataType : "json",
+					success : function(data) {
+						// 这里后台传过来一个标志位，如果是true表示没有子菜单可以删除，给出提示
+						// 否则提示不能删除
+						alert(data.message);
+					}
+				});
+			}
+		}
 	</script>
-	<script type="text/javascript">top.$.jBox.closeTip();</script>
 </head>
 <body>
 	<ul class="nav nav-tabs">
@@ -44,25 +54,6 @@ String path = request.getContextPath();
 				</tr>
 			</thead>
 			<tbody>
-				<!--
-				<tr id="27" pId="0">
-					<td nowrap><i class="icon- hide"></i><a href="#">我的面板</a></td>
-					<td title=""></td>
-					<td style="text-align:center;">
-						
-						<input type="hidden" name="ids" value="27"/>
-						<input name="sorts" type="text" value="10" style="width:50px;margin:0;padding:0;text-align:center;">
-						
-					</td>
-					<td>显示</td>
-					<td title=""></td>
-					<td nowrap>
-						<a href="menuAdd.html">修改</a>
-						<a href="#" onclick="return confirmx('要删除该菜单及所有子菜单项吗？', this.href)">删除</a>
-						<a href="menuAdd.html">添加下级菜单</a>
-					</td>
-				</tr>
-				-->
 				<c:forEach items="${menuList}" var="menu">
 					<tr id="${menu.id}" pId="${menu.parentId}">
 						<td nowrap>

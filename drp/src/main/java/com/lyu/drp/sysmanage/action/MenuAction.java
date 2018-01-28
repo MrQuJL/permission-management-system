@@ -171,6 +171,13 @@ public class MenuAction {
 		return "success";
 	}
 	
+	public String delMenu() {
+		
+		this.message = "功能正在开发中，请稍安勿躁...";
+		
+		return "success";
+	}
+	
 	/**
 	 * 获取属性菜单的数据
 	 * @param 
