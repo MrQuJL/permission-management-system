@@ -28,4 +28,11 @@ public interface MenuMapper {
 	 */
 	public List<Menu> getAllMenuList();
 	
+	/**
+	 * 添加菜单
+	 * @param 
+	 * @return
+	 */
+	public int saveMenu(Menu menu);
+	
 }

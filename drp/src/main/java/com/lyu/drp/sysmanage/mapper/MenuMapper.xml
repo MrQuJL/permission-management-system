@@ -30,5 +30,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM drp_sys_menu WHERE del_flag = 0
 	</select>
 	
+	<!-- 添加菜单 -->
+	<insert id="saveMenu" parameterType="menu">
+		INSERT INTO drp_sys_menu(parent_id, name, sort, href, target,
+		icon, is_show, permission, update_by, update_date, remarks)
+		VALUES(#{parentId}, #{name}, #{sort}, #{href}, #{target},
+		#{icon}, #{isShow}, #{permission}, #{updateBy}, #{updateDate}, #{remarks})
+	</insert>
 	
 </mapper>

@@ -12,12 +12,13 @@ String path = request.getContextPath();
 <meta name="renderer" content="webkit">
 <%@ include file="/WEB-INF/pages/include/head.jsp" %>
 	<script type="text/javascript">
-		$(function() {
+		/* $(function() {
 			$("#name").focus();
-			$("#inputForm").validate({
+			$("#saveMenuForm").validate({
 				submitHandler: function(form){
 					loading('正在提交，请稍等...');
-					form.submit();
+					
+					
 				},
 				errorContainer: "#messageBox",
 				errorPlacement: function(error, element) {
@@ -29,10 +30,35 @@ String path = request.getContextPath();
 					}
 				}
 			});
-		});
+		}); */
+		var menuMgr = {
+			saveMenu : function(id) {
+				loading('正在提交，请稍等...');
+				// 1.获取菜单的各个值
+				var jsonObj = $("#saveMenuForm").serializeArray();
+				// 2.封装成js对象
+				var obj = {};
+				$.each(jsonObj,function(i, item) {
+					if (item.name != "parentName") {
+						obj[item.name] = item.value;
+					}
+				});
+				// 3.发送ajax请求
+				$.ajax({
+					method : "post",
+					url : "${ctx}/sysmgr/saveMenu.action",
+					data : {"jsonObj" : JSON.stringify(obj)},
+					dataType : "json",
+					success : function(data) {
+						alert(data.message);
+						top.$.jBox.closeTip();
+					}
+				});
+			}
+		};
+		
 	</script>
 </head>
-<script type="text/javascript">top.$.jBox.closeTip();</script>
 <body>
 	<ul class="nav nav-tabs">
 		<li><a href="${ctx}/sysmgr/gotoMenuList.action">菜单列表</a></li>
@@ -45,19 +71,12 @@ String path = request.getContextPath();
 			</c:choose>
 		</a></li>
 	</ul><br/>
-	<form id="inputForm" class="form-horizontal" action="#" method="post">
-		<input id="id" name="id" type="hidden" value=""/>
-
-
+	<form id="saveMenuForm" class="form-horizontal" action="#" method="post">
+		<input id="id" name="id" type="hidden" value="${menu.id}"/>
 
 		<div class="control-group">
 			<label class="control-label">上级菜单:</label>
 			<div class="controls">
-				<!-- <div class="input-append">
-					<input id="menuId" name="parent.id" class="required" type="hidden" value="1"/>
-					<input id="menuName" name="parent.name" readonly="readonly" type="text" value="功能菜单" data-msg-required=""
-						class="required" style=""/><a id="menuButton" href="javascript:" class="btn  " style="">&nbsp;<i class="icon-search"></i>&nbsp;</a>&nbsp;&nbsp;
-				</div> -->
 				<sys:treeSelect id="parent" name="parentId" value="${menu.parentId}"
 							labelName="parentName" labelValue="${menu.parentName}"
 							title="菜单" url="/sysmgr/menuTreeData.action" 
@@ -89,9 +108,6 @@ String path = request.getContextPath();
 			<label class="control-label">图标:</label>
 			<div class="controls">
 				<sys:iconselect id="icon" name="icon" value="${menu.icon}" />
-				<!-- <i id="iconIcon" class="icon- hide"></i>&nbsp;<label id="iconIconLabel">无</label>&nbsp;
-				<input id="icon" name="icon" type="hidden" value=""/><a id="iconButton" href="javascript:" class="btn">选择</a>&nbsp;&nbsp;
- -->
 			</div>
 		</div>
 		<div class="control-group">
@@ -122,7 +138,7 @@ String path = request.getContextPath();
 			</div>
 		</div>
 		<div class="form-actions">
-			<input id="btnSubmit" class="btn btn-primary" type="submit" value="保 存"/>&nbsp;
+			<input id="btnSubmit" class="btn btn-primary" type="button" onclick="menuMgr.saveMenu();" value="保 存"/>&nbsp;
 			<input id="btnCancel" class="btn" type="button" value="返 回" onclick="history.go(-1)"/>
 		</div>
 	</form>

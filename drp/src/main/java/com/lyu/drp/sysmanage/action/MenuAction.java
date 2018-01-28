@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.lyu.drp.sysmanage.entity.Menu;
 import com.lyu.drp.sysmanage.service.IMenuService;
@@ -116,7 +117,7 @@ public class MenuAction {
 		List<Menu> menuListUnSort = menuService.getMenuListByUser(userId);
 		List<Menu> returnMenuList = new ArrayList<Menu>();
 		
-		// ---temp---
+		// ---temp为了测试添加菜单，临时查询全部的菜单列表---
 		menuListUnSort = menuService.getAllMenuList();
 		// ---temp---
 		
@@ -132,14 +133,46 @@ public class MenuAction {
 	 * @return
 	 * @throws InterruptedException 
 	 */
-	public String gotoMenuEdit() throws InterruptedException {
+	public String gotoMenuEdit() {
 		if (editFlag == 2) { // 修改
 			
 		}
 		return "menuEdit";
 	}
 	
-	//获取属性菜单的数据
+	
+	/**
+	 * 保存菜单（新增，修改）
+	 * @param 
+	 * @return
+	 */
+	public String saveMenu() {
+		// 1.将前台发来的json类型的菜单字符串解析成java对象
+		Menu menu = JSON.parseObject(jsonObj, Menu.class);
+		
+		if (menu.getId() == null) { // id为空则为新增
+			this.message = "新增菜单失败";
+			boolean flag = menuService.saveMenu(menu);
+			if (flag) {
+				this.message = "新增菜单成功!";
+			}
+		} else { // id不为空则为修改
+			this.message = "修改菜单失败";
+			
+			
+			
+			
+			
+		}
+		
+		return "success";
+	}
+	
+	/**
+	 * 获取属性菜单的数据
+	 * @param 
+	 * @return
+	 */
 	public String getMenuTree(){		
 		List<Map<String,Object>> mapList  = new ArrayList<Map<String,Object>>();
 		List<Menu> menuList = this.menuService.getMenuListByUser(UserUtils.getCurrentUserId());

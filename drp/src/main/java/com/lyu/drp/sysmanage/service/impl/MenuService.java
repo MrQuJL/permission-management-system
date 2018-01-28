@@ -1,13 +1,16 @@
 package com.lyu.drp.sysmanage.service.impl;
 
+import java.sql.Date;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lyu.drp.sysmanage.entity.Menu;
 import com.lyu.drp.sysmanage.mapper.MenuMapper;
 import com.lyu.drp.sysmanage.service.IMenuService;
+import com.lyu.drp.util.UserUtils;
 
 /**
  * 类名称: menuService实现类
@@ -19,6 +22,9 @@ import com.lyu.drp.sysmanage.service.IMenuService;
  */
 @Service("menuService")
 public class MenuService implements IMenuService {
+	
+	private Logger log = Logger.getLogger(MenuService.class);
+	
 	@Autowired
 	private MenuMapper menuMapper;
 	
@@ -30,6 +36,20 @@ public class MenuService implements IMenuService {
 	@Override
 	public List<Menu> getAllMenuList() {
 		return menuMapper.getAllMenuList();
+	}
+
+	@Override
+	public boolean saveMenu(Menu menu) {
+		boolean flag = false;
+		// 设置update_by和update_date
+		menu.setUpdateBy(UserUtils.getCurrentUserId().toString());
+		menu.setUpdateDate(new Date(System.currentTimeMillis()));
+		
+		int rows = menuMapper.saveMenu(menu);
+		if (rows > 0) {
+			flag = true;
+		}
+		return flag;
 	}
 	
 }

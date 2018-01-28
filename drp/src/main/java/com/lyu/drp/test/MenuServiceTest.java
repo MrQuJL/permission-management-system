@@ -1,5 +1,6 @@
 package com.lyu.drp.test;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.junit.Before;
@@ -35,6 +36,32 @@ public class MenuServiceTest {
 		
 		for (Menu menu : menuList) {
 			System.out.println(menu);
+		}
+		
+	}
+	
+	// 新增菜单
+	@Test
+	public void testSaveMenu() {
+		Menu menu = new Menu();
+		menu.setParentId(1L);
+		menu.setName("测试菜单");
+		menu.setSort(13L);
+		menu.setHref("");
+		menu.setTarget("");
+		menu.setIcon("");
+		menu.setIsShow("1");
+		menu.setPermission("");
+		menu.setUpdateBy("1");
+		menu.setUpdateDate(new Date(System.currentTimeMillis()));
+		menu.setRemarks("test hello");
+		
+		boolean flag = menuService.saveMenu(menu);
+		
+		if (flag) {
+			System.out.println("添加菜单成功");
+		} else {
+			System.out.println("添加菜单失败!");
 		}
 		
 	}

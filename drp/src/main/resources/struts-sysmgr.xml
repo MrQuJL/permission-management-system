@@ -67,6 +67,12 @@
 			<result name = "menuEdit">/WEB-INF/pages/sysmanage/menu/menuEdit.jsp</result>
 		</action>
 		
+		<action name = "saveMenu" class= "com.lyu.drp.sysmanage.action.MenuAction" method = "saveMenu">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
 		<action name = "menuTreeData" class= "com.lyu.drp.sysmanage.action.MenuAction" method = "getMenuTree">
 			<result type="json">
 				<param name="includeProperties">jsonObj</param>

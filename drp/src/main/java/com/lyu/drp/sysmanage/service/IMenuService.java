@@ -28,4 +28,11 @@ public interface IMenuService {
 	 */
 	public List<Menu> getAllMenuList();
 	
+	/**
+	 * 添加菜单
+	 * @param 
+	 * @return
+	 */
+	public boolean saveMenu(Menu menu);
+	
 }
