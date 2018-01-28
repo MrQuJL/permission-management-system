@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.lyu.drp.sysmanage.dto.MenuDto;
 import com.lyu.drp.sysmanage.entity.Menu;
 import com.lyu.drp.sysmanage.service.IMenuService;
 
@@ -45,13 +46,13 @@ public class MenuServiceTest {
 	public void testSaveMenu() {
 		Menu menu = new Menu();
 		menu.setParentId(1L);
-		menu.setName("测试菜单");
-		menu.setSort(13L);
-		menu.setHref("");
-		menu.setTarget("");
-		menu.setIcon("");
+		menu.setName("测试菜dfdf单");
+		menu.setSort(152L);
+		menu.setHref("e");
+		menu.setTarget("e");
+		menu.setIcon("icon-glass");
 		menu.setIsShow("1");
-		menu.setPermission("");
+		menu.setPermission("e");
 		menu.setUpdateBy("1");
 		menu.setUpdateDate(new Date(System.currentTimeMillis()));
 		menu.setRemarks("test hello");
@@ -63,6 +64,42 @@ public class MenuServiceTest {
 		} else {
 			System.out.println("添加菜单失败!");
 		}
+		
+	}
+	
+	// 新增菜单
+	@Test
+	public void testUpdateMenu() {
+		Menu menu = new Menu();
+		menu.setId(35L);
+		menu.setParentId(1L);
+		menu.setName("测试菜单");
+		menu.setSort(13L);
+		menu.setHref("eee");
+		menu.setTarget("eee");
+		menu.setIcon("eee");
+		menu.setIsShow("1");
+		menu.setPermission("eee");
+		menu.setUpdateBy("1");
+		menu.setUpdateDate(new Date(System.currentTimeMillis()));
+		menu.setRemarks("test hello");
+		
+		boolean flag = menuService.updateMenu(menu);
+		
+		if (flag) {
+			System.out.println("修改菜单成功");
+		} else {
+			System.out.println("修改菜单失败!");
+		}
+		
+	}
+	
+	// 新增菜单
+	@Test
+	public void testGetMenuById() {
+		MenuDto menuDto = menuService.getMenuDetailById(1L);
+		
+		System.out.println(menuDto);
 		
 	}
 	

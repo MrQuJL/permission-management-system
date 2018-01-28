@@ -6,9 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.lyu.drp.sysmanage.dto.MenuDto;
 import com.lyu.drp.sysmanage.entity.Menu;
 import com.lyu.drp.sysmanage.service.IMenuService;
 import com.lyu.drp.util.MenuUtils;
@@ -23,6 +25,8 @@ import com.lyu.drp.util.UserUtils;
  * @version V1.0
  */
 public class MenuAction {
+	// log4j日志
+	private Logger log = Logger.getLogger(MenuAction.class);
 	// 增删改的返回信息
 	private String message;
 	// 编辑页面的标识，1为新增，0为修改
@@ -30,7 +34,7 @@ public class MenuAction {
 	// 获取菜单id
 	private Long menuId;
 	// 待修改的菜单对象
-	private Menu menu;
+	private MenuDto menu;
 	// 通过spring自动注入
 	private IMenuService menuService;
 	// 菜单列表
@@ -64,11 +68,11 @@ public class MenuAction {
 		this.menuId = menuId;
 	}
 
-	public Menu getMenu() {
+	public MenuDto getMenu() {
 		return menu;
 	}
 
-	public void setMenu(Menu menu) {
+	public void setMenu(MenuDto menu) {
 		this.menu = menu;
 	}
 
@@ -131,11 +135,11 @@ public class MenuAction {
 	 * 前往菜单编辑页面
 	 * @param 
 	 * @return
-	 * @throws InterruptedException 
 	 */
 	public String gotoMenuEdit() {
 		if (editFlag == 2) { // 修改
-			
+			// 根据id查询一下菜单
+			this.menu = menuService.getMenuDetailById(menuId);
 		}
 		return "menuEdit";
 	}
@@ -158,11 +162,10 @@ public class MenuAction {
 			}
 		} else { // id不为空则为修改
 			this.message = "修改菜单失败";
-			
-			
-			
-			
-			
+			boolean flag = menuService.updateMenu(menu);
+			if (flag) {
+				this.message = "修改菜单成功!";
+			}
 		}
 		
 		return "success";

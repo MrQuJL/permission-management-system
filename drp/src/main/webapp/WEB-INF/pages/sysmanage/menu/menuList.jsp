@@ -66,8 +66,8 @@ String path = request.getContextPath();
 				<c:forEach items="${menuList}" var="menu">
 					<tr id="${menu.id}" pId="${menu.parentId}">
 						<td nowrap>
-							<i class="icon-${not empty menu.icon?menu.icon:'hide'}"></i>
-							<a href="${ctx}/sysmgr/gotoMenuEdit.action?id=${menu.id}">${menu.name}</a>
+							<i class="${not empty menu.icon?menu.icon:'hide'}"></i>
+							<a href="${ctx}/sysmgr/gotoMenuEdit.action?editFlag=2&menuId=${menu.id}">${menu.name}</a>
 						</td>
 						<td title="${menu.href}">${menu.href}</td>
 						<td style="text-align:center;">

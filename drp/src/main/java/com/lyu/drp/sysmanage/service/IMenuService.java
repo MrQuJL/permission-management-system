@@ -2,6 +2,7 @@ package com.lyu.drp.sysmanage.service;
 
 import java.util.List;
 
+import com.lyu.drp.sysmanage.dto.MenuDto;
 import com.lyu.drp.sysmanage.entity.Menu;
 
 /**
@@ -13,6 +14,13 @@ import com.lyu.drp.sysmanage.entity.Menu;
  * @version V1.0
  */
 public interface IMenuService {
+	
+	/**
+	 * 通过菜单id获取菜单的详细信息
+	 * @param 
+	 * @return
+	 */
+	public MenuDto getMenuDetailById(Long menuId);
 	
 	/**
 	 * 根据用户的id获取用户所能够操作的用户列表
@@ -34,5 +42,12 @@ public interface IMenuService {
 	 * @return
 	 */
 	public boolean saveMenu(Menu menu);
+	
+	/**
+	 * 修改菜单
+	 * @param 
+	 * @return
+	 */
+	public boolean updateMenu(Menu menu);
 	
 }

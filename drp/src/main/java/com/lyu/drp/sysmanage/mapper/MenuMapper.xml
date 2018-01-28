@@ -17,6 +17,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		A.permission, A.update_by, A.update_date, A.remarks, A.del_flag
 	</sql>
 	
+	<!-- 通过菜单id获取菜单的详细信息 -->
+	<select id="getMenuDetailById" parameterType="long" resultType="menuDto">
+		SELECT <include refid="all_menu_columns_aliases" />, B.name parentName
+		FROM drp_sys_menu A LEFT JOIN drp_sys_menu B
+		ON A.parent_id = B.id
+		WHERE A.id = #{menuId}
+	</select>
+	
 	<!-- 根据用户的id获取用户所能够操作的用户列表 -->
 	<select id="getMenuListByUserId" parameterType="long" resultType="menu">
 		SELECT <include refid="all_menu_columns_aliases" />
@@ -37,5 +45,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES(#{parentId}, #{name}, #{sort}, #{href}, #{target},
 		#{icon}, #{isShow}, #{permission}, #{updateBy}, #{updateDate}, #{remarks})
 	</insert>
+	
+	<!-- 修改菜单 -->
+	<update id="updateMenu" parameterType="menu">
+		UPDATE drp_sys_menu
+		<set>
+			<if test="name != null">
+				name = #{name},
+			</if>
+			<if test="sort != null">
+				sort = #{sort},
+			</if>
+			<if test="href != null">
+				href = #{href},
+			</if>
+			<if test="target != null">
+				target = #{target},
+			</if>
+			<if test="icon != null">
+				icon = #{icon},
+			</if>
+			<if test="isShow != null">
+				is_show = #{isShow},
+			</if>
+			<if test="permission != null">
+				permission = #{permission},
+			</if>
+			<if test="updateBy != null">
+				update_by = #{updateBy},
+			</if>
+			<if test="updateDate != null">
+				update_date = #{updateDate},
+			</if>
+			<if test="remarks != null">
+				remarks = #{remarks},
+			</if>
+		</set>
+		WHERE id = #{id}
+	</update>
 	
 </mapper>

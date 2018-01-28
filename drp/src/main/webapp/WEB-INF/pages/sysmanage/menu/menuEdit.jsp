@@ -18,7 +18,6 @@ String path = request.getContextPath();
 				submitHandler: function(form){
 					loading('正在提交，请稍等...');
 					
-					
 				},
 				errorContainer: "#messageBox",
 				errorPlacement: function(error, element) {
@@ -86,21 +85,21 @@ String path = request.getContextPath();
 		<div class="control-group">
 			<label class="control-label">名称:</label>
 			<div class="controls">
-				<input id="name" name="name" class="required input-xlarge" type="text" value="" maxlength="50"/>
+				<input id="name" name="name" class="required input-xlarge" type="text" value="${menu.name}" maxlength="50"/>
 				<span class="help-inline"><span style="color:red">*</span> </span>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">链接:</label>
 			<div class="controls">
-				<input id="href" name="href" class="input-xxlarge" type="text" value="" maxlength="2000"/>
+				<input id="href" name="href" class="input-xxlarge" type="text" value="${menu.href}" maxlength="2000"/>
 				<span class="help-inline">点击菜单跳转的页面</span>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">目标:</label>
 			<div class="controls">
-				<input id="target" name="target" class="input-small" type="text" value="" maxlength="10"/>
+				<input id="target" name="target" class="input-small" type="text" value="${menu.target}" maxlength="10"/>
 				<span class="help-inline">链接地址打开的目标窗口，默认：mainFrame</span>
 			</div>
 		</div>
@@ -113,28 +112,28 @@ String path = request.getContextPath();
 		<div class="control-group">
 			<label class="control-label">排序:</label>
 			<div class="controls">
-				<input id="sort" name="sort" class="required digits input-small" type="text" value="30" maxlength="50"/>
+				<input id="sort" name="sort" class="required digits input-small" type="text" value="${menu.sort}" maxlength="50"/>
 				<span class="help-inline"><span class="help-inline"><span style="color:red">*</span> </span>排列顺序，升序。</span>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">可见:</label>
 			<div class="controls">
-				<span><input id="isShow1" name="isShow" class="required" type="radio" value="1" checked="checked"/><label for="isShow1">显示</label></span><span><input id="isShow2" name="isShow" class="required" type="radio" value="0"/><label for="isShow2">隐藏</label></span>
+				<span><input id="isShow1" name="isShow" class="required" type="radio" value="${menu.isShow}" checked="checked"/><label for="isShow1">显示</label></span><span><input id="isShow2" name="isShow" class="required" type="radio" value="0"/><label for="isShow2">隐藏</label></span>
 				<span class="help-inline">该菜单或操作是否显示到系统菜单中</span>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">权限标识:</label>
 			<div class="controls">
-				<input id="permission" name="permission" class="input-xxlarge" type="text" value="" maxlength="100"/>
+				<input id="permission" name="permission" class="input-xxlarge" type="text" value="${menu.permission}" maxlength="100"/>
 				<span class="help-inline">控制器中定义的权限标识，如：@RequiresPermissions("权限标识")</span>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">备注:</label>
 			<div class="controls">
-				<textarea id="remarks" name="remarks" maxlength="200" class="input-xxlarge" rows="3"></textarea>
+				<textarea id="remarks" name="remarks" maxlength="200" class="input-xxlarge" rows="3">${menu.remarks}</textarea>
 			</div>
 		</div>
 		<div class="form-actions">

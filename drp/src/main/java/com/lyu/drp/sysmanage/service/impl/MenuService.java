@@ -1,12 +1,12 @@
 package com.lyu.drp.sysmanage.service.impl;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.lyu.drp.sysmanage.dto.MenuDto;
 import com.lyu.drp.sysmanage.entity.Menu;
 import com.lyu.drp.sysmanage.mapper.MenuMapper;
 import com.lyu.drp.sysmanage.service.IMenuService;
@@ -23,10 +23,13 @@ import com.lyu.drp.util.UserUtils;
 @Service("menuService")
 public class MenuService implements IMenuService {
 	
-	private Logger log = Logger.getLogger(MenuService.class);
-	
 	@Autowired
 	private MenuMapper menuMapper;
+
+	@Override
+	public MenuDto getMenuDetailById(Long menuId) {
+		return menuMapper.getMenuDetailById(menuId);
+	}
 	
 	@Override
 	public List<Menu> getMenuListByUser(Long userId) {
@@ -43,7 +46,7 @@ public class MenuService implements IMenuService {
 		boolean flag = false;
 		// 设置update_by和update_date
 		menu.setUpdateBy(UserUtils.getCurrentUserId().toString());
-		menu.setUpdateDate(new Date(System.currentTimeMillis()));
+		menu.setUpdateDate(new Date());
 		
 		int rows = menuMapper.saveMenu(menu);
 		if (rows > 0) {
@@ -51,5 +54,19 @@ public class MenuService implements IMenuService {
 		}
 		return flag;
 	}
-	
+
+	@Override
+	public boolean updateMenu(Menu menu) {
+		boolean flag = false;
+		// 设置update_by和update_date
+		menu.setUpdateBy(UserUtils.getCurrentUserId().toString());
+		menu.setUpdateDate(new Date());
+		
+		int rows = menuMapper.updateMenu(menu);
+		if (rows > 0) {
+			flag = true;
+		}
+		return flag;
+	}
+
 }

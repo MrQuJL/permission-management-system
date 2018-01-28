@@ -1,9 +1,10 @@
 2018/1/28
 
-1. 项目中的两个难点：
+1. 项目中的几个难点：
 	* treeTable树形菜单列表展示
 	* zTree的展示
 	* icon图标的展示
+	* 自定义标签
 
 2. 业务上的一点注意事项：添加菜单之后还要为当前操作的用户赋予新增菜单的权限
 
@@ -24,6 +25,18 @@
 
 3. textarea标签之间不要有任何空格或回车，否则前台展示的时候会
 有n多空行
+
+4. 查询出指定id的菜单以及它的父级菜单的name
+知识点：连接查询，左连接
+
+SELECT A.id, A.parent_id, A.name, A.sort, A.href, A.target, A.icon, A.is_show,
+A.permission, A.update_by, A.update_date, A.remarks, A.del_flag, B.name parentName
+FROM drp_sys_menu A LEFT JOIN drp_sys_menu B
+ON A.parent_id = B.id WHERE A.id = 1
+
+注：左连接或者右连接要查询指定id的某条记录需要在最后用WHERE加条件，
+而不是直接用ON连接条件
+
 
 
 
