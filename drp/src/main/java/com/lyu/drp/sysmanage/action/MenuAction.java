@@ -224,7 +224,9 @@ public class MenuAction {
 		List<Map<String,Object>> mapList  = new ArrayList<Map<String,Object>>();
 		List<Menu> menuList = this.menuService.getMenuListByUserId(UserUtils.getCurrentUserId());
 		
-		
+		// 
+		menuList = menuService.getAllMenuList();
+		// 
 		
 		for(Menu menu:menuList){	
 			if(StringUtils.isNotEmpty(extId)||

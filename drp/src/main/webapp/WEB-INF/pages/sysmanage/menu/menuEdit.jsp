@@ -30,23 +30,18 @@ String path = request.getContextPath();
 		<div class="control-group">
 			<label class="control-label">上级菜单:</label>
 			<div class="controls">
-				<%-- <sys:treeSelect id="parent" name="parentId" value="${menu.parentId}"
-							labelName="parentName" labelValue="${menu.parentName}"
-							title="菜单" url="/sysmgr/menuTreeData.action" 
-							extId="${not empty menu.id ? menu.id : 0}" cssClass="required" />
-				--%>
 				<!-- 此处更换下拉式zTree -->
 				<div class="input-append">
-					<input id="menuId" name="parentId" class="required" type="hidden" value="${menu.parentId}"/>
-					<input id="menuName" name="parentName" readonly="readonly" type="text" value="${menu.parentName}" 
-						class="required" style=""/>
+					<input id="parentId" name="parentId" class="required" type="hidden" value="${menu.parentId}"/>
+					<input id="parentName" name="parentName" readonly="readonly" type="text" value="${menu.parentName}" 
+						class="required" onclick="showMenu();"/>
 					<a id="menuButton" href="javascript:showMenu();" class="btn">
 						&nbsp;<i class="icon-search"></i>&nbsp;
 					</a>&nbsp;&nbsp;
 					
 					<!-- 盛放菜单树的容器 -->
 					<div id="menuContent" class="menuContent" style="display:none; position:absolute;">
-						<ul id="treeDemo" class="ztree" style="margin-top:0; width:264px; background-color:#f1f1f1;"></ul>
+						<ul id="menuTree" class="ztree" style="margin-top:0; width:264px; background-color:#f1f1f1;"></ul>
 					</div>
 				</div>
 			</div>
@@ -160,43 +155,56 @@ String path = request.getContextPath();
 			/*var check = (treeNode && !treeNode.isParent);
 			if (!check) alert("只能选择城市...");
 			return check;*/
-		}
-
+		};
+		
+		// 选中某个菜单项后会触发的操作
 		function onClick(e, treeId, treeNode) {
-			var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
-			nodes = zTree.getSelectedNodes(),
-			v = "";
+			var zTree = $.fn.zTree.getZTreeObj("menuTree");
+			
+			nodes = zTree.getSelectedNodes();
+			var parentName = "";
+			var parentId = "";
+			
 			nodes.sort(function compare(a,b){return a.id-b.id;});
 			for (var i=0, l=nodes.length; i<l; i++) {
-				v += nodes[i].name + ",";
+				parentName += nodes[i].name + ",";
+				parentId += nodes[i].id + ",";
 			}
-			if (v.length > 0 ) v = v.substring(0, v.length-1);
-			var cityObj = $("#menuName");
-			cityObj.attr("value", v);
-		}
-
+			if (parentName.length > 0 ) parentName = parentName.substring(0, parentName.length-1);
+			$("#parentName").attr("value", parentName);
+			
+			if (parentId.length > 0 ) parentId = parentId.substring(0, parentId.length-1);
+			$("#parentId").attr("value", parentId);
+			
+		};
+		
 		function showMenu() {
-			var cityObj = $("#menuName");
-			var cityOffset = $("#menuName").offset();
-			$("#menuContent").css({left:cityOffset.left + "px", top:cityOffset.top + cityObj.outerHeight() + "px"}).slideDown("fast");
-
-			$("body").bind("mousedown", onBodyDown);
-		}
+			var parent = $("#parentName");
+			var parentOffset = $("#parentName").offset();
+			$("#menuContent").css({left:parentOffset.left + "px",
+				top:parentOffset.top + parent.outerHeight() + "px"}).slideToggle("fast");
+			//$("body").bind("click", onBodyDown);
+		};
+		
 		function hideMenu() {
-			$("#menuContent").slideUp("fast");
-			$("body").unbind("mousedown", onBodyDown);
-		}
+			$("#menuContent").slideToggle("fast");
+		};
+		
 		function onBodyDown(event) {
-			if (!(event.target.id == "menuBtn" || event.target.id == "menuContent" || $(event.target).parents("#menuContent").length>0)) {
+			if (!(event.target.id == "menuButton" || event.target.id == "parentName" ||
+				event.target.id == "menuContent" || $(event.target).parents("#menuContent").length>0)) {
 				hideMenu();
+				//alert(event.cancelable);
 			}
-		}
-
+			$("body").unbind("click", onBodyDown);
+		};
+		
 		$(document).ready(function(){
 			// 页面一刷新就加载zTree
 			$.ajax({
 				type : "post",
 				url : "${ctx}/sysmgr/menuTreeData.action",
+				// 设为同步的，否则数据加载完成了无法赋值给页面
 				async : false,
 				dataType : "json",
 				success : function(data) {
@@ -210,17 +218,18 @@ String path = request.getContextPath();
 						zNodes.push(temp);
 					}
 					
-					alert(JSON.stringify(zNodes));
-					
 					// 后台传过来的数据结构如下：
 					/* [{"name":"功能菜单","pId":0,"id":1},
 					 {"name":"系统设置","pId":1,"id":2},
 					 ...
 					 {"name":"修改密码","pId":28,"id":30}] */
-					
 				}
 			});
-			$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+			
+			$.fn.zTree.init($("#menuTree"), setting, zNodes);
+			var menuTree = $.fn.zTree.getZTreeObj("menuTree");
+			menuTree.expandAll(true);
+			
 		});
 	</script>
 </body>

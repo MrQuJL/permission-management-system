@@ -95,7 +95,7 @@ public class UserRealm extends AuthorizingRealm {
 //		permissions.add("dict:query");
 		
 		// 查询当前主体所拥有的权限信息
-		List<Menu> menuList = menuService.getMenuListByUser(principle.getUserId());
+		List<Menu> menuList = menuService.getMenuListByUserId(principle.getUserId());
 		if (menuList != null && menuList.size() > 0) {
 			for (Menu menu : menuList) {
 				if (StringUtils.isNotEmpty(menu.getPermission())) {

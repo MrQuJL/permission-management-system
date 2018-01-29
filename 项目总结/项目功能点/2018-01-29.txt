@@ -26,6 +26,54 @@ var arr3 = ["菜单","部门","区域"];
 6. 向js数组中添加元素和删除元素
 push和pop方法
 
+7. js事件冒泡和事件捕获（事件触发的两种方式）
+捕获（从上到下）：document --> html --> body --> div --> input
+冒泡（从下到上）: input --> div --> body --> html --> document
+
+8. js事件对象详细信息：
+事件对象：在触发DOM上的某个事件的时候，会产生一个事件对象event，而在这个对象当中会包含着所有与事件有关的信息。
+	
+事件对象其中有两个信息，我们最为常用，分别是type和target：
+
+	type表示的是被触发事件的类型；
+	target表示的是事件的目标。
+
+其他：		
+	bubbles：表示事件是否冒泡
+	cancelable：表示是否可以取消事件的默认行为
+	currentTarget：表示事件处理程序当前正在处理事件的那个元素
+	defaultPrevented：表示是否调用了preventDefault()
+	detail：表示的是与事件相关的细节信息
+	eventPhase：调用事件处理处理程序的阶段：1表示捕获阶段、2表示处于目标、3表示冒泡阶段
+
+两个js函数：
+	* 阻止事件传播		event.stopPropargation();
+	* 阻止事件默认行为	event.preventDefault();
+
+9. 绑定事件和解绑事件
+Btn3.addEventListener('click' , function(){
+	alert("我是事件绑定方式二：DOM 2级事件处理程序");
+} , false) //false:冒泡，true:捕获
+
+Btn3.removeEventListener("mouseover" , addevFn2, false)
+
+//IE8及以下的添加和删除监听事件方法：（注：IE9及以上的就用上面的方法啦）
+Btn3.attachEvent("onclick" , function(){
+	alert("我是IE8及以下的添加监听事件方法，【内嵌方式】");
+});
+Btn3.detachEvent("onclick" , addevFn3);	
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //////////////////第二天任务////////////////////////
