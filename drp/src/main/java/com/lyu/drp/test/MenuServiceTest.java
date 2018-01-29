@@ -33,7 +33,7 @@ public class MenuServiceTest {
 	// 查询字典列表
 	@Test
 	public void testGetMenuListByUser() {
-		List<Menu> menuList = menuService.getMenuListByUser(1L);
+		List<Menu> menuList = menuService.getMenuListByUserId(1L);
 		
 		for (Menu menu : menuList) {
 			System.out.println(menu);

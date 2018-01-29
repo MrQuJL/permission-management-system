@@ -32,7 +32,7 @@ public class MenuService implements IMenuService {
 	}
 	
 	@Override
-	public List<Menu> getMenuListByUser(Long userId) {
+	public List<Menu> getMenuListByUserId(Long userId) {
 		return menuMapper.getMenuListByUserId(userId);
 	}
 

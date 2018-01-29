@@ -128,7 +128,7 @@ public class MenuAction {
 		Long userId = UserUtils.getCurrentUserId();
 		
 		// 因为此功能没有查询按钮，进入功能的时候就要提前查询出所有数据，以对象的形式返回页面
-		List<Menu> menuListUnSort = menuService.getMenuListByUser(userId);
+		List<Menu> menuListUnSort = menuService.getMenuListByUserId(userId);
 		List<Menu> returnMenuList = new ArrayList<Menu>();
 		
 		// ---temp为了测试添加菜单，临时查询全部的菜单列表---
@@ -222,7 +222,7 @@ public class MenuAction {
 	 */
 	public String getMenuTree(){		
 		List<Map<String,Object>> mapList  = new ArrayList<Map<String,Object>>();
-		List<Menu> menuList = this.menuService.getMenuListByUser(UserUtils.getCurrentUserId());
+		List<Menu> menuList = this.menuService.getMenuListByUserId(UserUtils.getCurrentUserId());
 		for(Menu menu:menuList){	
 			if(StringUtils.isNotEmpty(extId)||
 					!menu.getId().equals(extId)){

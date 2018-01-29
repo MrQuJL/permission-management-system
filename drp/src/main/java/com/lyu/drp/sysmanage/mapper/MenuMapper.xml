@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		A.permission, A.update_by, A.update_date, A.remarks, A.del_flag
 	</sql>
 	
-	<!-- 通过菜单id获取菜单的详细信息 -->
+	<!-- 通过菜单id获取菜单的详细信息（左连接） -->
 	<select id="getMenuDetailById" parameterType="long" resultType="menuDto">
 		SELECT <include refid="all_menu_columns_aliases" />, B.name parentName
 		FROM drp_sys_menu A LEFT JOIN drp_sys_menu B
