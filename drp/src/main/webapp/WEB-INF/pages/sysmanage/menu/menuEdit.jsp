@@ -40,7 +40,7 @@ String path = request.getContextPath();
 					</a>&nbsp;&nbsp;
 					
 					<!-- 盛放菜单树的容器 -->
-					<div id="menuContent" class="menuContent" style="display:none; position:absolute;">
+					<div id="menuContent" class="menuContent" style="display:none; position:absolute;z-index:10;">
 						<ul id="menuTree" class="ztree" style="margin-top:0; width:264px; background-color:#f1f1f1;"></ul>
 					</div>
 				</div>
@@ -120,7 +120,7 @@ String path = request.getContextPath();
 				});
 				// 3.发送ajax请求
 				$.ajax({
-					method : "post",
+					type : "post",
 					url : "${ctx}/sysmgr/saveMenu.action",
 					data : {"jsonObj" : JSON.stringify(obj)},
 					dataType : "json",
@@ -183,20 +183,19 @@ String path = request.getContextPath();
 			var parentOffset = $("#parentName").offset();
 			$("#menuContent").css({left:parentOffset.left + "px",
 				top:parentOffset.top + parent.outerHeight() + "px"}).slideToggle("fast");
-			//$("body").bind("click", onBodyDown);
+			$("body").bind("click", onBodyDown);
 		};
 		
 		function hideMenu() {
 			$("#menuContent").slideToggle("fast");
+			$("body").unbind("click", onBodyDown);
 		};
 		
 		function onBodyDown(event) {
 			if (!(event.target.id == "menuButton" || event.target.id == "parentName" ||
 				event.target.id == "menuContent" || $(event.target).parents("#menuContent").length>0)) {
 				hideMenu();
-				//alert(event.cancelable);
 			}
-			$("body").unbind("click", onBodyDown);
 		};
 		
 		$(document).ready(function(){
