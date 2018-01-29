@@ -12,24 +12,6 @@ String path = request.getContextPath();
 <meta name="renderer" content="webkit">
 <%@ include file="/WEB-INF/pages/include/head.jsp" %>
 	<script type="text/javascript">
-		/* $(function() {
-			$("#name").focus();
-			$("#saveMenuForm").validate({
-				submitHandler: function(form){
-					loading('正在提交，请稍等...');
-					
-				},
-				errorContainer: "#messageBox",
-				errorPlacement: function(error, element) {
-					$("#messageBox").text("输入有误，请先更正。");
-					if (element.is(":checkbox")||element.is(":radio")||element.parent().is(".input-append")){
-						error.appendTo(element.parent().parent());
-					} else {
-						error.insertAfter(element);
-					}
-				}
-			});
-		}); */
 		var menuMgr = {
 			saveMenu : function(id) {
 				loading('正在提交，请稍等...');
@@ -55,7 +37,6 @@ String path = request.getContextPath();
 				});
 			}
 		};
-		
 	</script>
 </head>
 <body>

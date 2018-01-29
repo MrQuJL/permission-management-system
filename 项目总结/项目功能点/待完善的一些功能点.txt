@@ -4,5 +4,28 @@
 
 删除菜单的时候，要删除角色菜单对应表中的数据
 
+3. 记得抽空学习一下：
+	validate
+	zTree
+	TreeTable
+	自定义jstl标签
+	shiro加密流程
 
-
+$(function() {
+	$("#name").focus();
+	$("#saveMenuForm").validate({
+		submitHandler: function(form){
+			loading('正在提交，请稍等...');
+			
+		},
+		errorContainer: "#messageBox",
+		errorPlacement: function(error, element) {
+			$("#messageBox").text("输入有误，请先更正。");
+			if (element.is(":checkbox")||element.is(":radio")||element.parent().is(".input-append")){
+				error.appendTo(element.parent().parent());
+			} else {
+				error.insertAfter(element);
+			}
+		}
+	});
+});

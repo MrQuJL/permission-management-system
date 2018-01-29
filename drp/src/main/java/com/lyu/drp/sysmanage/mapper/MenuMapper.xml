@@ -88,12 +88,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 查询当前菜单的所有子菜单的详细信息 -->
 	<select id="getSubMenuByPId" parameterType="long" resultType="menu">
 		SELECT <include refid="all_menu_columns" />
-		FROM drp_sys_menu WHERE parent_id = #{menuId};
+		FROM drp_sys_menu 
+		WHERE parent_id = #{menuId} AND del_flag = 0
 	</select>
 	
 	<!-- 获取当前菜单的所有子菜单的个数 -->
 	<select id="countSubMenuByPId" parameterType="long" resultType="int">
-		SELECT COUNT(id) FROM drp_sys_menu WHERE parent_id = #{menuId}
+		SELECT COUNT(id) FROM drp_sys_menu
+		WHERE parent_id = #{menuId} AND del_flag = 0
 	</select>
 	
 	<!-- 删除菜单 -->

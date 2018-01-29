@@ -33,6 +33,8 @@ public class MenuAction {
 	private int editFlag;
 	// 获取菜单id
 	private Long menuId;
+	// 父级菜单的id
+	private Long parentId;
 	// 待修改的菜单对象
 	private MenuDto menu;
 	// 通过spring自动注入
@@ -107,6 +109,14 @@ public class MenuAction {
 	public void setJsonObj(String jsonObj) {
 		this.jsonObj = jsonObj;
 	}
+	
+	public Long getParentId() {
+		return parentId;
+	}
+
+	public void setParentId(Long parentId) {
+		this.parentId = parentId;
+	}
 
 	/**
 	 * 前往菜单列表
@@ -140,10 +150,23 @@ public class MenuAction {
 		if (editFlag == 2) { // 修改
 			// 根据id查询一下菜单
 			this.menu = menuService.getMenuDetailById(menuId);
+		} else if (parentId != null) { //添加下级菜单
+			this.menu = menuService.getMenuDetailById(parentId);
+			// 当前查询的是id为"parent_id"的menu，但是我们是要添加子菜单，所以要把当前查询出来的
+			// menu的parent_id修改为它的id
+			Long curPId = this.menu.getId();
+			String curPName = this.menu.getName();
+			// 在添加下级菜单的时候，只希望在菜单添加页面显示出父级菜单的名字和id(hidden)
+			// 但是如果仅仅这样把menu发往前台的话，就会把当前菜单的所有信息都展示出来，就会让用户
+			// 误以为是修改，所以要把一些信息置空
+			this.menu = null;
+			this.menu = new MenuDto();
+			this.menu.setParentId(curPId);
+			this.menu.setParentName(curPName);
 		}
+		// 否则为正常的添加菜单
 		return "menuEdit";
 	}
-	
 	
 	/**
 	 * 保存菜单（新增，修改）
