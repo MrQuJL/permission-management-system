@@ -153,24 +153,9 @@ String path = request.getContextPath();
 			}
 		};
 
-		var zNodes =[
-			{id:4, pId:0, name:"河北省", open:true},
-			{id:41, pId:4, name:"石家庄"},
-			{id:42, pId:4, name:"保定"},
-			{id:43, pId:4, name:"邯郸"},
-			{id:44, pId:4, name:"承德"},
-			{id:5, pId:0, name:"广东省", open:true},
-			{id:51, pId:5, name:"广州"},
-			{id:52, pId:5, name:"深圳"},
-			{id:53, pId:5, name:"东莞"},
-			{id:54, pId:5, name:"佛山"},
-			{id:6, pId:0, name:"福建省", open:true},
-			{id:61, pId:6, name:"福州"},
-			{id:62, pId:6, name:"厦门"},
-			{id:63, pId:6, name:"泉州"},
-			{id:64, pId:6, name:"三明"}
-		 ];
-
+		var zNodes = new Array();
+		
+		// 点击之前会触发的事件
 		function beforeClick(treeId, treeNode) {
 			/*var check = (treeNode && !treeNode.isParent);
 			if (!check) alert("只能选择城市...");
@@ -198,7 +183,7 @@ String path = request.getContextPath();
 			$("body").bind("mousedown", onBodyDown);
 		}
 		function hideMenu() {
-			$("#menuContent").fadeOut("fast");
+			$("#menuContent").slideUp("fast");
 			$("body").unbind("mousedown", onBodyDown);
 		}
 		function onBodyDown(event) {
@@ -208,9 +193,35 @@ String path = request.getContextPath();
 		}
 
 		$(document).ready(function(){
+			// 页面一刷新就加载zTree
+			$.ajax({
+				type : "post",
+				url : "${ctx}/sysmgr/menuTreeData.action",
+				async : false,
+				dataType : "json",
+				success : function(data) {
+					var menuArray = JSON.parse(data.jsonObj);
+					
+					for (var i = 0; i < menuArray.length; i++) {
+						var temp = {};
+						temp.name = menuArray[i].name;
+						temp.id = menuArray[i].id;
+						temp.pId = menuArray[i].pId;
+						zNodes.push(temp);
+					}
+					
+					alert(JSON.stringify(zNodes));
+					
+					// 后台传过来的数据结构如下：
+					/* [{"name":"功能菜单","pId":0,"id":1},
+					 {"name":"系统设置","pId":1,"id":2},
+					 ...
+					 {"name":"修改密码","pId":28,"id":30}] */
+					
+				}
+			});
 			$.fn.zTree.init($("#treeDemo"), setting, zNodes);
 		});
-		
 	</script>
 </body>
 </html>

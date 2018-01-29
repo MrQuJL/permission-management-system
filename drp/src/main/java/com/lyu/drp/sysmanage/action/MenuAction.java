@@ -223,6 +223,9 @@ public class MenuAction {
 	public String getMenuTree(){		
 		List<Map<String,Object>> mapList  = new ArrayList<Map<String,Object>>();
 		List<Menu> menuList = this.menuService.getMenuListByUserId(UserUtils.getCurrentUserId());
+		
+		
+		
 		for(Menu menu:menuList){	
 			if(StringUtils.isNotEmpty(extId)||
 					!menu.getId().equals(extId)){
