@@ -101,6 +101,17 @@ public class MenuServiceTest {
 	
 	// 删除菜单
 	@Test
+	public void testCountMenuByPId() {
+		boolean flag = menuService.hasSubMenu(10L);
+		if (flag) {
+			System.out.println("有子菜单");
+		} else {
+			System.out.println("没有子菜单");
+		}
+	}
+	
+	// 删除菜单
+	@Test
 	public void testDelMenu() {
 		boolean flag = menuService.delMenu(35L);
 		System.out.println(flag);

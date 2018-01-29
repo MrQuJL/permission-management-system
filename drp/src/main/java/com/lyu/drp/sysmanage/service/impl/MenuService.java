@@ -70,6 +70,16 @@ public class MenuService implements IMenuService {
 	}
 
 	@Override
+	public boolean hasSubMenu(Long menuId) {
+		boolean flag = true;
+		int count = menuMapper.countSubMenuByPId(menuId);
+		if (count == 0) { // 列表数为0表示没有子菜单
+			flag = false;
+		}
+		return flag;
+	}
+	
+	@Override
 	public boolean delMenu(Long menuId) {
 		boolean flag = false;
 		int rows = menuMapper.delMenu(menuId);

@@ -18,7 +18,25 @@ String path = request.getContextPath();
 			$("#treeTable").treeTable({expandLevel : 3}).show();
 		});
 		var menuMgr = {
-			// 删除菜单前先查看是否有子菜单
+			// 确认是否有子菜单
+			confirmHasSubMenu : function(menuId) {
+				$.ajax({
+					type : "post",
+					url : "${ctx}/sysmgr/confirmHasSubMenu.action",
+					data : {"menuId" : menuId},
+					dataType : "json",
+					success : function(data) {
+						if (data.message == "yes") { // 有子菜单不能删除
+							alert("当前菜单还有子菜单，若想删除该菜单，请先手动删除其下面的子菜单!");
+						} else { // 没有子菜单，可以删除
+							if (confirm("您确定要删除当前菜单?")) {
+								menuMgr.delMenu(menuId);
+							}
+						}
+					}
+				});
+			},
+			// 删除菜单
 			delMenu : function(menuId) {
 				$.ajax({
 					type : "post",
@@ -26,9 +44,8 @@ String path = request.getContextPath();
 					data : {"menuId" : menuId},
 					dataType : "json",
 					success : function(data) {
-						// 这里后台传过来一个标志位，如果是true表示没有子菜单可以删除，给出提示
-						// 否则提示不能删除
 						alert(data.message);
+						location.reload();
 					}
 				});
 			}
@@ -75,7 +92,7 @@ String path = request.getContextPath();
 						<td title="${menu.permission}">${menu.permission}</td>
 						<td nowrap>
 							<a href="${ctx}/sysmgr/gotoMenuEdit.action?editFlag=2&menuId=${menu.id}">修改</a>
-							<a href="javascript:menuMgr.delMenu(${menu.id})">删除</a>
+							<a href="javascript:menuMgr.confirmHasSubMenu(${menu.id})">删除</a>
 							<a href="${ctx}/sysmgr/gotoMenuEdit.action?editFlag=1&parentId=${menu.id}">添加下级菜单</a>
 						</td>
 					</tr>

@@ -171,9 +171,23 @@ public class MenuAction {
 		return "success";
 	}
 	
+	public String confirmHasSubMenu() {
+		// 1.先查看该菜单下面是否有子菜单
+		this.message = "yes";
+		boolean flag = menuService.hasSubMenu(menuId);
+		if (!flag) {
+			this.message = "no";
+		}
+		return "success";
+	}
+	
 	public String delMenu() {
-		
-		this.message = "功能正在开发中，请稍安勿躁...";
+		this.message = "删除菜单失败，请联系系统管理员!";
+		// 1.删除菜单
+		boolean flag = menuService.delMenu(menuId);
+		if (flag) {
+			this.message = "删除菜单成功!";
+		}
 		
 		return "success";
 	}

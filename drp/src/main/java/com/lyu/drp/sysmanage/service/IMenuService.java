@@ -51,6 +51,13 @@ public interface IMenuService {
 	public boolean updateMenu(Menu menu);
 	
 	/**
+	 * 判断当前菜单是否有子菜单
+	 * @param 
+	 * @return true 表示有子菜单	false 表示没有子菜单
+	 */
+	public boolean hasSubMenu(Long menuId);
+	
+	/**
 	 * 删除指定id的菜单(逻辑删除，修改标识位)
 	 * @param 
 	 * @return

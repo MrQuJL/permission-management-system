@@ -51,6 +51,20 @@ public interface MenuMapper {
 	public int updateMenu(Menu menu);
 	
 	/**
+	 * 获取菜单id为menuId的所有子菜单的详细信息
+	 * @param 
+	 * @return
+	 */
+	public List<Menu> getSubMenuByPId(Long menuId);
+	
+	/**
+	 * 获取当前菜单的所有子菜单的个数
+	 * @param 
+	 * @return
+	 */
+	public int countSubMenuByPId(Long menuId);
+	
+	/**
 	 * 删除指定id的菜单(逻辑删除，修改标识位)
 	 * @param 
 	 * @return
