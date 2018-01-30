@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace = "com.lyu.drp.sysmanage.mapper.DeptMapper"> 
+	<!-- 所有的部门字段 -->
+	<sql id = "all_dept_columns">
+	    id, parent_id, name, sort, code, address, master, phone,
+		fax, email, update_by, update_date, remarks, del_flag
+	</sql>
+	
+	<!-- 获得部门列表 -->
+	<select id="getAllDeptList" resultType="dept">
+		
+	</select>
+	
+	
+	
+</mapper>

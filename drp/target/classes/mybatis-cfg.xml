@@ -6,8 +6,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
   
     <settings>
-    	
-	<!--是否开启自动驼峰命名规则映射，
+		<!--是否开启自动驼峰命名规则映射，
 		即从经典数据库列名 AB_CD 到经典 Java 属性名 AbCd 的类似映射。  默认false  -->
        <setting name="mapUnderscoreToCamelCase" value="true"/>  
     </settings>
@@ -38,6 +37,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
             <property name="returnPageInfo" value="none"/>
         </plugin>
     </plugins>
-	 
+	
+	<mappers>
+		<package name="com.lyu.drp.*.mapper"/>
+	</mappers>
  
 </configuration>
