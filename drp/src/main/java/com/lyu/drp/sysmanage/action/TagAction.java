@@ -19,21 +19,10 @@ public class TagAction extends ActionSupport{
 	
 	private String checked;
 	
-	private String extId;
-	
 	private String selectIds;
 	
 	private String value;
 	
-	/**
-	 * 跳转到zTree的选择页面
-	 * @param 
-	 * @return
-	 */
-    public String treeSelect () {
-        return "treeSelect";
-    }
-    
     /**
      * 跳转到icon页面
      * @param 
@@ -57,14 +46,6 @@ public class TagAction extends ActionSupport{
 
 	public void setChecked(String checked) {
 		this.checked = checked;
-	}
-
-	public String getExtId() {
-		return extId;
-	}
-
-	public void setExtId(String extId) {
-		this.extId = extId;
 	}
 
 	public String getSelectIds() {

@@ -89,4 +89,17 @@ public class DeptAction {
 		return "gotoDeptEdit";
 	}
 	
+	
+	/**
+	 * 加载部门树
+	 * @param 
+	 * @return
+	 */
+	public String getDeptTree() {
+		
+		
+		return "success";
+	}
+	
+	
 }

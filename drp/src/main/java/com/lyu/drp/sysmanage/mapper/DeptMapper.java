@@ -22,4 +22,5 @@ public interface DeptMapper {
 	public List<Dept> getAllDeptList();
 	
 	
+	
 }

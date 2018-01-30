@@ -8,16 +8,18 @@ String path = request.getContextPath();
 <html>
 <head>
 	<title>部门管理</title>
-	
+
 <meta charset="utf-8" />
 <%@ include file="/WEB-INF/pages/include/head.jsp" %>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#name").focus();
-			$("#inputForm").validate({
+			$("#saveDeptForm").validate({
 				submitHandler: function(form){
 					loading('正在提交，请稍等...');
-					form.submit();
+					
+					top.$.jBox.closeTip();
+					//form.submit();
 				},
 				errorContainer: "#messageBox",
 				errorPlacement: function(error, element) {
@@ -39,7 +41,7 @@ String path = request.getContextPath();
 		<li class="active"><a href="javascript:void(0);">部门添加</a></li>
 	</ul><br/>
 	
-	<form id="inputForm" class="form-horizontal" action="#" method="post">
+	<form id="saveDeptForm" class="form-horizontal" action="#" method="post">
 		<input id="id" name="id" type="hidden" value="${dept.id}"/>
 
 		<div class="control-group">
@@ -48,9 +50,16 @@ String path = request.getContextPath();
 				<div class="input-append">
 					<input id="parentId" name="parentId" class="" type="hidden" value="${dept.parentId}"/>
 					<input id="parentName" name="parentName" readonly="readonly" type="text" value="${dept.parentName}"/>
-					<a id="officeButton" href="javascript:" class="btn  " style="">
+					<a id="deptBtn" href="javascript:showMenu();" class="btn">
 						&nbsp;<i class="icon-search"></i>&nbsp;
 					</a>&nbsp;&nbsp;
+				</div>
+				
+				<!-- zTree -->
+				<div id="deptContent" class="deptContent" style="display:none; position:absolute;">
+					<ul id="deptTree" class="ztree" style="margin-top:0; 
+						background-color:rgb(243,243,243); width:260px;">
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -113,9 +122,89 @@ String path = request.getContextPath();
 			</div>
 		</div>
 		<div class="form-actions">
-			<input id="btnSubmit" class="btn btn-primary" type="submit" value="保 存"/>&nbsp;
+			<input id="btnSubmit" class="btn btn-primary" type="button" value="保 存"/>&nbsp;
 			<input id="btnCancel" class="btn" type="button" value="返 回" onclick="history.go(-1)"/>
 		</div>
 	</form>
+	<script type="text/javascript">
+		var setting = {
+			view: {
+				dblClickExpand: false
+			},
+			data: {
+				simpleData: {
+					enable: true
+				}
+			},
+			callback: {
+				beforeClick: beforeClick,
+				onClick: onClick
+			}
+		};
+
+		var zNodes =[
+			{id:4, pId:0, name:"河北省"},
+			{id:41, pId:4, name:"石家庄"},
+			{id:42, pId:4, name:"保定"},
+			{id:43, pId:4, name:"邯郸"},
+			{id:44, pId:4, name:"承德"},
+			{id:5, pId:0, name:"广东省"},
+			{id:51, pId:5, name:"广州"},
+			{id:52, pId:5, name:"深圳"},
+			{id:53, pId:5, name:"东莞"},
+			{id:54, pId:5, name:"佛山"},
+			{id:6, pId:0, name:"福建省"},
+			{id:61, pId:6, name:"福州"},
+			{id:62, pId:6, name:"厦门"},
+			{id:63, pId:6, name:"泉州"},
+			{id:64, pId:6, name:"三明"}
+		 ];
+
+		function beforeClick(treeId, treeNode) {
+			// 在点击之前做的一些事情
+		}
+
+		function onClick(e, treeId, treeNode) {
+			var zTree = $.fn.zTree.getZTreeObj("deptTree"),
+			nodes = zTree.getSelectedNodes();
+			var name = "";
+			var id = "";
+			nodes.sort(function compare(a,b){return a.id-b.id;});
+			for (var i=0, l=nodes.length; i<l; i++) {
+				name += nodes[i].name + ",";
+				id += nodes[i].id + ",";
+			}
+			if (name.length > 0 ) name = name.substring(0, name.length-1);
+			if (id.length > 0 ) id = id.substring(0, id.length-1);
+
+			$("#parentId").attr("value",id);
+			$("#parentName").attr("value",name);
+			
+			hideMenu();
+		}
+
+		function showMenu() {
+			var deptObj = $("#parentName");
+			var deptOffset = $("#parentName").offset();
+			$("#deptContent").css({left:deptOffset.left + "px", top:deptOffset.top + deptObj.outerHeight() + "px"}).slideDown("fast");
+
+			$("body").bind("mousedown", onBodyDown);
+		}
+		function hideMenu() {
+			$("#deptContent").slideUp("fast");
+			$("body").unbind("mousedown", onBodyDown);
+		}
+		function onBodyDown(event) {
+			if (!(event.target.id == "deptBtn" || event.target.id == "deptContent" || $(event.target).parents("#deptContent").length>0)) {
+				hideMenu();
+			}
+		}
+
+		$(document).ready(function(){
+			var deptTree = $.fn.zTree.init($("#deptTree"), setting, zNodes);
+			deptTree.expandAll(true);
+		});
+		
+	</script>
 </body>
 </html>
