@@ -1,7 +1,11 @@
 package com.lyu.drp.sysmanage.action;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import com.alibaba.fastjson.JSONArray;
 import com.lyu.drp.sysmanage.entity.Dept;
 import com.lyu.drp.sysmanage.service.IDeptService;
 
@@ -96,7 +100,18 @@ public class DeptAction {
 	 * @return
 	 */
 	public String getDeptTree() {
+		List<Dept> deptList = deptService.getAllDeptList();
+		List<Map<String, Object>> deptListMap = new ArrayList<Map<String, Object>>();
 		
+		for (Dept dept : deptList) {
+			Map<String, Object> deptMap = new HashMap<String, Object>();
+			deptMap.put("id", dept.getId());
+			deptMap.put("pId", dept.getParentId());
+			deptMap.put("name", dept.getName());
+			deptListMap.add(deptMap);
+		}
+		
+		this.jsonObj = JSONArray.toJSONString(deptListMap);
 		
 		return "success";
 	}

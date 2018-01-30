@@ -142,23 +142,7 @@ String path = request.getContextPath();
 			}
 		};
 
-		var zNodes =[
-			{id:4, pId:0, name:"河北省"},
-			{id:41, pId:4, name:"石家庄"},
-			{id:42, pId:4, name:"保定"},
-			{id:43, pId:4, name:"邯郸"},
-			{id:44, pId:4, name:"承德"},
-			{id:5, pId:0, name:"广东省"},
-			{id:51, pId:5, name:"广州"},
-			{id:52, pId:5, name:"深圳"},
-			{id:53, pId:5, name:"东莞"},
-			{id:54, pId:5, name:"佛山"},
-			{id:6, pId:0, name:"福建省"},
-			{id:61, pId:6, name:"福州"},
-			{id:62, pId:6, name:"厦门"},
-			{id:63, pId:6, name:"泉州"},
-			{id:64, pId:6, name:"三明"}
-		 ];
+		var zNodes = new Array();
 
 		function beforeClick(treeId, treeNode) {
 			// 在点击之前做的一些事情
@@ -201,6 +185,26 @@ String path = request.getContextPath();
 		}
 
 		$(document).ready(function(){
+			var id = $("#id").val();
+			$.ajax({
+				type : "post",
+				url : "${ctx}/sysmgr/loadDeptTree.action",
+				async : false,
+				data : {"deptId" : id},
+				dataType : "json",
+				success : function(data) {
+					var deptArray = JSON.parse(data.jsonObj);
+					for (var i = 0; i < deptArray.length; i++) {
+						var temp = {};
+						temp["id"] = deptArray[i].id;
+						temp["pId"] = deptArray[i].pId;
+						temp["name"] = deptArray[i].name;
+						zNodes.push(temp);
+					}
+					
+					alert(JSON.stringify(zNodes));
+				}
+			});
 			var deptTree = $.fn.zTree.init($("#deptTree"), setting, zNodes);
 			deptTree.expandAll(true);
 		});

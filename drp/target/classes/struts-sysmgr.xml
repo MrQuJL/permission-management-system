@@ -105,6 +105,12 @@
 			<result name="gotoDeptEdit">/WEB-INF/pages/sysmanage/dept/deptEdit.jsp</result>
 		</action>
 		
+		<action name = "loadDeptTree" class= "com.lyu.drp.sysmanage.action.DeptAction" method = "getDeptTree">
+			<result type="json">
+				<param name="includeProperties">jsonObj</param>
+			</result>
+		</action>
+		
 		
 	</package>
 	
