@@ -175,7 +175,7 @@ String path = request.getContextPath();
 			
 			if (parentId.length > 0 ) parentId = parentId.substring(0, parentId.length-1);
 			$("#parentId").attr("value", parentId);
-			
+			hideMenu();
 		};
 		
 		function showMenu() {
@@ -200,11 +200,13 @@ String path = request.getContextPath();
 		
 		$(document).ready(function(){
 			// 页面一刷新就加载zTree
+			var menuId = $("#id").val();
 			$.ajax({
 				type : "post",
 				url : "${ctx}/sysmgr/menuTreeData.action",
 				// 设为同步的，否则数据加载完成了无法赋值给页面
 				async : false,
+				data : {"menuId" : menuId},
 				dataType : "json",
 				success : function(data) {
 					var menuArray = JSON.parse(data.jsonObj);
@@ -227,7 +229,14 @@ String path = request.getContextPath();
 			
 			$.fn.zTree.init($("#menuTree"), setting, zNodes);
 			var menuTree = $.fn.zTree.getZTreeObj("menuTree");
+			// 展开所有节点
 			menuTree.expandAll(true);
+			
+			// 如果是修改页面，定位到当前选中的节点
+			var selectNodeId = $("#parentId").val();
+			if (selectNodeId != null) {
+				menuTree.selectNode(menuTree.getNodeByParam("id",selectNodeId,null));
+			}
 			
 		});
 	</script>

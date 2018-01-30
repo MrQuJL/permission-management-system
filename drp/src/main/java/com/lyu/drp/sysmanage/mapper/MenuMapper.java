@@ -37,6 +37,13 @@ public interface MenuMapper {
 	public List<Menu> getAllMenuList();
 	
 	/**
+	 * 查询出当前菜单(id=parentId)的所有子菜单
+	 * @param	parentId 父级菜单 
+	 * @return
+	 */
+	public List<Menu> getChildsMenuByPId(Long parentId);
+	
+	/**
 	 * 添加菜单
 	 * @param 
 	 * @return

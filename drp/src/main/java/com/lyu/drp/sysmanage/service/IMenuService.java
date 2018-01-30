@@ -37,6 +37,22 @@ public interface IMenuService {
 	public List<Menu> getAllMenuList();
 	
 	/**
+	 * 判断id为isSubMenuId的菜单是否是id为menuId的子菜单或者它自己
+	 * @param 	menuId		当前菜单
+	 * @param 	isSubMenuId	待确认的菜单
+	 * @return
+	 */
+	public boolean checkIsChildOrSelf(Long menuId, Long isSubMenuId);
+	
+	/**
+	 * 根据父级菜单的id查询出所有的子孙菜单
+	 * @param 	parentMenuId	父级菜单
+	 * @param 	childMenuList	子孙菜单集合
+	 * @return
+	 */
+	public void getAllChildsMenuByPId(List<Menu> childMenuList, Long parentMenuId);
+	
+	/**
 	 * 添加菜单
 	 * @param 
 	 * @return

@@ -91,11 +91,6 @@
 			</result>
 		</action>
 		
-		<!-- zTree弹出页面 -->
-		<action name = "treeSelect" class= "com.lyu.drp.sysmanage.action.TagAction" method = "treeSelect">
-			<result name = "treeSelect">/WEB-INF/pages/common/treeSelect.jsp</result>
-		</action>
-		
 		<!--icon的弹出页面  -->
  		<action name = "iconSelect" class= "com.lyu.drp.sysmanage.action.TagAction" method = "iconSelect">
 			<result name = "iconSelect">/WEB-INF/pages/common/iconSelect.jsp</result>		

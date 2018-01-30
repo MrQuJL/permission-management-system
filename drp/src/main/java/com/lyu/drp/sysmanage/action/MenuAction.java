@@ -5,9 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
-
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.lyu.drp.sysmanage.dto.MenuDto;
@@ -25,8 +22,6 @@ import com.lyu.drp.util.UserUtils;
  * @version V1.0
  */
 public class MenuAction {
-	// log4j日志
-	private Logger log = Logger.getLogger(MenuAction.class);
 	// 增删改的返回信息
 	private String message;
 	// 编辑页面的标识，1为新增，0为修改
@@ -41,8 +36,6 @@ public class MenuAction {
 	private IMenuService menuService;
 	// 菜单列表
 	private List<Menu> menuList;
-	//获取弹出属性菜单页面所需要的当前菜单的id
-	private String extId;
 	// 返回页面的json对象
 	private String jsonObj;
 	
@@ -92,14 +85,6 @@ public class MenuAction {
 
 	public void setMenuList(List<Menu> menuList) {
 		this.menuList = menuList;
-	}
-
-	public String getExtId() {
-		return extId;
-	}
-
-	public void setExtId(String extId) {
-		this.extId = extId;
 	}
 	
 	public String getJsonObj() {
@@ -224,20 +209,48 @@ public class MenuAction {
 		List<Map<String,Object>> mapList  = new ArrayList<Map<String,Object>>();
 		List<Menu> menuList = this.menuService.getMenuListByUserId(UserUtils.getCurrentUserId());
 		
-		// 
+		//
 		menuList = menuService.getAllMenuList();
-		// 
-		
-		for(Menu menu:menuList){	
-			if(StringUtils.isNotEmpty(extId)||
-					!menu.getId().equals(extId)){
+		//
+		if (menuId != null) {
+			// 获取当前菜单的所有子孙菜单
+			List<Menu> childsMenuList = new ArrayList<Menu>();
+			this.menuService.getAllChildsMenuByPId(childsMenuList, menuId);
+			// 把自己也加进来
+			childsMenuList.add(menuService.getMenuDetailById(menuId));
+			
+			for(Menu menu:menuList){
+				// 如果是通过修改按钮进入的该功能，则不能把当前的菜单和它的子菜单展示出来，否则会造成死循环
+				// 检查当前菜单是否是它自己或者它的孩子
+				boolean flag = false;
+				
+				for (Menu child : childsMenuList) {
+					if (child.getId() == menu.getId()) {
+						flag = true;
+						break;
+					}
+				}
+				
+				if (!flag) {
+					Map<String,Object> map = new HashMap<String,Object>();
+					map.put("id", menu.getId());
+					map.put("pId", menu.getParentId());
+					map.put("name", menu.getName());
+					
+					mapList.add(map);
+				}
+			}
+		} else {
+			for(Menu menu:menuList){
 				Map<String,Object> map = new HashMap<String,Object>();
 				map.put("id", menu.getId());
 				map.put("pId", menu.getParentId());
 				map.put("name", menu.getName());
+				
 				mapList.add(map);
 			}
 		}
+		
 		this.jsonObj = JSONArray.toJSONString(mapList);
 		return "success";
 	}

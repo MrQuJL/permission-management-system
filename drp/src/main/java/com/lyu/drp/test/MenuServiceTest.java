@@ -1,6 +1,7 @@
 package com.lyu.drp.test;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -37,6 +38,19 @@ public class MenuServiceTest {
 		
 		for (Menu menu : menuList) {
 			System.out.println(menu);
+		}
+		
+	}
+	
+	// 查询字典列表
+	@Test
+	public void testGetAllChildsMenuByPId() {
+		List<Menu> menuList = new ArrayList<Menu>();
+		menuService.getAllChildsMenuByPId(menuList , 3L);
+		
+		for (Menu menu : menuList) {
+			System.out.println(menu.getId());
+			System.out.println(menu.getName());
 		}
 		
 	}

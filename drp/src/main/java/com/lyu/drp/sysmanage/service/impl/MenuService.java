@@ -40,6 +40,39 @@ public class MenuService implements IMenuService {
 	public List<Menu> getAllMenuList() {
 		return menuMapper.getAllMenuList();
 	}
+	
+	@Override
+	public boolean checkIsChildOrSelf(Long menuId, Long isSubMenuId) {
+		
+		if (isSubMenuId == menuId) {
+			return true;
+		}
+		
+		// 查询出menuId的所有子孙菜单
+		List<Menu> childMenuList = null;
+		getAllChildsMenuByPId(childMenuList, menuId);
+		for (Menu menu : childMenuList) {
+			if (menu.getId() == isSubMenuId) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * 根据父级菜单的id查询出所有的子孙菜单
+	 * @param 	parentMenuId	父级菜单
+	 * @param 	childMenuList	子孙菜单集合
+	 * @return
+	 */
+	public void getAllChildsMenuByPId(List<Menu> childMenuList, Long parentMenuId) {
+		List<Menu> tempMenuList = menuMapper.getChildsMenuByPId(parentMenuId);
+		childMenuList.addAll(tempMenuList);
+		for (Menu menu : tempMenuList) {
+			getAllChildsMenuByPId(childMenuList, menu.getId());
+		}
+	}
 
 	@Override
 	public boolean saveMenu(Menu menu) {

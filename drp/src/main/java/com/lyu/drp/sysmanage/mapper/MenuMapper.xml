@@ -39,6 +39,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM drp_sys_menu WHERE del_flag = 0
 	</select>
 	
+	<!-- 查询出当前菜单的所有子菜单 -->
+	<select id="getChildsMenuByPId" parameterType="long" resultType="menu">
+		SELECT <include refid="all_menu_columns" /> FROM drp_sys_menu
+		WHERE parent_id = #{parentId} AND del_flag = 0
+	</select>
+	
 	<!-- 添加菜单 -->
 	<insert id="saveMenu" parameterType="menu">
 		INSERT INTO drp_sys_menu(parent_id, name, sort, href, target,
@@ -51,6 +57,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateMenu" parameterType="menu">
 		UPDATE drp_sys_menu
 		<set>
+			<if test="parentId != null">
+				parent_id = #{parentId},
+			</if>
 			<if test="name != null">
 				name = #{name},
 			</if>
