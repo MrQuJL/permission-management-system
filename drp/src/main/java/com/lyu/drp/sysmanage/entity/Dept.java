@@ -154,5 +154,13 @@ public class Dept implements Serializable {
 	public void setDelFlag(String delFlag) {
 		this.delFlag = delFlag;
 	}
+
+	@Override
+	public String toString() {
+		return "Dept [id=" + id + ", parentId=" + parentId + ", name=" + name + ", sort=" + sort + ", code=" + code
+				+ ", address=" + address + ", master=" + master + ", phone=" + phone + ", fax=" + fax + ", email="
+				+ email + ", updateBy=" + updateBy + ", updateDate=" + updateDate + ", remarks=" + remarks
+				+ ", delFlag=" + delFlag + "]";
+	}
 	
 }

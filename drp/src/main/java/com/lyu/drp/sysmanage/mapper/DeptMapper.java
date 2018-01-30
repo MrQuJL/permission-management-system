@@ -21,25 +21,5 @@ public interface DeptMapper {
 	 */
 	public List<Dept> getAllDeptList();
 	
-	/**
-	 * 新增部门
-	 * @param 
-	 * @return
-	 */
-	public int saveDept(Dept Dept);
-	
-	/**
-	 * 修改部门
-	 * @param 
-	 * @return
-	 */
-	public int updateDept(Dept Dept);
-	
-	/**
-	 * 删除部门表(逻辑删除)
-	 * @param 
-	 * @return
-	 */
-	public int delDept(Long deptId);
 	
 }

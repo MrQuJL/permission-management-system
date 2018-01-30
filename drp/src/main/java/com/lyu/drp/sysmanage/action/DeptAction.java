@@ -1,5 +1,10 @@
 package com.lyu.drp.sysmanage.action;
 
+import java.util.List;
+
+import com.lyu.drp.sysmanage.entity.Dept;
+import com.lyu.drp.sysmanage.service.IDeptService;
+
 /**
  * 类名称: 部门业务控制类
  * 类描述: 用于管理部门的业务控制类
@@ -9,12 +14,16 @@ package com.lyu.drp.sysmanage.action;
  * @version V1.0
  */
 public class DeptAction {
+	// 查询到的部门列表集合
+	private List<Dept> deptList;
 	// 发送给前台的部门列表的json字符串数组
 	private String jsonObj;
 	// 返回给前台的消息
 	private String message;
 	// 修改(2)还是增加(1)
 	private Integer editFlag;
+	
+	private IDeptService deptService;
 	
 	public String getMessage() {
 		return message;
@@ -40,6 +49,22 @@ public class DeptAction {
 		this.editFlag = editFlag;
 	}
 
+	public List<Dept> getDeptList() {
+		return deptList;
+	}
+
+	public void setDeptList(List<Dept> deptList) {
+		this.deptList = deptList;
+	}
+
+	public IDeptService getDeptService() {
+		return deptService;
+	}
+
+	public void setDeptService(IDeptService deptService) {
+		this.deptService = deptService;
+	}
+
 	/**
 	 * 进入部门列表
 	 * @param 
@@ -47,10 +72,9 @@ public class DeptAction {
 	 */
 	public String gotoDeptList() {
 		// 查询所有的部门列表
+		List<Dept> deptList = deptService.getAllDeptList();
 		
-		
-		
-		
+		this.deptList = deptList;
 		
 		return "gotoDeptList";
 	}
