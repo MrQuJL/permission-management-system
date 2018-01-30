@@ -17,9 +17,26 @@ String path = request.getContextPath();
 			$("#saveDeptForm").validate({
 				submitHandler: function(form){
 					loading('正在提交，请稍等...');
+					var dept = $("#saveDeptForm").serializeArray();
+					var deptObj = {};
+					$.each(dept,function(i, item){
+						if (item.name != "parentName") {
+							deptObj[item.name] = item.value;
+						}
+					});
 					
-					top.$.jBox.closeTip();
-					//form.submit();
+					//alert(JSON.stringify(deptObj));
+					
+					$.ajax({
+						type : "post",
+						url : "${ctx}/sysmgr/saveDept.action",
+						data :{"jsonObj" : JSON.stringify(deptObj)},
+						dataType : "json",
+						success : function(data) {
+							alert(data.message);
+							top.$.jBox.closeTip();
+						}
+					});
 				},
 				errorContainer: "#messageBox",
 				errorPlacement: function(error, element) {
@@ -122,7 +139,7 @@ String path = request.getContextPath();
 			</div>
 		</div>
 		<div class="form-actions">
-			<input id="btnSubmit" class="btn btn-primary" type="button" value="保 存"/>&nbsp;
+			<input id="btnSubmit" class="btn btn-primary" type="submit" value="保 存"/>&nbsp;
 			<input id="btnCancel" class="btn" type="button" value="返 回" onclick="history.go(-1)"/>
 		</div>
 	</form>
@@ -189,6 +206,7 @@ String path = request.getContextPath();
 			$.ajax({
 				type : "post",
 				url : "${ctx}/sysmgr/loadDeptTree.action",
+				// async是异步的意思，sync是同步的意思
 				async : false,
 				data : {"deptId" : id},
 				dataType : "json",

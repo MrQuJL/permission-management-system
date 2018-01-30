@@ -21,4 +21,11 @@ public interface IDeptService {
 	 */
 	public List<Dept> getAllDeptList();
 	
+	/**
+	 * 添加部门
+	 * @param 
+	 * @return
+	 */
+	public boolean saveDept(Dept dept);
+	
 }

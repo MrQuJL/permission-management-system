@@ -1,5 +1,6 @@
 package com.lyu.drp.sysmanage.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.lyu.drp.sysmanage.entity.Dept;
 import com.lyu.drp.sysmanage.mapper.DeptMapper;
 import com.lyu.drp.sysmanage.service.IDeptService;
+import com.lyu.drp.util.UserUtils;
 
 @Service("deptService")
 public class DeptService implements IDeptService {
@@ -18,6 +20,19 @@ public class DeptService implements IDeptService {
 	@Override
 	public List<Dept> getAllDeptList() {
 		return deptMapper.getAllDeptList();
+	}
+
+	@Override
+	public boolean saveDept(Dept dept) {
+		boolean flag = false;
+		dept.setUpdateBy(UserUtils.getCurrentUserId().toString());
+		dept.setUpdateDate(new Date());
+		
+		int rows = deptMapper.saveDept(dept);
+		if (rows > 0) {
+			flag = true;
+		}
+		return flag;
 	}
 
 }

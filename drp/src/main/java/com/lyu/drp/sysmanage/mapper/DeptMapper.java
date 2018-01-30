@@ -21,6 +21,11 @@ public interface DeptMapper {
 	 */
 	public List<Dept> getAllDeptList();
 	
-	
+	/**
+	 * 添加部门
+	 * @param 
+	 * @return
+	 */
+	public int saveDept(Dept dept);
 	
 }

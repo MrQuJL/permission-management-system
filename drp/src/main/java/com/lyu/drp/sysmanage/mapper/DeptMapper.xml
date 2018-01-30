@@ -17,4 +17,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE del_flag = 0
 	</select>
 	
+	<!-- 增加部门 -->
+	<insert id="saveDept" parameterType="dept">
+		INSERT INTO drp_sys_dept(parent_id, name, sort, code, address, master, phone,
+		fax, email, update_by, update_date, remarks)
+		VALUES(#{parentId}, #{name}, #{sort}, #{code}, #{address}, #{master},
+		#{phone}, #{fax}, #{email}, #{updateBy}, #{updateDate}, #{remarks})
+	</insert>
+	
 </mapper>

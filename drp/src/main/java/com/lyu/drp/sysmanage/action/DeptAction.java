@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.lyu.drp.sysmanage.entity.Dept;
 import com.lyu.drp.sysmanage.service.IDeptService;
@@ -26,6 +27,8 @@ public class DeptAction {
 	private String message;
 	// 修改(2)还是增加(1)
 	private Integer editFlag;
+	// 部门编号
+	private Long deptId;
 	
 	private IDeptService deptService;
 	
@@ -69,6 +72,14 @@ public class DeptAction {
 		this.deptService = deptService;
 	}
 
+	public Long getDeptId() {
+		return deptId;
+	}
+
+	public void setDeptId(Long deptId) {
+		this.deptId = deptId;
+	}
+
 	/**
 	 * 进入部门列表
 	 * @param 
@@ -93,6 +104,28 @@ public class DeptAction {
 		return "gotoDeptEdit";
 	}
 	
+	/**
+	 * 新增 或修改部门
+	 * @param 
+	 * @return
+	 */
+	public String saveDept() {
+		Dept dept = JSON.parseObject(this.jsonObj, Dept.class);
+		if (dept.getId() == null) { // 解析出来的部门对象的id为空说明是新增
+			boolean flag = false;
+			flag = deptService.saveDept(dept);
+			
+			if (flag) {
+				this.message = "添加部门成功";
+			} else {
+				this.message = "添加部门失败";
+			}
+		} else { // 修改
+			
+		}
+		
+		return "success";
+	}
 	
 	/**
 	 * 加载部门树
@@ -115,6 +148,5 @@ public class DeptAction {
 		
 		return "success";
 	}
-	
 	
 }
