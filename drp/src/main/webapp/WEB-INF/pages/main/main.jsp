@@ -171,7 +171,7 @@ String path = request.getContextPath();
 							<li class="active"><a data-href=".menu3-20" href="userMgr.html" target="mainFrame"><i class="icon-user icon-white"></i>&nbsp;用户管理</a>
 								<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
 								</ul></li>
-							<li class=""><a data-href=".menu3-17" href="officeMgr.html" target="mainFrame"><i class="icon-th-large"></i>&nbsp;机构管理</a>
+							<li class=""><a data-href=".menu3-17" href="${ctx}/sysmgr/gotoDeptList.action" target="mainFrame"><i class="icon-th-large"></i>&nbsp;部门管理</a>
 								<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
 								</ul></li>
 							<li class=""><a data-href=".menu3-14" href="areaList.html" target="mainFrame"><i class="icon-th"></i>&nbsp;区域管理</a>

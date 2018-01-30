@@ -96,6 +96,16 @@
 			<result name = "iconSelect">/WEB-INF/pages/common/iconSelect.jsp</result>		
 		</action>
 		
+		<!-- 部门管理 -->
+		<action name = "gotoDeptList" class= "com.lyu.drp.sysmanage.action.DeptAction" method = "gotoDeptList">
+			<result name="gotoDeptList">/WEB-INF/pages/sysmanage/dept/deptList.jsp</result>
+		</action>
+		
+		<action name = "gotoDeptEdit" class= "com.lyu.drp.sysmanage.action.DeptAction" method = "gotoDeptEdit">
+			<result name="gotoDeptEdit">/WEB-INF/pages/sysmanage/dept/deptEdit.jsp</result>
+		</action>
+		
+		
 	</package>
 	
 </struts>
