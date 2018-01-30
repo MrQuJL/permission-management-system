@@ -1,10 +1,8 @@
 package com.lyu.drp.sysmanage.dto;
 
 import java.io.Serializable;
-import java.util.List;
 
 import com.lyu.drp.sysmanage.entity.Menu;
-import com.lyu.drp.sysmanage.entity.Role;
 
 /**
  * 类名称: 菜单数据传输对象

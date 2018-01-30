@@ -46,6 +46,11 @@ public class DeptAction {
 	 * @return
 	 */
 	public String gotoDeptList() {
+		// 查询所有的部门列表
+		
+		
+		
+		
 		
 		return "gotoDeptList";
 	}

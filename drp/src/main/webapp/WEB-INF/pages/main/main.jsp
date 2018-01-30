@@ -114,7 +114,7 @@ String path = request.getContextPath();
 		<div id="main" style="width: auto;">
 			<div id="header" class="navbar navbar-fixed-top">
 				<div class="navbar-inner">
-					<div class="brand"><span id="productName">分销系统</span></div>
+					<div class="brand""><span style="cursor:pointer;" onclick="alert('logo');" id="productName">分销系统</span></div>
 					<ul id="userControl" class="nav pull-right">
 
 						<li id="userInfo" class="dropdown">
@@ -211,10 +211,9 @@ String path = request.getContextPath();
 						<ul class="nav nav-list">
 							<li class=""><a data-href=".menu3-68" href="http://localhost:8080/sys/log" target="mainFrame"><i class="icon-pencil"></i>&nbsp;日志查询</a>
 								<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
-								</ul></li>
-							<li><a data-href=".menu3-84" href="#" target="mainFrame"><i class="icon-circle-arrow-right"></i>&nbsp;连接池监视</a>
-								<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
-								</ul></li></ul>
+								</ul>
+							</li>
+						</ul>
 					</div>
 			    </div>
 			</div>

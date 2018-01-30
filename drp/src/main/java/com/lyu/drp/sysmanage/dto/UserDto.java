@@ -1,9 +1,7 @@
 package com.lyu.drp.sysmanage.dto;
 
 import java.io.Serializable;
-import java.util.List;
 
-import com.lyu.drp.sysmanage.entity.Role;
 import com.lyu.drp.sysmanage.entity.User;
 
 /**
@@ -19,7 +17,6 @@ public class UserDto extends User implements Serializable {
 	private static final long serialVersionUID = 4282362845767317022L;
 	
 	private String name;
-	private List<Role> roleList;
 	
 	public String getName() {
 		return name;
@@ -27,14 +24,6 @@ public class UserDto extends User implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-	
-	public List<Role> getRoleList() {
-		return roleList;
-	}
-	
-	public void setRoleList(List<Role> roleList) {
-		this.roleList = roleList;
 	}
 	
 }
