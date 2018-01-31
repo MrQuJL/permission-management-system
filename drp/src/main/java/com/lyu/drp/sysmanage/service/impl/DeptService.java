@@ -64,4 +64,14 @@ public class DeptService implements IDeptService {
 		return flag;
 	}
 
+	@Override
+	public boolean delDept(Long deptId) {
+		boolean flag = false;
+		int count = deptMapper.delDept(deptId);
+		if (count > 0) {
+			flag = true;
+		}
+		return flag;
+	}
+
 }

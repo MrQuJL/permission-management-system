@@ -49,4 +49,12 @@ public interface IDeptService {
 	 * @return
 	 */
 	public boolean updateDept(Dept dept);
+	
+	/**
+	 * 删除指定id部门
+	 * @param 
+	 * @return
+	 */
+	public boolean delDept(Long deptId);
+	
 }

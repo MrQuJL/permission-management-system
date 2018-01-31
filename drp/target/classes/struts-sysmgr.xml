@@ -117,6 +117,12 @@
 			</result>
 		</action>
 		
+		<action name = "delDept" class= "com.lyu.drp.sysmanage.action.DeptAction" method = "delDept">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
 		<action name = "loadDeptTree" class= "com.lyu.drp.sysmanage.action.DeptAction" method = "getDeptTree">
 			<result type="json">
 				<param name="includeProperties">jsonObj</param>

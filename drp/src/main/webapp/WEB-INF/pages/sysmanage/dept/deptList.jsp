@@ -73,7 +73,16 @@ String path = request.getContextPath();
 			},
 			delDept : function(deptId) {
 				if (confirm("该部门下面没有子部门，您确定要删除该部门吗？")) {
-					alert("模拟删除成功了该部门!");
+					$.ajax({
+						type : "post",
+						url : "${ctx}/sysmgr/delDept.action",
+						data : {"deptId" : deptId},
+						dataType : "json",
+						success : function(data) {
+							alert(data.message);
+							location.reload();
+						}
+					});
 				}
 			}
 		}

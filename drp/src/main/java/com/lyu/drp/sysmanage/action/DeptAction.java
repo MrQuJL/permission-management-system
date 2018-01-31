@@ -166,6 +166,27 @@ public class DeptAction {
 		return "success";
 	}
 	
+	public String delDept() {
+		// 注意：虽然在前一个请求中判断过该部门下是否有子菜单，但是为了安全这里还要在判断一次
+		boolean flag = deptService.hasSubDept(deptId);
+		if (!flag) {
+			if (deptService.delDept(deptId)) {
+				
+				this.message = "删除部门成功!";
+				
+			} else {
+				
+				this.message = "删除部门失败，请联系系统管理员!";
+				
+			}
+		} else {
+			
+			this.message = "删除部门失败，请联系系统管理员!";
+			
+		}
+		return "success";
+	}
+	
 	/**
 	 * 加载部门树
 	 * @param 

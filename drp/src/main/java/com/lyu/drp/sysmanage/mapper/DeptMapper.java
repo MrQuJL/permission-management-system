@@ -50,4 +50,11 @@ public interface DeptMapper {
 	 */
 	public int updateDept(Dept dept);
 	
+	/**
+	 * 删除部门（逻辑删除）
+	 * @param 
+	 * @return
+	 */
+	public int delDept(Long deptId);
+	
 }
