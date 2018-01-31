@@ -67,4 +67,11 @@ public class DeptServiceTest {
 		}
 	}
 	
+	// 获取该部门的所有子孙部门
+	@Test
+	public void testGetAllSubDepts() {
+		List<Long> ids = deptService.getAllSubDeptIds(12L);
+		System.out.println(ids);
+	}
+	
 }

@@ -1,5 +1,6 @@
 package com.lyu.drp.sysmanage.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +28,23 @@ public class DeptService implements IDeptService {
 	public List<Dept> getAllDeptList() {
 		return deptMapper.getAllDeptList();
 	}
-
+	
+	@Override
+	public List<Long> getAllSubDeptIds(Long parentId) {
+		List<Long> subDeptList = new ArrayList<Long>();
+		
+		List<Long> tempList = deptMapper.getAllSubDeptIds(parentId);
+		
+		subDeptList.addAll(tempList);
+		
+		for (int i = 0; i < tempList.size(); i++) {
+			List<Long> temp = getAllSubDeptIds(tempList.get(i));
+			subDeptList.addAll(temp);
+		}
+		
+		return subDeptList;
+	}
+	
 	@Override
 	public boolean hasSubDept(Long parentId) {
 		boolean flag = true;

@@ -30,6 +30,13 @@ public interface IDeptService {
 	public List<Dept> getAllDeptList();
 	
 	/**
+	 * 获取当前部门的所有子子孙孙...部门的id
+	 * @param 
+	 * @return
+	 */
+	public List<Long> getAllSubDeptIds(Long parentId);
+	
+	/**
 	 * 判断父部门下面是否有子部门
 	 * @param 
 	 * @return

@@ -3,6 +3,7 @@ package com.lyu.drp.sysmanage.action;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
@@ -171,30 +172,38 @@ public class DeptAction {
 		boolean flag = deptService.hasSubDept(deptId);
 		if (!flag) {
 			if (deptService.delDept(deptId)) {
-				
 				this.message = "删除部门成功!";
-				
 			} else {
-				
 				this.message = "删除部门失败，请联系系统管理员!";
-				
 			}
 		} else {
-			
 			this.message = "删除部门失败，请联系系统管理员!";
-			
 		}
 		return "success";
 	}
 	
 	/**
 	 * 加载部门树
-	 * @param 
+	 * @param
 	 * @return
 	 */
 	public String getDeptTree() {
 		List<Dept> deptList = deptService.getAllDeptList();
 		List<Map<String, Object>> deptListMap = new ArrayList<Map<String, Object>>();
+		
+		if (deptId != null) { // 修改要剔除掉子孙部门
+			// 查询出所有子孙部门的id
+			List<Long> subDeptIds = deptService.getAllSubDeptIds(deptId);
+			// 剔除子孙部门
+			
+			for (ListIterator<Dept> iterator = deptList.listIterator(); iterator.hasNext();) {
+				Dept dept = iterator.next();
+				if (subDeptIds.contains(dept.getId()) || dept.getId() == this.deptId) {
+					iterator.remove();
+				}
+			}
+			
+		}
 		
 		for (Dept dept : deptList) {
 			Map<String, Object> deptMap = new HashMap<String, Object>();
@@ -208,5 +217,5 @@ public class DeptAction {
 		
 		return "success";
 	}
-	
+
 }

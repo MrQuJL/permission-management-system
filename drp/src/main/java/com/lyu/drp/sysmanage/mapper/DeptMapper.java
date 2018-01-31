@@ -30,6 +30,13 @@ public interface DeptMapper {
 	public List<Dept> getAllDeptList();
 	
 	/**
+	 * 获取当前部门的所有子部门id
+	 * @param 
+	 * @return
+	 */
+	public List<Long> getAllSubDeptIds(Long parentId);
+	
+	/**
 	 * 统计父部门下面的子部门的数量
 	 * @param 
 	 * @return

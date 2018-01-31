@@ -225,11 +225,15 @@ String path = request.getContextPath();
 						temp["name"] = deptArray[i].name;
 						zNodes.push(temp);
 					}
-					
 					//alert(JSON.stringify(zNodes));
 				}
 			});
 			var deptTree = $.fn.zTree.init($("#deptTree"), setting, zNodes);
+			var selectNodeId = $("#parentId").val();
+			if (selectNodeId != null) {
+				deptTree.selectNode(deptTree.getNodeByParam("id", selectNodeId, null));
+			}
+			
 			deptTree.expandAll(true);
 		});
 		
