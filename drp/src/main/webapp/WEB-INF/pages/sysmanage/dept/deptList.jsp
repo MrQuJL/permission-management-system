@@ -47,7 +47,7 @@ String path = request.getContextPath();
 					<td>
 						<a href="${ctx}/sysmgr/gotoDeptEdit.action?editFlag=2&deptId=${dept.id}">修改</a>
 						<a href="javascript:deptMgr.confirmHasSubDept(${dept.id});">删除</a>
-						<a href="#">添加下级部门</a>
+						<a href="${ctx}/sysmgr/gotoDeptEdit.action?editFlag=1&parentId=${dept.id}&parentName=${dept.name}">添加下级部门</a>
 					</td>
 				</tr>
 			</c:forEach>

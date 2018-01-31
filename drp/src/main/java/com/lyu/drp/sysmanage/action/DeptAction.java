@@ -32,6 +32,10 @@ public class DeptAction {
 	private Integer editFlag;
 	// 部门编号
 	private Long deptId;
+	// 父部门id
+	private Long parentId;
+	// 父部门name
+	private String parentName;
 	// 部门的详细信息
 	private DeptDto deptDto;
 	
@@ -93,6 +97,22 @@ public class DeptAction {
 		this.deptDto = deptDto;
 	}
 
+	public Long getParentId() {
+		return parentId;
+	}
+
+	public void setParentId(Long parentId) {
+		this.parentId = parentId;
+	}
+
+	public String getParentName() {
+		return parentName;
+	}
+
+	public void setParentName(String parentName) {
+		this.parentName = parentName;
+	}
+
 	/**
 	 * 进入部门列表
 	 * @param 
@@ -120,6 +140,10 @@ public class DeptAction {
 		if (editFlag == 2) { // 修改
 			// 查询指定id的部门的明细信息
 			this.deptDto = deptService.getDeptDetailById(deptId);
+		} else if (parentId != null) {
+			this.deptDto = new DeptDto();
+			this.deptDto.setParentId(parentId);
+			this.deptDto.setParentName(parentName);
 		}
 		
 		return "gotoDeptEdit";
