@@ -35,6 +35,8 @@ String path = request.getContextPath();
 						success : function(data) {
 							alert(data.message);
 							top.$.jBox.closeTip();
+							// 跳转到部门列表页面
+							location.href = "${ctx}/sysmgr/gotoDeptList.action";
 						}
 					});
 				},
@@ -50,7 +52,6 @@ String path = request.getContextPath();
 			});
 		});
 	</script>
-	<script type="text/javascript">top.$.jBox.closeTip();</script>
 </head>
 <body>
 	<ul class="nav nav-tabs">
