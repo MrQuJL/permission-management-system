@@ -2,6 +2,7 @@ package com.lyu.drp.sysmanage.mapper;
 
 import java.util.List;
 
+import com.lyu.drp.sysmanage.dto.DeptDto;
 import com.lyu.drp.sysmanage.entity.Dept;
 
 /**
@@ -13,6 +14,13 @@ import com.lyu.drp.sysmanage.entity.Dept;
  * @version V1.0
  */
 public interface DeptMapper {
+	
+	/**
+	 * 获取部门的详细信息，包括父部门的名称...
+	 * @param 
+	 * @return
+	 */
+	public DeptDto getDeptDetailById(Long deptId);
 	
 	/**
 	 * 获取所有的部门列表
@@ -27,5 +35,12 @@ public interface DeptMapper {
 	 * @return
 	 */
 	public int saveDept(Dept dept);
+	
+	/**
+	 * 修改部门
+	 * @param 
+	 * @return
+	 */
+	public int updateDept(Dept dept);
 	
 }

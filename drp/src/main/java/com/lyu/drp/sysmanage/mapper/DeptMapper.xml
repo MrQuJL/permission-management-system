@@ -10,6 +10,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		fax, email, update_by, update_date, remarks, del_flag
 	</sql>
 	
+	<!-- 所有的部门字段 (别名)-->
+	<sql id = "all_dept_columns_alias">
+	    A.id, A.parent_id, A.name, A.sort, A.code, A.address, A.master, A.phone,
+		A.fax, A.email, A.update_by, A.update_date, A.remarks, A.del_flag
+	</sql>
+	
+	<!-- 获取部门的详细信息，包括父部门的名称... -->
+	<select id="getDeptDetailById" parameterType="long" resultType="deptDto">
+		SELECT <include refid="all_dept_columns_alias" />, B.name parentName
+		FROM drp_sys_dept A LEFT JOIN drp_sys_dept B
+		ON A.parent_id = B.id WHERE A.id = #{deptId};
+	</select>
+	
 	<!-- 获得部门列表 -->
 	<select id="getAllDeptList" resultType="dept">
 		SELECT <include refid="all_dept_columns" />
@@ -24,5 +37,49 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES(#{parentId}, #{name}, #{sort}, #{code}, #{address}, #{master},
 		#{phone}, #{fax}, #{email}, #{updateBy}, #{updateDate}, #{remarks})
 	</insert>
+	
+	<!-- 修改部门 -->
+	<update id="updateDept" parameterType="dept">
+		UPDATE drp_sys_dept
+		<set>
+			<if test="parentId != null">
+				parent_id = #{parentId},
+			</if>
+			<if test="name != null">
+				name = #{name},
+			</if>
+			<if test="sort != null">
+				sort = #{sort},
+			</if>
+			<if test="code != null">
+				code = #{code},
+			</if>
+			<if test="address != null">
+				address = #{address},
+			</if>
+			<if test="master != null">
+				master = #{master},
+			</if>
+			<if test="phone != null">
+				phone = #{phone},
+			</if>
+			<if test="fax != null">
+				fax = #{fax},
+			</if>
+			<if test="email != null">
+				email = #{email},
+			</if>
+			<if test="updateBy != null">
+				update_by = #{updateBy},
+			</if>
+			<if test="updateDate != null">
+				update_date = #{updateDate},
+			</if>
+			<if test="remarks != null">
+				remarks = #{remarks},
+			</if>
+		</set>
+		WHERE id = #{id} AND del_flag = 0
+	</update>
 	
 </mapper>

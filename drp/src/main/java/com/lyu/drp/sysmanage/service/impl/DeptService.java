@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.lyu.drp.sysmanage.dto.DeptDto;
 import com.lyu.drp.sysmanage.entity.Dept;
 import com.lyu.drp.sysmanage.mapper.DeptMapper;
 import com.lyu.drp.sysmanage.service.IDeptService;
@@ -22,6 +23,12 @@ public class DeptService implements IDeptService {
 		return deptMapper.getAllDeptList();
 	}
 
+
+	@Override
+	public DeptDto getDeptDetailById(Long deptId) {
+		return deptMapper.getDeptDetailById(deptId);
+	}
+	
 	@Override
 	public boolean saveDept(Dept dept) {
 		boolean flag = false;
@@ -29,6 +36,19 @@ public class DeptService implements IDeptService {
 		dept.setUpdateDate(new Date());
 		
 		int rows = deptMapper.saveDept(dept);
+		if (rows > 0) {
+			flag = true;
+		}
+		return flag;
+	}
+
+	@Override
+	public boolean updateDept(Dept dept) {
+		boolean flag = false;
+		dept.setUpdateBy(UserUtils.getCurrentUserId().toString());
+		dept.setUpdateDate(new Date());
+		
+		int rows = deptMapper.updateDept(dept);
 		if (rows > 0) {
 			flag = true;
 		}

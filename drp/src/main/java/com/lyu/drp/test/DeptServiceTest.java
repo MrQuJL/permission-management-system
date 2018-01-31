@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.lyu.drp.sysmanage.dto.DeptDto;
 import com.lyu.drp.sysmanage.entity.Dept;
 import com.lyu.drp.sysmanage.service.IDeptService;
 
@@ -42,6 +43,15 @@ public class DeptServiceTest {
 			log.info(dept.toString());
 		}
 		log.info("部门总数：" + deptList.size());
+		
+	}
+	
+	// 查询指定部门的详细信息，包括父部门名称
+	@Test
+	public void testGetDeptDetailById() {
+		DeptDto deptDto = deptService.getDeptDetailById(1L);
+		
+		System.out.println(deptDto);
 		
 	}
 	

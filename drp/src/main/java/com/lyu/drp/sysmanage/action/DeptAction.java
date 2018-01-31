@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.lyu.drp.sysmanage.dto.DeptDto;
 import com.lyu.drp.sysmanage.entity.Dept;
 import com.lyu.drp.sysmanage.service.IDeptService;
 
@@ -29,6 +30,8 @@ public class DeptAction {
 	private Integer editFlag;
 	// 部门编号
 	private Long deptId;
+	// 部门的详细信息
+	private DeptDto deptDto;
 	
 	private IDeptService deptService;
 	
@@ -80,6 +83,14 @@ public class DeptAction {
 		this.deptId = deptId;
 	}
 
+	public DeptDto getDeptDto() {
+		return deptDto;
+	}
+
+	public void setDeptDto(DeptDto deptDto) {
+		this.deptDto = deptDto;
+	}
+
 	/**
 	 * 进入部门列表
 	 * @param 
@@ -100,6 +111,10 @@ public class DeptAction {
 	 * @return
 	 */
 	public String gotoDeptEdit() {
+		if (editFlag == 2) { // 修改
+			// 查询指定id的部门的明细信息
+			this.deptDto = deptService.getDeptDetailById(deptId);
+		}
 		
 		return "gotoDeptEdit";
 	}
@@ -121,7 +136,14 @@ public class DeptAction {
 				this.message = "添加部门失败";
 			}
 		} else { // 修改
+			boolean flag = false;
+			flag = deptService.updateDept(dept);
 			
+			if (flag) {
+				this.message = "修改部门成功";
+			} else {
+				this.message = "修改部门失败";
+			}
 		}
 		
 		return "success";

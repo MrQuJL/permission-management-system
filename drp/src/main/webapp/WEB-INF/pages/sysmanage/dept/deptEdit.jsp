@@ -55,18 +55,23 @@ String path = request.getContextPath();
 <body>
 	<ul class="nav nav-tabs">
 		<li><a href="${ctx}/sysmgr/gotoDeptList.action">部门列表</a></li>
-		<li class="active"><a href="javascript:void(0);">部门添加</a></li>
+		<li class="active"><a href="javascript:void(0);">部门
+			<c:choose>
+				<c:when test="${deptDto.id != null}">修改</c:when>
+				<c:otherwise>添加</c:otherwise>
+			</c:choose>
+		</a></li>
 	</ul><br/>
 	
 	<form id="saveDeptForm" class="form-horizontal" action="#" method="post">
-		<input id="id" name="id" type="hidden" value="${dept.id}"/>
+		<input id="id" name="id" type="hidden" value="${deptDto.id}"/>
 
 		<div class="control-group">
 			<label class="control-label">上级部门:</label>
 			<div class="controls">
 				<div class="input-append">
-					<input id="parentId" name="parentId" class="" type="hidden" value="${dept.parentId}"/>
-					<input id="parentName" name="parentName" readonly="readonly" type="text" value="${dept.parentName}"/>
+					<input id="parentId" name="parentId" class="" type="hidden" value="${deptDto.parentId}"/>
+					<input id="parentName" name="parentName" readonly="readonly" type="text" value="${deptDto.parentName}"/>
 					<a id="deptBtn" href="javascript:showMenu();" class="btn">
 						&nbsp;<i class="icon-search"></i>&nbsp;
 					</a>&nbsp;&nbsp;
@@ -84,58 +89,58 @@ String path = request.getContextPath();
 		<div class="control-group">
 			<label class="control-label">部门名称:</label>
 			<div class="controls">
-				<input id="name" name="name" class="required" type="text" value="${dept.name}" maxlength="50"/>
+				<input id="name" name="name" class="required" type="text" value="${deptDto.name}" maxlength="50"/>
 				<span class="help-inline"><span style="color:red">*</span></span>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">排序:</label>
 			<div class="controls">
-				<input id="sort" name="sort" class="required" type="text" value="${dept.sort}" maxlength="50"/>
+				<input id="sort" name="sort" class="required" type="text" value="${deptDto.sort}" maxlength="50"/>
 				<span class="help-inline"><span style="color:red">*</span>排列顺序，升序。</span>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">机构编号:</label>
 			<div class="controls">
-				<input id="code" name="code" type="text" value="${dept.code}" maxlength="50"/>
+				<input id="code" name="code" type="text" value="${deptDto.code}" maxlength="50"/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">部门地址:</label>
 			<div class="controls">
-				<input id="address" name="address" type="text" value="${dept.address}" maxlength="50"/>
+				<input id="address" name="address" type="text" value="${deptDto.address}" maxlength="50"/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">负责人:</label>
 			<div class="controls">
-				<input id="master" name="master" type="text" value="${dept.master}" maxlength="50"/>
+				<input id="master" name="master" type="text" value="${deptDto.master}" maxlength="50"/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">电话:</label>
 			<div class="controls">
-				<input id="phone" name="phone" type="text" value="${dept.phone}" maxlength="50"/>
+				<input id="phone" name="phone" type="text" value="${deptDto.phone}" maxlength="50"/>
 				<span class="help-inline"></span>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">传真:</label>
 			<div class="controls">
-				<input id="fax" name="fax" type="text" value="${dept.fax}" maxlength="50"/>
+				<input id="fax" name="fax" type="text" value="${deptDto.fax}" maxlength="50"/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">邮箱:</label>
 			<div class="controls">
-				<input id="email" name="email" type="text" value="${dept.email}" maxlength="50"/>
+				<input id="email" name="email" type="text" value="${deptDto.email}" maxlength="50"/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">备注:</label>
 			<div class="controls">
-				<textarea id="remarks" name="remarks" maxlength="200" class="input-xlarge" rows="3">${dept.remarks}</textarea>
+				<textarea id="remarks" name="remarks" maxlength="200" class="input-xlarge" rows="3">${deptDto.remarks}</textarea>
 			</div>
 		</div>
 		<div class="form-actions">
@@ -220,7 +225,7 @@ String path = request.getContextPath();
 						zNodes.push(temp);
 					}
 					
-					alert(JSON.stringify(zNodes));
+					//alert(JSON.stringify(zNodes));
 				}
 			});
 			var deptTree = $.fn.zTree.init($("#deptTree"), setting, zNodes);

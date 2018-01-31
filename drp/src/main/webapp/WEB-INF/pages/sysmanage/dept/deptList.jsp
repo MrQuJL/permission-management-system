@@ -13,7 +13,6 @@ String path = request.getContextPath();
 <%@ include file="/WEB-INF/pages/include/head.jsp" %>
 	<script type="text/javascript">
 		$(document).ready(function() {
-
 			$("#treeTable").treeTable({expandLevel : 5});
 		});
 	</script>
@@ -46,7 +45,7 @@ String path = request.getContextPath();
 					<td>${dept.phone}</td>
 					<td>${dept.remarks}</td>
 					<td>
-						<a href="#">修改</a>
+						<a href="${ctx}/sysmgr/gotoDeptEdit.action?editFlag=2&deptId=${dept.id}">修改</a>
 						<a href="#" onclick="">删除</a>
 						<a href="#">添加下级部门</a>
 					</td>
@@ -55,5 +54,8 @@ String path = request.getContextPath();
 			
 		</tbody>
 	</table>
+	<script type="text/javascript">
+		
+	</script>
 </body>
 </html>
