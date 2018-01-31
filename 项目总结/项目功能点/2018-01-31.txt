@@ -28,6 +28,46 @@ replace()	用新的文档替换当前文档。
 
 3. 注意在添加或修改的时候不仅前台要加以验证，后台也要加以验证。
 
+4. jquery-validate学习：
+	* 记得导入jquery.js和jquery.validate.min.js文件
+	* 调用validate方法进行校验$("#表单id").validate()
+	* 可以通过对象的方式向validate方法中传递参数$("#表单id").validate({...})
+	* submitHandler是一个在表单提交(点击type为"submit"的按钮)的时候调用的一个回调函数，
+		它会取消提交表单的默认行为，在函数内部可以通过调用form.submit()方法来提交
+	* errorPlacement（错误信息显示的位置）
+	  默认情况是：error.appendTo(element.parent());即把错误信息放在验证的元素后面。
+	  errorPlacement: function(error, element) {  
+	  	  error.appendTo(element.parent());  
+	  }
+	  error --> 错误信息(默认用label标签包裹)
+	  element --> 出现错误信息的元素（input）
+	  错误提示的默认css类名是"error"(即label的默认类名)
+	* errorContainer:错误信息存放的容器，可以在有错误信息的时候显示，没有错误信息的时候隐藏
+
+
+$(function() {
+	$("#name").focus();
+	$("#saveMenuForm").validate({
+		submitHandler: function(form){
+			loading('正在提交，请稍等...');
+			
+		},
+		errorContainer: "#messageBox",
+		errorPlacement: function(error, element) {
+			$("#messageBox").text("输入有误，请先更正。");
+			if (element.is(":checkbox")||element.is(":radio")||element.parent().is(".input-append")){
+				error.appendTo(element.parent().parent());
+			} else {
+				error.insertAfter(element);
+			}
+		}
+	});
+});
+
+
+
+
+
 
 
 

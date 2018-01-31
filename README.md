@@ -1,4 +1,9 @@
-# distributiion-resource-planning-system
+# 分销系统（distributiion-resource-planning-system）
 
-a invoicing management system, used for purchasing, saling and invoicing...
+
+
+
+
+
+
 

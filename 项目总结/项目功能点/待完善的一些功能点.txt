@@ -11,25 +11,6 @@
 	自定义jstl标签
 	shiro加密流程
 
-$(function() {
-	$("#name").focus();
-	$("#saveMenuForm").validate({
-		submitHandler: function(form){
-			loading('正在提交，请稍等...');
-			
-		},
-		errorContainer: "#messageBox",
-		errorPlacement: function(error, element) {
-			$("#messageBox").text("输入有误，请先更正。");
-			if (element.is(":checkbox")||element.is(":radio")||element.parent().is(".input-append")){
-				error.appendTo(element.parent().parent());
-			} else {
-				error.insertAfter(element);
-			}
-		}
-	});
-});
-
 4. 用户在选择菜单的时候，在菜单树展开的时候，需要定位一下
 上一次选择的是哪一个菜单（用户体验好）
 
@@ -37,7 +18,6 @@ $(function() {
 挂在它的子菜单下面，否则会产生死循环，数据库会有大量的垃圾数据。
 
 注：树形结构都要预防死循环
-
 
 防止死循环
 

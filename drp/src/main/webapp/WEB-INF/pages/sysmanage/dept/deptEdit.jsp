@@ -15,6 +15,7 @@ String path = request.getContextPath();
 		$(document).ready(function() {
 			$("#name").focus();
 			$("#saveDeptForm").validate({
+				debug : true,
 				submitHandler: function(form){
 					loading('正在提交，请稍等...');
 					var dept = $("#saveDeptForm").serializeArray();
@@ -40,15 +41,14 @@ String path = request.getContextPath();
 						}
 					});
 				},
-				errorContainer: "#messageBox",
-				errorPlacement: function(error, element) {
+				/* errorPlacement: function(error, element) {
 					$("#messageBox").text("输入有误，请先更正。");
 					if (element.is(":checkbox")||element.is(":radio")||element.parent().is(".input-append")){
 						error.appendTo(element.parent().parent());
 					} else {
 						error.insertAfter(element);
 					}
-				}
+				} */
 			});
 		});
 	</script>
@@ -72,12 +72,12 @@ String path = request.getContextPath();
 			<div class="controls">
 				<div class="input-append">
 					<input id="parentId" name="parentId" class="" type="hidden" value="${deptDto.parentId}"/>
-					<input id="parentName" name="parentName" readonly="readonly" type="text" value="${deptDto.parentName}"/>
+					<input id="parentName" name="parentName" class="required" readonly="readonly" type="text" value="${deptDto.parentName}"/>
 					<a id="deptBtn" href="javascript:showMenu();" class="btn">
 						&nbsp;<i class="icon-search"></i>&nbsp;
 					</a>&nbsp;&nbsp;
 				</div>
-				
+				<span class="help-inline"><span style="color:red">* </span>必选</span>
 				<!-- zTree -->
 				<div id="deptContent" class="deptContent" style="display:none; position:absolute;">
 					<ul id="deptTree" class="ztree" style="margin-top:0; 
@@ -91,14 +91,14 @@ String path = request.getContextPath();
 			<label class="control-label">部门名称:</label>
 			<div class="controls">
 				<input id="name" name="name" class="required" type="text" value="${deptDto.name}" maxlength="50"/>
-				<span class="help-inline"><span style="color:red">*</span></span>
+				<span class="help-inline"><span style="color:red">* </span>必填</span>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">排序:</label>
 			<div class="controls">
-				<input id="sort" name="sort" class="required" type="text" value="${deptDto.sort}" maxlength="50"/>
-				<span class="help-inline"><span style="color:red">*</span>排列顺序，升序。</span>
+				<input id="sort" name="sort" class="required number" type="text" value="${deptDto.sort}" maxlength="50"/>
+				<span class="help-inline"><span style="color:red">* </span>必须是数字</span>
 			</div>
 		</div>
 		<div class="control-group">

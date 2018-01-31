@@ -10,6 +10,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.lyu.drp.sysmanage.dto.DeptDto;
 import com.lyu.drp.sysmanage.entity.Dept;
 import com.lyu.drp.sysmanage.service.IDeptService;
+import com.lyu.drp.util.DeptUtils;
 
 /**
  * 类名称: 部门业务控制类
@@ -99,8 +100,12 @@ public class DeptAction {
 	public String gotoDeptList() {
 		// 查询所有的部门列表
 		List<Dept> deptList = deptService.getAllDeptList();
+		List<Dept> returnDepts = new ArrayList<Dept>();
 		
-		this.deptList = deptList;
+		// 对部门进行排序
+		DeptUtils.sortDeptList(returnDepts, deptList, 0L);
+		
+		this.deptList = returnDepts;
 		
 		return "gotoDeptList";
 	}
@@ -126,6 +131,7 @@ public class DeptAction {
 	 */
 	public String saveDept() {
 		Dept dept = JSON.parseObject(this.jsonObj, Dept.class);
+		
 		if (dept.getId() == null) { // 解析出来的部门对象的id为空说明是新增
 			boolean flag = false;
 			flag = deptService.saveDept(dept);
