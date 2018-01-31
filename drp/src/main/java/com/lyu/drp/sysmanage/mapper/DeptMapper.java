@@ -30,6 +30,13 @@ public interface DeptMapper {
 	public List<Dept> getAllDeptList();
 	
 	/**
+	 * 统计父部门下面的子部门的数量
+	 * @param 
+	 * @return
+	 */
+	public int countSubDeptByPId(Long deptId);
+	
+	/**
 	 * 添加部门
 	 * @param 
 	 * @return

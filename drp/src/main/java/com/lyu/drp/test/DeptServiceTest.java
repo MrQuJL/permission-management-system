@@ -55,4 +55,16 @@ public class DeptServiceTest {
 		
 	}
 	
+	// 判断当前部门是否有子部门
+	@Test
+	public void testHasSubDept() {
+		boolean flag = deptService.hasSubDept(1L);
+		
+		if (flag) {
+			System.out.println("id为1的部门下面有子部门，不可以删除");
+		} else {
+			System.out.println("id为1的部门下面没有子部门，可以删除");
+		}
+	}
+	
 }

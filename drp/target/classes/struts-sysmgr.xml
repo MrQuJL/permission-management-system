@@ -111,6 +111,12 @@
 			</result>
 		</action>
 		
+		<action name = "confirmHasSubDept" class= "com.lyu.drp.sysmanage.action.DeptAction" method = "confirmHasSubDept">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
 		<action name = "loadDeptTree" class= "com.lyu.drp.sysmanage.action.DeptAction" method = "getDeptTree">
 			<result type="json">
 				<param name="includeProperties">jsonObj</param>

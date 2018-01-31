@@ -19,14 +19,23 @@ public class DeptService implements IDeptService {
 	private DeptMapper deptMapper;
 	
 	@Override
+	public DeptDto getDeptDetailById(Long deptId) {
+		return deptMapper.getDeptDetailById(deptId);
+	}
+	
+	@Override
 	public List<Dept> getAllDeptList() {
 		return deptMapper.getAllDeptList();
 	}
 
-
 	@Override
-	public DeptDto getDeptDetailById(Long deptId) {
-		return deptMapper.getDeptDetailById(deptId);
+	public boolean hasSubDept(Long parentId) {
+		boolean flag = true;
+		int count = deptMapper.countSubDeptByPId(parentId); 
+		if (count == 0) {
+			flag = false;
+		}
+		return flag;
 	}
 	
 	@Override

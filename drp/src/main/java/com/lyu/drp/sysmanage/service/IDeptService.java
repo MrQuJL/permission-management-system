@@ -30,6 +30,13 @@ public interface IDeptService {
 	public List<Dept> getAllDeptList();
 	
 	/**
+	 * 判断父部门下面是否有子部门
+	 * @param 
+	 * @return
+	 */
+	public boolean hasSubDept(Long parentId);
+	
+	/**
 	 * 添加部门
 	 * @param 
 	 * @return

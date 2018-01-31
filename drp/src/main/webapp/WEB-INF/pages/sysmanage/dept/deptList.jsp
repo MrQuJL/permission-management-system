@@ -46,7 +46,7 @@ String path = request.getContextPath();
 					<td>${dept.remarks}</td>
 					<td>
 						<a href="${ctx}/sysmgr/gotoDeptEdit.action?editFlag=2&deptId=${dept.id}">修改</a>
-						<a href="#" onclick="">删除</a>
+						<a href="javascript:deptMgr.confirmHasSubDept(${dept.id});">删除</a>
 						<a href="#">添加下级部门</a>
 					</td>
 				</tr>
@@ -55,7 +55,28 @@ String path = request.getContextPath();
 		</tbody>
 	</table>
 	<script type="text/javascript">
-		
+		var deptMgr = {
+			confirmHasSubDept : function(deptId) {
+				$.ajax({
+					type : "post",
+					url : "${ctx}/sysmgr/confirmHasSubDept.action",
+					data : {"deptId" : deptId},
+					dataType : "json",
+					success : function(data) {
+						if (data.message == "yes") { // 有子部门，不能删除
+							alert("该部门下面有子部门，前先删除其下的子部门，再来删除该部门！");
+						} else { // 没有子部门可以删除
+							deptMgr.delDept(deptId);
+						}
+					}
+				});
+			},
+			delDept : function(deptId) {
+				if (confirm("该部门下面没有子部门，您确定要删除该部门吗？")) {
+					alert("模拟删除成功了该部门!");
+				}
+			}
+		}
 	</script>
 </body>
 </html>

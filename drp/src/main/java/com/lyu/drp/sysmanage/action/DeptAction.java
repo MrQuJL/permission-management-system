@@ -149,6 +149,17 @@ public class DeptAction {
 		return "success";
 	}
 	
+	public String confirmHasSubDept() {
+		// 判断deptId下面是否有子部门
+		boolean flag = deptService.hasSubDept(deptId);
+		if (flag) {
+			this.message = "yes";
+		} else {
+			this.message = "no";
+		}
+		return "success";
+	}
+	
 	/**
 	 * 加载部门树
 	 * @param 
