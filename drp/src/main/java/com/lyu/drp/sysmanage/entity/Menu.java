@@ -3,15 +3,11 @@ package com.lyu.drp.sysmanage.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Menu implements Serializable {
+import com.lyu.drp.sysmanage.dto.TreeDto;
+
+public class Menu extends TreeDto implements Serializable {
     
 	private static final long serialVersionUID = 4177507587492220847L;
-
-	private Long id;
-
-    private Long parentId;
-
-    private String name;
 
     private Long sort;
 
@@ -32,30 +28,6 @@ public class Menu implements Serializable {
     private String remarks;
 
     private String delFlag;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(Long parentId) {
-        this.parentId = parentId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
 
     public Long getSort() {
         return sort;
@@ -137,12 +109,4 @@ public class Menu implements Serializable {
         this.delFlag = delFlag == null ? null : delFlag.trim();
     }
 
-	@Override
-	public String toString() {
-		return "Menu [id=" + id + ", parentId=" + parentId + ", name=" + name + ", sort=" + sort + ", href=" + href
-				+ ", target=" + target + ", icon=" + icon + ", isShow=" + isShow + ", permission=" + permission
-				+ ", updateBy=" + updateBy + ", updateDate=" + updateDate + ", remarks=" + remarks + ", delFlag="
-				+ delFlag + "]";
-	}
-    
 }

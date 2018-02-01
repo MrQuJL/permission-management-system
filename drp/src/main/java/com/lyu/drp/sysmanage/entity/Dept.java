@@ -3,6 +3,8 @@ package com.lyu.drp.sysmanage.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.lyu.drp.sysmanage.dto.TreeDto;
+
 /**
  * 类名称: 部门类
  * 类描述: 封装部门表的相关数据
@@ -11,15 +13,9 @@ import java.util.Date;
  * @date 2018年1月30日 下午4:06:31
  * @version V1.0
  */
-public class Dept implements Serializable {
+public class Dept extends TreeDto implements Serializable {
 	
 	private static final long serialVersionUID = 3150198761755032726L;
-
-	private Long id;
-
-    private Long parentId;
-
-    private String name;
 
     private Long sort;
 
@@ -42,30 +38,6 @@ public class Dept implements Serializable {
     private String remarks;
 
     private String delFlag;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Long getParentId() {
-		return parentId;
-	}
-
-	public void setParentId(Long parentId) {
-		this.parentId = parentId;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public Long getSort() {
 		return sort;
@@ -153,14 +125,6 @@ public class Dept implements Serializable {
 
 	public void setDelFlag(String delFlag) {
 		this.delFlag = delFlag;
-	}
-
-	@Override
-	public String toString() {
-		return "Dept [id=" + id + ", parentId=" + parentId + ", name=" + name + ", sort=" + sort + ", code=" + code
-				+ ", address=" + address + ", master=" + master + ", phone=" + phone + ", fax=" + fax + ", email="
-				+ email + ", updateBy=" + updateBy + ", updateDate=" + updateDate + ", remarks=" + remarks
-				+ ", delFlag=" + delFlag + "]";
 	}
 	
 }

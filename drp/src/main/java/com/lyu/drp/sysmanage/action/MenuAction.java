@@ -12,6 +12,7 @@ import com.lyu.drp.sysmanage.dto.TreeDto;
 import com.lyu.drp.sysmanage.entity.Menu;
 import com.lyu.drp.sysmanage.service.IMenuService;
 import com.lyu.drp.util.MenuUtils;
+import com.lyu.drp.util.TreeUtils;
 import com.lyu.drp.util.UserUtils;
 
 /**
@@ -122,7 +123,8 @@ public class MenuAction {
 		// ---temp---
 		
 		// 因为前台的tree table必须按菜单的层级顺序显示才能达到顺序效果，所以要先递归排序一下
-		MenuUtils.sortMenuList(returnMenuList, menuListUnSort, 0L);
+//		MenuUtils.sortMenuList(returnMenuList, menuListUnSort, 0L);
+		TreeUtils.sortTreeList(returnMenuList, menuListUnSort, 0L);
 		this.menuList = returnMenuList;
 		return "menuList";
 	}

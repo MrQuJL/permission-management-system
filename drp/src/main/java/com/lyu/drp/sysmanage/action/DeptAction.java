@@ -12,6 +12,7 @@ import com.lyu.drp.sysmanage.dto.DeptDto;
 import com.lyu.drp.sysmanage.entity.Dept;
 import com.lyu.drp.sysmanage.service.IDeptService;
 import com.lyu.drp.util.DeptUtils;
+import com.lyu.drp.util.TreeUtils;
 
 /**
  * 类名称: 部门业务控制类
@@ -124,7 +125,8 @@ public class DeptAction {
 		List<Dept> returnDepts = new ArrayList<Dept>();
 		
 		// 对部门进行排序
-		DeptUtils.sortDeptList(returnDepts, deptList, 0L);
+		// DeptUtils.sortDeptList(returnDepts, deptList, 0L);
+		TreeUtils.sortTreeList(returnDepts, deptList, 0L);
 		
 		this.deptList = returnDepts;
 		
