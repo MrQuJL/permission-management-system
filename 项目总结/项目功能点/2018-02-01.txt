@@ -32,5 +32,13 @@ for(var i=0; i<nodes.length; i++){
 7. treeTable的层次展开设置
 $("#treeTable").treeTable({expandLevel : 2});
 
+8. @Deprecated注解用来注释那些已经过时的方法（不推荐使用的方法），
+往往还要在注释里面给使用者推荐一个取而代之的方法
+
+在本项目中，DeptUtils的sortDeptList方法和MenuUtils的sortMenuList方法
+都用重新封装的一个TreeUtils来取代，调用其中的泛型方法sortTreeList来
+完成树形结构的排序
+
+
 
 

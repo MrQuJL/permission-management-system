@@ -3,7 +3,6 @@ package com.lyu.drp.util;
 import java.util.List;
 
 import com.lyu.drp.sysmanage.entity.Dept;
-import com.lyu.drp.sysmanage.entity.Menu;
 
 /**
  * 类名称: 部门工具类
@@ -20,7 +19,9 @@ public class DeptUtils {
 	 * @param returnMenus
 	 * @param menuList	
 	 * @param parentId	
+	 * @deprecated 方法已经过时，请使用com.lyu.drp.util.TreeUtils.sortTreeList
 	 */
+	@Deprecated
 	public static void sortDeptList(List<Dept> returnDepts, List<Dept> deptList, Long parentId) {
 		// 轮询所有的菜单
 		for (int i = 0; i < deptList.size(); i++) {

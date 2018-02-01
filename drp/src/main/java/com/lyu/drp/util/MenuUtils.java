@@ -18,8 +18,10 @@ public class MenuUtils {
 	 * 对菜单列表进行递归排序
 	 * @param returnMenus	
 	 * @param menuList		
-	 * @param parentId		
+	 * @param parentId	
+	 * @deprecated 方法已经过时，请使用com.lyu.drp.util.TreeUtils.sortTreeList
 	 */
+	@Deprecated
 	public static void sortMenuList(List<Menu> returnMenus, List<Menu> menuList,
 		Long parentId) {
 		
