@@ -1,0 +1,35 @@
+2018/2/1
+
+1. 绩效考核：
+	* bug率
+	* 编码规范
+	* ...
+
+2. 树节点对象的封装：
+	* id
+	* pId
+	* name
+
+3. 修改zTree的默认key来完成后台封装的TreeDto的属性与前台js对象
+的属性之间的映射关系
+
+4. 在使用zTree的时候可以直接将后台传过来的数据作为zTree的初始化参数：
+
+success : function(data) {
+	var menuArray = JSON.parse(data.jsonObj);
+	$.fn.zTree.init($("#menuTree"), setting, menuArray);
+}
+
+5. 展开指定层级节点的代码：
+
+var nodes = menuTree.getNodesByParam("level",2); // 这里的2代表展开三级，不包含顶级节点
+for(var i=0; i<nodes.length; i++){
+	menuTree.expandNode(nodes[i],true,false,true,false);
+}
+
+
+
+
+
+
+

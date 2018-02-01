@@ -139,7 +139,10 @@ String path = request.getContextPath();
 			},
 			data: {
 				simpleData: {
-					enable: true
+					enable: true,
+					idKey : "id",
+					pIdKey : "parentId",
+					rootPId : 0
 				}
 			},
 			callback: {
@@ -148,8 +151,6 @@ String path = request.getContextPath();
 			}
 		};
 
-		var zNodes = new Array();
-		
 		// 点击之前会触发的事件
 		function beforeClick(treeId, treeNode) {
 			/*var check = (treeNode && !treeNode.isParent);
@@ -211,12 +212,18 @@ String path = request.getContextPath();
 				success : function(data) {
 					var menuArray = JSON.parse(data.jsonObj);
 					
-					for (var i = 0; i < menuArray.length; i++) {
-						var temp = {};
-						temp.name = menuArray[i].name;
-						temp.id = menuArray[i].id;
-						temp.pId = menuArray[i].pId;
-						zNodes.push(temp);
+					var menuTree = $.fn.zTree.init($("#menuTree"), setting, menuArray);
+					
+					// 展开所有节点
+					var nodes = menuTree.getNodesByParam("level",1);
+					for(var i=0; i<nodes.length; i++){
+						menuTree.expandNode(nodes[i],true,false,true,false);
+					}
+					
+					// 如果是修改页面，定位到当前选中的节点
+					var selectNodeId = $("#parentId").val();
+					if (selectNodeId != null) {
+						menuTree.selectNode(menuTree.getNodeByParam("id",selectNodeId,null));
 					}
 					
 					// 后台传过来的数据结构如下：
@@ -226,18 +233,6 @@ String path = request.getContextPath();
 					 {"name":"修改密码","pId":28,"id":30}] */
 				}
 			});
-			
-			$.fn.zTree.init($("#menuTree"), setting, zNodes);
-			var menuTree = $.fn.zTree.getZTreeObj("menuTree");
-			// 展开所有节点
-			menuTree.expandAll(true);
-			
-			// 如果是修改页面，定位到当前选中的节点
-			var selectNodeId = $("#parentId").val();
-			if (selectNodeId != null) {
-				menuTree.selectNode(menuTree.getNodeByParam("id",selectNodeId,null));
-			}
-			
 		});
 	</script>
 </body>

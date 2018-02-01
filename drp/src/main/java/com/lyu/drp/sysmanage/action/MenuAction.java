@@ -8,6 +8,7 @@ import java.util.Map;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.lyu.drp.sysmanage.dto.MenuDto;
+import com.lyu.drp.sysmanage.dto.TreeDto;
 import com.lyu.drp.sysmanage.entity.Menu;
 import com.lyu.drp.sysmanage.service.IMenuService;
 import com.lyu.drp.util.MenuUtils;
@@ -206,7 +207,7 @@ public class MenuAction {
 	 * @return
 	 */
 	public String getMenuTree(){		
-		List<Map<String,Object>> mapList  = new ArrayList<Map<String,Object>>();
+		List<TreeDto> mapList  = new ArrayList<TreeDto>();
 		List<Menu> menuList = this.menuService.getMenuListByUserId(UserUtils.getCurrentUserId());
 		
 		//
@@ -232,22 +233,22 @@ public class MenuAction {
 				}
 				
 				if (!flag) {
-					Map<String,Object> map = new HashMap<String,Object>();
-					map.put("id", menu.getId());
-					map.put("pId", menu.getParentId());
-					map.put("name", menu.getName());
+					TreeDto node = new TreeDto();
+					node.setId(menu.getId());
+					node.setParentId(menu.getParentId());
+					node.setName(menu.getName());
 					
-					mapList.add(map);
+					mapList.add(node);
 				}
 			}
 		} else {
 			for(Menu menu:menuList){
-				Map<String,Object> map = new HashMap<String,Object>();
-				map.put("id", menu.getId());
-				map.put("pId", menu.getParentId());
-				map.put("name", menu.getName());
+				TreeDto node = new TreeDto();
+				node.setId(menu.getId());
+				node.setParentId(menu.getParentId());
+				node.setName(menu.getName());
 				
-				mapList.add(map);
+				mapList.add(node);
 			}
 		}
 		
