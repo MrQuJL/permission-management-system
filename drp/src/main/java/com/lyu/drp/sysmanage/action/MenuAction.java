@@ -165,6 +165,10 @@ public class MenuAction {
 		
 		if (menu.getId() == null) { // id为空则为新增
 			this.message = "新增菜单失败";
+			// 如果没有选择父部门那么默认父部门为0
+			if (menu.getParentId() == null) {
+				menu.setParentId(0L);
+			}
 			boolean flag = menuService.saveMenu(menu);
 			if (flag) {
 				this.message = "新增菜单成功!";

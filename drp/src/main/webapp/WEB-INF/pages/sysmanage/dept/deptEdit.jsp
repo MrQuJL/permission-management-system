@@ -72,12 +72,12 @@ String path = request.getContextPath();
 			<div class="controls">
 				<div class="input-append">
 					<input id="parentId" name="parentId" class="" type="hidden" value="${deptDto.parentId}"/>
-					<input id="parentName" name="parentName" class="required" readonly="readonly" type="text" value="${deptDto.parentName}"/>
+					<input id="parentName" name="parentName" class="" readonly="readonly" type="text" value="${deptDto.parentName}"/>
 					<a id="deptBtn" href="javascript:showMenu();" class="btn">
 						&nbsp;<i class="icon-search"></i>&nbsp;
 					</a>&nbsp;&nbsp;
 				</div>
-				<span class="help-inline"><span style="color:red">* </span>必选</span>
+				
 				<!-- zTree -->
 				<div id="deptContent" class="deptContent" style="display:none; position:absolute;">
 					<ul id="deptTree" class="ztree" style="margin-top:0; 

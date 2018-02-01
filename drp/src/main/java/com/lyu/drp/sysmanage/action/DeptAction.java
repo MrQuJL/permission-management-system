@@ -159,6 +159,9 @@ public class DeptAction {
 		
 		if (dept.getId() == null) { // 解析出来的部门对象的id为空说明是新增
 			boolean flag = false;
+			if (dept.getParentId() == null) {
+				dept.setParentId(0L);
+			}
 			flag = deptService.saveDept(dept);
 			
 			if (flag) {
@@ -180,6 +183,11 @@ public class DeptAction {
 		return "success";
 	}
 	
+	/**
+	 * 确定当前部门下是否有子部门
+	 * @param 
+	 * @return
+	 */
 	public String confirmHasSubDept() {
 		// 判断deptId下面是否有子部门
 		boolean flag = deptService.hasSubDept(deptId);
@@ -219,14 +227,12 @@ public class DeptAction {
 			// 查询出所有子孙部门的id
 			List<Long> subDeptIds = deptService.getAllSubDeptIds(deptId);
 			// 剔除子孙部门
-			
 			for (ListIterator<Dept> iterator = deptList.listIterator(); iterator.hasNext();) {
 				Dept dept = iterator.next();
 				if (subDeptIds.contains(dept.getId()) || dept.getId() == this.deptId) {
 					iterator.remove();
 				}
 			}
-			
 		}
 		
 		for (Dept dept : deptList) {

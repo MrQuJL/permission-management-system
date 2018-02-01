@@ -13,7 +13,7 @@ String path = request.getContextPath();
 <%@ include file="/WEB-INF/pages/include/head.jsp" %>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("#treeTable").treeTable({expandLevel : 5});
+			$("#treeTable").treeTable({expandLevel : 2});
 		});
 	</script>
 	<script type="text/javascript">top.$.jBox.closeTip();</script>

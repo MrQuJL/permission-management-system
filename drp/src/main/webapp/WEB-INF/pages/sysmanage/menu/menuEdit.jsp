@@ -215,7 +215,7 @@ String path = request.getContextPath();
 					var menuTree = $.fn.zTree.init($("#menuTree"), setting, menuArray);
 					
 					// 展开所有节点
-					var nodes = menuTree.getNodesByParam("level",1);
+					var nodes = menuTree.getNodesByParam("level",2);
 					for(var i=0; i<nodes.length; i++){
 						menuTree.expandNode(nodes[i],true,false,true,false);
 					}

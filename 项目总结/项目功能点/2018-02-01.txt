@@ -27,9 +27,10 @@ for(var i=0; i<nodes.length; i++){
 	menuTree.expandNode(nodes[i],true,false,true,false);
 }
 
+6. 一个部门可以没有父部门，那么它的parentId就是0
 
-
-
+7. treeTable的层次展开设置
+$("#treeTable").treeTable({expandLevel : 2});
 
 
 
