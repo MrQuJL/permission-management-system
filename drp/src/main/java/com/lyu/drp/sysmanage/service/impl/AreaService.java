@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.lyu.drp.sysmanage.entity.Area;
 import com.lyu.drp.sysmanage.mapper.AreaMapper;
 import com.lyu.drp.sysmanage.service.IAreaService;
-import com.lyu.drp.util.UserUtils;
 
 /**
  * 类名称: 区域服务接口的实现类

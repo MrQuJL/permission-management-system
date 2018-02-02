@@ -16,13 +16,39 @@ String path = request.getContextPath();
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#name").focus();
-			$("#inputForm").validate({
+			$("#saveAreaForm").validate({
 				submitHandler: function(form){
 					loading('正在提交，请稍等...');
 					
+					var obj = {};
+					var formObj = $("#saveAreaForm").serializeArray();
+					$.each(formObj, function(i, item) {
+						obj[item.name] = item.value;
+					});
+					obj = JSON.stringify(obj);
 					
+					var msg = "";
+					if ($("#id").val() == "") {
+						msg = "新增";
+					} else {
+						msg = "修改";
+					}
 					
-					
+					$.ajax({
+						type : "post",
+						url : "${ctx}/sysmgr/saveArea.action",
+						data : {"jsonObj" : obj},
+						dataType : "json",
+						success : function(data) {
+							if (data.message == "yes") { // 更新数据成功
+								alert(msg+"区域成功！");
+								location.href = "${ctx}/sysmgr/gotoAreaList.action";
+							} else { // 更新数据失败
+								alert(msg+"区域失败,请联系系统管理员!");
+							}
+							top.$.jBox.closeTip();
+						}
+					});
 					
 				},
 				errorContainer: "#messageBox",
@@ -37,7 +63,6 @@ String path = request.getContextPath();
 			});
 		});
 	</script>
-	<script type="text/javascript">top.$.jBox.closeTip();</script>
 </head>
 <body>
 	<ul class="nav nav-tabs">
@@ -51,7 +76,7 @@ String path = request.getContextPath();
 			</a>
 		</li>
 	</ul><br/>
-	<form id="inputForm" class="form-horizontal" action="#" method="post">
+	<form id="saveAreaForm" class="form-horizontal" action="#" method="post">
 		<input id="id" name="id" type="hidden" value="${area.id}"/>
 
 		<div class="control-group">
@@ -185,7 +210,6 @@ String path = request.getContextPath();
 					// 展开所有节点
 					var nodes = areaTree.getNodesByParam("level",1);
 					for(var i=0; i< nodes.length; i++){
-						alert(nodes[i].name);
 						areaTree.expandNode(nodes[i],true,false,true,false);
 					}
 					

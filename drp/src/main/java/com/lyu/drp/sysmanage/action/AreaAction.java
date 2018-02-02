@@ -3,6 +3,7 @@ package com.lyu.drp.sysmanage.action;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.lyu.drp.sysmanage.dto.TreeDto;
 import com.lyu.drp.sysmanage.entity.Area;
@@ -105,6 +106,34 @@ public class AreaAction {
 		
 		return "success";
 	}
+	
+	/**
+	 * 保存区域，新增的话editFlag为1，修改为2
+	 * @param 
+	 * @return
+	 */
+	public String saveArea() {
+		Area area = JSON.parseObject(jsonObj, Area.class);
+		
+		if (area.getParentId() == null) { // 没有选择父部门则为顶级部门
+			area.setParentId(0L);
+		}
+		
+		if (area.getId() == null) { // 新增区域
+			boolean flag = areaService.saveArea(area);
+			this.message = "no";
+			if (flag) {
+				this.message = "yes";
+			}
+		} else { // 修改区域
+			
+		}
+		
+		
+		
+		return "success";
+	}
+	
 	
 	/**
 	 * 加载区域zTree
