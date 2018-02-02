@@ -129,6 +129,15 @@
 			</result>
 		</action>
 		
+		<!-- 区域管理 -->
+		<action name = "gotoAreaList" class= "com.lyu.drp.sysmanage.action.AreaAction" method = "gotoAreaList">
+			<result>/WEB-INF/pages/sysmanage/area/areaList.jsp</result>
+		</action>
+		
+		<action name = "gotoAreaEdit" class= "com.lyu.drp.sysmanage.action.AreaAction" method = "gotoAreaEdit">
+			<result>/WEB-INF/pages/sysmanage/area/areaEdit.jsp</result>
+		</action>
+		
 	</package>
 	
 </struts>

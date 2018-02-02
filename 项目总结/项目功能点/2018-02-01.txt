@@ -39,6 +39,6 @@ $("#treeTable").treeTable({expandLevel : 2});
 都用重新封装的一个TreeUtils来取代，调用其中的泛型方法sortTreeList来
 完成树形结构的排序
 
-
+9. 根据编码统计某个区域的支出以及销售额...所以code这个字段还是有点用的
 
 
