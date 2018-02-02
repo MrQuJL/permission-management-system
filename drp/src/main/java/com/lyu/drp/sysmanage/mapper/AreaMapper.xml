@@ -11,12 +11,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update_by, update_date, remarks, del_flag
 	</sql>
 	
+	<!-- 查询所有的区域列表 -->
 	<select id="getAllAreaList" resultType="area">
 		SELECT <include refid="all_area_columns" />
 		FROM drp_sys_area
 		WHERE del_flag = 0
 	</select>
 	
-	
+	<!-- 添加区域 -->
+	<insert id="saveArea" parameterType="area">
+		INSERT INTO drp_sys_area(parent_id, name, sort, code, create_by,
+		create_date, update_by, update_date, remarks)
+		VALUES(#{parentId}, #{name}, #{sort}, #{code}, #{createBy}, #{createDate},
+		#{updateBy}, #{updateDate}, #{remarks})
+	</insert>
 	
 </mapper>

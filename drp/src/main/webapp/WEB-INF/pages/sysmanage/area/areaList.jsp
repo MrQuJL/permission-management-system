@@ -38,18 +38,6 @@ String path = request.getContextPath();
 		</thead>
 		<tbody id="treeTableList">
 			
-			<!-- <tr id="1" pId="0">
-				<td><a href="#">中国</a></td>
-				<td>086</td>
-				<td>国家</td>
-				<td></td>
-				<td>
-					<a href="areaAdd.html">修改</a>
-					<a href="#" onclick="return confirmx('要删除该区域及所有子区域项吗？', this.href)">删除</a>
-					<a href="areaAdd.html">添加下级区域</a>
-				</td>
-			</tr> -->
-			
 			<c:forEach items="${areaList}" var="area">
 				<tr id="${area.id}" pId="${area.parentId}">
 					<td><a href="#">${area.name}</a></td>

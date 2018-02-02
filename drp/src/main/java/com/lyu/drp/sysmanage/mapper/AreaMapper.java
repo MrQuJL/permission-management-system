@@ -21,6 +21,11 @@ public interface AreaMapper {
 	 */
 	public List<Area> getAllAreaList();
 	
-	
+	/**
+	 * 添加区域
+	 * @param 
+	 * @return
+	 */
+	public int saveArea(Area area);
 	
 }

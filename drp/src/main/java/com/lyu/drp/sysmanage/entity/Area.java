@@ -13,11 +13,11 @@ public class Area extends TreeDto implements Serializable {
 
     private String code;
 
-    private String createBy;
+    private Long createBy;
 
     private Date createDate;
 
-    private String updateBy;
+    private Long updateBy;
 
     private Date updateDate;
 
@@ -41,11 +41,11 @@ public class Area extends TreeDto implements Serializable {
 		this.code = code;
 	}
 
-	public String getCreateBy() {
+	public Long getCreateBy() {
 		return createBy;
 	}
 
-	public void setCreateBy(String createBy) {
+	public void setCreateBy(Long createBy) {
 		this.createBy = createBy;
 	}
 
@@ -57,11 +57,11 @@ public class Area extends TreeDto implements Serializable {
 		this.createDate = createDate;
 	}
 
-	public String getUpdateBy() {
+	public Long getUpdateBy() {
 		return updateBy;
 	}
 
-	public void setUpdateBy(String updateBy) {
+	public void setUpdateBy(Long updateBy) {
 		this.updateBy = updateBy;
 	}
 

@@ -46,4 +46,19 @@ public class AreaServiceTest {
 		
 	}
 	
+	// 查询部门列表
+	@Test
+	public void testAddArea() {
+		Area area = new Area();
+		
+		area.setParentId(1L);
+		area.setName("小光");
+		area.setCode("102");
+		area.setSort(12L);
+		area.setRemarks("这是测试数据");
+		
+		System.out.println(areaService.saveArea(area));
+		
+	}
+	
 }

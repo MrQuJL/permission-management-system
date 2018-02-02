@@ -3,6 +3,8 @@ package com.lyu.drp.sysmanage.action;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.alibaba.fastjson.JSONArray;
+import com.lyu.drp.sysmanage.dto.TreeDto;
 import com.lyu.drp.sysmanage.entity.Area;
 import com.lyu.drp.sysmanage.service.IAreaService;
 import com.lyu.drp.util.TreeUtils;
@@ -22,6 +24,8 @@ public class AreaAction {
 	private String message;
 	// 修改(2)还是增加(1)
 	private Integer editFlag;
+	// 区域id
+	private Long areaId;
 	// 查询到的区域列表
 	private List<Area> areaList;
 	// spring注入
@@ -51,6 +55,14 @@ public class AreaAction {
 		this.editFlag = editFlag;
 	}
 	
+	public Long getAreaId() {
+		return areaId;
+	}
+
+	public void setAreaId(Long areaId) {
+		this.areaId = areaId;
+	}
+
 	public List<Area> getAreaList() {
 		return areaList;
 	}
@@ -90,6 +102,38 @@ public class AreaAction {
 	 * @return
 	 */
 	public String gotoAreaEdit() {
+		
+		return "success";
+	}
+	
+	/**
+	 * 加载区域zTree
+	 * @param 
+	 * @return
+	 */
+	public String getAreaTree() {
+		
+		List<Area> areaList = areaService.getAllAreaList();
+		List<TreeDto> treeList = new ArrayList<TreeDto>();
+		
+		for (Area area : areaList) {
+			TreeDto treeNode = new TreeDto();
+			treeNode.setId(area.getId());
+			treeNode.setName(area.getName());
+			treeNode.setParentId(area.getParentId());
+			treeList.add(treeNode);
+		}
+		
+		// 说明是通过单击修改按钮进来的，要剔除掉自己以及它的子孙节点
+		if (areaId != null) {
+			
+			
+			
+			
+		}
+		
+		
+		this.jsonObj = JSONArray.toJSONString(treeList);
 		
 		return "success";
 	}

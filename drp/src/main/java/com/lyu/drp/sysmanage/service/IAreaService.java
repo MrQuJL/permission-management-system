@@ -21,4 +21,11 @@ public interface IAreaService {
 	 */
 	public List<Area> getAllAreaList();
 	
+	/**
+	 * 新增区域
+	 * @param 
+	 * @return
+	 */
+	public boolean saveArea(Area area);
+	
 }

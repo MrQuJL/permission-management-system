@@ -216,7 +216,7 @@ String path = request.getContextPath();
 					
 					// 展开所有节点
 					var nodes = menuTree.getNodesByParam("level",2);
-					for(var i=0; i<nodes.length; i++){
+					for(var i=0; i< nodes.length; i++){
 						menuTree.expandNode(nodes[i],true,false,true,false);
 					}
 					
