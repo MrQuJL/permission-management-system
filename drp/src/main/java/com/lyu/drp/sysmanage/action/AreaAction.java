@@ -156,6 +156,46 @@ public class AreaAction {
 		return "success";
 	}
 	
+	/**
+	 * 确认是否有子区域
+	 * @param 
+	 * @return
+	 */
+	public String confirmHasSubArea() {
+		boolean flag = true;
+		
+		flag = areaService.hasSubArea(this.areaId);
+		
+		if (!flag) { // 为false则表示没有子区域，可以删除
+			this.message = "no";
+			
+		} else { // 为true则表示由子区域，不能删除
+			this.message = "yes";
+		}
+		
+		
+		return "success";
+	}
+	
+	/**
+	 * 删除子区域
+	 * @param 
+	 * @return
+	 */
+	public String delArea() {
+		if (!areaService.hasSubArea(this.areaId)) {
+			boolean flag = areaService.delArea(this.areaId);
+			if (flag) {
+				this.message = "删除区域成功！";
+			} else {
+				this.message = "删除失败，请先删除子区域！";
+			}
+		} else {
+			this.message = "删除失败，请先删除子区域！";
+		}
+		
+		return "success";
+	}
 	
 	/**
 	 * 加载区域zTree

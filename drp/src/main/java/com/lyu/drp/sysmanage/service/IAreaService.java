@@ -37,9 +37,16 @@ public interface IAreaService {
 	public List<Area> getAllSubAreasByPId(Long pId);
 	
 	/**
-	 * 新增区域
+	 * 当前区域下是否有子区域
 	 * @param 
 	 * @return
+	 */
+	public boolean hasSubArea(Long areaId);
+	
+	/**
+	 * 新增区域
+	 * @param 
+	 * @return true-->有子区域 false-->没有子区域
 	 */
 	public boolean saveArea(Area area);
 	
@@ -49,5 +56,12 @@ public interface IAreaService {
 	 * @return
 	 */
 	public boolean updateArea(Area area);
+	
+	/**
+	 * 删除区域（逻辑删除）
+	 * @param 
+	 * @return
+	 */
+	public boolean delArea(Long areaId);
 	
 }

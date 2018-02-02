@@ -52,11 +52,33 @@ public class AreaService implements IAreaService {
 	}
 	
 	@Override
+	public boolean hasSubArea(Long areaId) {
+		boolean flag = false;
+		
+		int rows = areaMapper.countSubArea(areaId);
+		
+		if (rows > 0) {
+			flag = true;
+		}
+		
+		return flag;
+	}
+	
+	@Override
 	public boolean saveArea(Area area) {
 		boolean flag = false;
 		
 		if (area.getParentId() == null) { // 没有选择父部门则为顶级部门
 			area.setParentId(0L);
+		}
+		if (area.getCode() == null) {
+			area.setCode("");
+		}
+		if (area.getSort() == null) {
+			area.setSort(0L);
+		}
+		if (area.getRemarks() == null) {
+			area.setRemarks("");
 		}
 		
 		area.setCreateBy(UserUtils.getCurrentUserId());
@@ -85,6 +107,19 @@ public class AreaService implements IAreaService {
 		area.setUpdateDate(new Date());
 		
 		int rows = areaMapper.updateArea(area);
+		
+		if (rows > 0) {
+			flag = true;
+		}
+		
+		return flag;
+	}
+
+	@Override
+	public boolean delArea(Long areaId) {
+		boolean flag = false;
+		
+		int rows = areaMapper.delArea(areaId);
 		
 		if (rows > 0) {
 			flag = true;

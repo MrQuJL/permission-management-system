@@ -144,6 +144,18 @@
 			</result>
 		</action>
 		
+		<action name = "confirmHasSubArea" class= "com.lyu.drp.sysmanage.action.AreaAction" method = "confirmHasSubArea">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
+		<action name = "delArea" class= "com.lyu.drp.sysmanage.action.AreaAction" method = "delArea">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
 		<action name = "areaTreeData" class= "com.lyu.drp.sysmanage.action.AreaAction" method = "getAreaTree">
 			<result type="json">
 				<param name="includeProperties">jsonObj</param>

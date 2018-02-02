@@ -46,7 +46,7 @@ String path = request.getContextPath();
 					<td>${area.remarks}</td>
 					<td>
 						<a href="${ctx}/sysmgr/gotoAreaEdit.action?editFlag=2&areaId=${area.id}">修改</a>
-						<a href="#" onclick="">删除</a>
+						<a href="javascript:areaMgr.confirmHasSubArea(${area.id});">删除</a>
 						<a href="${ctx}/sysmgr/gotoAreaEdit.action?editFlag=1&areaId=${area.id}">添加下级区域</a>
 					</td>
 				</tr>
@@ -54,6 +54,40 @@ String path = request.getContextPath();
 				
 		</tbody>
 	</table>
-
+	<script type="text/javascript">
+		var areaMgr = {
+			// 确认是否有子区域
+			confirmHasSubArea : function(areaId) {
+				$.ajax({
+					type : "post",
+					url : "${ctx}/sysmgr/confirmHasSubArea.action",
+					data : {"areaId" : areaId},
+					dataType : "json",
+					success : function(data) {
+						if (data.message == "yes") { // 有子区域不能删除
+							alert("该区域下面有子区域，请先删除子区域再删除该区域！");
+						} else {
+							areaMgr.delArea(areaId);
+						}
+					}
+				});
+			},
+			// 如果没有子区域则删除该取悦
+			delArea : function(areaId) {
+				if (confirm("您确定要删除该区域吗?")) {
+					$.ajax({
+						type : "post",
+						url : "${ctx}/sysmgr/delArea.action",
+						data : {"areaId" : areaId},
+						dataType : "json",
+						success : function(data) {
+							alert(data.message);
+							location.reload();
+						}
+					});
+				}
+			}
+		}
+	</script>
 </body>
 </html>

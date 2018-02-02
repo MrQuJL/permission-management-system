@@ -37,6 +37,14 @@ public interface AreaMapper {
 	public List<Area> getSubAreaByPId(Long pId);
 	
 	/**
+	 * 统计当前区域下的直接子区域的数量
+	 * @param 
+	 * @return
+	 */
+	public int countSubArea(Long areaId);
+	
+	
+	/**
 	 * 添加区域
 	 * @param 
 	 * @return
@@ -49,5 +57,12 @@ public interface AreaMapper {
 	 * @return
 	 */
 	public int updateArea(Area area);
+	
+	/**
+	 * 删除子区域（逻辑删除）
+	 * @param 
+	 * @return
+	 */
+	public int delArea(Long areaId);
 	
 }
