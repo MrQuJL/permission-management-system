@@ -2,6 +2,7 @@ package com.lyu.drp.sysmanage.action;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -126,7 +127,6 @@ public class AreaAction {
 			this.area = new AreaDto();
 			this.area.setParentId(parentId);
 			this.area.setParentName(parentName);
-			
 		}
 		
 		return "success";
@@ -153,7 +153,6 @@ public class AreaAction {
 				this.message = "yes";
 			}
 		}
-		
 		return "success";
 	}
 	
@@ -164,9 +163,21 @@ public class AreaAction {
 	 * @return
 	 */
 	public String getAreaTree() {
-		
 		List<Area> areaList = areaService.getAllAreaList();
 		List<TreeDto> treeList = new ArrayList<TreeDto>();
+		
+		// 说明是通过单击修改按钮进来的，要剔除掉自己以及它的子孙节点
+		if (areaId != null) {
+			// 根据该id查询出当前区域的所有子孙区域并把他们从treeList中剔除掉
+			List<Area> sonAreaList = areaService.getAllSubAreasByPId(this.areaId); 
+			// 使用listIterator迭代器剔除
+			for (ListIterator<Area> it = areaList.listIterator(); it.hasNext();) {
+				Area area = it.next();
+				if (sonAreaList.contains(area) || area.getId().longValue() == this.areaId) {
+					it.remove();
+				}
+			}
+		}
 		
 		for (Area area : areaList) {
 			TreeDto treeNode = new TreeDto();
@@ -175,15 +186,6 @@ public class AreaAction {
 			treeNode.setParentId(area.getParentId());
 			treeList.add(treeNode);
 		}
-		
-		// 说明是通过单击修改按钮进来的，要剔除掉自己以及它的子孙节点
-		if (areaId != null) {
-			
-			
-			
-			
-		}
-		
 		
 		this.jsonObj = JSONArray.toJSONString(treeList);
 		

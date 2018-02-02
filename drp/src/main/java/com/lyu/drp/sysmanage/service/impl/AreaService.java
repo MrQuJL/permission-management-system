@@ -1,5 +1,6 @@
 package com.lyu.drp.sysmanage.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -36,6 +37,20 @@ public class AreaService implements IAreaService {
 		return areaMapper.getAllAreaList();
 	}
 
+	@Override
+	public List<Area> getAllSubAreasByPId(Long pId) {
+		List<Area> allSubList = new ArrayList<Area>();
+		
+		allSubList = this.areaMapper.getSubAreaByPId(pId);
+		int size = allSubList.size();
+		
+		for (int i = 0; i < size; i++) {
+			allSubList.addAll(this.areaMapper.getSubAreaByPId(allSubList.get(i).getId()));
+		}
+		
+		return allSubList;
+	}
+	
 	@Override
 	public boolean saveArea(Area area) {
 		boolean flag = false;

@@ -49,6 +49,14 @@ public class AreaServiceTest {
 	
 	// 查询部门列表
 	@Test
+	public void testGetAllSubAreasByPId() {
+		List<Area> areaList = areaService.getAllSubAreasByPId(9L);
+		
+		System.out.println(areaList.size());
+	}
+	
+	// 查询部门列表
+	@Test
 	public void testAddArea() {
 		Area area = new Area();
 		

@@ -30,6 +30,13 @@ public interface IAreaService {
 	public List<Area> getAllAreaList();
 	
 	/**
+	 * 通过父级区域id获取所有的子孙区域
+	 * @param 
+	 * @return
+	 */
+	public List<Area> getAllSubAreasByPId(Long pId);
+	
+	/**
 	 * 新增区域
 	 * @param 
 	 * @return

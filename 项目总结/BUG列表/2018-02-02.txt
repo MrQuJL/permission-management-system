@@ -1,0 +1,54 @@
+2018/2/2
+
+1. bug:查询指定id的所有子孙区域的时候报错:
+java.util.ConcurrentModificationException
+	at java.util.ArrayList$Itr.checkForComodification(ArrayList.java:901)
+	at java.util.ArrayList$Itr.next(ArrayList.java:851)
+	at com.lyu.drp.sysmanage.service.impl.AreaService.getAllSubAreasByPId(AreaService.java:46)
+	at com.lyu.drp.test.AreaServiceTest.testGetAllSubAreasByPId(AreaServiceTest.java:53)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+
+原因：
+使用forEach循环的过程中仍不断的向list集合中添加数据，造成了并发修改异常。
+
+解决：记录一开始查询出的直接子区域的size，使用普通for循环递归遍历
+查找孙子区域
+
+
+2. 在一个集合中剔除存在于另一个集合中的元素时contains判断无效
+
+原因：contains方法默认是调用对象的equals方法来判断对象是否存在于容器中，
+如果不重写equals的话默认使用Object的equals方法来判断，而Object的equals方法
+实现如下：
+public boolean equals(Object obj) {
+	return (this == obj);
+}
+
+解决：它只判断对象的引用是否相同，所以只需要重写对象的hashCode和equals方法
+即可
+
+
+
