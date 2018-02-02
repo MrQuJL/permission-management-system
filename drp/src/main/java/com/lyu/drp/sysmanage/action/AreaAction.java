@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.lyu.drp.sysmanage.dto.AreaDto;
 import com.lyu.drp.sysmanage.dto.TreeDto;
 import com.lyu.drp.sysmanage.entity.Area;
 import com.lyu.drp.sysmanage.service.IAreaService;
@@ -27,6 +28,8 @@ public class AreaAction {
 	private Integer editFlag;
 	// 区域id
 	private Long areaId;
+	// 区域对象
+	private AreaDto area;
 	// 查询到的区域列表
 	private List<Area> areaList;
 	// spring注入
@@ -62,6 +65,14 @@ public class AreaAction {
 
 	public void setAreaId(Long areaId) {
 		this.areaId = areaId;
+	}
+
+	public AreaDto getArea() {
+		return area;
+	}
+
+	public void setArea(AreaDto area) {
+		this.area = area;
 	}
 
 	public List<Area> getAreaList() {
@@ -103,6 +114,20 @@ public class AreaAction {
 	 * @return
 	 */
 	public String gotoAreaEdit() {
+		if (editFlag == 2 && this.areaId != null) { // 修改
+			// 调用service查询一下该id的信息
+			this.area = this.areaService.getAreaDetailById(this.areaId);
+			
+		} else if (editFlag == 1 && this.areaId != null) { // 添加下级区域
+			this.area = this.areaService.getAreaDetailById(this.areaId);
+			Long parentId = this.area.getId();
+			String parentName = this.area.getName();
+			this.area = null;
+			this.area = new AreaDto();
+			this.area.setParentId(parentId);
+			this.area.setParentName(parentName);
+			
+		}
 		
 		return "success";
 	}
@@ -115,10 +140,6 @@ public class AreaAction {
 	public String saveArea() {
 		Area area = JSON.parseObject(jsonObj, Area.class);
 		
-		if (area.getParentId() == null) { // 没有选择父部门则为顶级部门
-			area.setParentId(0L);
-		}
-		
 		if (area.getId() == null) { // 新增区域
 			boolean flag = areaService.saveArea(area);
 			this.message = "no";
@@ -126,10 +147,12 @@ public class AreaAction {
 				this.message = "yes";
 			}
 		} else { // 修改区域
-			
+			boolean flag = areaService.updateArea(area);
+			this.message = "no";
+			if (flag) {
+				this.message = "yes";
+			}
 		}
-		
-		
 		
 		return "success";
 	}

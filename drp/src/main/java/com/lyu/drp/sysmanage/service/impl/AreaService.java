@@ -6,9 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.lyu.drp.sysmanage.dto.AreaDto;
 import com.lyu.drp.sysmanage.entity.Area;
 import com.lyu.drp.sysmanage.mapper.AreaMapper;
 import com.lyu.drp.sysmanage.service.IAreaService;
+import com.lyu.drp.util.UserUtils;
 
 /**
  * 类名称: 区域服务接口的实现类
@@ -25,6 +27,11 @@ public class AreaService implements IAreaService {
 	private AreaMapper areaMapper;
 	
 	@Override
+	public AreaDto getAreaDetailById(Long id) {
+		return areaMapper.getAreaDetailById(id);
+	}
+	
+	@Override
 	public List<Area> getAllAreaList() {
 		return areaMapper.getAllAreaList();
 	}
@@ -33,14 +40,36 @@ public class AreaService implements IAreaService {
 	public boolean saveArea(Area area) {
 		boolean flag = false;
 		
-//		area.setCreateBy(UserUtils.getCurrentUserId());
-		area.setCreateBy(1L);
+		if (area.getParentId() == null) { // 没有选择父部门则为顶级部门
+			area.setParentId(0L);
+		}
+		
+		area.setCreateBy(UserUtils.getCurrentUserId());
 		area.setCreateDate(new Date());
-//		area.setUpdateBy(UserUtils.getCurrentUserId());
-		area.setUpdateBy(1L);
+		area.setUpdateBy(UserUtils.getCurrentUserId());
 		area.setUpdateDate(new Date());
 		
 		int rows = areaMapper.saveArea(area);
+		
+		if (rows > 0) {
+			flag = true;
+		}
+		
+		return flag;
+	}
+
+	@Override
+	public boolean updateArea(Area area) {
+		boolean flag = false;
+		
+		if (area.getParentId() == null) { // 没有选择父部门则为顶级部门
+			area.setParentId(0L);
+		}
+		
+		area.setUpdateBy(UserUtils.getCurrentUserId());
+		area.setUpdateDate(new Date());
+		
+		int rows = areaMapper.updateArea(area);
 		
 		if (rows > 0) {
 			flag = true;

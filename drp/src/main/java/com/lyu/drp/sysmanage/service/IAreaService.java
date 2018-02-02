@@ -2,6 +2,7 @@ package com.lyu.drp.sysmanage.service;
 
 import java.util.List;
 
+import com.lyu.drp.sysmanage.dto.AreaDto;
 import com.lyu.drp.sysmanage.entity.Area;
 
 /**
@@ -13,6 +14,13 @@ import com.lyu.drp.sysmanage.entity.Area;
  * @version V1.0
  */
 public interface IAreaService {
+	
+	/**
+	 * 获取区域的详细信息,包括父级区域的名称
+	 * @param 
+	 * @return
+	 */
+	public AreaDto getAreaDetailById(Long id);
 	
 	/**
 	 * 查询全部的区域列表
@@ -27,5 +35,12 @@ public interface IAreaService {
 	 * @return
 	 */
 	public boolean saveArea(Area area);
+	
+	/**
+	 * 修改区域
+	 * @param 
+	 * @return
+	 */
+	public boolean updateArea(Area area);
 	
 }

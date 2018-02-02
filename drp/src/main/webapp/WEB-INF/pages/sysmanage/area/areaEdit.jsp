@@ -93,7 +93,6 @@ String path = request.getContextPath();
 			background-color:rgb(243,243,243); width:260px; z-index:9;">
 		</ul>
 	</div>
-
 </div>
 			</div>
 		</div>

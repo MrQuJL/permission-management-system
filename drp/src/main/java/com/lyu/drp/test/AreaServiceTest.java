@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.lyu.drp.sysmanage.dto.AreaDto;
 import com.lyu.drp.sysmanage.entity.Area;
 import com.lyu.drp.sysmanage.service.IAreaService;
 
@@ -58,6 +59,15 @@ public class AreaServiceTest {
 		area.setRemarks("这是测试数据");
 		
 		System.out.println(areaService.saveArea(area));
+		
+	}
+	
+	// 获取部门的详细信息
+	@Test
+	public void testGetAreaDetail() {
+		AreaDto areaDto = areaService.getAreaDetailById(9L);
+		
+		System.out.println(areaDto);
 		
 	}
 	

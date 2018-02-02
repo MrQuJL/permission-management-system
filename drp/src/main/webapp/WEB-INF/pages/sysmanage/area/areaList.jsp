@@ -40,7 +40,7 @@ String path = request.getContextPath();
 			
 			<c:forEach items="${areaList}" var="area">
 				<tr id="${area.id}" pId="${area.parentId}">
-					<td><a href="#">${area.name}</a></td>
+					<td><a href="${ctx}/sysmgr/gotoAreaEdit.action?editFlag=2&areaId=${area.id}">${area.name}</a></td>
 					<td>${area.sort}</td>
 					<td>${area.code}</td>
 					<td>${area.remarks}</td>

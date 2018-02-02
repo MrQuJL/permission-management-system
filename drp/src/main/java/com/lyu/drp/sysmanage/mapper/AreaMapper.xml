@@ -11,6 +11,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update_by, update_date, remarks, del_flag
 	</sql>
 	
+	<!-- 区域表的所有字段的别名 -->
+	<sql id="all_area_columns_alias">
+		A.id, A.parent_id, A.name, A.sort, A.code, A.create_by, A.create_date, 
+		A.update_by, A.update_date, A.remarks, A.del_flag
+	</sql>
+	
+	<select id="getAreaDetailById" parameterType="long" resultType="areaDto">
+		SELECT <include refid="all_area_columns_alias" />,B.name parentName
+		FROM drp_sys_area A LEFT JOIN drp_sys_area B ON A.parent_id = B.id
+		WHERE A.id = #{id}
+	</select>
+	
 	<!-- 查询所有的区域列表 -->
 	<select id="getAllAreaList" resultType="area">
 		SELECT <include refid="all_area_columns" />
@@ -25,5 +37,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES(#{parentId}, #{name}, #{sort}, #{code}, #{createBy}, #{createDate},
 		#{updateBy}, #{updateDate}, #{remarks})
 	</insert>
+	
+	<!-- 修改区域 -->
+	<update id="updateArea" parameterType="area">
+		UPDATE drp_sys_area
+		<set>
+			<if test="parentId != null">
+				parent_id = #{parentId},
+			</if>
+			<if test="name != null">
+				name = #{name},
+			</if>
+			<if test="sort != null">
+				sort = #{sort},
+			</if>
+			<if test="code != null">
+				code = #{code},
+			</if>
+			<if test="updateBy != null">
+				update_by = #{updateBy},
+			</if>
+			<if test="updateDate != null">
+				update_date = #{updateDate},
+			</if>
+			<if test="remarks != null">
+				remarks = #{remarks},
+			</if>
+		</set>
+		WHERE id = #{id} AND del_flag = 0
+	</update>
 	
 </mapper>
