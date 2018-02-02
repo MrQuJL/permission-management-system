@@ -1,9 +1,7 @@
 package com.lyu.drp.sysmanage.action;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -11,7 +9,6 @@ import com.lyu.drp.sysmanage.dto.MenuDto;
 import com.lyu.drp.sysmanage.dto.TreeDto;
 import com.lyu.drp.sysmanage.entity.Menu;
 import com.lyu.drp.sysmanage.service.IMenuService;
-import com.lyu.drp.util.MenuUtils;
 import com.lyu.drp.util.TreeUtils;
 import com.lyu.drp.util.UserUtils;
 

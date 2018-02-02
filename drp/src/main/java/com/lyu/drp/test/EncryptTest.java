@@ -82,17 +82,16 @@ public class EncryptTest {
 	
 	@Test
 	public void testDrpEncrypt() {
-		EncryptUtils encryptUtil = new EncryptUtils();
 		// 原密码
 		String plainPsd = "123456";
 		// 1. 生成一个随机数
-		byte[] random = encryptUtil.generateSalt(8);
+		byte[] random = EncryptUtils.generateSalt(8);
 		// 2. 用可逆的加密算法加密随机数
-		String randomHex = encryptUtil.encodeHex(random);
+		String randomHex = EncryptUtils.encodeHex(random);
 		// 3. 将随机数和密码用sha1不可逆加密算法加密
-		byte[] temp = encryptUtil.sha1(plainPsd.getBytes(), random, 1024);
+		byte[] temp = EncryptUtils.sha1(plainPsd.getBytes(), random, 1024);
 		// 4. 将第3步得到的字符串值用可逆的加密算法加密
-		String sha1Psd = encryptUtil.encodeHex(temp);
+		String sha1Psd = EncryptUtils.encodeHex(temp);
 		// 5. 将第2步和第四步的值拼凑
 		String encryptPsd = randomHex + sha1Psd;
 		

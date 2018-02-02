@@ -25,6 +25,7 @@ public class MenuService implements IMenuService {
 	
 	@Autowired
 	private MenuMapper menuMapper;
+	private List<Menu> childMenuList;
 
 	@Override
 	public MenuDto getMenuDetailById(Long menuId) {
@@ -48,8 +49,7 @@ public class MenuService implements IMenuService {
 			return true;
 		}
 		
-		// 查询出menuId的所有子孙菜单
-		List<Menu> childMenuList = null;
+		childMenuList = null;
 		getAllChildsMenuByPId(childMenuList, menuId);
 		for (Menu menu : childMenuList) {
 			if (menu.getId() == isSubMenuId) {

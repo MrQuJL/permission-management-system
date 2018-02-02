@@ -1,20 +1,13 @@
 package com.lyu.drp.sysmanage.action;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.lyu.drp.sysmanage.dto.DeptDto;
-import com.lyu.drp.sysmanage.entity.Dept;
-import com.lyu.drp.sysmanage.service.IDeptService;
+import com.lyu.drp.sysmanage.entity.Area;
+import com.lyu.drp.sysmanage.service.IAreaService;
 import com.lyu.drp.util.TreeUtils;
 
 /**
- * 
  * 类名称: 区域业务控制类
  * 类描述: 用于管理区域的业务控制类
  * 全限定性类名: com.lyu.drp.sysmanage.action.AreaAction
@@ -29,6 +22,10 @@ public class AreaAction {
 	private String message;
 	// 修改(2)还是增加(1)
 	private Integer editFlag;
+	// 查询到的区域列表
+	private List<Area> areaList;
+	// spring注入
+	private IAreaService areaService;
 	
 	public String getJsonObj() {
 		return jsonObj;
@@ -54,12 +51,35 @@ public class AreaAction {
 		this.editFlag = editFlag;
 	}
 	
+	public List<Area> getAreaList() {
+		return areaList;
+	}
+
+	public void setAreaList(List<Area> areaList) {
+		this.areaList = areaList;
+	}
+
+	public IAreaService getAreaService() {
+		return areaService;
+	}
+
+	public void setAreaService(IAreaService areaService) {
+		this.areaService = areaService;
+	}
+
 	/**
 	 * 处理前往区域列表页面的请求
 	 * @param 
 	 * @return
 	 */
 	public String gotoAreaList() {
+		
+		List<Area> tempAreaList = areaService.getAllAreaList();
+		List<Area> returnAreaList = new ArrayList<Area>();
+		
+		TreeUtils.sortTreeList(returnAreaList, tempAreaList, 0L);
+		
+		this.areaList = returnAreaList;
 		
 		return "success";
 	}

@@ -13,6 +13,14 @@ import com.lyu.drp.sysmanage.entity.Dict;
 import com.lyu.drp.sysmanage.mapper.DictMapper;
 import com.lyu.drp.sysmanage.service.IDictService;
 
+/**
+ * 类名称: 字典服务接口实现类
+ * 类描述: 对字典服务接口的一个具体实现
+ * 全限定性类名: com.lyu.drp.sysmanage.service.impl.DictService
+ * @author 曲健磊
+ * @date 2018年2月2日 上午10:27:17
+ * @version V1.0
+ */
 @Service("dictService")
 public class DictService implements IDictService {
 	@Autowired

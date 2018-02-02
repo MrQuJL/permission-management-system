@@ -1,10 +1,6 @@
 package com.lyu.drp.test;
 
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.junit.Before;
@@ -18,7 +14,7 @@ import com.lyu.drp.sysmanage.service.IDeptService;
 
 /**
  * 类名称: DeptService测试类
- * 类描述:用于测试DeptService
+ * 类描述: 用于测试DeptService
  * 全限定性类名: com.lyu.drp.test.DeptServiceTest
  * @author 曲健磊
  * @date 2018年1月30日 下午4:45:44

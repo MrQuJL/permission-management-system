@@ -13,6 +13,14 @@ import com.lyu.drp.sysmanage.mapper.DeptMapper;
 import com.lyu.drp.sysmanage.service.IDeptService;
 import com.lyu.drp.util.UserUtils;
 
+/**
+ * 类名称: 部门服务接口实现类
+ * 类描述: 对部门服务接口的一个具体实现
+ * 全限定性类名: com.lyu.drp.sysmanage.service.impl.DeptService
+ * @author 曲健磊
+ * @date 2018年2月2日 上午10:26:32
+ * @version V1.0
+ */
 @Service("deptService")
 public class DeptService implements IDeptService {
 

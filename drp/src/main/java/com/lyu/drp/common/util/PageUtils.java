@@ -11,7 +11,7 @@ import com.github.pagehelper.PageInfo;
  * @version V1.0
  */
 public class PageUtils {
-	public static String pageStr (PageInfo pageInfo,String queryMethod) {
+	public static String pageStr (PageInfo<?> pageInfo,String queryMethod) {
         StringBuffer sb = new StringBuffer("<ul>");
         //判断当前页是不是首页
         if (pageInfo.isIsFirstPage()

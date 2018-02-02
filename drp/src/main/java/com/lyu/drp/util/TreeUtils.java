@@ -21,6 +21,7 @@ public class TreeUtils {
 	 * @param treeList		
 	 * @param parentId		
 	 */
+	@SuppressWarnings("unchecked")
 	public static <T> void sortTreeList(List<T> returnTreeList, List<T> treeList,
 		Long parentId) {
 		// 轮询所有的菜单

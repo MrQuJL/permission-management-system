@@ -11,7 +11,6 @@ import com.alibaba.fastjson.JSONArray;
 import com.lyu.drp.sysmanage.dto.DeptDto;
 import com.lyu.drp.sysmanage.entity.Dept;
 import com.lyu.drp.sysmanage.service.IDeptService;
-import com.lyu.drp.util.DeptUtils;
 import com.lyu.drp.util.TreeUtils;
 
 /**
