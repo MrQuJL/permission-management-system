@@ -114,7 +114,7 @@ String path = request.getContextPath();
 		<div id="main" style="width: auto;">
 			<div id="header" class="navbar navbar-fixed-top">
 				<div class="navbar-inner">
-					<div class="brand""><span style="cursor:pointer;" onclick="alert('logo');" id="productName">分销系统</span></div>
+					<div class="brand"><span style="cursor:pointer;" onclick="alert('logo');" id="productName">分销系统</span></div>
 					<ul id="userControl" class="nav pull-right">
 
 						<li id="userInfo" class="dropdown">
@@ -127,16 +127,18 @@ String path = request.getContextPath();
 						<li><a href="${ctx}/logout.action" title="退出登录">退出</a></li>
 						<li>&nbsp;</li>
 					</ul>
-	
+					
+					<!--/.nav-collapse -->
 					<div class="nav-collapse">
 						<ul id="menu" class="nav" style="*white-space:nowrap;float:none;">
-									<li class="menu">
-											<a class="menu" href="javascript:" data-href="#" data-id="27"><span>我的面板</span></a>
-									</li>
-									<li class="menu active">
-											<a class="menu" href="javascript:" data-href="#" data-id="2"><span>系统设置</span></a>
+							<li class="menu">
+								<a class="menu" href="javascript:" data-href="#" data-id="27"><span>我的面板</span></a>
+							</li>
+							<li class="menu active">
+								<a class="menu" href="javascript:" data-href="#" data-id="2"><span>系统设置</span></a>
+							</li>
 						</ul>
-					</div><!--/.nav-collapse -->
+					</div>
 				</div>
 		    </div>
 		    <div class="container-fluid">
