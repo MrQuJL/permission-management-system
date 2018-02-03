@@ -36,7 +36,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 获取所有的菜单列表 -->
 	<select id="getAllMenuList" resultType="menu">
 		SELECT <include refid="all_menu_columns" />
-		FROM drp_sys_menu WHERE del_flag = 0
+		FROM drp_sys_menu
+		WHERE del_flag = 0
+		ORDER BY parent_id, sort
 	</select>
 	
 	<!-- 查询出当前菜单的所有子菜单 -->

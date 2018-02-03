@@ -9,9 +9,17 @@
 
 2. 进入主页面的时候就在后台action业务控制类里面查询出当前用户所拥有的菜单列表
 	* 在前台通过forEach循环遍历取到的菜单
-	* mapper.xml中要通过order by先排一下序
 
+3. 一进入主页面先加载一级菜单，当点击一级菜单的时候再去查询二三级菜单
+二三级菜单以一个jsp页面的形式加载进main页面
 
+4. 注：已进入页面的时候要模拟一个初始的点击事件
 
+5. 注：前台展示菜单的时候为了使个人面板排在前面，在后台要通过order by
+排个序，先按照parent_id排个序，如果parent_id相同再按照sort排序，SQL如下：
 
+SELECT <include refid="all_menu_columns" />
+FROM drp_sys_menu
+WHERE del_flag = 0
+ORDER BY parent_id, sort
 

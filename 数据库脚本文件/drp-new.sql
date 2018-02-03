@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50636
 File Encoding         : 65001
 
-Date: 2018-02-02 18:02:36
+Date: 2018-02-03 16:35:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -316,7 +316,7 @@ CREATE TABLE `drp_sys_menu` (
   PRIMARY KEY (`id`),
   KEY `sys_menu_parent_id` (`parent_id`),
   KEY `sys_menu_del_flag` (`del_flag`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8 COMMENT='菜单表';
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 COMMENT='菜单表';
 
 -- ----------------------------
 -- Records of drp_sys_menu
@@ -324,23 +324,23 @@ CREATE TABLE `drp_sys_menu` (
 INSERT INTO `drp_sys_menu` VALUES ('1', '0', '功能菜单', '0', '', '', '', '1', '', '1', '2016-11-28 21:17:24', '', '0');
 INSERT INTO `drp_sys_menu` VALUES ('2', '1', '系统设置', '20', null, null, null, '1', null, '1', '2015-07-10 08:00:00', null, '0');
 INSERT INTO `drp_sys_menu` VALUES ('3', '2', '系统设置', '20', '', '', '', '1', '', '1', '2016-11-23 16:06:14', '', '0');
-INSERT INTO `drp_sys_menu` VALUES ('4', '3', '菜单管理', '10', '/sysmgr/menuList', null, 'icon-list-alt', '1', null, '1', '2015-07-10 08:00:00', null, '0');
+INSERT INTO `drp_sys_menu` VALUES ('4', '3', '菜单管理', '10', '/sysmgr/gotoMenuList', null, 'icon-list-alt', '1', null, '1', '2015-07-10 08:00:00', null, '0');
 INSERT INTO `drp_sys_menu` VALUES ('5', '4', '查看', '30', null, null, null, '0', 'sys:menu:view', '1', '2015-07-10 08:00:00', null, '0');
 INSERT INTO `drp_sys_menu` VALUES ('6', '4', '修改', '40', null, null, null, '0', 'sys:menu:edit', '1', '2015-07-10 08:00:00', null, '0');
-INSERT INTO `drp_sys_menu` VALUES ('7', '3', '角色管理', '20', '/sysmgr/roleList', '', 'icon-lock', '1', '', '1', '2016-11-29 17:09:58', '', '0');
+INSERT INTO `drp_sys_menu` VALUES ('7', '3', '角色管理', '20', '/sysmgr/gotoRoleList', '', 'icon-lock', '1', '', '1', '2016-11-29 17:09:58', '', '0');
 INSERT INTO `drp_sys_menu` VALUES ('8', '7', '查看', '30', null, null, null, '0', 'sys:role:view', '1', '2015-07-10 08:00:00', null, '0');
 INSERT INTO `drp_sys_menu` VALUES ('9', '7', '修改', '40', null, null, null, '0', 'sys:role:edit', '1', '2015-07-10 08:00:00', null, '0');
-INSERT INTO `drp_sys_menu` VALUES ('10', '3', '字典管理', '30', '/sysmgr/dictList', null, 'icon-th-list', '1', null, '1', '2015-07-10 08:00:00', null, '0');
+INSERT INTO `drp_sys_menu` VALUES ('10', '3', '字典管理', '30', '/sysmgr/gotoDictList', null, 'icon-th-list', '1', null, '1', '2015-07-10 08:00:00', null, '0');
 INSERT INTO `drp_sys_menu` VALUES ('11', '10', '查看', '30', null, null, null, '0', 'dict:query', '1', '2015-07-10 08:00:00', null, '0');
 INSERT INTO `drp_sys_menu` VALUES ('12', '10', '修改', '40', null, null, null, '0', 'sys:dict:edit', '1', '2015-07-10 08:00:00', null, '0');
 INSERT INTO `drp_sys_menu` VALUES ('13', '2', '机构用户', '10', null, null, null, '1', null, '1', '2015-07-10 08:00:00', null, '0');
-INSERT INTO `drp_sys_menu` VALUES ('14', '13', '区域管理', '30', '/sysmgr/areaList', '', 'icon-th', '1', '', '1', '2016-11-28 22:39:55', '', '0');
+INSERT INTO `drp_sys_menu` VALUES ('14', '13', '区域管理', '30', '/sysmgr/gotoAreaList', '', 'icon-th', '1', '', '1', '2016-11-28 22:39:55', '', '0');
 INSERT INTO `drp_sys_menu` VALUES ('15', '14', '查看', '30', null, null, null, '0', 'sys:area:view', '1', '2015-07-10 08:00:00', null, '0');
 INSERT INTO `drp_sys_menu` VALUES ('16', '14', '修改', '40', null, null, null, '0', 'sys:area:edit', '1', '2015-07-10 08:00:00', null, '0');
-INSERT INTO `drp_sys_menu` VALUES ('17', '13', '机构管理', '20', '/sysmgr/deptList', '', 'icon-th-large', '1', '', '1', '2016-11-28 22:40:19', '', '0');
+INSERT INTO `drp_sys_menu` VALUES ('17', '13', '机构管理', '20', '/sysmgr/gotoDeptList', '', 'icon-th-large', '1', '', '1', '2016-11-28 22:40:19', '', '0');
 INSERT INTO `drp_sys_menu` VALUES ('18', '17', '查看', '30', null, null, null, '0', 'sys:office:view', '1', '2015-07-10 08:00:00', null, '0');
 INSERT INTO `drp_sys_menu` VALUES ('19', '17', '修改', '40', null, null, null, '0', 'sys:office:edit', '1', '2015-07-10 08:00:00', null, '0');
-INSERT INTO `drp_sys_menu` VALUES ('20', '13', '用户管理', '10', '/sysmgr/userList', '', 'icon-user', '1', '', '1', '2016-12-01 17:17:01', '', '0');
+INSERT INTO `drp_sys_menu` VALUES ('20', '13', '用户管理', '10', '/sysmgr/gotoUserList', '', 'icon-user', '1', '', '1', '2016-12-01 17:17:01', '', '0');
 INSERT INTO `drp_sys_menu` VALUES ('21', '20', '查看', '30', null, null, null, '0', 'sys:user:view', '1', '2015-07-10 08:00:00', null, '0');
 INSERT INTO `drp_sys_menu` VALUES ('22', '20', '修改', '40', null, null, null, '0', 'sys:user:edit', '1', '2015-07-10 08:00:00', null, '0');
 INSERT INTO `drp_sys_menu` VALUES ('27', '1', '我的面板', '10', null, null, null, '1', null, '1', '2015-07-10 08:00:00', null, '0');
@@ -357,13 +357,14 @@ INSERT INTO `drp_sys_menu` VALUES ('39', '37', 'nmnnm', '22', 'bnmmnb', 'bnm', '
 INSERT INTO `drp_sys_menu` VALUES ('40', '28', 'ddfdsf', '12', 'sfd', 'sdf', 'icon-bookmark', '0', '12', '11', '2018-01-29 16:40:05', '12', '1');
 INSERT INTO `drp_sys_menu` VALUES ('41', '27', '1212', '121', '121', '12', 'icon-asterisk', '0', 'df', '1', '2018-01-29 22:30:56', 'sdf', '1');
 INSERT INTO `drp_sys_menu` VALUES ('42', '41', '覆盖', '22', 'df', 'df', 'icon-book', '0', 'd', '1', '2018-01-29 20:24:47', 'df', '1');
-INSERT INTO `drp_sys_menu` VALUES ('43', '27', 'test', '12', 'dfsd', 'sdf', 'icon-exclamation-sign', '0', 'sdf', '11', '2018-02-01 13:18:34', 'sdf', '0');
+INSERT INTO `drp_sys_menu` VALUES ('43', '27', 'test', '12', 'dfsd', 'sdf', 'icon-exclamation-sign', '0', 'sdf', '11', '2018-02-01 13:18:34', 'sdf', '1');
 INSERT INTO `drp_sys_menu` VALUES ('44', '1', 'dir', '12', 'df', 'df', 'icon-camera', '', '1', '1', '2018-01-30 13:47:25', '1', '1');
-INSERT INTO `drp_sys_menu` VALUES ('45', '43', 'dsf', '23', 'dfs', 'fs', 'icon-certificate', '0', '12', '1', '2018-01-30 16:32:09', '1', '0');
-INSERT INTO `drp_sys_menu` VALUES ('46', '43', 'gf', '12', 'fdg', 'dfg', 'icon-ban-circle', '', 're', '11', '2018-01-30 15:44:32', 'd', '0');
-INSERT INTO `drp_sys_menu` VALUES ('47', '0', 'sfd', '12', 'sdf', 'dsf', 'icon-bookmark', '', '', '11', '2018-02-01 14:03:54', '', '0');
-INSERT INTO `drp_sys_menu` VALUES ('48', '47', 'qwqwqw', '34', 'qwqw', 'ss', 'icon-ban-circle', '0', '', '11', '2018-02-01 14:04:31', '', '0');
-INSERT INTO `drp_sys_menu` VALUES ('49', '48', '121', '12', 'sd', 'sd', 'icon-bullhorn', '', '12', '1', '2018-02-02 11:39:08', '121', '0');
+INSERT INTO `drp_sys_menu` VALUES ('45', '43', 'dsf', '23', 'dfs', 'fs', 'icon-certificate', '0', '12', '1', '2018-01-30 16:32:09', '1', '1');
+INSERT INTO `drp_sys_menu` VALUES ('46', '43', 'gf', '12', 'fdg', 'dfg', 'icon-ban-circle', '', 're', '11', '2018-01-30 15:44:32', 'd', '1');
+INSERT INTO `drp_sys_menu` VALUES ('47', '0', 'sfd', '12', 'sdf', 'dsf', 'icon-bookmark', '', '', '11', '2018-02-01 14:03:54', '', '1');
+INSERT INTO `drp_sys_menu` VALUES ('48', '47', 'qwqwqw', '34', 'qwqw', 'ss', 'icon-ban-circle', '0', '', '11', '2018-02-01 14:04:31', '', '1');
+INSERT INTO `drp_sys_menu` VALUES ('49', '48', '121', '12', 'sd', 'sd', 'icon-bullhorn', '', '12', '1', '2018-02-02 11:39:08', '121', '1');
+INSERT INTO `drp_sys_menu` VALUES ('50', '1', 'hello', '12', '1212', '121', 'icon-asterisk', '', 'dd', '11', '2018-02-03 16:34:03', 'd', '0');
 
 -- ----------------------------
 -- Table structure for `drp_sys_role`
