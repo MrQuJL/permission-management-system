@@ -131,12 +131,27 @@ String path = request.getContextPath();
 					<!--/.nav-collapse -->
 					<div class="nav-collapse">
 						<ul id="menu" class="nav" style="*white-space:nowrap;float:none;">
-							<li class="menu">
+							<!-- <li class="menu">
 								<a class="menu" href="javascript:" data-href="#" data-id="27"><span>我的面板</span></a>
 							</li>
 							<li class="menu active">
 								<a class="menu" href="javascript:" data-href="#" data-id="2"><span>系统设置</span></a>
-							</li>
+							</li> -->
+							<c:forEach items="${menuList}" var = "menu">
+							<c:if test="${menu.parentId eq '1' && menu.isShow eq '1'}">
+								<li class="menu active">
+									<c:if test="${empty menu.href}">
+										<a class="menu" href="javascript:"
+										   data-href="${ctx}/sysmgr/menuNavi?parentId=${menu.id}" data-id="${menu.id}">
+											<span>${menu.name}</span></a>
+									</c:if>
+									<c:if test="${not empty menu.href}" >
+										<a class="menu" href="${cxt}${menu.href}" data-id="${menu.id}" target="mainFrame">
+											<span>${menu.name}</span></a>
+									</c:if>
+								</li>
+							</c:if>				
+						</c:forEach>
 						</ul>
 					</div>
 				</div>
@@ -144,84 +159,94 @@ String path = request.getContextPath();
 		    <div class="container-fluid">
 				<div id="content" class="row-fluid">
 					<div id="left" style="width: 160px; height: 604px;">
-		<div class="accordion" id="menu-27" style="display: none;">
-			<div class="accordion-group">
-			    <div class="accordion-heading">
-			    	<a class="accordion-toggle" data-toggle="collapse" data-parent="#menu-27" data-href="#collapse-28" href="#collapse-28" title=""><i class="icon-chevron-down"></i>&nbsp;个人信息</a>
-			    </div>
-			    <div id="collapse-28" class="accordion-body in collapse" style="height: auto;">
-					<div class="accordion-inner">
-						<ul class="nav nav-list">
-							<li class=""><a data-href=".menu3-29" href="${ctx}/sysmgr/userInfo.action" target="mainFrame"><i class="icon-user"></i>&nbsp;个人信息</a>
-								<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
-								</ul></li>
-							<li class="active"><a data-href=".menu3-30" href="${ctx}/sysmgr/changePwd.action" target="mainFrame"><i class="icon-lock icon-white"></i>&nbsp;修改密码</a>
-								<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
-								</ul></li></ul>
+						<%-- <div class="accordion" id="menu-27" style="display: none;">
+							<div class="accordion-group">
+							    <div class="accordion-heading">
+							    	<a class="accordion-toggle" data-toggle="collapse" data-parent="#menu-27" data-href="#collapse-28" href="#collapse-28" title=""><i class="icon-chevron-down"></i>&nbsp;个人信息</a>
+							    </div>
+							    <div id="collapse-28" class="accordion-body in collapse" style="height: auto;">
+									<div class="accordion-inner">
+										<ul class="nav nav-list">
+											<li class=""><a data-href=".menu3-29" href="${ctx}/sysmgr/userInfo.action" target="mainFrame"><i class="icon-user"></i>&nbsp;个人信息</a>
+												<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
+												</ul>
+											</li>
+											<li class="active"><a data-href=".menu3-30" href="${ctx}/sysmgr/changePwd.action" target="mainFrame"><i class="icon-lock icon-white"></i>&nbsp;修改密码</a>
+												<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
+												</ul>
+											</li>
+										</ul>
+									</div>
+							    </div>
+							</div>
+						</div>
+						<div class="accordion" id="menu-2">
+							<div class="accordion-group">
+							    <div class="accordion-heading">
+							    	<a class="accordion-toggle" data-toggle="collapse" data-parent="#menu-2" data-href="#collapse-13" href="#collapse-13" title=""><i class="icon-chevron-down"></i>&nbsp;机构用户</a>
+							    </div>
+							    <div id="collapse-13" class="accordion-body in collapse" style="height: auto;">
+									<div class="accordion-inner">
+										<ul class="nav nav-list">
+											<li class="active"><a data-href=".menu3-20" href="userMgr.html" target="mainFrame"><i class="icon-user icon-white"></i>&nbsp;用户管理</a>
+												<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
+												</ul>
+											</li>
+											<li class=""><a data-href=".menu3-17" href="${ctx}/sysmgr/gotoDeptList.action" target="mainFrame"><i class="icon-th-large"></i>&nbsp;部门管理</a>
+												<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
+												</ul>
+											</li>
+											<li class=""><a data-href=".menu3-14" href="${ctx}/sysmgr/gotoAreaList.action" target="mainFrame"><i class="icon-th"></i>&nbsp;区域管理</a>
+												<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
+												
+												</ul>
+											</li>
+										</ul>
+									</div>
+							    </div>
+							</div>
+						
+							<div class="accordion-group">
+							    <div class="accordion-heading">
+							    	<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#menu-2" data-href="#collapse-3" href="#collapse-3" title=""><i class="icon-chevron-right"></i>&nbsp;系统设置</a>
+							    </div>
+							    <div id="collapse-3" class="accordion-body  collapse" style="height: 0px;">
+									<div class="accordion-inner">
+										<ul class="nav nav-list">
+											<li class=""><a data-href=".menu3-4" href="${ctx}/sysmgr/gotoMenuList.action" target="mainFrame"><i class="icon-list-alt"></i>&nbsp;菜单管理</a>
+												<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
+												</ul>
+											</li>
+											<li class=""><a data-href=".menu3-7" href="roleList.html" target="mainFrame"><i class="icon-lock"></i>&nbsp;角色管理</a>
+												<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
+												</ul>
+											</li>
+											<li class=""><a data-href=".menu3-10" href="${ctx}/sysmgr/gotoDictList.action" target="mainFrame"><i class="icon-th-list"></i>&nbsp;字典管理</a>
+												<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
+												</ul>
+											</li>
+										</ul>
+									</div>
+							    </div>
+							</div>
+							
+							<div class="accordion-group">
+							    <div class="accordion-heading">
+							    	<a class="accordion-toggle" data-toggle="collapse" data-parent="#menu-2" data-href="#collapse-67" href="#collapse-67" title=""><i class="icon-chevron-right"></i>&nbsp;日志查询</a>
+							    </div>
+							    <div id="collapse-67" class="accordion-body  collapse" style="height: 0px;">
+									<div class="accordion-inner">
+										<ul class="nav nav-list">
+											<li class=""><a data-href=".menu3-68" href="http://localhost:8080/sys/log" target="mainFrame"><i class="icon-pencil"></i>&nbsp;日志查询</a>
+												<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
+												</ul>
+											</li>
+										</ul>
+									</div>
+							    </div>
+							</div>
+						</div> --%>
 					</div>
-			    </div>
-			</div>
-		</div>
-		<div class="accordion" id="menu-2">
-			<div class="accordion-group">
-			    <div class="accordion-heading">
-			    	<a class="accordion-toggle" data-toggle="collapse" data-parent="#menu-2" data-href="#collapse-13" href="#collapse-13" title=""><i class="icon-chevron-down"></i>&nbsp;机构用户</a>
-			    </div>
-			    <div id="collapse-13" class="accordion-body in collapse" style="height: auto;">
-					<div class="accordion-inner">
-						<ul class="nav nav-list">
-							<li class="active"><a data-href=".menu3-20" href="userMgr.html" target="mainFrame"><i class="icon-user icon-white"></i>&nbsp;用户管理</a>
-								<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
-								</ul></li>
-							<li class=""><a data-href=".menu3-17" href="${ctx}/sysmgr/gotoDeptList.action" target="mainFrame"><i class="icon-th-large"></i>&nbsp;部门管理</a>
-								<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
-								</ul></li>
-							<li class=""><a data-href=".menu3-14" href="${ctx}/sysmgr/gotoAreaList.action" target="mainFrame"><i class="icon-th"></i>&nbsp;区域管理</a>
-								<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
-								
-								</ul>
-							</li>
-						</ul>
-					</div>
-			    </div>
-			</div>
-		
-			<div class="accordion-group">
-			    <div class="accordion-heading">
-			    	<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#menu-2" data-href="#collapse-3" href="#collapse-3" title=""><i class="icon-chevron-right"></i>&nbsp;系统设置</a>
-			    </div>
-			    <div id="collapse-3" class="accordion-body  collapse" style="height: 0px;">
-					<div class="accordion-inner">
-						<ul class="nav nav-list">
-							<li class=""><a data-href=".menu3-4" href="${ctx}/sysmgr/gotoMenuList.action" target="mainFrame"><i class="icon-list-alt"></i>&nbsp;菜单管理</a>
-								<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
-								</ul></li>
-							<li class=""><a data-href=".menu3-7" href="roleList.html" target="mainFrame"><i class="icon-lock"></i>&nbsp;角色管理</a>
-								<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
-								</ul></li>
-							<li class=""><a data-href=".menu3-10" href="${ctx}/sysmgr/gotoDictList.action" target="mainFrame"><i class="icon-th-list"></i>&nbsp;字典管理</a>
-								<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
-								</ul></li></ul>
-					</div>
-			    </div>
-			</div>
-			
-			<div class="accordion-group">
-			    <div class="accordion-heading">
-			    	<a class="accordion-toggle" data-toggle="collapse" data-parent="#menu-2" data-href="#collapse-67" href="#collapse-67" title=""><i class="icon-chevron-right"></i>&nbsp;日志查询</a>
-			    </div>
-			    <div id="collapse-67" class="accordion-body  collapse" style="height: 0px;">
-					<div class="accordion-inner">
-						<ul class="nav nav-list">
-							<li class=""><a data-href=".menu3-68" href="http://localhost:8080/sys/log" target="mainFrame"><i class="icon-pencil"></i>&nbsp;日志查询</a>
-								<ul class="nav nav-list hide" style="margin:0;padding-right:0;">
-								</ul>
-							</li>
-						</ul>
-					</div>
-			    </div>
-			</div>
-		</div></div>
 					<div id="openClose" class="close" style="height: 599px;">&nbsp;</div>
 					<div id="right" style="height: 604px; width: 1243px;">
 						<iframe id="mainFrame" name="mainFrame" src="" style="overflow: visible; height: 604px;" scrolling="yes" frameborder="no" width="100%" height="650"></iframe>

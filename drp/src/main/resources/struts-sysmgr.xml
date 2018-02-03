@@ -91,6 +91,10 @@
 			</result>
 		</action>
 		
+		<action name = "menuNavi" class= "com.lyu.drp.sysmanage.action.MenuAction" method = "menuNavi">
+			<result name = "success">/WEB-INF/pages/main/menuNavi.jsp</result>
+		</action>
+		
 		<!--icon的弹出页面  -->
  		<action name = "iconSelect" class= "com.lyu.drp.sysmanage.action.TagAction" method = "iconSelect">
 			<result name = "iconSelect">/WEB-INF/pages/common/iconSelect.jsp</result>		

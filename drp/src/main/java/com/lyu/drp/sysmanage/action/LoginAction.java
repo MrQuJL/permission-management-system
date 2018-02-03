@@ -1,5 +1,7 @@
 package com.lyu.drp.sysmanage.action;
 
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -11,6 +13,7 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 
+import com.lyu.drp.sysmanage.entity.Menu;
 import com.lyu.drp.sysmanage.service.IMenuService;
 import com.lyu.drp.sysmanage.service.IUserService;
 
@@ -35,6 +38,8 @@ public class LoginAction {
 	private IUserService userService;
 	// 菜单服务类，spring会自动注入
 	private IMenuService menuService;
+	// 用户拥有的菜单列表
+	private List<Menu> menuList;
 	
 	public IMenuService getMenuService() {
 		return menuService;
@@ -75,6 +80,14 @@ public class LoginAction {
 	public void setLoginErrorMsg(String loginErrorMsg) {
 		this.loginErrorMsg = loginErrorMsg;
 	}
+	
+	public List<Menu> getMenuList() {
+		return menuList;
+	}
+
+	public void setMenuList(List<Menu> menuList) {
+		this.menuList = menuList;
+	}
 
 	/**
 	 * 进入登录页面
@@ -91,6 +104,9 @@ public class LoginAction {
 	 * @return
 	 */
 	public String main() {
+		
+		this.menuList = menuService.getAllMenuList();
+		
 		return "mainPage";
 	}
 	

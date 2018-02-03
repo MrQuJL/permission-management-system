@@ -154,6 +154,16 @@ public class MenuAction {
 	}
 	
 	/**
+	 * 构造二三级菜单
+	 * @param 
+	 * @return
+	 */
+	public String menuNavi() {
+		this.menuList = menuService.getAllMenuList();
+		return "success";
+	}
+	
+	/**
 	 * 保存菜单（新增，修改）
 	 * @param 
 	 * @return
