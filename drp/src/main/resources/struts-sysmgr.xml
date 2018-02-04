@@ -166,6 +166,18 @@
 			</result>
 		</action>
 		
+		<!-- 角色管理 -->
+		<action name = "gotoRoleList" class= "com.lyu.drp.sysmanage.action.RoleAction" method = "gotoRoleList">
+			<result>/WEB-INF/pages/sysmanage/role/roleList.jsp</result>
+		</action>
+		
+		<action name = "gotoRoleEdit" class= "com.lyu.drp.sysmanage.action.RoleAction" method = "gotoRoleEdit">
+			<result>/WEB-INF/pages/sysmanage/role/roleEdit.jsp</result>
+		</action>
+		
+		
+		
+		
 	</package>
 	
 </struts>

@@ -147,8 +147,8 @@ String path = request.getContextPath();
 </head>
 <body>
 	<ul class="nav nav-tabs">
-		<li><a href="roleList.html">角色列表</a></li>
-		<li class="active"><a href="roleAdd.html">角色添加</a></li>
+		<li><a href="${ctx}/sysmgr/gotoRoleList.action">角色列表</a></li>
+		<li class="active"><a href="javascript:void(0);">角色添加</a></li>
 	</ul><br/>
 	<form id="inputForm" class="form-horizontal" action="#" method="post">
 		<input id="id" name="id" type="hidden" value=""/>
