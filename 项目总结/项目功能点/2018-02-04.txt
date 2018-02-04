@@ -21,11 +21,64 @@
 	* 先将基本的架子搭起来，基本的增删改查先做好
 	* 查询角色不需要做权限处理，普通用户均可以查询所有角色
 
+6. 配置文件不要分的过细，分的过细维护起来麻烦，通常系统功能分一个配置文件放，
+业务功能分一个配置文件放，就不要再细分模块了，软件的维护成本占25%~30%
 
+7. 为角色分配权限的时候只能分配当前用户所拥有的权限
 
+8. 角色实体类中还要有三个属性列表：菜单列表，部门列表，区域列表
 
+9. 界面上要放三颗zTree：menuTree,deptTree,areaTree
 
+10. 前台获取选中的zTree节点函数：tree.getCheckedNodes(true);
 
+11. 前后台都是通过字符串（String）来传数据的
+
+12. 角色加入成功后，要批量插入相应的映射记录，就必须获取角色的id
+插入角色后要返回角色id，如果是用SpringJdbcTemplate就要使用KeyHolder,
+mybatis用selectKey
+
+13. 建立角色菜单对应表实体对象，角色部门对应表实体对象，角色区域对应表实体对象
+
+14. 批量插入单独封装成一个方法
+
+15. 传入的批量删除的list要用final修饰
+
+16. 在一个服务类里面做多次数据库的操作要用事务来控制
+
+事务：
+	1）注册事务管理器
+	2）开启事务注解驱动
+	3）在相应的方法上加上
+	@Transactional(isolation=Isolation.DEFAULT,
+	propagation = Propagation.REQUIRED)
+
+17. 修改角色：
+	* 树生成之后要默认选中此角色拥有的节点
+	* 修改角色时还要查询该角色所拥有的菜单树资源，
+	部门树资源，区域树资源
+	* 对于映射表的记录先删除再添加
+	* 删除的时候要先删从表再删主表
+	* 批量修改时，选择的菜单为0，则后台要加以控制
+
+18. JSP由以下部分组成：
+	* html标签
+	* java代码
+	* jsp标签
+		<c:forEach items="" var=""></c:forEach>
+		<c:choose>
+			<c:when test=""></c:when>
+		</c:choose>
+	* jsp指令
+		<%@ page="" %>
+		<%@ include="" %>
+		<%@ taglib="" %>
+	* jsp动作:
+		jsp:include (会先解析要包含的页面，解析后和主页面合并一起显示)
+		jsp:forward
+		jsp:useBean
+		...
+		jsp:setProperty
 
 
 
