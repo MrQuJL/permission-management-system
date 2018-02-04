@@ -30,6 +30,13 @@ public interface AreaMapper {
 	List<Area> getAllAreaList();
 	
 	/**
+	 * 根据角色id获取区域列表
+	 * @param 
+	 * @return
+	 */
+	List<Area> getAreaListByRoleId(Long roleId);
+	
+	/**
 	 * 通过父级区域id获取所有的子区域
 	 * @param 
 	 * @return

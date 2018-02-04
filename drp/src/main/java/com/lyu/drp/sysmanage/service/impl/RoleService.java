@@ -9,6 +9,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.lyu.drp.sysmanage.entity.Role;
+import com.lyu.drp.sysmanage.mapper.AreaMapper;
+import com.lyu.drp.sysmanage.mapper.DeptMapper;
+import com.lyu.drp.sysmanage.mapper.MenuMapper;
 import com.lyu.drp.sysmanage.mapper.RoleMapper;
 import com.lyu.drp.sysmanage.service.IRoleService;
 
@@ -26,6 +29,15 @@ public class RoleService implements IRoleService {
 	@Autowired
 	private RoleMapper roleMapper;
 	
+	@Autowired
+	private MenuMapper menuMapper;
+	
+	@Autowired
+	private DeptMapper deptMapper;
+	
+	@Autowired
+	private AreaMapper areaMapper;
+	
 	@Override
 	public List<Role> getAllRoleList() {
 		return roleMapper.getAllRoleList();
@@ -34,12 +46,13 @@ public class RoleService implements IRoleService {
 	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
 	@Override
 	public Role getRoleById(Long roleId) {
-		// 根据id获取角色信息，包括角色所拥有的菜单列表，部门列表，区域列表
+		
 		Role role = roleMapper.getRoleById(roleId);
 		
-		role.setMenuList(null);
-		role.setDeptList(null);
-		role.setAreaList(null);
+		// 根据id获取角色信息，包括角色所拥有的菜单列表，部门列表，区域列表
+		role.setMenuList(menuMapper.getMenuListByRoleId(roleId));
+		role.setDeptList(deptMapper.getDeptListByRoleId(roleId));
+		role.setAreaList(areaMapper.getAreaListByRoleId(roleId));
 		
 		return role;
 	}

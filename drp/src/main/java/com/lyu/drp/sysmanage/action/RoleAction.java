@@ -94,9 +94,6 @@ public class RoleAction {
 		
 		this.roleList = roleService.getAllRoleList();
 		
-		
-		
-		
 		return "success";
 	}
 	

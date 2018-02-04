@@ -41,6 +41,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ORDER BY parent_id, sort
 	</select>
 	
+	<select id="getMenuListByRoleId" parameterType="long" resultType="menu">
+		SELECT <include refid="all_menu_columns_aliases" />
+		FROM drp_sys_menu A, drp_sys_role_menu B
+		WHERE B.role_id = #{roleId} AND A.id = B.menu_id
+	</select>
+	
 	<!-- 查询出当前菜单的所有子菜单 -->
 	<select id="getChildsMenuByPId" parameterType="long" resultType="menu">
 		SELECT <include refid="all_menu_columns" /> FROM drp_sys_menu

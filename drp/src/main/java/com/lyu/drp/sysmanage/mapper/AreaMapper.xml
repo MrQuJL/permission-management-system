@@ -30,6 +30,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE del_flag = 0
 	</select>
 	
+	<!-- 根据角色id获取区域列表 -->
+	<select id="getAreaListByRoleId" parameterType="long" resultType="area">
+		SELECT <include refid="all_area_columns_alias" />
+		FROM drp_sys_area A, drp_sys_role_area B
+		WHERE B.role_id = #{roleId}	AND A.id = B.area_id
+	</select>
+	
 	<!-- 通过父级区域id获取所有的子区域 -->
 	<select id="getSubAreaByPId" parameterType="long" resultType="area">
 		SELECT <include refid="all_area_columns" />

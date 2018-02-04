@@ -30,6 +30,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE del_flag = 0
 	</select>
 	
+	<!-- 根据角色id获取该角色所拥有的部门权限 -->
+	<select id="getDeptListByRoleId" parameterType="long" resultType="dept">
+		SELECT <include refid="all_dept_columns_alias" />
+		FROM drp_sys_dept A, drp_sys_role_dept B
+		WHERE B.role_id = #{roleId} AND A.id = B.dept_id
+	</select>
+	
 	<!-- 获取当前部门的所有子部门id -->
 	<select id="getAllSubDeptIds" parameterType="long" resultType="long">
 		SELECT id from drp_sys_dept

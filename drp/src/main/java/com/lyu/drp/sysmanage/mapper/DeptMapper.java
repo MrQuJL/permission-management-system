@@ -30,6 +30,13 @@ public interface DeptMapper {
 	List<Dept> getAllDeptList();
 	
 	/**
+	 * 根据角色id获取该角色所拥有的部门权限
+	 * @param 
+	 * @return
+	 */
+	List<Dept> getDeptListByRoleId(Long roleId);
+	
+	/**
 	 * 获取当前部门的所有子部门id
 	 * @param 
 	 * @return

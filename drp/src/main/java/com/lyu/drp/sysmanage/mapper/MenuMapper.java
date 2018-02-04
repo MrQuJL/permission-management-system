@@ -37,6 +37,13 @@ public interface MenuMapper {
 	List<Menu> getAllMenuList();
 	
 	/**
+	 * 通过角色id查询菜单列表
+	 * @param 
+	 * @return
+	 */
+	List<Menu> getMenuListByRoleId(Long roleId);
+	
+	/**
 	 * 查询出当前菜单(id=parentId)的所有子菜单
 	 * @param	parentId 父级菜单 
 	 * @return
