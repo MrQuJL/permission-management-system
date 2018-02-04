@@ -20,28 +20,28 @@ public interface AreaMapper {
 	 * @param 
 	 * @return
 	 */
-	public AreaDto getAreaDetailById(Long id);
+	AreaDto getAreaDetailById(Long id);
 	
 	/**
 	 * 查询全部的区域列表
 	 * @param 
 	 * @return
 	 */
-	public List<Area> getAllAreaList();
+	List<Area> getAllAreaList();
 	
 	/**
 	 * 通过父级区域id获取所有的子区域
 	 * @param 
 	 * @return
 	 */
-	public List<Area> getSubAreaByPId(Long pId);
+	List<Area> getSubAreaByPId(Long pId);
 	
 	/**
 	 * 统计当前区域下的直接子区域的数量
 	 * @param 
 	 * @return
 	 */
-	public int countSubArea(Long areaId);
+	int countSubArea(Long areaId);
 	
 	
 	/**
@@ -49,20 +49,20 @@ public interface AreaMapper {
 	 * @param 
 	 * @return
 	 */
-	public int saveArea(Area area);
+	int saveArea(Area area);
 	
 	/**
 	 * 修改区域
 	 * @param 
 	 * @return
 	 */
-	public int updateArea(Area area);
+	int updateArea(Area area);
 	
 	/**
 	 * 删除子区域（逻辑删除）
 	 * @param 
 	 * @return
 	 */
-	public int delArea(Long areaId);
+	int delArea(Long areaId);
 	
 }

@@ -24,6 +24,8 @@ public class RoleAction {
 	private Long roleId;
 	// 查询到的角色列表
 	private List<Role> roleList;
+	// 角色信息
+	private Role role;
 	
 	private IRoleService roleService;
 	
@@ -75,6 +77,14 @@ public class RoleAction {
 		this.roleService = roleService;
 	}
 
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
 	/**
 	 * 处理前往角色列表页面的请求
 	 * @param 
@@ -83,6 +93,9 @@ public class RoleAction {
 	public String gotoRoleList() {
 		
 		this.roleList = roleService.getAllRoleList();
+		
+		
+		
 		
 		return "success";
 	}
@@ -93,20 +106,11 @@ public class RoleAction {
 	 * @return
 	 */
 	public String gotoRoleEdit() {
-		/*if (editFlag == 2 && this.roleId != null) { // 修改
-			// 调用service查询一下该id的信息
-			this.area = this.areaService.getRoleDetailById(this.areaId);
+		if (editFlag == 2) { // 修改
+			// 调用service查询一下角色的id为roleId的角色信息
+			this.role = this.roleService.getRoleById(this.roleId);
 			
-		} else if (editFlag == 1 && this.areaId != null) { // 添加下级区域
-			this.area = this.areaService.getRoleDetailById(this.areaId);
-			Long parentId = this.area.getId();
-			String parentName = this.area.getName();
-			this.area = null;
-			this.area = new RoleDto();
-			this.area.setParentId(parentId);
-			this.area.setParentName(parentName);
-		}*/
-		
+		}		
 		return "success";
 	}
 	

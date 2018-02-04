@@ -22,48 +22,48 @@ public interface IDictService {
 	 * @param description 字典的描述
 	 * @return 字典列表
 	 */
-	public List<Dict> getDictList(Dict dict);
+	List<Dict> getDictList(Dict dict);
 	
 	/**
 	 * 获取分页的字典列表
 	 * @param 
 	 * @return
 	 */
-	public PageInfo<Dict> getDictListPage(Dict dict, PageParam pageParam);
+	PageInfo<Dict> getDictListPage(Dict dict, PageParam pageParam);
 	
 	/**
 	 * 获取所有的字典类型
 	 * @param 
 	 * @return
 	 */
-	public List<String> getDictTypeList();
+	List<String> getDictTypeList();
 	
 	/**
 	 * 获取指定id的字典
 	 * @param dictId 字典的id
 	 * @return id为dictId的字典
 	 */
-	public Dict getDictById(Long dictId);
+	Dict getDictById(Long dictId);
 	
 	/**
 	 * 新增字典
 	 * @param 
 	 * @return
 	 */
-	public int saveDict(Dict dict);
+	int saveDict(Dict dict);
 	
 	/**
 	 * 修改字典
 	 * @param 
 	 * @return
 	 */
-	public int updateDict(Dict dict);
+	int updateDict(Dict dict);
 	
 	/**
 	 * 根据字典id删除字典
 	 * @param 
 	 * @return
 	 */
-	public int delDictById(Long dictId);
+	int delDictById(Long dictId);
 	
 }

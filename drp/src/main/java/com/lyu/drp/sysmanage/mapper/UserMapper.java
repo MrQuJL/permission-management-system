@@ -18,21 +18,21 @@ public interface UserMapper {
 	 * @param 登录名称和密码
 	 * @return 用户存在则返回该用户
 	 */
-	public User loginUser(String loginName);
+	User loginUser(String loginName);
 	
 	/**
 	 * 根据用户id获取用户对象
 	 * @param 
 	 * @return
 	 */
-	public User getUserById(Long userId);
+	User getUserById(Long userId);
 	
 	/**
 	 * 根据用户id获取用户对象的详细信息，包括部门名称，角色集合
 	 * @param 
 	 * @return
 	 */
-	public UserDto getUserInfoById(Long userId);
+	UserDto getUserInfoById(Long userId);
 	
 	/**
 	 * 更新指定id的用户的密码
@@ -40,13 +40,13 @@ public interface UserMapper {
 	 * @param newPassword 用户的新密码
 	 * @return 修改成功与否
 	 */
-	public int updateUserPassword(Long userId, String newPassword);
+	int updateUserPassword(Long userId, String newPassword);
 	
 	/**
 	 * 保存用户修改的信息
 	 * @param 
 	 * @return
 	 */
-	public int saveUserInfo(User user);
+	int saveUserInfo(User user);
 	
 }

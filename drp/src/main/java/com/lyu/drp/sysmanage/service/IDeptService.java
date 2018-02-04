@@ -20,48 +20,48 @@ public interface IDeptService {
 	 * @param 
 	 * @return
 	 */
-	public DeptDto getDeptDetailById(Long deptId);
+	DeptDto getDeptDetailById(Long deptId);
 	
 	/**
 	 * 获取所有的部门列表
 	 * @param 
 	 * @return
 	 */
-	public List<Dept> getAllDeptList();
+	List<Dept> getAllDeptList();
 	
 	/**
 	 * 获取当前部门的所有子子孙孙...部门的id
 	 * @param 
 	 * @return
 	 */
-	public List<Long> getAllSubDeptIds(Long parentId);
+	List<Long> getAllSubDeptIds(Long parentId);
 	
 	/**
 	 * 判断父部门下面是否有子部门
 	 * @param 
 	 * @return
 	 */
-	public boolean hasSubDept(Long parentId);
+	boolean hasSubDept(Long parentId);
 	
 	/**
 	 * 添加部门
 	 * @param 
 	 * @return
 	 */
-	public boolean saveDept(Dept dept);
+	boolean saveDept(Dept dept);
 	
 	/**
 	 * 修改部门
 	 * @param 
 	 * @return
 	 */
-	public boolean updateDept(Dept dept);
+	boolean updateDept(Dept dept);
 	
 	/**
 	 * 删除指定id部门
 	 * @param 
 	 * @return
 	 */
-	public boolean delDept(Long deptId);
+	boolean delDept(Long deptId);
 	
 }

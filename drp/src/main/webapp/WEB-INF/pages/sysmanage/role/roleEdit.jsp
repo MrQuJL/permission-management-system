@@ -17,12 +17,6 @@ String path = request.getContextPath();
 		$(document).ready(function(){
 			$("#name").focus();
 			$("#inputForm").validate({
-				rules: {
-					name: {remote: "/sys/role/checkName?oldName=" + encodeURIComponent("")}
-				},
-				messages: {
-					name: {remote: "角色名已存在"}
-				},
 				submitHandler: function(form){
 					var ids = [], nodes = tree.getCheckedNodes(true);
 					for(var i=0; i<nodes.length; i++) {
@@ -33,7 +27,7 @@ String path = request.getContextPath();
 					for(var i=0; i<nodes2.length; i++) {
 						ids2.push(nodes2[i].id);
 					}
-					$("#officeIds").val(ids2);
+					$("#deptIds").val(ids2);
 					loading('正在提交，请稍等...');
 					form.submit();
 				},
@@ -85,11 +79,11 @@ String path = request.getContextPath();
 		            {id:"16", pId:"14", name:"修改"},
 		            {id:"6", pId:"4", name:"修改"},
 		            {id:"9", pId:"7", name:"修改"},
-		            ];
+		    ];
 			// 初始化树结构
 			var tree = $.fn.zTree.init($("#menuTree"), setting, zNodes);
 			// 不选择父节点
-			tree.setting.check.chkboxType = { "Y" : "ps", "N" : "s" };
+			// tree.setting.check.chkboxType = { "Y" : "ps", "N" : "s" };
 			// 默认选择节点
 			var ids = "".split(",");
 			for(var i=0; i<ids.length; i++) {
@@ -99,7 +93,7 @@ String path = request.getContextPath();
 			// 默认展开全部节点
 			tree.expandAll(true);
 			
-			// 用户-机构
+			// 用户-部门
 			var zNodes2=[
 					{id:"1", pId:"0", name:"湖南省总公司"},
 		            {id:"2", pId:"1", name:"公司领导"},
@@ -117,11 +111,11 @@ String path = request.getContextPath();
 		            {id:"14", pId:"12", name:"综合部"},
 		            {id:"15", pId:"12", name:"市场部"},
 		            {id:"16", pId:"12", name:"技术部"},
-		            ];
+		    ];
 			// 初始化树结构
-			var tree2 = $.fn.zTree.init($("#officeTree"), setting, zNodes2);
+			var tree2 = $.fn.zTree.init($("#deptTree"), setting, zNodes2);
 			// 不选择父节点
-			tree2.setting.check.chkboxType = { "Y" : "ps", "N" : "s" };
+			// tree2.setting.check.chkboxType = { "Y" : "ps", "N" : "s" };
 			// 默认选择节点
 			var ids2 = "".split(",");
 			for(var i=0; i<ids2.length; i++) {
@@ -130,94 +124,82 @@ String path = request.getContextPath();
 			}
 			// 默认展开全部节点
 			tree2.expandAll(true);
-			// 刷新（显示/隐藏）机构
-			refreshOfficeTree();
-			$("#dataScope").change(function(){
-				refreshOfficeTree();
-			});
-		});
-		function refreshOfficeTree(){
-			if($("#dataScope").val()==9){
-				$("#officeTree").show();
-			}else{
-				$("#officeTree").hide();
+			
+			// 用户-区域
+			var zNodes3=[
+					{id:"1", pId:"0", name:"湖南省总公司"},
+		            {id:"2", pId:"1", name:"公司领导"},
+		            {id:"3", pId:"1", name:"综合部"},
+		            {id:"4", pId:"1", name:"市场部"},
+		            {id:"5", pId:"1", name:"技术部"},
+		            {id:"6", pId:"1", name:"研发部"},
+		            {id:"7", pId:"1", name:"长沙市分公司"},
+		            {id:"8", pId:"7", name:"公司领导"},
+		            {id:"9", pId:"7", name:"综合部"},
+		            {id:"10", pId:"7", name:"市场部"},
+		            {id:"11", pId:"7", name:"技术部"},
+		            {id:"12", pId:"7", name:"芙蓉区分公司"},
+		            {id:"13", pId:"12", name:"公司领导"},
+		            {id:"14", pId:"12", name:"综合部"},
+		            {id:"15", pId:"12", name:"市场部"},
+		            {id:"16", pId:"12", name:"技术部"},
+		    ];
+			// 初始化树结构
+			var tree3 = $.fn.zTree.init($("#areaTree"), setting, zNodes3);
+			// 不选择父节点
+			// tree2.setting.check.chkboxType = { "Y" : "ps", "N" : "s" };
+			// 默认选择节点
+			var ids3 = "".split(",");
+			for(var i=0; i<ids3.length; i++) {
+				var node = tree3.getNodeByParam("id", ids3[i]);
+				try{tree3.checkNode(node, true, false);}catch(e){}
 			}
-		}
+			// 默认展开全部节点
+			tree3.expandAll(true);
+			
+		});
 	</script>
+	<script type="text/javascript">top.$.jBox.closeTip();</script>
 </head>
 <body>
 	<ul class="nav nav-tabs">
 		<li><a href="${ctx}/sysmgr/gotoRoleList.action">角色列表</a></li>
-		<li class="active"><a href="javascript:void(0);">角色添加</a></li>
+		<li class="active"><a href="javascript:void(0);">角色
+			<c:choose>
+				<c:when test="${editFlag == 1}">添加</c:when>
+				<c:otherwise>修改</c:otherwise>
+			</c:choose>
+		</a></li>
 	</ul><br/>
 	<form id="inputForm" class="form-horizontal" action="#" method="post">
-		<input id="id" name="id" type="hidden" value=""/>
-<script type="text/javascript">top.$.jBox.closeTip();</script>
+		<input id="id" name="id" type="hidden" value="${role.id}"/>
 
-		<div class="control-group">
-			<label class="control-label">所属机构:</label>
-			<div class="controls">
-
-<div class="input-append">
-	<input id="officeId" name="office.id" class="required" type="hidden" value="2"/>
-	<input id="officeName" name="office.name" readonly="readonly" type="text" value="公司领导" data-msg-required=""
-		class="required" style=""/><a id="officeButton" href="javascript:" class="btn  " style="">&nbsp;<i class="icon-search"></i>&nbsp;</a>&nbsp;&nbsp;
-</div>
-			</div>
-		</div>
 		<div class="control-group">
 			<label class="control-label">角色名称:</label>
 			<div class="controls">
-				<input id="oldName" name="oldName" type="hidden" value="">
-				<input id="name" name="name" class="required" type="text" value="" maxlength="50"/>
+				<input id="name" name="name" class="required" type="text" value="${role.name}" maxlength="50"/>
 				<span class="help-inline"><span style="color:red">*</span> </span>
 			</div>
 		</div>
-		<div class="control-group">
-			<label class="control-label">是否系统数据:</label>
-			<div class="controls">
-				<select id="sysData" name="sysData">
-					<option value="1">是</option><option value="0">否</option>
-				</select>
-				<span class="help-inline">“是”代表此数据只有超级管理员能进行修改，“否”则表示拥有角色修改人员的权限都能进行修改</span>
-			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label">是否可用</label>
-			<div class="controls">
-				<select id="useable" name="useable">
-					<option value="1" selected="selected">是</option><option value="0">否</option>
-				</select>
-				<span class="help-inline">“是”代表此数据可用，“否”则表示此数据不可用</span>
-			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label">数据范围:</label>
-			<div class="controls">
-				<select id="dataScope" name="dataScope" class="input-medium">
-					<option value="1">所有数据</option><option value="2">所在公司及以下数据</option><option value="3">所在公司数据</option><option value="4">所在部门及以下数据</option><option value="5">所在部门数据</option><option value="8" selected="selected">仅本人数据</option><option value="9">按明细设置</option>
-				</select>
-				<span class="help-inline">特殊情况下，设置为“按明细设置”，可进行跨机构授权</span>
-			</div>
-		</div>
+		
 		<div class="control-group">
 			<label class="control-label">角色授权:</label>
 			<div class="controls">
 				<div id="menuTree" class="ztree" style="margin-top:3px;float:left;"></div>
-				<input id="menuIds" name="menuIds" type="hidden" value=""/>
-				<div id="officeTree" class="ztree" style="margin-left:100px;margin-top:3px;float:left;"></div>
-				<input id="officeIds" name="officeIds" type="hidden" value=""/>
+				<div id="deptTree" class="ztree" style="margin-left:50px;margin-top:3px;float:left;"></div>
+				<div id="areaTree" class="ztree" style="margin-left:50px;margin-top:3px;float:left;"></div>
 			</div>
 		</div>
+		
 		<div class="control-group">
 			<label class="control-label">备注:</label>
 			<div class="controls">
-				<textarea id="remarks" name="remarks" maxlength="200" class="input-xlarge" rows="3"></textarea>
+				<textarea id="remarks" name="remarks" maxlength="200" class="input-xlarge" rows="3">${role.remarks}</textarea>
 			</div>
 		</div>
+		
 		<div class="form-actions">
-			
-				<input id="btnSubmit" class="btn btn-primary" type="submit" value="保 存"/>&nbsp;
+			<input id="btnSubmit" class="btn btn-primary" type="submit" value="保 存"/>&nbsp;
 			
 			<input id="btnCancel" class="btn" type="button" value="返 回" onclick="history.go(-1)"/>
 		</div>

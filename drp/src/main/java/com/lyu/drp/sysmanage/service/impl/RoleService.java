@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.lyu.drp.sysmanage.entity.Role;
 import com.lyu.drp.sysmanage.mapper.RoleMapper;
@@ -28,6 +31,19 @@ public class RoleService implements IRoleService {
 		return roleMapper.getAllRoleList();
 	}
 
+	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
+	@Override
+	public Role getRoleById(Long roleId) {
+		// 根据id获取角色信息，包括角色所拥有的菜单列表，部门列表，区域列表
+		Role role = roleMapper.getRoleById(roleId);
+		
+		role.setMenuList(null);
+		role.setDeptList(null);
+		role.setAreaList(null);
+		
+		return role;
+	}
+	
 	@Override
 	public boolean saveRole(Role role) {
 		// 返回主键

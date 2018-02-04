@@ -18,35 +18,35 @@ public interface IUserService {
 	 * @param 
 	 * @return
 	 */
-	public User loginUser(String loginName);
+	User loginUser(String loginName);
 	
 	/**
 	 * 根据用户id获取用户对象
 	 * @param 
 	 * @return
 	 */
-	public User getUserById(Long userId);
+	User getUserById(Long userId);
 	
 	/**
 	 * 根据用户id获取用户对象的详细信息，包括部门名称，角色集合
 	 * @param 
 	 * @return
 	 */
-	public UserDto getUserInfoById(Long userId);
+	UserDto getUserInfoById(Long userId);
 	
 	/**
 	 * 保存用户修改的信息
 	 * @param 
 	 * @return
 	 */
-	public boolean saveUserInfo(User user);
+	boolean saveUserInfo(User user);
 	
 	/**
      * 对密码进行加密 SHA-1
      * @param plainPassword 明文密码
      * @return
      */
-    public String encyptPassword (String plainPassword);
+    String encyptPassword (String plainPassword);
 	
 	/**
 	 * 验证用户输入密码是否与数据库中的密码匹配
@@ -54,7 +54,7 @@ public interface IUserService {
 	 * @param encryptPsd 数据库中存储的密码
 	 * @return
 	 */
-	public boolean validatePassword (String plainPsd, String encryptPsd);
+	boolean validatePassword (String plainPsd, String encryptPsd);
 	
 	/**
 	 * 更新指定id的用户的密码
@@ -62,6 +62,6 @@ public interface IUserService {
 	 * @param newPassword 用户的新密码
 	 * @return 修改成功与否
 	 */
-	public boolean updateUserPassword(Long userId, String newPassword);
+	boolean updateUserPassword(Long userId, String newPassword);
 	
 }

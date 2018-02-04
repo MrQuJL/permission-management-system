@@ -19,28 +19,34 @@ public interface RoleMapper {
 	 * @param 
 	 * @return
 	 */
-	public List<Role> getAllRoleList();
+	List<Role> getAllRoleList();
 	
+	/**
+	 * 根据角色id获取角色信息
+	 * @param 
+	 * @return
+	 */
+	Role getRoleById(Long roleId);
 	
 	/**
 	 * 添加角色
 	 * @param 
 	 * @return
 	 */
-	public int saveRole(Role role);
+	int saveRole(Role role);
 	
 	/**
 	 * 修改角色
 	 * @param 
 	 * @return
 	 */
-	public int updateRole(Role role);
+	int updateRole(Role role);
 	
 	/**
 	 * 删除角色
 	 * @param 
 	 * @return
 	 */
-	public int delRole(Long roleId);
+	int delRole(Long roleId);
 	
 }

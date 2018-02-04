@@ -20,21 +20,21 @@ public interface IMenuService {
 	 * @param 
 	 * @return
 	 */
-	public MenuDto getMenuDetailById(Long menuId);
+	MenuDto getMenuDetailById(Long menuId);
 	
 	/**
 	 * 根据用户的id获取用户所能够操作的用户列表
 	 * @param userId 用户的id
 	 * @return 
 	 */
-	public List<Menu> getMenuListByUserId(Long userId);
+	List<Menu> getMenuListByUserId(Long userId);
 	
 	/**
 	 * 获取所有的字典列表 
 	 * @param 
 	 * @return
 	 */
-	public List<Menu> getAllMenuList();
+	List<Menu> getAllMenuList();
 	
 	/**
 	 * 判断id为isSubMenuId的菜单是否是id为menuId的子菜单或者它自己
@@ -42,7 +42,7 @@ public interface IMenuService {
 	 * @param 	isSubMenuId	待确认的菜单
 	 * @return
 	 */
-	public boolean checkIsChildOrSelf(Long menuId, Long isSubMenuId);
+	boolean checkIsChildOrSelf(Long menuId, Long isSubMenuId);
 	
 	/**
 	 * 根据父级菜单的id查询出所有的子孙菜单
@@ -50,34 +50,34 @@ public interface IMenuService {
 	 * @param 	childMenuList	子孙菜单集合
 	 * @return
 	 */
-	public void getAllChildsMenuByPId(List<Menu> childMenuList, Long parentMenuId);
+	void getAllChildsMenuByPId(List<Menu> childMenuList, Long parentMenuId);
 	
 	/**
 	 * 添加菜单
 	 * @param 
 	 * @return
 	 */
-	public boolean saveMenu(Menu menu);
+	boolean saveMenu(Menu menu);
 	
 	/**
 	 * 修改菜单
 	 * @param 
 	 * @return
 	 */
-	public boolean updateMenu(Menu menu);
+	boolean updateMenu(Menu menu);
 	
 	/**
 	 * 判断当前菜单是否有子菜单
 	 * @param 
 	 * @return true 表示有子菜单	false 表示没有子菜单
 	 */
-	public boolean hasSubMenu(Long menuId);
+	boolean hasSubMenu(Long menuId);
 	
 	/**
 	 * 删除指定id的菜单(逻辑删除，修改标识位)
 	 * @param 
 	 * @return
 	 */
-	public boolean delMenu(Long menuId);
+	boolean delMenu(Long menuId);
 	
 }

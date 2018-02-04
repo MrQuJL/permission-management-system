@@ -20,48 +20,48 @@ public interface DeptMapper {
 	 * @param 
 	 * @return
 	 */
-	public DeptDto getDeptDetailById(Long deptId);
+	DeptDto getDeptDetailById(Long deptId);
 	
 	/**
 	 * 获取所有的部门列表
 	 * @param 
 	 * @return
 	 */
-	public List<Dept> getAllDeptList();
+	List<Dept> getAllDeptList();
 	
 	/**
 	 * 获取当前部门的所有子部门id
 	 * @param 
 	 * @return
 	 */
-	public List<Long> getAllSubDeptIds(Long parentId);
+	List<Long> getAllSubDeptIds(Long parentId);
 	
 	/**
 	 * 统计父部门下面的子部门的数量
 	 * @param 
 	 * @return
 	 */
-	public int countSubDeptByPId(Long deptId);
+	int countSubDeptByPId(Long deptId);
 	
 	/**
 	 * 添加部门
 	 * @param 
 	 * @return
 	 */
-	public int saveDept(Dept dept);
+	int saveDept(Dept dept);
 	
 	/**
 	 * 修改部门
 	 * @param 
 	 * @return
 	 */
-	public int updateDept(Dept dept);
+	int updateDept(Dept dept);
 	
 	/**
 	 * 删除部门（逻辑删除）
 	 * @param 
 	 * @return
 	 */
-	public int delDept(Long deptId);
+	int delDept(Long deptId);
 	
 }

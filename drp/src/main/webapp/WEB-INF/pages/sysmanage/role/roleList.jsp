@@ -38,7 +38,7 @@ String path = request.getContextPath();
 		
 		<c:forEach items="${roleList}" var="role">
 			<tr>
-				<td><a href="${ctx}/sysmgr/gotoRoleEdit.action?editFlag=2">${role.name}</a></td>
+				<td><a href="${ctx}/sysmgr/gotoRoleEdit.action?editFlag=2&roleId=${role.id}">${role.name}</a></td>
 				<td>${role.remarks}</td>
 				<td>
 					<a href="${ctx}/sysmgr/gotoRoleEdit.action?editFlag=2&roleId=${role.id}">修改</a>

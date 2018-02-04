@@ -19,28 +19,34 @@ public interface IRoleService {
 	 * @param 
 	 * @return
 	 */
-	public List<Role> getAllRoleList();
+	List<Role> getAllRoleList();
 	
+	/**
+	 * 根据角色id获取角色信息
+	 * @param 
+	 * @return
+	 */
+	Role getRoleById(Long roleId);
 	
 	/**
 	 * 添加角色
 	 * @param 
 	 * @return
 	 */
-	public boolean saveRole(Role role);
+	boolean saveRole(Role role);
 	
 	/**
 	 * 修改角色
 	 * @param 
 	 * @return
 	 */
-	public boolean updateRole(Role role);
+	boolean updateRole(Role role);
 	
 	/**
 	 * 删除角色
 	 * @param 
 	 * @return
 	 */
-	public boolean delRole(Long roleId);
+	boolean delRole(Long roleId);
 	
 }

@@ -22,6 +22,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE del_flag = 0
 	</select>
 	
+	<!-- 根据id获取角色的详细信息 -->
+	<select id="getRoleById" parameterType="long" resultType="role">
+		SELECT <include refid="all_role_columns" />
+		FROM drp_sys_role WHERE id = #{id} AND del_flag = 0
+	</select>
+	
 	<!-- 添加角色 -->
 	<insert id="saveRole" parameterType="role">
 		INSERT INTO drp_sys_role(name, update_by, update_date, remarks)

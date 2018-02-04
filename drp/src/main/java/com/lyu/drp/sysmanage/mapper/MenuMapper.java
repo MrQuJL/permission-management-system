@@ -20,62 +20,62 @@ public interface MenuMapper {
 	 * @param 
 	 * @return
 	 */
-	public MenuDto getMenuDetailById(Long menuId);
+	MenuDto getMenuDetailById(Long menuId);
 	
 	/**
 	 * 根据用户的id获取用户所能够操作的用户列表
 	 * @param userId 用户的id
 	 * @return 
 	 */
-	public List<Menu> getMenuListByUserId(Long userId);
+	List<Menu> getMenuListByUserId(Long userId);
 	
 	/**
 	 * 获取所有的字典列表 
 	 * @param 
 	 * @return
 	 */
-	public List<Menu> getAllMenuList();
+	List<Menu> getAllMenuList();
 	
 	/**
 	 * 查询出当前菜单(id=parentId)的所有子菜单
 	 * @param	parentId 父级菜单 
 	 * @return
 	 */
-	public List<Menu> getChildsMenuByPId(Long parentId);
+	List<Menu> getChildsMenuByPId(Long parentId);
 	
 	/**
 	 * 添加菜单
 	 * @param 
 	 * @return
 	 */
-	public int saveMenu(Menu menu);
+	int saveMenu(Menu menu);
 	
 	/**
 	 * 修改菜单
 	 * @param 
 	 * @return
 	 */
-	public int updateMenu(Menu menu);
+	int updateMenu(Menu menu);
 	
 	/**
 	 * 获取菜单id为menuId的所有子菜单的详细信息
 	 * @param 
 	 * @return
 	 */
-	public List<Menu> getSubMenuByPId(Long menuId);
+	List<Menu> getSubMenuByPId(Long menuId);
 	
 	/**
 	 * 获取当前菜单的所有子菜单的个数
 	 * @param 
 	 * @return
 	 */
-	public int countSubMenuByPId(Long menuId);
+	int countSubMenuByPId(Long menuId);
 	
 	/**
 	 * 删除指定id的菜单(逻辑删除，修改标识位)
 	 * @param 
 	 * @return
 	 */
-	public int delMenu(Long menuId);
+	int delMenu(Long menuId);
 	
 }
