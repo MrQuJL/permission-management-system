@@ -40,8 +40,19 @@ String path = request.getContextPath();
 		var roleMgr = {
 			delRole : function(roleId) {
 				if (confirm("您确定要删除该角色吗？")) {
-					alert("假装删除成功---roleId: " + roleId);
-				}	
+					loading("正在提交，请稍后...");
+					$.ajax({
+						type : "post",
+						url : "${ctx}/sysmgr/delRole.action",
+						data : {"roleId" : roleId},
+						dataType : "json",
+						success : function(data){
+							alert(data.message);
+							top.$.jBox.closeTip();
+							location.reload();
+						}
+					});
+				}
 			}
 		}
 	</script>

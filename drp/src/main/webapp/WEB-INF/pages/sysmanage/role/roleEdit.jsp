@@ -48,7 +48,7 @@ String path = request.getContextPath();
 					areaIds = JSON.stringify(areaIds);
 					console.log(areaIds);
 					
-					//loading('正在提交，请稍等...');
+					loading('正在提交，请稍等...');
 					
 					$.ajax({
 						type : "post",
@@ -57,6 +57,7 @@ String path = request.getContextPath();
 						dataType : "json",
 						success : function(data){
 							alert(data.message);
+							top.$.jBox.closeTip();
 						}
 					});
 				},
@@ -126,7 +127,6 @@ String path = request.getContextPath();
 			tree3.expandAll(true);
 		});
 	</script>
-	<script type="text/javascript">top.$.jBox.closeTip();</script>
 </head>
 <body>
 	<ul class="nav nav-tabs">

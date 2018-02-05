@@ -94,8 +94,6 @@ public class RoleAction {
 		List<Long> areaIds = JSON.parseArray(this.areaIds, Long.class);
 		
 		if (role.getId() == null) { // 新增
-			System.out.println("这是新增--");
-			
 			boolean flag = this.roleService.saveRole(role, menuIds, deptIds, areaIds);
 			
 			if (flag) {
@@ -105,8 +103,6 @@ public class RoleAction {
 			}
 			
 		} else { // 修改
-			System.out.println("这是修改--");
-			
 			boolean flag = this.roleService.updateRole(role, menuIds, deptIds, areaIds);
 			
 			if (flag) {
@@ -117,31 +113,29 @@ public class RoleAction {
 			
 		}
 		
-		System.out.println(role.getName());
+		/*System.out.println(role.getName());
 		System.out.println(role.getRemarks());
 		System.out.println(menuIds);
 		System.out.println(deptIds);
-		System.out.println(areaIds);
+		System.out.println(areaIds);*/
 		
 		return "success";
 	}
 	
 	/**
-	 * 删除子区域
+	 * 删除角色
 	 * @param 
 	 * @return
 	 */
 	public String delRole() {
-		/*if (!areaService.hasSubRole(this.areaId)) {
-			boolean flag = areaService.delRole(this.areaId);
-			if (flag) {
-				this.message = "删除区域成功！";
-			} else {
-				this.message = "删除失败，请先删除子区域！";
-			}
+		
+		boolean flag = this.roleService.delRole(this.roleId);
+		
+		if (flag) {
+			this.message = "删除角色成功";
 		} else {
-			this.message = "删除失败，请先删除子区域！";
-		}*/
+			this.message = "删除角色失败";
+		}
 		
 		return "success";
 	}

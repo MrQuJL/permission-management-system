@@ -183,10 +183,18 @@ public class RoleService implements IRoleService {
 
 	@Override
 	public boolean delRole(Long roleId) {
+		boolean flag = false;
+		// 删除角色的时候先删除从表的数据，再删除主表的数据
+		roleToMenuMapper.deleteRoleToMenu(roleId);
+		roleToDeptMapper.deleteRoleToDept(roleId);
+		roleToAreaMapper.deleteRoleToArea(roleId);
 		
-		roleMapper.delRole(roleId);
+		int rows = roleMapper.delRole(roleId);
 		
-		return false;
+		if (rows > 0) {
+			flag = true;
+		}
+		return flag;
 	}
 
 }
