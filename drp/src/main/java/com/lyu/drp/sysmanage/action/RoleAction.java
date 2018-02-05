@@ -89,9 +89,9 @@ public class RoleAction {
 		
 		Role role = JSON.parseObject(jsonObj, Role.class);
 		
-		List<Integer> menuIds = JSON.parseArray(this.menuIds, Integer.class);
-		List<Integer> deptIds = JSON.parseArray(this.deptIds, Integer.class);
-		List<Integer> areaIds = JSON.parseArray(this.areaIds, Integer.class);
+		List<Long> menuIds = JSON.parseArray(this.menuIds, Long.class);
+		List<Long> deptIds = JSON.parseArray(this.deptIds, Long.class);
+		List<Long> areaIds = JSON.parseArray(this.areaIds, Long.class);
 		
 		if (role.getId() == null) { // 新增
 			System.out.println("这是新增--");

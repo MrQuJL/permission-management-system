@@ -48,8 +48,6 @@
 	<!--开启事务注解驱动  -->
 	<tx:annotation-driven  transaction-manager="txManager" />
  	
- 	
- 	
  	<import resource="classpath:applicationContext-shiro.xml"/>
  	
 </beans>

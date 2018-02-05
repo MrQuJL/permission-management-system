@@ -33,8 +33,8 @@ public interface IRoleService {
 	 * @param 
 	 * @return
 	 */
-	boolean saveRole(Role role, List<Integer> menuIds, List<Integer> deptIds,
-		List<Integer> areaIds);
+	boolean saveRole(Role role, List<Long> menuIds, List<Long> deptIds,
+		List<Long> areaIds);
 	
 	/**
 	 * 修改角色
