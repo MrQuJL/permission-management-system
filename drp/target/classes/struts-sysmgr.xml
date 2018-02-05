@@ -175,8 +175,11 @@
 			<result>/WEB-INF/pages/sysmanage/role/roleEdit.jsp</result>
 		</action>
 		
-		
-		
+		<action name = "saveRole" class= "com.lyu.drp.sysmanage.action.RoleAction" method = "saveRole">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
 		
 	</package>
 	

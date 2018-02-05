@@ -9,27 +9,56 @@ String path = request.getContextPath();
 <html>
 <head>
 	<title>角色管理</title>
-	
+
 <meta charset="utf-8" />
 <meta name="renderer" content="webkit">
 <%@ include file="/WEB-INF/pages/include/head.jsp" %>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$("#name").focus();
-			$("#inputForm").validate({
+			$("#saveRoleForm").validate({
 				submitHandler: function(form){
-					var ids = [], nodes = tree.getCheckedNodes(true);
+					// 序列化表单数据
+					var jsonObj = {};
+					var obj = $("#saveRoleForm").serializeArray();
+					$.each(obj,function(i,item){
+						jsonObj[item.name] = item.value;
+					});
+					jsonObj = JSON.stringify(jsonObj);
+					
+					// 使用数组来接收选中的节点
+					var menuIds = [], nodes = tree.getCheckedNodes(true);
 					for(var i=0; i<nodes.length; i++) {
-						ids.push(nodes[i].id);
+						menuIds.push(nodes[i].id);
 					}
-					$("#menuIds").val(ids);
-					var ids2 = [], nodes2 = tree2.getCheckedNodes(true);
+					menuIds = JSON.stringify(menuIds);
+					console.log(menuIds);
+					
+					var deptIds = [], nodes2 = tree2.getCheckedNodes(true);
 					for(var i=0; i<nodes2.length; i++) {
-						ids2.push(nodes2[i].id);
+						deptIds.push(nodes2[i].id);
 					}
-					$("#deptIds").val(ids2);
-					loading('正在提交，请稍等...');
-					form.submit();
+					deptIds = JSON.stringify(deptIds);
+					console.log(deptIds);
+					
+					var areaIds = [], nodes3 = tree3.getCheckedNodes(true);
+					for(var i=0; i<nodes3.length; i++) {
+						areaIds.push(nodes3[i].id);
+					}
+					areaIds = JSON.stringify(areaIds);
+					console.log(areaIds);
+					
+					//loading('正在提交，请稍等...');
+					
+					$.ajax({
+						type : "post",
+						url : "${ctx}/sysmgr/saveRole.action",
+						data : {"menuIds" : menuIds, "deptIds" : deptIds, "areaIds" : areaIds, "jsonObj" : jsonObj},
+						dataType : "json",
+						success : function(data){
+							alert(data.message);
+						}
+					});
 				},
 				errorContainer: "#messageBox",
 				errorPlacement: function(error, element) {
@@ -56,14 +85,11 @@ String path = request.getContextPath();
 		    ];
 			// 初始化树结构
 			var tree = $.fn.zTree.init($("#menuTree"), setting, zNodes);
-			// 不选择父节点
-			// tree.setting.check.chkboxType = { "Y" : "ps", "N" : "s" };
 			// 默认选择节点
-			var ids = "".split(",");
-			for(var i=0; i<ids.length; i++) {
-				var node = tree.getNodeByParam("id", ids[i]);
+			<c:forEach items="${role.menuList}" var="menu">
+				var node = tree.getNodeByParam("id", "${menu.id}");
 				try{tree.checkNode(node, true, false);}catch(e){}
-			}
+			</c:forEach>
 			// 默认展开全部节点
 			tree.expandAll(true);
 			
@@ -75,14 +101,11 @@ String path = request.getContextPath();
 		    ];
 			// 初始化树结构
 			var tree2 = $.fn.zTree.init($("#deptTree"), setting, zNodes2);
-			// 不选择父节点
-			// tree2.setting.check.chkboxType = { "Y" : "ps", "N" : "s" };
 			// 默认选择节点
-			var ids2 = "".split(",");
-			for(var i=0; i<ids2.length; i++) {
-				var node = tree2.getNodeByParam("id", ids2[i]);
-				try{tree2.checkNode(node, true, false);}catch(e){}
-			}
+			<c:forEach items="${role.deptList}" var="dept">
+				var node = tree2.getNodeByParam("id", "${dept.id}");
+				try{tree.checkNode(node, true, false);}catch(e){}
+			</c:forEach>
 			// 默认展开全部节点
 			tree2.expandAll(true);
 			
@@ -94,17 +117,13 @@ String path = request.getContextPath();
 		    ];
 			// 初始化树结构
 			var tree3 = $.fn.zTree.init($("#areaTree"), setting, zNodes3);
-			// 不选择父节点
-			// tree2.setting.check.chkboxType = { "Y" : "ps", "N" : "s" };
 			// 默认选择节点
-			var ids3 = "".split(",");
-			for(var i=0; i<ids3.length; i++) {
-				var node = tree3.getNodeByParam("id", ids3[i]);
-				try{tree3.checkNode(node, true, false);}catch(e){}
-			}
+			<c:forEach items="${role.areaList}" var="area">
+				var node = tree3.getNodeByParam("id", "${area.id}");
+				try{tree.checkNode(node, true, false);}catch(e){}
+			</c:forEach>
 			// 默认展开全部节点
 			tree3.expandAll(true);
-			
 		});
 	</script>
 	<script type="text/javascript">top.$.jBox.closeTip();</script>
@@ -119,7 +138,7 @@ String path = request.getContextPath();
 			</c:choose>
 		</a></li>
 	</ul><br/>
-	<form id="inputForm" class="form-horizontal" action="#" method="post">
+	<form id="saveRoleForm" class="form-horizontal" action="#" method="post">
 		<input id="id" name="id" type="hidden" value="${role.id}"/>
 
 		<div class="control-group">

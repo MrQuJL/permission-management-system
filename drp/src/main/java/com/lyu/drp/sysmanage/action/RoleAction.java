@@ -2,6 +2,7 @@ package com.lyu.drp.sysmanage.action;
 
 import java.util.List;
 
+import com.alibaba.fastjson.JSON;
 import com.lyu.drp.sysmanage.entity.Area;
 import com.lyu.drp.sysmanage.entity.Dept;
 import com.lyu.drp.sysmanage.entity.Menu;
@@ -23,7 +24,7 @@ public class RoleAction {
 	// 发送给前台的角色列表的json字符串数组
 	private String jsonObj;
 	// 返回给前台的消息
-	private String message;
+	private String message = "hi";
 	// 修改(2)还是增加(1)
 	private Integer editFlag;
 	// 角色id
@@ -32,19 +33,21 @@ public class RoleAction {
 	private List<Role> roleList;
 	// 角色信息
 	private Role role;
-	// 当前用户所拥有的所有菜单
+	
+	// 接收前台选中的菜单，部门区域
+	private String menuIds;
+	private String deptIds;
+	private String areaIds;
+	
+	// 当前用户所拥有的所有菜单，部门，区域
 	private List<Menu> menuList;
-	// 当前用户所拥有的所有部门
 	private List<Dept> deptList;
-	// 当前用户所拥有的所有区域
 	private List<Area> areaList;
 	
 	private IRoleService roleService;
 	
 	private IMenuService menuService;
-	
 	private IDeptService deptService;
-	
 	private IAreaService areaService;
 	
 	public String getJsonObj() {
@@ -151,6 +154,30 @@ public class RoleAction {
 		this.areaList = areaList;
 	}
 
+	public String getMenuIds() {
+		return menuIds;
+	}
+
+	public void setMenuIds(String menuIds) {
+		this.menuIds = menuIds;
+	}
+
+	public String getDeptIds() {
+		return deptIds;
+	}
+
+	public void setDeptIds(String deptIds) {
+		this.deptIds = deptIds;
+	}
+
+	public String getAreaIds() {
+		return areaIds;
+	}
+
+	public void setAreaIds(String areaIds) {
+		this.areaIds = areaIds;
+	}
+
 	/**
 	 * 处理前往角色列表页面的请求
 	 * @param 
@@ -183,26 +210,33 @@ public class RoleAction {
 	}
 	
 	/**
-	 * 保存区域，新增的话editFlag为1，修改为2
+	 * 保存角色，新增的话editFlag为1，修改为2
 	 * @param 
 	 * @return
 	 */
 	public String saveRole() {
-		/*Role area = JSON.parseObject(jsonObj, Role.class);
 		
-		if (area.getId() == null) { // 新增区域
-			boolean flag = areaService.saveRole(area);
-			this.message = "no";
-			if (flag) {
-				this.message = "yes";
-			}
-		} else { // 修改区域
-			boolean flag = areaService.updateRole(area);
-			this.message = "no";
-			if (flag) {
-				this.message = "yes";
-			}
-		}*/
+		Role role = JSON.parseObject(jsonObj, Role.class);
+		
+		List<Integer> menuIds = JSON.parseArray(this.menuIds, Integer.class);
+		List<Integer> deptIds = JSON.parseArray(this.deptIds, Integer.class);
+		List<Integer> areaIds = JSON.parseArray(this.areaIds, Integer.class);
+		
+		if (role.getId() == null) { // 新增
+			System.out.println("这是新增--");
+			
+			
+		} else { // 修改
+			System.out.println("这是修改--");
+			
+		}
+		
+		System.out.println(role.getName());
+		System.out.println(role.getRemarks());
+		System.out.println(menuIds);
+		System.out.println(deptIds);
+		System.out.println(areaIds);
+		
 		return "success";
 	}
 	
