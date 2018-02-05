@@ -65,6 +65,9 @@ public class RoleService implements IRoleService {
 	public boolean saveRole(Role role, List<Integer> menuIds, List<Integer> deptIds,
 		List<Integer> areaIds) {
 		boolean flag = false;
+		if (role == null || menuIds == null || deptIds == null || areaIds == null) {
+			return flag;
+		}
 		
 		role.setUpdateBy(UserUtils.getCurrentUserId());
 		role.setUpdateDate(new Date());
@@ -72,13 +75,24 @@ public class RoleService implements IRoleService {
 		// 添加角色信息
 		int rows = roleMapper.saveRole(role);
 		
-		System.out.println("添加记录成功后返回的主键：" + role.getId());
-		
 		// 向角色-菜单表中插入记录
-		
+		if (menuIds.size() > 0) {
+			for (Integer menuId : menuIds) {
+				
+			}
+		}
 		// 向角色-部门表中插入记录
-		
+		if (menuIds.size() > 0) {
+			for (Integer deptId : deptIds) {
+				
+			}
+		}
 		// 向角色-区域表中插入记录
+		if (menuIds.size() > 0) {
+			for (Integer areaId : areaIds) {
+				
+			}
+		}
 		
 		if (rows > 0) {
 			flag = true;
