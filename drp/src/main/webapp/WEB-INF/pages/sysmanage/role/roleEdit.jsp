@@ -50,35 +50,9 @@ String path = request.getContextPath();
 			
 			// 用户-菜单
 			var zNodes=[
-					{id:"1", pId:"0", name:"功能菜单"},
-		            {id:"20", pId:"13", name:"用户管理"},
-		            {id:"68", pId:"67", name:"日志查询"},
-		            {id:"4", pId:"3", name:"菜单管理"},
-		            {id:"28", pId:"27", name:"个人信息"},
-		            {id:"13", pId:"2", name:"机构用户"},
-		            {id:"27", pId:"1", name:"我的面板"},
-		            {id:"7", pId:"3", name:"角色管理"},
-		            {id:"17", pId:"13", name:"机构管理"},
-		            {id:"29", pId:"28", name:"个人信息"},
-		            {id:"84", pId:"67", name:"连接池监视"},
-		            {id:"3", pId:"2", name:"系统设置"},
-		            {id:"2", pId:"1", name:"系统设置"},
-		            {id:"21", pId:"20", name:"查看"},
-		            {id:"8", pId:"7", name:"查看"},
-		            {id:"11", pId:"10", name:"查看"},
-		            {id:"67", pId:"2", name:"日志查询"},
-		            {id:"18", pId:"17", name:"查看"},
-		            {id:"10", pId:"3", name:"字典管理"},
-		            {id:"30", pId:"28", name:"修改密码"},
-		            {id:"15", pId:"14", name:"查看"},
-		            {id:"14", pId:"13", name:"区域管理"},
-		            {id:"5", pId:"4", name:"查看"},
-		            {id:"22", pId:"20", name:"修改"},
-		            {id:"12", pId:"10", name:"修改"},
-		            {id:"19", pId:"17", name:"修改"},
-		            {id:"16", pId:"14", name:"修改"},
-		            {id:"6", pId:"4", name:"修改"},
-		            {id:"9", pId:"7", name:"修改"},
+				<c:forEach items="${menuList}" var="menu">
+					{id:"${menu.id}", pId:"${menu.parentId}", name:"${menu.name}"},
+				</c:forEach>
 		    ];
 			// 初始化树结构
 			var tree = $.fn.zTree.init($("#menuTree"), setting, zNodes);
@@ -95,22 +69,9 @@ String path = request.getContextPath();
 			
 			// 用户-部门
 			var zNodes2=[
-					{id:"1", pId:"0", name:"湖南省总公司"},
-		            {id:"2", pId:"1", name:"公司领导"},
-		            {id:"3", pId:"1", name:"综合部"},
-		            {id:"4", pId:"1", name:"市场部"},
-		            {id:"5", pId:"1", name:"技术部"},
-		            {id:"6", pId:"1", name:"研发部"},
-		            {id:"7", pId:"1", name:"长沙市分公司"},
-		            {id:"8", pId:"7", name:"公司领导"},
-		            {id:"9", pId:"7", name:"综合部"},
-		            {id:"10", pId:"7", name:"市场部"},
-		            {id:"11", pId:"7", name:"技术部"},
-		            {id:"12", pId:"7", name:"芙蓉区分公司"},
-		            {id:"13", pId:"12", name:"公司领导"},
-		            {id:"14", pId:"12", name:"综合部"},
-		            {id:"15", pId:"12", name:"市场部"},
-		            {id:"16", pId:"12", name:"技术部"},
+				<c:forEach items="${deptList}" var="dept">
+					{id:"${dept.id}", pId:"${dept.parentId}", name:"${dept.name}"},
+				</c:forEach>
 		    ];
 			// 初始化树结构
 			var tree2 = $.fn.zTree.init($("#deptTree"), setting, zNodes2);
@@ -127,22 +88,9 @@ String path = request.getContextPath();
 			
 			// 用户-区域
 			var zNodes3=[
-					{id:"1", pId:"0", name:"湖南省总公司"},
-		            {id:"2", pId:"1", name:"公司领导"},
-		            {id:"3", pId:"1", name:"综合部"},
-		            {id:"4", pId:"1", name:"市场部"},
-		            {id:"5", pId:"1", name:"技术部"},
-		            {id:"6", pId:"1", name:"研发部"},
-		            {id:"7", pId:"1", name:"长沙市分公司"},
-		            {id:"8", pId:"7", name:"公司领导"},
-		            {id:"9", pId:"7", name:"综合部"},
-		            {id:"10", pId:"7", name:"市场部"},
-		            {id:"11", pId:"7", name:"技术部"},
-		            {id:"12", pId:"7", name:"芙蓉区分公司"},
-		            {id:"13", pId:"12", name:"公司领导"},
-		            {id:"14", pId:"12", name:"综合部"},
-		            {id:"15", pId:"12", name:"市场部"},
-		            {id:"16", pId:"12", name:"技术部"},
+				<c:forEach items="${areaList}" var="area">
+					{id:"${area.id}", pId:"${area.parentId}", name:"${area.name}"},
+				</c:forEach>
 		    ];
 			// 初始化树结构
 			var tree3 = $.fn.zTree.init($("#areaTree"), setting, zNodes3);

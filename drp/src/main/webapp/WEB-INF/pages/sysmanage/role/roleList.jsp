@@ -8,7 +8,6 @@ String path = request.getContextPath();
 <html>
 <head>
 	<title>角色管理</title>
-	<script type="text/javascript">top.$.jBox.closeTip();</script>
 <meta charset="utf-8" />
 <meta name="renderer" content="webkit">
 <%@ include file="/WEB-INF/pages/include/head.jsp" %>
@@ -25,17 +24,6 @@ String path = request.getContextPath();
 			<th>描述</th>
 			<th>操作</th>
 		</tr>
-		
-		<!-- <tr>
-			<td><a href="#">普通用户</a></td>
-			<td>湖南省总公司</td>
-			<td>
-				<a href="roleAssign.html">分配</a>
-				<a href="roleAdd.html">修改</a>
-				<a href="#" onclick="return confirmx('确认要删除该角色吗？', this.href)">删除</a>
-			</td>	
-		</tr> -->
-		
 		<c:forEach items="${roleList}" var="role">
 			<tr>
 				<td><a href="${ctx}/sysmgr/gotoRoleEdit.action?editFlag=2&roleId=${role.id}">${role.name}</a></td>
@@ -47,7 +35,6 @@ String path = request.getContextPath();
 				</td>
 			</tr>
 		</c:forEach>
-	
 	</table>
 	<script type="text/javascript">
 		var roleMgr = {

@@ -2,7 +2,13 @@ package com.lyu.drp.sysmanage.action;
 
 import java.util.List;
 
+import com.lyu.drp.sysmanage.entity.Area;
+import com.lyu.drp.sysmanage.entity.Dept;
+import com.lyu.drp.sysmanage.entity.Menu;
 import com.lyu.drp.sysmanage.entity.Role;
+import com.lyu.drp.sysmanage.service.IAreaService;
+import com.lyu.drp.sysmanage.service.IDeptService;
+import com.lyu.drp.sysmanage.service.IMenuService;
 import com.lyu.drp.sysmanage.service.IRoleService;
 
 /**
@@ -26,8 +32,20 @@ public class RoleAction {
 	private List<Role> roleList;
 	// 角色信息
 	private Role role;
+	// 当前用户所拥有的所有菜单
+	private List<Menu> menuList;
+	// 当前用户所拥有的所有部门
+	private List<Dept> deptList;
+	// 当前用户所拥有的所有区域
+	private List<Area> areaList;
 	
 	private IRoleService roleService;
+	
+	private IMenuService menuService;
+	
+	private IDeptService deptService;
+	
+	private IAreaService areaService;
 	
 	public String getJsonObj() {
 		return jsonObj;
@@ -77,12 +95,60 @@ public class RoleAction {
 		this.roleService = roleService;
 	}
 
+	public IMenuService getMenuService() {
+		return menuService;
+	}
+
+	public void setMenuService(IMenuService menuService) {
+		this.menuService = menuService;
+	}
+
+	public IDeptService getDeptService() {
+		return deptService;
+	}
+
+	public void setDeptService(IDeptService deptService) {
+		this.deptService = deptService;
+	}
+
+	public IAreaService getAreaService() {
+		return areaService;
+	}
+
+	public void setAreaService(IAreaService areaService) {
+		this.areaService = areaService;
+	}
+
 	public Role getRole() {
 		return role;
 	}
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public List<Menu> getMenuList() {
+		return menuList;
+	}
+
+	public void setMenuList(List<Menu> menuList) {
+		this.menuList = menuList;
+	}
+
+	public List<Dept> getDeptList() {
+		return deptList;
+	}
+
+	public void setDeptList(List<Dept> deptList) {
+		this.deptList = deptList;
+	}
+
+	public List<Area> getAreaList() {
+		return areaList;
+	}
+
+	public void setAreaList(List<Area> areaList) {
+		this.areaList = areaList;
 	}
 
 	/**
@@ -103,7 +169,12 @@ public class RoleAction {
 	 * @return
 	 */
 	public String gotoRoleEdit() {
-		if (editFlag == 2) { // 修改
+		// 无论是新增还是修改都要显示出当前用户所拥有的所有资源
+		this.menuList = menuService.getAllMenuList();
+		this.deptList = deptService.getAllDeptList();
+		this.areaList = areaService.getAllAreaList();
+		
+		if (editFlag == 2) { // 修改的话要选中默认选中用户已经拥有的权限资源
 			// 调用service查询一下角色的id为roleId的角色信息
 			this.role = this.roleService.getRoleById(this.roleId);
 			
