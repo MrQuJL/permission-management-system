@@ -41,54 +41,6 @@ public class LoginAction {
 	// 用户拥有的菜单列表
 	private List<Menu> menuList;
 	
-	public IMenuService getMenuService() {
-		return menuService;
-	}
-
-	public void setMenuService(IMenuService menuService) {
-		this.menuService = menuService;
-	}
-
-	public IUserService getUserService() {
-		return userService;
-	}
-
-	public void setUserService(IUserService userService) {
-		this.userService = userService;
-	}
-
-	public String getLoginName() {
-		return loginName;
-	}
-	
-	public void setLoginName(String loginName) {
-		this.loginName = loginName;
-	}
-	
-	public String getPassword() {
-		return password;
-	}
-	
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getLoginErrorMsg() {
-		return loginErrorMsg;
-	}
-	
-	public void setLoginErrorMsg(String loginErrorMsg) {
-		this.loginErrorMsg = loginErrorMsg;
-	}
-	
-	public List<Menu> getMenuList() {
-		return menuList;
-	}
-
-	public void setMenuList(List<Menu> menuList) {
-		this.menuList = menuList;
-	}
-
 	/**
 	 * 进入登录页面
 	 * @param 
@@ -162,4 +114,57 @@ public class LoginAction {
 			return "loginPage";
 		}
 	}
+	
+	/**
+	 * 一系列的setter和getter方法
+	 */
+	
+	public IMenuService getMenuService() {
+		return menuService;
+	}
+
+	public void setMenuService(IMenuService menuService) {
+		this.menuService = menuService;
+	}
+
+	public IUserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(IUserService userService) {
+		this.userService = userService;
+	}
+
+	public String getLoginName() {
+		return loginName;
+	}
+	
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getLoginErrorMsg() {
+		return loginErrorMsg;
+	}
+	
+	public void setLoginErrorMsg(String loginErrorMsg) {
+		this.loginErrorMsg = loginErrorMsg;
+	}
+	
+	public List<Menu> getMenuList() {
+		return menuList;
+	}
+
+	public void setMenuList(List<Menu> menuList) {
+		this.menuList = menuList;
+	}
+	
 }

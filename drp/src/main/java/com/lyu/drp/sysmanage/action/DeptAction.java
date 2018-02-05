@@ -38,80 +38,8 @@ public class DeptAction {
 	private String parentName;
 	// 部门的详细信息
 	private DeptDto deptDto;
-	
+	// spring注入
 	private IDeptService deptService;
-	
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public String getJsonObj() {
-		return jsonObj;
-	}
-
-	public void setJsonObj(String jsonObj) {
-		this.jsonObj = jsonObj;
-	}
-
-	public Integer getEditFlag() {
-		return editFlag;
-	}
-
-	public void setEditFlag(Integer editFlag) {
-		this.editFlag = editFlag;
-	}
-
-	public List<Dept> getDeptList() {
-		return deptList;
-	}
-
-	public void setDeptList(List<Dept> deptList) {
-		this.deptList = deptList;
-	}
-
-	public IDeptService getDeptService() {
-		return deptService;
-	}
-
-	public void setDeptService(IDeptService deptService) {
-		this.deptService = deptService;
-	}
-
-	public Long getDeptId() {
-		return deptId;
-	}
-
-	public void setDeptId(Long deptId) {
-		this.deptId = deptId;
-	}
-
-	public DeptDto getDeptDto() {
-		return deptDto;
-	}
-
-	public void setDeptDto(DeptDto deptDto) {
-		this.deptDto = deptDto;
-	}
-
-	public Long getParentId() {
-		return parentId;
-	}
-
-	public void setParentId(Long parentId) {
-		this.parentId = parentId;
-	}
-
-	public String getParentName() {
-		return parentName;
-	}
-
-	public void setParentName(String parentName) {
-		this.parentName = parentName;
-	}
 
 	/**
 	 * 进入部门列表
@@ -249,4 +177,80 @@ public class DeptAction {
 		return "success";
 	}
 
+	/**
+	 * 一系列的setter和getter方法
+	 */
+	
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public String getJsonObj() {
+		return jsonObj;
+	}
+
+	public void setJsonObj(String jsonObj) {
+		this.jsonObj = jsonObj;
+	}
+
+	public Integer getEditFlag() {
+		return editFlag;
+	}
+
+	public void setEditFlag(Integer editFlag) {
+		this.editFlag = editFlag;
+	}
+
+	public List<Dept> getDeptList() {
+		return deptList;
+	}
+
+	public void setDeptList(List<Dept> deptList) {
+		this.deptList = deptList;
+	}
+
+	public IDeptService getDeptService() {
+		return deptService;
+	}
+
+	public void setDeptService(IDeptService deptService) {
+		this.deptService = deptService;
+	}
+
+	public Long getDeptId() {
+		return deptId;
+	}
+
+	public void setDeptId(Long deptId) {
+		this.deptId = deptId;
+	}
+
+	public DeptDto getDeptDto() {
+		return deptDto;
+	}
+
+	public void setDeptDto(DeptDto deptDto) {
+		this.deptDto = deptDto;
+	}
+
+	public Long getParentId() {
+		return parentId;
+	}
+
+	public void setParentId(Long parentId) {
+		this.parentId = parentId;
+	}
+
+	public String getParentName() {
+		return parentName;
+	}
+
+	public void setParentName(String parentName) {
+		this.parentName = parentName;
+	}
+	
 }

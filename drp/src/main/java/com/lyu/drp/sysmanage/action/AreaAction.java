@@ -35,62 +35,6 @@ public class AreaAction {
 	private List<Area> areaList;
 	// spring注入
 	private IAreaService areaService;
-	
-	public String getJsonObj() {
-		return jsonObj;
-	}
-	
-	public void setJsonObj(String jsonObj) {
-		this.jsonObj = jsonObj;
-	}
-	
-	public String getMessage() {
-		return message;
-	}
-	
-	public void setMessage(String message) {
-		this.message = message;
-	}
-	
-	public Integer getEditFlag() {
-		return editFlag;
-	}
-	
-	public void setEditFlag(Integer editFlag) {
-		this.editFlag = editFlag;
-	}
-	
-	public Long getAreaId() {
-		return areaId;
-	}
-
-	public void setAreaId(Long areaId) {
-		this.areaId = areaId;
-	}
-
-	public AreaDto getArea() {
-		return area;
-	}
-
-	public void setArea(AreaDto area) {
-		this.area = area;
-	}
-
-	public List<Area> getAreaList() {
-		return areaList;
-	}
-
-	public void setAreaList(List<Area> areaList) {
-		this.areaList = areaList;
-	}
-
-	public IAreaService getAreaService() {
-		return areaService;
-	}
-
-	public void setAreaService(IAreaService areaService) {
-		this.areaService = areaService;
-	}
 
 	/**
 	 * 处理前往区域列表页面的请求
@@ -230,6 +174,66 @@ public class AreaAction {
 		this.jsonObj = JSONArray.toJSONString(treeList);
 		
 		return "success";
+	}
+	
+	/**
+	 * 一系列的setter和getter方法
+	 */
+	
+	public String getJsonObj() {
+		return jsonObj;
+	}
+	
+	public void setJsonObj(String jsonObj) {
+		this.jsonObj = jsonObj;
+	}
+	
+	public String getMessage() {
+		return message;
+	}
+	
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	
+	public Integer getEditFlag() {
+		return editFlag;
+	}
+	
+	public void setEditFlag(Integer editFlag) {
+		this.editFlag = editFlag;
+	}
+	
+	public Long getAreaId() {
+		return areaId;
+	}
+
+	public void setAreaId(Long areaId) {
+		this.areaId = areaId;
+	}
+
+	public AreaDto getArea() {
+		return area;
+	}
+
+	public void setArea(AreaDto area) {
+		this.area = area;
+	}
+
+	public List<Area> getAreaList() {
+		return areaList;
+	}
+
+	public void setAreaList(List<Area> areaList) {
+		this.areaList = areaList;
+	}
+
+	public IAreaService getAreaService() {
+		return areaService;
+	}
+
+	public void setAreaService(IAreaService areaService) {
+		this.areaService = areaService;
 	}
 	
 }

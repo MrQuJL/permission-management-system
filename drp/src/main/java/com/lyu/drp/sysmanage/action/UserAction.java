@@ -31,46 +31,6 @@ public class UserAction {
 	// spring和struts2的整合包会将该属性以名称匹配的凡是注入
 	private IUserService userService;
 	
-	public String getOldPassword() {
-		return oldPassword;
-	}
-
-	public void setOldPassword(String oldPassword) {
-		this.oldPassword = oldPassword;
-	}
-
-	public String getNewPassword() {
-		return newPassword;
-	}
-
-	public void setNewPassword(String newPassword) {
-		this.newPassword = newPassword;
-	}
-
-	public IUserService getUserService() {
-		return userService;
-	}
-
-	public void setUserService(IUserService userService) {
-		this.userService = userService;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-	
-	public String getJsonObj() {
-		return jsonObj;
-	}
-
-	public void setJsonObj(String jsonObj) {
-		this.jsonObj = jsonObj;
-	}
-
 	/**
 	 * 进入用户个人信息页面
 	 * @param 
@@ -151,6 +111,50 @@ public class UserAction {
 		}
 		
 		return "saveUserInfo";
+	}
+	
+	/**
+	 * 一系列的setter和getter方法
+	 */
+	
+	public String getOldPassword() {
+		return oldPassword;
+	}
+
+	public void setOldPassword(String oldPassword) {
+		this.oldPassword = oldPassword;
+	}
+
+	public String getNewPassword() {
+		return newPassword;
+	}
+
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+
+	public IUserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(IUserService userService) {
+		this.userService = userService;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	
+	public String getJsonObj() {
+		return jsonObj;
+	}
+
+	public void setJsonObj(String jsonObj) {
+		this.jsonObj = jsonObj;
 	}
 	
 }

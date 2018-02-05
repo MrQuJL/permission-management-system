@@ -20,7 +20,7 @@ public class Role implements Serializable {
 
     private String name;
 
-    private String updateBy;
+    private Long updateBy;
 
     private Date updateDate;
 
@@ -50,11 +50,11 @@ public class Role implements Serializable {
 		this.name = name;
 	}
 
-	public String getUpdateBy() {
+	public Long getUpdateBy() {
 		return updateBy;
 	}
 
-	public void setUpdateBy(String updateBy) {
+	public void setUpdateBy(Long updateBy) {
 		this.updateBy = updateBy;
 	}
 

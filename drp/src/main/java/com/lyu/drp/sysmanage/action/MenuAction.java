@@ -38,70 +38,6 @@ public class MenuAction {
 	// 返回页面的json对象
 	private String jsonObj;
 	
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public int getEditFlag() {
-		return editFlag;
-	}
-
-	public void setEditFlag(int editFlag) {
-		this.editFlag = editFlag;
-	}
-
-	public Long getMenuId() {
-		return menuId;
-	}
-
-	public void setMenuId(Long menuId) {
-		this.menuId = menuId;
-	}
-
-	public MenuDto getMenu() {
-		return menu;
-	}
-
-	public void setMenu(MenuDto menu) {
-		this.menu = menu;
-	}
-
-	public IMenuService getMenuService() {
-		return menuService;
-	}
-
-	public void setMenuService(IMenuService menuService) {
-		this.menuService = menuService;
-	}
-	
-	public List<Menu> getMenuList() {
-		return menuList;
-	}
-
-	public void setMenuList(List<Menu> menuList) {
-		this.menuList = menuList;
-	}
-	
-	public String getJsonObj() {
-		return jsonObj;
-	}
-
-	public void setJsonObj(String jsonObj) {
-		this.jsonObj = jsonObj;
-	}
-	
-	public Long getParentId() {
-		return parentId;
-	}
-
-	public void setParentId(Long parentId) {
-		this.parentId = parentId;
-	}
-
 	/**
 	 * 前往菜单列表
 	 * @param 
@@ -269,4 +205,72 @@ public class MenuAction {
 		return "success";
 	}
 
+	/**
+	 * 一系列的setter和getter方法
+	 */
+	
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public int getEditFlag() {
+		return editFlag;
+	}
+
+	public void setEditFlag(int editFlag) {
+		this.editFlag = editFlag;
+	}
+
+	public Long getMenuId() {
+		return menuId;
+	}
+
+	public void setMenuId(Long menuId) {
+		this.menuId = menuId;
+	}
+
+	public MenuDto getMenu() {
+		return menu;
+	}
+
+	public void setMenu(MenuDto menu) {
+		this.menu = menu;
+	}
+
+	public IMenuService getMenuService() {
+		return menuService;
+	}
+
+	public void setMenuService(IMenuService menuService) {
+		this.menuService = menuService;
+	}
+	
+	public List<Menu> getMenuList() {
+		return menuList;
+	}
+
+	public void setMenuList(List<Menu> menuList) {
+		this.menuList = menuList;
+	}
+	
+	public String getJsonObj() {
+		return jsonObj;
+	}
+
+	public void setJsonObj(String jsonObj) {
+		this.jsonObj = jsonObj;
+	}
+	
+	public Long getParentId() {
+		return parentId;
+	}
+
+	public void setParentId(Long parentId) {
+		this.parentId = parentId;
+	}
+	
 }

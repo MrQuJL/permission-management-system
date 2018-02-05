@@ -29,12 +29,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 添加角色 -->
-	<insert id="saveRole" parameterType="role">
+	<insert id="saveRole" parameterType="role" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
 		INSERT INTO drp_sys_role(name, update_by, update_date, remarks)
 		VALUES(#{name}, #{updateBy}, #{updateDate}, #{remarks})
-		<selectKey keyProperty="id" resultType="long" order="AFTER">
-			SELECT LAST_INSERT_ID() as id
-		</selectKey>
 	</insert>
 	
 	<!-- 修改角色 -->

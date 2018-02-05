@@ -36,6 +36,10 @@ public class TagAction extends ActionSupport{
 		return url;
 	}
 
+	/**
+	 * 一系列的setter和getter方法
+	 */
+	
 	public void setUrl(String url) {
 		this.url = url;
 	}

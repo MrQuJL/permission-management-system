@@ -50,6 +50,100 @@ public class RoleAction {
 	private IDeptService deptService;
 	private IAreaService areaService;
 	
+	/**
+	 * 处理前往角色列表页面的请求
+	 * @param 
+	 * @return
+	 */
+	public String gotoRoleList() {
+		
+		this.roleList = roleService.getAllRoleList();
+		
+		return "success";
+	}
+	
+	/**
+	 * 处理前往角色编辑页面的请求
+	 * @param 
+	 * @return
+	 */
+	public String gotoRoleEdit() {
+		// 无论是新增还是修改都要显示出当前用户所拥有的所有资源
+		this.menuList = menuService.getAllMenuList();
+		this.deptList = deptService.getAllDeptList();
+		this.areaList = areaService.getAllAreaList();
+		
+		if (editFlag == 2) { // 修改的话要选中默认选中用户已经拥有的权限资源
+			// 调用service查询一下角色的id为roleId的角色信息
+			this.role = this.roleService.getRoleById(this.roleId);
+		}		
+		return "success";
+	}
+	
+	/**
+	 * 保存角色，新增的话editFlag为1，修改为2
+	 * @param 
+	 * @return
+	 */
+	public String saveRole() {
+		
+		Role role = JSON.parseObject(jsonObj, Role.class);
+		
+		List<Integer> menuIds = JSON.parseArray(this.menuIds, Integer.class);
+		List<Integer> deptIds = JSON.parseArray(this.deptIds, Integer.class);
+		List<Integer> areaIds = JSON.parseArray(this.areaIds, Integer.class);
+		
+		if (role.getId() == null) { // 新增
+			System.out.println("这是新增--");
+			
+			boolean flag = this.roleService.saveRole(role, menuIds, deptIds, areaIds);
+			
+			if (flag) {
+				this.message = "添加角色成功";
+			} else {
+				this.message = "添加角色失败";
+			}
+			
+		} else { // 修改
+			System.out.println("这是修改--");
+			
+			
+			
+		}
+		
+		System.out.println(role.getName());
+		System.out.println(role.getRemarks());
+		System.out.println(menuIds);
+		System.out.println(deptIds);
+		System.out.println(areaIds);
+		
+		return "success";
+	}
+	
+	/**
+	 * 删除子区域
+	 * @param 
+	 * @return
+	 */
+	public String delRole() {
+		/*if (!areaService.hasSubRole(this.areaId)) {
+			boolean flag = areaService.delRole(this.areaId);
+			if (flag) {
+				this.message = "删除区域成功！";
+			} else {
+				this.message = "删除失败，请先删除子区域！";
+			}
+		} else {
+			this.message = "删除失败，请先删除子区域！";
+		}*/
+		
+		return "success";
+	}
+	
+	/**
+	 * 一系列的setter和getter方法
+	 */
+	
 	public String getJsonObj() {
 		return jsonObj;
 	}
@@ -176,88 +270,6 @@ public class RoleAction {
 
 	public void setAreaIds(String areaIds) {
 		this.areaIds = areaIds;
-	}
-
-	/**
-	 * 处理前往角色列表页面的请求
-	 * @param 
-	 * @return
-	 */
-	public String gotoRoleList() {
-		
-		this.roleList = roleService.getAllRoleList();
-		
-		return "success";
-	}
-	
-	/**
-	 * 处理前往角色编辑页面的请求
-	 * @param 
-	 * @return
-	 */
-	public String gotoRoleEdit() {
-		// 无论是新增还是修改都要显示出当前用户所拥有的所有资源
-		this.menuList = menuService.getAllMenuList();
-		this.deptList = deptService.getAllDeptList();
-		this.areaList = areaService.getAllAreaList();
-		
-		if (editFlag == 2) { // 修改的话要选中默认选中用户已经拥有的权限资源
-			// 调用service查询一下角色的id为roleId的角色信息
-			this.role = this.roleService.getRoleById(this.roleId);
-			
-		}		
-		return "success";
-	}
-	
-	/**
-	 * 保存角色，新增的话editFlag为1，修改为2
-	 * @param 
-	 * @return
-	 */
-	public String saveRole() {
-		
-		Role role = JSON.parseObject(jsonObj, Role.class);
-		
-		List<Integer> menuIds = JSON.parseArray(this.menuIds, Integer.class);
-		List<Integer> deptIds = JSON.parseArray(this.deptIds, Integer.class);
-		List<Integer> areaIds = JSON.parseArray(this.areaIds, Integer.class);
-		
-		if (role.getId() == null) { // 新增
-			System.out.println("这是新增--");
-			
-			
-		} else { // 修改
-			System.out.println("这是修改--");
-			
-		}
-		
-		System.out.println(role.getName());
-		System.out.println(role.getRemarks());
-		System.out.println(menuIds);
-		System.out.println(deptIds);
-		System.out.println(areaIds);
-		
-		return "success";
-	}
-	
-	/**
-	 * 删除子区域
-	 * @param 
-	 * @return
-	 */
-	public String delRole() {
-		/*if (!areaService.hasSubRole(this.areaId)) {
-			boolean flag = areaService.delRole(this.areaId);
-			if (flag) {
-				this.message = "删除区域成功！";
-			} else {
-				this.message = "删除失败，请先删除子区域！";
-			}
-		} else {
-			this.message = "删除失败，请先删除子区域！";
-		}*/
-		
-		return "success";
 	}
 	
 }

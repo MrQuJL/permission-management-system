@@ -39,70 +39,6 @@ public class DictAction {
 	// 返回给前台的分页条对象
 	private String pageBar;
 	
-	public String getPageBar() {
-		return pageBar;
-	}
-
-	public void setPageBar(String pageBar) {
-		this.pageBar = pageBar;
-	}
-
-	public PageParam getPageParam() {
-		return pageParam;
-	}
-
-	public void setPageParam(PageParam pageParam) {
-		this.pageParam = pageParam;
-	}
-	
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public Long getDictId() {
-		return dictId;
-	}
-
-	public void setDictId(Long dictId) {
-		this.dictId = dictId;
-	}
-
-	public String getJsonObj() {
-		return jsonObj;
-	}
-
-	public void setJsonObj(String jsonObj) {
-		this.jsonObj = jsonObj;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public IDictService getDictService() {
-		return dictService;
-	}
-
-	public void setDictService(IDictService dictService) {
-		this.dictService = dictService;
-	}
-
 	/**
 	 * 进入字典列表页面
 	 * @param 
@@ -200,6 +136,74 @@ public class DictAction {
 			this.message = "删除字典成功";
 		}
 		return "success";
+	}
+	
+	/**
+	 * 一系列的setter和getter方法
+	 */
+	
+	public String getPageBar() {
+		return pageBar;
+	}
+
+	public void setPageBar(String pageBar) {
+		this.pageBar = pageBar;
+	}
+
+	public PageParam getPageParam() {
+		return pageParam;
+	}
+
+	public void setPageParam(PageParam pageParam) {
+		this.pageParam = pageParam;
+	}
+	
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public Long getDictId() {
+		return dictId;
+	}
+
+	public void setDictId(Long dictId) {
+		this.dictId = dictId;
+	}
+
+	public String getJsonObj() {
+		return jsonObj;
+	}
+
+	public void setJsonObj(String jsonObj) {
+		this.jsonObj = jsonObj;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public IDictService getDictService() {
+		return dictService;
+	}
+
+	public void setDictService(IDictService dictService) {
+		this.dictService = dictService;
 	}
 	
 }

@@ -1,5 +1,6 @@
 package com.lyu.drp.sysmanage.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import com.lyu.drp.sysmanage.mapper.DeptMapper;
 import com.lyu.drp.sysmanage.mapper.MenuMapper;
 import com.lyu.drp.sysmanage.mapper.RoleMapper;
 import com.lyu.drp.sysmanage.service.IRoleService;
+import com.lyu.drp.util.UserUtils;
 
 /**
  * 类名称: 角色服务实现类
@@ -43,8 +45,8 @@ public class RoleService implements IRoleService {
 		return roleMapper.getAllRoleList();
 	}
 
-	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
 	@Override
+	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
 	public Role getRoleById(Long roleId) {
 		
 		Role role = roleMapper.getRoleById(roleId);
@@ -57,12 +59,32 @@ public class RoleService implements IRoleService {
 		return role;
 	}
 	
+	
 	@Override
-	public boolean saveRole(Role role) {
-		// 返回主键
-		roleMapper.saveRole(role);
+	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
+	public boolean saveRole(Role role, List<Integer> menuIds, List<Integer> deptIds,
+		List<Integer> areaIds) {
+		boolean flag = false;
 		
-		return false;
+		role.setUpdateBy(UserUtils.getCurrentUserId());
+		role.setUpdateDate(new Date());
+		
+		// 添加角色信息
+		int rows = roleMapper.saveRole(role);
+		
+		System.out.println("添加记录成功后返回的主键：" + role.getId());
+		
+		// 向角色-菜单表中插入记录
+		
+		// 向角色-部门表中插入记录
+		
+		// 向角色-区域表中插入记录
+		
+		if (rows > 0) {
+			flag = true;
+		}
+		
+		return flag;
 	}
 
 	@Override

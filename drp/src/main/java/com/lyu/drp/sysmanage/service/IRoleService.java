@@ -22,7 +22,7 @@ public interface IRoleService {
 	List<Role> getAllRoleList();
 	
 	/**
-	 * 根据角色id获取角色信息
+	 * 根据角色id获取角色信息，包括所拥有的菜单，部门，区域
 	 * @param 
 	 * @return
 	 */
@@ -33,7 +33,8 @@ public interface IRoleService {
 	 * @param 
 	 * @return
 	 */
-	boolean saveRole(Role role);
+	boolean saveRole(Role role, List<Integer> menuIds, List<Integer> deptIds,
+		List<Integer> areaIds);
 	
 	/**
 	 * 修改角色
