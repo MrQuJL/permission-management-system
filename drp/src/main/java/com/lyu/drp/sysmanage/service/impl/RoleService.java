@@ -127,11 +127,58 @@ public class RoleService implements IRoleService {
 	}
 
 	@Override
-	public boolean updateRole(Role role) {
+	public boolean updateRole(Role role, List<Long> menuIds, List<Long> deptIds,
+		List<Long> areaIds) {
+		boolean flag = false;
+		if (role == null) {
+			return flag;
+		}
+		// 设置修改时间
+		role.setUpdateBy(UserUtils.getCurrentUserId());
+		role.setUpdateDate(new Date());
 		
-		roleMapper.updateRole(role);
+		// 修改角色表的信息
+		int rows = roleMapper.updateRole(role);
 		
-		return false;
+		// 1.先删除该角色的所有资源权限
+		roleToMenuMapper.deleteRoleToMenu(role.getId());
+		roleToDeptMapper.deleteRoleToDept(role.getId());
+		roleToAreaMapper.deleteRoleToArea(role.getId());
+		
+		// 2.再通过传入的参数重新授权
+		// 向角色-菜单表中插入记录
+		if (menuIds.size() > 0) {
+			for (Long menuId : menuIds) {
+				RoleToMenu roleToMenu = new RoleToMenu();
+				roleToMenu.setRoleId(role.getId());
+				roleToMenu.setMenuId(menuId);
+				roleToMenuMapper.saveRoleToMenu(roleToMenu);
+			}
+		}
+		// 向角色-部门表中插入记录
+		if (menuIds.size() > 0) {
+			for (Long deptId : deptIds) {
+				RoleToDept roleToDept = new RoleToDept();
+				roleToDept.setRoleId(role.getId());
+				roleToDept.setDeptId(deptId);
+				roleToDeptMapper.saveRoleToDept(roleToDept);
+			}
+		}
+		// 向角色-区域表中插入记录
+		if (menuIds.size() > 0) {
+			for (Long areaId : areaIds) {
+				RoleToArea roleToArea = new RoleToArea();
+				roleToArea.setRoleId(role.getId());
+				roleToArea.setAreaId(areaId);
+				roleToAreaMapper.saveRoleToArea(roleToArea);
+			}
+		}
+		
+		if (rows > 0) {
+			flag = true;
+		}
+		
+		return flag;
 	}
 
 	@Override

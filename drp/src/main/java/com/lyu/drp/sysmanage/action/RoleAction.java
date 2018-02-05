@@ -107,7 +107,13 @@ public class RoleAction {
 		} else { // 修改
 			System.out.println("这是修改--");
 			
+			boolean flag = this.roleService.updateRole(role, menuIds, deptIds, areaIds);
 			
+			if (flag) {
+				this.message = "修改角色成功";
+			} else {
+				this.message = "修改角色失败";
+			}
 			
 		}
 		

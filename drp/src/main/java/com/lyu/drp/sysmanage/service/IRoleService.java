@@ -41,7 +41,8 @@ public interface IRoleService {
 	 * @param 
 	 * @return
 	 */
-	boolean updateRole(Role role);
+	boolean updateRole(Role role, List<Long> menuIds, List<Long> deptIds,
+		List<Long> areaIds);
 	
 	/**
 	 * 删除角色
