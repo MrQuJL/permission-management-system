@@ -56,9 +56,7 @@ public class RoleAction {
 	 * @return
 	 */
 	public String gotoRoleList() {
-		
 		this.roleList = roleService.getAllRoleList();
-		
 		return "success";
 	}
 	
@@ -86,7 +84,6 @@ public class RoleAction {
 	 * @return
 	 */
 	public String saveRole() {
-		
 		Role role = JSON.parseObject(jsonObj, Role.class);
 		
 		List<Long> menuIds = JSON.parseArray(this.menuIds, Long.class);
@@ -121,7 +118,6 @@ public class RoleAction {
 	 * @return
 	 */
 	public String delRole() {
-		
 		boolean flag = this.roleService.delRole(this.roleId);
 		
 		if (flag) {

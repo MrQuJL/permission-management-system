@@ -16,6 +16,7 @@ import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
  * @date 2018年1月15日 下午12:37:31
  * @version V1.0
  */
+@SuppressWarnings("restriction")
 public class EncryptTest {
 	
 	// 测试不可逆加密算法MD5

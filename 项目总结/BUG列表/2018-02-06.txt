@@ -1,0 +1,63 @@
+2018/2/6
+
+1. eclipse再次抽风：用另一个eclipse打开了现在这个项目，然后又从eclise中
+删除了该项目（只是从eclipse中删除），但是我在现在这个eclipse中打开的时候
+就各种ClassNotFoundException，晕（我配置文件连动都没动）...
+
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'securityManager' defined in class path resource [applicationContext-shiro.xml]: Initialization of bean failed; nested exception is java.lang.NoClassDefFoundError: AuthorizationInfo
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:553)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:305)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:301)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:351)
+	... 28 more
+Caused by: java.lang.NoClassDefFoundError: AuthorizationInfo
+	at java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.lang.Class.privateGetDeclaredMethods(Class.java:2701)
+	at java.lang.Class.getDeclaredMethods(Class.java:1975)
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:606)
+	at org.springframework.util.ReflectionUtils.doWithMethods(ReflectionUtils.java:518)
+	at org.springframework.util.ReflectionUtils.doWithMethods(ReflectionUtils.java:504)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:241)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1069)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1042)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:510)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:305)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:301)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:351)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:108)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1481)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1226)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:543)
+	... 34 more
+Caused by: java.lang.ClassNotFoundException: AuthorizationInfo
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1339)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1167)
+	... 54 more
+
+解决：气的又差点删项目了...此时又出现了bug2...
+
+
+2. 困扰已久的项目上的红叉终于去掉了
+
+原因：
+1）Eclipse的编译版本和项目的jdk版本不匹配，最初简单的修改了项目和windows
+的properties的Java Compiler，但是红叉依旧，那时非常想找到红叉的原因，但是
+eclipse连个提示信息都没有，只是孤零零的在项目上画了个红叉，很恼火那时。
+今天本打算用另一个eclipse新建一个项目，把代码拷过去，拷的过程中我忽然就发现
+了那个Markers视图，恍然大悟（原来提示信息在这...）之后上网一顿查资料，终于
+干掉了那一群红叉，心情大好.
+
+2）项目属性的Project Facets设置的java版本不对，修改为了项目所使用的JDK1.8
+之后，系统由跑了起来，强迫症的我看到红叉消失的那一刻...那是相当的激动！！！
+
+
+
+
+
+

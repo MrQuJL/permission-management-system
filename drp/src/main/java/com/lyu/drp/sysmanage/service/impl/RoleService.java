@@ -127,6 +127,7 @@ public class RoleService implements IRoleService {
 	}
 
 	@Override
+	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
 	public boolean updateRole(Role role, List<Long> menuIds, List<Long> deptIds,
 		List<Long> areaIds) {
 		boolean flag = false;
@@ -182,6 +183,7 @@ public class RoleService implements IRoleService {
 	}
 
 	@Override
+	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
 	public boolean delRole(Long roleId) {
 		boolean flag = false;
 		// 删除角色的时候先删除从表的数据，再删除主表的数据

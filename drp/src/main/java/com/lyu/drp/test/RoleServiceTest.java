@@ -1,6 +1,5 @@
 package com.lyu.drp.test;
 
-import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -21,9 +20,6 @@ import com.lyu.drp.sysmanage.service.IRoleService;
  * @version V1.0
  */
 public class RoleServiceTest {
-	
-	private Logger log = Logger.getLogger(RoleServiceTest.class);
-	
 	private ApplicationContext ac = null;
 	
 	private IRoleService roleService = null;
