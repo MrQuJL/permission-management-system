@@ -110,14 +110,7 @@ public class RoleAction {
 			} else {
 				this.message = "修改角色失败";
 			}
-			
 		}
-		
-		/*System.out.println(role.getName());
-		System.out.println(role.getRemarks());
-		System.out.println(menuIds);
-		System.out.println(deptIds);
-		System.out.println(areaIds);*/
 		
 		return "success";
 	}
