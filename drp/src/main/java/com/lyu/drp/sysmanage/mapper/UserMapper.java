@@ -1,5 +1,7 @@
 package com.lyu.drp.sysmanage.mapper;
 
+import java.util.List;
+
 import com.lyu.drp.sysmanage.dto.UserDto;
 import com.lyu.drp.sysmanage.entity.User;
 
@@ -48,5 +50,12 @@ public interface UserMapper {
 	 * @return
 	 */
 	int saveUserInfo(User user);
+	
+	/**
+	 * 通过用户的已知信息(用户名称,部门名称)查询用户列表
+	 * @param 
+	 * @return
+	 */
+	List<UserDto> getUserListByUserDto(UserDto userDto);
 	
 }

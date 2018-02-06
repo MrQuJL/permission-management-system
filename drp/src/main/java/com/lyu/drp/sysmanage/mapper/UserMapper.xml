@@ -9,6 +9,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    user_id, dept_id, login_name, password, user_no, user_name, email, phone, mobile, 
     	update_by, update_date, remarks, del_flag
 	</sql>
+	
+	<!-- 所有的用户字段的别名 -->
+	<sql id = "all_user_columns_alias">
+	    A.user_id, A.dept_id, A.login_name, A.password, A.user_no, A.user_name, A.email,
+	    A.phone, A.mobile, A.update_by, A.update_date, A.remarks, A.del_flag
+	</sql>
  
 	<!--将通用的sql查询条件抽取出来,成为sql片段 ,给不同方法应用  -->
 	<sql id="query_user_sql_where">			
@@ -73,4 +79,45 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE user_id = #{userId}
 	</update>
 	
+	<!-- 通过用户的已知信息(用户名称,部门名称)查询用户列表 -->
+	<select id="getUserListByUserDto" parameterType="userDto" resultType="userDto">
+		SELECT A.user_id, A.dept_id, A.login_name, A.user_no, A.user_name, 
+		A.email, A.phone, A.mobile, A.update_by, A.update_date, A.remarks, A.del_flag,
+		B.name FROM drp_sys_user A, drp_sys_dept B
+		<where>
+			<if test="1 == 1">
+				AND A.dept_id = B.id
+			</if>
+			<if test="1 == 1">
+				AND A.del_flag = 0
+			</if>
+			<if test="userId != null">
+				AND A.user_id = #{userId}
+			</if>
+			<if test="deptId != null">
+				AND A.dept_id = #{deptId}
+			</if>
+			<if test="loginName != null">
+				AND A.login_name LIKE #loginName#
+			</if>
+			<if test="userNo != null">
+				AND A.user_no = #{userNo}
+			</if>
+			<if test="userName != null">
+				AND A.user_name LIKE '%${userName}%'
+			</if>
+			<if test="email != null">
+				AND A.email = #{email}
+			</if>
+			<if test="phone != null">
+				AND A.phone = #{phone}
+			</if>
+			<if test="mobile != null">
+				AND A.mobile = #{mobile}
+			</if>
+			<if test="remarks != null">
+				AND A.remarks = #{remarks}
+			</if>
+		</where>
+	</select>
 </mapper>

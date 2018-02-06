@@ -1,8 +1,14 @@
 package com.lyu.drp.sysmanage.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.druid.util.StringUtils;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.lyu.drp.common.dto.PageParam;
 import com.lyu.drp.sysmanage.dto.UserDto;
 import com.lyu.drp.sysmanage.entity.User;
 import com.lyu.drp.sysmanage.mapper.UserMapper;
@@ -28,19 +34,6 @@ public class UserService implements IUserService {
 	
 	@Override
 	public User loginUser(String loginName) {
-		// 1.用户名是否存在
-//		User user = userMapper.loginUser(loginName, password);
-//		// 2.密码是否存在
-//		if (user != null) {
-//			boolean flag = this.validatePassword(password, user.getPassword());
-//			if (flag) {
-//				return user;
-//			} else {
-//				return null;
-//			}
-//		}
-//		// 3.返回
-		
 		return this.userMapper.loginUser(loginName);
 	}
 	
@@ -99,6 +92,21 @@ public class UserService implements IUserService {
 			flag = true;
 		}
 		return flag;
+	}
+
+	@Override
+	public PageInfo<UserDto> getUserListPageByUserDto(UserDto userDto, PageParam pageParam) {
+		if (StringUtils.isEmpty(userDto.getUserName())	) {
+			userDto.setUserName(null);
+		}
+		// 此处进行分页查询
+		PageHelper.startPage(pageParam.getPageNo(), pageParam.getPageSize());
+		
+		List<UserDto> userList = this.userMapper.getUserListByUserDto(userDto);
+		
+		PageInfo<UserDto> pageInfo = new PageInfo<UserDto>(userList);
+		
+		return pageInfo;
 	}
     
 }

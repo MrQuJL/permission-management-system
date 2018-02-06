@@ -31,6 +31,20 @@
 			</result>
 		</action>
 		
+		<action name = "gotoUserList" class= "com.lyu.drp.sysmanage.action.UserAction" method = "gotoUserList">
+			<result>/WEB-INF/pages/sysmanage/user/userList.jsp</result>
+		</action>
+		
+		<action name = "gotoUserEdit" class= "com.lyu.drp.sysmanage.action.UserAction" method = "gotoUserEdit">
+			<result>/WEB-INF/pages/sysmanage/user/userEdit.jsp</result>
+		</action>
+		
+		<action name = "getUserListPage" class= "com.lyu.drp.sysmanage.action.UserAction" method = "getUserListPage">
+			<result type="json">
+				<param name="includeProperties">jsonObj,pageBar</param>
+			</result>
+		</action>
+		
 		<!-- 字典管理 -->
 		<action name = "gotoDictList" class= "com.lyu.drp.sysmanage.action.DictAction" method = "gotoDictList">
 			<result name = "dictList">/WEB-INF/pages/sysmanage/dict/dictList.jsp</result>

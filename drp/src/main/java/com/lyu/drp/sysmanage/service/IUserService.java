@@ -1,5 +1,9 @@
 package com.lyu.drp.sysmanage.service;
 
+import java.util.List;
+
+import com.github.pagehelper.PageInfo;
+import com.lyu.drp.common.dto.PageParam;
 import com.lyu.drp.sysmanage.dto.UserDto;
 import com.lyu.drp.sysmanage.entity.User;
 
@@ -63,5 +67,12 @@ public interface IUserService {
 	 * @return 修改成功与否
 	 */
 	boolean updateUserPassword(Long userId, String newPassword);
+	
+	/**
+	 * 通过用户的已知信息(用户名称,部门名称)查询用户列表
+	 * @param 
+	 * @return
+	 */
+	PageInfo<UserDto> getUserListPageByUserDto(UserDto userDto, PageParam pageParam);
 	
 }

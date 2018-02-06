@@ -1,9 +1,15 @@
 package com.lyu.drp.sysmanage.action;
 
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.github.pagehelper.PageInfo;
+import com.lyu.drp.common.dto.PageParam;
+import com.lyu.drp.common.util.PageUtils;
 import com.lyu.drp.sysmanage.dto.UserDto;
 import com.lyu.drp.sysmanage.entity.User;
 import com.lyu.drp.sysmanage.service.IUserService;
@@ -28,6 +34,12 @@ public class UserAction {
 	private String message;
 	// 用于发往前台的json字符串
 	private String jsonObj;
+	// 接收分页信息
+	private PageParam pageParam;
+	// 封装好的分页条
+	private String pageBar;
+	// 接收前台的查询条件
+	private UserDto userDto;
 	// spring和struts2的整合包会将该属性以名称匹配的凡是注入
 	private IUserService userService;
 	
@@ -48,6 +60,43 @@ public class UserAction {
 	public String changePwd() {
 		return "changePwd";
 	}
+	
+	/**
+	 * 进入用户列表页面
+	 * @param 
+	 * @return
+	 */
+	public String gotoUserList() {
+		return "success";
+	}
+	
+	/**
+	 * 进入用户编辑(add/update)页面
+	 * @param 
+	 * @return
+	 */
+	public String gotoUserEdit() {
+		return "success";
+	}
+	
+	/**
+	 * 处理查询用户的请求
+	 * @param 
+	 * @return
+	 */
+	public String getUserListPage() {
+		
+		PageInfo<UserDto> pageInfo = this.userService.getUserListPageByUserDto(this.userDto, this.pageParam);
+		
+		List<UserDto> userList = pageInfo.getList();
+		
+		this.jsonObj = JSONArray.toJSONString(userList);
+		
+		this.pageBar = PageUtils.pageStr(pageInfo, "userMgr.getUserListPage");
+		
+		return "success";
+	}
+	
 	
 	/**
 	 * 修改用户密码
@@ -133,14 +182,6 @@ public class UserAction {
 		this.newPassword = newPassword;
 	}
 
-	public IUserService getUserService() {
-		return userService;
-	}
-
-	public void setUserService(IUserService userService) {
-		this.userService = userService;
-	}
-
 	public String getMessage() {
 		return message;
 	}
@@ -155,6 +196,38 @@ public class UserAction {
 
 	public void setJsonObj(String jsonObj) {
 		this.jsonObj = jsonObj;
+	}
+	
+	public PageParam getPageParam() {
+		return pageParam;
+	}
+
+	public void setPageParam(PageParam pageParam) {
+		this.pageParam = pageParam;
+	}
+
+	public String getPageBar() {
+		return pageBar;
+	}
+
+	public void setPageBar(String pageBar) {
+		this.pageBar = pageBar;
+	}
+
+	public UserDto getUserDto() {
+		return userDto;
+	}
+
+	public void setUserDto(UserDto userDto) {
+		this.userDto = userDto;
+	}
+
+	public IUserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(IUserService userService) {
+		this.userService = userService;
 	}
 	
 }
