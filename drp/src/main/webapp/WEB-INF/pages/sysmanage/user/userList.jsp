@@ -56,8 +56,8 @@ String path = request.getContextPath();
 		    					htmlTable = htmlTable + data[i].email;
 		    					htmlTable = htmlTable + "</td>";
 		    					htmlTable = htmlTable + "<td>";
-		    					htmlTable = htmlTable + "<a href='${ctx}/sysmgr/gotoUserEdit.action?userId=" + data[i].id + 
-		    						"'>修改</a> <a href='javascript:void(0);' onclick='userMgr.delUser(" + data[i].id + ")'>删除</a>";
+		    					htmlTable = htmlTable + "<a href='${ctx}/sysmgr/gotoUserEdit.action?userId=" + data[i].userId + 
+		    						"'>修改</a> <a href='javascript:void(0);' onclick='userMgr.delUser(" + data[i].userId + ")'>删除</a>";
 		    					htmlTable = htmlTable + "</td>";
 		    					htmlTable = htmlTable + "</tr>";
 		    				}
@@ -88,7 +88,7 @@ String path = request.getContextPath();
         				complete : function(){
         					top.$.jBox.closeTip();
         					// 删除完了之后重新查询一下用户列表
-        					userMgr.getUserList();
+        					userMgr.getUserListPage(1,10);
         				}
         			});
     			}
@@ -108,7 +108,7 @@ String path = request.getContextPath();
 				<div class="input-append">
 					<input id="deptId" name="deptId" class="input-small" type="hidden" value=""/>
 					<input id="deptName" name="deptName" readonly="readonly" type="text" value="" class="input-small"/>
-					<a id="officeButton" href="javascript:void(0);" class="btn">
+					<a id="deptButton" href="javascript:showDept();" class="btn">
 						&nbsp;<i class="icon-search"></i>&nbsp;
 					</a>&nbsp;&nbsp;
 				</div>
@@ -139,23 +139,92 @@ String path = request.getContextPath();
 			
 	    </tbody>
 	</table>
-
+	<!-- 用于放置分页条 -->
 	<div class="pagination" id="userPageBar">
-		<!-- 
-		<ul>
-			<li class="disabled"><a href="javascript:">&#171; 上一页</a></li>
-			<li class="active"><a href="javascript:">1</a></li>
-			<li class="disabled"><a href="javascript:">下一页 &#187;</a></li>
-			<li class="disabled controls">
-				<a href="javascript:">
-					当前 <input type="text" value="1" onkeypress="var e=window.event||this;var c=e.keyCode||e.which;if(c==13)page(this.value,15,'');" onclick="this.select();"/>
-					 / <input type="text" value="15" onkeypress="var e=window.event||this;var c=e.keyCode||e.which;if(c==13)page(1,this.value,'');" onclick="this.select();"/>
-					 条，共 0 条
-				</a>
-			</li>
-		</ul>
-		<div style="clear:both;"></div>
-		-->
+		
+	</div>
+	<script type="text/javascript">
+		var setting = {
+			view: {
+				dblClickExpand: false
+			},
+			data: {
+				simpleData: {
+					enable: true
+				}
+			},
+			callback: {
+				beforeClick: beforeClick,
+				onClick: onClick
+			}
+		};
+
+		// 点击之前会触发的事件
+		function beforeClick(treeId, treeNode) {
+			
+		};
+		
+		// 选中某个菜单项后会触发的操作
+		function onClick(e, treeId, treeNode) {
+			var zTree = $.fn.zTree.getZTreeObj("deptTree");
+			
+			nodes = zTree.getSelectedNodes();
+			var parentName = "";
+			var parentId = "";
+			
+			nodes.sort(function compare(a,b){return a.id-b.id;});
+			for (var i=0, l=nodes.length; i<l; i++) {
+				parentName += nodes[i].name + ",";
+				parentId += nodes[i].id + ",";
+			}
+			if (parentName.length > 0 ) parentName = parentName.substring(0, parentName.length-1);
+			$("#deptName").attr("value", parentName);
+			
+			if (parentId.length > 0 ) parentId = parentId.substring(0, parentId.length-1);
+			$("#deptId").attr("value", parentId);
+			
+			hideDept();
+		};
+		
+		function showDept() {
+			var parent = $("#deptName");
+			var parentOffset = $("#deptName").offset();
+			$("#deptContent").css({left:parentOffset.left + "px",
+				top:parentOffset.top + parent.outerHeight() + "px"}).slideToggle("fast");
+			$("html").bind("click", onBodyDown);
+		};
+		
+		function hideDept() {
+			$("#deptContent").slideToggle("fast");
+			$("html").unbind("click", onBodyDown);
+		};
+		
+		function onBodyDown(event) {
+			if (!(event.target.id == "deptButton" || event.target.id == "deptName" ||
+				event.target.id == "deptContent" || $(event.target).parents("#deptContent").length>0)) {
+				hideDept();
+			}
+		};
+		
+		$(document).ready(function(){
+			// 页面一刷新就加载zTree
+			$.ajax({
+				type : "post",
+				url : "${ctx}/sysmgr/loadDeptTree.action",
+				// 设为同步的，否则数据加载完成了无法赋值给页面
+				async : false,
+				dataType : "json",
+				success : function(data) {
+					var deptArray = JSON.parse(data.jsonObj);
+					var deptTree = $.fn.zTree.init($("#deptTree"), setting, deptArray);
+					deptTree.expandAll(true);
+				}
+			});
+		});
+	</script>
+	<!-- 盛放部门树的容器 -->
+	<div id="deptContent" class="menuContent" style="display:none; position:absolute;">
+		<ul id="deptTree" class="ztree" style="margin-top:0; width:180px;background:#f1f1f1;"></ul>
 	</div>
 </body>
 </html>

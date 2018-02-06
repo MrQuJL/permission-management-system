@@ -225,12 +225,6 @@ String path = request.getContextPath();
 					if (selectNodeId != null) {
 						menuTree.selectNode(menuTree.getNodeByParam("id",selectNodeId,null));
 					}
-					
-					// 后台传过来的数据结构如下：
-					/* [{"name":"功能菜单","pId":0,"id":1},
-					 {"name":"系统设置","pId":1,"id":2},
-					 ...
-					 {"name":"修改密码","pId":28,"id":30}] */
 				}
 			});
 		});

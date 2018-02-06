@@ -26,8 +26,6 @@ String path = request.getContextPath();
 						}
 					});
 					
-					//alert(JSON.stringify(deptObj));
-					
 					$.ajax({
 						type : "post",
 						url : "${ctx}/sysmgr/saveDept.action",
@@ -41,14 +39,6 @@ String path = request.getContextPath();
 						}
 					});
 				},
-				/* errorPlacement: function(error, element) {
-					$("#messageBox").text("输入有误，请先更正。");
-					if (element.is(":checkbox")||element.is(":radio")||element.parent().is(".input-append")){
-						error.appendTo(element.parent().parent());
-					} else {
-						error.insertAfter(element);
-					}
-				} */
 			});
 		});
 	</script>

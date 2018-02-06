@@ -98,7 +98,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				AND A.dept_id = #{deptId}
 			</if>
 			<if test="loginName != null">
-				AND A.login_name LIKE #loginName#
+				AND A.login_name LIKE '%${loginName}%'
 			</if>
 			<if test="userNo != null">
 				AND A.user_no = #{userNo}
