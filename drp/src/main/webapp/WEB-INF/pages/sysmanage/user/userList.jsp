@@ -56,7 +56,7 @@ String path = request.getContextPath();
 		    					htmlTable = htmlTable + data[i].email;
 		    					htmlTable = htmlTable + "</td>";
 		    					htmlTable = htmlTable + "<td>";
-		    					htmlTable = htmlTable + "<a href='${ctx}/sysmgr/gotoUserEdit.action?userId=" + data[i].userId + 
+		    					htmlTable = htmlTable + "<a href='${ctx}/sysmgr/gotoUserEdit.action?editFlag=2&userId=" + data[i].userId + 
 		    						"'>修改</a> <a href='javascript:void(0);' onclick='userMgr.delUser(" + data[i].userId + ")'>删除</a>";
 		    					htmlTable = htmlTable + "</td>";
 		    					htmlTable = htmlTable + "</tr>";

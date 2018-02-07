@@ -1,0 +1,20 @@
+2018/2/7
+
+1. 获取checkbox的值，思路：
+利用name属性获取checkboxs对象，然后循环判断checked属性（true为选中，
+false为未选中），创建数组，选中的push进数组，未选中的不做处理。
+
+实现：
+var id_array=new Array();  
+$('input[name="id"]:checked').each(function(){  
+    id_array.push($(this).val());//向数组中添加元素  
+});  
+var idstr=id_array.join(',');//将数组元素连接起来以构建一个字符串  
+alert(idstr);  
+
+2. tips：实体类最好序列化一下，因为可能会用来做外部接口
+
+3. tips：匿名内部类里面要用final
+
+4. tips：遇到双重for循环就用map替换list
+

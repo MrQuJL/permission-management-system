@@ -75,4 +75,10 @@ public interface IUserService {
 	 */
 	PageInfo<UserDto> getUserListPageByUserDto(UserDto userDto, PageParam pageParam);
 	
+	/**
+	 * 添加用户
+	 * @param 
+	 * @return
+	 */
+	boolean addUser(User user, List<Long> roleIds);
 }

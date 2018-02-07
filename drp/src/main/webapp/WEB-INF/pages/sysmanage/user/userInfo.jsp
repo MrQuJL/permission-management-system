@@ -15,7 +15,7 @@ String path = request.getContextPath();
 		$(function() {
 			$("#userInfoChangeForm").validate({
 				submitHandler: function(form){
-					loading('......');
+					loading('请稍等......');
 					form.submit();
 				},
 				errorContainer: "#messageBox",

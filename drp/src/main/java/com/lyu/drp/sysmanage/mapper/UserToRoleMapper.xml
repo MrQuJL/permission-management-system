@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace = "com.lyu.drp.sysmanage.mapper.UserToRoleMapper"> 
+	
+	<!-- 新增用户-角色对应表的一条记录 -->
+	<insert id="saveUserToRole" parameterType="userToRole">
+		INSERT INTO drp_sys_user_role(user_id, role_id)
+		VALUES(#{userId}, #{roleId})
+	</insert>
+	
+	<!-- 根据用户id，删除用户-角色对应表的一条记录 -->
+	<delete id="deleteUserToRole" parameterType="long">
+		DELETE FROM drp_sys_user_role
+		WHERE user_id = #{userId}
+	</delete>
+	
+</mapper>

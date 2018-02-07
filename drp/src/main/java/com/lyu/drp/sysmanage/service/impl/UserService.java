@@ -1,9 +1,13 @@
 package com.lyu.drp.sysmanage.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.druid.util.StringUtils;
 import com.github.pagehelper.PageHelper;
@@ -11,9 +15,12 @@ import com.github.pagehelper.PageInfo;
 import com.lyu.drp.common.dto.PageParam;
 import com.lyu.drp.sysmanage.dto.UserDto;
 import com.lyu.drp.sysmanage.entity.User;
+import com.lyu.drp.sysmanage.entity.UserToRole;
 import com.lyu.drp.sysmanage.mapper.UserMapper;
+import com.lyu.drp.sysmanage.mapper.UserToRoleMapper;
 import com.lyu.drp.sysmanage.service.IUserService;
 import com.lyu.drp.util.EncryptUtils;
+import com.lyu.drp.util.UserUtils;
 
 /**
  * 类名称: 用户业务服务类
@@ -27,6 +34,8 @@ import com.lyu.drp.util.EncryptUtils;
 public class UserService implements IUserService {
 	@Autowired
 	private UserMapper userMapper;
+	@Autowired
+	private UserToRoleMapper userToRoleMapper;
 	
 	public static final int HASH_ITERATIONS = 1024;
 	
@@ -107,6 +116,43 @@ public class UserService implements IUserService {
 		PageInfo<UserDto> pageInfo = new PageInfo<UserDto>(userList);
 		
 		return pageInfo;
+	}
+
+	@Override
+	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
+	public boolean addUser(User user, List<Long> roleIds) {
+		boolean flag = false;
+		if (user == null) return flag;
+		
+		user.setUpdateBy(UserUtils.getCurrentUserId());
+		user.setUpdateDate(new Date());
+		// 还要给用户一个默认密码
+		user.setPassword(this.encyptPassword("123"));
+		
+		// 向用户表中添加一条用户记录
+		int rows = userMapper.addUser(user);
+		// 还要向用户-角色对应表中添加记录
+		
+		if (rows > 0) {
+			if (roleIds.size() > 0) {
+				int count = 0;
+				for (Long roleId : roleIds) {
+					UserToRole userToRole = new UserToRole();
+					userToRole.setUserId(user.getUserId());
+					userToRole.setRoleId(roleId);
+					int tempRows = userToRoleMapper.saveUserToRole(userToRole);
+					if (tempRows > 0) {
+						count++;
+					}
+				}
+				// 记录全部添加成功，则把标记位置为true
+				if (count == roleIds.size()) {
+					flag = true;
+				}
+			}
+		}
+		
+		return flag;
 	}
     
 }

@@ -11,7 +11,9 @@ import com.github.pagehelper.PageInfo;
 import com.lyu.drp.common.dto.PageParam;
 import com.lyu.drp.common.util.PageUtils;
 import com.lyu.drp.sysmanage.dto.UserDto;
+import com.lyu.drp.sysmanage.entity.Role;
 import com.lyu.drp.sysmanage.entity.User;
+import com.lyu.drp.sysmanage.service.IRoleService;
 import com.lyu.drp.sysmanage.service.IUserService;
 import com.lyu.drp.util.UserUtils;
 
@@ -30,18 +32,26 @@ public class UserAction {
 	private String oldPassword;
 	// 接收前台的新密码
 	private String newPassword;
+	// 标记是新增(1)用户还是修改(2)用户
+	private String editFlag;
 	// 用于为ajax返回提示消息
 	private String message;
 	// 用于发往前台的json字符串
 	private String jsonObj;
+	// 角色id列表
+	private String roleIds;
 	// 接收分页信息
 	private PageParam pageParam;
 	// 封装好的分页条
 	private String pageBar;
 	// 接收前台的查询条件
 	private UserDto userDto;
-	// spring和struts2的整合包会将该属性以名称匹配的凡是注入
+	// 所有的角色列表
+	private List<Role> roleList;
+	// 用户服务类
 	private IUserService userService;
+	// 角色服务类
+	private IRoleService roleService;
 	
 	/**
 	 * 进入用户个人信息页面
@@ -76,6 +86,9 @@ public class UserAction {
 	 * @return
 	 */
 	public String gotoUserEdit() {
+		
+		this.roleList = this.roleService.getAllRoleList();
+		
 		return "success";
 	}
 	
@@ -144,22 +157,33 @@ public class UserAction {
 	}
 	
 	/**
-	 * 修改用户个人信息
+	 * 添加/修改用户个人信息
 	 * @param 
 	 * @return
 	 */
 	public String saveUserInfo() {
-		this.message = "更新用户信息失败";
-		System.out.println(jsonObj);
-		
+		System.out.println(this.jsonObj);
+		System.out.println(this.roleIds);
 		User user = JSON.parseObject(jsonObj, User.class);
+		List<Long> roleIds = JSON.parseArray(this.roleIds, Long.class);
 		
-		boolean falg = userService.saveUserInfo(user);
-		if (falg) {
-			this.message = "更新用户信息成功";
+		if (user.getUserId() == null) { // 新增
+			boolean falg = this.userService.addUser(user, roleIds);
+			if (falg) {
+				this.message = "添加用户信息成功！";
+			} else {
+				this.message = "添加用户信息失败！";
+			}
+		} else { // 修改
+			boolean falg = userService.saveUserInfo(user);
+			if (falg) {
+				this.message = "更新用户信息成功！";
+			} else {
+				this.message = "更新用户信息失败！";
+			}
 		}
 		
-		return "saveUserInfo";
+		return "success";
 	}
 	
 	/**
@@ -180,6 +204,14 @@ public class UserAction {
 
 	public void setNewPassword(String newPassword) {
 		this.newPassword = newPassword;
+	}
+
+	public String getEditFlag() {
+		return editFlag;
+	}
+
+	public void setEditFlag(String editFlag) {
+		this.editFlag = editFlag;
 	}
 
 	public String getMessage() {
@@ -214,6 +246,22 @@ public class UserAction {
 		this.pageBar = pageBar;
 	}
 
+	public List<Role> getRoleList() {
+		return roleList;
+	}
+
+	public void setRoleList(List<Role> roleList) {
+		this.roleList = roleList;
+	}
+	
+	public String getRoleIds() {
+		return roleIds;
+	}
+
+	public void setRoleIds(String roleIds) {
+		this.roleIds = roleIds;
+	}
+
 	public UserDto getUserDto() {
 		return userDto;
 	}
@@ -229,5 +277,13 @@ public class UserAction {
 	public void setUserService(IUserService userService) {
 		this.userService = userService;
 	}
-	
+
+	public IRoleService getRoleService() {
+		return roleService;
+	}
+
+	public void setRoleService(IRoleService roleService) {
+		this.roleService = roleService;
+	}
+
 }

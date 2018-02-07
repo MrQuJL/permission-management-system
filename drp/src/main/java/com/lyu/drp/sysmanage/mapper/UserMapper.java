@@ -58,4 +58,11 @@ public interface UserMapper {
 	 */
 	List<UserDto> getUserListByUserDto(UserDto userDto);
 	
+	/**
+	 * 添加用户
+	 * @param 
+	 * @return
+	 */
+	int addUser(User user);
+	
 }

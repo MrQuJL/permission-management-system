@@ -120,4 +120,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</where>
 	</select>
+	
+	<!-- 添加用户 -->
+	<insert id="addUser" parameterType="user" useGeneratedKeys="true" keyProperty="userId" keyColumn="user_id">
+		INSERT INTO drp_sys_user(dept_id, login_name, password, user_no, user_name,
+		email, phone, mobile, update_by, update_date, remarks)
+		VALUES(#{deptId}, #{loginName}, #{password}, #{userNo}, #{userName},
+		#{email}, #{phone}, #{mobile}, #{updateBy}, #{updateDate}, #{remarks})
+	</insert>
+	
 </mapper>
