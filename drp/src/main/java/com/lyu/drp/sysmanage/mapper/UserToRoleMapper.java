@@ -35,4 +35,18 @@ public interface UserToRoleMapper {
 	 */
 	List<UserToRole> listRoleByUId(Long userId);
 	
+	/**
+	 * 向用户-角色对应表中添加数据
+	 * @param 
+	 * @return
+	 */
+	int addUserToRole(UserToRole userToRole);
+	
+	/**
+	 * 根据用户的id删除对应的角色
+	 * @param 
+	 * @return
+	 */
+	int delRoleByUId(Long userId);
+	
 }

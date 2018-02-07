@@ -196,7 +196,9 @@ public class UserAction {
 				this.message = "添加用户信息失败！";
 			}
 		} else { // 修改
-			boolean falg = userService.saveUserInfo(user);
+			List<Long> roleList = JSON.parseArray(this.roleIds, Long.class);
+			// 修改用户的时候也要修改角色
+			boolean falg = userService.saveUserInfo(user, roleList);
 			if (falg) {
 				this.message = "更新用户信息成功！";
 			} else {

@@ -40,11 +40,11 @@ public interface IUserService {
 	UserDto getUserInfoById(Long userId);
 	
 	/**
-	 * 保存用户修改的信息
+	 * 保存用户修改的信息，包括用户的角色信息
 	 * @param 
 	 * @return
 	 */
-	boolean saveUserInfo(User user);
+	boolean saveUserInfo(User user, List<Long> roleIds);
 	
 	/**
      * 对密码进行加密 SHA-1

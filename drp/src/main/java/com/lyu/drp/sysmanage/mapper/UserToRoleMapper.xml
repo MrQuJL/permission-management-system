@@ -24,4 +24,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE user_id = #{userId}
 	</select>
 	
+	<!-- 向用户-角色对应表中添加数据 -->
+	<insert id="addUserToRole" parameterType="userToRole">
+		INSERT INTO drp_sys_user_role(user_id, role_id)
+		VALUES(#{userId}, #{roleId})
+	</insert>
+	
+	<!-- 根据用户的id删除对应的角色 -->
+	<delete id="delRoleByUId" parameterType="long">
+		DELETE FROM drp_sys_user_role
+		WHERE user_id = #{userId}
+	</delete>
+	
 </mapper>

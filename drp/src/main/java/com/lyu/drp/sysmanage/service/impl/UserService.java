@@ -57,8 +57,25 @@ public class UserService implements IUserService {
 	}
 	
 	@Override
-	public boolean saveUserInfo(User user) {
+	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
+	public boolean saveUserInfo(User user, List<Long> roleIds) {
 		boolean flag = false;
+		
+		user.setUpdateBy(UserUtils.getCurrentUserId());
+		user.setUpdateDate(new Date());
+		
+		if (roleIds != null) { // 修改用户的角色
+			// 先将用户的所有角色删除
+			this.userToRoleMapper.deleteUserToRole(user.getUserId());
+			// 再向里面统一添加角色
+			for (Long roleId : roleIds) {
+				UserToRole userToRole = new UserToRole();
+				userToRole.setUserId(user.getUserId());
+				userToRole.setRoleId(roleId);
+				this.userToRoleMapper.addUserToRole(userToRole);
+			}
+		}
+		
 		int rows = userMapper.saveUserInfo(user);
 		if (rows > 0) {
 			flag = true;

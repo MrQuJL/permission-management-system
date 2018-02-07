@@ -45,7 +45,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 通过userId获得用户对象包括部门名称，公司名称... -->
 	<select id="getUserInfoById" resultType="userDto" parameterType="long">
-		SELECT a.name, b.user_id, b.login_name, b.user_name, b.user_no, b.email,
+		SELECT a.name, b.user_id, b.dept_id, b.login_name, b.user_name, b.user_no, b.email,
 		b.phone, b.mobile, b.remarks
 		FROM drp_sys_dept a, drp_sys_user b
 		WHERE a.id = b.dept_id AND b.user_id = #{userId};

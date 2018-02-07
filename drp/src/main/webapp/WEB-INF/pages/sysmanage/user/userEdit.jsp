@@ -32,7 +32,6 @@ String path = request.getContextPath();
 					$('input[name="role"]:checked').each(function(){  
 						roleIds.push($(this).val());//向数组中添加元素
 					});  
-					//var idstr=roleIds.join(',');//将数组元素连接起来以构建一个字符串  
 					roleIds = JSON.stringify(roleIds);
 					
 					$.ajax({
@@ -139,6 +138,11 @@ String path = request.getContextPath();
 					var deptArray = JSON.parse(data.jsonObj);
 					var deptTree = $.fn.zTree.init($("#deptTree"), setting, deptArray);
 					deptTree.expandAll(true);
+					// 如果是修改页面，定位到当前选中的节点
+					var selectNodeId = $("#deptId").val();
+					if (selectNodeId != null) {
+						deptTree.selectNode(deptTree.getNodeByParam("id",selectNodeId,null));
+					}
 				}
 			});
 		});
