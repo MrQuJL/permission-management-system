@@ -155,14 +155,14 @@ String path = request.getContextPath();
 		</a></li>
 	</ul><br/>
 	<form id="userSaveChangeForm" class="form-horizontal" action="#" method="post">
-		<input id="id" name="userId" type="hidden" value="${user.id}"/>
+		<input id="id" name="userId" type="hidden" value="${userDto.userId}"/>
 		
 		<div class="control-group">
 			<label class="control-label">部门名称:</label>
 			<div class="controls">
 				<div class="input-append">
-					<input id="deptId" name="deptId" class="" type="hidden" value="${deptDto.parentId}"/>
-					<input id="deptName" name="deptName" class="required" readonly="readonly" type="text" value="${deptDto.parentName}"/>
+					<input id="deptId" name="deptId" class="" type="hidden" value="${userDto.deptId}"/>
+					<input id="deptName" name="deptName" class="required" readonly="readonly" type="text" value="${userDto.name}"/>
 					<a id="deptBtn" href="javascript:showDept();" class="btn">
 						&nbsp;<i class="icon-search"></i>&nbsp;
 					</a>&nbsp;&nbsp;
@@ -180,42 +180,42 @@ String path = request.getContextPath();
 		<div class="control-group">
 			<label class="control-label">工号:</label>
 			<div class="controls">
-				<input id="userNo" name="userNo" class="required" type="text" value="${user.value}" maxlength="50"/>
+				<input id="userNo" name="userNo" class="required" type="text" value="${userDto.userNo}" maxlength="50"/>
 				<span class="help-inline"><span style="color:red">*</span> </span>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">姓名:</label>
 			<div class="controls">
-				<input id="userName" name="userName" class="required" type="text" value="${user.label}" maxlength="50"/>
+				<input id="userName" name="userName" class="required" type="text" value="${userDto.userName}" maxlength="50"/>
 				<span class="help-inline"><span style="color:red">*</span> </span>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">登录名:</label>
 			<div class="controls">
-				<input id="loginName" name="loginName" class="required abc" type="text" value="${user.type}" maxlength="50"/>
+				<input id="loginName" name="loginName" class="required abc" type="text" value="${userDto.loginName}" maxlength="50"/>
 				<span class="help-inline"><span style="color:red">*</span> </span>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">邮箱:</label>
 			<div class="controls">
-				<input id="email" name="email" type="text" value="${user.description}" maxlength="50"/>
+				<input id="email" name="email" type="text" value="${userDto.email}" maxlength="50"/>
 				<span class="help-inline"><span style="color:red"></span> </span>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">电话:</label>
 			<div class="controls">
-				<input id="phone" name="phone" class="digits" type="text" value="${user.sort}" maxlength="11"/>
+				<input id="phone" name="phone" class="digits" type="text" value="${userDto.phone}" maxlength="11"/>
 				<span class="help-inline"><span style="color:red"></span> </span>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">手机:</label>
 			<div class="controls">
-				<input id="mobile" name="mobile" type="text" value="${user.value}" maxlength="50"/>
+				<input id="mobile" name="mobile" type="text" value="${userDto.mobile}" maxlength="50"/>
 				<span class="help-inline"><span style="color:red"></span> </span>
 			</div>
 		</div>
@@ -225,7 +225,9 @@ String path = request.getContextPath();
 			<div class="controls">
 				<c:forEach items="${roleList}" var="role">
 					<label>
-			      		<input name="role" type="checkbox" value="${role.id}"> ${role.name}
+			      		<input name="role" type="checkbox"
+			      		<c:if test="${roleCheckedMap[role.id] == role.id}">checked</c:if>
+			      		value="${role.id}"> ${role.name}
 			    	</label>
 				</c:forEach>
 			</div>
@@ -234,7 +236,7 @@ String path = request.getContextPath();
 		<div class="control-group">
 			<label class="control-label">备注:</label>
 			<div class="controls">
-				<textarea id="remarks" name="remarks" maxlength="200" class="input-xlarge" rows="3">${user.remarks}</textarea>
+				<textarea id="remarks" name="remarks" maxlength="200" class="input-xlarge" rows="3">${userDto.remarks}</textarea>
 			</div>
 		</div>
 		<div class="form-actions">

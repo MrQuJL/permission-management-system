@@ -35,14 +35,15 @@ String path = request.getContextPath();
 	    				var htmlTable = "";
 	    				if (data.length != 0) {
 	    					for (var i = 0; i < data.length; i++) {
-		    					//console.log(data[i].id+ "," +data[i].userName);
 		    					htmlTable = htmlTable + "<tr>";
 		    					htmlTable = htmlTable + "<td>";
 		    					htmlTable = htmlTable + data[i].userName;
 		    					htmlTable = htmlTable + "</td>";
+		    					
 		    					htmlTable = htmlTable + "<td>";
 		    					htmlTable = htmlTable + data[i].loginName;
 		    					htmlTable = htmlTable + "</td>";
+		    					
 		    					htmlTable = htmlTable + "<td>";
 		    					htmlTable = htmlTable + data[i].name;
 		    					htmlTable = htmlTable + "</td>";

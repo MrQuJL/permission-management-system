@@ -1,5 +1,7 @@
 package com.lyu.drp.sysmanage.mapper;
 
+import java.util.List;
+
 import com.lyu.drp.sysmanage.entity.UserToRole;
 
 /**
@@ -25,5 +27,12 @@ public interface UserToRoleMapper {
 	 * @return
 	 */
 	int deleteUserToRole(Long userId);
+	
+	/**
+	 * 通过用户id查询他的角色列表 
+	 * @param 
+	 * @return
+	 */
+	List<UserToRole> listRoleByUId(Long userId);
 	
 }

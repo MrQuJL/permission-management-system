@@ -154,5 +154,10 @@ public class UserService implements IUserService {
 		
 		return flag;
 	}
+
+	@Override
+	public List<UserToRole> listRoleByUId(Long userId) {
+		return this.userToRoleMapper.listRoleByUId(userId);
+	}
     
 }

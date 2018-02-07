@@ -6,6 +6,7 @@ import com.github.pagehelper.PageInfo;
 import com.lyu.drp.common.dto.PageParam;
 import com.lyu.drp.sysmanage.dto.UserDto;
 import com.lyu.drp.sysmanage.entity.User;
+import com.lyu.drp.sysmanage.entity.UserToRole;
 
 /**
  * 类名称: 用户业务处理接口 
@@ -81,4 +82,12 @@ public interface IUserService {
 	 * @return
 	 */
 	boolean addUser(User user, List<Long> roleIds);
+	
+	/**
+	 * 通过用户id查询他的角色列表 
+	 * @param 
+	 * @return
+	 */
+	List<UserToRole> listRoleByUId(Long userId);
+	
 }

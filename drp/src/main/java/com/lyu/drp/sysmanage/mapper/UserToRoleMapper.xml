@@ -17,4 +17,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE user_id = #{userId}
 	</delete>
 	
+	<!-- 通过用户id查询他的角色列表  -->
+	<select id="listRoleByUId" parameterType="long" resultType="userToRole">
+		SELECT user_id, role_id
+		FROM drp_sys_user_role
+		WHERE user_id = #{userId}
+	</select>
+	
 </mapper>

@@ -1,9 +1,14 @@
 package com.lyu.drp.sysmanage.action;
 
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -13,6 +18,7 @@ import com.lyu.drp.common.util.PageUtils;
 import com.lyu.drp.sysmanage.dto.UserDto;
 import com.lyu.drp.sysmanage.entity.Role;
 import com.lyu.drp.sysmanage.entity.User;
+import com.lyu.drp.sysmanage.entity.UserToRole;
 import com.lyu.drp.sysmanage.service.IRoleService;
 import com.lyu.drp.sysmanage.service.IUserService;
 import com.lyu.drp.util.UserUtils;
@@ -33,7 +39,7 @@ public class UserAction {
 	// 接收前台的新密码
 	private String newPassword;
 	// 标记是新增(1)用户还是修改(2)用户
-	private String editFlag;
+	private Integer editFlag;
 	// 用于为ajax返回提示消息
 	private String message;
 	// 用于发往前台的json字符串
@@ -48,6 +54,10 @@ public class UserAction {
 	private UserDto userDto;
 	// 所有的角色列表
 	private List<Role> roleList;
+	// 用户id
+	private Long userId;
+	// 角色checkbox
+	private Map<Long, Long> roleCheckedMap;
 	// 用户服务类
 	private IUserService userService;
 	// 角色服务类
@@ -85,9 +95,21 @@ public class UserAction {
 	 * @param 
 	 * @return
 	 */
+	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
 	public String gotoUserEdit() {
-		
 		this.roleList = this.roleService.getAllRoleList();
+		
+		if (this.editFlag == 2) { // 修改
+			// 查询一下当前id的用户信息
+			this.userDto = this.userService.getUserInfoById(this.userId);
+			// 查询一下当前用户的角色
+			List<UserToRole> roleList = this.userService.listRoleByUId(this.userId);
+			Map<Long, Long> userRoleMap = new ConcurrentHashMap<Long, Long>();
+			for (UserToRole userToRole : roleList) {
+				userRoleMap.put(userToRole.getRoleId(), userToRole.getRoleId());
+			}
+			this.roleCheckedMap = userRoleMap;
+		}
 		
 		return "success";
 	}
@@ -147,7 +169,6 @@ public class UserAction {
 	 */
 	public String getUserInfoById() {
 		// 1.通过session或者其他组件获取当前用户对象
-//		Long userId = 1L;
 		Long userId = UserUtils.getCurrentUserId();
 		UserDto userDto = userService.getUserInfoById(userId);
 		// 2.将java对象转换成json字符串
@@ -206,11 +227,11 @@ public class UserAction {
 		this.newPassword = newPassword;
 	}
 
-	public String getEditFlag() {
+	public Integer getEditFlag() {
 		return editFlag;
 	}
 
-	public void setEditFlag(String editFlag) {
+	public void setEditFlag(Integer editFlag) {
 		this.editFlag = editFlag;
 	}
 
@@ -268,6 +289,22 @@ public class UserAction {
 
 	public void setUserDto(UserDto userDto) {
 		this.userDto = userDto;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public Map<Long, Long> getRoleCheckedMap() {
+		return roleCheckedMap;
+	}
+
+	public void setRoleCheckedMap(Map<Long, Long> roleCheckedMap) {
+		this.roleCheckedMap = roleCheckedMap;
 	}
 
 	public IUserService getUserService() {
