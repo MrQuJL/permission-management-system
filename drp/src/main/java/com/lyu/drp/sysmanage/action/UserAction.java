@@ -210,6 +210,24 @@ public class UserAction {
 	}
 	
 	/**
+	 * 删除用户
+	 * @param 
+	 * @return
+	 */
+	public String delUser() {
+		
+		boolean flag = this.userService.delUser(this.userId);
+		
+		if (flag) {
+			this.message = "删除用户成功!";
+		} else {
+			this.message = "删除用户失败!";
+		}
+		
+		return "success";
+	}
+	
+	/**
 	 * 一系列的setter和getter方法
 	 */
 	

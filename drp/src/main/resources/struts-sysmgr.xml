@@ -31,6 +31,12 @@
 			</result>
 		</action>
 		
+		<action name = "delUser" class= "com.lyu.drp.sysmanage.action.UserAction" method = "delUser">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
 		<action name = "gotoUserList" class= "com.lyu.drp.sysmanage.action.UserAction" method = "gotoUserList">
 			<result>/WEB-INF/pages/sysmanage/user/userList.jsp</result>
 		</action>

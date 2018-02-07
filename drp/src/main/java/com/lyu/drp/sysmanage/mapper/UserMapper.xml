@@ -129,4 +129,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{email}, #{phone}, #{mobile}, #{updateBy}, #{updateDate}, #{remarks})
 	</insert>
 	
+	<!-- 删除用户(逻辑) -->
+	<update id="delUser" parameterType="long">
+		UPDATE drp_sys_user SET del_flag = 1
+		WHERE user_id = #{userId}
+	</update>
+	
 </mapper>

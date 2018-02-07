@@ -65,4 +65,10 @@ public interface UserMapper {
 	 */
 	int addUser(User user);
 	
+	/**
+	 * 删除用户
+	 * @param 
+	 * @return
+	 */
+	int delUser(Long userId);
 }

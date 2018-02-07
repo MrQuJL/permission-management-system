@@ -26,7 +26,6 @@ String path = request.getContextPath();
 						}
 					});
 					jsonObj = JSON.stringify(jsonObj);
-					alert(jsonObj);
 					
 					var roleIds = new Array();
 					$('input[name="role"]:checked').each(function(){  
@@ -56,12 +55,6 @@ String path = request.getContextPath();
 				}
 			});
 		});
-		var userMgr = {
-			// 删除用户
-			delUser :function() {
-				
-			}
-		};
 	</script>
 	<script type="text/javascript">
 		var setting = {

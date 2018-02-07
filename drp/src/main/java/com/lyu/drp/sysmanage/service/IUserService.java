@@ -90,4 +90,11 @@ public interface IUserService {
 	 */
 	List<UserToRole> listRoleByUId(Long userId);
 	
+	/**
+	 * 根据删除用户
+	 * @param 
+	 * @return
+	 */
+	boolean delUser(Long userId);
+	
 }

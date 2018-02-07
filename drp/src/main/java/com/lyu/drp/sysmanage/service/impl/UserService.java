@@ -176,5 +176,23 @@ public class UserService implements IUserService {
 	public List<UserToRole> listRoleByUId(Long userId) {
 		return this.userToRoleMapper.listRoleByUId(userId);
 	}
+	
+	@Override
+	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
+	public boolean delUser(Long userId) {
+		boolean flag = false;
+		// 1.先删除用户-角色对应表中的数据
+		this.userToRoleMapper.deleteUserToRole(userId);
+		// 2.再删除用户表中的数据(逻辑删除)
+		int rows = this.userMapper.delUser(userId);
+		
+		if (rows > 0) {
+			flag = true;
+		}
+		
+		return flag;
+	}
     
+	
+	
 }
