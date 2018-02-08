@@ -11,6 +11,7 @@ import com.lyu.drp.sysmanage.service.IAreaService;
 import com.lyu.drp.sysmanage.service.IDeptService;
 import com.lyu.drp.sysmanage.service.IMenuService;
 import com.lyu.drp.sysmanage.service.IRoleService;
+import com.lyu.drp.util.UserUtils;
 
 /**
  * 类名称: 角色业务控制类
@@ -56,7 +57,9 @@ public class RoleAction {
 	 * @return
 	 */
 	public String gotoRoleList() {
+		
 		this.roleList = roleService.getAllRoleList();
+		
 		return "success";
 	}
 	
@@ -67,9 +70,9 @@ public class RoleAction {
 	 */
 	public String gotoRoleEdit() {
 		// 无论是新增还是修改都要显示出当前用户所拥有的所有资源
-		this.menuList = menuService.getAllMenuList();
-		this.deptList = deptService.getAllDeptList();
-		this.areaList = areaService.getAllAreaList();
+		this.menuList = menuService.getMenuListByUserId(UserUtils.getCurrentUserId());
+		this.deptList = deptService.getDeptListByUId(UserUtils.getCurrentUserId());
+		this.areaList = areaService.getAreaListByUId(UserUtils.getCurrentUserId());
 		
 		if (editFlag == 2) { // 修改的话要选中默认选中用户已经拥有的权限资源
 			// 调用service查询一下角色的id为roleId的角色信息

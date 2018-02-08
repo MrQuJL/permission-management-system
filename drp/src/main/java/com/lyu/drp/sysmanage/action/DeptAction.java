@@ -151,7 +151,7 @@ public class DeptAction {
 	 * @return
 	 */
 	public String getDeptTree() {
-		List<Dept> deptList = deptService.getAllDeptList();
+		List<Dept> deptList = deptService.getDeptListByUId(UserUtils.getCurrentUserId());
 		List<Map<String, Object>> deptListMap = new ArrayList<Map<String, Object>>();
 		
 		if (deptId != null) { // 修改要剔除掉子孙部门

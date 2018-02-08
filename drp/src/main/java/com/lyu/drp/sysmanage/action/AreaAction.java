@@ -149,7 +149,7 @@ public class AreaAction {
 	 * @return
 	 */
 	public String getAreaTree() {
-		List<Area> areaList = areaService.getAllAreaList();
+		List<Area> areaList = areaService.getAreaListByUId(UserUtils.getCurrentUserId());
 		List<TreeDto> treeList = new ArrayList<TreeDto>();
 		
 		// 说明是通过单击修改按钮进来的，要剔除掉自己以及它的子孙节点

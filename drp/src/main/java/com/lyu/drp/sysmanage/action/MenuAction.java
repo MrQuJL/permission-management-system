@@ -159,9 +159,6 @@ public class MenuAction {
 		List<TreeDto> mapList  = new ArrayList<TreeDto>();
 		List<Menu> menuList = this.menuService.getMenuListByUserId(UserUtils.getCurrentUserId());
 		
-		//
-		menuList = menuService.getAllMenuList();
-		//
 		if (menuId != null) {
 			// 获取当前菜单的所有子孙菜单
 			List<Menu> childsMenuList = new ArrayList<Menu>();
