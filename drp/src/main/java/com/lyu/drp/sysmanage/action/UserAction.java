@@ -140,7 +140,6 @@ public class UserAction {
 	 */
 	public String saveChangePwd() {
 		// 1.通过session或者其他组件获取当前用户对象
-//		Long userId = 1L;
 		Long userId = UserUtils.getCurrentUserId();
 		User user = userService.getUserById(userId);
 		// 2.校验输入的密码是否与用户当前的密码匹配
