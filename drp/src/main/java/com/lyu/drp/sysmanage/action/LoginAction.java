@@ -16,6 +16,7 @@ import org.apache.shiro.subject.Subject;
 import com.lyu.drp.sysmanage.entity.Menu;
 import com.lyu.drp.sysmanage.service.IMenuService;
 import com.lyu.drp.sysmanage.service.IUserService;
+import com.lyu.drp.util.UserUtils;
 
 /**
  * 类名称: struts2登录业务控制类
@@ -57,7 +58,7 @@ public class LoginAction {
 	 */
 	public String main() {
 		
-		this.menuList = menuService.getAllMenuList();
+		this.menuList = this.menuService.getMenuListByUserId(UserUtils.getCurrentUserId());
 		
 		return "mainPage";
 	}

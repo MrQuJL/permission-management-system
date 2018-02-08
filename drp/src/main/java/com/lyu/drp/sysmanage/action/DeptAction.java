@@ -49,6 +49,10 @@ public class DeptAction {
 	public String gotoDeptList() {
 		// 查询所有的部门列表
 		List<Dept> deptList = deptService.getAllDeptList();
+		
+		
+		
+		
 		List<Dept> returnDepts = new ArrayList<Dept>();
 		
 		// 对部门进行排序
