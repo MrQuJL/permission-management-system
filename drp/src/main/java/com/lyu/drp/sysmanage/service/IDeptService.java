@@ -30,6 +30,13 @@ public interface IDeptService {
 	List<Dept> getAllDeptList();
 	
 	/**
+	 * 通过用户id查询当前用户所能够操作的部门
+	 * @param 
+	 * @return
+	 */
+	List<Dept> getDeptListByUId(Long userId);
+	
+	/**
 	 * 获取当前部门的所有子子孙孙...部门的id
 	 * @param 
 	 * @return

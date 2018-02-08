@@ -47,7 +47,9 @@ public class DeptAction {
 	 * @return
 	 */
 	public String gotoDeptList() {
+		// 只查询当前用户所拥有的部门
 		// 查询所有的部门列表
+//		List<Dept> deptList = deptService.getAllDeptList();
 		List<Dept> deptList = deptService.getAllDeptList();
 		
 		

@@ -31,6 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM drp_sys_menu A, drp_sys_user_role B, drp_sys_role_menu C
 		WHERE B.user_id = #{userId} AND  B.role_id = C.role_id 
 		AND C.menu_id = A.id AND A.del_flag = 0
+		ORDER BY A.id DESC
 	</select>
 	
 	<!-- 获取所有的菜单列表 -->

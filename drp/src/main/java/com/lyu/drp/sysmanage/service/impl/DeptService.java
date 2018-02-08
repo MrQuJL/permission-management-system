@@ -2,7 +2,9 @@ package com.lyu.drp.sysmanage.service.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.lyu.drp.sysmanage.dto.DeptDto;
 import com.lyu.drp.sysmanage.entity.Dept;
 import com.lyu.drp.sysmanage.mapper.DeptMapper;
+import com.lyu.drp.sysmanage.mapper.RoleMapper;
 import com.lyu.drp.sysmanage.service.IDeptService;
 import com.lyu.drp.util.UserUtils;
 
@@ -27,6 +30,9 @@ public class DeptService implements IDeptService {
 	@Autowired
 	private DeptMapper deptMapper;
 	
+	@Autowired
+	private RoleMapper roleMapper;
+	
 	@Override
 	public DeptDto getDeptDetailById(Long deptId) {
 		return deptMapper.getDeptDetailById(deptId);
@@ -35,6 +41,23 @@ public class DeptService implements IDeptService {
 	@Override
 	public List<Dept> getAllDeptList() {
 		return deptMapper.getAllDeptList();
+	}
+	
+	@Override
+	public List<Dept> getDeptListByUId(Long userId) {
+		// 1.先获取当前用户所拥有的角色ids
+		List<Long> roleIds = this.roleMapper.getRoleIdsByUId(userId);
+		List<Dept> deptList = new ArrayList<Dept>();
+		// 2.再根据角色获取这些角色所拥有的部门
+		for (Long roleId : roleIds) {
+			deptList.addAll(deptMapper.getDeptListByRoleId(roleId));
+		}
+		// 去除重复的元素
+		Set<Dept> uniqueDeptSet = new HashSet<Dept>(deptList); 
+		deptList.clear();
+		deptList.addAll(uniqueDeptSet);
+		
+		return deptList;
 	}
 	
 	@Override
