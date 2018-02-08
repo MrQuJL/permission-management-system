@@ -3,6 +3,7 @@ package com.lyu.drp.sysmanage.service.impl;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -34,8 +35,12 @@ import com.lyu.drp.util.UserUtils;
 public class UserService implements IUserService {
 	@Autowired
 	private UserMapper userMapper;
+	
 	@Autowired
 	private UserToRoleMapper userToRoleMapper;
+	
+	@Autowired
+	private EhCacheManager cacheManager;
 	
 	public static final int HASH_ITERATIONS = 1024;
 	
@@ -80,6 +85,8 @@ public class UserService implements IUserService {
 		if (rows > 0) {
 			flag = true;
 		}
+		// 修改了信息都要清空shiro的缓存
+		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 	
@@ -168,7 +175,8 @@ public class UserService implements IUserService {
 				}
 			}
 		}
-		
+		// 修改了信息都要清空shiro的缓存
+		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 
@@ -189,10 +197,9 @@ public class UserService implements IUserService {
 		if (rows > 0) {
 			flag = true;
 		}
-		
+		// 修改了信息都要清空shiro的缓存
+		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
     
-	
-	
 }

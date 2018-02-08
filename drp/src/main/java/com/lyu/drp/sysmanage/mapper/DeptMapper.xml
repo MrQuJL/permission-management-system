@@ -50,7 +50,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 增加部门 -->
-	<insert id="saveDept" parameterType="dept">
+	<insert id="saveDept" parameterType="dept" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
 		INSERT INTO drp_sys_dept(parent_id, name, sort, code, address, master, phone,
 		fax, email, update_by, update_date, remarks)
 		VALUES(#{parentId}, #{name}, #{sort}, #{code}, #{address}, #{master},

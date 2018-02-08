@@ -3,12 +3,19 @@ package com.lyu.drp.sysmanage.service.impl;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.lyu.drp.sysmanage.dto.MenuDto;
 import com.lyu.drp.sysmanage.entity.Menu;
+import com.lyu.drp.sysmanage.entity.RoleToMenu;
 import com.lyu.drp.sysmanage.mapper.MenuMapper;
+import com.lyu.drp.sysmanage.mapper.RoleMapper;
+import com.lyu.drp.sysmanage.mapper.RoleToMenuMapper;
 import com.lyu.drp.sysmanage.service.IMenuService;
 import com.lyu.drp.util.UserUtils;
 
@@ -22,11 +29,20 @@ import com.lyu.drp.util.UserUtils;
  */
 @Service("menuService")
 public class MenuService implements IMenuService {
-	
 	@Autowired
 	private MenuMapper menuMapper;
+	
 	private List<Menu> childMenuList;
 
+	@Autowired
+	private EhCacheManager cacheManager;
+	
+	@Autowired
+	private RoleToMenuMapper roleToMenuMapper;
+	
+	@Autowired
+	private RoleMapper roleMapper;
+	
 	@Override
 	public MenuDto getMenuDetailById(Long menuId) {
 		return menuMapper.getMenuDetailById(menuId);
@@ -44,7 +60,6 @@ public class MenuService implements IMenuService {
 	
 	@Override
 	public boolean checkIsChildOrSelf(Long menuId, Long isSubMenuId) {
-		
 		if (isSubMenuId == menuId) {
 			return true;
 		}
@@ -75,6 +90,7 @@ public class MenuService implements IMenuService {
 	}
 
 	@Override
+	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
 	public boolean saveMenu(Menu menu) {
 		boolean flag = false;
 		// 设置update_by和update_date
@@ -85,10 +101,28 @@ public class MenuService implements IMenuService {
 		if (rows > 0) {
 			flag = true;
 		}
+		// 添加完菜单后还要再相应的角色-菜单对应表中为当前用户以及系统管理员添加一条记录
+		List<Long> roleIds = this.roleMapper.getRoleIdsByUId(UserUtils.getCurrentUserId());
+		for (Long roleId : roleIds) {
+			RoleToMenu roleToMenu = new RoleToMenu();
+			roleToMenu.setRoleId(roleId);
+			roleToMenu.setMenuId(menu.getId());
+			this.roleToMenuMapper.saveRoleToMenu(roleToMenu);
+		}
+		if (!roleIds.contains(1L)) {
+			RoleToMenu roleToMenu = new RoleToMenu();
+			roleToMenu.setRoleId(1L);
+			roleToMenu.setMenuId(menu.getId());
+			this.roleToMenuMapper.saveRoleToMenu(roleToMenu);
+		}
+		
+		// 修改了信息都要清空shiro的缓存
+		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 
 	@Override
+	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
 	public boolean updateMenu(Menu menu) {
 		boolean flag = false;
 		// 设置update_by和update_date
@@ -99,6 +133,8 @@ public class MenuService implements IMenuService {
 		if (rows > 0) {
 			flag = true;
 		}
+		// 修改了信息都要清空shiro的缓存
+		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 
@@ -113,12 +149,18 @@ public class MenuService implements IMenuService {
 	}
 	
 	@Override
+	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
 	public boolean delMenu(Long menuId) {
 		boolean flag = false;
 		int rows = menuMapper.delMenu(menuId);
 		if (rows > 0) {
 			flag = true;
 		}
+		
+		
+		
+		// 修改了信息都要清空shiro的缓存
+		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 

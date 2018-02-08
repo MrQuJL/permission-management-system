@@ -6,13 +6,19 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.lyu.drp.sysmanage.dto.DeptDto;
 import com.lyu.drp.sysmanage.entity.Dept;
+import com.lyu.drp.sysmanage.entity.RoleToDept;
 import com.lyu.drp.sysmanage.mapper.DeptMapper;
 import com.lyu.drp.sysmanage.mapper.RoleMapper;
+import com.lyu.drp.sysmanage.mapper.RoleToDeptMapper;
 import com.lyu.drp.sysmanage.service.IDeptService;
 import com.lyu.drp.util.UserUtils;
 
@@ -26,12 +32,17 @@ import com.lyu.drp.util.UserUtils;
  */
 @Service("deptService")
 public class DeptService implements IDeptService {
-
 	@Autowired
 	private DeptMapper deptMapper;
 	
 	@Autowired
 	private RoleMapper roleMapper;
+	
+	@Autowired
+	private RoleToDeptMapper roleToDeptMapper;
+	
+	@Autowired
+	private EhCacheManager cacheManager;
 	
 	@Override
 	public DeptDto getDeptDetailById(Long deptId) {
@@ -87,6 +98,7 @@ public class DeptService implements IDeptService {
 	}
 	
 	@Override
+	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
 	public boolean saveDept(Dept dept) {
 		boolean flag = false;
 		dept.setUpdateBy(UserUtils.getCurrentUserId().toString());
@@ -96,10 +108,29 @@ public class DeptService implements IDeptService {
 		if (rows > 0) {
 			flag = true;
 		}
+		
+		// 添加完菜单后还要再相应的角色-菜单对应表中为当前用户以及系统管理员添加一条记录
+		List<Long> roleIds = this.roleMapper.getRoleIdsByUId(UserUtils.getCurrentUserId());
+		for (Long roleId : roleIds) {
+			RoleToDept roleToDept = new RoleToDept();
+			roleToDept.setRoleId(roleId);
+			roleToDept.setDeptId(dept.getId());
+			this.roleToDeptMapper.saveRoleToDept(roleToDept);
+		}
+		if (!roleIds.contains(1L)) {
+			RoleToDept roleToDept = new RoleToDept();
+			roleToDept.setRoleId(1L);
+			roleToDept.setDeptId(dept.getId());
+			this.roleToDeptMapper.saveRoleToDept(roleToDept);
+		}
+		
+		// 修改了信息都要清空shiro的缓存
+		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 
 	@Override
+	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
 	public boolean updateDept(Dept dept) {
 		boolean flag = false;
 		dept.setUpdateBy(UserUtils.getCurrentUserId().toString());
@@ -109,16 +140,21 @@ public class DeptService implements IDeptService {
 		if (rows > 0) {
 			flag = true;
 		}
+		// 修改了信息都要清空shiro的缓存
+		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 
 	@Override
+	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
 	public boolean delDept(Long deptId) {
 		boolean flag = false;
 		int count = deptMapper.delDept(deptId);
 		if (count > 0) {
 			flag = true;
 		}
+		// 修改了信息都要清空shiro的缓存
+		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 

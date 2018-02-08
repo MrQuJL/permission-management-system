@@ -55,7 +55,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 添加菜单 -->
-	<insert id="saveMenu" parameterType="menu">
+	<insert id="saveMenu" parameterType="menu" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
 		INSERT INTO drp_sys_menu(parent_id, name, sort, href, target,
 		icon, is_show, permission, update_by, update_date, remarks)
 		VALUES(#{parentId}, #{name}, #{sort}, #{href}, #{target},

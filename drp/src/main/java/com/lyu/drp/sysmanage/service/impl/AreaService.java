@@ -6,13 +6,19 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.lyu.drp.sysmanage.dto.AreaDto;
 import com.lyu.drp.sysmanage.entity.Area;
+import com.lyu.drp.sysmanage.entity.RoleToArea;
 import com.lyu.drp.sysmanage.mapper.AreaMapper;
 import com.lyu.drp.sysmanage.mapper.RoleMapper;
+import com.lyu.drp.sysmanage.mapper.RoleToAreaMapper;
 import com.lyu.drp.sysmanage.service.IAreaService;
 import com.lyu.drp.util.UserUtils;
 
@@ -26,12 +32,17 @@ import com.lyu.drp.util.UserUtils;
  */
 @Service("areaService")
 public class AreaService implements IAreaService {
-
 	@Autowired
 	private AreaMapper areaMapper;
 	
 	@Autowired
 	private RoleMapper roleMapper;
+	
+	@Autowired
+	private RoleToAreaMapper roleToAreaMapper;
+	
+	@Autowired
+	private EhCacheManager cacheManager;
 	
 	@Override
 	public AreaDto getAreaDetailById(Long id) {
@@ -84,6 +95,7 @@ public class AreaService implements IAreaService {
 	}
 	
 	@Override
+	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
 	public boolean saveArea(Area area) {
 		boolean flag = false;
 		
@@ -111,10 +123,28 @@ public class AreaService implements IAreaService {
 			flag = true;
 		}
 		
+		// 添加完菜单后还要再相应的角色-菜单对应表中为当前用户以及系统管理员添加一条记录
+		List<Long> roleIds = this.roleMapper.getRoleIdsByUId(UserUtils.getCurrentUserId());
+		for (Long roleId : roleIds) {
+			RoleToArea roleToArea = new RoleToArea();
+			roleToArea.setRoleId(roleId);
+			roleToArea.setAreaId(area.getId());
+			this.roleToAreaMapper.saveRoleToArea(roleToArea);
+		}
+		if (!roleIds.contains(1L)) {
+			RoleToArea roleToArea = new RoleToArea();
+			roleToArea.setRoleId(1L);
+			roleToArea.setAreaId(area.getId());
+			this.roleToAreaMapper.saveRoleToArea(roleToArea);
+		}
+		
+		// 修改了信息都要清空shiro的缓存
+		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 
 	@Override
+	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
 	public boolean updateArea(Area area) {
 		boolean flag = false;
 		
@@ -130,11 +160,13 @@ public class AreaService implements IAreaService {
 		if (rows > 0) {
 			flag = true;
 		}
-		
+		// 修改了信息都要清空shiro的缓存
+		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 
 	@Override
+	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
 	public boolean delArea(Long areaId) {
 		boolean flag = false;
 		
@@ -143,7 +175,8 @@ public class AreaService implements IAreaService {
 		if (rows > 0) {
 			flag = true;
 		}
-		
+		// 修改了信息都要清空shiro的缓存
+		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 

@@ -3,6 +3,7 @@ package com.lyu.drp.sysmanage.service.impl;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -33,7 +34,6 @@ import com.lyu.drp.util.UserUtils;
  */
 @Service("roleService")
 public class RoleService implements IRoleService {
-
 	@Autowired
 	private RoleMapper roleMapper;
 	
@@ -45,6 +45,9 @@ public class RoleService implements IRoleService {
 	
 	@Autowired
 	private AreaMapper areaMapper;
+	
+	@Autowired
+	private EhCacheManager cacheManager;
 	
 	// 一下三个mapper用于向角色-菜单，角色-部门，角色-区域表中插入数据
 	@Autowired
@@ -123,6 +126,8 @@ public class RoleService implements IRoleService {
 			flag = true;
 		}
 		
+		// 修改了信息都要清空shiro的缓存
+		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 
@@ -178,7 +183,8 @@ public class RoleService implements IRoleService {
 		if (rows > 0) {
 			flag = true;
 		}
-		
+		// 修改了信息都要清空shiro的缓存
+		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 
@@ -196,6 +202,8 @@ public class RoleService implements IRoleService {
 		if (rows > 0) {
 			flag = true;
 		}
+		// 修改了信息都要清空shiro的缓存
+		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 
