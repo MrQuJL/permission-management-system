@@ -11,6 +11,7 @@ import com.lyu.drp.sysmanage.dto.TreeDto;
 import com.lyu.drp.sysmanage.entity.Area;
 import com.lyu.drp.sysmanage.service.IAreaService;
 import com.lyu.drp.util.TreeUtils;
+import com.lyu.drp.util.UserUtils;
 
 /**
  * 类名称: 区域业务控制类
@@ -42,8 +43,9 @@ public class AreaAction {
 	 * @return
 	 */
 	public String gotoAreaList() {
+		// 只获取当前用户所拥有的区域
+		List<Area> tempAreaList = areaService.getAreaListByUId(UserUtils.getCurrentUserId());
 		
-		List<Area> tempAreaList = areaService.getAllAreaList();
 		List<Area> returnAreaList = new ArrayList<Area>();
 		
 		TreeUtils.sortTreeList(returnAreaList, tempAreaList, 0L);

@@ -2,7 +2,9 @@ package com.lyu.drp.sysmanage.service.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.lyu.drp.sysmanage.dto.AreaDto;
 import com.lyu.drp.sysmanage.entity.Area;
 import com.lyu.drp.sysmanage.mapper.AreaMapper;
+import com.lyu.drp.sysmanage.mapper.RoleMapper;
 import com.lyu.drp.sysmanage.service.IAreaService;
 import com.lyu.drp.util.UserUtils;
 
@@ -27,6 +30,9 @@ public class AreaService implements IAreaService {
 	@Autowired
 	private AreaMapper areaMapper;
 	
+	@Autowired
+	private RoleMapper roleMapper;
+	
 	@Override
 	public AreaDto getAreaDetailById(Long id) {
 		return areaMapper.getAreaDetailById(id);
@@ -37,6 +43,19 @@ public class AreaService implements IAreaService {
 		return areaMapper.getAllAreaList();
 	}
 
+	@Override
+	public List<Area> getAreaListByUId(Long userId) {
+		List<Long> roleIds = roleMapper.getRoleIdsByUId(userId);
+		List<Area> areaList = new ArrayList<Area>();
+		for (Long roleId : roleIds) {
+			areaList.addAll(this.areaMapper.getAreaListByRoleId(roleId));
+		}
+		Set<Area> uniqueAreaSet = new HashSet<Area>(areaList);
+		areaList.clear();
+		areaList.addAll(uniqueAreaSet);
+		return areaList;
+	}
+	
 	@Override
 	public List<Area> getAllSubAreasByPId(Long pId) {
 		List<Area> allSubList = new ArrayList<Area>();

@@ -12,6 +12,7 @@ import com.lyu.drp.sysmanage.dto.DeptDto;
 import com.lyu.drp.sysmanage.entity.Dept;
 import com.lyu.drp.sysmanage.service.IDeptService;
 import com.lyu.drp.util.TreeUtils;
+import com.lyu.drp.util.UserUtils;
 
 /**
  * 类名称: 部门业务控制类
@@ -48,12 +49,7 @@ public class DeptAction {
 	 */
 	public String gotoDeptList() {
 		// 只查询当前用户所拥有的部门
-		// 查询所有的部门列表
-//		List<Dept> deptList = deptService.getAllDeptList();
-		List<Dept> deptList = deptService.getAllDeptList();
-		
-		
-		
+		List<Dept> deptList = deptService.getDeptListByUId(UserUtils.getCurrentUserId());
 		
 		List<Dept> returnDepts = new ArrayList<Dept>();
 		

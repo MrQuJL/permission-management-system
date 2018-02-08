@@ -30,6 +30,13 @@ public interface IAreaService {
 	List<Area> getAllAreaList();
 	
 	/**
+	 * 通过用户id查询当前用户所拥有的区域
+	 * @param 
+	 * @return
+	 */
+	List<Area> getAreaListByUId(Long userId);
+	
+	/**
 	 * 通过父级区域id获取所有的子孙区域
 	 * @param 
 	 * @return
