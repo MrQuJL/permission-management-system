@@ -152,12 +152,13 @@ public class MenuService implements IMenuService {
 	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
 	public boolean delMenu(Long menuId) {
 		boolean flag = false;
+		// 删除映射表中的数据，先删除从表再删除主表
+		this.roleToMenuMapper.deleteRoleToMenuByMId(menuId);
+		
 		int rows = menuMapper.delMenu(menuId);
 		if (rows > 0) {
 			flag = true;
 		}
-		
-		
 		
 		// 修改了信息都要清空shiro的缓存
 		cacheManager.getCacheManager().removalAll();

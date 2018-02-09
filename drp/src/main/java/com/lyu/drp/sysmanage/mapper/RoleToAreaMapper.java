@@ -20,10 +20,17 @@ public interface RoleToAreaMapper {
 	int saveRoleToArea(RoleToArea roleToArea);
 	
 	/**
-	 * 根据角色id，删除角色-区域对应表的一条记录
+	 * 根据角色id，删除角色-区域对应表的记录
 	 * @param 
 	 * @return
 	 */
 	int deleteRoleToArea(Long roleId);
+	
+	/**
+	 * 根据区域id，删除角色-区域对应表的记录
+	 * @param 
+	 * @return
+	 */
+	int deleteRoleToAreaByAId(Long areaId);
 	
 }

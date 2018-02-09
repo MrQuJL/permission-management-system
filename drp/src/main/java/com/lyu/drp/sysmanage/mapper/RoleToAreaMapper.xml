@@ -17,4 +17,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE role_id = #{roleId}
 	</delete>
 	
+	<!-- 根据区域id，删除角色-区域对应表的记录 -->
+	<delete id="deleteRoleToAreaByAId" parameterType="long">
+		DELETE FROM drp_sys_role_area
+		WHERE area_id = #{areaId}
+	</delete>
+	
 </mapper>

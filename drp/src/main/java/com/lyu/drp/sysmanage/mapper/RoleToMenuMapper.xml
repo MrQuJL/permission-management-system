@@ -17,4 +17,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE role_id = #{roleId}
 	</delete>
 	
+	<!-- 根据菜单id，删除角色-菜单对应表的记录 -->
+	<delete id="deleteRoleToMenuByMId" parameterType="long">
+		DELETE FROM drp_sys_role_menu
+		WHERE menu_id = #{menuId}
+	</delete>
+	
 </mapper>

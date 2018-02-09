@@ -20,10 +20,17 @@ public interface RoleToDeptMapper {
 	int saveRoleToDept(RoleToDept roleToDept);
 	
 	/**
-	 * 根据角色id，删除角色-部门对应表的一条记录
+	 * 根据角色id，删除角色-部门对应表的记录
 	 * @param 
 	 * @return
 	 */
 	int deleteRoleToDept(Long roleId);
+	
+	/**
+	 * 根据部门id，删除角色-部门对应表的记录
+	 * @param 
+	 * @return
+	 */
+	int deleteRoleToDeptByDId(Long deptId);
 	
 }

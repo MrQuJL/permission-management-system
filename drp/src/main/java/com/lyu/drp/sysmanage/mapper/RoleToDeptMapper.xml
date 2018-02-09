@@ -17,4 +17,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE role_id = #{roleId}
 	</delete>
 	
+	<!-- 根据部门id，删除角色-部门对应表的记录 -->
+	<delete id="deleteRoleToDeptByDId" parameterType="long">
+		DELETE FROM drp_sys_role_dept
+		WHERE dept_id = #{deptId}
+	</delete>
+	
 </mapper>

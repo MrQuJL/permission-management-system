@@ -51,7 +51,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 添加区域 -->
-	<insert id="saveArea" parameterType="area">
+	<insert id="saveArea" parameterType="area" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
 		INSERT INTO drp_sys_area(parent_id, name, sort, code, create_by,
 		create_date, update_by, update_date, remarks)
 		VALUES(#{parentId}, #{name}, #{sort}, #{code}, #{createBy}, #{createDate},

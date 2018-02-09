@@ -20,10 +20,17 @@ public interface RoleToMenuMapper {
 	int saveRoleToMenu(RoleToMenu roleToMenu);
 	
 	/**
-	 * 根据角色id，删除角色-菜单对应表的一条记录
+	 * 根据角色id，删除角色-菜单对应表的记录
 	 * @param 
 	 * @return
 	 */
 	int deleteRoleToMenu(Long roleId);
+	
+	/**
+	 * 根据菜单id，删除角色-菜单对应表的记录
+	 * @param 
+	 * @return
+	 */
+	int deleteRoleToMenuByMId(Long menuId);
 	
 }

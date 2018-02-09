@@ -149,6 +149,10 @@ public class DeptService implements IDeptService {
 	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
 	public boolean delDept(Long deptId) {
 		boolean flag = false;
+		
+		// 删除映射表中的数据，先删除从表再删除主表
+		this.roleToDeptMapper.deleteRoleToDeptByDId(deptId);
+		
 		int count = deptMapper.delDept(deptId);
 		if (count > 0) {
 			flag = true;

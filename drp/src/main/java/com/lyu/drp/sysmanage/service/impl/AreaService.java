@@ -170,6 +170,9 @@ public class AreaService implements IAreaService {
 	public boolean delArea(Long areaId) {
 		boolean flag = false;
 		
+		// 删除映射表中的数据，先删除从表再删除主表
+		this.roleToAreaMapper.deleteRoleToAreaByAId(areaId);		
+		
 		int rows = areaMapper.delArea(areaId);
 		
 		if (rows > 0) {
