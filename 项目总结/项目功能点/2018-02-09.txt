@@ -13,3 +13,17 @@
 	* 修改bug
 	* 迭代
 
+研发测试，系统（硬件）测试
+
+操作日志（AOP的后置通知/拦截器也可以做）
+	* 日志的几个要素
+	    什么人，什么时候，在哪，做了什么事情，造成了什么后果
+	* 使用aspectJ，导入aop，aopaliance，aspectJ，spring-aspects包
+	* 注册aspectJ的自动代理<aop:aspectj-autoproxy />
+	* 
+
+访问日志 用拦截器
+
+
+
+
