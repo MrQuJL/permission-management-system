@@ -1,0 +1,13 @@
+
+区域表：
+
+1. id	当前区域id
+2. parent_id	当前区域的父菜单id
+3. name		区域名称
+4. sort		排序
+5. code		区域代码
+6. update_by	区域最后一次被谁修改
+7. update_date	区域最后被修改的时间
+8. remarks		备注
+9. del_flag	逻辑删除标记
+

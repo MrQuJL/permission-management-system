@@ -20,7 +20,7 @@ public class LogAspectJUtils {
 	public void addAfterAdvice(JoinPoint joinPoint, Object result) {
 		String userName = UserUtils.getCurrentUser().getUserName();
 		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
-		int operateType = 1;
+//		int operateType = 1;
 		String operatorMethod = joinPoint.getSignature().getName();
 		
 		System.out.println("用户-" + userName + "-在" + currentTime + "通过" + operatorMethod + "-增加xx");
@@ -36,7 +36,7 @@ public class LogAspectJUtils {
 	public void delAfterAdvice(JoinPoint joinPoint, Object result) {
 		String userName = UserUtils.getCurrentUser().getUserName();
 		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
-		int operateType = 2;
+//		int operateType = 2;
 		String operatorMethod = joinPoint.getSignature().getName();
 		
 		System.out.println("用户-" + userName + "-在" + currentTime + "通过" + operatorMethod + "-删除xx");
@@ -52,7 +52,7 @@ public class LogAspectJUtils {
 	public void updateAfterAdvice(JoinPoint joinPoint, Object result) {
 		String userName = UserUtils.getCurrentUser().getUserName();
 		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
-		int operateType = 3;
+//		int operateType = 3;
 		String operatorMethod = joinPoint.getSignature().getName();
 		
 		System.out.println("用户-" + userName + "-在" + currentTime + "通过" + operatorMethod + "-修改xx");

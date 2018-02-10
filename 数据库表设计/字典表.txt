@@ -1,0 +1,14 @@
+
+字典表：
+
+1. id
+2. value	字典值
+3. label	字典名称
+4. type		字典类型
+5. description	字典描述
+6. sort		字典排序
+7. update_by	谁最后修改的该字典
+8. update_date	什么时候修改的该字典
+9. remarks		备注
+10. del_flag	逻辑删除标记
+

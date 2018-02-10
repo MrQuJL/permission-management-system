@@ -1,0 +1,18 @@
+
+用户表：
+
+1. user_id		用户id
+2. dept_id		部门id
+3. login_name	登录名
+4. user_name	用户名
+5. password		密码
+6. user_no		工号
+7. email		邮箱
+8. phone		座机
+9. mobile		移动电话
+10. update_by	谁最后一次修改的
+11. update_date	最后一次是什么时候修改的
+12. remarks		备注
+13. del_flag	逻辑删除
+
+

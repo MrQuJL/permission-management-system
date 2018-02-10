@@ -116,7 +116,6 @@ String path = request.getContextPath();
 				<div class="navbar-inner">
 					<div class="brand"><span style="cursor:pointer;" onclick="alert('logo');" id="productName">分销系统</span></div>
 					<ul id="userControl" class="nav pull-right">
-
 						<li id="userInfo" class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="个人信息">您好, 系统超级管理员&nbsp;</a>
 							<ul class="dropdown-menu">
@@ -137,21 +136,25 @@ String path = request.getContextPath();
 							<li class="menu active">
 								<a class="menu" href="javascript:" data-href="#" data-id="2"><span>系统设置</span></a>
 							</li> -->
+							<!-- 展示一级菜单 -->
 							<c:forEach items="${menuList}" var = "menu">
-							<c:if test="${menu.parentId eq '1' && menu.isShow eq '1'}">
-								<li class="menu active">
-									<c:if test="${empty menu.href}">
-										<a class="menu" href="javascript:"
-										   data-href="${ctx}/sysmgr/menuNavi?parentId=${menu.id}" data-id="${menu.id}">
-											<span>${menu.name}</span></a>
-									</c:if>
-									<c:if test="${not empty menu.href}" >
-										<a class="menu" href="${cxt}${menu.href}" data-id="${menu.id}" target="mainFrame">
-											<span>${menu.name}</span></a>
-									</c:if>
-								</li>
-							</c:if>				
-						</c:forEach>
+								<!-- 父菜单的id为1并且可以展示 -->
+								<c:if test="${menu.parentId eq '1' && menu.isShow eq '1'}">
+									<li class="menu active">
+										<!-- 超链接为空的话显示如下内容 -->
+										<c:if test="${empty menu.href}">
+											<a class="menu" href="javascript:"
+											   data-href="${ctx}/sysmgr/menuNavi?parentId=${menu.id}" data-id="${menu.id}">
+												<span>${menu.name}</span></a>
+										</c:if>
+										<!-- 超链接不为空的话显示如下内容 -->
+										<c:if test="${not empty menu.href}" >
+											<a class="menu" href="${ctx}${menu.href}" data-id="${menu.id}" target="mainFrame">
+												<span>${menu.name}</span></a>
+										</c:if>
+									</li>
+								</c:if>
+							</c:forEach>
 						</ul>
 					</div>
 				</div>

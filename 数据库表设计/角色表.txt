@@ -1,0 +1,11 @@
+
+角色表：
+
+1. id
+2. name		角色名称
+3. update_by	谁最后一次修改的该角色
+4. update_date	该角色最后一次修改的时间
+5. remarks		备注
+6. del_flag		逻辑删除标示
+
+

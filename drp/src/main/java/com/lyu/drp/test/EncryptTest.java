@@ -48,6 +48,7 @@ public class EncryptTest {
 	public void testBASE64Decode() {
 		String plainPsd = "MTIzNDU2";
 		System.out.println(new String(Base64.decode(plainPsd)));
+		System.out.println(new String(Base64.decode("cm9vdEBsaW51eGVyLm1l")));
 		// 123456
 		// 返回的是一个字节数组
 	}

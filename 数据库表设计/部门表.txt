@@ -1,0 +1,18 @@
+
+部门表：
+
+1. id	当前部门id
+2. parent_id	当前部门的父菜单id
+3. name		部门名称
+4. sort		排序
+5. code		部门代码
+6. address	部门地址
+7. master	部门负责人
+8. phone	部门座机
+9. fax		部门传真
+10. email	部门邮箱
+11. update_by	部门最后一次被谁修改
+12. update_date	部门最后被修改的时间
+13. remarks		备注
+14. del_flag	逻辑删除标记
+
