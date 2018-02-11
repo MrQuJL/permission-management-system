@@ -18,10 +18,15 @@ public class LogAction {
 	
 	
 	
-	
-	
-	
-	
+	/**
+	 * 处理前往日志列表的请求
+	 * @param 
+	 * @return
+	 */
+	public String gotoLogList() {
+		return "success";
+	}
+
 	
 	public String getJsonObj() {
 		return jsonObj;

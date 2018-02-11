@@ -69,6 +69,3 @@
 /logout.action = logout
 然后在相应的action里面subject.logout一下
 
-
-
-

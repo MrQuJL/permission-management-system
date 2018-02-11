@@ -207,6 +207,11 @@
 			</result>
 		</action>
 		
+		<!-- 日志管理 -->
+		<action name = "gotoLogList" class= "com.lyu.drp.sysmanage.action.LogAction" method = "gotoLogList">
+			<result>/WEB-INF/pages/sysmanage/log/logList.jsp</result>
+		</action>
+		
 	</package>
 	
 </struts>
