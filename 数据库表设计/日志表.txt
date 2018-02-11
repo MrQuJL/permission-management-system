@@ -1,0 +1,10 @@
+
+日志表：
+
+1. id
+2. type		日志类型
+3. title	日志标题
+4. create_by	谁创建的
+5. create_date	什么时候创建的
+
+

@@ -83,7 +83,14 @@ String path = request.getContextPath();
 		<div class="control-group">
 			<label class="control-label">可见:</label>
 			<div class="controls">
-				<span><input id="isShow1" name="isShow" class="required" type="radio" value="${menu.isShow}" checked="checked"/><label for="isShow1">显示</label></span><span><input id="isShow2" name="isShow" class="required" type="radio" value="0"/><label for="isShow2">隐藏</label></span>
+				<span>
+					<input id="isShow1" name="isShow" class="required" type="radio" value="${empty menu.isShow ? 1 : menu.isShow}" checked="checked"/>
+					<label for="isShow1">显示</label>
+				</span>
+				<span>
+					<input id="isShow2" name="isShow" class="required" type="radio" value="0"/>
+					<label for="isShow2">隐藏</label>
+				</span>
 				<span class="help-inline">该菜单或操作是否显示到系统菜单中</span>
 			</div>
 		</div>
@@ -118,6 +125,7 @@ String path = request.getContextPath();
 						obj[item.name] = item.value;
 					}
 				});
+				alert(JSON.stringify(obj));
 				// 3.发送ajax请求
 				$.ajax({
 					type : "post",

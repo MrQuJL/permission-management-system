@@ -22,7 +22,6 @@ public class LogAspectJUtils {
 		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 //		int operateType = 1;
 		String operatorMethod = joinPoint.getSignature().getName();
-		
 		System.out.println("用户-" + userName + "-在" + currentTime + "通过" + operatorMethod + "-增加xx");
 		
 	}
