@@ -2,9 +2,9 @@
 日志表：
 
 1. id
-2. type		日志类型
-3. title	日志标题
-4. create_by	谁创建的
-5. create_date	什么时候创建的
-
+2. dept_id	操作用户的部门编号
+3. type		日志类型
+4. title	日志标题
+5. create_by	谁创建的
+6. create_date	什么时候创建的
 

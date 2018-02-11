@@ -1,0 +1,21 @@
+2018/2/11
+
+1. 启动项目报错
+org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. 
+Cause: java.lang.IllegalArgumentException: XML fragments parsed from previous mappers
+already contains value for com.lyu.drp.sysmanage.mapper.LogMapper.all_log_columns
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:120)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.parse(XMLMapperBuilder.java:92)
+	at org.apache.ibatis.builder.annotation.MapperAnnotationBuilder.loadXmlResource(MapperAnnotationBuilder.java:167)
+	at org.apache.ibatis.builder.annotation.MapperAnnotationBuilder.parse(MapperAnnotationBuilder.java:118)
+	at org.apache.ibatis.binding.MapperRegistry.addMapper(MapperRegistry.java:72)
+	at org.apache.ibatis.session.Configuration.addMapper(Configuration.java:685)
+	at org.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:80)
+	at org.springframework.dao.support.DaoSupport.afterPropertiesSet(DaoSupport.java:44)
+
+原因：在mapper.xml中定义了两个同为all_log_columns的sql片段
+
+
+
+
+

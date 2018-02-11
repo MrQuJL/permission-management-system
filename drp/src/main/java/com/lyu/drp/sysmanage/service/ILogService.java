@@ -1,4 +1,4 @@
-package com.lyu.drp.sysmanage.mapper;
+package com.lyu.drp.sysmanage.service;
 
 import java.util.List;
 
@@ -6,14 +6,14 @@ import com.lyu.drp.sysmanage.dto.LogDto;
 import com.lyu.drp.sysmanage.entity.Log;
 
 /**
- * 类名称: 日志mapper
- * 类描述: 对日志的一些操作
- * 全限定性类名: com.lyu.drp.sysmanage.mapper.LogMapper
+ * 类名称: 日志服务类接口
+ * 类描述: 封装了一些对日志的操作
+ * 全限定性类名: com.lyu.drp.sysmanage.service.ILogService
  * @author 曲健磊
- * @date 2018年2月11日 下午7:41:52
+ * @date 2018年2月11日 下午10:27:25
  * @version V1.0
  */
-public interface LogMapper {
+public interface ILogService {
 	
 	/**
 	 * 根据日志的某些已知信息查询日志的完整信息
@@ -27,13 +27,13 @@ public interface LogMapper {
 	 * @param 
 	 * @return
 	 */
-	int saveLog(Log log);
+	boolean saveLog(Log log);
 	
 	/**
 	 * 删除日志
 	 * @param 
 	 * @return
 	 */
-	int delLog(Long logId);
+	boolean delLog(Long logId);
 	
 }

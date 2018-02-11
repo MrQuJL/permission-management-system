@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 验证用户登录  -->
 	<select id="loginUser" resultType="user">
-		SELECT <include refid="all_user_columns"></include>
+		SELECT <include refid="all_user_columns" />
 		FROM drp_sys_user
 		WHERE login_name = #{0} and del_flag = 0;
 	</select>

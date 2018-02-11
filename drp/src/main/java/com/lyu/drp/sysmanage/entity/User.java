@@ -16,7 +16,7 @@ public class User implements Serializable {
 	
 	private Long userId;
 
-    private Integer deptId;
+    private Long deptId;
 
     private String loginName;
 
@@ -48,11 +48,11 @@ public class User implements Serializable {
 		this.userId = userId;
 	}
 
-	public Integer getDeptId() {
+	public Long getDeptId() {
 		return deptId;
 	}
 
-	public void setDeptId(Integer deptId) {
+	public void setDeptId(Long deptId) {
 		this.deptId = deptId;
 	}
 
