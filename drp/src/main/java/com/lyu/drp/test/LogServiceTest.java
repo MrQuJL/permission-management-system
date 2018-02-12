@@ -36,7 +36,7 @@ public class LogServiceTest {
 		log.setDeptId(12L);
 		log.setCreateDate("2017-10-10");
 		
-		boolean flag = logService.saveLog(log);
+		boolean flag = logService.insertLog(log);
 		
 		if (flag) {
 			System.out.println("添加菜单成功");

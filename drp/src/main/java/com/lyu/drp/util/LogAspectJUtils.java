@@ -29,11 +29,7 @@ public class LogAspectJUtils {
 		Log log = new Log();
 		log.setType("操作日志");
 		log.setTitle(operatorMethod);
-		
-		boolean flag = logService.insertLog(log);
-		
-		System.out.println(flag ? "成功" : "失败");
-		
+		logService.insertLog(log);
 	}
 	
 	/**
@@ -43,12 +39,11 @@ public class LogAspectJUtils {
 	 */
 	@AfterReturning(value="execution(* com.lyu.drp.sysmanage.service.impl.*.del*(..))", returning="result")
 	public void delAfterAdvice(JoinPoint joinPoint, Object result) {
-		String userName = UserUtils.getCurrentUser().getUserName();
-		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 		String operatorMethod = joinPoint.getSignature().getName();
-		
-		System.out.println("用户-" + userName + "-在" + currentTime + "通过" + operatorMethod + "-删除xx");
-		
+		Log log = new Log();
+		log.setType("操作日志");
+		log.setTitle(operatorMethod);
+		logService.insertLog(log);
 	}
 	
 	/**
@@ -58,12 +53,11 @@ public class LogAspectJUtils {
 	 */
 	@AfterReturning(value="execution(* com.lyu.drp.sysmanage.service.impl.*.update*(..))", returning="result")
 	public void updateAfterAdvice(JoinPoint joinPoint, Object result) {
-		String userName = UserUtils.getCurrentUser().getUserName();
-		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 		String operatorMethod = joinPoint.getSignature().getName();
-		
-		System.out.println("用户-" + userName + "-在" + currentTime + "通过" + operatorMethod + "-修改xx");
-		
+		Log log = new Log();
+		log.setType("操作日志");
+		log.setTitle(operatorMethod);
+		logService.insertLog(log);
 	}
 	
 }

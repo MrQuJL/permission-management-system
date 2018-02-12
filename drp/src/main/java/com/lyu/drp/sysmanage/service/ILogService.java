@@ -34,6 +34,6 @@ public interface ILogService {
 	 * @param 
 	 * @return
 	 */
-	boolean delLog(Long logId);
+	boolean removeLog(Long logId);
 	
 }

@@ -48,7 +48,7 @@ public class LogService implements ILogService {
 	}
 
 	@Override
-	public boolean delLog(Long logId) {
+	public boolean removeLog(Long logId) {
 		boolean flag = false;
 		int rows = logMapper.delLog(logId);
 		if (rows > 0) {
