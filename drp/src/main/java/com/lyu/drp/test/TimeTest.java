@@ -1,6 +1,8 @@
 package com.lyu.drp.test;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.junit.Test;
 
@@ -20,6 +22,17 @@ public class TimeTest {
 		Timestamp t = new Timestamp(System.currentTimeMillis());
 		
 		System.out.println(t);
+		
+	}
+	
+	@Test
+	public void testCurrentTime() {
+		
+		// 获取当前日期
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		
+		System.out.println(sdf.format(date));
 		
 	}
 	

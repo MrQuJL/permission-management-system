@@ -1,5 +1,8 @@
 package com.lyu.drp.sysmanage.action;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
 import com.lyu.drp.common.dto.PageParam;
@@ -20,6 +23,8 @@ public class LogAction {
 	private String jsonObj;
 	// 返回给前台的提示信息
 	private String message;
+	// 获取当前日期
+	private String currentDate;
 	// 分页信息
 	private PageParam pageParam;
 	// 返回的分页条对象
@@ -52,6 +57,11 @@ public class LogAction {
 	 * @return
 	 */
 	public String gotoLogList() {
+		// 获取当前日期
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		this.currentDate = sdf.format(date);
+		
 		return "success";
 	}
 	
@@ -73,6 +83,14 @@ public class LogAction {
 	
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public String getCurrentDate() {
+		return currentDate;
+	}
+
+	public void setCurrentDate(String currentDate) {
+		this.currentDate = currentDate;
 	}
 
 	public PageParam getPageParam() {
