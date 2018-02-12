@@ -26,12 +26,14 @@ public class LogAspectJUtils {
 	@AfterReturning(value="execution(* com.lyu.drp.sysmanage.service.impl.*.save*(..))", returning="result")
 	public void addAfterAdvice(JoinPoint joinPoint, Object result) {
 		String operatorMethod = joinPoint.getSignature().getName();
-		
 		Log log = new Log();
 		log.setType("操作日志");
 		log.setTitle(operatorMethod);
 		
-		logService.saveLog(log);
+		boolean flag = logService.insertLog(log);
+		
+		System.out.println(flag ? "成功" : "失败");
+		
 	}
 	
 	/**

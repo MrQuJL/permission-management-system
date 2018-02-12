@@ -29,15 +29,15 @@ public class LogService implements ILogService {
 	}
 
 	@Override
-	public boolean saveLog(Log log) {
+	public boolean insertLog(Log log) {
 		// 获取当前操作的用户id
-//		Long currentUserId = UserUtils.getCurrentUserId();
+		Long currentUserId = UserUtils.getCurrentUserId();
 		// 获取当前用户
-//		User user = userMapper.getUserById(currentUserId);
+		User user = userMapper.getUserById(currentUserId);
 		// 设置该日志的时间
-//		log.setCreateDate(new Timestamp(System.currentTimeMillis()).toString());
-//		log.setCreateBy(user.getUserName());
-//		log.setDeptId(user.getDeptId());
+		log.setCreateDate(new Timestamp(System.currentTimeMillis()).toString());
+		log.setCreateBy(user.getUserName());
+		log.setDeptId(user.getDeptId());
 		
 		boolean flag = false;
 		int rows = logMapper.saveLog(log);

@@ -27,7 +27,7 @@ public interface ILogService {
 	 * @param 
 	 * @return
 	 */
-	boolean saveLog(Log log);
+	boolean insertLog(Log log);
 	
 	/**
 	 * 删除日志
