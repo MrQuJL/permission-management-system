@@ -74,27 +74,31 @@ String path = request.getContextPath();
 					data : {"jsonObj" : JSON.stringify(jsonObj)},
 					dataType : "json",
 					success : function(data) {
-						alert(data.jsonObj);
+						//alert(data.jsonObj);
 						var logList = JSON.parse(data.jsonObj);
 						var htmlTable = "";
-						for (var i = 0; i < logList.length; i++) {
-							htmlTable = htmlTable + "<tr>";
-							htmlTable = htmlTable + "<td>";
-							htmlTable = htmlTable + logList[i].createBy;
-							htmlTable = htmlTable + "</td>";
-							htmlTable = htmlTable + "<td>";
-							htmlTable = htmlTable + logList[i].deptName;
-							htmlTable = htmlTable + "</td>";
-							htmlTable = htmlTable + "<td>";
-							htmlTable = htmlTable + logList[i].title;
-							htmlTable = htmlTable + "</td>";
-							htmlTable = htmlTable + "<td>";
-							htmlTable = htmlTable + logList[i].type;
-							htmlTable = htmlTable + "</td>";
-							htmlTable = htmlTable + "<td>";
-							htmlTable = htmlTable + logList[i].createDate;
-							htmlTable = htmlTable + "</td>";
-							htmlTable = htmlTable + "</tr>";
+						if (logList.length != 0) {
+							for (var i = 0; i < logList.length; i++) {
+								htmlTable = htmlTable + "<tr>";
+								htmlTable = htmlTable + "<td>";
+								htmlTable = htmlTable + logList[i].createBy;
+								htmlTable = htmlTable + "</td>";
+								htmlTable = htmlTable + "<td>";
+								htmlTable = htmlTable + logList[i].deptName;
+								htmlTable = htmlTable + "</td>";
+								htmlTable = htmlTable + "<td>";
+								htmlTable = htmlTable + logList[i].title;
+								htmlTable = htmlTable + "</td>";
+								htmlTable = htmlTable + "<td>";
+								htmlTable = htmlTable + logList[i].type;
+								htmlTable = htmlTable + "</td>";
+								htmlTable = htmlTable + "<td>";
+								htmlTable = htmlTable + logList[i].createDate;
+								htmlTable = htmlTable + "</td>";
+								htmlTable = htmlTable + "</tr>";
+							}
+						} else {
+							htmlTable = "没有查询到记录";
 						}
 						$("#logTable").find("tbody").html(htmlTable);
 						top.$.jBox.closeTip();
