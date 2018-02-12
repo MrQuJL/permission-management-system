@@ -1,7 +1,5 @@
 package com.lyu.drp.util;
 
-import java.sql.Timestamp;
-
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;

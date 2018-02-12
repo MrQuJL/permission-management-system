@@ -1,0 +1,6 @@
+2018/2/12
+
+1. 又分析了一下日志功能：不能提供删除日志的接口（除非用户有这样的需求）
+
+2. 又学了一手：mybatis开启在控制台打印执行过的sql语句功能如下：
+<setting name="logImpl" value="STDOUT_LOGGING"/>

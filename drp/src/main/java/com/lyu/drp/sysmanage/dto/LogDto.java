@@ -18,9 +18,9 @@ public class LogDto extends Log {
 	
 	private String deptName;
 	
-	private Date startTime;
+	private Date beginDate;
 	
-	private Date endTime;
+	private Date endDate;
 	
 	public String getDeptName() {
 		return deptName;
@@ -30,20 +30,20 @@ public class LogDto extends Log {
 		this.deptName = deptName;
 	}
 
-	public Date getStartTime() {
-		return startTime;
+	public Date getBeginDate() {
+		return beginDate;
 	}
 
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
+	public void setBeginDate(Date beginDate) {
+		this.beginDate = beginDate;
 	}
 
-	public Date getEndTime() {
-		return endTime;
+	public Date getEndDate() {
+		return endDate;
 	}
 
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
-	
+
 }

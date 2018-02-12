@@ -15,20 +15,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</sql>
 	
 	<!-- 查询日志列表 -->
-	<select id="getLogList" parameterType="logDto" resultType="log">
-		SELECT <include refid="all_log_columns" />, B.name
+	<select id="getLogList" parameterType="logDto" resultType="logDto">
+		SELECT <include refid="all_log_columns_alias" />, B.name deptName
 		FROM drp_sys_log A, drp_sys_dept B
 		<where>
+			<if test="1 == 1">
+				A.dept_id = B.id AND
+			</if>
 			<if test="type != null">
 				type LIKE '%${type}%' AND
 			</if>
 			<if test="createBy != null">
 				create_by LIKE '%${createBy}%' AND
 			</if>
-			<if test="startTime != null">
-				<if test="endTime != null">
-					create_date BETWEEN #{startTime} AND #{endTime} AND
-				</if>
+			<if test="beginDate != null">
+				create_date BETWEEN #{beginDate} AND #{endDate}
 			</if>
 		</where>
 	</select>

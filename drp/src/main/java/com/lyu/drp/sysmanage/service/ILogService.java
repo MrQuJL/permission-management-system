@@ -20,7 +20,7 @@ public interface ILogService {
 	 * @param 
 	 * @return
 	 */
-	List<Log> getLogList(LogDto logDto);
+	List<LogDto> getLogList(LogDto logDto);
 	
 	/**
 	 * 添加日志

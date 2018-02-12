@@ -24,7 +24,7 @@ public class LogService implements ILogService {
 	private UserMapper userMapper;
 	
 	@Override
-	public List<Log> getLogList(LogDto logDto) {
+	public List<LogDto> getLogList(LogDto logDto) {
 		return logMapper.getLogList(logDto);
 	}
 

@@ -1,5 +1,11 @@
 package com.lyu.drp.sysmanage.action;
 
+import java.util.List;
+
+import com.alibaba.fastjson.JSON;
+import com.lyu.drp.sysmanage.dto.LogDto;
+import com.lyu.drp.sysmanage.service.ILogService;
+
 /**
  * 类名称: 日志业务控制类
  * 类描述: 用于对处理对日志的一些请求
@@ -13,10 +19,25 @@ public class LogAction {
 	private String jsonObj;
 	// 返回给前台的提示信息
 	private String message;
+	// 日志服务类
+	private ILogService logService;
 	
-	
-	
-	
+	/**
+	 * 获取日志列表
+	 * @param 
+	 * @return
+	 */
+	public String getLogList() {
+		
+		LogDto logDto = JSON.parseObject(this.jsonObj, LogDto.class);
+		
+		List<LogDto> logList = logService.getLogList(logDto);
+		
+		this.jsonObj = JSON.toJSONString(logList);
+		
+		return "success";
+	}
+
 	
 	/**
 	 * 处理前往日志列表的请求
@@ -26,19 +47,33 @@ public class LogAction {
 	public String gotoLogList() {
 		return "success";
 	}
-
+	
+	/**
+	 * 一系列的setter和getter方法
+	 */
 	
 	public String getJsonObj() {
 		return jsonObj;
 	}
+	
 	public void setJsonObj(String jsonObj) {
 		this.jsonObj = jsonObj;
 	}
+	
 	public String getMessage() {
 		return message;
 	}
+	
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public ILogService getLogService() {
+		return logService;
+	}
+
+	public void setLogService(ILogService logService) {
+		this.logService = logService;
 	}
 	
 }

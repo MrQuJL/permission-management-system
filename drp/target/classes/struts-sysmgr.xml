@@ -212,6 +212,12 @@
 			<result>/WEB-INF/pages/sysmanage/log/logList.jsp</result>
 		</action>
 		
+		<action name = "getLogList" class= "com.lyu.drp.sysmanage.action.LogAction" method = "getLogList">
+			<result type="json">
+				<param name="includeProperties">jsonObj</param>
+			</result>
+		</action>
+		
 	</package>
 	
 </struts>
