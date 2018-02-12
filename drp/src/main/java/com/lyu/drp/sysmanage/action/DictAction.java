@@ -59,7 +59,6 @@ public class DictAction {
 	 * @param 
 	 * @return
 	 */
-	/*@RequiresPermissions("dict:query")*/
 	public String getDictListPage() {
 		if (StringUtils.isEmpty(type)) {
 			type = null;
@@ -78,7 +77,7 @@ public class DictAction {
 		List<Dict> dictList = pageInfo.getList();
 		this.jsonObj = JSONArray.toJSONString(dictList);
 		// 2.获取分页条
-		this.pageBar = PageUtils.pageStr(pageInfo, "dictMgr.getDictListPage"); 
+		this.pageBar = PageUtils.pageStr(pageInfo, "dictMgr.getDictListPage");
 		
 		return "success";
 	}

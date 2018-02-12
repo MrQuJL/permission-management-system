@@ -1,8 +1,9 @@
 package com.lyu.drp.sysmanage.action;
 
-import java.util.List;
-
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.PageInfo;
+import com.lyu.drp.common.dto.PageParam;
+import com.lyu.drp.common.util.PageUtils;
 import com.lyu.drp.sysmanage.dto.LogDto;
 import com.lyu.drp.sysmanage.service.ILogService;
 
@@ -19,6 +20,10 @@ public class LogAction {
 	private String jsonObj;
 	// 返回给前台的提示信息
 	private String message;
+	// 分页信息
+	private PageParam pageParam;
+	// 返回的分页条对象
+	private String pageBar;
 	// 日志服务类
 	private ILogService logService;
 	
@@ -27,13 +32,15 @@ public class LogAction {
 	 * @param 
 	 * @return
 	 */
-	public String getLogList() {
+	public String getLogListPage() {
 		
 		LogDto logDto = JSON.parseObject(this.jsonObj, LogDto.class);
 		
-		List<LogDto> logList = logService.getLogList(logDto);
+		PageInfo<LogDto> pageInfo = logService.getLogListPage(logDto, this.pageParam);
 		
-		this.jsonObj = JSON.toJSONString(logList);
+		this.jsonObj = JSON.toJSONString(pageInfo.getList());
+		
+		this.pageBar = PageUtils.pageStr(pageInfo, "logMgr.getLogListPage");
 		
 		return "success";
 	}
@@ -66,6 +73,22 @@ public class LogAction {
 	
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public PageParam getPageParam() {
+		return pageParam;
+	}
+
+	public void setPageParam(PageParam pageParam) {
+		this.pageParam = pageParam;
+	}
+
+	public String getPageBar() {
+		return pageBar;
+	}
+
+	public void setPageBar(String pageBar) {
+		this.pageBar = pageBar;
 	}
 
 	public ILogService getLogService() {

@@ -134,14 +134,7 @@ String path = request.getContextPath();
 </table>
 
 <div class="pagination" id="dictPageBar">
-<!-- <ul>
-<li class="disabled"><a href="javascript:">&#171; 上一页</a></li>
-<li class="active"><a href="javascript:">1</a></li>
-<li class="disabled"><a href="javascript:">下一页 &#187;</a></li>
-<li class="disabled controls"><a href="javascript:">当前 <input type="text" value="1" onkeypress="var e=window.event||this;var c=e.keyCode||e.which;if(c==13)page(this.value,15,'');" onclick="this.select();"/> / <input type="text" value="15" onkeypress="var e=window.event||this;var c=e.keyCode||e.which;if(c==13)page(1,this.value,'');" onclick="this.select();"/> 条，共 0 条</a></li>
-</ul>
-<div style="clear:both;"></div> -->
-</div>
 
+</div>
 </body>
 </html>

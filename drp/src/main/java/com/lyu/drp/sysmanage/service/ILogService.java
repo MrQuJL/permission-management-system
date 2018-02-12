@@ -1,7 +1,7 @@
 package com.lyu.drp.sysmanage.service;
 
-import java.util.List;
-
+import com.github.pagehelper.PageInfo;
+import com.lyu.drp.common.dto.PageParam;
 import com.lyu.drp.sysmanage.dto.LogDto;
 import com.lyu.drp.sysmanage.entity.Log;
 
@@ -20,7 +20,7 @@ public interface ILogService {
 	 * @param 
 	 * @return
 	 */
-	List<LogDto> getLogList(LogDto logDto);
+	PageInfo<LogDto> getLogListPage(LogDto logDto, PageParam pageParam);
 	
 	/**
 	 * 添加日志

@@ -6,6 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.lyu.drp.common.dto.PageParam;
 import com.lyu.drp.sysmanage.dto.LogDto;
 import com.lyu.drp.sysmanage.entity.Log;
 import com.lyu.drp.sysmanage.entity.User;
@@ -24,8 +27,15 @@ public class LogService implements ILogService {
 	private UserMapper userMapper;
 	
 	@Override
-	public List<LogDto> getLogList(LogDto logDto) {
-		return logMapper.getLogList(logDto);
+	public PageInfo<LogDto> getLogListPage(LogDto logDto, PageParam pageParam) {
+		
+		PageHelper.startPage(pageParam.getPageNo(), pageParam.getPageSize());
+		
+		List<LogDto> logList = logMapper.getLogList(logDto);
+		
+		PageInfo<LogDto> pageInfo = new PageInfo<LogDto>(logList);
+		
+		return pageInfo;
 	}
 
 	@Override

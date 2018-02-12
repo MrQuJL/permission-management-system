@@ -26,7 +26,7 @@ String path = request.getContextPath();
 			<input id="endDate" name="endDate" type="text" readonly="readonly" maxlength="20" class="input-mini Wdate"
 				value="2018-02-11" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:false});"/>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input id="btnSubmit" class="btn btn-primary" onclick="logMgr.getLogLilst();" type="button" value="查询"/>&nbsp;&nbsp;
+			<input id="btnSubmit" class="btn btn-primary" onclick="logMgr.getLogLilstPage(1,10);" type="button" value="查询"/>&nbsp;&nbsp;
 		</div>
 	</form>
 
@@ -45,17 +45,19 @@ String path = request.getContextPath();
 		</tbody>
 	</table>
 
-<div class="pagination"><ul>
+<div class="pagination">
+<!-- <ul>
 <li class="disabled"><a href="javascript:">&#171; 上一页</a></li>
 <li class="active"><a href="javascript:">1</a></li>
 <li class="disabled"><a href="javascript:">下一页 &#187;</a></li>
 <li class="disabled controls"><a href="javascript:">当前 <input type="text" value="1" onkeypress="var e=window.event||this;var c=e.keyCode||e.which;if(c==13)page(this.value,15,'');" onclick="this.select();"/> / <input type="text" value="15" onkeypress="var e=window.event||this;var c=e.keyCode||e.which;if(c==13)page(1,this.value,'');" onclick="this.select();"/> 条，共 0 条</a></li>
-</ul>
-<div style="clear:both;"></div></div>
+</ul> -->
+<div style="clear:both;"></div>
+</div>
 	<script type="text/javascript">
 		var logMgr = {
 			// 查询日志记录
-			getLogLilst : function() {
+			getLogLilstPage : function(pageNo, pageSize) {
 				var type = $("#type").val();
 				var createBy = $("createBy").val();
 				var beginDate = $("#beginDate").val();
@@ -71,7 +73,7 @@ String path = request.getContextPath();
 				$.ajax({
 					type : "post",
 					url : "${ctx}/sysmgr/getLogList.action",
-					data : {"jsonObj" : JSON.stringify(jsonObj)},
+					data : {"jsonObj" : JSON.stringify(jsonObj), "pageParam.pageNo" : pageNo, "pageParam.pageSize" : pageSize},
 					dataType : "json",
 					success : function(data) {
 						//alert(data.jsonObj);
@@ -101,6 +103,7 @@ String path = request.getContextPath();
 							htmlTable = "没有查询到记录";
 						}
 						$("#logTable").find("tbody").html(htmlTable);
+						$(".pagination").html(data.pageBar);
 						top.$.jBox.closeTip();
 					}
 				});
