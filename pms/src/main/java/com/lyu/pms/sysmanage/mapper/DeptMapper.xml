@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace = "com.lyu.pms.sysmanage.mapper.DeptMapper"> 
+	<!-- 所有的部门字段 -->
+	<sql id = "all_dept_columns">
+	    id, parent_id, name, sort, code, address, master, phone,
+		fax, email, update_by, update_date, remarks, del_flag
+	</sql>
+	
+	<!-- 所有的部门字段 (别名)-->
+	<sql id = "all_dept_columns_alias">
+	    A.id, A.parent_id, A.name, A.sort, A.code, A.address, A.master, A.phone,
+		A.fax, A.email, A.update_by, A.update_date, A.remarks, A.del_flag
+	</sql>
+	
+	<!-- 获取部门的详细信息，包括父部门的名称... -->
+	<select id="getDeptDetailById" parameterType="long" resultType="deptDto">
+		SELECT <include refid="all_dept_columns_alias" />, B.name parentName
+		FROM pms_sys_dept A LEFT JOIN pms_sys_dept B
+		ON A.parent_id = B.id WHERE A.id = #{deptId};
+	</select>
+	
+	<!-- 获得部门列表 -->
+	<select id="getAllDeptList" resultType="dept">
+		SELECT <include refid="all_dept_columns" />
+		FROM pms_sys_dept
+		WHERE del_flag = 0
+	</select>
+	
+	<!-- 根据角色id获取该角色所拥有的部门权限 -->
+	<select id="getDeptListByRoleId" parameterType="long" resultType="dept">
+		SELECT <include refid="all_dept_columns_alias" />
+		FROM pms_sys_dept A, pms_sys_role_dept B
+		WHERE B.role_id = #{roleId} AND A.id = B.dept_id
+	</select>
+	
+	<!-- 获取当前部门的所有子部门id -->
+	<select id="getAllSubDeptIds" parameterType="long" resultType="long">
+		SELECT id from pms_sys_dept
+		WHERE parent_id = #{parentId} AND del_flag = 0
+	</select>
+	
+	<!-- 统计当前部门的所有子部门的数量 -->
+	<select id="countSubDeptByPId" parameterType="long" resultType="int">
+		SELECT COUNT(id) FROM pms_sys_dept
+		WHERE parent_id = #{parentId} AND del_flag = 0
+	</select>
+	
+	<!-- 增加部门 -->
+	<insert id="saveDept" parameterType="dept" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+		INSERT INTO pms_sys_dept(parent_id, name, sort, code, address, master, phone,
+		fax, email, update_by, update_date, remarks)
+		VALUES(#{parentId}, #{name}, #{sort}, #{code}, #{address}, #{master},
+		#{phone}, #{fax}, #{email}, #{updateBy}, #{updateDate}, #{remarks})
+	</insert>
+	
+	<!-- 修改部门 -->
+	<update id="updateDept" parameterType="dept">
+		UPDATE pms_sys_dept
+		<set>
+			<if test="parentId != null">
+				parent_id = #{parentId},
+			</if>
+			<if test="name != null">
+				name = #{name},
+			</if>
+			<if test="sort != null">
+				sort = #{sort},
+			</if>
+			<if test="code != null">
+				code = #{code},
+			</if>
+			<if test="address != null">
+				address = #{address},
+			</if>
+			<if test="master != null">
+				master = #{master},
+			</if>
+			<if test="phone != null">
+				phone = #{phone},
+			</if>
+			<if test="fax != null">
+				fax = #{fax},
+			</if>
+			<if test="email != null">
+				email = #{email},
+			</if>
+			<if test="updateBy != null">
+				update_by = #{updateBy},
+			</if>
+			<if test="updateDate != null">
+				update_date = #{updateDate},
+			</if>
+			<if test="remarks != null">
+				remarks = #{remarks},
+			</if>
+		</set>
+		WHERE id = #{id} AND del_flag = 0
+	</update>
+	
+	<!-- 删除部门（逻辑删除） -->
+	<update id="delDept" parameterType="long">
+		UPDATE pms_sys_dept 
+		SET del_flag = 1
+		WHERE id = #{deptId}
+	</update>
+	
+</mapper>

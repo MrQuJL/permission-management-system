@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace = "com.lyu.pms.sysmanage.mapper.UserToRoleMapper"> 
+	
+	<!-- 新增用户-角色对应表的一条记录 -->
+	<insert id="saveUserToRole" parameterType="userToRole">
+		INSERT INTO pms_sys_user_role(user_id, role_id)
+		VALUES(#{userId}, #{roleId})
+	</insert>
+	
+	<!-- 根据用户id，删除用户-角色对应表的一条记录 -->
+	<delete id="deleteUserToRole" parameterType="long">
+		DELETE FROM pms_sys_user_role
+		WHERE user_id = #{userId}
+	</delete>
+	
+	<!-- 通过用户id查询他的角色列表  -->
+	<select id="listRoleByUId" parameterType="long" resultType="userToRole">
+		SELECT user_id, role_id
+		FROM pms_sys_user_role
+		WHERE user_id = #{userId}
+	</select>
+	
+	<!-- 向用户-角色对应表中添加数据 -->
+	<insert id="addUserToRole" parameterType="userToRole">
+		INSERT INTO pms_sys_user_role(user_id, role_id)
+		VALUES(#{userId}, #{roleId})
+	</insert>
+	
+	<!-- 根据用户的id删除对应的角色 -->
+	<delete id="delRoleByUId" parameterType="long">
+		DELETE FROM pms_sys_user_role
+		WHERE user_id = #{userId}
+	</delete>
+	
+</mapper>

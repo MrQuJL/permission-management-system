@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="mydefault-package" extends="json-default" abstract="true">
+		<!-- 定义拦截器 -->
+		<interceptors>
+			<!-- <interceptor name="loginInterceptor" class="com.lyu.pms.interceptor.LoginInterceptor"></interceptor>
+			<interceptor name="authorizationInterceptor" class="com.lyu.pms.interceptor.AuthorizationInterceptor"></interceptor>
+			 -->
+			 <interceptor-stack name="mydefault-interceptors">
+				<!-- <interceptor-ref name="loginInterceptor" />
+				<interceptor-ref name="authorizationInterceptor" /> -->
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="mydefault-interceptors" />
+		
+		<!-- 定义一个全局的result -->
+		<global-results>
+			<result name="loginPage" type="redirect">/toLogin.action</result>
+			<!-- <result name="refusePage">/refusePage.jsp</result> -->
+		</global-results>
+		
+	</package>
+
+	<package name="loginPackage" namespace="/" extends="mydefault-package">
+		<!-- 前往登录页面 -->
+		<action name="toLogin" class="com.lyu.pms.sysmanage.action.LoginAction" method="toLogin">
+			<result name="loginPage" type="dispatcher">/WEB-INF/pages/login.jsp</result>
+		</action>
+		
+		<!-- 登录 -->
+		<action name="login" class="com.lyu.pms.sysmanage.action.LoginAction" method="login">
+			<result name="main" type="redirect">/main.action</result>
+			<result name="loginPage" type="dispatcher">/WEB-INF/pages/login.jsp</result>
+		</action>
+		
+		<!-- 退出系统 -->
+		<action name="logout" class="com.lyu.pms.sysmanage.action.LoginAction" method="logout">
+			<result type="dispatcher">/WEB-INF/pages/login.jsp</result>
+		</action>
+		
+		<!-- 重定向到主页面的请求 -->
+		<action name="main" class="com.lyu.pms.sysmanage.action.LoginAction" method="main">
+			<result name="mainPage" type="dispatcher">/WEB-INF/pages/main/main.jsp</result>
+		</action>
+	</package>
+	
+	<include file="struts-sysmgr.xml"></include>
+	 
+</struts>

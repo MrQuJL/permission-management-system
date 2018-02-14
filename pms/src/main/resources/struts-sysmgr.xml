@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name = "sysmgr" namespace ="/sysmgr" extends ="mydefault-package" >	
+		<!-- 用户管理 -->
+		<action name = "userInfo" class= "com.lyu.pms.sysmanage.action.UserAction" method = "userInfo">
+			<result name = "userInfo">/WEB-INF/pages/sysmanage/user/userInfo.jsp</result>
+		</action>
+		
+		<action name = "changePwd" class= "com.lyu.pms.sysmanage.action.UserAction" method = "changePwd">
+			<result name = "changePwd">/WEB-INF/pages/sysmanage/user/changePwd.jsp</result>
+		</action>
+		
+		<action name = "saveChangePwd" class= "com.lyu.pms.sysmanage.action.UserAction" method = "saveChangePwd">
+			<result type="json" name = "saveChangePwd">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
+		<action name = "getUserInfoById" class= "com.lyu.pms.sysmanage.action.UserAction" method = "getUserInfoById">
+			<result type="json" name = "getUserInfoById">
+				<param name="includeProperties">jsonObj</param>
+			</result>
+		</action>
+		
+		<action name = "saveUserInfo" class= "com.lyu.pms.sysmanage.action.UserAction" method = "saveUserInfo">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
+		<action name = "delUser" class= "com.lyu.pms.sysmanage.action.UserAction" method = "delUser">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
+		<action name = "gotoUserList" class= "com.lyu.pms.sysmanage.action.UserAction" method = "gotoUserList">
+			<result>/WEB-INF/pages/sysmanage/user/userList.jsp</result>
+		</action>
+		
+		<action name = "gotoUserEdit" class= "com.lyu.pms.sysmanage.action.UserAction" method = "gotoUserEdit">
+			<result>/WEB-INF/pages/sysmanage/user/userEdit.jsp</result>
+		</action>
+		
+		<action name = "getUserListPage" class= "com.lyu.pms.sysmanage.action.UserAction" method = "getUserListPage">
+			<result type="json">
+				<param name="includeProperties">jsonObj,pageBar</param>
+			</result>
+		</action>
+		
+		<!-- 字典管理 -->
+		<action name = "gotoDictList" class= "com.lyu.pms.sysmanage.action.DictAction" method = "gotoDictList">
+			<result name = "dictList">/WEB-INF/pages/sysmanage/dict/dictList.jsp</result>
+		</action>
+		
+		<action name = "gotoDictEdit" class= "com.lyu.pms.sysmanage.action.DictAction" method = "gotoDictEdit">
+			<result name = "dictEdit">/WEB-INF/pages/sysmanage/dict/dictEdit.jsp</result>
+		</action>
+		
+		<action name = "getDictListPage" class= "com.lyu.pms.sysmanage.action.DictAction" method = "getDictListPage">
+			<result type="json">
+				<param name="includeProperties">jsonObj,pageBar</param>
+			</result>
+		</action>
+		
+		<action name = "saveDict" class= "com.lyu.pms.sysmanage.action.DictAction" method = "saveDict">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
+		<action name = "delDict" class= "com.lyu.pms.sysmanage.action.DictAction" method = "delDict">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
+		<!-- 菜单管理 -->
+		<action name = "gotoMenuList" class= "com.lyu.pms.sysmanage.action.MenuAction" method = "gotoMenuList">
+			<result name = "menuList">/WEB-INF/pages/sysmanage/menu/menuList.jsp</result>
+		</action>
+		
+		<action name = "gotoMenuEdit" class= "com.lyu.pms.sysmanage.action.MenuAction" method = "gotoMenuEdit">
+			<result name = "menuEdit">/WEB-INF/pages/sysmanage/menu/menuEdit.jsp</result>
+		</action>
+		
+		<action name = "saveMenu" class= "com.lyu.pms.sysmanage.action.MenuAction" method = "saveMenu">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
+		<action name = "confirmHasSubMenu" class= "com.lyu.pms.sysmanage.action.MenuAction" method = "confirmHasSubMenu">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
+		<action name = "delMenu" class= "com.lyu.pms.sysmanage.action.MenuAction" method = "delMenu">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
+		<action name = "menuTreeData" class= "com.lyu.pms.sysmanage.action.MenuAction" method = "getMenuTree">
+			<result type="json">
+				<param name="includeProperties">jsonObj</param>
+			</result>
+		</action>
+		
+		<action name = "menuNavi" class= "com.lyu.pms.sysmanage.action.MenuAction" method = "menuNavi">
+			<result name = "success">/WEB-INF/pages/main/menuNavi.jsp</result>
+		</action>
+		
+		<!--icon的弹出页面  -->
+ 		<action name = "iconSelect" class= "com.lyu.pms.sysmanage.action.TagAction" method = "iconSelect">
+			<result name = "iconSelect">/WEB-INF/pages/common/iconSelect.jsp</result>		
+		</action>
+		
+		<!-- 部门管理 -->
+		<action name = "gotoDeptList" class= "com.lyu.pms.sysmanage.action.DeptAction" method = "gotoDeptList">
+			<result name="gotoDeptList">/WEB-INF/pages/sysmanage/dept/deptList.jsp</result>
+		</action>
+		
+		<action name = "gotoDeptEdit" class= "com.lyu.pms.sysmanage.action.DeptAction" method = "gotoDeptEdit">
+			<result name="gotoDeptEdit">/WEB-INF/pages/sysmanage/dept/deptEdit.jsp</result>
+		</action>
+		
+		<action name = "saveDept" class= "com.lyu.pms.sysmanage.action.DeptAction" method = "saveDept">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
+		<action name = "confirmHasSubDept" class= "com.lyu.pms.sysmanage.action.DeptAction" method = "confirmHasSubDept">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
+		<action name = "delDept" class= "com.lyu.pms.sysmanage.action.DeptAction" method = "delDept">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
+		<action name = "loadDeptTree" class= "com.lyu.pms.sysmanage.action.DeptAction" method = "getDeptTree">
+			<result type="json">
+				<param name="includeProperties">jsonObj</param>
+			</result>
+		</action>
+		
+		<!-- 区域管理 -->
+		<action name = "gotoAreaList" class= "com.lyu.pms.sysmanage.action.AreaAction" method = "gotoAreaList">
+			<result>/WEB-INF/pages/sysmanage/area/areaList.jsp</result>
+		</action>
+		
+		<action name = "gotoAreaEdit" class= "com.lyu.pms.sysmanage.action.AreaAction" method = "gotoAreaEdit">
+			<result>/WEB-INF/pages/sysmanage/area/areaEdit.jsp</result>
+		</action>
+		
+		<action name = "saveArea" class= "com.lyu.pms.sysmanage.action.AreaAction" method = "saveArea">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
+		<action name = "confirmHasSubArea" class= "com.lyu.pms.sysmanage.action.AreaAction" method = "confirmHasSubArea">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
+		<action name = "delArea" class= "com.lyu.pms.sysmanage.action.AreaAction" method = "delArea">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
+		<action name = "areaTreeData" class= "com.lyu.pms.sysmanage.action.AreaAction" method = "getAreaTree">
+			<result type="json">
+				<param name="includeProperties">jsonObj</param>
+			</result>
+		</action>
+		
+		<!-- 角色管理 -->
+		<action name = "gotoRoleList" class= "com.lyu.pms.sysmanage.action.RoleAction" method = "gotoRoleList">
+			<result>/WEB-INF/pages/sysmanage/role/roleList.jsp</result>
+		</action>
+		
+		<action name = "gotoRoleEdit" class= "com.lyu.pms.sysmanage.action.RoleAction" method = "gotoRoleEdit">
+			<result>/WEB-INF/pages/sysmanage/role/roleEdit.jsp</result>
+		</action>
+		
+		<action name = "saveRole" class= "com.lyu.pms.sysmanage.action.RoleAction" method = "saveRole">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
+		<action name = "delRole" class= "com.lyu.pms.sysmanage.action.RoleAction" method = "delRole">
+			<result type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		
+		<!-- 日志管理 -->
+		<action name = "gotoLogList" class= "com.lyu.pms.sysmanage.action.LogAction" method = "gotoLogList">
+			<result>/WEB-INF/pages/sysmanage/log/logList.jsp</result>
+		</action>
+		
+		<action name = "getLogList" class= "com.lyu.pms.sysmanage.action.LogAction" method = "getLogListPage">
+			<result type="json">
+				<param name="includeProperties">jsonObj,pageBar</param>
+			</result>
+		</action>
+		
+	</package>
+	
+</struts>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace = "com.lyu.pms.sysmanage.mapper.MenuMapper"> 
+	
+	<!-- 所有的菜单字段 -->
+	<sql id="all_menu_columns">
+		id, parent_id, name, sort, href, target, icon, is_show,
+		permission, update_by, update_date, remarks, del_flag
+	</sql>
+	
+	<!-- 所有菜单字段的别名 -->
+	<sql id="all_menu_columns_aliases">
+		A.id, A.parent_id, A.name, A.sort, A.href, A.target, A.icon, A.is_show,
+		A.permission, A.update_by, A.update_date, A.remarks, A.del_flag
+	</sql>
+	
+	<!-- 通过菜单id获取菜单的详细信息（左连接） -->
+	<select id="getMenuDetailById" parameterType="long" resultType="menuDto">
+		SELECT <include refid="all_menu_columns_aliases" />, B.name parentName
+		FROM pms_sys_menu A LEFT JOIN pms_sys_menu B
+		ON A.parent_id = B.id
+		WHERE A.id = #{menuId} AND A.del_flag = 0
+	</select>
+	
+	<!-- 根据用户的id获取用户所能够操作的用户列表 -->
+	<select id="getMenuListByUserId" parameterType="long" resultType="menu">
+		SELECT <include refid="all_menu_columns_aliases" />
+		FROM pms_sys_menu A, pms_sys_user_role B, pms_sys_role_menu C
+		WHERE B.user_id = #{userId} AND  B.role_id = C.role_id 
+		AND C.menu_id = A.id AND A.del_flag = 0
+		ORDER BY A.id DESC
+	</select>
+	
+	<!-- 获取所有的菜单列表 -->
+	<select id="getAllMenuList" resultType="menu">
+		SELECT <include refid="all_menu_columns" />
+		FROM pms_sys_menu
+		WHERE del_flag = 0
+		ORDER BY parent_id, sort
+	</select>
+	
+	<select id="getMenuListByRoleId" parameterType="long" resultType="menu">
+		SELECT <include refid="all_menu_columns_aliases" />
+		FROM pms_sys_menu A, pms_sys_role_menu B
+		WHERE B.role_id = #{roleId} AND A.id = B.menu_id
+	</select>
+	
+	<!-- 查询出当前菜单的所有子菜单 -->
+	<select id="getChildsMenuByPId" parameterType="long" resultType="menu">
+		SELECT <include refid="all_menu_columns" /> FROM pms_sys_menu
+		WHERE parent_id = #{parentId} AND del_flag = 0
+	</select>
+	
+	<!-- 添加菜单 -->
+	<insert id="saveMenu" parameterType="menu" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+		INSERT INTO pms_sys_menu(parent_id, name, sort, href, target,
+		icon, is_show, permission, update_by, update_date, remarks)
+		VALUES(#{parentId}, #{name}, #{sort}, #{href}, #{target},
+		#{icon}, #{isShow}, #{permission}, #{updateBy}, #{updateDate}, #{remarks})
+	</insert>
+	
+	<!-- 修改菜单 -->
+	<update id="updateMenu" parameterType="menu">
+		UPDATE pms_sys_menu
+		<set>
+			<if test="parentId != null">
+				parent_id = #{parentId},
+			</if>
+			<if test="name != null">
+				name = #{name},
+			</if>
+			<if test="sort != null">
+				sort = #{sort},
+			</if>
+			<if test="href != null">
+				href = #{href},
+			</if>
+			<if test="target != null">
+				target = #{target},
+			</if>
+			<if test="icon != null">
+				icon = #{icon},
+			</if>
+			<if test="isShow != null">
+				is_show = #{isShow},
+			</if>
+			<if test="permission != null">
+				permission = #{permission},
+			</if>
+			<if test="updateBy != null">
+				update_by = #{updateBy},
+			</if>
+			<if test="updateDate != null">
+				update_date = #{updateDate},
+			</if>
+			<if test="remarks != null">
+				remarks = #{remarks},
+			</if>
+		</set>
+		WHERE id = #{id} AND del_flag = 0
+	</update>
+	
+	<!-- 查询当前菜单的所有子菜单的详细信息 -->
+	<select id="getSubMenuByPId" parameterType="long" resultType="menu">
+		SELECT <include refid="all_menu_columns" />
+		FROM pms_sys_menu 
+		WHERE parent_id = #{menuId} AND del_flag = 0
+	</select>
+	
+	<!-- 获取当前菜单的所有子菜单的个数 -->
+	<select id="countSubMenuByPId" parameterType="long" resultType="int">
+		SELECT COUNT(id) FROM pms_sys_menu
+		WHERE parent_id = #{menuId} AND del_flag = 0
+	</select>
+	
+	<!-- 删除菜单 -->
+	<update id="delMenu" parameterType="long">
+		UPDATE pms_sys_menu SET del_flag = 1
+		WHERE id = #{menuId}
+	</update>
+		
+</mapper>

@@ -1,4 +1,4 @@
-# 分销系统（distributiion-resource-planning-system）
+# 权限管理系统（Permission-Management-System）
 
 
 
