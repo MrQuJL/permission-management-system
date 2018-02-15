@@ -1,29 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/pages/include/taglib.jsp" %>
-<%
-String path = request.getContextPath();
-%>
 <!doctype html>
 <html>
 <head>
+	<meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
 	<title>部门管理</title>
-	
-<meta charset="utf-8" />
-<%@ include file="/WEB-INF/pages/include/head.jsp" %>
+	<meta name='keywords' content='权限管理'>
+	<meta name='description' content='菜单，部门，区域等资源权限于一体的按钮级权限管理系统'>
+	<%@ include file="/WEB-INF/pages/include/head.jsp" %>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#treeTable").treeTable({expandLevel : 2});
 		});
 	</script>
-	<script type="text/javascript">top.$.jBox.closeTip();</script>
 </head>
 <body>
 	<ul class="nav nav-tabs">
 		<li class="active"><a href="javascript:void(0);">部门列表</a></li>
 		<li><a href="${ctx}/sysmgr/gotoDeptEdit.action?editFlag=1">部门添加</a></li>
 	</ul>
-
 	<table id="treeTable" class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
@@ -36,7 +31,6 @@ String path = request.getContextPath();
 			</tr>
 		</thead>
 		<tbody id="treeTableList">
-			
 			<c:forEach items="${deptList}" var="dept">
 				<tr id="${dept.id}" pId="${dept.parentId}">
 					<td><a href="${ctx}/sysmgr/gotoDeptEdit.action?editFlag=2&deptId=${dept.id}">${dept.name}</a></td>
@@ -51,7 +45,6 @@ String path = request.getContextPath();
 					</td>
 				</tr>
 			</c:forEach>
-			
 		</tbody>
 	</table>
 	<script type="text/javascript">
@@ -65,7 +58,7 @@ String path = request.getContextPath();
 					success : function(data) {
 						if (data.message == "yes") { // 有子部门，不能删除
 							alert("该部门下面有子部门，前先删除其下的子部门，再来删除该部门！");
-						} else { // 没有子部门可以删除
+						} else { // 没有子部门,可以删除
 							deptMgr.delDept(deptId);
 						}
 					}
@@ -73,6 +66,7 @@ String path = request.getContextPath();
 			},
 			delDept : function(deptId) {
 				if (confirm("该部门下面没有子部门，您确定要删除该部门吗？")) {
+					loading("正在删除...");
 					$.ajax({
 						type : "post",
 						url : "${ctx}/sysmgr/delDept.action",
@@ -80,6 +74,7 @@ String path = request.getContextPath();
 						dataType : "json",
 						success : function(data) {
 							alert(data.message);
+							top.$.jBox.closeTip();
 							location.reload();
 						}
 					});

@@ -1,17 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/pages/include/taglib.jsp" %>
-<%
-String path = request.getContextPath();
-%>
 <!doctype html>
 <html>
 <head>
-<title>用户管理</title>
-<meta charset="utf-8" />
-<meta name="renderer" content="webkit">
+	<meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
+	<title>用户管理</title>
+	<meta name='keywords' content='权限管理'>
+	<meta name='description' content='菜单，部门，区域等资源权限于一体的按钮级权限管理系统'>
 	<%@ include file="/WEB-INF/pages/include/head.jsp" %>
-    <meta name="decorator" content="default"/>
     <script type="text/javascript">
     	var userMgr = {
     		// 获取分页后的用户列表
@@ -27,7 +23,6 @@ String path = request.getContextPath();
 	    			dataType : "json",
 	    			success : function(data) {
 	    				top.$.jBox.closeTip();
-	    				//alert(data.jsonObj);
 	    				// 获取分页条
 	    				var pageBar = data.pageBar;
 	    				// 获取用户列表
@@ -39,11 +34,9 @@ String path = request.getContextPath();
 		    					htmlTable = htmlTable + "<td>";
 		    					htmlTable = htmlTable + data[i].userName;
 		    					htmlTable = htmlTable + "</td>";
-		    					
 		    					htmlTable = htmlTable + "<td>";
 		    					htmlTable = htmlTable + data[i].loginName;
 		    					htmlTable = htmlTable + "</td>";
-		    					
 		    					htmlTable = htmlTable + "<td>";
 		    					htmlTable = htmlTable + data[i].name;
 		    					htmlTable = htmlTable + "</td>";
@@ -102,8 +95,9 @@ String path = request.getContextPath();
 	    <li class="active"><a href="javascript:void(0);">用户列表</a></li>
 	    <li><a href="${ctx}/sysmgr/gotoUserEdit.action?editFlag=1">用户添加</a></li>
 	</ul>
+	
 	<form id="saveUserForm" class="breadcrumb form-search" action="#" method="post">
-	   <ul class="ul-form">
+		<ul class="ul-form">
 			<li>
 				<label>部门名称：</label>
 				<div class="input-append">
@@ -126,23 +120,23 @@ String path = request.getContextPath();
 
 	<table id="userTable" class="table table-striped table-bordered table-condensed">
 	    <thead>
-	    <tr>
-	        <th>用户名称</th>
-	        <th>登录名称</th>
-	        <th>所属部门</th>
-	        <th>电话</th>
-	        <th>手机</th>
-	        <th>邮箱</th>
-	        <th>操作</th>
-	    </tr>
+		    <tr>
+		        <th>用户名称</th>
+		        <th>登录名称</th>
+		        <th>所属部门</th>
+		        <th>电话</th>
+		        <th>手机</th>
+		        <th>邮箱</th>
+		        <th>操作</th>
+		    </tr>
 	    </thead>
 	    <tbody>
-			
+
 	    </tbody>
 	</table>
 	<!-- 用于放置分页条 -->
 	<div class="pagination" id="userPageBar">
-		
+
 	</div>
 	<script type="text/javascript">
 		var setting = {
@@ -162,17 +156,15 @@ String path = request.getContextPath();
 
 		// 点击之前会触发的事件
 		function beforeClick(treeId, treeNode) {
-			
 		};
-		
+
 		// 选中某个菜单项后会触发的操作
 		function onClick(e, treeId, treeNode) {
 			var zTree = $.fn.zTree.getZTreeObj("deptTree");
-			
 			nodes = zTree.getSelectedNodes();
 			var parentName = "";
 			var parentId = "";
-			
+
 			nodes.sort(function compare(a,b){return a.id-b.id;});
 			for (var i=0, l=nodes.length; i<l; i++) {
 				parentName += nodes[i].name + ",";
@@ -180,13 +172,13 @@ String path = request.getContextPath();
 			}
 			if (parentName.length > 0 ) parentName = parentName.substring(0, parentName.length-1);
 			$("#deptName").attr("value", parentName);
-			
+
 			if (parentId.length > 0 ) parentId = parentId.substring(0, parentId.length-1);
 			$("#deptId").attr("value", parentId);
-			
+
 			hideDept();
 		};
-		
+
 		function showDept() {
 			var parent = $("#deptName");
 			var parentOffset = $("#deptName").offset();
@@ -194,19 +186,19 @@ String path = request.getContextPath();
 				top:parentOffset.top + parent.outerHeight() + "px"}).slideToggle("fast");
 			$("html").bind("click", onBodyDown);
 		};
-		
+
 		function hideDept() {
 			$("#deptContent").slideToggle("fast");
 			$("html").unbind("click", onBodyDown);
 		};
-		
+
 		function onBodyDown(event) {
 			if (!(event.target.id == "deptButton" || event.target.id == "deptName" ||
 				event.target.id == "deptContent" || $(event.target).parents("#deptContent").length>0)) {
 				hideDept();
 			}
 		};
-		
+
 		$(document).ready(function(){
 			// 页面一刷新就加载zTree
 			$.ajax({
@@ -223,6 +215,7 @@ String path = request.getContextPath();
 			});
 		});
 	</script>
+
 	<!-- 盛放部门树的容器 -->
 	<div id="deptContent" class="menuContent" style="display:none; position:absolute;">
 		<ul id="deptTree" class="ztree" style="margin-top:0; width:180px;background:#f1f1f1;"></ul>

@@ -1,18 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/pages/include/taglib.jsp" %>
-<%
-String path = request.getContextPath();
-%>
-
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
+	<meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
 	<title>角色管理</title>
-
-<meta charset="utf-8" />
-<meta name="renderer" content="webkit">
-<%@ include file="/WEB-INF/pages/include/head.jsp" %>
+	<meta name='keywords' content='权限管理'>
+	<meta name='description' content='菜单，部门，区域等资源权限于一体的按钮级权限管理系统'>
+	<%@ include file="/WEB-INF/pages/include/head.jsp" %>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$("#name").focus();
@@ -77,7 +72,7 @@ String path = request.getContextPath();
 						tree.checkNode(node, !node.checked, true, true);
 						return false;
 					}}};
-			
+
 			// 用户-菜单
 			var zNodes=[
 				<c:forEach items="${menuList}" var="menu">
@@ -93,7 +88,7 @@ String path = request.getContextPath();
 			</c:forEach>
 			// 默认展开全部节点
 			tree.expandAll(true);
-			
+
 			// 用户-部门
 			var zNodes2=[
 				<c:forEach items="${deptList}" var="dept">
@@ -109,7 +104,7 @@ String path = request.getContextPath();
 			</c:forEach>
 			// 默认展开全部节点
 			tree2.expandAll(true);
-			
+
 			// 用户-区域
 			var zNodes3=[
 				<c:forEach items="${areaList}" var="area">
@@ -148,7 +143,7 @@ String path = request.getContextPath();
 				<span class="help-inline"><span style="color:red">*</span> </span>
 			</div>
 		</div>
-		
+
 		<div class="control-group">
 			<label class="control-label">角色授权:</label>
 			<div class="controls">
@@ -157,14 +152,14 @@ String path = request.getContextPath();
 				<div id="areaTree" class="ztree" style="margin-left:50px;margin-top:3px;float:left;"></div>
 			</div>
 		</div>
-		
+
 		<div class="control-group">
 			<label class="control-label">备注:</label>
 			<div class="controls">
 				<textarea id="remarks" name="remarks" maxlength="200" class="input-xlarge" rows="3">${role.remarks}</textarea>
 			</div>
 		</div>
-		
+
 		<div class="form-actions">
 			<input id="btnSubmit" class="btn btn-primary" type="submit" value="保 存"/>&nbsp;
 			

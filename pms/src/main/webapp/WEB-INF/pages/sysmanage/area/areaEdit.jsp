@@ -76,18 +76,21 @@
 		<div class="control-group">
 			<label class="control-label">上级区域:</label>
 			<div class="controls">
-<div class="input-append">
-	<input id="parentId" name="parentId" class="input-block-level" type="hidden" value="${area.parentId}"/>
-	<input id="parentName" name="parentName" readonly="readonly" type="text" value="${area.parentName}"
-		class="input-block-level" style=""/><a id="areaButton" href="javascript:showArea();" class="btn" style="">&nbsp;<i class="icon-search"></i>&nbsp;</a>&nbsp;&nbsp;
+				<div class="input-append">
+					<input id="parentId" name="parentId" class="input-block-level" type="hidden" value="${area.parentId}"/>
+					<input id="parentName" name="parentName" readonly="readonly" type="text" value="${area.parentName}"
+						class="input-block-level" style=""/>
+					<a id="areaButton" href="javascript:showArea();" class="btn" style="">
+						&nbsp;<i class="icon-search"></i>&nbsp;
+					</a>&nbsp;&nbsp;
 
-	<!-- zTree -->
-	<div id="areaContent" class="areaContent" style="display:none; position:absolute;">
-		<ul id="areaTree" class="ztree" style="margin-top:0;
-			background-color:rgb(243,243,243); width:260px; z-index:9;">
-		</ul>
-	</div>
-</div>
+					<!-- zTree -->
+					<div id="areaContent" class="areaContent" style="display:none; position:absolute;">
+						<ul id="areaTree" class="ztree" style="margin-top:0;
+							background-color:rgb(243,243,243); width:260px; z-index:9;">
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="control-group">
@@ -198,13 +201,11 @@
 				success : function(data) {
 					var areaArray = JSON.parse(data.jsonObj);
 					var areaTree = $.fn.zTree.init($("#areaTree"), setting, areaArray);
-					
 					// 展开所有节点
 					var nodes = areaTree.getNodesByParam("level",1);
 					for(var i=0; i< nodes.length; i++){
 						areaTree.expandNode(nodes[i],true,false,true,false);
 					}
-					
 					// 如果是修改页面，定位到当前选中的节点
 					var selectNodeId = $("#parentId").val();
 					if (selectNodeId != null) {

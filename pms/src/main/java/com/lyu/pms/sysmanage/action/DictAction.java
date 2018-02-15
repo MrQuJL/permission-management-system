@@ -39,17 +39,16 @@ public class DictAction {
 	// 返回给前台的分页条对象
 	private String pageBar;
 	
+	private List<String> dictTypeList;
+	
 	/**
 	 * 进入字典列表页面
 	 * @param 
 	 * @return
 	 */
 	public String gotoDictList() {
-		// 1.加载所有的字典类型
-		List<String> dictTypeList = dictService.getDictTypeList();
-		
-		// 2.放入session里面
-		ServletActionContext.getRequest().getSession().setAttribute("dictTypeList", dictTypeList);
+		// 加载所有的字典类型
+		this.dictTypeList = dictService.getDictTypeList();
 		
 		return "dictList";
 	}
@@ -203,6 +202,14 @@ public class DictAction {
 
 	public void setDictService(IDictService dictService) {
 		this.dictService = dictService;
+	}
+
+	public List<String> getDictTypeList() {
+		return dictTypeList;
+	}
+
+	public void setDictTypeList(List<String> dictTypeList) {
+		this.dictTypeList = dictTypeList;
 	}
 	
 }

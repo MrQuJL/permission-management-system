@@ -1,50 +1,28 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/pages/include/taglib.jsp" %>
-<%
-String path = request.getContextPath();
-%>
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
+	<meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
 	<title>用户信息页面</title>
-	<meta charset="utf-8" />
-	<meta name="renderer" content="webkit">
+	<meta name='keywords' content='权限管理'>
+	<meta name='description' content='菜单，部门，区域等资源权限于一体的按钮级权限管理系统'>
 	<%@ include file="/WEB-INF/pages/include/head.jsp" %>
 	<script type="text/javascript">
-		$(function() {
-			$("#userInfoChangeForm").validate({
-				submitHandler: function(form){
-					loading('请稍等......');
-					form.submit();
-				},
-				errorContainer: "#messageBox",
-				errorPlacement: function(error, element) {
-					$("#messageBox").text("......");
-					if (element.is(":checkbox")||element.is(":radio")||element.parent().is(".input-append")){
-						error.appendTo(element.parent().parent());
-					} else {
-						error.insertAfter(element);
-					}
-				}
-			});
-		});
-		
 		// 封装了一些对用户操作的函数
 		var userInfoMgr = {
 			// 加载用户的个人信息
 			init : function() {
+				loading("正在加载用户个人信息...");
 				$.ajax({
 					type : "post",
 					url : "${ctx}/sysmgr/getUserInfoById.action",
 					data : {},
 					dataType : "json",
 					success : function(data) {
-						//alert(JSON.stringify(data));
 						data = JSON.parse(data.jsonObj);
 						$("#deptName").html(data.name);
 						$("#loginName").html(data.loginName);
-
 						$("#userId").val(data.userId);
 						$("#userName").val(data.userName);
 						$("#userNo").val(data.userNo);
@@ -52,6 +30,7 @@ String path = request.getContextPath();
 						$("#phone").val(data.phone);
 						$("#mobile").val(data.mobile);
 						$("#remarks").val(data.remarks);
+						top.$.jBox.closeTip();
 					}
 				});
 			},
@@ -89,10 +68,9 @@ String path = request.getContextPath();
 		<li class="active"><a href="javascript:void(0);">个人信息</a></li>
 		<li><a href="${ctx}/sysmgr/changePwd.action">修改密码</a></li>
 	</ul><br/>
+	
 	<form id="userInfoChangeForm" class="form-horizontal" action="#" method="post">
-	<script type="text/javascript">top.$.jBox.closeTip();</script>
 		<input type = "hidden" id = "userId" name = "userId"/>
-		
 		<div class="control-group">
 			<label class="control-label">所属部门:</label>
 			<div class="controls">

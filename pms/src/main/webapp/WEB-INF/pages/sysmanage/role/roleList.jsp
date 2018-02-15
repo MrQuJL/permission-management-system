@@ -1,16 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/pages/include/taglib.jsp" %>
-<%
-String path = request.getContextPath();
-%>
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
+	<meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
 	<title>角色管理</title>
-<meta charset="utf-8" />
-<meta name="renderer" content="webkit">
-<%@ include file="/WEB-INF/pages/include/head.jsp" %>
+	<meta name='keywords' content='权限管理'>
+	<meta name='description' content='菜单，部门，区域等资源权限于一体的按钮级权限管理系统'>
+	<%@ include file="/WEB-INF/pages/include/head.jsp" %>
 </head>
 <body>
 	<ul class="nav nav-tabs">

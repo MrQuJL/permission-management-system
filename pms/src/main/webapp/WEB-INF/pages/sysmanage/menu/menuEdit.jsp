@@ -1,16 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/pages/include/taglib.jsp" %>
-<%
-String path = request.getContextPath();
-%>
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-<title>菜单管理</title>
-<meta charset="utf-8" />
-<meta name="renderer" content="webkit">
-<%@ include file="/WEB-INF/pages/include/head.jsp" %>
+	<meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
+	<title>菜单管理</title>
+	<meta name='keywords' content='权限管理'>
+	<meta name='description' content='菜单，部门，区域等资源权限于一体的按钮级权限管理系统'>
+	<%@ include file="/WEB-INF/pages/include/head.jsp" %>
 </head>
 <body>
 	<ul class="nav nav-tabs">
@@ -30,7 +27,7 @@ String path = request.getContextPath();
 		<div class="control-group">
 			<label class="control-label">上级菜单:</label>
 			<div class="controls">
-				<!-- 此处更换下拉式zTree -->
+				<!-- 此处使用下拉式zTree -->
 				<div class="input-append">
 					<input id="parentId" name="parentId" class="required" type="hidden" value="${menu.parentId}"/>
 					<input id="parentName" name="parentName" readonly="readonly" type="text" value="${menu.parentName}" 
@@ -98,7 +95,7 @@ String path = request.getContextPath();
 			<label class="control-label">权限标识:</label>
 			<div class="controls">
 				<input id="permission" name="permission" class="input-xxlarge" type="text" value="${menu.permission}" maxlength="100"/>
-				<span class="help-inline">控制器中定义的权限标识，如：@RequiresPermissions("权限标识")</span>
+				<span class="help-inline">shiro的权限标识，如：@RequiresPermissions("权限标识")</span>
 			</div>
 		</div>
 		<div class="control-group">
@@ -161,9 +158,6 @@ String path = request.getContextPath();
 
 		// 点击之前会触发的事件
 		function beforeClick(treeId, treeNode) {
-			/*var check = (treeNode && !treeNode.isParent);
-			if (!check) alert("只能选择城市...");
-			return check;*/
 		};
 		
 		// 选中某个菜单项后会触发的操作

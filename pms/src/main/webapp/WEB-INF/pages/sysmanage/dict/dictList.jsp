@@ -1,17 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/pages/include/taglib.jsp" %>
-<%
-String path = request.getContextPath();
-%>
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-<title>字典管理</title>
-<meta charset="utf-8" />
-<meta name="renderer" content="webkit">
-<%@ include file="/WEB-INF/pages/include/head.jsp" %>
-    <meta name="decorator" content="default"/>
+	<head>
+	<meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
+	<title>字典管理</title>
+	<meta name='keywords' content='权限管理'>
+	<meta name='description' content='菜单，部门，区域等资源权限于一体的按钮级权限管理系统'>
+	<%@ include file="/WEB-INF/pages/include/head.jsp" %>
     <script type="text/javascript">
     	var dictMgr = {
     		// 获取分页后的字典列表
@@ -26,7 +22,6 @@ String path = request.getContextPath();
 	    			dataType : "json",
 	    			success : function(data) {
 	    				top.$.jBox.closeTip();
-	    				//alert(data.jsonObj);
 	    				// 获取分页条
 	    				var pageBar = data.pageBar;
 	    				// 获取字典列表
@@ -93,48 +88,46 @@ String path = request.getContextPath();
     </script>
 </head>
 <body>
-<ul class="nav nav-tabs">
-    <li class="active"><a href="javascript:void(0);">字典列表</a></li>
-    
-    <li><a href="${ctx}/sysmgr/gotoDictEdit.action">字典添加</a></li>
-</ul>
-<form id="searchForm" class="breadcrumb form-search" action="#" method="post">
-    <!-- <input id="pageNo" name="pageNo" type="hidden" value="1"/>
-    <input id="pageSize" name="pageSize" type="hidden" value="15"/> -->
-    <label>类型：</label>
+	<ul class="nav nav-tabs">
+	    <li class="active"><a href="javascript:void(0);">字典列表</a></li>
+	    <li><a href="${ctx}/sysmgr/gotoDictEdit.action">字典添加</a></li>
+	</ul>
+	
+	<form id="searchForm" class="breadcrumb form-search" action="#" method="post">
+	    <label>类型：</label>
         <select id="type" name="type" class="input-medium">
             <option value="">所有类型</option>
             <c:forEach items="${dictTypeList}" var="dictType">
 	        	<option value="${dictType}">${dictType}</option>
             </c:forEach>
-        </select>
-    	&nbsp;&nbsp;<label>描述 ：</label>
-        <input id="description" name="description" class="input-medium" type="text" value="" maxlength="50"/>
-    &nbsp;
+        </select>&nbsp;&nbsp;
+        
+    	<label>描述 ：</label>
+        <input id="description" name="description" class="input-medium" type="text" value="" maxlength="50"/>&nbsp;
     	<shiro:hasPermission name="dict:query">
     		<input id="btnSubmit" class="btn btn-primary" type="button" onclick="dictMgr.getDictListPage(1, 10);" value="查询"/>
     	</shiro:hasPermission>
-</form>
-<script type="text/javascript">top.$.jBox.closeTip();</script>
+	</form>
 
-<table id="dictTable" class="table table-striped table-bordered table-condensed">
-    <thead>
-    <tr>
-        <th>键值</th>
-        <th>标签</th>
-        <th>类型</th>
-        <th>描述</th>
-        <th>排序</th>
-        <th>操作</th>
-    </tr>
-    </thead>
-    <tbody>
-		
-    </tbody>
-</table>
-
-<div class="pagination" id="dictPageBar">
-
-</div>
+	<table id="dictTable" class="table table-striped table-bordered table-condensed">
+	    <thead>
+	    <tr>
+	        <th>键值</th>
+	        <th>标签</th>
+	        <th>类型</th>
+	        <th>描述</th>
+	        <th>排序</th>
+	        <th>操作</th>
+	    </tr>
+	    </thead>
+	    <tbody>
+			
+	    </tbody>
+	</table>
+	
+	<%-- 此处为分页条所在的位置 --%>
+	<div class="pagination" id="dictPageBar">
+	
+	</div>
 </body>
 </html>

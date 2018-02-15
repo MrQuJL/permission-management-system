@@ -1,16 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/pages/include/taglib.jsp" %>
-<%
-String path = request.getContextPath();
-%>
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
+	<meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
 	<title>部门管理</title>
-
-<meta charset="utf-8" />
-<%@ include file="/WEB-INF/pages/include/head.jsp" %>
+	<meta name='keywords' content='权限管理'>
+	<meta name='description' content='菜单，部门，区域等资源权限于一体的按钮级权限管理系统'>
+	<%@ include file="/WEB-INF/pages/include/head.jsp" %>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#name").focus();
@@ -25,7 +22,6 @@ String path = request.getContextPath();
 							deptObj[item.name] = item.value;
 						}
 					});
-					
 					$.ajax({
 						type : "post",
 						url : "${ctx}/sysmgr/saveDept.action",
@@ -176,7 +172,7 @@ String path = request.getContextPath();
 
 			$("#parentId").attr("value",id);
 			$("#parentName").attr("value",name);
-			
+
 			hideMenu();
 		}
 
@@ -215,7 +211,6 @@ String path = request.getContextPath();
 						temp["name"] = deptArray[i].name;
 						zNodes.push(temp);
 					}
-					//alert(JSON.stringify(zNodes));
 				}
 			});
 			var deptTree = $.fn.zTree.init($("#deptTree"), setting, zNodes);
@@ -223,10 +218,8 @@ String path = request.getContextPath();
 			if (selectNodeId != null) {
 				deptTree.selectNode(deptTree.getNodeByParam("id", selectNodeId, null));
 			}
-			
 			deptTree.expandAll(true);
 		});
-		
 	</script>
 </body>
 </html>

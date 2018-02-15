@@ -1,17 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/pages/include/taglib.jsp" %>
-<%
-String path = request.getContextPath();
-%>
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-<title>用户管理</title>
-<meta charset="utf-8" />
-<meta name="renderer" content="webkit">
-<%@ include file="/WEB-INF/pages/include/head.jsp" %>
-	<meta name="decorator" content="default"/>
+	<meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
+	<title>用户管理</title>
+	<meta name='keywords' content='权限管理'>
+	<meta name='description' content='菜单，部门，区域等资源权限于一体的按钮级权限管理系统'>
+	<%@ include file="/WEB-INF/pages/include/head.jsp" %>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#value").focus();
@@ -26,13 +22,13 @@ String path = request.getContextPath();
 						}
 					});
 					jsonObj = JSON.stringify(jsonObj);
-					
+
 					var roleIds = new Array();
 					$('input[name="role"]:checked').each(function(){  
 						roleIds.push($(this).val());//向数组中添加元素
 					});  
 					roleIds = JSON.stringify(roleIds);
-					
+
 					$.ajax({
 						type : "post",
 						url : "${ctx}/sysmgr/saveUserInfo.action",
@@ -74,17 +70,16 @@ String path = request.getContextPath();
 
 		// 点击之前会触发的事件
 		function beforeClick(treeId, treeNode) {
-			
 		};
-		
+
 		// 选中某个菜单项后会触发的操作
 		function onClick(e, treeId, treeNode) {
 			var zTree = $.fn.zTree.getZTreeObj("deptTree");
-			
+
 			nodes = zTree.getSelectedNodes();
 			var parentName = "";
 			var parentId = "";
-			
+
 			nodes.sort(function compare(a,b){return a.id-b.id;});
 			for (var i=0, l=nodes.length; i<l; i++) {
 				parentName += nodes[i].name + ",";
@@ -92,13 +87,13 @@ String path = request.getContextPath();
 			}
 			if (parentName.length > 0 ) parentName = parentName.substring(0, parentName.length-1);
 			$("#deptName").attr("value", parentName);
-			
+
 			if (parentId.length > 0 ) parentId = parentId.substring(0, parentId.length-1);
 			$("#deptId").attr("value", parentId);
-			
+
 			hideDept();
 		};
-		
+
 		function showDept() {
 			var parent = $("#deptName");
 			var parentOffset = $("#deptName").offset();
@@ -106,19 +101,19 @@ String path = request.getContextPath();
 				top:parentOffset.top + parent.outerHeight() + "px"}).slideToggle("fast");
 			$("html").bind("click", onBodyDown);
 		};
-		
+
 		function hideDept() {
 			$("#deptContent").slideToggle("fast");
 			$("html").unbind("click", onBodyDown);
 		};
-		
+
 		function onBodyDown(event) {
 			if (!(event.target.id == "deptButton" || event.target.id == "deptName" ||
 				event.target.id == "deptContent" || $(event.target).parents("#deptContent").length>0)) {
 				hideDept();
 			}
 		};
-		
+
 		$(document).ready(function(){
 			// 页面一刷新就加载zTree
 			$.ajax({
@@ -151,9 +146,10 @@ String path = request.getContextPath();
 			</c:choose>
 		</a></li>
 	</ul><br/>
+
 	<form id="userSaveChangeForm" class="form-horizontal" action="#" method="post">
 		<input id="id" name="userId" type="hidden" value="${userDto.userId}"/>
-		
+
 		<div class="control-group">
 			<label class="control-label">部门名称:</label>
 			<div class="controls">
@@ -164,7 +160,7 @@ String path = request.getContextPath();
 						&nbsp;<i class="icon-search"></i>&nbsp;
 					</a>&nbsp;&nbsp;
 				</div>
-				
+
 				<!-- zTree -->
 				<div id="deptContent" class="deptContent" style="display:none; position:absolute;">
 					<ul id="deptTree" class="ztree" style="margin-top:0; 
@@ -173,7 +169,7 @@ String path = request.getContextPath();
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="control-group">
 			<label class="control-label">工号:</label>
 			<div class="controls">
@@ -216,7 +212,7 @@ String path = request.getContextPath();
 				<span class="help-inline"><span style="color:red"></span> </span>
 			</div>
 		</div>
-		
+
 		<div class="control-group">
 			<label class="control-label">角色:</label>
 			<div class="controls">
@@ -229,7 +225,7 @@ String path = request.getContextPath();
 				</c:forEach>
 			</div>
 	  	</div>
-		
+
 		<div class="control-group">
 			<label class="control-label">备注:</label>
 			<div class="controls">

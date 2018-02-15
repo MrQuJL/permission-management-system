@@ -1,18 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/pages/include/taglib.jsp" %>
-<%
-String path = request.getContextPath();
-%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>菜单管理</title>
-<meta charset="utf-8" />
-<meta name="renderer" content="webkit">
-<%@ include file="/WEB-INF/pages/include/head.jsp" %>
-<link href="static/treeTable/themes/vsStyle/treeTable.min.css" rel="stylesheet" type="text/css" />
-<script src="static/treeTable/jquery.treeTable.min.js" type="text/javascript"></script>
+	<meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
+	<title>菜单管理</title>
+	<meta name='keywords' content='权限管理'>
+	<meta name='description' content='菜单，部门，区域等资源权限于一体的按钮级权限管理系统'>
+	<%@ include file="/WEB-INF/pages/include/head.jsp" %>
 	<script type="text/javascript">
 		$(function() {
 			$("#treeTable").treeTable({expandLevel : 3}).show();
@@ -83,9 +78,7 @@ String path = request.getContextPath();
 						</td>
 						<td>
 							<c:choose>
-								<c:when test="${menu.isShow==1}">
-									显示
-								</c:when>
+								<c:when test="${menu.isShow==1}">显示</c:when>
 								<c:otherwise>不显示</c:otherwise>
 							</c:choose>
 						</td>
