@@ -12,24 +12,6 @@
 * 字典管理：存储一些系统中常用的字典值，例如：性别，区域类型...
 * 日志管理：记录系统中的一些敏感性操作，在系统出现故障或非法入侵的时候提供帮助
 
-## 项目的约定
-	项目的后台包结构：
-	com.company.projectName.util
-	com.company.projectName.common
-	com.company.projectName.test
-	com.company.projectName.moduleName.entity
-	com.company.projectName.moduleName.mapper
-	com.company.projectName.moduleName.service
-	com.company.projectName.moduleName.action
-
-	项目的前台页面结构:
-	webapp/index.jsp 引导页面，通过后台跳转到登陆页面
-	webapp/jsAndCss/js 一些js文件
-	webapp/jsAndCss/css 一些css文件
-	webapp/jsAndCss/img 一些图片文件
-	webapp/WEB-INF/pages 放页面
-
-
 ## 项目表结构设计
 * 用户表
 * 用户-角色对应关系表
@@ -43,10 +25,30 @@
 * 字典表
 * 日志表
 
+## 数据库ER图
+![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/er.png)
+
 ## 项目所采用的框架
 项目的后台架构：spring+struts2+mybatis
 
-
+## 项目的约定
+	项目的后台包结构：
+	com.company.projectName.util
+	com.company.projectName.common
+	com.company.projectName.test
+	com.company.projectName.moduleName.entity
+	com.company.projectName.moduleName.mapper
+	com.company.projectName.moduleName.service
+	com.company.projectName.moduleName.action
+	
+	声明：本人未毕业所以company那一级用我所在的学校lyu命名
+	
+	项目的前台页面结构:
+	webapp/index.jsp 引导页面，通过后台跳转到登陆页面
+	webapp/jsAndCss/js 一些js文件
+	webapp/jsAndCss/css 一些css文件
+	webapp/jsAndCss/img 一些图片文件
+	webapp/WEB-INF/pages 放页面
 
 ## 项目中遇到的一些问题
 
@@ -57,7 +59,7 @@
 
 
 
-项目功能的完成顺序：
+## 项目功能的完成顺序：
 	菜单的维护
 	部门的维护
 	区域的维护
