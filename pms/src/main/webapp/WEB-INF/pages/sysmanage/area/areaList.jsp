@@ -1,31 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/pages/include/taglib.jsp" %>
-<%
-String path = request.getContextPath();
-%>
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
+	<meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
 	<title>区域管理</title>
-	
-<meta charset="utf-8" />
-<meta name="renderer" content="webkit">
-<%@ include file="/WEB-INF/pages/include/head.jsp"%>
+	<meta name='keywords' content='权限管理'>
+	<meta name='description' content='菜单，部门，区域等资源权限于一体的按钮级权限管理系统'>
+	<%@ include file="/WEB-INF/pages/include/head.jsp"%>
 	<script type="text/javascript">
 		$(function() {
 			$("#treeTable").treeTable({expandLevel : 5});
 		});
-
 	</script>
-	<script type="text/javascript">top.$.jBox.closeTip();</script>
 </head>
 <body>
 	<ul class="nav nav-tabs">
 		<li class="active"><a href="javascript:void(0);">区域列表</a></li>
 		<li><a href="${ctx}/sysmgr/gotoAreaEdit.action?editFlag=1">区域添加</a></li>
 	</ul>
-
 	<table id="treeTable" class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
@@ -37,7 +30,6 @@ String path = request.getContextPath();
 			</tr>
 		</thead>
 		<tbody id="treeTableList">
-			
 			<c:forEach items="${areaList}" var="area">
 				<tr id="${area.id}" pId="${area.parentId}">
 					<td><a href="${ctx}/sysmgr/gotoAreaEdit.action?editFlag=2&areaId=${area.id}">${area.name}</a></td>
@@ -51,7 +43,6 @@ String path = request.getContextPath();
 					</td>
 				</tr>
 			</c:forEach>
-				
 		</tbody>
 	</table>
 	<script type="text/javascript">
@@ -75,6 +66,7 @@ String path = request.getContextPath();
 			// 如果没有子区域则删除该取悦
 			delArea : function(areaId) {
 				if (confirm("您确定要删除该区域吗?")) {
+					loading("正在删除...");
 					$.ajax({
 						type : "post",
 						url : "${ctx}/sysmgr/delArea.action",
@@ -82,6 +74,7 @@ String path = request.getContextPath();
 						dataType : "json",
 						success : function(data) {
 							alert(data.message);
+							top.$.jBox.closeTip();
 							location.reload();
 						}
 					});

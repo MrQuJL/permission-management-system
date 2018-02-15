@@ -138,8 +138,6 @@ public class AreaService implements IAreaService {
 			this.roleToAreaMapper.saveRoleToArea(roleToArea);
 		}
 		
-		// 修改了信息都要清空shiro的缓存
-		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 

@@ -1,17 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@include file="/WEB-INF/pages/include/taglib.jsp" %>
-
-<%
-String path = request.getContextPath();
-%>
 <!doctype html>
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 		<title>权限管理系统 登录</title>
-		<meta charset="utf-8">
-		<meta name="renderer" content="webkit">
+		<meta name='keywords' content='权限管理'>
+		<meta name='description' content='菜单，部门，区域等资源权限于一体的按钮级权限管理系统'>
 		<%@include file="/WEB-INF/pages/include/head.jsp" %>
 		<style type="text/css">
 	    	html,body,table{background-color:#f5f5f5;width:100%;text-align:center;}

@@ -1,18 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/pages/include/taglib.jsp" %>
-<%
-String path = request.getContextPath();
-%>
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
+	<meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
 	<title>区域管理</title>
-	
-<meta charset="utf-8" />
-<%@ include file="/WEB-INF/pages/include/head.jsp" %>
-<meta name="renderer" content="webkit">
-	<meta name="decorator" content="default"/>
+	<meta name='keywords' content='权限管理'>
+	<meta name='description' content='菜单，部门，区域等资源权限于一体的按钮级权限管理系统'>
+	<%@ include file="/WEB-INF/pages/include/head.jsp" %>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#name").focus();
@@ -49,7 +44,6 @@ String path = request.getContextPath();
 							top.$.jBox.closeTip();
 						}
 					});
-					
 				},
 				errorContainer: "#messageBox",
 				errorPlacement: function(error, element) {
@@ -203,7 +197,6 @@ String path = request.getContextPath();
 				dataType : "json",
 				success : function(data) {
 					var areaArray = JSON.parse(data.jsonObj);
-					
 					var areaTree = $.fn.zTree.init($("#areaTree"), setting, areaArray);
 					
 					// 展开所有节点
@@ -211,8 +204,6 @@ String path = request.getContextPath();
 					for(var i=0; i< nodes.length; i++){
 						areaTree.expandNode(nodes[i],true,false,true,false);
 					}
-					
-					//areaTree.expandAll(true);
 					
 					// 如果是修改页面，定位到当前选中的节点
 					var selectNodeId = $("#parentId").val();

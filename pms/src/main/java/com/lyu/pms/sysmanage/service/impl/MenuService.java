@@ -116,8 +116,6 @@ public class MenuService implements IMenuService {
 			this.roleToMenuMapper.saveRoleToMenu(roleToMenu);
 		}
 		
-		// 修改了信息都要清空shiro的缓存
-		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 

@@ -126,8 +126,6 @@ public class RoleService implements IRoleService {
 			flag = true;
 		}
 		
-		// 修改了信息都要清空shiro的缓存
-		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 
@@ -183,8 +181,6 @@ public class RoleService implements IRoleService {
 		if (rows > 0) {
 			flag = true;
 		}
-		// 修改了信息都要清空shiro的缓存
-		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 
@@ -202,8 +198,6 @@ public class RoleService implements IRoleService {
 		if (rows > 0) {
 			flag = true;
 		}
-		// 修改了信息都要清空shiro的缓存
-		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 

@@ -124,8 +124,6 @@ public class DeptService implements IDeptService {
 			this.roleToDeptMapper.saveRoleToDept(roleToDept);
 		}
 		
-		// 修改了信息都要清空shiro的缓存
-		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 

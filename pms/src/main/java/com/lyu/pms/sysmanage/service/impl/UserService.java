@@ -85,8 +85,6 @@ public class UserService implements IUserService {
 		if (rows > 0) {
 			flag = true;
 		}
-		// 修改了信息都要清空shiro的缓存
-		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 	
@@ -175,8 +173,6 @@ public class UserService implements IUserService {
 				}
 			}
 		}
-		// 修改了信息都要清空shiro的缓存
-		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 
@@ -197,8 +193,6 @@ public class UserService implements IUserService {
 		if (rows > 0) {
 			flag = true;
 		}
-		// 修改了信息都要清空shiro的缓存
-		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
     
