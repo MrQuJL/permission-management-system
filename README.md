@@ -59,46 +59,58 @@
 
 ## 项目的约定
 * 项目的后台包结构：
-	> com.company.projectName.common 通用的类
-	com.company.projectName.interceptor 自定义拦截器
-	com.company.projectName.security shiro相关安全管理
-	com.company.projectName.moduleName.action 业务控制类
-	com.company.projectName.moduleName.dto 业务bean
-	com.company.projectName.moduleName.entity 实体类
-	com.company.projectName.moduleName.mapper mapper映射
-	com.company.projectName.moduleName.service 服务类
-	com.company.projectName.test 测试类
-	com.company.projectName.util 工具类
+	> com.company.projectName.common 通用的类<br/>
+	com.company.projectName.interceptor 自定义拦截器<br/>
+	com.company.projectName.security shiro相关安全管理<br/>
+	com.company.projectName.moduleName.action 业务控制类<br/>
+	com.company.projectName.moduleName.dto 业务bean<br/>
+	com.company.projectName.moduleName.entity 实体类<br/>
+	com.company.projectName.moduleName.mapper mapper映射<br/>
+	com.company.projectName.moduleName.service 服务类<br/>
+	com.company.projectName.test 测试类<br/>
+	com.company.projectName.util 工具类<br/>
 
 * 项目的前台页面结构:
-	> webapp/index.jsp 引导页面，通过后台跳转到登陆页面
-	webapp/jsAndCss/js 一些js文件
-	webapp/jsAndCss/css 一些css文件
-	webapp/jsAndCss/img 一些图片文件
-	webapp/WEB-INF/pages 放页面
+	> webapp/index.jsp 引导页面，通过后台跳转到登陆页面<br/>
+	webapp/jsAndCss/js 一些js文件<br/>
+	webapp/jsAndCss/css 一些css文件<br/>
+	webapp/jsAndCss/img 一些图片文件<br/>
+	webapp/WEB-INF/pages 放页面<br/>
 
 ## 项目中遇到的一些问题
 
 1. 引用了jstl标签库的uri但是报如下错误：Can not find the tag library descriptor for "http://java.sun.com/jsp/jstl/core"
 	> 原因：maven中没有添加jstl相关依赖
+
 	> 解决：在maven中添加jstl依赖jar包
-		<dependency>
-			<groupId>jstl</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
+
 	> 扩展：jstl 1.2 的uri写法：http://java.sun.com/jsp/jstl/core
 	      jstl 1.2 的uri写法：http://java.sun.com/jstl/core
 
 2. jsp页面出现如下错误：The superclass "javax.servlet.http.HttpServlet" was not found on the Java Build Path
 	> 原因：maven没有添加jsp-api相关的依赖
-	> 解决：在maven中添加jsp-api
-		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>jsp-api</artifactId>
-			<version>2.1</version>
-			<scope>provided</scope>
-		</dependency>
+
+	> 解决：在maven中添加jsp-api的依赖
+
+3. 查询某功能列表时，一直处于查询状态（后台一直没反应）
+	> 原因：mapper.xml中的查询语句出错
+	
+	> 解决：修改查询语句
+	
+	> 教训：mapper.xml中写的SQL一定要现在navicat上测试一下，确保正确再写入mapper
+
+4. 前台传入空的字段，mapper中使用了动态SQL标签判断非空才执行相应语句，但是仍然执行了语句
+	> 原因：判断条件使用了数据库中字段
+
+	> 解决：修改判断字段为 java bean 的字段
+
+5. 用户访问系统资源进行身份认证的时候，用户名和密码输入成功即将进入主页面，但是，浏览器却显示出了无权访问的页面
+	> 原因：因为我把跳转到主页面设定为了一个新的请求，所以该请求又经过了身份验证和权限检验这两个拦截器，该请求成功通过了身份认证拦截器，但是在进行权限验证的时候由于在菜单表中并没有配置进入主页面的请求对应的权限，导致即使登录成功也无法进入主页面
+	
+	> 解决：在权限验证拦截器中修改业务逻辑，对含有主页面的请求放行
+	
+	> 教训：在设置资源的访问权限的时候要具体问题具体分析，结合项目的请求的执行流程来处理业务逻辑
+
 ## 项目的收获
 
 
