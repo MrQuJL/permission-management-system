@@ -27,18 +27,25 @@ import com.lyu.pms.util.UserUtils;
  * @version V1.0
  */
 public class LoginAction {
+	
 	// 打印日志
 	private Log logger = LogFactory.getLog(LoginAction.class);
+	
 	// 获取页面传过来的用户名
 	private String loginName;
+	
 	// 获取页面传过来的密码
 	private String password;
+	
 	// 登录出错的时候返回页面的提示信息
 	private String loginErrorMsg;
+	
 	// 用户服务类,spring容器会自动注入
 	private IUserService userService;
+	
 	// 菜单服务类，spring会自动注入
 	private IMenuService menuService;
+	
 	// 用户拥有的菜单列表
 	private List<Menu> menuList;
 	
@@ -57,7 +64,6 @@ public class LoginAction {
 	 * @return
 	 */
 	public String main() {
-		
 		this.menuList = this.menuService.getMenuListByUserId(UserUtils.getCurrentUserId());
 		
 		return "mainPage";
@@ -71,8 +77,8 @@ public class LoginAction {
 	public String logout() {
 		Subject subject = SecurityUtils.getSubject();
 		subject.logout();
+		logger.info("用户退出了系统");
 		
-		System.out.println("进入logout的action");
 		return "success";
 	}
 	
@@ -87,8 +93,6 @@ public class LoginAction {
 		
 		// 判断一下loginName和password是不是为空
 		if (!StringUtils.isEmpty(loginName) && !StringUtils.isEmpty(password)) {
-//			User user = userService.loginUser(loginName, password);
-			
 			UsernamePasswordToken token = new UsernamePasswordToken(loginName, password);
 			Subject subject = SecurityUtils.getSubject();
 			try {
@@ -119,7 +123,6 @@ public class LoginAction {
 	/**
 	 * 一系列的setter和getter方法
 	 */
-	
 	public IMenuService getMenuService() {
 		return menuService;
 	}
@@ -167,5 +170,4 @@ public class LoginAction {
 	public void setMenuList(List<Menu> menuList) {
 		this.menuList = menuList;
 	}
-	
 }

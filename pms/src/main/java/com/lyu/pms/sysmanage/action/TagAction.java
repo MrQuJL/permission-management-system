@@ -1,6 +1,5 @@
 package com.lyu.pms.sysmanage.action;
 
-
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -39,7 +38,6 @@ public class TagAction extends ActionSupport{
 	/**
 	 * 一系列的setter和getter方法
 	 */
-	
 	public void setUrl(String url) {
 		this.url = url;
 	}
@@ -67,5 +65,4 @@ public class TagAction extends ActionSupport{
 	public void setValue(String value) {
 		this.value = value;
 	}
-
 }

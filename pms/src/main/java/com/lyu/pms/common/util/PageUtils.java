@@ -5,12 +5,18 @@ import com.github.pagehelper.PageInfo;
 /**
  * 类名称: 分页工具类
  * 类描述: 生成页面上的分页条
- * 全限定性类名: com.lyu.drp.common.dto.PageUtils
+ * 全限定性类名: com.lyu.pms.common.dto.PageUtils
  * @author 曲健磊
  * @date 2018年1月22日 上午10:53:21
  * @version V1.0
  */
 public class PageUtils {
+	
+	/**
+	 * 根据前台组件生成分页条
+	 * @param 
+	 * @return
+	 */
 	public static String pageStr (PageInfo<?> pageInfo,String queryMethod) {
         StringBuffer sb = new StringBuffer("<ul>");
         //判断当前页是不是首页

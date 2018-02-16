@@ -32,34 +32,49 @@ import com.lyu.pms.util.UserUtils;
  * @version V1.0
  */
 public class UserAction {
+	
 	// log4j打印日志
 	Logger logger = Logger.getLogger(this.getClass());
+	
 	// 前台接收 的旧密码
 	private String oldPassword;
+	
 	// 接收前台的新密码
 	private String newPassword;
+	
 	// 标记是新增(1)用户还是修改(2)用户
 	private Integer editFlag;
+	
 	// 用于为ajax返回提示消息
 	private String message;
+	
 	// 用于发往前台的json字符串
 	private String jsonObj;
+	
 	// 角色id列表
 	private String roleIds;
+	
 	// 接收分页信息
 	private PageParam pageParam;
+	
 	// 封装好的分页条
 	private String pageBar;
+	
 	// 接收前台的查询条件
 	private UserDto userDto;
+	
 	// 所有的角色列表
 	private List<Role> roleList;
+	
 	// 用户id
 	private Long userId;
+	
 	// 角色checkbox
 	private Map<Long, Long> roleCheckedMap;
+	
 	// 用户服务类
 	private IUserService userService;
+	
 	// 角色服务类
 	private IRoleService roleService;
 	
@@ -120,7 +135,6 @@ public class UserAction {
 	 * @return
 	 */
 	public String getUserListPage() {
-		
 		PageInfo<UserDto> pageInfo = this.userService.getUserListPageByUserDto(this.userDto, this.pageParam);
 		
 		List<UserDto> userList = pageInfo.getList();
@@ -214,7 +228,6 @@ public class UserAction {
 	 * @return
 	 */
 	public String delUser() {
-		
 		boolean flag = this.userService.delUser(this.userId);
 		
 		if (flag) {
@@ -229,7 +242,6 @@ public class UserAction {
 	/**
 	 * 一系列的setter和getter方法
 	 */
-	
 	public String getOldPassword() {
 		return oldPassword;
 	}
@@ -341,5 +353,4 @@ public class UserAction {
 	public void setRoleService(IRoleService roleService) {
 		this.roleService = roleService;
 	}
-
 }

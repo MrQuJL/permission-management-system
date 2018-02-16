@@ -44,40 +44,34 @@ public class UserRealm extends AuthorizingRealm {
 	private Logger log = Logger.getLogger(UserRealm.class);
 	
 	// 身份认证
-		@Override
-		protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-			log.info("进入UserRealm的身份认证方法...");
-			
-			// 1.从传入的token获取身份信息(输入的userName)
-//			String userName = (String) token.getPrincipal();
-			
-			UsernamePasswordToken authcToken = (UsernamePasswordToken) token;
-			
-			// 2.模拟根据得到的userName去数据库查询这个用户是否存在
-			/*User user = new User();
-			user.setLoginName("admin");
-			user.setPassword("123456");*/
-			User user = this.userService.loginUser(authcToken.getUsername());
-			
-			Principle principle = new Principle(user.getUserId(), user.getLoginName(),
-				user.getUserName());
-			
-			// 从密码中拿到盐
-			byte[] salt = EncryptUtils.decodeHex(user.getPassword().substring(0, 16));
-			
-			// 3.如果传入的userName和数据 库查询出来的userName相同
-			SimpleAuthenticationInfo simpleAuthenticationInfo = null;
-			
-			if (authcToken.getUsername().equals(user.getLoginName())) {
-				// 身份信息确认以后，凭证信息的确认由SimpleAuthenticationInfo的父类
-				// AuthenticationInfo进行验证
-				simpleAuthenticationInfo = new SimpleAuthenticationInfo(principle, 
-					user.getPassword().substring(16), ByteSource.Util.bytes(salt), this.getName());
-			}
-			
-			return simpleAuthenticationInfo;
+	@Override
+	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+		log.info("进入UserRealm的身份认证方法...");
+		
+		// 1.从传入的token获取身份信息(输入的userName)
+		UsernamePasswordToken authcToken = (UsernamePasswordToken) token;
+		
+		// 2.根据得到的userName去数据库查询这个用户是否存在
+		User user = this.userService.loginUser(authcToken.getUsername());
+		
+		Principle principle = new Principle(user.getUserId(), user.getLoginName(),
+			user.getUserName());
+		
+		// 从密码中拿到盐
+		byte[] salt = EncryptUtils.decodeHex(user.getPassword().substring(0, 16));
+		
+		// 3.如果传入的userName和数据 库查询出来的userName相同
+		SimpleAuthenticationInfo simpleAuthenticationInfo = null;
+		
+		if (authcToken.getUsername().equals(user.getLoginName())) {
+			// 身份信息确认以后，凭证信息的确认由SimpleAuthenticationInfo的父类
+			// AuthenticationInfo进行验证
+			simpleAuthenticationInfo = new SimpleAuthenticationInfo(principle, 
+				user.getPassword().substring(16), ByteSource.Util.bytes(salt), this.getName());
 		}
-
+		
+		return simpleAuthenticationInfo;
+	}
 	
 	// 用户授权(被perms过滤器拦截的请求会进入该方法)
 	@Override

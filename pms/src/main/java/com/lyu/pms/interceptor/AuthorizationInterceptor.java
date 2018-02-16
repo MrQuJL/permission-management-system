@@ -16,7 +16,7 @@ import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 /**
  * 类名称: 用户权限拦截器
  * 类描述: 用于判断用户访问的资源是否在用户所拥有的权限列表
- * 全限定性类名: com.lyu.drp.interceptor.AuthorizationInterceptor
+ * 全限定性类名: com.lyu.pms.interceptor.AuthorizationInterceptor
  * @author 曲健磊
  * @date 2018年1月23日 下午1:26:06
  * @version V1.0
@@ -31,13 +31,13 @@ public class AuthorizationInterceptor extends AbstractInterceptor {
 	public String intercept(ActionInvocation invocation) throws Exception {
 		log.info("进入用户权限拦截器");
 		
-		// 2.获取访问的uri
+		// 1.获取访问的uri
 		String uri = ServletActionContext.getRequest().getRequestURI().substring(4);
 		String returnCode = "refusePage";
 		if (uri.contains("toLogin") || uri.contains("login") || uri.contains("main")) {
 			returnCode = invocation.invoke();
 		} else {
-			// 1.判断session中的身份信息是否为空是否为空
+			// 2.判断session中的身份信息是否为空是否为空
 			HttpSession session = ServletActionContext.getRequest().getSession();
 			Principle principle = (Principle) session.getAttribute("principle");
 			

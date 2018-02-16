@@ -35,5 +35,4 @@ public class UserUtils {
 	public static Long getCurrentUserId() {
 		return getCurrentUser().getUserId();
 	}
-	
 }

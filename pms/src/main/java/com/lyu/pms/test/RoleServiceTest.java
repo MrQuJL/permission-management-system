@@ -20,6 +20,7 @@ import com.lyu.pms.sysmanage.service.IRoleService;
  * @version V1.0
  */
 public class RoleServiceTest {
+	
 	private ApplicationContext ac = null;
 	
 	private IRoleService roleService = null;
@@ -51,4 +52,5 @@ public class RoleServiceTest {
 		}
 		
 	}
+	
 }

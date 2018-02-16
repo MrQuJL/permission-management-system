@@ -19,16 +19,22 @@ import com.lyu.pms.sysmanage.service.ILogService;
  * @version V1.0
  */
 public class LogAction {
+	
 	// 发送给前台的日志列表的json字符串数组
 	private String jsonObj;
+	
 	// 返回给前台的提示信息
 	private String message;
+	
 	// 获取当前日期
 	private String currentDate;
+	
 	// 分页信息
 	private PageParam pageParam;
+	
 	// 返回的分页条对象
 	private String pageBar;
+	
 	// 日志服务类
 	private ILogService logService;
 	
@@ -38,13 +44,10 @@ public class LogAction {
 	 * @return
 	 */
 	public String getLogListPage() {
-		
 		LogDto logDto = JSON.parseObject(this.jsonObj, LogDto.class);
-		
 		PageInfo<LogDto> pageInfo = logService.getLogListPage(logDto, this.pageParam);
 		
 		this.jsonObj = JSON.toJSONString(pageInfo.getList());
-		
 		this.pageBar = PageUtils.pageStr(pageInfo, "logMgr.getLogListPage");
 		
 		return "success";
@@ -68,7 +71,6 @@ public class LogAction {
 	/**
 	 * 一系列的setter和getter方法
 	 */
-	
 	public String getJsonObj() {
 		return jsonObj;
 	}
@@ -116,5 +118,4 @@ public class LogAction {
 	public void setLogService(ILogService logService) {
 		this.logService = logService;
 	}
-	
 }

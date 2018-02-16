@@ -67,7 +67,5 @@ public class DictServiceTest {
 		} else {
 			System.out.println("逻辑删除表数据失败");
 		}
-		
 	}
-	
 }

@@ -22,23 +22,32 @@ import com.lyu.pms.sysmanage.service.IDictService;
  * @version V1.0
  */
 public class DictAction {
+	
 	// 发送给前台的字典列表的json字符串数组
 	private String jsonObj;
+	
 	// 字典的类型
 	private String type;
+	
 	// 字典的描述
 	private String description;
+	
 	// spring负责注入
 	private IDictService dictService;
+	
 	// 判断是添加字典还是修改字典的标记位
 	private Long dictId;
+	
 	// 返回给前台的消息
 	private String message;
+	
 	// 接收前台的分页信息：第几页，每页多少条
 	private PageParam pageParam;
+	
 	// 返回给前台的分页条对象
 	private String pageBar;
 	
+	// 字典类型集合
 	private List<String> dictTypeList;
 	
 	/**
@@ -139,7 +148,6 @@ public class DictAction {
 	/**
 	 * 一系列的setter和getter方法
 	 */
-	
 	public String getPageBar() {
 		return pageBar;
 	}
@@ -211,5 +219,4 @@ public class DictAction {
 	public void setDictTypeList(List<String> dictTypeList) {
 		this.dictTypeList = dictTypeList;
 	}
-	
 }

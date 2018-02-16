@@ -17,7 +17,9 @@ import com.lyu.pms.sysmanage.service.ILogService;
  * @version V1.0
  */
 public class LogServiceTest {
+	
 	private ApplicationContext ac = null;
+	
 	private ILogService logService = null;
 	
 	@Before
@@ -44,6 +46,4 @@ public class LogServiceTest {
 			System.out.println("添加菜单失败!");
 		}
 	}
-	
-	
 }

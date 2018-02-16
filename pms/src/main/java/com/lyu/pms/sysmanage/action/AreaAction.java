@@ -22,18 +22,25 @@ import com.lyu.pms.util.UserUtils;
  * @version V1.0
  */
 public class AreaAction {
+	
 	// 发送给前台的部门列表的json字符串数组
 	private String jsonObj;
+	
 	// 返回给前台的消息
 	private String message;
+	
 	// 修改(2)还是增加(1)
 	private Integer editFlag;
+	
 	// 区域id
 	private Long areaId;
+	
 	// 区域对象
 	private AreaDto area;
+	
 	// 查询到的区域列表
 	private List<Area> areaList;
+	
 	// spring注入
 	private IAreaService areaService;
 
@@ -45,11 +52,9 @@ public class AreaAction {
 	public String gotoAreaList() {
 		// 只获取当前用户所拥有的区域
 		List<Area> tempAreaList = areaService.getAreaListByUId(UserUtils.getCurrentUserId());
-		
 		List<Area> returnAreaList = new ArrayList<Area>();
 		
 		TreeUtils.sortTreeList(returnAreaList, tempAreaList, 0L);
-		
 		this.areaList = returnAreaList;
 		
 		return "success";
@@ -85,7 +90,6 @@ public class AreaAction {
 	 */
 	public String saveArea() {
 		Area area = JSON.parseObject(jsonObj, Area.class);
-		
 		if (area.getId() == null) { // 新增区域
 			boolean flag = areaService.saveArea(area);
 			this.message = "no";
@@ -109,7 +113,6 @@ public class AreaAction {
 	 */
 	public String confirmHasSubArea() {
 		boolean flag = true;
-		
 		flag = areaService.hasSubArea(this.areaId);
 		
 		if (!flag) { // 为false则表示没有子区域，可以删除
@@ -118,7 +121,6 @@ public class AreaAction {
 		} else { // 为true则表示由子区域，不能删除
 			this.message = "yes";
 		}
-		
 		
 		return "success";
 	}
@@ -181,7 +183,6 @@ public class AreaAction {
 	/**
 	 * 一系列的setter和getter方法
 	 */
-	
 	public String getJsonObj() {
 		return jsonObj;
 	}
@@ -237,5 +238,4 @@ public class AreaAction {
 	public void setAreaService(IAreaService areaService) {
 		this.areaService = areaService;
 	}
-	
 }

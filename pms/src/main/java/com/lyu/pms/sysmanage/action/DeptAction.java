@@ -23,22 +23,31 @@ import com.lyu.pms.util.UserUtils;
  * @version V1.0
  */
 public class DeptAction {
+	
 	// 查询到的部门列表集合
 	private List<Dept> deptList;
+	
 	// 发送给前台的部门列表的json字符串数组
 	private String jsonObj;
+	
 	// 返回给前台的消息
 	private String message;
+	
 	// 修改(2)还是增加(1)
 	private Integer editFlag;
+	
 	// 部门编号
 	private Long deptId;
+	
 	// 父部门id
 	private Long parentId;
+	
 	// 父部门name
 	private String parentName;
+	
 	// 部门的详细信息
 	private DeptDto deptDto;
+	
 	// spring注入
 	private IDeptService deptService;
 
@@ -50,13 +59,11 @@ public class DeptAction {
 	public String gotoDeptList() {
 		// 只查询当前用户所拥有的部门
 		List<Dept> deptList = deptService.getDeptListByUId(UserUtils.getCurrentUserId());
-		
 		List<Dept> returnDepts = new ArrayList<Dept>();
 		
 		// 对部门进行排序
 		// DeptUtils.sortDeptList(returnDepts, deptList, 0L);
 		TreeUtils.sortTreeList(returnDepts, deptList, 0L);
-		
 		this.deptList = returnDepts;
 		
 		return "gotoDeptList";
@@ -182,7 +189,6 @@ public class DeptAction {
 	/**
 	 * 一系列的setter和getter方法
 	 */
-	
 	public String getMessage() {
 		return message;
 	}
@@ -254,5 +260,4 @@ public class DeptAction {
 	public void setParentName(String parentName) {
 		this.parentName = parentName;
 	}
-	
 }

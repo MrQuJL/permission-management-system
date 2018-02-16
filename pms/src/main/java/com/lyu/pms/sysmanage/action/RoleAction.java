@@ -22,16 +22,22 @@ import com.lyu.pms.util.UserUtils;
  * @version V1.0
  */
 public class RoleAction {
+	
 	// 发送给前台的角色列表的json字符串数组
 	private String jsonObj;
+	
 	// 返回给前台的消息
 	private String message = "hi";
+	
 	// 修改(2)还是增加(1)
 	private Integer editFlag;
+	
 	// 角色id
 	private Long roleId;
+	
 	// 查询到的角色列表
 	private List<Role> roleList;
+	
 	// 角色信息
 	private Role role;
 	
@@ -57,7 +63,6 @@ public class RoleAction {
 	 * @return
 	 */
 	public String gotoRoleList() {
-		
 		this.roleList = roleService.getAllRoleList();
 		
 		return "success";
@@ -135,7 +140,6 @@ public class RoleAction {
 	/**
 	 * 一系列的setter和getter方法
 	 */
-	
 	public String getJsonObj() {
 		return jsonObj;
 	}
@@ -263,5 +267,4 @@ public class RoleAction {
 	public void setAreaIds(String areaIds) {
 		this.areaIds = areaIds;
 	}
-	
 }

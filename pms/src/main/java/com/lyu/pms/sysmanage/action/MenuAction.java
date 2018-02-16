@@ -21,20 +21,28 @@ import com.lyu.pms.util.UserUtils;
  * @version V1.0
  */
 public class MenuAction {
+	
 	// 增删改的返回信息
 	private String message;
+	
 	// 编辑页面的标识，1为新增，0为修改
 	private int editFlag;
+	
 	// 获取菜单id
 	private Long menuId;
+	
 	// 父级菜单的id
 	private Long parentId;
+	
 	// 待修改的菜单对象
 	private MenuDto menu;
+	
 	// 通过spring自动注入
 	private IMenuService menuService;
+	
 	// 菜单列表
 	private List<Menu> menuList;
+	
 	// 返回页面的json对象
 	private String jsonObj;
 	
@@ -56,7 +64,6 @@ public class MenuAction {
 		// ---temp---
 		
 		// 因为前台的tree table必须按菜单的层级顺序显示才能达到顺序效果，所以要先递归排序一下
-//		MenuUtils.sortMenuList(returnMenuList, menuListUnSort, 0L);
 		TreeUtils.sortTreeList(returnMenuList, menuListUnSort, 0L);
 		this.menuList = returnMenuList;
 		return "menuList";
@@ -129,6 +136,11 @@ public class MenuAction {
 		return "success";
 	}
 	
+	/**
+	 * 确认当前菜单下是否有子菜单
+	 * @param 
+	 * @return
+	 */
 	public String confirmHasSubMenu() {
 		// 1.先查看该菜单下面是否有子菜单
 		this.message = "yes";
@@ -139,6 +151,11 @@ public class MenuAction {
 		return "success";
 	}
 	
+	/**
+	 * 删除菜单
+	 * @param 
+	 * @return
+	 */
 	public String delMenu() {
 		this.message = "删除菜单失败，请联系系统管理员!";
 		// 1.删除菜单
@@ -205,7 +222,6 @@ public class MenuAction {
 	/**
 	 * 一系列的setter和getter方法
 	 */
-	
 	public String getMessage() {
 		return message;
 	}
@@ -269,5 +285,4 @@ public class MenuAction {
 	public void setParentId(Long parentId) {
 		this.parentId = parentId;
 	}
-	
 }

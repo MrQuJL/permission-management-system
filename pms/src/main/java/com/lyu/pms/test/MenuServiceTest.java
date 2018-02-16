@@ -22,7 +22,9 @@ import com.lyu.pms.sysmanage.service.IMenuService;
  * @version V1.0
  */
 public class MenuServiceTest {
+	
 	private ApplicationContext ac = null;
+	
 	private IMenuService menuService = null;
 	
 	@Before

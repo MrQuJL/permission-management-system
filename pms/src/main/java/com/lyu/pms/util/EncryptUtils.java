@@ -235,6 +235,4 @@ public class EncryptUtils {
 		}
 		return null;
 	}
-	
-	 
 }

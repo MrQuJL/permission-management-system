@@ -57,5 +57,4 @@ public class LogAspectJUtils {
 		log.setTitle(operatorMethod);
 		logService.insertLog(log);
 	}
-	
 }

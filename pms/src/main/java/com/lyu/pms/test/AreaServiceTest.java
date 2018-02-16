@@ -44,14 +44,12 @@ public class AreaServiceTest {
 		}
 		
 		log.info("区域总数：" + areaList.size());
-		
 	}
 	
 	// 查询部门列表
 	@Test
 	public void testGetAllSubAreasByPId() {
 		List<Area> areaList = areaService.getAllSubAreasByPId(9L);
-		
 		System.out.println(areaList.size());
 	}
 	
@@ -59,24 +57,18 @@ public class AreaServiceTest {
 	@Test
 	public void testAddArea() {
 		Area area = new Area();
-		
 		area.setParentId(1L);
 		area.setName("小光");
 		area.setCode("102");
 		area.setSort(12L);
 		area.setRemarks("这是测试数据");
-		
 		System.out.println(areaService.saveArea(area));
-		
 	}
 	
 	// 获取部门的详细信息
 	@Test
 	public void testGetAreaDetail() {
 		AreaDto areaDto = areaService.getAreaDetailById(9L);
-		
 		System.out.println(areaDto);
-		
 	}
-	
 }

@@ -50,16 +50,13 @@ public class DeptServiceTest {
 	@Test
 	public void testGetDeptDetailById() {
 		DeptDto deptDto = deptService.getDeptDetailById(1L);
-		
 		System.out.println(deptDto);
-		
 	}
 	
 	// 判断当前部门是否有子部门
 	@Test
 	public void testHasSubDept() {
 		boolean flag = deptService.hasSubDept(1L);
-		
 		if (flag) {
 			System.out.println("id为1的部门下面有子部门，不可以删除");
 		} else {
@@ -73,5 +70,4 @@ public class DeptServiceTest {
 		List<Long> ids = deptService.getAllSubDeptIds(12L);
 		System.out.println(ids);
 	}
-	
 }

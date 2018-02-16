@@ -11,7 +11,7 @@ import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 /**
  * 类名称: 测试各种加密算法的测试类
  * 类描述: 用于测试各种加密算法
- * 全限定性类名: com.lyu.drp.test.EncryptTest
+ * 全限定性类名: com.lyu.pms.test.EncryptTest
  * @author 曲健磊
  * @date 2018年1月15日 下午12:37:31
  * @version V1.0
@@ -71,16 +71,16 @@ public class EncryptTest {
 		// hex加密后的密文的位数是元位数的2倍
 	}
 	
-//	1. 生成一个随机数
-//	2. 用可逆的加密算法Hex加密随机数
-//	3. 将随机数和密码用sha1不可逆算法加密
-//	4. 将第三步得到的字符串值用可逆的加密算法加密
-//	5. 将第2步和第四步的值拼凑
-	
-//  更可靠的原因：
-//	1. 破译者不知道使用的那种加密算法
-//	2. 盐的位数不确定
-//	3. 迭代次数也可以设置
+	//	1. 生成一个随机数
+	//	2. 用可逆的加密算法Hex加密随机数
+	//	3. 将随机数和密码用sha1不可逆算法加密
+	//	4. 将第三步得到的字符串值用可逆的加密算法加密
+	//	5. 将第2步和第四步的值拼凑
+		
+	//  更可靠的原因：
+	//	1. 破译者不知道使用的那种加密算法
+	//	2. 盐的位数不确定
+	//	3. 迭代次数也可以设置
 	
 	@Test
 	public void testDrpEncrypt() {
@@ -99,7 +99,6 @@ public class EncryptTest {
 		
 		// d69b3e3983365aecfa39b7f23b0ae06d57f6200f0e6a12e3292aa73f
 		System.out.println(encryptPsd);
-		
 	}
 	
 	// 密码验证(解密操作)
@@ -115,6 +114,4 @@ public class EncryptTest {
 		String newEncryptPsd = EncryptUtils.encodeHex(salt) + EncryptUtils.encodeHex(hashPass);
 		System.out.println(newEncryptPsd);
 	}
-	
-	
 }
