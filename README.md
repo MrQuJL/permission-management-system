@@ -14,6 +14,14 @@
 
 ## 项目所采用的技术
 
+### 开发环境
+
+* 操作系统：Windows8.1（计划迁移到linux服务器，敬请期待...）
+* IDE：eclipse
+* Java版本：1.8
+* 数据库：mysql5.6.36
+* 服务器：tomcat8
+
 ### 后台框架：
 
 * spring-4.2.1	轻量级的IOC和AOP的容器框架
@@ -50,16 +58,19 @@
 * 日志表
 
 ## 项目的约定
-	项目的后台包结构：
-	com.company.projectName.util
-	com.company.projectName.common
-	com.company.projectName.test
-	com.company.projectName.moduleName.entity
-	com.company.projectName.moduleName.mapper
-	com.company.projectName.moduleName.service
-	com.company.projectName.moduleName.action
+* 项目的后台包结构：
+	com.company.projectName.common 通用的类
+	com.company.projectName.interceptor 自定义拦截器
+	com.company.projectName.security shiro相关安全管理
+	com.company.projectName.moduleName.action 业务控制类
+	com.company.projectName.moduleName.dto 业务bean
+	com.company.projectName.moduleName.entity 实体类
+	com.company.projectName.moduleName.mapper mapper映射
+	com.company.projectName.moduleName.service 服务类
+	com.company.projectName.test 测试类
+	com.company.projectName.util 工具类
 
-	项目的前台页面结构:
+* 项目的前台页面结构:
 	webapp/index.jsp 引导页面，通过后台跳转到登陆页面
 	webapp/jsAndCss/js 一些js文件
 	webapp/jsAndCss/css 一些css文件
@@ -68,11 +79,23 @@
 
 ## 项目中遇到的一些问题
 
+* 现象：引用了jstl标签库的uri但是报如下错误：Can not find the tag library descriptor for "http://java.sun.com/jsp/jstl/core"
+	原因：maven中没有添加jstl相关依赖
+	解决：在maven中添加jstl依赖jar包
+	、、、
+	<dependency>
+		<groupId>jstl</groupId>
+		<artifactId>jstl</artifactId>
+		<version>1.2</version>
+	</dependency>
+	、、、
+	扩展：jstl 1.2 的uri写法：http://java.sun.com/jsp/jstl/core
+	      jstl 1.2 的uri写法：http://java.sun.com/jstl/core
+
+
 
 
 ## 项目的收获
-
-
 
 
 

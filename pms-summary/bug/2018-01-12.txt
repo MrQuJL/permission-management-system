@@ -22,6 +22,4 @@
 	<version>2.1</version>
 	<scope>provided</scope>
 </dependency>
-注：不添加这个依赖的话，在编译的时候就会在jsp标签处报红叉叉。
-
-
+注：不添加这个依赖的话，在编译的时候就会在jsp标签处出现错误。
