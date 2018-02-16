@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/pages/include/taglib.jsp" %>
 <!doctype html>
 <html style="overflow: hidden;">
@@ -7,7 +6,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>权限管理系统</title>
 	<meta charset="utf-8">
-	<meta name="renderer" content="webkit">
 	<%@ include file="/WEB-INF/pages/include/head.jsp" %>
 	<style type="text/css">
 		#main {padding:0;margin:0;} #main .container-fluid{padding:0 4px 0 6px;}
@@ -111,7 +109,7 @@
 	<div id="main" style="width: auto;">
 		<div id="header" class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
-				<div class="brand"><span style="cursor:pointer;" onclick="alert('logo');" id="productName">权限管理系统</span></div>
+				<div class="brand"><span style="cursor:pointer;" onclick="" id="productName">权限管理系统</span></div>
 				<ul id="userControl" class="nav pull-right">
 					<li id="userInfo" class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="个人信息">您好, 系统超级管理员&nbsp;</a>

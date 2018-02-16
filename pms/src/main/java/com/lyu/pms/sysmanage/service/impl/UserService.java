@@ -3,7 +3,6 @@ package com.lyu.pms.sysmanage.service.impl;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -39,8 +38,11 @@ public class UserService implements IUserService {
 	@Autowired
 	private UserToRoleMapper userToRoleMapper;
 	
-	@Autowired
-	private EhCacheManager cacheManager;
+	/**
+	 * 管理EhCache的缓存
+	 */
+	/*@Autowired
+	private EhCacheManager cacheManager;*/
 	
 	public static final int HASH_ITERATIONS = 1024;
 	

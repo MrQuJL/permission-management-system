@@ -3,7 +3,6 @@ package com.lyu.pms.sysmanage.service.impl;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -46,8 +45,11 @@ public class RoleService implements IRoleService {
 	@Autowired
 	private AreaMapper areaMapper;
 	
-	@Autowired
-	private EhCacheManager cacheManager;
+	/**
+	 * 管理EhCache的缓存
+	 */
+	/*@Autowired
+	private EhCacheManager cacheManager;*/
 	
 	// 一下三个mapper用于向角色-菜单，角色-部门，角色-区域表中插入数据
 	@Autowired

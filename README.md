@@ -12,7 +12,31 @@
 * 字典管理：存储一些系统中常用的字典值，例如：性别，区域类型...
 * 日志管理：记录系统中的一些敏感性操作，在系统出现故障或非法入侵的时候提供帮助
 
-## 项目表结构设计
+## 项目所采用的技术
+
+### 后台框架：
+
+* spring-4.2.1	轻量级的IOC和AOP的容器框架
+* struts-2.3.16	表示层框架，负责匹配请求，处理请求，返回视图
+* mybatis-3.3.1	建立与数据库的会话
+* druid-1.1.16	为监控而生的数据库连接池
+* shiro-1.2.1	优秀的权限管理框架
+* ehcache-2.5.0	缓存框架
+
+### 前台框架
+
+* jquery-1.8.3	最基础的前台框架
+* bootstrap-2.3.1	用于网站整体的布局
+* select2-3.4	可查询的下拉列表
+* jquery-validate-1.11.0	强大的表单校验工具
+* jquery-zTree-3.5.12	流行的树形控件
+* treeTable	树形表格
+* My97DatePicker	优雅的时间选择控件
+
+## 数据库ER图
+![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/er.png)
+
+## 数据库表设计
 * 用户表
 * 用户-角色对应关系表
 * 角色表
@@ -25,12 +49,6 @@
 * 字典表
 * 日志表
 
-## 数据库ER图
-![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/er.png)
-
-## 项目所采用的框架
-项目的后台架构：spring+struts2+mybatis
-
 ## 项目的约定
 	项目的后台包结构：
 	com.company.projectName.util
@@ -40,9 +58,7 @@
 	com.company.projectName.moduleName.mapper
 	com.company.projectName.moduleName.service
 	com.company.projectName.moduleName.action
-	
-	声明：本人未毕业所以company那一级用我所在的学校lyu命名
-	
+
 	项目的前台页面结构:
 	webapp/index.jsp 引导页面，通过后台跳转到登陆页面
 	webapp/jsAndCss/js 一些js文件
@@ -52,21 +68,11 @@
 
 ## 项目中遇到的一些问题
 
+
+
 ## 项目的收获
 
 
-
-
-
-
-## 项目功能的完成顺序：
-	菜单的维护
-	部门的维护
-	区域的维护
-	角色的维护
-	用户的维护
-	字典的维护
-	日志的维护
 
 
 

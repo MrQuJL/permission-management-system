@@ -4,10 +4,10 @@
 	<groupId>com.qjl</groupId>
 	<artifactId>pms</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>drp Maven Webapp</name>
 	<url>http://39.107.70.197:8080</url>
-	
+
 	<dependencies>
 		<!-- 引入junit -->
 		<dependency>
@@ -78,7 +78,7 @@
 		    <artifactId>spring-web</artifactId>
 		    <version>4.2.1.RELEASE</version>
 	  	</dependency>
-		
+
 		<!-- 引入struts2相关的包 -->
 		<dependency>
 		    <groupId>org.apache.struts</groupId>
@@ -95,14 +95,14 @@
 		    <artifactId>struts2-json-plugin</artifactId>
 		    <version>2.3.16</version>
 		</dependency>
-		
+
 		<!-- json相关 -->
 		<dependency>
 		    <groupId>com.alibaba</groupId>
 		    <artifactId>fastjson</artifactId>
 		    <version>1.2.44</version>
 		</dependency>
-		
+
 		<!-- 引入mybatis相关的包 -->
 		<dependency>
 		    <groupId>org.mybatis</groupId>
@@ -119,14 +119,14 @@
 		    <artifactId>pagehelper</artifactId>
 		    <version>4.2.1</version>
 		</dependency>
-		
+
 		<!--跟加密算法相关的codeC  -->
 		<dependency>
 		    <groupId>commons-codec</groupId>
 		    <artifactId>commons-codec</artifactId>
 		    <version>1.9</version>
 		</dependency>
-		
+
 		<!-- 数据库相关 -->
 		<dependency>
 		    <groupId>mysql</groupId>
@@ -138,7 +138,7 @@
 		    <artifactId>druid</artifactId>
 		    <version>1.1.6</version>
 		</dependency>
-		
+
 		<!-- shiro相关 -->
 		<dependency>
 		    <groupId>org.apache.shiro</groupId>
@@ -160,7 +160,7 @@
 		    <artifactId>shiro-ehcache</artifactId>
 		    <version>1.2.1</version>
 		</dependency>
-		
+
 	</dependencies>
 	<build>
 		<finalName>pms</finalName>
@@ -176,5 +176,5 @@
         	</plugin>  
 		</plugins>
 	</build>
-	
+
 </project>
