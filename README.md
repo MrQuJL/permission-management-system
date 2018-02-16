@@ -59,7 +59,7 @@
 
 ## 项目的约定
 * 项目的后台包结构：
-	com.company.projectName.common 通用的类
+	> com.company.projectName.common 通用的类
 	com.company.projectName.interceptor 自定义拦截器
 	com.company.projectName.security shiro相关安全管理
 	com.company.projectName.moduleName.action 业务控制类
@@ -71,7 +71,7 @@
 	com.company.projectName.util 工具类
 
 * 项目的前台页面结构:
-	webapp/index.jsp 引导页面，通过后台跳转到登陆页面
+	> webapp/index.jsp 引导页面，通过后台跳转到登陆页面
 	webapp/jsAndCss/js 一些js文件
 	webapp/jsAndCss/css 一些css文件
 	webapp/jsAndCss/img 一些图片文件
@@ -79,23 +79,26 @@
 
 ## 项目中遇到的一些问题
 
-* 现象：引用了jstl标签库的uri但是报如下错误：Can not find the tag library descriptor for "http://java.sun.com/jsp/jstl/core"
-	原因：maven中没有添加jstl相关依赖
-	解决：在maven中添加jstl依赖jar包
-	、、、
-	<dependency>
-		<groupId>jstl</groupId>
-		<artifactId>jstl</artifactId>
-		<version>1.2</version>
-	</dependency>
-	、、、
-	扩展：jstl 1.2 的uri写法：http://java.sun.com/jsp/jstl/core
+1. 引用了jstl标签库的uri但是报如下错误：Can not find the tag library descriptor for "http://java.sun.com/jsp/jstl/core"
+	> 原因：maven中没有添加jstl相关依赖
+	> 解决：在maven中添加jstl依赖jar包
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+	> 扩展：jstl 1.2 的uri写法：http://java.sun.com/jsp/jstl/core
 	      jstl 1.2 的uri写法：http://java.sun.com/jstl/core
 
-
-
-
+2. jsp页面出现如下错误：The superclass "javax.servlet.http.HttpServlet" was not found on the Java Build Path
+	> 原因：maven没有添加jsp-api相关的依赖
+	> 解决：在maven中添加jsp-api
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
 ## 项目的收获
-
 
 
