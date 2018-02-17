@@ -37,7 +37,6 @@ java.util.ConcurrentModificationException
 解决：记录一开始查询出的直接子区域的size，使用普通for循环递归遍历
 查找孙子区域
 
-
 2. 在一个集合中剔除存在于另一个集合中的元素时contains判断无效
 
 原因：contains方法默认是调用对象的equals方法来判断对象是否存在于容器中，

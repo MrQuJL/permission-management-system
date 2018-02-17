@@ -122,7 +122,7 @@
 	> 原因：shiro的过滤链配置错误
 
 	> 解决：main.action为登录成功的请求，已经在successUrl里面配置了main.action就不要在过滤链里面再配，正确配置如下：
-	///
+	```
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager"></property>
 		<!-- loginUrl为登录页面，并不是登录请求 -->
@@ -140,7 +140,7 @@
 			</value>
 		</property>
 	</bean>
-	///
+	```
 
 8. 在访问未经过shiro授权的资源的时候，没有出现预先写好的拒绝访问页面
 	> 原因：用ajax异步提交的该请求，shiro没有对ajax请求有很好的集成
@@ -161,11 +161,44 @@
 
 	> 教训：在测试某些功能的时候，可能需要依赖服务器开启时所提供的环境，单机测试的时候要注意手动设置一些属性。
 
+11. 在查询返回的dto对象中没有获取到某个属性
+	> 原因：在mapper.xml的SQL中没有为相应的字段添加别名导致mybatis无法完成该属性的映射
 
+	> 解决：在查询语句中为该字段添加别名
+
+12. 前台无法使用$.each()对后台传过来的json字符串进行解析
+	> 原因：如题，后台传过来的是一个json字符串，对于字符串要先通过JSON.parse(str)解析成js对象，然后才能通过$.each()进行遍历
+	
+	> 解决：在通过$.each()遍历的之前先通过JSON.parse("json字符串")解析一下，然后在遍历该js对象
+
+	> 扩展：关于json类型字符串的转化问题，可以参考我的这篇博文-[JSON.parse()和JSON.stringify()](http://blog.csdn.net/a909301740/article/details/78809251)
+
+13. 在进入菜单编辑页面时，没有加载菜单树zTree
+	> 原因：加载菜单树的请求需要依赖页面加载过来的菜单id，但是由于是异步的请求，并没有等待页面加载完毕就向服务器发出了请求，因此菜单id始终没有获取到，导致菜单树一直加载不出来
+
+	> 解决：设置ajax的请求为同步 async:false
+
+14. 添加部门的时候无法添加成功
+	> 原因：由于没有选择父级部门，导致后台的parentId属性为null，而对应的数据库中的parent_id字段不能为空，所以数据添加失败
+
+	> 解决：不选择父级部门，则将parentId的属性值设为0，表示该部门为顶级部门
+
+15. 查询指定id的所有子孙区域的时候报并发修改异常 ConcurrentModificationException
+	> 原因：使用forEach遍历的过程中仍不断的向list集合中添加数据，造成了并发修改异常
+
+	> 解决：记录一开始查询出的直接子区域的size，使用普通for循环递归遍历查找孙子区域
+
+16. 在一个集合中剔除存在于另一个集合中的元素时contains判断无效
+	> 原因：contains方法默认是调用对象的equals方法来判断对象是否存在于容器中，如果不重写equals的话默认使用Object的equals方法来判断，而Object的equals方法实现如下：
+	```
+	public boolean equals(Object obj) {
+		return (this == obj);
+	}
+	```
+
+	> 解决：重写对象的hashCode和equals方法即可
 
 ## 项目的收获
-
-
 
 
 
