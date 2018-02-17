@@ -22,3 +22,4 @@ unauthorizedUrl所指定的拒绝访问页面，而是在浏览器显示一堆�
 解决：直接使用shiro的perms过滤器来配置需要授权访问的资源
 /sysmgr/getDictListPage.action = perms[dict:query]
 
+

@@ -6,8 +6,7 @@
 
 解决：写上
 
-2. 潜在bug：在改上面的bug的时候发现，自己原来想通过mybatis的逆向工程生成menu表
-的字段，却配成了字典表的字段，汗...
+2. 潜在bug：在改上面的bug的时候发现，自己原来想通过mybatis的逆向工程生成menu表的字段，却配成了字典表的字段，汗...
 
 3. 用junit测试修改菜单时出现如下bug：（在服务器上跑却没事...）
 org.apache.shiro.UnavailableSecurityManagerException: No SecurityManager accessible to the calling code, either bound to the org.apache.shiro.util.ThreadContext or as a vm static singleton.  This is an invalid application configuration.

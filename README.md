@@ -41,22 +41,6 @@
 * treeTable	树形表格
 * My97DatePicker	优雅的时间选择控件
 
-## 数据库ER图
-![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/er.png)
-
-## 数据库表设计
-* 用户表
-* 用户-角色对应关系表
-* 角色表
-* 角色-部门对应关系表
-* 部门表
-* 角色-区域对应关系表
-* 区域表
-* 角色-菜单对应关系表
-* 菜单表
-* 字典表
-* 日志表
-
 ## 项目的约定
 * 项目的后台包结构：
 	> com.company.projectName.common 通用的类<br/>
@@ -77,6 +61,22 @@
 	webapp/jsAndCss/img 一些图片文件<br/>
 	webapp/WEB-INF/pages 放页面<br/>
 
+## 数据库ER图
+![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/er.png)
+
+## 数据库表设计
+* 用户表
+* 用户-角色对应关系表
+* 角色表
+* 角色-部门对应关系表
+* 部门表
+* 角色-区域对应关系表
+* 区域表
+* 角色-菜单对应关系表
+* 菜单表
+* 字典表
+* 日志表
+
 ## 项目中遇到的一些问题
 
 1. 引用了jstl标签库的uri但是报如下错误：Can not find the tag library descriptor for "http://java.sun.com/jsp/jstl/core"
@@ -85,7 +85,7 @@
 	> 解决：在maven中添加jstl依赖jar包
 
 	> 扩展：jstl 1.2 的uri写法：http://java.sun.com/jsp/jstl/core
-	      jstl 1.2 的uri写法：http://java.sun.com/jstl/core
+	      jstl 1.1 的uri写法：http://java.sun.com/jstl/core
 
 2. jsp页面出现如下错误：The superclass "javax.servlet.http.HttpServlet" was not found on the Java Build Path
 	> 原因：maven没有添加jsp-api相关的依赖
@@ -116,13 +116,13 @@
 
 	> 解决：更换成shiro-core-1.2.1之后，完美解决
 
-	> 教训：在使用一些框架或者组件的时候尽量不要使用最新的版本，建议使用最稳定的版本。一句俗话说的好：最好的,不一定最合适,最合适的,才是真正最好的。
+	> 教训：在使用一些框架或者组件的时候尽量不要使用最新的版本，建议使用最稳定的版本。一句俗话说的好：最好的,不一定最合适,最合适的,才是真正最好的
 
 7. 使用shiro做的权限控制，在输入完用户名和密码时进行登录，但是任然被拦在了登录页面
 	> 原因：shiro的过滤链配置错误
 
 	> 解决：main.action为登录成功的请求，已经在successUrl里面配置了main.action就不要在过滤链里面再配，正确配置如下：
-
+	///
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager"></property>
 		<!-- loginUrl为登录页面，并不是登录请求 -->
@@ -140,10 +140,35 @@
 			</value>
 		</property>
 	</bean>
+	///
+
+8. 在访问未经过shiro授权的资源的时候，没有出现预先写好的拒绝访问页面
+	> 原因：用ajax异步提交的该请求，shiro没有对ajax请求有很好的集成
+
+	> 解决：用jquery的ajax的error函数来显示相应的错误信息
+
+	> 扩展：将请求修改为表单的submit同步进行提交，成功显示出了预先写好的拒绝访问页面
+
+9. 访问未授权的资源将不会跳转到unauthorizedUrl所指定的拒绝访问页面，而是在浏览器显示一堆异常
+	> 原因：没有配置shiro的perms过滤器
+	
+	> 解决：在shiro的filterChainDefinitions属性中增加如下配置：/sysmgr/getDictListPage.action = perms[dict:query]
+
+10. 在junit中测试菜单的修改功能时出现异常，但是在服务器上运行却没有问题
+	> 原因：在获取updateBy（修改人id）时是在shiro的SecurityManager环境中获取的，但是junit的单机测试环境并没有使用SecurityManager，所以获取不到相应的字段，导致后台报错
+
+	> 解决：手动设置updateBy字段的值
+
+	> 教训：在测试某些功能的时候，可能需要依赖服务器开启时所提供的环境，单机测试的时候要注意手动设置一些属性。
+
+
 
 ## 项目的收获
 
 
-项目持续更新中...
-更多精彩内容，敬请关注[曲健磊的博客](http://blog.csdn.net/a909301740 "曲健磊的博客")
 
+
+
+
+项目持续更新中...<br/>
+更多精彩内容，敬请关注[曲健磊的博客](http://blog.csdn.net/a909301740 "曲健磊的博客")
