@@ -1,7 +1,7 @@
 ﻿# 权限管理系统（Permission-Management-System）
 
 ## 项目背景
-> 一个系统它主要分为两大模块：业务功能模块+系统功能模块。权限管理系统其实并不是一套完整的系统，准确的说权限管理只是一个系统功能模块，这个系统能够实现什么功能还是需要业务模块的支持。但是这个权限管理却是每一个系统必不可少的一部分，所以，我决定通过自己所学的知识来完成这个权限管理功能模块。
+> 一个系统它主要分为两大模块：业务功能模块+系统功能模块。权限管理系统其实并不是一套完整的系统，准确的说权限管理只是一个系统功能模块，一个系统能够实现什么功能还是需要业务模块的支持。但是这个权限管理却是每一个系统必不可少的一部分，所以，我决定通过自己所学的知识来完成这个权限管理功能模块。
 
 ## 项目目标
 * 用户管理：用户能够通过创建的用户访问系统，操作系统的一些基本功能
@@ -111,6 +111,39 @@
 	
 	> 教训：在设置资源的访问权限的时候要具体问题具体分析，结合项目的请求的执行流程来处理业务逻辑
 
+6. shiro-spring-1.3.2版本没办法与shiro-core-1.2.3版本集成，shiro-ehcache-1.2.2没办法与shiro-core-1.2.2版本集成
+	> 原因：shiro-core版本过高，其他依赖的jar包无法很好的兼容
+
+	> 解决：更换成shiro-core-1.2.1之后，完美解决
+
+	> 教训：在使用一些框架或者组件的时候尽量不要使用最新的版本，建议使用最稳定的版本。一句俗话说的好：最好的,不一定最合适,最合适的,才是真正最好的。
+
+7. 使用shiro做的权限控制，在输入完用户名和密码时进行登录，但是任然被拦在了登录页面
+	> 原因：shiro的过滤链配置错误
+
+	> 解决：main.action为登录成功的请求，已经在successUrl里面配置了main.action就不要在过滤链里面再配，正确配置如下：
+
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager"></property>
+		<!-- loginUrl为登录页面，并不是登录请求 -->
+		<property name="loginUrl" value="/toLogin.action"></property>
+		<!-- successUrl为登录成功后的页面 -->
+		<property name="successUrl" value="/main.action"></property>
+		<property name="filterChainDefinitions">
+			<value>
+				<!-- 静态资源可以匿名访问 -->
+				/jsAndCss/** = anon
+				<!-- 登录的请求为匿名（这个都拦截那这系统就没法进了） -->
+				/login.action = anon
+				<!-- 所有的请求都需要认证，放在最后 -->
+				/** = authc
+			</value>
+		</property>
+	</bean>
+
 ## 项目的收获
 
+
+项目持续更新中...
+更多精彩内容，敬请关注[曲健磊的博客](http://blog.csdn.net/a909301740 "曲健磊的博客")
 
