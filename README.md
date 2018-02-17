@@ -21,6 +21,7 @@
 * Java版本：1.8
 * 数据库：mysql5.6.36
 * 服务器：tomcat8
+* 项目的构建工具：Maven
 
 ### 后台框架：
 
@@ -60,6 +61,21 @@
 	webapp/jsAndCss/css 一些css文件<br/>
 	webapp/jsAndCss/img 一些图片文件<br/>
 	webapp/WEB-INF/pages 放页面<br/>
+
+* 项目的配置文件命名：
+	> applicationContext.xml spring的主配置文件<br/>
+	applicationContext-shiro.xml 放置shiro的过滤器以及SecurityManager环境<br/>
+	ehcache.xml ehcache的配置文件<br/>
+	ehcache.xsd ehcache标签的定义<br/>
+	jdbc.properties 与数据库相关的配置文件，例如：用户名，密码...<br/>
+	log4j.properties 日志相关的输出配置<br/>
+	mybatis-cfg.xml mybatis的主配置文件<br/>
+	struts-sysmgr.xml 与系统管理相关的struts2的配置文件<br/>
+	struts.properties 与struts2相关的系统常量的配置<br/>
+	struts.xml struts2的主配置文件<br/>
+	shiro-permission.ini 测试shiro的权限管理时的配置文件<br/>
+	shiro-realm.ini 测试shiro的realm<br/>
+	shiro.ini 模拟测试shiro的数据源<br/>
 
 ## 数据库ER图
 ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/er.png)
@@ -116,13 +132,13 @@
 
 	> 解决：更换成shiro-core-1.2.1之后，完美解决
 
-	> 教训：在使用一些框架或者组件的时候尽量不要使用最新的版本，建议使用最稳定的版本。一句俗话说的好：最好的,不一定最合适,最合适的,才是真正最好的
+	> 教训：在使用一些框架或者组件的时候尽量不要使用最新的版本，建议使用最稳定的版本。一句俗话说的好：最好的，不一定最合适，最合适的，才是真正最好的
 
 7. 使用shiro做的权限控制，在输入完用户名和密码时进行登录，但是任然被拦在了登录页面
 	> 原因：shiro的过滤链配置错误
 
 	> 解决：main.action为登录成功的请求，已经在successUrl里面配置了main.action就不要在过滤链里面再配，正确配置如下：
-	```
+	```xml
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager"></property>
 		<!-- loginUrl为登录页面，并不是登录请求 -->
@@ -190,13 +206,29 @@
 
 16. 在一个集合中剔除存在于另一个集合中的元素时contains判断无效
 	> 原因：contains方法默认是调用对象的equals方法来判断对象是否存在于容器中，如果不重写equals的话默认使用Object的equals方法来判断，而Object的equals方法实现如下：
-	```
+	```java
 	public boolean equals(Object obj) {
 		return (this == obj);
 	}
 	```
 
 	> 解决：重写对象的hashCode和equals方法即可
+
+17. 用eclipse打开项目时，项目的图标上出现红色错误标示的几种原因（欢迎补充）
+	> 原因：Eclipse的编译版本和项目的jdk版本不匹配
+	
+	> 解决：修改项目和windows的properties的Java Compiler 即编译的jre环境
+
+	> 原因：项目属性的Project Facets设置的java版本有误，应该为jdk1.8
+
+	> 解决：修改为项目所使用的JDK1.8
+
+	> 扩展：Window -> Show View -> Markers 视图可以查看项目中的错误或者警告的详细提示信息
+
+18. tomcat一启动项目就报错，几种可能的原因（欢迎补充）
+	> 原因：org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML - 使用mybatis时mapper.xml配置文件中定义了两个同名的sql片段
+	
+	> 解决：修改其中的一个sql片段的name
 
 ## 项目的收获
 
