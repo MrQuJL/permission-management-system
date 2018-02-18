@@ -68,7 +68,7 @@ public class EncryptTest {
 		String plainPsd = "313233343536";
 		System.out.println(new String(Hex.decodeHex(plainPsd.toCharArray())));
 		// 123456
-		// hex加密后的密文的位数是元位数的2倍
+		// hex加密后的密文的位数是原位数的2倍
 	}
 	
 	//	1. 生成一个随机数
@@ -86,7 +86,7 @@ public class EncryptTest {
 	public void testDrpEncrypt() {
 		// 原密码
 		String plainPsd = "123456";
-		// 1. 生成一个随机数
+		// 1. 生成一个随机数(字节数组)
 		byte[] random = EncryptUtils.generateSalt(8);
 		// 2. 用可逆的加密算法加密随机数
 		String randomHex = EncryptUtils.encodeHex(random);

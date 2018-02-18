@@ -37,7 +37,7 @@ $.each(formArray,function(i, item) {
 	jsonObj[item.name] = item.value;
 });
 jsonObj = JSON.stringify(jsonObj);
-详细用法参见：http://blog.csdn.net/a909301740/article/details/78809567
+详细用法参考：http://blog.csdn.net/a909301740/article/details/78809567
 
 10. 在后台通过fastjson的JSON.parseObject(obj, Class.class)解析该json字符串
 
