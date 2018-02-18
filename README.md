@@ -245,10 +245,10 @@
 
 ## 项目的收获
 
-1. 因为WEB-INF文件夹下的页面无法通过url地址栏直接访问，所以可以将所有的页面放到WEB-INF文件夹下保护起来
+1. 因为WEB-INF文件夹下的页面无法通过url地址栏直接访问，所以可以将所有的页面放到WEB-INF文件夹下保护起来，通过后台的跳转来返回页面
 
 2. 登录成功后一定要重定向到主页面，不能转发，转发的话一按F5刷新就会提示重新登录（用户体验不好）
-```
+```xml
 <!-- 登录 -->
 <action name="login" class="com.lyu.pms.sysmanage.action.LoginAction" method="login">
 	<result name="main" type="redirect">/main.action</result>
@@ -261,8 +261,57 @@
 </action>
 ```
 
+3. 在用户登录错误时虽然我们可以精确的定位出是用户名错误还是密码错误，但是我们一般不直接告诉用户是用户名错误还是密码错误，目的是为了防止恶意软件暴力破解。
 
-3. 
+4. webapp目录下面只留一个index.jsp页面来重定向到后台的toLogin请求，做为引导页面，index.jsp的内容如下：
+```jsp
+<% response.sendRedirect(request.getContextPath() + "/toLogin.action"); %>
+```
+
+5. 将登陆的action配置与系统模块分离开来，用两个文件struts.xml, struts-sysmgr.xml来分别维护登录模块和系统功能模块
+
+6. 页面引入的js文件过多，为了简化页面，把这些script标签再放到一个jsp页面里面，引入这个jsp页面，在本项目中是这样引入的：
+```jsp
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+<%@ taglib prefix="sys" tagdir="/WEB-INF/tags" %>
+
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<c:set var="ctxJsAndcss" value="${ctx}/jsAndCss" />
+
+<script src="${ctxJsAndcss}/jquery/jquery-1.8.3.min.js" type="text/javascript"></script>
+<link href="${ctxJsAndcss}/bootstrap/2.3.1/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+<script src="${ctxJsAndcss}/bootstrap/2.3.1/js/bootstrap.min.js" type="text/javascript"></script>
+<link href="${ctxJsAndcss}/jquery-select2/3.4/select2.min.css" rel="stylesheet" />
+<script src="${ctxJsAndcss}/jquery-select2/3.4/select2.min.js" type="text/javascript"></script>
+<link href="${ctxJsAndcss}/jquery-validation/1.11.0/jquery.validate.min.css" type="text/css" rel="stylesheet" />
+<script src="${ctxJsAndcss}/jquery-validation/1.11.0/jquery.validate.min.js" type="text/javascript"></script>
+<link href="${ctxJsAndcss}/jquery-jbox/2.3/Skins/Bootstrap/jbox.min.css" rel="stylesheet" />
+<script src="${ctxJsAndcss}/jquery-jbox/2.3/jquery.jBox-2.3.min.js" type="text/javascript"></script>
+<link href="${ctxJsAndcss}/treeTable/themes/vsStyle/treeTable.min.css" rel="stylesheet" type="text/css" />
+<script src="${ctxJsAndcss}/treeTable/jquery.treeTable.min.js" type="text/javascript"></script>
+<script src="${ctxJsAndcss}/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+<link href="${ctxJsAndcss}/jquery-ztree/3.5.12/css/zTreeStyle/zTreeStyle.min.css" rel="stylesheet" type="text/css"/>
+<script src="${ctxJsAndcss}/jquery-ztree/3.5.12/js/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+<link href="${ctxJsAndcss}/common/common.css" type="text/css" rel="stylesheet" />
+<script src="${ctxJsAndcss}/common/common.js" type="text/javascript"></script>
+```
+
+7. 在使用jsp的include标签引入文件时一定要使用绝对路径，否则，在页面来回切换的时候会由于相对路径的问题找不到js和css文件，例：
+```jsp
+<%-- 在web应用中webapp就是根目录 "/" --%>
+<%@ include file="/WEB-INF/pages/include/head.jsp" %>
+```
+
+8. 在个人信息和修改密码这样同一个页面的两个选项卡之间进行切换的时候，切换到一个选项卡的时候，将当前这个选项卡的点击事件remove掉，防止用户频繁点击，造成不必要的系统开销
+
+
+
+
+
+
+
+
 
 
 
