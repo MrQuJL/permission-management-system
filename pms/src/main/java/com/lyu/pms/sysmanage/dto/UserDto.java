@@ -1,7 +1,9 @@
 package com.lyu.pms.sysmanage.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
+import com.lyu.pms.sysmanage.entity.Role;
 import com.lyu.pms.sysmanage.entity.User;
 
 /**
@@ -16,7 +18,11 @@ public class UserDto extends User implements Serializable {
 
 	private static final long serialVersionUID = 4282362845767317022L;
 	
+	// 部门名称
 	private String name;
+	
+	// 角色列表
+	private List<Role> roleList;
 	
 	public String getName() {
 		return name;
@@ -25,5 +31,12 @@ public class UserDto extends User implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
+	public List<Role> getRoleList() {
+		return roleList;
+	}
+
+	public void setRoleList(List<Role> roleList) {
+		this.roleList = roleList;
+	}
 }

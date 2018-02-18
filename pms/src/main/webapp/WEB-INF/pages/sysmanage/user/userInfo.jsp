@@ -30,6 +30,18 @@
 						$("#phone").val(data.phone);
 						$("#mobile").val(data.mobile);
 						$("#remarks").val(data.remarks);
+						
+						var roleList = data.roleList;
+						var roleContent = "";
+						for (var i = 0; i < roleList.length; i++) {
+							if (i != roleList.length - 1) {
+								roleContent = roleContent + roleList[i].name + ","; 
+							} else {
+								roleContent = roleContent + roleList[i].name; 
+							}
+						}
+						$("#roleList").text(roleContent);
+						
 						top.$.jBox.closeTip();
 					}
 				});
@@ -123,7 +135,7 @@
 		<div class="control-group">
 			<label class="control-label">用户角色:</label>
 			<div class="controls">
-				<label class="lbl">公司管理员,系统管理员</label>
+				<label class="lbl" id="roleList"></label>
 			</div>
 		</div>
 		<div class="form-actions">

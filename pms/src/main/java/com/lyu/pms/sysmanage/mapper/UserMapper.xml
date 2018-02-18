@@ -43,12 +43,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE user_id = #{userId}
 	</select>
 	
+	<!-- 用户resultMap，包括用户的角色列表 -->
+	<resultMap type="userDto" id="userDtoResultMap">
+		<id column="user_id" property="userId"></id>
+		<result column="dept_name" property="name" />
+		<result column="dept_id" property="deptId" />
+		<result column="login_name" property="loginName" />
+		<result column="user_name" property="userName" />
+		<result column="user_no" property="userNo" />
+		<result column="email" property="email" />
+		<result column="user_no" property="userNo" />
+		<result column="phone" property="phone" />
+		<result column="mobile" property="mobile" />
+		<result column="remarks" property="remarks" />
+		<collection property="roleList" ofType="role">
+			<result column="role_name" property="name" />
+		</collection>
+	</resultMap>
+	
 	<!-- 通过userId获得用户对象包括部门名称，公司名称... -->
-	<select id="getUserInfoById" resultType="userDto" parameterType="long">
-		SELECT a.name, b.user_id, b.dept_id, b.login_name, b.user_name, b.user_no, b.email,
-		b.phone, b.mobile, b.remarks
-		FROM pms_sys_dept a, pms_sys_user b
-		WHERE a.id = b.dept_id AND b.user_id = #{userId};
+	<select id="getUserInfoById" resultMap="userDtoResultMap" parameterType="long">
+		SELECT a.name dept_name, b.user_id, b.dept_id, b.login_name, b.user_name,
+		b.user_no, b.email, b.phone, b.mobile, b.remarks, d.name role_name
+		FROM pms_sys_dept a, pms_sys_user b,
+		pms_sys_user_role c, pms_sys_role d
+		WHERE a.id = b.dept_id AND b.user_id = c.user_id 
+		AND c.role_id = d.id AND b.user_id = #{userId} AND d.del_flag = 0
 	</select>
 	
 	<!-- 修改用户的密码 -->

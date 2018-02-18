@@ -1,0 +1,15 @@
+2018/2/17
+
+1. 在显示用户角色列表的时候，同时也显示出了很多重复的菜单
+
+原因：一个用户可能有多个角色，而不同的角色可能有相同的菜单，所以在显示菜单的时候出现了重复
+
+解决：查询用户具有的菜单列表的时候进行list集合的去重，Linked可以保证有序
+this.menuList = new ArrayList<Menu>(new LinkedHashSet<Menu>(list));
+
+2. 通过set做为一个临时容器去重，去重失败，菜单反而更多了
+因为使用到了hash表，所以要重写hashCode和equals方法，否则容器使用默认的
+hashCode和equals方法判断元素是否重复不满足我们的要求
+
+解决：重写hashCode和equals方法
+

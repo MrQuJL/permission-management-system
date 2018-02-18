@@ -112,7 +112,7 @@
 				<div class="brand"><span style="cursor:pointer;" onclick="" id="productName">权限管理系统</span></div>
 				<ul id="userControl" class="nav pull-right">
 					<li id="userInfo" class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="个人信息">您好, 系统超级管理员&nbsp;</a>
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="个人信息">您好, ${loginName}&nbsp;</a>
 						<ul class="dropdown-menu">
 							<li><a href="${ctx}/sysmgr/userInfo.action" target="mainFrame"><i class="icon-user"></i>&nbsp; 个人信息</a></li>
 							<li><a href="${ctx}/sysmgr/changePwd.action" target="mainFrame"><i class="icon-lock"></i>&nbsp;  修改密码</a></li>

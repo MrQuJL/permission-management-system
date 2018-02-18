@@ -1,5 +1,7 @@
 package com.lyu.pms.sysmanage.action;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -14,6 +16,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 
 import com.lyu.pms.sysmanage.entity.Menu;
+import com.lyu.pms.sysmanage.entity.User;
 import com.lyu.pms.sysmanage.service.IMenuService;
 import com.lyu.pms.sysmanage.service.IUserService;
 import com.lyu.pms.util.UserUtils;
@@ -64,7 +67,12 @@ public class LoginAction {
 	 * @return
 	 */
 	public String main() {
-		this.menuList = this.menuService.getMenuListByUserId(UserUtils.getCurrentUserId());
+		List<Menu> list = this.menuService.getMenuListByUserId(UserUtils.getCurrentUserId());
+		// 去除多个角色中重复菜单
+		this.menuList = new ArrayList<Menu>(new LinkedHashSet<Menu>(list));
+		// 用户进入主页面的时候同时看到提示语：您好, xxx
+		User user = this.userService.getUserById(UserUtils.getCurrentUserId());
+		this.loginName = user.getLoginName();
 		
 		return "mainPage";
 	}

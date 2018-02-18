@@ -214,7 +214,7 @@
 
 	> 解决：重写对象的hashCode和equals方法即可
 
-17. 用eclipse打开项目时，项目的图标上出现红色错误标示的几种原因（欢迎补充）
+17. 用eclipse打开项目时，项目的图标上出现红色错误标示的几种原因（**欢迎补充**）
 	> 原因：Eclipse的编译版本和项目的jdk版本不匹配
 	
 	> 解决：修改项目和windows的properties的Java Compiler 即编译的jre环境
@@ -225,7 +225,7 @@
 
 	> 扩展：Window -> Show View -> Markers 视图可以查看项目中的错误或者警告的详细提示信息
 
-18. tomcat一启动项目就报错，几种可能的原因（欢迎补充）
+18. tomcat一启动项目就报错，几种可能的原因（**欢迎补充**）
 	> 原因：org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML - 使用mybatis时mapper.xml配置文件中定义了两个同名的sql片段
 	
 	> 解决：修改其中的一个sql片段的name
