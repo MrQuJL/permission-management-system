@@ -44,38 +44,38 @@
 
 ## 项目的约定
 * 项目的后台包结构：
-	> com.company.projectName.common 通用的类<br/>
-	com.company.projectName.interceptor 自定义拦截器<br/>
-	com.company.projectName.security shiro相关安全管理<br/>
-	com.company.projectName.moduleName.action 业务控制类<br/>
-	com.company.projectName.moduleName.dto 业务bean<br/>
-	com.company.projectName.moduleName.entity 实体类<br/>
-	com.company.projectName.moduleName.mapper mapper映射<br/>
-	com.company.projectName.moduleName.service 服务类<br/>
-	com.company.projectName.test 测试类<br/>
-	com.company.projectName.util 工具类<br/>
+	> com.company.projectName.common &nbsp;&nbsp;通用的类<br/>
+	com.company.projectName.interceptor &nbsp;&nbsp;自定义拦截器<br/>
+	com.company.projectName.security &nbsp;&nbsp;shiro相关安全管理<br/>
+	com.company.projectName.moduleName.action &nbsp;&nbsp;业务控制类<br/>
+	com.company.projectName.moduleName.dto &nbsp;&nbsp;业务bean<br/>
+	com.company.projectName.moduleName.entity &nbsp;&nbsp;实体类<br/>
+	com.company.projectName.moduleName.mapper &nbsp;&nbsp;mapper映射<br/>
+	com.company.projectName.moduleName.service &nbsp;&nbsp;服务类<br/>
+	com.company.projectName.test &nbsp;&nbsp;测试类<br/>
+	com.company.projectName.util &nbsp;&nbsp;工具类<br/>
 
 * 项目的前台页面结构:
-	> webapp/index.jsp 引导页面，通过后台跳转到登陆页面<br/>
-	webapp/jsAndCss/js 一些js文件<br/>
-	webapp/jsAndCss/css 一些css文件<br/>
-	webapp/jsAndCss/img 一些图片文件<br/>
-	webapp/WEB-INF/pages 放页面<br/>
+	> webapp/index.jsp &nbsp;&nbsp;引导页面，通过后台跳转到登陆页面<br/>
+	webapp/jsAndCss/js &nbsp;&nbsp;一些js文件<br/>
+	webapp/jsAndCss/css &nbsp;&nbsp;一些css文件<br/>
+	webapp/jsAndCss/img &nbsp;&nbsp;一些图片文件<br/>
+	webapp/WEB-INF/pages &nbsp;&nbsp;放页面<br/>
 
 * 项目的配置文件命名：
-	> applicationContext.xml spring的主配置文件<br/>
-	applicationContext-shiro.xml 放置shiro的过滤器以及SecurityManager环境<br/>
-	ehcache.xml ehcache的配置文件<br/>
-	ehcache.xsd ehcache标签的定义<br/>
-	jdbc.properties 与数据库相关的配置文件，例如：用户名，密码...<br/>
-	log4j.properties 日志相关的输出配置<br/>
-	mybatis-cfg.xml mybatis的主配置文件<br/>
-	struts-sysmgr.xml 与系统管理相关的struts2的配置文件<br/>
-	struts.properties 与struts2相关的系统常量的配置<br/>
-	struts.xml struts2的主配置文件<br/>
-	shiro-permission.ini 测试shiro的权限管理时的配置文件<br/>
-	shiro-realm.ini 测试shiro的realm<br/>
-	shiro.ini 模拟测试shiro的数据源<br/>
+	> applicationContext.xml &nbsp;&nbsp;spring的主配置文件<br/>
+	applicationContext-shiro.xml &nbsp;&nbsp;放置shiro的过滤器以及SecurityManager环境<br/>
+	ehcache.xml &nbsp;&nbsp;ehcache的配置文件<br/>
+	ehcache.xsd &nbsp;&nbsp;ehcache标签的定义<br/>
+	jdbc.properties &nbsp;&nbsp;与数据库相关的配置文件，例如：用户名，密码...<br/>
+	log4j.properties &nbsp;&nbsp;日志相关的输出配置<br/>
+	mybatis-cfg.xml &nbsp;&nbsp;mybatis的主配置文件<br/>
+	struts-sysmgr.xml &nbsp;&nbsp;与系统管理相关的struts2的配置文件<br/>
+	struts.properties &nbsp;&nbsp;与struts2相关的系统常量的配置<br/>
+	struts.xml &nbsp;&nbsp;struts2的主配置文件<br/>
+	shiro-permission.ini &nbsp;&nbsp;测试shiro的权限管理时的配置文件<br/>
+	shiro-realm.ini &nbsp;&nbsp;测试shiro的realm<br/>
+	shiro.ini &nbsp;&nbsp;模拟测试shiro的数据源<br/>
 
 ## 数据库ER图
 ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/er.png)
@@ -230,8 +230,39 @@
 	
 	> 解决：修改其中的一个sql片段的name
 
+19. 为某个用户增加了一些角色，发现界面上的菜单出现了重复的现象
+	> 原因：每个角色所拥有的菜单列表可能有重叠的情况，在根据用户查询他所拥有的角色，在根据查询到的角色去查询相应的菜单列表时就出现了重复
+
+	> 解决：查询完用户拥有的菜单列表的时，进行去重
+
+	> 扩展：list集合去重的一种方法：
+	```java
+	// 获取某个用户的所有角色的菜单列表
+	List<Menu> list = this.menuService.getMenuListByUserId(UserUtils.getCurrentUserId());
+	// 通过HashSet可以去除多个角色中重复的菜单，使用Linked是为了保证有序
+	this.menuList = new ArrayList<Menu>(new LinkedHashSet<Menu>(list));
+	```
+
 ## 项目的收获
 
+1. 因为WEB-INF文件夹下的页面无法通过url地址栏直接访问，所以可以将所有的页面放到WEB-INF文件夹下保护起来
+
+2. 登录成功后一定要重定向到主页面，不能转发，转发的话一按F5刷新就会提示重新登录（用户体验不好）
+```
+<!-- 登录 -->
+<action name="login" class="com.lyu.pms.sysmanage.action.LoginAction" method="login">
+	<result name="main" type="redirect">/main.action</result>
+	<result name="loginPage" type="dispatcher">/WEB-INF/pages/login.jsp</result>
+</action>
+
+<!-- 重定向到主页面的请求 -->
+<action name="main" class="com.lyu.pms.sysmanage.action.LoginAction" method="main">
+	<result name="mainPage" type="dispatcher">/WEB-INF/pages/main/main.jsp</result>
+</action>
+```
+
+
+3. 
 
 
 

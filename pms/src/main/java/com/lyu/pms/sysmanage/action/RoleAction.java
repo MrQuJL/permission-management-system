@@ -1,5 +1,7 @@
 package com.lyu.pms.sysmanage.action;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import com.alibaba.fastjson.JSON;
@@ -78,6 +80,8 @@ public class RoleAction {
 		this.menuList = menuService.getMenuListByUserId(UserUtils.getCurrentUserId());
 		this.deptList = deptService.getDeptListByUId(UserUtils.getCurrentUserId());
 		this.areaList = areaService.getAreaListByUId(UserUtils.getCurrentUserId());
+		
+		this.menuList = new ArrayList<Menu>(new LinkedHashSet<Menu>(this.menuList));
 		
 		if (editFlag == 2) { // 修改的话要选中默认选中用户已经拥有的权限资源
 			// 调用service查询一下角色的id为roleId的角色信息
