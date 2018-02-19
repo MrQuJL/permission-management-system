@@ -437,13 +437,13 @@
 
 34. 为了良好的用户体验，删除之后也要重新查询一下数据
 
-35. 一个轻量级的分页组件的封装思路（当然，本项目中使用的是mybatis的pageHelper）：
-	> * 在后台编写数据库工具方言，屏蔽数据库分页方法的差异(mybatis已经完成)
+35. 一个轻量级的分页组件的封装思路（本项目中使用的是mybatis的pageHelper）：
+	* 在后台编写数据库工具方言，屏蔽数据库分页方法的差异(mybatis已经完成)
 	* 在后台编写分页的工具类，屏蔽翻页动作带来的查询差异(mybatis已经完成)
 	* 在后台编写分页条的java代码，方便页面统一生成分页条，减少页面代码重复
 
-常用的几款数据库的方言差异：
-	```sql
+36. 常用的几款数据库的方言差异：
+	```
 	# mysql: limit
 	# beginrow从0开始,pagesize表示一页多少条记录
 	SELECT * FROM TABLE A LIMIT beginrow, pagesize
@@ -456,18 +456,19 @@
 	# sqlserver: top
 	SELECT TOP 100 id, name, sex FROM TABLE
 	```
-那么如何获取数据库的类型？
+
+37. 从Connection里面可以获得数据库的类型
 	```java
-	可以在连接里面获取数据库的类型:
-	Connection con = DriverManager.getConnection(url, "admin", "admin"); // 连接到数据库
+	// 可以在连接里面获取数据库的类型:
+	Connection con = DriverManager.getConnection(url, "admin", "123");
 	DatabaseMetaData dm = con.getMetaData();
 	String dbName = dm.getDatabaseProductName();
 	String version = dm.getDatabaseProductVersion();
 	```
-通过PageInfo和前台的分页查询的js函数名来组装分页条-StringBuffer
+
+38. 通过PageInfo和前台分页查询的js函数名来组装分页条
 	```java
 	package com.lyu.pms.common.util;
-
 	import com.github.pagehelper.PageInfo;
 
 	/**
@@ -479,7 +480,6 @@
 	 * @version V1.0
 	 */
 	public class PageUtils {
-		
 		/**
 		 * 根据前台组件生成分页条
 		 * @param 
@@ -535,28 +535,91 @@
 	}
 	```
 
-36. 总结一下StringBuffer和StringBuilder的区别：
-	* 可变性：<br/>
+39. 总结一下StringBuffer和StringBuilder的区别：
+	* **可变性**：<br/>
 	String被final修饰，而且底层的char类型的数组也被final修饰，所以String不可变
 	StringBuffer和StringBuilder都继承自AbstractStringBuilder，它们的底层也是char
 	类型的数组，但是没有被final修饰，所以都是可变的<br/><br/>
-	* 线程安全性：<br/>
+	* **线程安全性**：<br/>
 	String对象不可变，也可以理解为常量，所以是线程安全的<br/>
 	StringBuffer对方法加了同步锁，所以线程安全<br/>
 	StringBuilder没有对方法加同步锁，所以线程不安全<br/><br/>
-	* 性能：<br/>
+	* **性能**：<br/>
 	每次改变String类型的变量时（例如：+）都会生成一个新的对象，性能较低
 	StringBuffer每次都是改变自身的char数组所以不会生成新对象，性能比较好
 	StringBuilder和StringBuffer相比方法没有加同步锁，所以性能相对快一些，
 	但是，却要冒线程不安全的风险，所以还是推荐StringBuffer
 
-37. 分页查询的流程：
+40. 分页查询的流程：
 	* 前台向后台传递查询条件，页数，每页的记录数
 	* action调用service方法获取PageInfo对象
 	* 从PageInfo中获取dictList对象
 	* 通过封装的分页条工具类，根据pageInfo的相关信息封装分页条
 	* 将上面两部分内容转化成json字符串发往前台
 	* 前台通过jquery操作DOM填充页面
+
+41. 权限管理的概念：
+	> 定义：权限管理实现用户对系统访问的控制，按照既定的规则或者策略控制用户访问被授权的资源
+	> 内容：权限管理包括用户认证和用户授权两个部分
+
+42. 权限管理 -> 用户认证：
+	* 概念：用户访问系统，需要验证用户的正确性和合法性
+	* 认证的几种方式：
+		* 用户名和密码
+		* 证书
+		* 指纹
+		* 二维码
+		* 刷脸登录
+	* 认证的流程(以用户名和密码认证为例):
+		* 访问系统资源（如果是匿名访问资源可以省略验证）
+		* 验证用户是否存在
+		* 验证密码是否正确
+		* 验证通过就可以访问系统资源
+		![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/用户认证流程图.png)
+	* 用户认证的几个基本对象概念:
+		* subject 主体 可以理解为用户也可以是其他系统或者访问系统的其他对象
+		* principle 身份信息 就是主体的标示或者编码（用户名）
+		* credential 凭证信息 比如：密码，证书，指纹，人脸...
+
+43. 权限管理 -> 用户授权：
+	* 概念：简单理解就是访问控制，用户认证通过后，系统对资源进行授权给用户，用户才能访问
+	* 授权的流程：
+		* 分配权限
+		* 用户通过认证以后，即将访问系统资源
+		* 要去查询该用户是否有访问该资源的权限
+		* 如果有则访问，无则拒绝
+		![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/用户授权流程图.png)
+	* 授权的两种类型：
+		* 基于角色的访问授权控制（粗粒度）
+		* 基于资源的访问授权控制（细粒度）
+
+44. 最小化授权原则：
+	> 因为系统中的资源变化是最小的，而且资源如果有变化可以通过授权分配给用户，不需要修改业务代码，所以一般的权限管理都是基于资源的访问进行授权控制
+
+45. 权限管理实现 -> 解决方案:
+	1. 粗粒度权限管理（按钮级别权限管理）
+		* 概念：对资源类型的权限管理比如：菜单，url，按钮...
+		* 实现：用基于url的拦截方式进行系统级别的处理（不会侵入到业务中去）
+		比如：filter，interceptor，springAOP（前置通知）
+		* 基于url的拦截方式用拦截器来实现（需要两个拦截器：认证拦截器，授权拦截器）
+			* 认证拦截器：loginInterceptor
+				a: 定义身份信息对象principle<br/>
+				b: 在用户确认登录以后，将用户身份信息放到session<br/>
+				c: 编写登录拦截器，遇到除了匿名访问之外的url，判断session里面是否存在用户身份信息，如果有则认证成功，放行，否则跳转到登录页面或者拒绝访问页面<br/>
+				d: 配置拦截器<br/>
+			* 授权拦截器：AuthorizationInterceptor
+				a:在登录的LoginAction用户身份验证通过以后，从数据库获取该用户的授权信息<br/>
+				b:编写授权拦截器，通过认证拦截器以后，进入授权拦截器，从session取出此次授权资源信息，查询此次访问的资源是否在用户的权限范围之内，若果是，放行，否则，转到拒绝访问页面<br/>
+				c:配置拦截器<br/>
+
+	2. 细粒度权限管理
+		* 概念：不仅对资源类型进行权限管理，还对资源实例进行管理，
+		比如：本不能员工只能查看本部门信息，不能查看其它部门信息
+		
+		* 细粒度级别的权限管理，因为没有共性，所以不能进行系统级别
+		的处理，只能放在业务逻辑中单独处理
+
+
 
 
 ## 致谢
