@@ -25,12 +25,12 @@ shiro的优势
 	
 	* CacheManager:缓存管理，将用户的权限数据存储在缓存，提高系统性能(Ehcache)
  
-3. shiro的开发环境搭建	
-	* shiro的核心包		  shiro-core-1.2.3.jar
-	* shiro与web整合的包	  shiro-web-1.2.3.jar
-	* shiro与spring整合的包       shiro-spring-1.2.3.jar
-	* shiro与quartz整合的包       quartz-1.6.1.jar shiro-quartz-1.2.3.jar
-	* shiro与ehcache整合的包       ehcache-core-2.5.0.jar  shiro-ehcache-1.2.3.jar
+3. shiro的开发环境搭建
+	* shiro的核心包		  shiro-core-1.2.1.jar
+	* shiro与web整合的包	  shiro-web-1.2.1.jar
+	* shiro与spring整合的包       shiro-spring-1.2.1.jar
+	* shiro与quartz整合的包       quartz-1.6.1.jar shiro-quartz-1.2.1.jar
+	* shiro与ehcache整合的包       ehcache-core-2.5.0.jar  shiro-ehcache-1.2.1.jar
 
 4. shiro的身份认证流程
 	1)主体subject登录
@@ -69,7 +69,7 @@ shiro的优势
 知识点：Arrays.asList("role1","role2")获得的list的长度是不能变的，当向其中add
 或remove元素的时候就会抛出异常，因为获得的这个list是Arrays类的一个内部类当调用add
 或remove方法的时候其实是调用的他的父类AbstractList的add和remove方法，而调用这两个
-方法是会直接抛出异常的：UnsupportedOperationException
+方法是会直接抛出异常：UnsupportedOperationException
 
 
 

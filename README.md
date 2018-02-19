@@ -575,7 +575,7 @@
 		* 验证用户是否存在
 		* 验证密码是否正确
 		* 验证通过就可以访问系统资源
-		![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/用户认证流程图.png)
+		* ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/用户认证流程图.png)
 	* 用户认证的几个基本对象概念:
 		* subject 主体 可以理解为用户也可以是其他系统或者访问系统的其他对象
 		* principle 身份信息 就是主体的标示或者编码（用户名）
@@ -588,7 +588,7 @@
 		* 用户通过认证以后，即将访问系统资源
 		* 要去查询该用户是否有访问该资源的权限
 		* 如果有则访问，无则拒绝
-		![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/用户授权流程图.png)
+		* ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/用户授权流程图.png)
 	* 授权的两种类型：
 		* 基于角色的访问授权控制（粗粒度）
 		* 基于资源的访问授权控制（细粒度）
@@ -599,18 +599,22 @@
 45. 权限管理实现 -> 解决方案:
 	1. 粗粒度权限管理（按钮级别权限管理）
 		* 概念：对资源类型的权限管理比如：菜单，url，按钮...
+
 		* 实现：用基于url的拦截方式进行系统级别的处理（不会侵入到业务中去）
 		比如：filter，interceptor，springAOP（前置通知）
+		
 		* 基于url的拦截方式用拦截器来实现（需要两个拦截器：认证拦截器，授权拦截器）
+
 			* 认证拦截器：loginInterceptor
 				a: 定义身份信息对象principle<br/>
 				b: 在用户确认登录以后，将用户身份信息放到session<br/>
 				c: 编写登录拦截器，遇到除了匿名访问之外的url，判断session里面是否存在用户身份信息，如果有则认证成功，放行，否则跳转到登录页面或者拒绝访问页面<br/>
 				d: 配置拦截器<br/>
+
 			* 授权拦截器：AuthorizationInterceptor
-				a:在登录的LoginAction用户身份验证通过以后，从数据库获取该用户的授权信息<br/>
-				b:编写授权拦截器，通过认证拦截器以后，进入授权拦截器，从session取出此次授权资源信息，查询此次访问的资源是否在用户的权限范围之内，若果是，放行，否则，转到拒绝访问页面<br/>
-				c:配置拦截器<br/>
+				a: 在登录的LoginAction用户身份验证通过以后，从数据库获取该用户的授权信息<br/>
+				b: 编写授权拦截器，通过认证拦截器以后，进入授权拦截器，从session取出此次授权资源信息，查询此次访问的资源是否在用户的权限范围之内，若果是，放行，否则，转到拒绝访问页面<br/>
+				c: 配置拦截器<br/>
 
 	2. 细粒度权限管理
 		* 概念：不仅对资源类型进行权限管理，还对资源实例进行管理，
@@ -619,7 +623,88 @@
 		* 细粒度级别的权限管理，因为没有共性，所以不能进行系统级别
 		的处理，只能放在业务逻辑中单独处理
 
+46. 在系统内部可以通过单点登录访问另外一个系统的资源，所以在菜单表里面设置一个target字段，用来指明此次连接的目的地，设置href字段则是用来表示资源的uri
 
+47. 自己定义的拦截器一般放在struts2默认的拦截器的前面，如果放在后面，struts2默认的拦截器栈里面的19个拦截器就会先拦截，如果一次请求未通过自定义拦截器设定的规则，那么就白白浪费了系统的性能
+
+48. shiro简介
+	shiro是apache下面的一个开源框架，他实现了用户身份认证，权限授权 ，加密等功能，组成了一个系统级的安全认证框架
+
+49. shiro的优势
+	shiro是将安全认证相关的功能抽取出来组成一个框架，使用简单，灵活，可以非常快速的完成认证，授权等功能开发，降低系统集成难度，使用广泛，不仅可以运行在web应用，也可以在非web应用上使用，而且还支持分布式集群方式
+
+50. shiro的构成以及相关的概念	
+	* Subject:主体，它在shiro里面是一个接口，外部系统通过subject进行认证授权，subject其实是通过Security Manager来完成身份认证的操作
+
+	* SecurityManager:安全管理器，是shiro的核心，管理所有的subject，它是通过Authenticator进行身份认证，通过Authorizer进行授权，通过sessionManager进行会话管理，SecurityManger也是一个接口 ，继承了	Authenticator，Authorizer，sessionManager三个接口
+
+	* Authenticator 认证器，用来对用户身份进行认证，它也是一个接口
+
+	* Authorizer 	授权器，用户通过认证器认证以后，在访问资源时，需要通过授权器判断此用户是否有操作权限
+
+	* SessionManager 会话管理，不依赖于web容器的session,所以shiro能在非web系统中应用	
+
+	* realm  :认证和授权需要通过realm获取用户的权限数据，相当于数据源
+
+	* CacheManager:缓存管理，将用户的权限数据存储在缓存，提高系统性能(Ehcache)
+
+	* ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/shiro-framework.jpg)
+
+51. shiro的开发环境搭建
+	* shiro的核心包 &nbsp;&nbsp;&nbsp;  shiro-core-1.2.1.jar
+	* shiro与web整合的包 &nbsp;&nbsp;&nbsp;  shiro-web-1.2.1.jar
+	* shiro与spring整合的包 &nbsp;&nbsp;&nbsp;  shiro-spring-1.2.1.jar
+	* shiro与ehcache整合的包 &nbsp;&nbsp;&nbsp;  ehcache-core-2.5.0.jar  shiro-ehcache-1.2.1.jar
+
+52. shiro的身份认证流程
+	* 主体subject登录
+	* SecurityManager调用Authenticator来进行认证
+	* Authenticator调用默认的realm（相当于一个数据源）来访问数据进行验证
+	* 在realm里面会返回一个能够认证通过的AuthenticationInfo认证信息
+	* 认证通过则进入系统，否则抛出异常
+	* ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/shiro认证流程.png)
+
+53. shiro的授权流程
+	* 主体subject登录
+	* SecurityManager来对主体的登录进行认证
+	* SecurityManager调用Authenticator来进行认证
+	* 认证通过进行授权
+	* SecurityManager调用Authorier来进行授权
+	* 授权成功访问系统资源
+	* ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/shiro授权流程.png)
+
+	> 注：自定义realm需要继承AuthorizingRealm实现doGetAuthorizationInfo和doGetAuthenticationInfo方法来完成认证
+
+54. shiro在用户认证之后就会把用户的身份信息放入它自己的session里面，在进行用户授权的时候它就会直接去session里面去（缓存起来，提高检索效率）
+
+55. 知识点：Arrays.asList("role1","role2")获得的list的长度是不能变的，当向其中add或remove元素的时候就会抛出异常，因为获得的这个list是Arrays类的一个内部类当调用add或remove方法的时候其实是调用的他的父类AbstractList的add和remove方法，而调用这两个方法是会直接抛出异常：UnsupportedOperationException
+
+56. shiro与web项目进行整合-通过spring的DelegatingFilterProxy代理来生成shiro过滤器
+	```xml
+	<!-- shiro的过滤器 -->
+	<filter>
+		<filter-name>shiroFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<init-param>
+			<!-- 这个参数为true表示由web容器来控制filter的生命周期 -->
+			<!-- 如果让spring管理就设置为false -->
+			<param-name>targetFilterLifecycle</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>targetBeanName</param-name>
+			<!-- 默认就是shiroFilter -->
+			<param-value>shiroFilter</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>shiroFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	```
+
+57. 在spring的配置文件中注册ShiroFilterFactoryBean
+	
 
 
 ## 致谢
