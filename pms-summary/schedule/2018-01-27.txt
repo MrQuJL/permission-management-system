@@ -12,7 +12,6 @@
 注意：之前登录一直用的是id为1的用户，shiro功能实现后，从subject主体中取出当前用户的
 身份信息中的userId，做成动态的。
 
-
 2. 使用tree table作为前台的树形组件，通过forEach来遍历后台发来的list集合
 
 复习jstl标签：
@@ -28,5 +27,4 @@
 	</c:when>
 	<c:otherwise>不显示</c:otherwise>
 </c:choose>
-
 

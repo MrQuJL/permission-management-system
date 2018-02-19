@@ -704,11 +704,94 @@
 	```
 
 57. 在spring的配置文件中注册ShiroFilterFactoryBean
+	```xml
+	<!-- web.xml配置的过滤器对应的bean -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager"></property>
+		<property name="loginUrl" value="/toLogin.action"></property>
+		<property name="successUrl" value="/main.action"></property>
+		<property name="unauthorizedUrl" value="/refusePage.jsp" />
+		
+		<property name="filterChainDefinitions">
+			<value>
+				/jsAndCss/** = anon
+				/login.action = anon
+				/sysmgr/getDictListPage.action = perms[dict:query]
+				<!-- /sysmgr/changePwd.action = perms[user:chpwd] -->
+				/** = authc
+			</value>
+		</property>
+	</bean>
 	
+	<!-- 安全管理器SecurityManager -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="userRealm"></property>
+		<property name="cacheManager" ref="cacheManager" />
+		<property name="sessionManager" ref="sessionManager" />
+	</bean>
+	
+	<!-- 自定义的realm -->
+	<bean id="userRealm" class="com.lyu.pms.security.UserRealm">
+		<!-- 注入凭证匹配器 -->
+		<property name="credentialsMatcher" ref="credentialsMatcher"></property>
+	</bean>
+	
+	<!-- 注册凭证匹配器 -->
+	<bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+		<property name="hashAlgorithmName" value="SHA-1" />
+		<property name="hashIterations" value="1024" />
+	</bean>
+	
+	<!-- 定义缓存管理器 -->
+	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManagerConfigFile" value="classpath:ehcache.xml" />
+	</bean>
+	
+	<!-- 定义会话管理器 -->
+	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+		<!-- session的失效时间 -->
+		<property name="globalSessionTimeout" value="3600000" />
+		<!-- 定时清理失效的会话 -->
+		<property name="sessionValidationInterval" value="1800000" />		
+	</bean>
+	```
 
+58. 引入shiro的标签，在前台也对请求加以控制 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %> 像下面这样把需要权限的按钮包起来：
+	```xml
+	<shiro:hasPermission name="[dict:query]">
+		<input id="btnSubmit" class="btn btn-primary" type="button" onclick="dictMgr.getDictListPage(1, 10);" value="查询"/>
+	</shiro:hasPermission>
+	```
+
+59. 关于session的时间单位：
+	* web容器tomcat中的session设置的时间单位是分钟
+
+	* servlet中的session的时间单位是秒
+
+	* shiro中的session时间的单位是毫秒
+
+60. **业务上的一点注意事项：添加菜单之后还要为系统管理员拥有的角色添加对该菜单的权限，而不直接给当前用户拥有的角色授权，这样该用户即使添加了这个菜单，想要使用该菜单仍然要通过系统管理员进行二次授权才可以使用，保障了系统的安全**
+
+61. 删除菜单之前还要判断当前菜单是否有子菜单，如果有则不能删除该菜单，这里不采用递归删除其所有子菜单的原因是为了防止用户的二次误操作导致数据丢失**（要站在用户的角度看待问题，试想：用户不小心点击了删除按钮，弹出提示框：当前菜单下还有子菜单，您确定要删除当前菜单及其子菜单吗？用户又一个不小心，点了确定... 虽然作为软件开发商，我们已经给出了提示信息，责任已经尽到了，但是，用户心里还是会有些不愉快的，下次系统维护或升级就肯定不会再找我们了，所以，这里当判断当前菜单有子菜单时就干脆不让用户删除）**
+
+62. 删除菜单之后还要删除所有角色-菜单对应表里面对该菜单的记录
+
+63. 由于上述两个功能在同一个方法中，在一个方法中多次访问数据库，需使用事务进行控制
+
+64. 菜单表中的链接字段（href）在本项目中只有三级菜单才有权限标示字段，只有"第四级"按钮才有值，所以有的菜单要输入链接，有的要输入权限标示，有些什么都不需要输入
+
+65. 查询出指定id的菜单以及它的父级菜单的名称 <br/>
+	知识点：连接查询，左连接
+	```
+	SELECT A.id, A.parent_id, A.name, A.sort, A.href, A.target, A.icon, A.is_show,
+	A.permission, A.update_by, A.update_date, A.remarks, A.del_flag, B.name parentName
+	FROM drp_sys_menu A LEFT JOIN drp_sys_menu B
+	ON A.parent_id = B.id WHERE A.id = 1
+	```
 
 ## 致谢
 感谢您对项目的关注，如果项目中有任何错误或不妥，欢迎指正，我将不胜感激。<br/>
 项目持续更新中...<br/>
 更多精彩内容，敬请关注[曲健磊的博客](http://blog.csdn.net/a909301740 "曲健磊的博客")
+
 
