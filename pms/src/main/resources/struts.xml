@@ -4,15 +4,11 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
+	<!-- 专门用于放置自定义拦截器的包 -->
 	<package name="mydefault-package" extends="json-default" abstract="true">
 		<!-- 定义拦截器 -->
 		<interceptors>
-			<!-- <interceptor name="loginInterceptor" class="com.lyu.pms.interceptor.LoginInterceptor"></interceptor>
-			<interceptor name="authorizationInterceptor" class="com.lyu.pms.interceptor.AuthorizationInterceptor"></interceptor>
-			 -->
 			 <interceptor-stack name="mydefault-interceptors">
-				<!-- <interceptor-ref name="loginInterceptor" />
-				<interceptor-ref name="authorizationInterceptor" /> -->
 				<interceptor-ref name="defaultStack" />
 			</interceptor-stack>
 		</interceptors>
@@ -21,7 +17,6 @@
 		<!-- 定义一个全局的result -->
 		<global-results>
 			<result name="loginPage" type="redirect">/toLogin.action</result>
-			<!-- <result name="refusePage">/refusePage.jsp</result> -->
 		</global-results>
 		
 	</package>

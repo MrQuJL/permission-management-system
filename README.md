@@ -248,60 +248,50 @@
 1. 因为WEB-INF文件夹下的页面无法通过url地址栏直接访问，所以可以将所有的页面放到WEB-INF文件夹下保护起来，通过后台的跳转来返回页面
 
 2. 登录成功后一定要重定向到主页面，不能转发，转发的话一按F5刷新就会提示重新登录（用户体验不好）
-```xml
-<!-- 登录 -->
-<action name="login" class="com.lyu.pms.sysmanage.action.LoginAction" method="login">
-	<result name="main" type="redirect">/main.action</result>
-	<result name="loginPage" type="dispatcher">/WEB-INF/pages/login.jsp</result>
-</action>
+	```xml
+	<!-- 登录 -->
+	<action name="login" class="com.lyu.pms.sysmanage.action.LoginAction" method="login">
+		<result name="main" type="redirect">/main.action</result>
+		<result name="loginPage" type="dispatcher">/WEB-INF/pages/login.jsp</result>
+	</action>
 
-<!-- 重定向到主页面的请求 -->
-<action name="main" class="com.lyu.pms.sysmanage.action.LoginAction" method="main">
-	<result name="mainPage" type="dispatcher">/WEB-INF/pages/main/main.jsp</result>
-</action>
-```
+	<!-- 重定向到主页面的请求 -->
+	<action name="main" class="com.lyu.pms.sysmanage.action.LoginAction" method="main">
+		<result name="mainPage" type="dispatcher">/WEB-INF/pages/main/main.jsp</result>
+	</action>
+	```
 
 3. 在用户登录错误时虽然我们可以精确的定位出是用户名错误还是密码错误，但是我们一般不直接告诉用户是用户名错误还是密码错误，目的是为了防止恶意软件暴力破解。
 
 4. webapp目录下面只留一个index.jsp页面来重定向到后台的toLogin请求，做为引导页面，index.jsp的内容如下：
-```jsp
-<% response.sendRedirect(request.getContextPath() + "/toLogin.action"); %>
-```
+	```jsp
+	<% response.sendRedirect(request.getContextPath() + "/toLogin.action"); %>
+	```
 
 5. 将登陆的action配置与系统模块分离开来，用两个文件struts.xml, struts-sysmgr.xml来分别维护登录模块和系统功能模块
 
 6. 页面引入的js文件过多，为了简化页面，把这些script标签再放到一个jsp页面里面，引入这个jsp页面，在本项目中是这样引入的：
-```jsp
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
-<%@ taglib prefix="sys" tagdir="/WEB-INF/tags" %>
+	```jsp
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+	<%@ taglib prefix="sys" tagdir="/WEB-INF/tags" %>
 
-<c:set var="ctx" value="${pageContext.request.contextPath}" />
-<c:set var="ctxJsAndcss" value="${ctx}/jsAndCss" />
+	<c:set var="ctx" value="${pageContext.request.contextPath}" />
+	<c:set var="ctxJsAndcss" value="${ctx}/jsAndCss" />
 
-<script src="${ctxJsAndcss}/jquery/jquery-1.8.3.min.js" type="text/javascript"></script>
-<link href="${ctxJsAndcss}/bootstrap/2.3.1/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
-<script src="${ctxJsAndcss}/bootstrap/2.3.1/js/bootstrap.min.js" type="text/javascript"></script>
-<link href="${ctxJsAndcss}/jquery-select2/3.4/select2.min.css" rel="stylesheet" />
-<script src="${ctxJsAndcss}/jquery-select2/3.4/select2.min.js" type="text/javascript"></script>
-<link href="${ctxJsAndcss}/jquery-validation/1.11.0/jquery.validate.min.css" type="text/css" rel="stylesheet" />
-<script src="${ctxJsAndcss}/jquery-validation/1.11.0/jquery.validate.min.js" type="text/javascript"></script>
-<link href="${ctxJsAndcss}/jquery-jbox/2.3/Skins/Bootstrap/jbox.min.css" rel="stylesheet" />
-<script src="${ctxJsAndcss}/jquery-jbox/2.3/jquery.jBox-2.3.min.js" type="text/javascript"></script>
-<link href="${ctxJsAndcss}/treeTable/themes/vsStyle/treeTable.min.css" rel="stylesheet" type="text/css" />
-<script src="${ctxJsAndcss}/treeTable/jquery.treeTable.min.js" type="text/javascript"></script>
-<script src="${ctxJsAndcss}/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
-<link href="${ctxJsAndcss}/jquery-ztree/3.5.12/css/zTreeStyle/zTreeStyle.min.css" rel="stylesheet" type="text/css"/>
-<script src="${ctxJsAndcss}/jquery-ztree/3.5.12/js/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
-<link href="${ctxJsAndcss}/common/common.css" type="text/css" rel="stylesheet" />
-<script src="${ctxJsAndcss}/common/common.js" type="text/javascript"></script>
-```
+	<script src="${ctxJsAndcss}/jquery/jquery-1.8.3.min.js" type="text/javascript"></script>
+	<link href="${ctxJsAndcss}/bootstrap/2.3.1/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+	<script src="${ctxJsAndcss}/bootstrap/2.3.1/js/bootstrap.min.js" type="text/javascript"></script>
+	...
+	<link href="${ctxJsAndcss}/common/common.css" type="text/css" rel="stylesheet" />
+	<script src="${ctxJsAndcss}/common/common.js" type="text/javascript"></script>
+	```
 
 7. 在使用jsp的include标签引入文件时一定要使用绝对路径，否则，在页面来回切换的时候会由于相对路径的问题找不到js和css文件，正例：
-```jsp
-<%-- 在web应用中webapp就是根目录 "/" --%>
-<%@ include file="/WEB-INF/pages/include/head.jsp" %>
-```
+	```jsp
+	<%-- 在web应用中webapp就是根目录 "/" --%>
+	<%@ include file="/WEB-INF/pages/include/head.jsp" %>
+	```
 
 8. 在个人信息和修改密码这样同一个页面的两个选项卡之间进行切换的时候，切换到一个选项卡的时候，将当前这个选项卡的点击事件remove掉，防止用户频繁点击，造成不必要的系统开销
 
@@ -313,24 +303,131 @@
 	* 不可逆加密算法：
 		* 线性散列算法：MD5, SHA1, HMAC
 
-> 更多关于对称非对称加密算法的解释可以参考-[几种常见加密算法解析及使用](http://blog.csdn.net/qq_26420489/article/details/53395472 "几种常见加密算法解析及使用")
+	> 更多关于对称非对称加密算法的解释可以参考-[几种常见加密算法解析及使用](http://blog.csdn.net/qq_26420489/article/details/53395472 "几种常见加密算法解析及使用")
 
 10. 项目中密码加密的流程：
-
-> 1. 生成一个随机数
-> 2. 用可逆的加密算法Hex加密随机数
-> 3. 将随机数和密码用sha1不可逆算法加密
-> 4. 将第三步得到的字符串值用可逆的加密算法加密
-> 5. 将第2步和第四步的值拼凑
+	> 1. 生成一个随机数
+	> 2. 用可逆的加密算法Hex加密随机数
+	> 3. 将随机数和密码用sha1不可逆算法加密
+	> 4. 将第三步得到的字符串值用可逆的加密算法加密
+	> 5. 将第2步和第四步的值拼凑
 
 11. 在UserRealm中验证用户登录的流程：
+	> 1. 先判断用户名是否存在
+	> 2. 如果用户名存在，取出存在数据库中加密的密码，跟传入后台的密码（加密后）进行比对
+	> 3. 比对成功，则用户认证通过
 
-> 1. 先判断用户名是否存在
-> 2. 如果用户名存在，取出存在数据库中加密的密码，跟传入后台的密码（加密后）进行比对
-> 3. 比对成功，则用户认证通过
+12. 修改密码的流程：
+	> 1. 用户输入旧密码和两次新密码
+	> 2. 前台判断新旧密码长度是否符合要求
+	> 3. 判断两次输入的新密码是否相同
+	> 4. 后台查询输入的旧密码是否是当前用户的密码
+	> 5. 如果旧密码正确，则任然要检测新密码是否符合要求
+	> 6. 新密码符合要求则将密码加密后修改数据库中对应的记录
+	> 7. 返回给前台提示信息
+
+13. 前台无论提交的是同步的请求还是异步的ajax请求，都要写全路径名，例：
+	```java
+	${ctx}/sysmgr/getDictListPage.action
+	```
+	ctx为之前定义的request域的上下文：
+	```jsp
+	<c:set var="ctx" value="${pageContext.request.contextPath}" />
+	```
+
+14. 前台用ajax提交，后台通过json返回的时候要设置result的type设为json
+
+15. 为了减少后台传送无用的数据到前台，在返回json数据的result标签里面使用<param name="includeProperties">message</param>来指定发往前台的数据，用逗号分隔
+
+16. 系统分为社交系统和应用系统
+	* 社交系统是自己可以注册账号使用的
+	* 应用系统必须是管理员创建账号，不能自己注册（本系统）
+
+17. 用户修改个人信息的时候只能修改非关键信息或者是管理员填充的非关键信息，不能修改类似部门名称，角色名称，用户工号这样的关键信息
+
+18. 显示用户的个人信息的时候不仅有user表的数据，还有dept表的部门名称，以及role表的角色名称，要进行pms_sys_user, pms_sys_dept, pms_sys_user_role, pms_sys_role四表关联查询，并且要使用mybatis的resultMap来接收查询结果，mapper.xml中的SQL如下：
+	```xml
+	<!-- 用户resultMap，包括用户的角色列表 -->
+	<resultMap type="userDto" id="userDtoResultMap">
+		<id column="user_id" property="userId"></id>
+		<result column="dept_name" property="name" />
+		<result column="dept_id" property="deptId" />
+		<result column="login_name" property="loginName" />
+		<result column="user_name" property="userName" />
+		<result column="user_no" property="userNo" />
+		<result column="email" property="email" />
+		<result column="user_no" property="userNo" />
+		<result column="phone" property="phone" />
+		<result column="mobile" property="mobile" />
+		<result column="remarks" property="remarks" />
+		<collection property="roleList" ofType="role">
+			<result column="role_name" property="name" />
+		</collection>
+	</resultMap>
+	
+	<!-- 通过userId获得用户对象包括部门名称，角色... -->
+	<select id="getUserInfoById" resultMap="userDtoResultMap" parameterType="long">
+		SELECT a.name dept_name, b.user_id, b.dept_id, b.login_name, b.user_name,
+		b.user_no, b.email, b.phone, b.mobile, b.remarks, d.name role_name
+		FROM pms_sys_dept a, pms_sys_user b,
+		pms_sys_user_role c, pms_sys_role d
+		WHERE a.id = b.dept_id AND b.user_id = c.user_id 
+		AND c.role_id = d.id AND b.user_id = #{userId} AND d.del_flag = 0
+	</select>
+	```
+
+19. 项目中使用阿里的fastjson来进行json字符串与java bean之间的转换，用法如下：
+	```java
+	// 解析前台传来的json字符串
+	Clazz clazz = JSON.parseObject(jsonObj, Clazz.class);
+	// 将一个java对象obj转换成json格式的字符串
+	String jsonStr = JSON.toJSONString(obj);
+	// 将集合对象userList转换成json格式的字符串
+	String jsonArrayStr = JSONArray.toJSONString(userList);
+	```
+
+20. 查询用户的个人信息的时候，要把用户的id也查出来，放到页面的hidden域中，在修改用户信息的时候通过此id再次查询用户信息（而不是直接使用页面上的数据）并通过jquer操作DOM元素赋值到相应的输入框中
+
+21. 通过$.serializeArray函数先把前台的表单对象先序列化成json数组再通过$.each函数取出数组中的每一个对象，把对象的name和value赋值给一个空的对象，然后调用JSON.stringify(obj)把该js对象转化成json格式的字符串，发往后台，后台通过一个String类型的变量接收，前台写法如下：
+	```js
+	var jsonObj = {};
+	var formArray = $("#userInfoChangeForm").serializeArray();
+	$.each(formArray,function(i, item) {
+		jsonObj[item.name] = item.value;
+	});
+	jsonObj = JSON.stringify(jsonObj);
+	```
+详细用法参考我的这篇博文[JQuery的serialize()与serializeArray()与each()](http://blog.csdn.net/a909301740/article/details/78809567 "JQuery的serialize()与serializeArray()与each()")
+
+22. 修改完用户的信息之后要再查询一下，这个查询动作要写在jquery的ajax的complete函数里面，如果写在ajax调用以外的地方，那么查询出来的就有可能不是更新之后的数据因为ajax请求是异步的，后面的语句不会等待ajax请求结束才执行，而是与ajax一起执行，这样虽然数据库中的数据可能是修改之后的，但是页面上的数据却是修改之前的，不利于良好的用户交互。
+
+23. 字典可以节省数据库的资源，所以就有了字典管理这个功能模块
+
+24. 在编写SQL的时候注意：尽量不要使用某个数据库特有的语句，这会有助于后期数据库的迁移
+
+25. 设计一个功能的时候首先要考虑页面，然后是表结构
+
+26. 完成一个功能的步骤：
+	* 建表
+	* 建bean
+	* 建dao/mapper
+	* 建service
+	* 编写action
+	* 写页面
+	* 写js
+
+27. mybatis的mapper在处理多个简单类型的输入参数时使用0,1,param1,param2作为占位符获取相应的参数，而不要直接使用参数名称
+
+28. log4j的日志设debug级别可以查看mybatis的SQL的执行日志
+
+29. 页面设计：查询和新增按钮一般放在一起，修改和删除按钮一般放在一起
+
+30. 字典列表页面一加载，就把所有的字典类型信息加载到select控件里
 
 
+
+## 致谢
+感谢您对本项目的关注，如果项目中有任何错误或不妥，欢迎指正，我将不胜感激。<br/>
 项目持续更新中...<br/>
 更多精彩内容，敬请关注[曲健磊的博客](http://blog.csdn.net/a909301740 "曲健磊的博客")
-
 
