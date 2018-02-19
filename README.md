@@ -307,9 +307,9 @@
 
 10. 项目中密码加密的流程：
 	> 1. 生成一个随机数
-	> 2. 用可逆的加密算法Hex加密随机数
+	> 2. 用Hex对随机数编码
 	> 3. 将随机数和密码用sha1不可逆算法加密
-	> 4. 将第三步得到的字符串值用可逆的加密算法加密
+	> 4. 将第三步得到的字符串值用Hex进行编码
 	> 5. 将第2步和第四步的值拼凑
 
 11. 在UserRealm中验证用户登录的流程：
@@ -369,8 +369,7 @@
 	<select id="getUserInfoById" resultMap="userDtoResultMap" parameterType="long">
 		SELECT a.name dept_name, b.user_id, b.dept_id, b.login_name, b.user_name,
 		b.user_no, b.email, b.phone, b.mobile, b.remarks, d.name role_name
-		FROM pms_sys_dept a, pms_sys_user b,
-		pms_sys_user_role c, pms_sys_role d
+		FROM pms_sys_dept a, pms_sys_user b, pms_sys_user_role c, pms_sys_role d
 		WHERE a.id = b.dept_id AND b.user_id = c.user_id 
 		AND c.role_id = d.id AND b.user_id = #{userId} AND d.del_flag = 0
 	</select>
@@ -397,7 +396,7 @@
 	});
 	jsonObj = JSON.stringify(jsonObj);
 	```
-详细用法参考我的这篇博文[JQuery的serialize()与serializeArray()与each()](http://blog.csdn.net/a909301740/article/details/78809567 "JQuery的serialize()与serializeArray()与each()")
+详细用法参考我的这篇博文-[JQuery的serialize()与serializeArray()与each()](http://blog.csdn.net/a909301740/article/details/78809567 "JQuery的serialize()与serializeArray()与each()")
 
 22. 修改完用户的信息之后要再查询一下，这个查询动作要写在jquery的ajax的complete函数里面，如果写在ajax调用以外的地方，那么查询出来的就有可能不是更新之后的数据因为ajax请求是异步的，后面的语句不会等待ajax请求结束才执行，而是与ajax一起执行，这样虽然数据库中的数据可能是修改之后的，但是页面上的数据却是修改之前的，不利于良好的用户交互。
 
@@ -422,12 +421,146 @@
 
 29. 页面设计：查询和新增按钮一般放在一起，修改和删除按钮一般放在一起
 
-30. 字典列表页面一加载，就把所有的字典类型信息加载到select控件里
+30. 字典列表页面一加载，就把所有的字典类型信息加载到select控件里（发送一个请求）
+	```jsp
+	<%-- 通过forEach标签来遍历 --%>
+	<c:forEach items="${dictTypeList}" var="dictType">
+		<option value="${dictType}">${dictType}</option>
+	</c:forEach>
+	```
 
+31. 增加和修改字典共用一套业务逻辑公用一套页面，根据有无id来区分是新增还是修改，如果是修改则在后台先查询一下该字典的详细信息，然后通过ServletActionContext放到session里面，如果是新增则将session里面相应的key置为空，跳转到编辑页面的时候如果是修改则通过EL表达式获取相应的值，填充到相应的输入框中
+
+32. 在保存字典的时候要通过编辑页面的隐藏域hidden上是否有dictId来判断是insert还是update
+
+33. 在删除像字典，菜单，用户...这样的非映射表时，通常采用逻辑删除，即只修改一个字段del_flag为1而不做物理删除（delete）
+
+34. 为了良好的用户体验，删除之后也要重新查询一下数据
+
+35. 一个轻量级的分页组件的封装思路（当然，本项目中使用的是mybatis的pageHelper）：
+	> * 在后台编写数据库工具方言，屏蔽数据库分页方法的差异(mybatis已经完成)
+	* 在后台编写分页的工具类，屏蔽翻页动作带来的查询差异(mybatis已经完成)
+	* 在后台编写分页条的java代码，方便页面统一生成分页条，减少页面代码重复
+
+常用的几款数据库的方言差异：
+	```sql
+	# mysql: limit
+	# beginrow从0开始,pagesize表示一页多少条记录
+	SELECT * FROM TABLE A LIMIT beginrow, pagesize
+
+	# oracle: rownum
+	SELECT B.* FROM 
+	(SELECT rownum rn a.* FROM table a) B
+	WHERE B.rn BETWEEN beginrow AND endrow
+
+	# sqlserver: top
+	SELECT TOP 100 id, name, sex FROM TABLE
+	```
+那么如何获取数据库的类型？
+	```java
+	可以在连接里面获取数据库的类型:
+	Connection con = DriverManager.getConnection(url, "admin", "admin"); // 连接到数据库
+	DatabaseMetaData dm = con.getMetaData();
+	String dbName = dm.getDatabaseProductName();
+	String version = dm.getDatabaseProductVersion();
+	```
+通过PageInfo和前台的分页查询的js函数名来组装分页条-StringBuffer
+	```java
+	package com.lyu.pms.common.util;
+
+	import com.github.pagehelper.PageInfo;
+
+	/**
+	 * 类名称: 分页工具类
+	 * 类描述: 生成页面上的分页条
+	 * 全限定性类名: com.lyu.pms.common.dto.PageUtils
+	 * @author 曲健磊
+	 * @date 2018年1月22日 上午10:53:21
+	 * @version V1.0
+	 */
+	public class PageUtils {
+		
+		/**
+		 * 根据前台组件生成分页条
+		 * @param 
+		 * @return
+		 */
+		public static String pageStr (PageInfo<?> pageInfo,String queryMethod) {
+		StringBuffer sb = new StringBuffer("<ul>");
+		//判断当前页是不是首页
+		if (pageInfo.isIsFirstPage()
+			|| pageInfo.getPrePage() == 0) {
+		    sb.append("<li class=\"disabled\"><a href=\"javascript:\">&#171; 上一页</a></li>");
+		} else {
+		    sb.append("<li><a href=\"javascript:"+queryMethod+"(");
+		    sb.append(pageInfo.getPrePage()).append(",");
+		    sb.append(pageInfo.getPageSize()).append(")\">&#171; 上一页</a></li>");
+		}
+
+		for (int i = 0; i < pageInfo.getNavigatepageNums().length; i++) {
+		    int pageNum = pageInfo.getNavigatepageNums()[i];
+		    if (pageInfo.getPageNum() == pageNum) {
+			sb.append("<li class=\"active\"><a href=\"javascript:\">");
+			sb.append(pageNum).append("</a></li>");
+		    } else {
+			sb.append("<li><a href=\"javascript:"+queryMethod+"(");
+			sb.append(pageNum).append(", ");
+			sb.append(pageInfo.getPageSize()).append(")\">");
+			sb.append(pageNum).append("</a></li>");
+		    }
+		}
+
+		//判断是否是尾页
+		if (pageInfo.isIsLastPage() || pageInfo.getNextPage() == 0) {
+		    sb.append("<li class=\"disabled\"><a href=\"javascript:\">下一页 &#187;</a></li>");
+		} else {
+		    sb.append("<li><a href=\"javascript:"+queryMethod+"(");
+		    sb.append(pageInfo.getNextPage()).append(",");
+		    sb.append(pageInfo.getPageSize()).append(")\">下一页 &#187;</a></li>");
+		}
+
+		sb.append("<li class=\"disabled controls\"><a href=\"javascript:void(0);\">当前第 ");
+		sb.append("<input type=\"text\" maxLength=\"6\" value=\"");
+		sb.append(pageInfo.getPageNum());
+		sb.append("\" onkeypress=\"var e=window.event||this;var c=e.keyCode||e.which;if(c==13)"+queryMethod+"(this.value,");
+		sb.append(pageInfo.getPageSize()).append(");\" onclick=\"this.select();\"/>");
+		sb.append(" 页 / 共 ");
+		sb.append(pageInfo.getPages());
+		sb.append(" 页， 共 ");
+		sb.append(pageInfo.getTotal());
+		sb.append(" 条</a></li></ul>");
+
+		return sb.toString();
+	    }
+	}
+	```
+
+36. 总结一下StringBuffer和StringBuilder的区别：
+	* 可变性：<br/>
+	String被final修饰，而且底层的char类型的数组也被final修饰，所以String不可变
+	StringBuffer和StringBuilder都继承自AbstractStringBuilder，它们的底层也是char
+	类型的数组，但是没有被final修饰，所以都是可变的<br/><br/>
+	* 线程安全性：<br/>
+	String对象不可变，也可以理解为常量，所以是线程安全的<br/>
+	StringBuffer对方法加了同步锁，所以线程安全<br/>
+	StringBuilder没有对方法加同步锁，所以线程不安全<br/><br/>
+	* 性能：<br/>
+	每次改变String类型的变量时（例如：+）都会生成一个新的对象，性能较低
+	StringBuffer每次都是改变自身的char数组所以不会生成新对象，性能比较好
+	StringBuilder和StringBuffer相比方法没有加同步锁，所以性能相对快一些，
+	但是，却要冒线程不安全的风险，所以还是推荐StringBuffer
+
+37. 分页查询的流程：
+	* 前台向后台传递查询条件，页数，每页的记录数
+	* action调用service方法获取PageInfo对象
+	* 从PageInfo中获取dictList对象
+	* 通过封装的分页条工具类，根据pageInfo的相关信息封装分页条
+	* 将上面两部分内容转化成json字符串发往前台
+	* 前台通过jquery操作DOM填充页面
 
 
 ## 致谢
-感谢您对本项目的关注，如果项目中有任何错误或不妥，欢迎指正，我将不胜感激。<br/>
+感谢您对项目的关注，如果项目中有任何错误或不妥，欢迎指正，我将不胜感激。<br/>
 项目持续更新中...<br/>
 更多精彩内容，敬请关注[曲健磊的博客](http://blog.csdn.net/a909301740 "曲健磊的博客")
 
