@@ -140,23 +140,23 @@
 	> 解决：main.action为登录成功的请求，已经在successUrl里面配置了main.action就不要在过滤链里面再配，正确配置如下：
 	```xml
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
-		<property name="securityManager" ref="securityManager"></property>
-		<!-- loginUrl为登录页面，并不是登录请求 -->
-		<property name="loginUrl" value="/toLogin.action"></property>
-		<!-- successUrl为登录成功后的页面 -->
-		<property name="successUrl" value="/main.action"></property>
-		<!-- 访问未经授权页面时显示的页面 -->
-		<property name="unauthorizedUrl" value="/refusePage.jsp" />
-		<property name="filterChainDefinitions">
-			<value>
-				<!-- 静态资源可以匿名访问 -->
-				/jsAndCss/** = anon
-				<!-- 登录的请求为匿名（这个都拦截那这系统就没法进了） -->
-				/login.action = anon
-				<!-- 所有的请求都需要认证，放在最后 -->
-				/** = authc
-			</value>
-		</property>
+	    <property name="securityManager" ref="securityManager"></property>
+	    <!-- loginUrl为登录页面，并不是登录请求 -->
+	    <property name="loginUrl" value="/toLogin.action"></property>
+	    <!-- successUrl为登录成功后的页面 -->
+	    <property name="successUrl" value="/main.action"></property>
+	    <!-- 访问未经授权页面时显示的页面 -->
+	    <property name="unauthorizedUrl" value="/refusePage.jsp" />
+	    <property name="filterChainDefinitions">
+	        <value>
+	            <!-- 静态资源可以匿名访问 -->
+	            /jsAndCss/** = anon
+	            <!-- 登录的请求为匿名（这个都拦截那这系统就没法进了） -->
+	            /login.action = anon
+	            <!-- 所有的请求都需要认证，放在最后 -->
+	            /** = authc
+	        </value>
+	    </property>
 	</bean>
 	```
 
@@ -210,7 +210,7 @@
 	> 原因：contains方法默认是调用对象的equals方法来判断对象是否存在于容器中，如果不重写equals的话默认使用Object的equals方法来判断，而Object的equals方法实现如下：
 	```java
 	public boolean equals (Object obj) {
-		return (this == obj);
+	    return (this == obj);
 	}
 	```
 
@@ -253,13 +253,13 @@
 	```xml
 	<!-- 登录 -->
 	<action name="login" class="com.lyu.pms.sysmanage.action.LoginAction" method="login">
-		<result name="main" type="redirect">/main.action</result>
-		<result name="loginPage" type="dispatcher">/WEB-INF/pages/login.jsp</result>
+	    <result name="main" type="redirect">/main.action</result>
+	    <result name="loginPage" type="dispatcher">/WEB-INF/pages/login.jsp</result>
 	</action>
 
 	<!-- 重定向到主页面的请求 -->
 	<action name="main" class="com.lyu.pms.sysmanage.action.LoginAction" method="main">
-		<result name="mainPage" type="dispatcher">/WEB-INF/pages/main/main.jsp</result>
+	    <result name="mainPage" type="dispatcher">/WEB-INF/pages/main/main.jsp</result>
 	</action>
 	```
 
@@ -351,29 +351,29 @@
 	```xml
 	<!-- 用户resultMap，包括用户的角色列表 -->
 	<resultMap type="userDto" id="userDtoResultMap">
-		<id column="user_id" property="userId"></id>
-		<result column="dept_name" property="name" />
-		<result column="dept_id" property="deptId" />
-		<result column="login_name" property="loginName" />
-		<result column="user_name" property="userName" />
-		<result column="user_no" property="userNo" />
-		<result column="email" property="email" />
-		<result column="user_no" property="userNo" />
-		<result column="phone" property="phone" />
-		<result column="mobile" property="mobile" />
-		<result column="remarks" property="remarks" />
-		<collection property="roleList" ofType="role">
-			<result column="role_name" property="name" />
-		</collection>
+	    <id column="user_id" property="userId"></id>
+	    <result column="dept_name" property="name" />
+	    <result column="dept_id" property="deptId" />
+	    <result column="login_name" property="loginName" />
+	    <result column="user_name" property="userName" />
+	    <result column="user_no" property="userNo" />
+	    <result column="email" property="email" />
+	    <result column="user_no" property="userNo" />
+	    <result column="phone" property="phone" />
+	    <result column="mobile" property="mobile" />
+	    <result column="remarks" property="remarks" />
+	    <collection property="roleList" ofType="role">
+	        <result column="role_name" property="name" />
+	    </collection>
 	</resultMap>
 	
 	<!-- 通过userId获得用户对象包括部门名称，角色... -->
 	<select id="getUserInfoById" resultMap="userDtoResultMap" parameterType="long">
-		SELECT a.name dept_name, b.user_id, b.dept_id, b.login_name, b.user_name,
-		b.user_no, b.email, b.phone, b.mobile, b.remarks, d.name role_name 
-		FROM pms_sys_dept a, pms_sys_user b, pms_sys_user_role c, pms_sys_role d
-		WHERE a.id = b.dept_id AND b.user_id = c.user_id
-		AND c.role_id = d.id AND b.user_id = #{userId} AND d.del_flag = 0
+	    SELECT a.name dept_name, b.user_id, b.dept_id, b.login_name, b.user_name,
+	    b.user_no, b.email, b.phone, b.mobile, b.remarks, d.name role_name 
+	    FROM pms_sys_dept a, pms_sys_user b, pms_sys_user_role c, pms_sys_role d
+	    WHERE a.id = b.dept_id AND b.user_id = c.user_id
+	    AND c.role_id = d.id AND b.user_id = #{userId} AND d.del_flag = 0
 	</select>
 	```
 
@@ -394,7 +394,7 @@
 	var jsonObj = {};
 	var formArray = $("#userInfoChangeForm").serializeArray();
 	$.each(formArray,function(i, item) {
-		jsonObj[item.name] = item.value;
+	    jsonObj[item.name] = item.value;
 	});
 	jsonObj = JSON.stringify(jsonObj);
 	```
@@ -482,57 +482,57 @@
 	 * @version V1.0
 	 */
 	public class PageUtils {
-		/**
-		 * 根据前台组件生成分页条
-		 * @param 
-		 * @return
-		 */
-		public static String pageStr (PageInfo<?> pageInfo,String queryMethod) {
-		StringBuffer sb = new StringBuffer("<ul>");
-		//判断当前页是不是首页
-		if (pageInfo.isIsFirstPage()
-			|| pageInfo.getPrePage() == 0) {
-		    sb.append("<li class=\"disabled\"><a href=\"javascript:\">&#171; 上一页</a></li>");
-		} else {
-		    sb.append("<li><a href=\"javascript:"+queryMethod+"(");
-		    sb.append(pageInfo.getPrePage()).append(",");
-		    sb.append(pageInfo.getPageSize()).append(")\">&#171; 上一页</a></li>");
+	    /**
+	     * 根据前台组件生成分页条
+	     * @param 
+	     * @return
+	     */
+	    public static String pageStr (PageInfo<?> pageInfo,String queryMethod) {
+	    StringBuffer sb = new StringBuffer("<ul>");
+	    //判断当前页是不是首页
+	    if (pageInfo.isIsFirstPage()
+	        || pageInfo.getPrePage() == 0) {
+	        sb.append("<li class=\"disabled\"><a href=\"javascript:\">&#171; 上一页</a></li>");
+	    } else {
+	        sb.append("<li><a href=\"javascript:"+queryMethod+"(");
+	        sb.append(pageInfo.getPrePage()).append(",");
+	        sb.append(pageInfo.getPageSize()).append(")\">&#171; 上一页</a></li>");
 		}
 
-		for (int i = 0; i < pageInfo.getNavigatepageNums().length; i++) {
+	    for (int i = 0; i < pageInfo.getNavigatepageNums().length; i++) {
 		    int pageNum = pageInfo.getNavigatepageNums()[i];
 		    if (pageInfo.getPageNum() == pageNum) {
 			sb.append("<li class=\"active\"><a href=\"javascript:\">");
 			sb.append(pageNum).append("</a></li>");
 		    } else {
-			sb.append("<li><a href=\"javascript:"+queryMethod+"(");
-			sb.append(pageNum).append(", ");
-			sb.append(pageInfo.getPageSize()).append(")\">");
-			sb.append(pageNum).append("</a></li>");
-		    }
-		}
-
-		//判断是否是尾页
-		if (pageInfo.isIsLastPage() || pageInfo.getNextPage() == 0) {
-		    sb.append("<li class=\"disabled\"><a href=\"javascript:\">下一页 &#187;</a></li>");
-		} else {
 		    sb.append("<li><a href=\"javascript:"+queryMethod+"(");
-		    sb.append(pageInfo.getNextPage()).append(",");
-		    sb.append(pageInfo.getPageSize()).append(")\">下一页 &#187;</a></li>");
-		}
+		    sb.append(pageNum).append(", ");
+		    sb.append(pageInfo.getPageSize()).append(")\">");
+		    sb.append(pageNum).append("</a></li>");
+	        }
+	    }
 
-		sb.append("<li class=\"disabled controls\"><a href=\"javascript:void(0);\">当前第 ");
-		sb.append("<input type=\"text\" maxLength=\"6\" value=\"");
-		sb.append(pageInfo.getPageNum());
-		sb.append("\" onkeypress=\"var e=window.event||this;var c=e.keyCode||e.which;if(c==13)"+queryMethod+"(this.value,");
-		sb.append(pageInfo.getPageSize()).append(");\" onclick=\"this.select();\"/>");
-		sb.append(" 页 / 共 ");
-		sb.append(pageInfo.getPages());
-		sb.append(" 页， 共 ");
-		sb.append(pageInfo.getTotal());
-		sb.append(" 条</a></li></ul>");
+	    //判断是否是尾页
+	    if (pageInfo.isIsLastPage() || pageInfo.getNextPage() == 0) {
+	        sb.append("<li class=\"disabled\"><a href=\"javascript:\">下一页 &#187;</a></li>");
+	    } else {
+	        sb.append("<li><a href=\"javascript:"+queryMethod+"(");
+	        sb.append(pageInfo.getNextPage()).append(",");
+	        sb.append(pageInfo.getPageSize()).append(")\">下一页 &#187;</a></li>");
+	    }
 
-		return sb.toString();
+	    sb.append("<li class=\"disabled controls\"><a href=\"javascript:void(0);\">当前第 ");
+	    sb.append("<input type=\"text\" maxLength=\"6\" value=\"");
+	    sb.append(pageInfo.getPageNum());
+	    sb.append("\" onkeypress=\"var e=window.event||this;var         c=e.keyCode||e.which;if(c==13)"+queryMethod+"(this.value,");
+	    sb.append(pageInfo.getPageSize()).append(");\" onclick=\"this.select();\"/>");
+	    sb.append(" 页 / 共 ");
+	    sb.append(pageInfo.getPages());
+	    sb.append(" 页， 共 ");
+	    sb.append(pageInfo.getTotal());
+	    sb.append(" 条</a></li></ul>");
+
+	    return sb.toString();
 	    }
 	}
 	```
@@ -685,23 +685,23 @@
 	```xml
 	<!-- shiro的过滤器 -->
 	<filter>
-		<filter-name>shiroFilter</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-		<init-param>
-			<!--  这个参数为true表示由web容器来控制filter的生命周期 -->
-			<!--  如果让spring管理就设置为false -->
-			<param-name>targetFilterLifecycle</param-name>
-			<param-value>true</param-value>
-		</init-param>
-		<init-param>
-			<param-name>targetBeanName</param-name>
-			<!-- 默认就是shiroFilter -->
-			<param-value>shiroFilter</param-value>
-		</init-param>
+	    <filter-name>shiroFilter</filter-name>
+	    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	    <init-param>
+	        <!--  这个参数为true表示由web容器来控制filter的生命周期 -->
+	        <!--  如果让spring管理就设置为false -->
+	        <param-name>targetFilterLifecycle</param-name>
+	        <param-value>true</param-value>
+	    </init-param>
+	    <init-param>
+	        <param-name>targetBeanName</param-name>
+	        <!-- 默认就是shiroFilter -->
+	        <param-value>shiroFilter</param-value>
+	    </init-param>
 	</filter>
 	<filter-mapping>
-		<filter-name>shiroFilter</filter-name>
-		<url-pattern>/*</url-pattern>
+	    <filter-name>shiroFilter</filter-name>
+	    <url-pattern>/*</url-pattern>
 	</filter-mapping>
 	```
 
@@ -709,59 +709,59 @@
 	```xml
 	<!-- web.xml配置的过滤器对应的bean -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
-		<property name="securityManager" ref="securityManager"></property>
-		<property name="loginUrl" value="/toLogin.action"></property>
-		<property name="successUrl" value="/main.action"></property>
-		<property name="unauthorizedUrl" value="/refusePage.jsp" />
+	    <property name="securityManager" ref="securityManager"></property>
+	    <property name="loginUrl" value="/toLogin.action"></property>
+	    <property name="successUrl" value="/main.action"></property>
+	    <property name="unauthorizedUrl" value="/refusePage.jsp" />
 		 
-		<property name="filterChainDefinitions">
-			<value>
-				/jsAndCss/** = anon
-				/login.action = anon
-				/sysmgr/getDictListPage.action = perms[dict:query]
-				<!-- /sysmgr/changePwd.action = perms[user:chpwd] -->
-				/** = authc
-			</value>
-		</property>
+	    <property name="filterChainDefinitions">
+	        <value>
+	            /jsAndCss/** = anon
+	            /login.action = anon
+	            /sysmgr/getDictListPage.action = perms[dict:query]
+	            <!-- /sysmgr/changePwd.action = perms[user:chpwd] -->
+	            /** = authc
+	        </value>
+	    </property>
 	</bean>
 	
 	<!--  安全管理器SecurityManager -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-		<property name="realm" ref="userRealm"></property>
-		<property name="cacheManager" ref="cacheManager" />
-		<property name="sessionManager" ref="sessionManager" />
+	    <property name="realm" ref="userRealm"></property>
+	    <property name="cacheManager" ref="cacheManager" />
+	    <property name="sessionManager" ref="sessionManager" />
 	</bean>
 	
 	<!--  自定义的realm -->
 	<bean id="userRealm" class="com.lyu.pms.security.UserRealm">
-		<!-- 注入凭证匹配器 -->
-		<property name="credentialsMatcher" ref="credentialsMatcher"></property>
+	    <!-- 注入凭证匹配器 -->
+	    <property name="credentialsMatcher" ref="credentialsMatcher"></property>
 	</bean>
 	
 	<!--  注册凭证匹配器 -->
 	<bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
-		<property name="hashAlgorithmName" value="SHA-1" />
-		<property name="hashIterations" value="1024" />
+	    <property name="hashAlgorithmName" value="SHA-1" />
+	    <property name="hashIterations" value="1024" />
 	</bean>
 	
 	<!--  定义缓存管理器 -->
 	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
-		<property name="cacheManagerConfigFile" value="classpath:ehcache.xml" />
+	    <property name="cacheManagerConfigFile" value="classpath:ehcache.xml" />
 	</bean>
 	
 	<!--  定义会话管理器 -->
 	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
-		<!-- session的失效时间 -->
-		<property name="globalSessionTimeout" value="3600000" />
-		<!--  定时清理失效的会话 -->
-		<property name="sessionValidationInterval" value="1800000" />		
+	    <!-- session的失效时间 -->
+	    <property name="globalSessionTimeout" value="3600000" />
+	    <!--  定时清理失效的会话 -->
+	    <property name="sessionValidationInterval" value="1800000" />		
 	</bean>
 	```
 
 58. 引入shiro的标签，在前台也对请求加以控制 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %> 像下面这样把需要权限的按钮包起来：
 	```xml
 	<shiro:hasPermission name="[dict:query]">
-		<input id="btnSubmit" class="btn btn-primary" type="button" onclick="dictMgr.getDictListPage(1, 10);" value="查询"/>
+	    <input id="btnSubmit" class="btn btn-primary" type="button" onclick="dictMgr.getDictListPage(1, 10);" value="查询"/>
 	</shiro:hasPermission>
 	```
 
@@ -833,7 +833,7 @@
 	// 绑定事件（btn为DOM元素）
 	btn.addEventListener('click' ,addevFn1 , false); //false:冒泡，true:捕获
 	function addevFn1() {
-		alert("我是绑定的事件");
+	    alert("我是绑定的事件");
 	};
 
 	// 解绑事件
@@ -845,7 +845,7 @@
 	// 绑定事件
 	btn.attachEvent("onclick" ,addevFn2);
 	function addevFn2(){
-		alert("我是IE8及以下的添加监听事件方法");
+	    alert("我是IE8及以下的添加监听事件方法");
 	};
 
 	// 解绑事件
@@ -884,12 +884,12 @@
 	* 可以通过对象的方式向validate方法中传递参数$("#表单id").validate({...})
 	* submitHandler是一个在表单提交(点击type为"submit"的按钮)的时候调用的一个回调函数，它会取消提交表单的默认行为，在函数内部可以通过调用form.submit()方法来提交
 	* errorPlacement（错误信息显示的位置）<br/>
-	  默认情况是：error.appendTo(element.parent());即把错误信息放在验证的元素后面。<br/>
-	  ```js
-	  errorPlacement: function(error, element) {
-	  	  error.appendTo(element.parent());
-	  }
-	  ```
+	默认情况是：error.appendTo(element.parent());即把错误信息放在验证的元素后面。<br/>
+	```js
+	errorPlacement: function(error, element) {
+	    error.appendTo(element.parent());
+	}
+	```
 	  error --> 错误信息(默认用label标签包裹)<br/>
 	  element --> 出现错误信息的元素（input）<br/>
 	  错误提示的默认css类名是"error"(即label的默认类名)<br/>
@@ -897,17 +897,17 @@
 	* 用法示例：
 		```js
 		$(function() {
-			$("#name").focus();
-			$("#saveMenuForm").validate({
-				submitHandler: function(form){
-					form.submit();
-				},
-				errorContainer: "#messageBox",
-				errorPlacement: function(error, element) {
-					$("#messageBox").text("输入有误，请先更正。");
-					error.appendTo(element.parent());
-				}
-			});
+		    $("#name").focus();
+		    $("#saveMenuForm").validate({
+		        submitHandler: function(form){
+		            form.submit();
+		        },
+		        errorContainer: "#messageBox",
+		        errorPlacement: function(error, element) {
+		            $("#messageBox").text("输入有误，请先更正。");
+		            error.appendTo(element.parent());
+		        }
+		    });
 		});
 		```
 
@@ -916,8 +916,8 @@
 82. 在使用zTree的时候可以直接将后台传过来的数据作为zTree的初始化参数：
 	```js
 	success : function(data) {
-		var menuArray = JSON.parse(data.jsonObj);
-		$.fn.zTree.init($("#menuTree"), setting, menuArray);
+	    var menuArray = JSON.parse(data.jsonObj);
+	    $.fn.zTree.init($("#menuTree"), setting, menuArray);
 	}
 	```
 
@@ -925,12 +925,12 @@
 	```js
 	var nodes = menuTree.getNodesByParam("level",2); // 这里的2代表展开三级，不包含顶级节点
 	for(var i=0; i<nodes.length; i++){
-		menuTree.expandNode(nodes[i],true,false,true,false);
-		// 第一个参数：需要 展开 / 折叠 的节点数据
-		// 第二个参数：true表示展开节点，false表示折叠节点
-		// 第三个参数：true表示全部子孙节点进行与该节点相同的操作，false表示只影响当前节点
-		// 第四个参数：true 表示 展开 / 折叠 操作后，通过设置焦点保证此焦点进入可视区域内
-		// 第五个参数：true 表示执行此方法时触发 beforeExpand / onExpand 或 beforeCollapse / onCollapse 事件回调函数
+	    menuTree.expandNode(nodes[i],true,false,true,false);
+	    // 第一个参数：需要 展开 / 折叠 的节点数据
+	    // 第二个参数：true表示展开节点，false表示折叠节点
+	    // 第三个参数：true表示全部子孙节点进行与该节点相同的操作，false表示只影响当前节点
+	    // 第四个参数：true 表示 展开 / 折叠 操作后，通过设置焦点保证此焦点进入可视区域内
+	    // 第五个参数：true 表示执行此方法时触发 beforeExpand / onExpand 或 beforeCollapse / onCollapse 事件回调函数
 	}
 	```
 	更多关于zTree的API说明，详见：[zTree API 文档](http://www.treejs.cn/v3/api.php "zTree API 文档")
@@ -991,7 +991,7 @@
 		```jsp
 		<c:forEach items="" var=""></c:forEach>
 		<c:choose>
-			<c:when test=""></c:when>
+		    <c:when test=""></c:when>
 		</c:choose>
 		```
 	* jsp指令
