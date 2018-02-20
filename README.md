@@ -850,6 +850,103 @@
 	btn.detachEvent("onclick" , addevFn2);	
 	```
 
+76. **用户体验** ：用户在选择完菜单后要隐藏掉菜单选择框
+
+77. 为了在修改菜单的时候避免当前菜单和它的子菜单作为父级菜单显示出来，需要在后台加载数据的时候对它自己以及它的子菜单进行过滤，在service层查询出当前菜单的所有子孙菜单，然后在action中循环剔除子孙菜单
+
+78. js中的location对象简介：
+	* Location 对象包含有关当前 URL 的信息。
+
+	* Location 对象是 Window 对象的一个部分，可通过 window.location 属性来访问。
+
+	* Location 对象属性:
+		* hash		设置或返回从井号 (#) 开始的 URL（锚）。
+		* host		设置或返回主机名和当前 URL 的端口号。
+		* hostname	设置或返回当前 URL 的主机名。
+		* href		设置或返回完整的 URL。
+		* pathname	设置或返回当前 URL 的路径部分。
+		* port		设置或返回当前 URL 的端口号。
+		* protocol	设置或返回当前 URL 的协议。
+		* search	设置或返回从问号 (?) 开始的 URL（查询部分）。
+
+	* Location 对象函数:
+		* assign()	加载新的文档。
+		* reload()	重新加载当前文档。
+		* replace()	用新的文档替换当前文档。
+
+79. 使用ListIterator迭代list集合的过程中可以删除元素
+
+80. jquery-validate的一点学习心得：
+	* 记得导入jquery.js和jquery.validate.min.js文件
+	* 调用validate方法进行校验$("#表单id").validate()
+	* 可以通过对象的方式向validate方法中传递参数$("#表单id").validate({...})
+	* submitHandler是一个在表单提交(点击type为"submit"的按钮)的时候调用的一个回调函数，它会取消提交表单的默认行为，在函数内部可以通过调用form.submit()方法来提交
+	* errorPlacement（错误信息显示的位置）<br/>
+	  默认情况是：error.appendTo(element.parent());即把错误信息放在验证的元素后面。<br/>
+	  ```js
+	  errorPlacement: function(error, element) {
+	  	  error.appendTo(element.parent());
+	  }
+	  ```
+	  error --> 错误信息(默认用label标签包裹)<br/>
+	  element --> 出现错误信息的元素（input）<br/>
+	  错误提示的默认css类名是"error"(即label的默认类名)<br/>
+	* errorContainer:错误信息存放的容器，可以在有错误信息的时候显示，没有错误信息的时候隐藏
+	* 用法示例：
+		```js
+		$(function() {
+			$("#name").focus();
+			$("#saveMenuForm").validate({
+				submitHandler: function(form){
+					form.submit();
+				},
+				errorContainer: "#messageBox",
+				errorPlacement: function(error, element) {
+					$("#messageBox").text("输入有误，请先更正。");
+					error.appendTo(element.parent());
+				}
+			});
+		});
+		```
+
+81. 由于菜单，部门，区域都具备树形结构的特征，所以提取共性封装一个树形节点对象来为他们继承，主要有：id，pId，name这三个属性
+
+82. 在使用zTree的时候可以直接将后台传过来的数据作为zTree的初始化参数：
+	```js
+	success : function(data) {
+		var menuArray = JSON.parse(data.jsonObj);
+		$.fn.zTree.init($("#menuTree"), setting, menuArray);
+	}
+	```
+
+83. zTree展开指定层级节点的代码：
+	```js
+	var nodes = menuTree.getNodesByParam("level",2); // 这里的2代表展开三级，不包含顶级节点
+	for(var i=0; i<nodes.length; i++){
+		menuTree.expandNode(nodes[i],true,false,true,false);
+		// 第一个参数：需要 展开 / 折叠 的节点数据
+		// 第二个参数：true表示展开节点，false表示折叠节点
+		// 第三个参数：true表示全部子孙节点进行与该节点相同的操作，false表示只影响当前节点
+		// 第四个参数：true 表示 展开 / 折叠 操作后，通过设置焦点保证此焦点进入可视区域内
+		// 第五个参数：true 表示执行此方法时触发 beforeExpand / onExpand 或 beforeCollapse / onCollapse 事件回调函数
+	}
+	```
+	更多关于zTree的API说明，详见：[zTree API 文档](http://www.treejs.cn/v3/api.php "zTree API 文档")
+
+84. treeTable的层次展开设置:
+	```js
+	$("#treeTable").treeTable({expandLevel : 2});
+	```
+
+85. @Deprecated注解用来注释那些已经过时的方法（不推荐使用的方法），往往还要在注释里面给使用者推荐一个取而代之的方法，在本项目中，DeptUtils的sortDeptList方法和MenuUtils的sortMenuList方法都用重新封装的一个TreeUtils来取代，调用其中的泛型方法sortTreeList来完成树形结构的排序
+
+86. code字段的作用：根据编码统计某个部门或者区域的支出以及销售额...
+
+87. 
+
+
+
+
 
 ## 致谢
 感谢您对项目的关注，如果项目中有任何错误或不妥，欢迎指正，我将不胜感激。<br/>
