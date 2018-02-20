@@ -396,7 +396,7 @@
 	});
 	jsonObj = JSON.stringify(jsonObj);
 	```
-详细用法参考我的这篇博文-[JQuery的serialize()与serializeArray()与each()](http://blog.csdn.net/a909301740/article/details/78809567 "JQuery的serialize()与serializeArray()与each()")
+	详细用法参考我的这篇博文-[JQuery的serialize()与serializeArray()与each()](http://blog.csdn.net/a909301740/article/details/78809567 "JQuery的serialize()与serializeArray()与each()")
 
 22. 修改完用户的信息之后要再查询一下，这个查询动作要写在jquery的ajax的complete函数里面，如果写在ajax调用以外的地方，那么查询出来的就有可能不是更新之后的数据因为ajax请求是异步的，后面的语句不会等待ajax请求结束才执行，而是与ajax一起执行，这样虽然数据库中的数据可能是修改之后的，但是页面上的数据却是修改之前的，不利于良好的用户交互。
 
@@ -772,7 +772,7 @@
 
 60. **业务上的一点注意事项：添加菜单之后还要为系统管理员拥有的角色添加对该菜单的权限，而不直接给当前用户拥有的角色授权，这样该用户即使添加了这个菜单，想要使用该菜单仍然要通过系统管理员进行二次授权才可以使用，保障了系统的安全**
 
-61. 删除菜单之前还要判断当前菜单是否有子菜单，如果有则不能删除该菜单，这里不采用递归删除其所有子菜单的原因是为了防止用户的二次误操作导致数据丢失**（要站在用户的角度看待问题，试想：用户不小心点击了删除按钮，弹出提示框：当前菜单下还有子菜单，您确定要删除当前菜单及其子菜单吗？用户又一个不小心，点了确定... 虽然作为软件开发商，我们已经给出了提示信息，责任已经尽到了，但是，用户心里还是会有些不愉快的，下次系统维护或升级就肯定不会再找我们了，所以，这里当判断当前菜单有子菜单时就干脆不让用户删除）**
+61. 删除菜单之前还要判断当前菜单是否有子菜单，如果有则不能删除该菜单，这里不采用递归删除其所有子菜单的原因是为了防止用户的二次误操作导致数据丢失 *（要站在用户的角度看待问题，试想：用户不小心点击了删除按钮，弹出提示框：当前菜单下还有子菜单，您确定要删除当前菜单及其子菜单吗？用户又一个不小心，点了确定... 虽然作为软件开发商，我们已经给出了提示信息，责任已经尽到了，但是，用户心里还是会有些不愉快的，下次系统维护或升级就肯定不会再找我们了，所以，这里当判断当前菜单有子菜单时就干脆不让用户删除）*
 
 62. 删除菜单之后还要删除所有角色-菜单对应表里面对该菜单的记录
 
@@ -785,9 +785,71 @@
 	```
 	SELECT A.id, A.parent_id, A.name, A.sort, A.href, A.target, A.icon, A.is_show,
 	A.permission, A.update_by, A.update_date, A.remarks, A.del_flag, B.name parentName
-	FROM drp_sys_menu A LEFT JOIN drp_sys_menu B
+	FROM pms_sys_menu A LEFT JOIN pms_sys_menu B
 	ON A.parent_id = B.id WHERE A.id = 1
 	```
+
+66. 在javaScript或者jQuery中字符串比较没有equals()方法，要比较两个字符串是否相等可以直接用==或者is()进行判断
+	```js
+	"a"=="a"
+
+	$("#a").val().is("a")
+	```
+
+67.  **增加用户体验** :用户在选择父级菜单的时候，在菜单树展开的时候，需要定位一下上一次选择的是哪一个菜单
+
+68. 在修改菜单的父级菜单的时候，当前菜单以及所有子菜单（包括孙子菜单）都禁止显示，不能把当前菜单挂在它的子菜单下面，否则会产生死循环，数据库会有大量的垃圾数据， **树形结构都要预防死循环**
+
+69. js数组定义格式：
+	```js
+	var arr1 = new Array();
+	var arr2 = new Array("菜单","部门","区域");
+	var arr3 = ["菜单","部门","区域"];
+	```
+70. 向js数组中添加元素和删除元素使用push和pop函数
+
+71. js事件冒泡和事件捕获（事件触发的两种方式）：
+	* 捕获（从上到下）：document --> html --> body --> div --> input
+	* 冒泡（从下到上）: input --> div --> body --> html --> document
+
+72. js事件对象（event）详细信息：
+	* type表示的是被触发事件的类型
+	* target表示的是事件的目标
+	* bubbles：表示事件是否冒泡
+	* cancelable：表示是否可以取消事件的默认行为
+	* currentTarget：表示事件处理程序当前正在处理事件的那个元素
+	* defaultPrevented：表示是否调用了preventDefault()
+	* detail：表示的是与事件相关的细节信息
+	* eventPhase：调用事件处理处理程序的阶段：1表示捕获阶段、2表示处于目标、3表示冒泡阶段
+
+73. 与js事件对象有关的两个函数：
+	* 阻止事件传播		event.stopPropargation();
+	* 阻止事件默认行为	event.preventDefault();
+
+74. js绑定事件与解绑事件：
+	```js
+	// 绑定事件（btn为DOM元素）
+	btn.addEventListener('click' ,addevFn1 , false); //false:冒泡，true:捕获
+	function addevFn1() {
+		alert("我是绑定的事件");
+	};
+
+	// 解绑事件
+	btn.removeEventListener("mouseover" , addevFn1, false)
+	```
+
+75. IE8及以下的添加和删除监听事件方法：（注：IE9及以上的就用上面的方法）
+	```js
+	// 绑定事件
+	btn.attachEvent("onclick" ,addevFn2);
+	function addevFn2(){
+		alert("我是IE8及以下的添加监听事件方法");
+	};
+
+	// 解绑事件
+	btn.detachEvent("onclick" , addevFn2);	
+	```
+
 
 ## 致谢
 感谢您对项目的关注，如果项目中有任何错误或不妥，欢迎指正，我将不胜感激。<br/>
