@@ -145,6 +145,8 @@
 		<property name="loginUrl" value="/toLogin.action"></property>
 		<!-- successUrl为登录成功后的页面 -->
 		<property name="successUrl" value="/main.action"></property>
+		<!-- 访问未经授权页面时显示的页面 -->
+		<property name="unauthorizedUrl" value="/refusePage.jsp" />
 		<property name="filterChainDefinitions">
 			<value>
 				<!-- 静态资源可以匿名访问 -->
@@ -207,7 +209,7 @@
 16. 在一个集合中剔除存在于另一个集合中的元素时contains判断无效
 	> 原因：contains方法默认是调用对象的equals方法来判断对象是否存在于容器中，如果不重写equals的话默认使用Object的equals方法来判断，而Object的equals方法实现如下：
 	```java
-	public boolean equals(Object obj) {
+	public boolean equals (Object obj) {
 		return (this == obj);
 	}
 	```
@@ -249,13 +251,13 @@
 
 2. 登录成功后一定要重定向到主页面，不能转发，转发的话一按F5刷新就会提示重新登录（用户体验不好）
 	```xml
-	<!-- 登录 -->
+	<!-- 登录  -->
 	<action name="login" class="com.lyu.pms.sysmanage.action.LoginAction" method="login">
 		<result name="main" type="redirect">/main.action</result>
 		<result name="loginPage" type="dispatcher">/WEB-INF/pages/login.jsp</result>
 	</action>
 
-	<!-- 重定向到主页面的请求 -->
+	<!-- 重定向到主页面的请求  -->
 	<action name="main" class="com.lyu.pms.sysmanage.action.LoginAction" method="main">
 		<result name="mainPage" type="dispatcher">/WEB-INF/pages/main/main.jsp</result>
 	</action>
@@ -347,7 +349,7 @@
 
 18. 显示用户的个人信息的时候不仅有user表的数据，还有dept表的部门名称，以及role表的角色名称，要进行pms_sys_user, pms_sys_dept, pms_sys_user_role, pms_sys_role四表关联查询，并且要使用mybatis的resultMap来接收查询结果，mapper.xml中的SQL如下：
 	```xml
-	<!-- 用户resultMap，包括用户的角色列表 -->
+	<!--  用户resultMap，包括用户的角色列表 -->
 	<resultMap type="userDto" id="userDtoResultMap">
 		<id column="user_id" property="userId"></id>
 		<result column="dept_name" property="name" />
@@ -368,7 +370,7 @@
 	<!-- 通过userId获得用户对象包括部门名称，角色... -->
 	<select id="getUserInfoById" resultMap="userDtoResultMap" parameterType="long">
 		SELECT a.name dept_name, b.user_id, b.dept_id, b.login_name, b.user_name,
-		b.user_no, b.email, b.phone, b.mobile, b.remarks, d.name role_name
+		b.user_no, b.email, b.phone, b.mobile, b.remarks, d.name role_name 
 		FROM pms_sys_dept a, pms_sys_user b, pms_sys_user_role c, pms_sys_role d
 		WHERE a.id = b.dept_id AND b.user_id = c.user_id 
 		AND c.role_id = d.id AND b.user_id = #{userId} AND d.del_flag = 0
@@ -394,7 +396,7 @@
 	$.each(formArray,function(i, item) {
 		jsonObj[item.name] = item.value;
 	});
-	jsonObj = JSON.stringify(jsonObj);
+	jsonObj = JSON.stringify( jsonObj );
 	```
 	详细用法参考我的这篇博文-[JQuery的serialize()与serializeArray()与each()](http://blog.csdn.net/a909301740/article/details/78809567 "JQuery的serialize()与serializeArray()与each()")
 
@@ -423,7 +425,7 @@
 
 30. 字典列表页面一加载，就把所有的字典类型信息加载到select控件里（发送一个请求）
 	```jsp
-	<%-- 通过forEach标签来遍历 --%>
+	<%-- 通过forEach标签来遍历  --%>
 	<c:forEach items="${dictTypeList}" var="dictType">
 		<option value="${dictType}">${dictType}</option>
 	</c:forEach>
@@ -686,8 +688,8 @@
 		<filter-name>shiroFilter</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 		<init-param>
-			<!-- 这个参数为true表示由web容器来控制filter的生命周期 -->
-			<!-- 如果让spring管理就设置为false -->
+			<!--  这个参数为true表示由web容器来控制filter的生命周期 -->
+			<!--  如果让spring管理就设置为false -->
 			<param-name>targetFilterLifecycle</param-name>
 			<param-value>true</param-value>
 		</init-param>
@@ -711,7 +713,7 @@
 		<property name="loginUrl" value="/toLogin.action"></property>
 		<property name="successUrl" value="/main.action"></property>
 		<property name="unauthorizedUrl" value="/refusePage.jsp" />
-		
+		 
 		<property name="filterChainDefinitions">
 			<value>
 				/jsAndCss/** = anon
@@ -723,35 +725,35 @@
 		</property>
 	</bean>
 	
-	<!-- 安全管理器SecurityManager -->
+	<!--  安全管理器SecurityManager -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="userRealm"></property>
 		<property name="cacheManager" ref="cacheManager" />
 		<property name="sessionManager" ref="sessionManager" />
 	</bean>
 	
-	<!-- 自定义的realm -->
+	<!--  自定义的realm -->
 	<bean id="userRealm" class="com.lyu.pms.security.UserRealm">
 		<!-- 注入凭证匹配器 -->
 		<property name="credentialsMatcher" ref="credentialsMatcher"></property>
 	</bean>
 	
-	<!-- 注册凭证匹配器 -->
+	<!--  注册凭证匹配器 -->
 	<bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
 		<property name="hashAlgorithmName" value="SHA-1" />
 		<property name="hashIterations" value="1024" />
 	</bean>
 	
-	<!-- 定义缓存管理器 -->
+	<!--  定义缓存管理器 -->
 	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
 		<property name="cacheManagerConfigFile" value="classpath:ehcache.xml" />
 	</bean>
 	
-	<!-- 定义会话管理器 -->
+	<!--  定义会话管理器 -->
 	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
 		<!-- session的失效时间 -->
 		<property name="globalSessionTimeout" value="3600000" />
-		<!-- 定时清理失效的会话 -->
+		<!--  定时清理失效的会话 -->
 		<property name="sessionValidationInterval" value="1800000" />		
 	</bean>
 	```
