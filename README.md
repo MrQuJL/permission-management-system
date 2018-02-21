@@ -496,18 +496,18 @@
 	            sb.append("<li><a href=\"javascript:"+queryMethod+"(");
 	            sb.append(pageInfo.getPrePage()).append(",");
 	            sb.append(pageInfo.getPageSize()).append(")\">&#171; 上一页</a></li>");
-		    }
+		}
 
 	        for (int i = 0; i < pageInfo.getNavigatepageNums().length; i++) {
-		        int pageNum = pageInfo.getNavigatepageNums()[i];
-		        if (pageInfo.getPageNum() == pageNum) {
-			        sb.append("<li class=\"active\"><a href=\"javascript:\">");
-			        sb.append(pageNum).append("</a></li>");
-		        } else {
-		            sb.append("<li><a href=\"javascript:"+queryMethod+"(");
-		            sb.append(pageNum).append(", ");
-		            sb.append(pageInfo.getPageSize()).append(")\">");
-		            sb.append(pageNum).append("</a></li>");
+		    int pageNum = pageInfo.getNavigatepageNums()[i];
+		    if (pageInfo.getPageNum() == pageNum) {
+			    sb.append("<li class=\"active\"><a href=\"javascript:\">");
+			    sb.append(pageNum).append("</a></li>");
+		    } else {
+		        sb.append("<li><a href=\"javascript:"+queryMethod+"(");
+		        sb.append(pageNum).append(", ");
+		        sb.append(pageInfo.getPageSize()).append(")\">");
+		        sb.append(pageNum).append("</a></li>");
 	            }
 	        }
 
@@ -711,7 +711,7 @@
 	    <property name="securityManager" ref="securityManager"></property>
 	    <property name="loginUrl" value="/toLogin.action"></property>
 	    <property name="successUrl" value="/main.action"></property>
-	    <property name="unauthorizedUrl" value="/refusePage.jsp" />
+	    <property name="unauthorizedUrl" value="/refusePage.jsp"></property>
 		 
 	    <property name="filterChainDefinitions">
 	        <value>
@@ -886,7 +886,7 @@
 	默认情况是：error.appendTo(element.parent());即把错误信息放在验证的元素后面。<br/>
 		```js
 		errorPlacement: function(error, element) {
-			error.appendTo(element.parent());
+		    error.appendTo(element.parent());
 		}
 		```
 		error --> 错误信息(默认用label标签包裹)<br/>
@@ -1041,15 +1041,14 @@
 		因为部门id要与部门表进行关联，所以必须要确保用户表的dept_id和部门表的dept_id之间的一致性，就要给用户表的dept_id添加外键，这样才能确保数据的一致性，**但是我在设计这张表时并没有添加外键**，因为有了外键，在向主表添加记录的时候，数据库会去从表中查询一次，这就会影响主表数据的插入速度，影响系统的性能，影响用户的体验，所以就没有添加外键，**但是同时为了数据的一致性，我把确认部门id是否在部门表中存在这一步操作放到了业务逻辑层由java代码来控制，这样就提高了数据的插入速度减轻了数据库服务器的压力，提高了用户的体验，profit++**
 
 100. 获取checkbox的值，思路：利用name属性获取checkboxs对象，然后循环判断checked属性（true为选中，false为未选中），创建数组，选中的push进数组，未选中的不做处理,实现：
-
-	```js
+	
 	var id_array=new Array();  
 	$('input[name="id"]:checked').each(function(){  
 		id_array.push($(this).val());//向数组中添加元素  
 	});  
 	var idstr=id_array.join(',');//将数组元素连接起来以构建一个字符串  
 	alert(idstr);
-	```
+	
 
 101. 日志功能分析：
 日志一般是通过某些事件（添加，删除，修改...）触发的，所以日志不存在手动添加功能，而需要通过切面来向日志表里添加数据，同时日志也不能修改，日志是用来查询历史记录的，可以在日志记录达到一定量的时候覆盖，而不要提供对外删除日志的接口（除非用户有这方面的需求）。
@@ -1062,9 +1061,8 @@
 
 103. mybatis如果想在控制台打印执行过程的SQL语句，需要在在主配置文件中添加如下配置：
 
-	```xml
 	<setting name="logImpl" value="STDOUT_LOGGING"/>
-	```
+	
 
 ## 致谢
 感谢您对项目的关注，如果项目中有任何错误或不妥，欢迎指正，我将不胜感激。<br/>
