@@ -488,51 +488,50 @@
 	     * @return
 	     */
 	    public static String pageStr (PageInfo<?> pageInfo,String queryMethod) {
-	    StringBuffer sb = new StringBuffer("<ul>");
-	    //判断当前页是不是首页
-	    if (pageInfo.isIsFirstPage()
-	        || pageInfo.getPrePage() == 0) {
-	        sb.append("<li class=\"disabled\"><a href=\"javascript:\">&#171; 上一页</a></li>");
-	    } else {
-	        sb.append("<li><a href=\"javascript:"+queryMethod+"(");
-	        sb.append(pageInfo.getPrePage()).append(",");
-	        sb.append(pageInfo.getPageSize()).append(")\">&#171; 上一页</a></li>");
-		}
+	        StringBuffer sb = new StringBuffer("<ul>");
+	        //判断当前页是不是首页
+	        if (pageInfo.isIsFirstPage() || pageInfo.getPrePage() == 0) {
+	            sb.append("<li class=\"disabled\"><a href=\"javascript:\">&#171; 上一页</a></li>");
+	        } else {
+	            sb.append("<li><a href=\"javascript:"+queryMethod+"(");
+	            sb.append(pageInfo.getPrePage()).append(",");
+	            sb.append(pageInfo.getPageSize()).append(")\">&#171; 上一页</a></li>");
+		    }
 
-	    for (int i = 0; i < pageInfo.getNavigatepageNums().length; i++) {
-		    int pageNum = pageInfo.getNavigatepageNums()[i];
-		    if (pageInfo.getPageNum() == pageNum) {
-			sb.append("<li class=\"active\"><a href=\"javascript:\">");
-			sb.append(pageNum).append("</a></li>");
-		    } else {
-		    sb.append("<li><a href=\"javascript:"+queryMethod+"(");
-		    sb.append(pageNum).append(", ");
-		    sb.append(pageInfo.getPageSize()).append(")\">");
-		    sb.append(pageNum).append("</a></li>");
+	        for (int i = 0; i < pageInfo.getNavigatepageNums().length; i++) {
+		        int pageNum = pageInfo.getNavigatepageNums()[i];
+		        if (pageInfo.getPageNum() == pageNum) {
+			        sb.append("<li class=\"active\"><a href=\"javascript:\">");
+			        sb.append(pageNum).append("</a></li>");
+		        } else {
+		            sb.append("<li><a href=\"javascript:"+queryMethod+"(");
+		            sb.append(pageNum).append(", ");
+		            sb.append(pageInfo.getPageSize()).append(")\">");
+		            sb.append(pageNum).append("</a></li>");
+	            }
 	        }
-	    }
 
-	    //判断是否是尾页
-	    if (pageInfo.isIsLastPage() || pageInfo.getNextPage() == 0) {
-	        sb.append("<li class=\"disabled\"><a href=\"javascript:\">下一页 &#187;</a></li>");
-	    } else {
-	        sb.append("<li><a href=\"javascript:"+queryMethod+"(");
-	        sb.append(pageInfo.getNextPage()).append(",");
-	        sb.append(pageInfo.getPageSize()).append(")\">下一页 &#187;</a></li>");
-	    }
+	        //判断是否是尾页
+	        if (pageInfo.isIsLastPage() || pageInfo.getNextPage() == 0) {
+	            sb.append("<li class=\"disabled\"><a href=\"javascript:\">下一页 &#187;</a></li>");
+	        } else {
+	            sb.append("<li><a href=\"javascript:"+queryMethod+"(");
+	            sb.append(pageInfo.getNextPage()).append(",");
+	            sb.append(pageInfo.getPageSize()).append(")\">下一页 &#187;</a></li>");
+	        }
 
-	    sb.append("<li class=\"disabled controls\"><a href=\"javascript:void(0);\">当前第 ");
-	    sb.append("<input type=\"text\" maxLength=\"6\" value=\"");
-	    sb.append(pageInfo.getPageNum());
-	    sb.append("\" onkeypress=\"var e=window.event||this;var         c=e.keyCode||e.which;if(c==13)"+queryMethod+"(this.value,");
-	    sb.append(pageInfo.getPageSize()).append(");\" onclick=\"this.select();\"/>");
-	    sb.append(" 页 / 共 ");
-	    sb.append(pageInfo.getPages());
-	    sb.append(" 页， 共 ");
-	    sb.append(pageInfo.getTotal());
-	    sb.append(" 条</a></li></ul>");
+	        sb.append("<li class=\"disabled controls\"><a href=\"javascript:void(0);\">当前第 ");
+	        sb.append("<input type=\"text\" maxLength=\"6\" value=\"");
+	        sb.append(pageInfo.getPageNum());
+	        sb.append("\" onkeypress=\"var e=window.event||this;var c=e.keyCode||e.which;if(c==13)"+queryMethod+"(this.value,");
+	        sb.append(pageInfo.getPageSize()).append(");\" onclick=\"this.select();\"/>");
+	        sb.append(" 页 / 共 ");
+	        sb.append(pageInfo.getPages());
+	        sb.append(" 页， 共 ");
+	        sb.append(pageInfo.getTotal());
+	        sb.append(" 条</a></li></ul>");
 
-	    return sb.toString();
+	        return sb.toString();
 	    }
 	}
 	```
@@ -885,14 +884,14 @@
 	* submitHandler是一个在表单提交(点击type为"submit"的按钮)的时候调用的一个回调函数，它会取消提交表单的默认行为，在函数内部可以通过调用form.submit()方法来提交
 	* errorPlacement（错误信息显示的位置）<br/>
 	默认情况是：error.appendTo(element.parent());即把错误信息放在验证的元素后面。<br/>
-	```js
-	errorPlacement: function(error, element) {
-	    error.appendTo(element.parent());
-	}
-	```
-	  error --> 错误信息(默认用label标签包裹)<br/>
-	  element --> 出现错误信息的元素（input）<br/>
-	  错误提示的默认css类名是"error"(即label的默认类名)<br/>
+		```js
+		errorPlacement: function(error, element) {
+			error.appendTo(element.parent());
+		}
+		```
+		error --> 错误信息(默认用label标签包裹)<br/>
+		element --> 出现错误信息的元素（input）<br/>
+		错误提示的默认css类名是"error"(即label的默认类名)<br/>
 	* errorContainer:错误信息存放的容器，可以在有错误信息的时候显示，没有错误信息的时候隐藏
 	* 用法示例：
 		```js
@@ -948,10 +947,11 @@
 	* back()	加载 history 列表中的前一个 URL。
 	* forward()	加载 history 列表中的下一个 URL。
 	* go()		加载 history 列表中的某个具体页面。
-	```js
-	history.go(-1); // 相当于浏览器的回退
-	history.back(); // 同上一步
-	```
+
+		```js
+		history.go(-1); // 相当于浏览器的回退
+		history.back(); // 同上一步
+		```
 
 88. 实现主页菜单动态加载思路：
 	* 要结合实现菜单的组件，js代码控制，后台数据的输出
@@ -972,10 +972,11 @@
 	* 注册事务管理器
 	* 开启事务注解驱动
 	* 在相应的方法上加上注解：
-	```java
-	@Transactional(isolation=Isolation.DEFAULT,propagation = Propagation.REQUIRED)
-	...
-	```
+
+		```java
+		@Transactional(isolation=Isolation.DEFAULT,propagation = Propagation.REQUIRED)
+		...
+		```
 
 94. 修改角色：
 	* 树生成之后要默认选中此角色拥有的节点
@@ -988,6 +989,7 @@
 	* html标签
 	* java代码
 	* jsp标签
+
 		```jsp
 		<c:forEach items="" var=""></c:forEach>
 		<c:choose>
@@ -995,12 +997,14 @@
 		</c:choose>
 		```
 	* jsp指令
+
 		```jsp
 		<%@ page="" %>
 		<%@ include="" %>
 		<%@ taglib="" %>
 		```
 	* jsp动作:
+
 		```jsp
 		jsp:include (会先解析要包含的页面，解析后和主页面合并一起显示)
 		jsp:forward
@@ -1009,10 +1013,59 @@
 		jsp:setProperty
 		```
 
+96. 向角色表添加一条记录后，通过mybatis返回的主键向角色-菜单，角色-部门，角色-区域映射表中添加数据，并通过spring的声明式事务进行控制
+
+97. mybatis添加记录返回主键需要在insert标签上设置这三个属性：
+	```java
+	useGeneratedKeys = "true" 使用生成的主键
+	keyProperty = "id"		  pojo类对应的属性
+	keyColumn = "id"		  数据库表对应的字段
+	```
+
+98. **业务上的注意事项** ：
+	* 录入用户信息的时候，不录入密码，使用默认密码
+	* 在为用户分配角色的时候，要注意最小化授权，用最少的角色分配给该用户所需要的权限
+	* 超级管理员账号不可以删除，自己不能删除自己，所显示的用户只能是当前用户所在部门里有权限看到的用户（像淘汰子节点一样）
+	* 用户只跟部门挂钩，不要和其他的字段有关联
+	* 系统表一般是不经常改动的表，为了存取的方便，一般要放到缓存组件里
+
+99. 该系统数据库表设计与三大范式之间的关系：
+	* 第一范式：表中的字段都是原子的不可拆分的
+	* 第二范式：就是要求有主键，并且要求其他字段都要依赖于主键
+		* 为什么要有主键？没有主键就没有唯一性，没有唯一性就无法唯一确定一条记录，无法确定一条记录说明这个表设计的不合理，所以需要主键。
+		* 其他字段为什么要依赖于主键？不依赖于主键就无法定位到他们，其他字段组成的这行记录和主键表示的是同一个东西，而主键是唯一的，所以他们只要依赖于主键，就使这条记录成了唯一的。
+		* **但是，我在设计角色-菜单，角色-部门，角色-区域这些多对多关系的映射表的时候就没有遵守第二范式，没有给这些表添加主键，因为一个角色它一般对应了多个菜单，多个部门，多个区域，记录一般是不唯一的，所以就没有添加主键**
+	* 第三范式：在第二范式的基础上消除传递依赖<br/>
+		就拿用户表来说，用户属于某个部门，所以用户表中就需要有以一个部门id字段，那么需不需要部门名称这个字段呢？<br/>
+		不需要，因为加上这个字段的话数据就冗余了，因为我们可以通过部门id关联到部门表从而查询到部门名称，所以不需要添加部门名称。
+		因为部门id要与部门表进行关联，所以必须要确保用户表的dept_id和部门表的dept_id之间的一致性，就要给用户表的dept_id添加外键，这样才能确保数据的一致性，但是我在设计这张表时并没有添加外键，因为有了外键，在向主表添加记录的时候，数据库会去从表中查询一次，这就会影响主表数据的插入速度，影响系统的性能，影响用户的体验，所以就没有添加外键，但是同时为了数据的一致性，我把确认部门id是否在部门表中存在这一步操作放到了业务逻辑层由java代码来控制，这样就提高了数据的插入速度减轻了数据库服务器的压力，提高了用户的体验，profit++
+
+100. 获取checkbox的值，思路：利用name属性获取checkboxs对象，然后循环判断checked属性（true为选中，false为未选中），创建数组，选中的push进数组，未选中的不做处理,实现：
+	```js
+	var id_array=new Array();  
+	$('input[name="id"]:checked').each(function(){  
+		id_array.push($(this).val());//向数组中添加元素  
+	});  
+	var idstr=id_array.join(',');//将数组元素连接起来以构建一个字符串  
+	alert(idstr);
+	```
+
+101. 日志功能分析：
+日志一般是通过某些事件（添加，删除，修改...）触发的，所以日志不存在手动添加功能，而需要通过切面来向日志表里添加数据，同时日志也不能修改，日志是用来查询历史记录的，可以在日志记录达到一定量的时候覆盖，而不要提供对外删除日志的接口（除非用户有这方面的需求）。
+
+102. 在该项目中日志的实现思路如下：
+	* 日志的几个要素：什么人，什么时候，在哪，做了什么事情，造成了什么后果
+	* 使用aspectJ，导入aop，aopaliance，aspectJ，spring-aspects包
+	* 注册aspectJ的自动代理<aop:aspectj-autoproxy />
+	* *注：日志的实现方式多样，可以用AOP也可以用拦截器*
+
+103. mybatis如果想在控制台打印执行过程的SQL语句，需要在在主配置文件中添加如下配置：
+
+	```xml
+	<setting name="logImpl" value="STDOUT_LOGGING"/>
+	```
 
 ## 致谢
 感谢您对项目的关注，如果项目中有任何错误或不妥，欢迎指正，我将不胜感激。<br/>
 项目持续更新中...<br/>
 更多精彩内容，敬请关注[曲健磊的博客](http://blog.csdn.net/a909301740 "曲健磊的博客")
-
-
