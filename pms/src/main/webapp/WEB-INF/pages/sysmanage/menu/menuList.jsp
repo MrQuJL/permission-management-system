@@ -92,9 +92,6 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<div class="form-actions pagination-left">
-			<input id="btnSubmit" class="btn btn-primary" type="button" value="保存排序" onclick="updateSort();"/>
-		</div>
 	 </form>
 </body>
 </html>

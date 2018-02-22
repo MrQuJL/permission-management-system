@@ -104,7 +104,7 @@
         
     	<label>描述 ：</label>
         <input id="description" name="description" class="input-medium" type="text" value="" maxlength="50"/>&nbsp;
-    	<shiro:hasPermission name="dict:query">
+    	<shiro:hasPermission name="sys:dict:view">
     		<input id="btnSubmit" class="btn btn-primary" type="button" onclick="dictMgr.getDictListPage(1, 10);" value="查询"/>
     	</shiro:hasPermission>
 	</form>

@@ -113,7 +113,9 @@
 				<input id="userName" name="userName" class="input-medium" type="text" value="" maxlength="50"/>
 			</li>
 			<li class="btns">
-				<input id="btnSubmit" class="btn btn-primary" type="button" value="查询" onclick="userMgr.getUserListPage(1,10);"/>
+				<shiro:hasPermission name="sys:user:view">
+					<input id="btnSubmit" class="btn btn-primary" type="button" value="查询" onclick="userMgr.getUserListPage(1,10);"/>
+				</shiro:hasPermission>
 			</li>
 		</ul>
 	</form>

@@ -33,8 +33,27 @@
 			<value>
 				/jsAndCss/** = anon
 				/login.action = anon
-				/sysmgr/getDictListPage.action = perms[dict:query]
-				<!-- /sysmgr/changePwd.action = perms[user:chpwd] -->
+				
+				/sysmgr/getDictListPage.action = perms[sys:dict:view]
+				/sysmgr/gotoDictEdit.action = perms[sys:dict:edit]
+				
+				/sysmgr/gotoRoleList = perms[sys:role:view]
+				/sysmgr/gotoRoleEdit.action = perms[sys:role:edit]
+				
+				/sysmgr/gotoAreaList = perms[sys:area:view]
+				/sysmgr/gotoAreaEdit.action = perms[sys:area:edit]
+				
+				/sysmgr/gotoDeptList = perms[sys:dept:view]
+				/sysmgr/gotoDeptEdit.action = perms[sys:dept:edit]
+				
+				/sysmgr/gotoMenuList = perms[sys:menu:view]
+				/sysmgr/gotoMenuEdit.action = perms[sys:menu:edit]
+				
+				/sysmgr/getUserListPage.action = perms[sys:user:view]
+				/sysmgr/gotoUserEdit.action = perms[sys:user:edit]
+				
+				/sysmgr/getLogList.action = perms[sys:log:view]
+				
 				/** = authc
 			</value>
 		</property>

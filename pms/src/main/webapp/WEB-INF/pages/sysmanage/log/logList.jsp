@@ -22,7 +22,9 @@
 			<input id="endDate" name="endDate" type="text" readonly="readonly" maxlength="20" class="input-mini Wdate"
 				value="${currentDate}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:false});"/>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input id="btnSubmit" class="btn btn-primary" onclick="logMgr.getLogListPage(1,10);" type="button" value="查询"/>&nbsp;&nbsp;
+			<shiro:hasPermission name="sys:log:view">
+				<input id="btnSubmit" class="btn btn-primary" onclick="logMgr.getLogListPage(1,10);" type="button" value="查询"/>&nbsp;&nbsp;
+			</shiro:hasPermission>
 		</div>
 	</form>
 
