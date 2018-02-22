@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/pages/include/taglib.jsp" %>
 <!doctype html>
 <html>
-	<head>
+<head>
 	<meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
 	<title>字典管理</title>
 	<meta name='keywords' content='权限管理'>

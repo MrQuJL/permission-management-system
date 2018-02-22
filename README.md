@@ -77,6 +77,9 @@
 	shiro-realm.ini &nbsp;&nbsp;测试shiro的realm<br/>
 	shiro.ini &nbsp;&nbsp;模拟测试shiro的数据源<br/>
 
+## 界面
+![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/index.png)
+
 ## 数据库ER图
 ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/er.png)
 

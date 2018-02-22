@@ -159,7 +159,7 @@
 				</div>
 			</div>
 		    <div id="footer" class="row-fluid">
-				Copyright © 2018 <a href="http://39.107.70.197:8080" target="_blank">分销系统</a> - Powered 曲健磊
+				Copyright © 2018 - 2018 <a href="http://39.107.70.197:8080" target="_blank">权限管理系统</a> - Powered by 曲健磊
 			</div>
 		</div>
 	</div>
