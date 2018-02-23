@@ -238,9 +238,9 @@
 	> 原因：因为没有为index.jsp页面添加jsp的头部，导致项目一启动就报错
 
 	> 解决：添加jsp头部（即page指令）
-		```jsp
-		<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-		```
+	```jsp
+	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+	```
 
 19. 为某个用户增加了一些角色，发现界面上的菜单出现了重复的现象
 	> 原因：每个角色所拥有的菜单列表可能有重叠的情况，在根据用户查询他所拥有的角色，在根据查询到的角色去查询相应的菜单列表时就出现了重复
