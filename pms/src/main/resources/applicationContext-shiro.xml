@@ -54,7 +54,7 @@
 	<!-- 安全管理器SecurityManager -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="userRealm"></property>
-		<!-- <property name="cacheManager" ref="cacheManager" /> -->
+		<property name="cacheManager" ref="cacheManager" />
 		<property name="sessionManager" ref="sessionManager" />
 	</bean>
 	
@@ -71,9 +71,9 @@
 	</bean>
 	
 	<!-- 定义缓存管理器 -->
-	<!-- <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
 		<property name="cacheManagerConfigFile" value="classpath:ehcache.xml" />
-	</bean> -->
+	</bean>
 	
 	<!-- 定义会话管理器 -->
 	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
