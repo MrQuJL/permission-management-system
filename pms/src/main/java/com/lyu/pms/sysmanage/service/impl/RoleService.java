@@ -45,12 +45,6 @@ public class RoleService implements IRoleService {
 	@Autowired
 	private AreaMapper areaMapper;
 	
-	/**
-	 * 管理EhCache的缓存
-	 */
-	/*@Autowired
-	private EhCacheManager cacheManager;*/
-	
 	// 一下三个mapper用于向角色-菜单，角色-部门，角色-区域表中插入数据
 	@Autowired
 	private RoleToMenuMapper roleToMenuMapper;

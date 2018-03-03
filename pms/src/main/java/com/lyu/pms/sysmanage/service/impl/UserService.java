@@ -38,12 +38,6 @@ public class UserService implements IUserService {
 	@Autowired
 	private UserToRoleMapper userToRoleMapper;
 	
-	/**
-	 * 管理EhCache的缓存
-	 */
-	/*@Autowired
-	private EhCacheManager cacheManager;*/
-	
 	public static final int HASH_ITERATIONS = 1024;
 	
     public static final int SALT_SIZE = 8;

@@ -3,7 +3,6 @@ package com.lyu.pms.sysmanage.service.impl;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -34,9 +33,6 @@ public class MenuService implements IMenuService {
 	
 	private List<Menu> childMenuList;
 
-	@Autowired
-	private EhCacheManager cacheManager;
-	
 	@Autowired
 	private RoleToMenuMapper roleToMenuMapper;
 	
@@ -131,8 +127,6 @@ public class MenuService implements IMenuService {
 		if (rows > 0) {
 			flag = true;
 		}
-		// 修改了信息都要清空shiro的缓存
-		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 
@@ -158,8 +152,6 @@ public class MenuService implements IMenuService {
 			flag = true;
 		}
 		
-		// 修改了信息都要清空shiro的缓存
-		cacheManager.getCacheManager().removalAll();
 		return flag;
 	}
 

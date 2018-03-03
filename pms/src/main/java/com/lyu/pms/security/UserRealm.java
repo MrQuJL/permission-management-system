@@ -6,6 +6,7 @@ import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
+import org.apache.shiro.ShiroException;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -45,7 +46,9 @@ public class UserRealm extends AuthorizingRealm {
 	
 	// 身份认证
 	@Override
-	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) 
+		throws AuthenticationException {
+		
 		log.info("进入UserRealm的身份认证方法...");
 		
 		// 1.从传入的token获取身份信息(输入的userName)
@@ -83,10 +86,6 @@ public class UserRealm extends AuthorizingRealm {
 		
 		// 模拟根据得到的user对象里面的userName或userId去数据库查询这个用户存在哪些资源操作权限
 		Set<String> permissions = new HashSet<String>();
-//		permissions.add("user:add");
-//		permissions.add("user:delete");
-//		permissions.add("user:update");
-//		permissions.add("dict:query");
 		
 		// 查询当前主体所拥有的权限信息
 		List<Menu> menuList = menuService.getMenuListByUserId(principle.getUserId());
@@ -104,4 +103,5 @@ public class UserRealm extends AuthorizingRealm {
 		
 		return simpleAuthorizationInfo;
 	}
+	
 }
