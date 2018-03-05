@@ -55,12 +55,14 @@
 	com.company.projectName.test &nbsp;&nbsp;测试类<br/>
 	com.company.projectName.util &nbsp;&nbsp;工具类<br/>
 
-* 项目包结构展示一 <br/>
+* 项目包结构展示<br/>
 ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/项目包结构一览.png)
 ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/action和dto的包结构.png)
 ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/entity的包结构.png)
 ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/mapper的包结构.png)
 ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/service及其实现类的包结构.png)
+![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/配置文件命名.png)
+
 * 项目的前台页面结构:
 	> webapp/index.jsp &nbsp;&nbsp;引导页面，通过后台跳转到登陆页面<br/>
 	webapp/jsAndCss/js &nbsp;&nbsp;一些js文件<br/>
