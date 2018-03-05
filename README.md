@@ -40,7 +40,7 @@
 * jquery-validate-1.11.0	强大的表单校验工具
 * jquery-zTree-3.5.12	流行的树形控件
 * treeTable	树形表格
-* My97DatePicker	优雅的时间选择控件
+* My97DatePicker	时间选择控件
 
 ## 项目的约定
 * 项目的后台包结构：
@@ -55,8 +55,11 @@
 	com.company.projectName.test &nbsp;&nbsp;测试类<br/>
 	com.company.projectName.util &nbsp;&nbsp;工具类<br/>
 
-* 项目包结构展示一 ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/项目包结构一览.png)
-
+* 项目包结构展示一 <br/>
+![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/项目包结构一览.png)
+![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/action和dto的包结构.png)
+![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/entity的包结构.png)
+![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/mapper的包结构.png)
 
 * 项目的前台页面结构:
 	> webapp/index.jsp &nbsp;&nbsp;引导页面，通过后台跳转到登陆页面<br/>
