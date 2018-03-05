@@ -65,20 +65,6 @@
 	webapp/jsAndCss/img &nbsp;&nbsp;一些图片文件<br/>
 	webapp/WEB-INF/pages &nbsp;&nbsp;放页面<br/>
 
-* 项目的配置文件命名：
-	> applicationContext.xml &nbsp;&nbsp;spring的主配置文件<br/>
-	applicationContext-shiro.xml &nbsp;&nbsp;放置shiro的过滤器以及SecurityManager环境<br/>
-	ehcache.xml &nbsp;&nbsp;ehcache的配置文件<br/>
-	ehcache.xsd &nbsp;&nbsp;ehcache标签的定义<br/>
-	jdbc.properties &nbsp;&nbsp;与数据库相关的配置文件，例如：用户名，密码...<br/>
-	log4j.properties &nbsp;&nbsp;日志相关的输出配置<br/>
-	mybatis-cfg.xml &nbsp;&nbsp;mybatis的主配置文件<br/>
-	struts-sysmgr.xml &nbsp;&nbsp;与系统管理相关的struts2的配置文件<br/>
-	struts.properties &nbsp;&nbsp;与struts2相关的系统常量的配置<br/>
-	struts.xml &nbsp;&nbsp;struts2的主配置文件<br/>
-	shiro-permission.ini &nbsp;&nbsp;测试shiro的权限管理时的配置文件<br/>
-	shiro-realm.ini &nbsp;&nbsp;测试shiro的realm<br/>
-	shiro.ini &nbsp;&nbsp;模拟测试shiro的数据源<br/>
 
 ## 界面
 ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/index.png)
