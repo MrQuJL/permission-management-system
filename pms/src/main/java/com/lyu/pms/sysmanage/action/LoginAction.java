@@ -54,8 +54,8 @@ public class LoginAction {
 	
 	/**
 	 * 进入登录页面
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String toLogin() {
 		return "loginPage";
@@ -63,8 +63,8 @@ public class LoginAction {
 	
 	/**
 	 * 进入首页
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String main() {
 		List<Menu> list = this.menuService.getMenuListByUserId(UserUtils.getCurrentUserId());
@@ -79,8 +79,8 @@ public class LoginAction {
 	
 	/**
 	 * 退出系统
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String logout() {
 		Subject subject = SecurityUtils.getSubject();
@@ -92,8 +92,8 @@ public class LoginAction {
 	
 	/**
 	 * 登录验证
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String login() {
 		logger.info("loginName:" + loginName);

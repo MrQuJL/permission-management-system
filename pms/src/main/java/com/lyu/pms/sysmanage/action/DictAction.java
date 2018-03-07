@@ -52,8 +52,8 @@ public class DictAction {
 	
 	/**
 	 * 进入字典列表页面
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String gotoDictList() {
 		// 加载所有的字典类型
@@ -64,8 +64,8 @@ public class DictAction {
 	
 	/**
 	 * 获取分页的字典列表
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String getDictListPage() {
 		if (StringUtils.isEmpty(type)) {
@@ -92,8 +92,8 @@ public class DictAction {
 	
 	/**
 	 * 进入字典编辑页面
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String gotoDictEdit() {
 		if (dictId != null) { // 修改，将该id的字典信息查询出来放到session里面
@@ -108,8 +108,8 @@ public class DictAction {
 	
 	/**
 	 * 保存字典
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String saveDict() {
 		// 将前台传来的json字符串解析成Dict对象
@@ -133,8 +133,8 @@ public class DictAction {
 	
 	/**
 	 * 删除字典(逻辑删除)
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String delDict() {
 		int rows = dictService.delDictById(dictId);

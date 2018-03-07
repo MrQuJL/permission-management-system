@@ -24,8 +24,8 @@ public class TagAction extends ActionSupport{
 	
     /**
      * 跳转到icon页面
-     * @param 
-     * @return
+     * @param null
+	 * @return 视图名称
      */
     public String iconSelect(){
     	return "iconSelect";

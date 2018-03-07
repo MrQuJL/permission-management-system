@@ -46,8 +46,8 @@ public class AreaAction {
 
 	/**
 	 * 处理前往区域列表页面的请求
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String gotoAreaList() {
 		// 只获取当前用户所拥有的区域
@@ -62,8 +62,8 @@ public class AreaAction {
 	
 	/**
 	 * 处理前往区域编辑页面的请求
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String gotoAreaEdit() {
 		if (editFlag == 2 && this.areaId != null) { // 修改
@@ -85,8 +85,8 @@ public class AreaAction {
 	
 	/**
 	 * 保存区域，新增的话editFlag为1，修改为2
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String saveArea() {
 		Area area = JSON.parseObject(jsonObj, Area.class);
@@ -108,8 +108,8 @@ public class AreaAction {
 	
 	/**
 	 * 确认是否有子区域
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String confirmHasSubArea() {
 		boolean flag = true;
@@ -127,8 +127,8 @@ public class AreaAction {
 	
 	/**
 	 * 删除子区域
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String delArea() {
 		if (!areaService.hasSubArea(this.areaId)) {
@@ -147,8 +147,8 @@ public class AreaAction {
 	
 	/**
 	 * 加载区域zTree
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String getAreaTree() {
 		List<Area> areaList = areaService.getAreaListByUId(UserUtils.getCurrentUserId());

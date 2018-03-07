@@ -48,8 +48,8 @@ public class MenuAction {
 	
 	/**
 	 * 前往菜单列表
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String gotoMenuList() {
 		// 获取当前的用户id
@@ -71,8 +71,8 @@ public class MenuAction {
 
 	/**
 	 * 前往菜单编辑页面
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String gotoMenuEdit() {
 		if (editFlag == 2) { // 修改
@@ -98,8 +98,8 @@ public class MenuAction {
 	
 	/**
 	 * 构造二三级菜单
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String menuNavi() {
 		this.menuList = menuService.getAllMenuList();
@@ -108,8 +108,8 @@ public class MenuAction {
 	
 	/**
 	 * 保存菜单（新增，修改）
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String saveMenu() {
 		// 1.将前台发来的json类型的菜单字符串解析成java对象
@@ -138,8 +138,8 @@ public class MenuAction {
 	
 	/**
 	 * 确认当前菜单下是否有子菜单
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String confirmHasSubMenu() {
 		// 1.先查看该菜单下面是否有子菜单
@@ -153,8 +153,8 @@ public class MenuAction {
 	
 	/**
 	 * 删除菜单
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String delMenu() {
 		this.message = "删除菜单失败，请联系系统管理员!";
@@ -169,8 +169,8 @@ public class MenuAction {
 	
 	/**
 	 * 获取属性菜单的数据
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String getMenuTree(){		
 		List<TreeDto> mapList  = new ArrayList<TreeDto>();

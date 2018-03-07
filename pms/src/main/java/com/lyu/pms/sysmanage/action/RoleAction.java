@@ -61,8 +61,8 @@ public class RoleAction {
 	
 	/**
 	 * 处理前往角色列表页面的请求
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String gotoRoleList() {
 		this.roleList = roleService.getAllRoleList();
@@ -72,8 +72,8 @@ public class RoleAction {
 	
 	/**
 	 * 处理前往角色编辑页面的请求
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String gotoRoleEdit() {
 		// 无论是新增还是修改都要显示出当前用户所拥有的所有资源
@@ -92,8 +92,8 @@ public class RoleAction {
 	
 	/**
 	 * 保存角色，新增的话editFlag为1，修改为2
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String saveRole() {
 		Role role = JSON.parseObject(jsonObj, Role.class);
@@ -126,8 +126,8 @@ public class RoleAction {
 	
 	/**
 	 * 删除角色
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String delRole() {
 		boolean flag = this.roleService.delRole(this.roleId);

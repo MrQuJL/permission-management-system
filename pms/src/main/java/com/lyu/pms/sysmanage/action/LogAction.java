@@ -40,8 +40,8 @@ public class LogAction {
 	
 	/**
 	 * 获取日志列表
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String getLogListPage() {
 		LogDto logDto = JSON.parseObject(this.jsonObj, LogDto.class);
@@ -56,8 +56,8 @@ public class LogAction {
 	
 	/**
 	 * 处理前往日志列表的请求
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String gotoLogList() {
 		// 获取当前日期

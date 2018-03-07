@@ -5,6 +5,14 @@ import java.util.Date;
 
 import com.lyu.pms.sysmanage.dto.TreeDto;
 
+/**
+ * 类名称: 区域实体类
+ * 类描述: 封装了区域的相关信息
+ * 全限定性类名: com.lyu.pms.sysmanage.entity.Area
+ * @author 曲健磊
+ * @date 2018年3月7日 上午9:11:40
+ * @version V1.0
+ */
 public class Area extends TreeDto implements Serializable {
 
 	private static final long serialVersionUID = 267884671076293688L;

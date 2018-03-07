@@ -53,8 +53,8 @@ public class DeptAction {
 
 	/**
 	 * 进入部门列表
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String gotoDeptList() {
 		// 只查询当前用户所拥有的部门
@@ -71,8 +71,8 @@ public class DeptAction {
 	
 	/**
 	 * 进入部门编辑页面
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String gotoDeptEdit() {
 		if (editFlag == 2) { // 修改
@@ -89,8 +89,8 @@ public class DeptAction {
 	
 	/**
 	 * 新增 或修改部门
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String saveDept() {
 		Dept dept = JSON.parseObject(this.jsonObj, Dept.class);
@@ -123,8 +123,8 @@ public class DeptAction {
 	
 	/**
 	 * 确定当前部门下是否有子部门
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String confirmHasSubDept() {
 		// 判断deptId下面是否有子部门
@@ -154,8 +154,8 @@ public class DeptAction {
 	
 	/**
 	 * 加载部门树
-	 * @param
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String getDeptTree() {
 		List<Dept> deptList = deptService.getDeptListByUId(UserUtils.getCurrentUserId());

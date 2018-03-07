@@ -80,8 +80,8 @@ public class UserAction {
 	
 	/**
 	 * 进入用户个人信息页面
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String userInfo() {
 		return "userInfo";
@@ -89,8 +89,8 @@ public class UserAction {
 	
 	/**
 	 * 进入用户密码修改页面
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String changePwd() {
 		return "changePwd";
@@ -98,8 +98,8 @@ public class UserAction {
 	
 	/**
 	 * 进入用户列表页面
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String gotoUserList() {
 		return "success";
@@ -107,8 +107,8 @@ public class UserAction {
 	
 	/**
 	 * 进入用户编辑(add/update)页面
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
 	public String gotoUserEdit() {
@@ -131,8 +131,8 @@ public class UserAction {
 	
 	/**
 	 * 处理查询用户的请求
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String getUserListPage() {
 		PageInfo<UserDto> pageInfo = this.userService.getUserListPageByUserDto(this.userDto, this.pageParam);
@@ -149,8 +149,8 @@ public class UserAction {
 	
 	/**
 	 * 修改用户密码
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String saveChangePwd() {
 		// 1.通过session或者其他组件获取当前用户对象
@@ -177,8 +177,8 @@ public class UserAction {
 	
 	/**
 	 * 根据id获取用户的详细信息，包括部门名称，id
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String getUserInfoById() {
 		// 1.通过session或者其他组件获取当前用户对象
@@ -192,8 +192,8 @@ public class UserAction {
 	
 	/**
 	 * 添加/修改用户个人信息
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String saveUserInfo() {
 		System.out.println(this.jsonObj);
@@ -224,8 +224,8 @@ public class UserAction {
 	
 	/**
 	 * 删除用户
-	 * @param 
-	 * @return
+	 * @param null
+	 * @return 视图名称
 	 */
 	public String delUser() {
 		boolean flag = this.userService.delUser(this.userId);

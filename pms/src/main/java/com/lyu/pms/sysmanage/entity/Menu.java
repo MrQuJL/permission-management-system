@@ -5,6 +5,14 @@ import java.util.Date;
 
 import com.lyu.pms.sysmanage.dto.TreeDto;
 
+/**
+ * 类名称: 菜单实体类
+ * 类描述: 封装了与菜单相关的属性
+ * 全限定性类名: com.lyu.pms.sysmanage.entity.Menu
+ * @author 曲健磊
+ * @date 2018年3月7日 上午9:12:25
+ * @version V1.0
+ */
 public class Menu extends TreeDto implements Serializable {
     
 	private static final long serialVersionUID = 4177507587492220847L;
