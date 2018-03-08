@@ -17,6 +17,13 @@ import com.lyu.pms.sysmanage.mapper.UserMapper;
 import com.lyu.pms.sysmanage.service.ILogService;
 import com.lyu.pms.util.UserUtils;
 
+/**
+ * 类名称：日志服务类
+ * 全限定性类名: com.lyu.pms.sysmanage.service.impl.LogService
+ * @author 曲健磊
+ * @date 2018年3月8日下午4:05:42
+ * @version V1.0
+ */
 @Service("logService")
 public class LogService implements ILogService {
 

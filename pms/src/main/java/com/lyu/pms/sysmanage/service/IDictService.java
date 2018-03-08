@@ -17,24 +17,23 @@ import com.lyu.pms.sysmanage.entity.Dict;
 public interface IDictService {
 	
 	/**
-	 * 获得字典列表
-	 * @param type 字典的类型
-	 * @param description 字典的描述
-	 * @return 字典列表
+	 * 查询字典列表
+	 * @param dict 已知的字典信息
+	 * @return 满足dict中已有条件的字典列表
 	 */
 	List<Dict> getDictList(Dict dict);
 	
 	/**
-	 * 获取分页的字典列表
-	 * @param 
-	 * @return
+	 * 分页查询字典列表
+	 * @param dict 已知的字典信息
+	 * @param pageParam 分页对象，包含当前的页数和每页的大小
+	 * @return 经过分页的字典列表
 	 */
 	PageInfo<Dict> getDictListPage(Dict dict, PageParam pageParam);
 	
 	/**
 	 * 获取所有的字典类型
-	 * @param 
-	 * @return
+	 * @return 所有的字典类型列表
 	 */
 	List<String> getDictTypeList();
 	
@@ -47,22 +46,22 @@ public interface IDictService {
 	
 	/**
 	 * 新增字典
-	 * @param 
-	 * @return
+	 * @param dict 待新增的字典
+	 * @return 新增字典成功的记录数
 	 */
 	int saveDict(Dict dict);
 	
 	/**
 	 * 修改字典
-	 * @param 
-	 * @return
+	 * @param dict 待修改的字典
+	 * @return 修改字典成功的记录数
 	 */
 	int updateDict(Dict dict);
 	
 	/**
 	 * 根据字典id删除字典
-	 * @param 
-	 * @return
+	 * @param dictId 待删除的字典id
+	 * @return  删除字典成功的记录数
 	 */
 	int delDictById(Long dictId);
 	
