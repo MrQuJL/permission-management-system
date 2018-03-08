@@ -17,22 +17,22 @@ public interface UserMapper {
 	
 	/**
 	 * 验证用户的登录
-	 * @param 登录名称和密码
+	 * @param loginName 登录名称和密码
 	 * @return 用户存在则返回该用户
 	 */
 	User loginUser(String loginName);
 	
 	/**
 	 * 根据用户id获取用户对象
-	 * @param 
-	 * @return
+	 * @param userId 用户id
+	 * @return id为userId的用户信息
 	 */
 	User getUserById(Long userId);
 	
 	/**
 	 * 根据用户id获取用户对象的详细信息，包括部门名称，角色集合
-	 * @param 
-	 * @return
+	 * @param userId 用户id
+	 * @return id为userId的用户的详细信息
 	 */
 	UserDto getUserInfoById(Long userId);
 	
@@ -45,30 +45,30 @@ public interface UserMapper {
 	int updateUserPassword(Long userId, String newPassword);
 	
 	/**
-	 * 保存用户修改的信息
-	 * @param 
-	 * @return
+	 * 修改用户信息
+	 * @param user 要修改的用户
+	 * @return 受影响的行数1表示影响1行，0表示0行
 	 */
 	int saveUserInfo(User user);
 	
 	/**
 	 * 通过用户的已知信息(用户名称,部门名称)查询用户列表
-	 * @param 
-	 * @return
+	 * @param userDto 已知的用户信息条件
+	 * @return 符合条件的用户列表
 	 */
 	List<UserDto> getUserListByUserDto(UserDto userDto);
 	
 	/**
 	 * 添加用户
-	 * @param 
-	 * @return
+	 * @param user 用户详细信息
+	 * @return 受影响的行数1表示影响1行，0表示0行
 	 */
 	int addUser(User user);
 	
 	/**
 	 * 删除用户
-	 * @param 
-	 * @return
+	 * @param userId 用户的id
+	 * @return 受影响的行数1表示影响1行，0表示0行
 	 */
 	int delUser(Long userId);
 }

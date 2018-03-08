@@ -14,22 +14,22 @@ public interface RoleToMenuMapper {
 	
 	/**
 	 * 新增角色-菜单对应表的一条记录
-	 * @param 
-	 * @return
+	 * @param roleToMenu 角色菜单对应对象
+	 * @return 受影响的行数，1表示影响一行，0表示影响0行，以此类推
 	 */
 	int saveRoleToMenu(RoleToMenu roleToMenu);
 	
 	/**
 	 * 根据角色id，删除角色-菜单对应表的记录
-	 * @param 
-	 * @return
+	 * @param roleId 角色id
+	 * @return 受影响的行数，1表示影响一行，0表示影响0行，以此类推
 	 */
 	int deleteRoleToMenu(Long roleId);
 	
 	/**
 	 * 根据菜单id，删除角色-菜单对应表的记录
-	 * @param 
-	 * @return
+	 * @param 菜单id
+	 * @return 受影响的行数，1表示影响一行，0表示影响0行，以此类推
 	 */
 	int deleteRoleToMenuByMId(Long menuId);
 	
