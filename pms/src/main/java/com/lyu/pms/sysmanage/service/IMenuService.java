@@ -14,69 +14,68 @@ import com.lyu.pms.sysmanage.entity.Menu;
  * @version V1.0
  */
 public interface IMenuService {
-	
+
 	/**
 	 * 通过菜单id获取菜单的详细信息
-	 * @param 
-	 * @return
+	 * @param menuId 菜单id
+	 * @return id为menuId的菜单的详细信息
 	 */
 	MenuDto getMenuDetailById(Long menuId);
 	
 	/**
-	 * 根据用户的id获取用户所能够操作的用户列表
+	 * 根据用户的id获取用户所能够操作的菜单列表
 	 * @param userId 用户的id
-	 * @return 
+	 * @return id为userId的用户所能够操作的菜单列表
 	 */
 	List<Menu> getMenuListByUserId(Long userId);
 	
 	/**
-	 * 获取所有的字典列表 
-	 * @param 
-	 * @return
+	 * 获取所有的菜单列表
+	 * @return 所有的菜单列表
 	 */
 	List<Menu> getAllMenuList();
 	
 	/**
 	 * 判断id为isSubMenuId的菜单是否是id为menuId的子菜单或者它自己
-	 * @param 	menuId		当前菜单
-	 * @param 	isSubMenuId	待确认的菜单
-	 * @return
+	 * @param menuId 当前菜单
+	 * @param isSubMenuId 菜单id
+	 * @return true则说明isSubMenuId是menuId的子菜单
 	 */
 	boolean checkIsChildOrSelf(Long menuId, Long isSubMenuId);
 	
 	/**
 	 * 根据父级菜单的id查询出所有的子孙菜单
-	 * @param 	parentMenuId	父级菜单
-	 * @param 	childMenuList	子孙菜单集合
-	 * @return
+	 * @param parentMenuId 父级菜单
+	 * @param childMenuList	父级菜单id为parentMenuId的子孙菜单集合
+	 * @return null
 	 */
 	void getAllChildsMenuByPId(List<Menu> childMenuList, Long parentMenuId);
 	
 	/**
 	 * 添加菜单
-	 * @param 
-	 * @return
+	 * @param menu 待添加的菜单
+	 * @return true则添加菜单成功，false则失败
 	 */
 	boolean saveMenu(Menu menu);
 	
 	/**
 	 * 修改菜单
-	 * @param 
-	 * @return
+	 * @param menu 待修改的菜单
+	 * @return true则修改菜单成功，false则失败
 	 */
 	boolean updateMenu(Menu menu);
 	
 	/**
 	 * 判断当前菜单是否有子菜单
-	 * @param 
-	 * @return true 表示有子菜单	false 表示没有子菜单
+	 * @param menuId 菜单id
+	 * @return true表示有子菜单，false表示没有子菜单
 	 */
 	boolean hasSubMenu(Long menuId);
 	
 	/**
 	 * 删除指定id的菜单(逻辑删除，修改标识位)
-	 * @param 
-	 * @return
+	 * @param menuId 待删除的菜单id
+	 * @return true则删除菜单成功，false则失败
 	 */
 	boolean delMenu(Long menuId);
 	

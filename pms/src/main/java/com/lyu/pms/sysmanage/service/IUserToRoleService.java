@@ -16,8 +16,8 @@ public interface IUserToRoleService {
 	
 	/**
 	 * 通过用户id查询他的角色列表 
-	 * @param 
-	 * @return
+	 * @param userId 用户id
+	 * @return 该用户所拥有的user-role映射列表
 	 */
 	List<UserToRole> listRoleByUId(Long userId);
 	

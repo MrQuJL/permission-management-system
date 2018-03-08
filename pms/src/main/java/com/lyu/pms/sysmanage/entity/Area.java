@@ -164,6 +164,4 @@ public class Area extends TreeDto implements Serializable {
 		return true;
 	}
 	
-	
-	
 }

@@ -16,23 +16,24 @@ import com.lyu.pms.sysmanage.entity.Log;
 public interface ILogService {
 	
 	/**
-	 * 根据日志的某些已知信息查询日志的完整信息
-	 * @param 
-	 * @return
+	 * 根据日志的某些已知信息查询日志列表
+	 * @param logDto 已知的日志信息
+	 * @param pageParam 分页对象，包括第几页每页多少条
+	 * @return 分页查询的日志列表
 	 */
 	PageInfo<LogDto> getLogListPage(LogDto logDto, PageParam pageParam);
 	
 	/**
 	 * 添加日志
-	 * @param 
-	 * @return
+	 * @param log 待添加的日志信息
+	 * @return true则添加成功，否则添加失败
 	 */
 	boolean insertLog(Log log);
 	
 	/**
 	 * 删除日志
-	 * @param 
-	 * @return
+	 * @param logId 待删除的日志id
+	 * @return true则删除成功，否则删除失败
 	 */
 	boolean removeLog(Long logId);
 	
