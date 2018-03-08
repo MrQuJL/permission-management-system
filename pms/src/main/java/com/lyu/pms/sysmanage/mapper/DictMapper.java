@@ -24,8 +24,7 @@ public interface DictMapper {
 	
 	/**
 	 * 获取所有的字典类型
-	 * @param 
-	 * @return
+	 * @return 所有的字典类型的list集合
 	 */
 	List<String> getDictTypeList();
 	
@@ -38,22 +37,22 @@ public interface DictMapper {
 	
 	/**
 	 * 新增字典
-	 * @param 
-	 * @return
+	 * @param dict 要增加的字典
+	 * @return 受影响的行数1表示添加成功，否则失败
 	 */
 	int saveDict(Dict dict);
 	
 	/**
 	 * 修改字典
-	 * @param 
-	 * @return
+	 * @param dict 要修改的字典
+	 * @return 受影响的行数1表示修改成功，否则失败
 	 */
 	int updateDict(Dict dict);
 	
 	/**
 	 * 根据字典id删除字典
-	 * @param 
-	 * @return
+	 * @param dictId 待删除的字典id
+	 * @return 受影响的行数1表示删除成功，否则失败
 	 */
 	int delDictById(Long dictId);
 }

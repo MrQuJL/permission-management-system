@@ -16,72 +16,71 @@ import com.lyu.pms.sysmanage.entity.Menu;
 public interface MenuMapper {
 	
 	/**
-	 * 通过菜单id获取菜单的详细信息,父菜单名...
-	 * @param 
-	 * @return
+	 * 通过菜单id获取菜单的详细信息
+	 * @param menuId 要查询的菜单id
+	 * @return 菜单的详细信息
 	 */
 	MenuDto getMenuDetailById(Long menuId);
 	
 	/**
-	 * 根据用户的id获取用户所能够操作的用户列表
+	 * 根据用户的id获取用户所能够操作的菜单列表
 	 * @param userId 用户的id
-	 * @return 
+	 * @return 该用户所拥有的菜单列表
 	 */
 	List<Menu> getMenuListByUserId(Long userId);
 	
 	/**
 	 * 获取所有的字典列表 
-	 * @param 
-	 * @return
+	 * @return 所有的菜单列表
 	 */
 	List<Menu> getAllMenuList();
 	
 	/**
 	 * 通过角色id查询菜单列表
-	 * @param 
-	 * @return
+	 * @param roleId 角色id
+	 * @return 该角色所拥有的菜单列表
 	 */
 	List<Menu> getMenuListByRoleId(Long roleId);
 	
 	/**
-	 * 查询出当前菜单(id=parentId)的所有子菜单
-	 * @param	parentId 父级菜单 
-	 * @return
+	 * 查询出当前菜单的所有子菜单
+	 * @param	parentId 当前菜单 
+	 * @return id为parentId的所有子菜单
 	 */
 	List<Menu> getChildsMenuByPId(Long parentId);
 	
 	/**
 	 * 添加菜单
-	 * @param 
-	 * @return
+	 * @param menu 要添加的菜单
+	 * @return 受影响的行数，1表示添加成功，否则失败
 	 */
 	int saveMenu(Menu menu);
 	
 	/**
 	 * 修改菜单
-	 * @param 
-	 * @return
+	 * @param menu 要修改的菜单
+	 * @return 受影响的行数，1表示修改成功，否则失败
 	 */
 	int updateMenu(Menu menu);
 	
 	/**
 	 * 获取菜单id为menuId的所有子菜单的详细信息
-	 * @param 
-	 * @return
+	 * @param menuId 菜单id
+	 * @return id为menuId的所有子菜单
 	 */
 	List<Menu> getSubMenuByPId(Long menuId);
 	
 	/**
 	 * 获取当前菜单的所有子菜单的个数
-	 * @param 
-	 * @return
+	 * @param menuId 菜单id
+	 * @return id为menuId的所有子菜单的个数
 	 */
 	int countSubMenuByPId(Long menuId);
 	
 	/**
 	 * 删除指定id的菜单(逻辑删除，修改标识位)
-	 * @param 
-	 * @return
+	 * @param menuId 菜单id
+	 * @return 受影响的行数，1表示删除成功，否则失败
 	 */
 	int delMenu(Long menuId);
 	
