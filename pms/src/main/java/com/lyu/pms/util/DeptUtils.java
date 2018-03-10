@@ -16,9 +16,9 @@ public class DeptUtils {
 	
 	/**
 	 * 对部门列表进行递归排序	
-	 * @param returnMenus
-	 * @param menuList	
-	 * @param parentId	
+	 * @param returnDepts 排序后的部门列表，外部手动传入
+	 * @param deptList 排序前的部门列表
+	 * @param parentId 顶级部门的id
 	 * @deprecated 方法已经过时，请使用com.lyu.pms.util.TreeUtils.sortTreeList
 	 */
 	@Deprecated

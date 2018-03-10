@@ -74,7 +74,6 @@ public class RoleService implements IRoleService {
 		return role;
 	}
 	
-	
 	@Override
 	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
 	public boolean saveRole(Role role, List<Long> menuIds, List<Long> deptIds,
