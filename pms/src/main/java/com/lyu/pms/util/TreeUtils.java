@@ -16,10 +16,10 @@ public class TreeUtils {
 	
 	/**
 	 * 对树形列表进行递归排序
-	 * @param <T>
-	 * @param returnTreeList	
-	 * @param treeList		
-	 * @param parentId		
+	 * @param <T> 排序的元素类型
+	 * @param returnTreeList 返回的排序之后的树列表
+	 * @param treeList	排序前的树列表
+	 * @param parentId	父节点id
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> void sortTreeList(List<T> returnTreeList, List<T> treeList,

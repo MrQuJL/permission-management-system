@@ -22,6 +22,7 @@ public class LogServiceTest {
 	
 	private ILogService logService = null;
 	
+	// 在所有测试用例执行之前初始化spring的IOC容器
 	@Before
 	public void init() {
 		ac = new ClassPathXmlApplicationContext("applicationContext.xml");

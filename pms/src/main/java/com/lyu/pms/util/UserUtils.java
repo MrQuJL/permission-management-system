@@ -17,8 +17,7 @@ public class UserUtils {
 	
 	/**
 	 * 从shiro的subject中取出身份信息
-	 * @param 
-	 * @return
+	 * @return 存与shiro中的主体对象
 	 */
 	public static Principle getCurrentUser() {
 		// 从shiro的session里面取出主体
@@ -29,8 +28,7 @@ public class UserUtils {
 	
 	/**
 	 * 从当前主体中取出当前的userId
-	 * @param 
-	 * @return
+	 * @return 从主体中取出当前登录系统的用户的id
 	 */
 	public static Long getCurrentUserId() {
 		return getCurrentUser().getUserId();

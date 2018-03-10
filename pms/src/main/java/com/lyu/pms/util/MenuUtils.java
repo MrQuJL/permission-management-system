@@ -16,9 +16,9 @@ public class MenuUtils {
 	
 	/**
 	 * 对菜单列表进行递归排序
-	 * @param returnMenus	
-	 * @param menuList		
-	 * @param parentId	
+	 * @param returnMenus 要返回的排序后的菜单列表，需手动传入
+	 * @param menuList	排序前的菜单列表
+	 * @param parentId	父菜单的id
 	 * @deprecated 方法已经过时，请使用com.lyu.pms.util.TreeUtils.sortTreeList
 	 */
 	@Deprecated
