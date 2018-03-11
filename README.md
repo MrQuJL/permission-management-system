@@ -203,30 +203,6 @@
 
 3. 在用户登录错误时虽然我们可以精确的定位出是用户名错误还是密码错误，但是我们一般不直接告诉用户是用户名错误还是密码错误，目的是为了防止恶意软件暴力破解。
 
-4. webapp目录下面只留一个index.jsp页面来重定向到后台的toLogin请求，做为引导页面，index.jsp的内容如下：
-	```jsp
-	<% response.sendRedirect(request.getContextPath() + "/toLogin.action"); %>
-	```
-
-5. 将登陆的action配置与系统模块分离开来，用两个文件struts.xml, struts-sysmgr.xml来分别维护登录模块和系统功能模块
-
-6. 页面引入的js文件过多，为了简化页面，把这些script标签再放到一个jsp页面里面，引入这个jsp页面，在本项目中是这样引入的：
-	```jsp
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
-	<%@ taglib prefix="sys" tagdir="/WEB-INF/tags" %>
-
-	<c:set var="ctx" value="${pageContext.request.contextPath}" />
-	<c:set var="ctxJsAndcss" value="${ctx}/jsAndCss" />
-
-	<script src="${ctxJsAndcss}/jquery/jquery-1.8.3.min.js" type="text/javascript"></script>
-	<link href="${ctxJsAndcss}/bootstrap/2.3.1/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
-	<script src="${ctxJsAndcss}/bootstrap/2.3.1/js/bootstrap.min.js" type="text/javascript"></script>
-	...
-	<link href="${ctxJsAndcss}/common/common.css" type="text/css" rel="stylesheet" />
-	<script src="${ctxJsAndcss}/common/common.js" type="text/javascript"></script>
-	```
-
 7. 在使用jsp的include标签引入文件时一定要使用绝对路径，否则，在页面来回切换的时候会由于相对路径的问题找不到js和css文件，正例：
 	```jsp
 	<%-- 在web应用中webapp就是根目录 "/" --%>
@@ -245,18 +221,6 @@
 
 	> 更多关于对称非对称加密算法的解释可以参考-[几种常见加密算法解析及使用](http://blog.csdn.net/qq_26420489/article/details/53395472 "几种常见加密算法解析及使用")
 
-10. 项目中密码加密的流程：
-	> 1. 生成一个随机数
-	> 2. 用Hex对随机数编码
-	> 3. 将随机数和密码用sha1不可逆算法加密
-	> 4. 将第三步得到的字符串值用Hex进行编码
-	> 5. 将第2步和第四步的值拼凑
-
-11. 在UserRealm中验证用户登录的流程：
-	> 1. 先判断用户名是否存在
-	> 2. 如果用户名存在，取出存在数据库中加密的密码，跟传入后台的密码（加密后）进行比对
-	> 3. 比对成功，则用户认证通过
-
 12. 修改密码的流程：
 	> 1. 用户输入旧密码和两次新密码
 	> 2. 前台判断新旧密码长度是否符合要求
@@ -274,8 +238,6 @@
 	```jsp
 	<c:set var="ctx" value="${pageContext.request.contextPath}" />
 	```
-
-14. 前台用ajax提交，后台通过json返回的时候要设置result的type设为json
 
 15. 为了减少后台传送无用的数据到前台，在返回json数据的result标签里面使用<param name="includeProperties">message</param>来指定发往前台的数据，用逗号分隔
 
@@ -325,7 +287,7 @@
 	String jsonArrayStr = JSONArray.toJSONString(userList);
 	```
 
-20. 查询用户的个人信息的时候，要把用户的id也查出来，放到页面的hidden域中，在修改用户信息的时候通过此id再次查询用户信息（而不是直接使用页面上的数据）并通过jquer操作DOM元素赋值到相应的输入框中
+20. 查询用户的个人信息的时候，要把用户的id也查出来，放到页面的hidden域中，在修改用户信息的时候为保证前后台数据的一致性通过此id再次查询用户信息（而不是直接使用页面上的数据）并通过jquer操作DOM元素赋值到相应的输入框中
 
 21. 通过$.serializeArray函数先把前台的表单对象先序列化成json数组再通过$.each函数取出数组中的每一个对象，把对象的name和value赋值给一个空的对象，然后调用JSON.stringify(obj)把该js对象转化成json格式的字符串，发往后台，后台通过一个String类型的变量接收，前台写法如下：
 	```js
@@ -340,42 +302,13 @@
 
 22. 修改完用户的信息之后要再查询一下，这个查询动作要写在jquery的ajax的complete函数里面，如果写在ajax调用以外的地方，那么查询出来的就有可能不是更新之后的数据因为ajax请求是异步的，后面的语句不会等待ajax请求结束才执行，而是与ajax一起执行，这样虽然数据库中的数据可能是修改之后的，但是页面上的数据却是修改之前的，不利于良好的用户交互。
 
-23. 字典可以节省数据库的资源，所以就有了字典管理这个功能模块
-
 24. 在编写SQL的时候注意：尽量不要使用某个数据库特有的语句，这会有助于后期数据库的迁移
-
-25. 设计一个功能的时候首先要考虑页面，然后是表结构
-
-26. 完成一个功能的步骤：
-	* 建表
-	* 建bean
-	* 建dao/mapper
-	* 建service
-	* 编写action
-	* 写页面
-	* 写js
 
 27. mybatis的mapper在处理多个简单类型的输入参数时使用0,1,param1,param2作为占位符获取相应的参数，而不要直接使用参数名称
 
-28. log4j的日志设debug级别可以查看mybatis的SQL的执行日志
-
-29. 页面设计：查询和新增按钮一般放在一起，修改和删除按钮一般放在一起
-
-30. 字典列表页面一加载，就把所有的字典类型信息加载到select控件里（发送一个请求）
-	```jsp
-	<%-- 通过forEach标签来遍历 --%>
-	<c:forEach items="${dictTypeList}" var="dictType">
-	    <option value="${dictType}">${dictType}</option>
-	</c:forEach>
-	```
-
 31. 增加和修改字典共用一套业务逻辑公用一套页面，根据有无id来区分是新增还是修改，如果是修改则在后台先查询一下该字典的详细信息，然后通过ServletActionContext放到session里面，如果是新增则将session里面相应的key置为空，跳转到编辑页面的时候如果是修改则通过EL表达式获取相应的值，填充到相应的输入框中
 
-32. 在保存字典的时候要通过编辑页面的隐藏域hidden上是否有dictId来判断是insert还是update
-
-33. 在删除像字典，菜单，用户...这样的非映射表时，通常采用逻辑删除，即只修改一个字段del_flag为1而不做物理删除（delete）
-
-34. 为了良好的用户体验，删除之后也要重新查询一下数据
+33. 在删除像字典，菜单，用户...这样的非映射表时，通常采用逻辑删除，即只修改一个字段del_flag为1而不做物理删除（delete），这样做有利于数据的恢复
 
 35. 一个轻量级的分页组件的封装思路（本项目中使用的是mybatis的pageHelper）：
 	* 在后台编写数据库工具方言，屏蔽数据库分页方法的差异(mybatis已经完成)
@@ -474,21 +407,6 @@
 	}
 	```
 
-39. 总结一下StringBuffer和StringBuilder的区别：
-	* **可变性**：<br/>
-	String被final修饰，而且底层的char类型的数组也被final修饰，所以String不可变
-	StringBuffer和StringBuilder都继承自AbstractStringBuilder，它们的底层也是char
-	类型的数组，但是没有被final修饰，所以都是可变的<br/><br/>
-	* **线程安全性**：<br/>
-	String对象不可变，也可以理解为常量，所以是线程安全的<br/>
-	StringBuffer对方法加了同步锁，所以线程安全<br/>
-	StringBuilder没有对方法加同步锁，所以线程不安全<br/><br/>
-	* **性能**：<br/>
-	每次改变String类型的变量时（例如：+）都会生成一个新的对象，性能较低
-	StringBuffer每次都是改变自身的char数组所以不会生成新对象，性能比较好
-	StringBuilder和StringBuffer相比方法没有加同步锁，所以性能相对快一些，
-	但是，却要冒线程不安全的风险，所以还是推荐StringBuffer
-
 40. 分页查询的流程：
 	* 前台向后台传递查询条件，页数，每页的记录数
 	* action调用service方法获取PageInfo对象
@@ -535,59 +453,10 @@
 44. 最小化授权原则：
 	> 因为系统中的资源变化是最小的，而且资源如果有变化可以通过授权分配给用户，不需要修改业务代码，所以一般的权限管理都是基于资源的访问进行授权控制
 
-45. 权限管理实现 -> 解决方案:
-	1. 粗粒度权限管理（按钮级别权限管理）
-		* 概念：对资源类型的权限管理比如：菜单，url，按钮...
-
-		* 实现：用基于url的拦截方式进行系统级别的处理（不会侵入到业务中去）
-		比如：filter，interceptor，springAOP（前置通知）
-		
-		* 基于url的拦截方式用拦截器来实现（需要两个拦截器：认证拦截器，授权拦截器）
-
-			* 认证拦截器：loginInterceptor
-				a: 定义身份信息对象principle<br/>
-				b: 在用户确认登录以后，将用户身份信息放到session<br/>
-				c: 编写登录拦截器，遇到除了匿名访问之外的url，判断session里面是否存在用户身份信息，如果有则认证成功，放行，否则跳转到登录页面或者拒绝访问页面<br/>
-				d: 配置拦截器<br/>
-
-			* 授权拦截器：AuthorizationInterceptor
-				a: 在登录的LoginAction用户身份验证通过以后，从数据库获取该用户的授权信息<br/>
-				b: 编写授权拦截器，通过认证拦截器以后，进入授权拦截器，从session取出此次授权资源信息，查询此次访问的资源是否在用户的权限范围之内，若果是，放行，否则，转到拒绝访问页面<br/>
-				c: 配置拦截器<br/>
-
-	2. 细粒度权限管理
-		* 概念：不仅对资源类型进行权限管理，还对资源实例进行管理，
-		比如：本不能员工只能查看本部门信息，不能查看其它部门信息
-		
-		* 细粒度级别的权限管理，因为没有共性，所以不能进行系统级别
-		的处理，只能放在业务逻辑中单独处理
-
-46. 在系统内部可以通过单点登录访问另外一个系统的资源，所以在菜单表里面设置一个target字段，用来指明此次连接的目的地，设置href字段则是用来表示资源的uri
-
 47. 自己定义的拦截器一般放在struts2默认的拦截器的前面，如果放在后面，struts2默认的拦截器栈里面的19个拦截器就会先拦截，如果一次请求未通过自定义拦截器设定的规则，那么就白白浪费了系统的性能
 
 48. shiro简介
 	shiro是apache下面的一个开源框架，他实现了用户身份认证，权限授权 ，加密等功能，组成了一个系统级的安全认证框架
-
-49. shiro的优势
-	shiro是将安全认证相关的功能抽取出来组成一个框架，使用简单，灵活，可以非常快速的完成认证，授权等功能开发，降低系统集成难度，使用广泛，不仅可以运行在web应用，也可以在非web应用上使用，而且还支持分布式集群方式
-
-50. shiro的构成以及相关的概念	
-	* Subject:主体，它在shiro里面是一个接口，外部系统通过subject进行认证授权，subject其实是通过Security Manager来完成身份认证的操作
-
-	* SecurityManager:安全管理器，是shiro的核心，管理所有的subject，它是通过Authenticator进行身份认证，通过Authorizer进行授权，通过sessionManager进行会话管理，SecurityManger也是一个接口 ，继承了	Authenticator，Authorizer，sessionManager三个接口
-
-	* Authenticator 认证器，用来对用户身份进行认证，它也是一个接口
-
-	* Authorizer 	授权器，用户通过认证器认证以后，在访问资源时，需要通过授权器判断此用户是否有操作权限
-
-	* SessionManager 会话管理，不依赖于web容器的session,所以shiro能在非web系统中应用	
-
-	* realm  :认证和授权需要通过realm获取用户的权限数据，相当于数据源
-
-	* CacheManager:缓存管理，将用户的权限数据存储在缓存，提高系统性能(Ehcache)
-
-	* ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/shiro-framework.jpg)
 
 51. shiro的开发环境搭建
 	* shiro的核心包 &nbsp;&nbsp;&nbsp;  shiro-core-1.2.1.jar
@@ -595,258 +464,17 @@
 	* shiro与spring整合的包 &nbsp;&nbsp;&nbsp;  shiro-spring-1.2.1.jar
 	* shiro与ehcache整合的包 &nbsp;&nbsp;&nbsp;  ehcache-core-2.5.0.jar  shiro-ehcache-1.2.1.jar
 
-52. shiro的身份认证流程
-	* 主体subject登录
-	* SecurityManager调用Authenticator来进行认证
-	* Authenticator调用默认的realm（相当于一个数据源）来访问数据进行验证
-	* 在realm里面会返回一个能够认证通过的AuthenticationInfo认证信息
-	* 认证通过则进入系统，否则抛出异常
-	* ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/shiro认证流程.png)
-
-53. shiro的授权流程
-	* 主体subject登录
-	* SecurityManager来对主体的登录进行认证
-	* SecurityManager调用Authenticator来进行认证
-	* 认证通过进行授权
-	* SecurityManager调用Authorier来进行授权
-	* 授权成功访问系统资源
-	* ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/shiro授权流程.png)
-
-	> 注：自定义realm需要继承AuthorizingRealm实现doGetAuthorizationInfo和doGetAuthenticationInfo方法来完成认证
-
 54. shiro在用户认证之后就会把用户的身份信息放入它自己的session里面，在进行用户授权的时候它就会直接去session里面去（缓存起来，提高检索效率）
-
-55. 知识点：Arrays.asList("role1","role2")获得的list的长度是不能变的，当向其中add或remove元素的时候就会抛出异常，因为获得的这个list是Arrays类的一个内部类当调用add或remove方法的时候其实是调用的他的父类AbstractList的add和remove方法，而调用这两个方法是会直接抛出异常：UnsupportedOperationException
-
-56. shiro与web项目进行整合-通过spring的DelegatingFilterProxy代理来生成shiro过滤器
-	```xml
-	<!-- shiro的过滤器 -->
-	<filter>
-	    <filter-name>shiroFilter</filter-name>
-	    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-	    <init-param>
-	        <!--  这个参数为true表示由web容器来控制filter的生命周期 -->
-	        <!--  如果让spring管理就设置为false -->
-	        <param-name>targetFilterLifecycle</param-name>
-	        <param-value>true</param-value>
-	    </init-param>
-	    <init-param>
-	        <param-name>targetBeanName</param-name>
-	        <!-- 默认就是shiroFilter -->
-	        <param-value>shiroFilter</param-value>
-	    </init-param>
-	</filter>
-	<filter-mapping>
-	    <filter-name>shiroFilter</filter-name>
-	    <url-pattern>/*</url-pattern>
-	</filter-mapping>
-	```
-
-57. 在spring的配置文件中注册ShiroFilterFactoryBean
-	```xml
-	<!-- web.xml配置的过滤器对应的bean -->
-	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
-	    <property name="securityManager" ref="securityManager"></property>
-	    <property name="loginUrl" value="/toLogin.action"></property>
-	    <property name="successUrl" value="/main.action"></property>
-	    <property name="unauthorizedUrl" value="/refusePage.jsp"></property>
-		 
-	    <property name="filterChainDefinitions">
-	        <value>
-	            /jsAndCss/** = anon
-	            /login.action = anon
-	            /sysmgr/getDictListPage.action = perms[dict:query]
-	            <!-- /sysmgr/changePwd.action = perms[user:chpwd] -->
-	            /** = authc
-	        </value>
-	    </property>
-	</bean>
-	
-	<!--  安全管理器SecurityManager -->
-	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-	    <property name="realm" ref="userRealm"></property>
-	    <property name="cacheManager" ref="cacheManager" />
-	    <property name="sessionManager" ref="sessionManager" />
-	</bean>
-	
-	<!--  自定义的realm -->
-	<bean id="userRealm" class="com.lyu.pms.security.UserRealm">
-	    <!-- 注入凭证匹配器 -->
-	    <property name="credentialsMatcher" ref="credentialsMatcher"></property>
-	</bean>
-	
-	<!--  注册凭证匹配器 -->
-	<bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
-	    <property name="hashAlgorithmName" value="SHA-1" />
-	    <property name="hashIterations" value="1024" />
-	</bean>
-	
-	<!--  定义缓存管理器 -->
-	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
-	    <property name="cacheManagerConfigFile" value="classpath:ehcache.xml" />
-	</bean>
-	
-	<!--  定义会话管理器 -->
-	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
-	    <!-- session的失效时间 -->
-	    <property name="globalSessionTimeout" value="3600000" />
-	    <!--  定时清理失效的会话 -->
-	    <property name="sessionValidationInterval" value="1800000" />		
-	</bean>
-	```
-
-58. 引入shiro的标签，在前台也对请求加以控制 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %> 像下面这样把需要权限的按钮包起来：
-	```xml
-	<shiro:hasPermission name="[dict:query]">
-	    <input id="btnSubmit" class="btn btn-primary" type="button" onclick="dictMgr.getDictListPage(1, 10);" value="查询"/>
-	</shiro:hasPermission>
-	```
-
-59. 关于session的时间单位：
-	* web容器tomcat中的session设置的时间单位是分钟
-
-	* servlet中的session的时间单位是秒
-
-	* shiro中的session时间的单位是毫秒
 
 60. **业务上的一点注意事项：添加菜单之后还要为系统管理员拥有的角色添加对该菜单的权限，而不直接给当前用户拥有的角色授权，这样该用户即使添加了这个菜单，想要使用该菜单仍然要通过系统管理员进行二次授权才可以使用，保障了系统的安全**
 
 61. 删除菜单之前还要判断当前菜单是否有子菜单，如果有则不能删除该菜单，这里不采用递归删除其所有子菜单的原因是为了防止用户的二次误操作导致数据丢失 *（要站在用户的角度看待问题，试想：用户不小心点击了删除按钮，弹出提示框：当前菜单下还有子菜单，您确定要删除当前菜单及其子菜单吗？用户又一个不小心，点了确定... 虽然作为软件开发商，我们已经给出了提示信息，责任已经尽到了，但是，用户心里还是会有些不愉快的，下次系统维护或升级就肯定不会再找我们了，所以，这里当判断当前菜单有子菜单时就干脆不让用户删除）*
 
-62. 删除菜单之后还要删除所有角色-菜单对应表里面对该菜单的记录
-
-63. 由于上述两个功能在同一个方法中，在一个方法中多次访问数据库，需使用事务进行控制
-
-64. 菜单表中的链接字段（href）在本项目中只有三级菜单才有权限标示字段，只有"第四级"按钮才有值，所以有的菜单要输入链接，有的要输入权限标示，有些什么都不需要输入
-
-65. 查询出指定id的菜单以及它的父级菜单的名称 <br/>
-	知识点：连接查询，左连接
-	```
-	SELECT A.id, A.parent_id, A.name, A.sort, A.href, A.target, A.icon, A.is_show,
-	A.permission, A.update_by, A.update_date, A.remarks, A.del_flag, B.name parentName
-	FROM pms_sys_menu A LEFT JOIN pms_sys_menu B
-	ON A.parent_id = B.id WHERE A.id = 1
-	```
-
-66. 在javaScript或者jQuery中字符串比较没有equals()方法，要比较两个字符串是否相等可以直接用==或者is()进行判断
-	```js
-	"a"=="a"
-
-	$("#a").val().is("a")
-	```
-
-67.  **增加用户体验** :用户在选择父级菜单的时候，在菜单树展开的时候，需要定位一下上一次选择的是哪一个菜单
-
 68. 在修改菜单的父级菜单的时候，当前菜单以及所有子菜单（包括孙子菜单）都禁止显示，不能把当前菜单挂在它的子菜单下面，否则会产生死循环，数据库会有大量的垃圾数据， **树形结构都要预防死循环**
-
-69. js数组定义格式：
-	```js
-	var arr1 = new Array();
-	var arr2 = new Array("菜单","部门","区域");
-	var arr3 = ["菜单","部门","区域"];
-	```
-70. 向js数组中添加元素和删除元素使用push和pop函数
-
-71. js事件冒泡和事件捕获（事件触发的两种方式）：
-	* 捕获（从上到下）：document --> html --> body --> div --> input
-	* 冒泡（从下到上）: input --> div --> body --> html --> document
-
-72. js事件对象（event）详细信息：
-	* type表示的是被触发事件的类型
-	* target表示的是事件的目标
-	* bubbles：表示事件是否冒泡
-	* cancelable：表示是否可以取消事件的默认行为
-	* currentTarget：表示事件处理程序当前正在处理事件的那个元素
-	* defaultPrevented：表示是否调用了preventDefault()
-	* detail：表示的是与事件相关的细节信息
-	* eventPhase：调用事件处理处理程序的阶段：1表示捕获阶段、2表示处于目标、3表示冒泡阶段
-
-73. 与js事件对象有关的两个函数：
-	* 阻止事件传播		event.stopPropargation();
-	* 阻止事件默认行为	event.preventDefault();
-
-74. js绑定事件与解绑事件：
-	```js
-	// 绑定事件（btn为DOM元素）
-	btn.addEventListener('click' ,addevFn1 , false); //false:冒泡，true:捕获
-	function addevFn1() {
-	    alert("我是绑定的事件");
-	};
-
-	// 解绑事件
-	btn.removeEventListener("mouseover" , addevFn1, false)
-	```
-
-75. IE8及以下的添加和删除监听事件方法：（注：IE9及以上的就用上面的方法）
-	```js
-	// 绑定事件
-	btn.attachEvent("onclick" ,addevFn2);
-	function addevFn2(){
-	    alert("我是IE8及以下的添加监听事件方法");
-	};
-
-	// 解绑事件
-	btn.detachEvent("onclick" , addevFn2);	
-	```
-
-76. **用户体验** ：用户在选择完菜单后要隐藏掉菜单选择框
 
 77. 为了在修改菜单的时候避免当前菜单和它的子菜单作为父级菜单显示出来，需要在后台加载数据的时候对它自己以及它的子菜单进行过滤，在service层查询出当前菜单的所有子孙菜单，然后在action中循环剔除子孙菜单
 
-78. js中的location对象简介：
-	* Location 对象包含有关当前 URL 的信息。
-
-	* Location 对象是 Window 对象的一个部分，可通过 window.location 属性来访问。
-
-	* Location 对象属性:
-		* hash		设置或返回从井号 (#) 开始的 URL（锚）。
-		* host		设置或返回主机名和当前 URL 的端口号。
-		* hostname	设置或返回当前 URL 的主机名。
-		* href		设置或返回完整的 URL。
-		* pathname	设置或返回当前 URL 的路径部分。
-		* port		设置或返回当前 URL 的端口号。
-		* protocol	设置或返回当前 URL 的协议。
-		* search	设置或返回从问号 (?) 开始的 URL（查询部分）。
-
-	* Location 对象函数:
-		* assign()	加载新的文档。
-		* reload()	重新加载当前文档。
-		* replace()	用新的文档替换当前文档。
-
 79. 使用ListIterator迭代list集合的过程中可以删除元素
-
-80. jquery-validate的一点学习心得：
-	* 记得导入jquery.js和jquery.validate.min.js文件
-	* 调用validate方法进行校验$("#表单id").validate()
-	* 可以通过对象的方式向validate方法中传递参数$("#表单id").validate({...})
-	* submitHandler是一个在表单提交(点击type为"submit"的按钮)的时候调用的一个回调函数，它会取消提交表单的默认行为，在函数内部可以通过调用form.submit()方法来提交
-	* errorPlacement（错误信息显示的位置）<br/>
-	默认情况是：error.appendTo(element.parent());即把错误信息放在验证的元素后面。<br/>
-		```js
-		errorPlacement: function(error, element) {
-		    error.appendTo(element.parent());
-		}
-		```
-		error --> 错误信息(默认用label标签包裹)<br/>
-		element --> 出现错误信息的元素（input）<br/>
-		错误提示的默认css类名是"error"(即label的默认类名)<br/>
-	* errorContainer:错误信息存放的容器，可以在有错误信息的时候显示，没有错误信息的时候隐藏
-	* 用法示例：
-		```js
-		$(function() {
-		    $("#name").focus();
-		    $("#saveMenuForm").validate({
-		        submitHandler: function(form){
-		            form.submit();
-		        },
-		        errorContainer: "#messageBox",
-		        errorPlacement: function(error, element) {
-		            $("#messageBox").text("输入有误，请先更正。");
-		            error.appendTo(element.parent());
-		        }
-		    });
-		});
-		```
 
 81. 由于菜单，部门，区域都具备树形结构的特征，所以提取共性封装一个树形节点对象来为他们继承，主要有：id，pId，name这三个属性
 
@@ -872,14 +500,7 @@
 	```
 	更多关于zTree的API说明，详见：[zTree API 文档](http://www.treejs.cn/v3/api.php "zTree API 文档")
 
-84. treeTable的层次展开设置:
-	```js
-	$("#treeTable").treeTable({expandLevel : 2});
-	```
-
 85. @Deprecated注解用来注释那些已经过时的方法（不推荐使用的方法），往往还要在注释里面给使用者推荐一个取而代之的方法，在本项目中，DeptUtils的sortDeptList方法和MenuUtils的sortMenuList方法都用重新封装的一个TreeUtils来取代，调用其中的泛型方法sortTreeList来完成树形结构的排序
-
-86. code字段的作用：根据编码统计某个部门或者区域的支出以及销售额...
 
 87. js中的history对象：History 对象包含用户（在浏览器窗口中）访问过的 URL
 	* back()	加载 history 列表中的前一个 URL。
