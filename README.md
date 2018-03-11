@@ -55,7 +55,7 @@
 	com.company.projectName.test &nbsp;&nbsp;测试类<br/>
 	com.company.projectName.util &nbsp;&nbsp;工具类<br/>
 
-* 项目包结构展示<br/>
+* 项目中类的命名规范<br/>
 ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/项目包结构一览.png)
 ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/action和dto的包结构.png)
 ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/entity的包结构.png)
@@ -69,7 +69,6 @@
 	webapp/jsAndCss/css &nbsp;&nbsp;一些css文件<br/>
 	webapp/jsAndCss/img &nbsp;&nbsp;一些图片文件<br/>
 	webapp/WEB-INF/pages &nbsp;&nbsp;放页面<br/>
-
 
 ## 界面
 ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/index.png)
@@ -137,17 +136,7 @@
 
 	> 解决：记录一开始查询出的直接子区域的size，使用普通for循环递归遍历查找孙子区域
 
-8. 在一个集合中剔除存在于另一个集合中的元素时contains判断无效
-	> 原因：contains方法默认是调用对象的equals方法来判断对象是否存在于容器中，如果不重写equals的话默认使用Object的equals方法来判断，而Object的equals方法实现如下：
-	```java
-	public boolean equals (Object obj) {
-	    return (this == obj);
-	}
-	```
-
-	> 解决：重写对象的hashCode和equals方法即可，重写 hashCode 方法是为了根据元素自身的特性确定它的哈希值从而确定它在集合中的存储位置，覆盖 equals 方法是为了在发生哈希冲突的时候，确定两个元素是否是同一个元素。
-
-9. 用eclipse打开项目时，项目的图标上出现红色错误标示的几种原因（**欢迎补充**）
+8. 用eclipse打开项目时，项目的图标上出现红色错误标示的几种原因（**欢迎补充**）
 	> 原因：Eclipse的编译版本和项目的jdk版本不匹配
 	
 	> 解决：修改项目和windows的properties的Java Compiler 即编译的jre环境
@@ -158,7 +147,7 @@
 
 	> 扩展：Window -> Show View -> Markers 视图可以查看项目中的错误或者警告的详细提示信息
 
-10. tomcat一启动项目就报错，几种可能的原因（**欢迎补充**）
+9. tomcat一启动项目就报错，几种可能的原因（**欢迎补充**）
 	> 原因：org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML - 使用mybatis时mapper.xml配置文件中定义了两个同名的sql片段
 	
 	> 解决：修改其中的一个sql片段的name
@@ -170,7 +159,7 @@
 	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 	```
 
-11. 为某个用户增加了一些角色，发现界面上的菜单出现了重复的现象
+10. 为某个用户增加了一些角色，发现界面上的菜单出现了重复的现象
 	> 原因：每个角色所拥有的菜单列表可能有重叠的情况，在根据用户查询他所拥有的角色，在根据查询到的角色去查询相应的菜单列表时就出现了重复
 
 	> 解决：查询完用户拥有的菜单列表的时，进行去重
@@ -280,27 +269,7 @@
 
 16. 在删除像字典，菜单，用户...这样的非映射表时，通常采用逻辑删除，即只修改一个字段del_flag为1而不做物理删除（delete），这样做有利于数据的恢复
 
-17. 一个轻量级的分页组件的封装思路（本项目中使用的是mybatis的pageHelper）：
-	* 在后台编写数据库工具方言，屏蔽数据库分页方法的差异(mybatis已经完成)
-	* 在后台编写分页的工具类，屏蔽翻页动作带来的查询差异(mybatis已经完成)
-	* 在后台编写分页条的java代码，方便页面统一生成分页条，减少页面代码重复
-
-18. 常用的几款数据库的方言差异：
-	```
-	# mysql: limit
-	# beginrow从0开始,pagesize表示一页多少条记录
-	SELECT * FROM TABLE A LIMIT beginrow, pagesize
-
-	# oracle: rownum
-	SELECT B.* FROM 
-	(SELECT rownum rn a.* FROM table a) B
-	WHERE B.rn BETWEEN beginrow AND endrow
-
-	# sqlserver: top
-	SELECT TOP 100 id, name, sex FROM TABLE
-	```
-
-19. 通过PageInfo和前台分页查询的js函数名来组装分页条
+17. 通过PageInfo和前台分页查询的js函数名来组装分页条
 	```java
 	package com.lyu.pms.common.util;
 	import com.github.pagehelper.PageInfo;
@@ -368,11 +337,11 @@
 	}
 	```
 
-20. 权限管理的概念：
+18. 权限管理的概念：
 	> 定义：权限管理实现用户对系统访问的控制，按照既定的规则或者策略控制用户访问被授权的资源
 	> 内容：权限管理包括用户认证和用户授权两个部分
 
-21. 权限管理 -> 用户认证：
+19. 权限管理 -> 用户认证：
 	* 概念：用户访问系统，需要验证用户的正确性和合法性
 	* 认证的几种方式：
 		* 用户名和密码
@@ -385,51 +354,45 @@
 		* 验证用户是否存在
 		* 验证密码是否正确
 		* 验证通过就可以访问系统资源
-		* ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/用户认证流程图.png)
 	* 用户认证的几个基本对象概念:
 		* subject 主体 可以理解为用户也可以是其他系统或者访问系统的其他对象
 		* principle 身份信息 就是主体的标示或者编码（用户名）
 		* credential 凭证信息 比如：密码，证书，指纹，人脸...
 
-22. 权限管理 -> 用户授权：
+20. 权限管理 -> 用户授权：
 	* 概念：简单理解就是访问控制，用户认证通过后，系统对资源进行授权给用户，用户才能访问
 	* 授权的流程：
 		* 分配权限
 		* 用户通过认证以后，即将访问系统资源
 		* 要去查询该用户是否有访问该资源的权限
 		* 如果有则访问，无则拒绝
-		* ![image](https://github.com/MrQuJL/permission-management-system/raw/master/pms-imgs/用户授权流程图.png)
 	* 授权的两种类型：
 		* 基于角色的访问授权控制（粗粒度）
 		* 基于资源的访问授权控制（细粒度）
 
-23. 最小化授权原则：
+21. 最小化授权原则：
 	> 因为系统中的资源变化是最小的，而且资源如果有变化可以通过授权分配给用户，不需要修改业务代码，所以一般的权限管理都是基于资源的访问进行授权控制
 
-24. 自己定义的拦截器一般放在struts2默认的拦截器的前面，如果放在后面，struts2默认的拦截器栈里面的19个拦截器就会先拦截，如果一次请求未通过自定义拦截器设定的规则，那么就白白浪费了系统的性能
-
-25. shiro简介
+22. shiro简介
 	shiro是apache下面的一个开源框架，他实现了用户身份认证，权限授权 ，加密等功能，组成了一个系统级的安全认证框架
 
-26. shiro的开发环境搭建
+23. shiro的开发环境搭建
 	* shiro的核心包 &nbsp;&nbsp;&nbsp;  shiro-core-1.2.1.jar
 	* shiro与web整合的包 &nbsp;&nbsp;&nbsp;  shiro-web-1.2.1.jar
 	* shiro与spring整合的包 &nbsp;&nbsp;&nbsp;  shiro-spring-1.2.1.jar
 	* shiro与ehcache整合的包 &nbsp;&nbsp;&nbsp;  ehcache-core-2.5.0.jar  shiro-ehcache-1.2.1.jar
 
-27. shiro在用户认证之后就会把用户的身份信息放入它自己的session里面，在进行用户授权的时候它就会直接去session里面去（缓存起来，提高检索效率）
+24. **业务上的一点注意事项：添加菜单之后还要为系统管理员拥有的角色添加对该菜单的权限，而不直接给当前用户拥有的角色授权，这样该用户即使添加了这个菜单，想要使用该菜单仍然要通过系统管理员进行二次授权才可以使用，保障了系统的安全**
 
-28. **业务上的一点注意事项：添加菜单之后还要为系统管理员拥有的角色添加对该菜单的权限，而不直接给当前用户拥有的角色授权，这样该用户即使添加了这个菜单，想要使用该菜单仍然要通过系统管理员进行二次授权才可以使用，保障了系统的安全**
+25. 删除菜单之前还要判断当前菜单是否有子菜单，如果有则不能删除该菜单，这里不采用递归删除其所有子菜单的原因是为了防止用户的二次误操作导致数据丢失 *（要站在用户的角度看待问题，试想：用户不小心点击了删除按钮，弹出提示框：当前菜单下还有子菜单，您确定要删除当前菜单及其子菜单吗？用户又一个不小心，点了确定... 虽然作为软件开发商，我们已经给出了提示信息，责任已经尽到了，但是，用户心里还是会有些不愉快的，下次系统维护或升级就肯定不会再找我们了，所以，这里当判断当前菜单有子菜单时就干脆不让用户删除）*
 
-29. 删除菜单之前还要判断当前菜单是否有子菜单，如果有则不能删除该菜单，这里不采用递归删除其所有子菜单的原因是为了防止用户的二次误操作导致数据丢失 *（要站在用户的角度看待问题，试想：用户不小心点击了删除按钮，弹出提示框：当前菜单下还有子菜单，您确定要删除当前菜单及其子菜单吗？用户又一个不小心，点了确定... 虽然作为软件开发商，我们已经给出了提示信息，责任已经尽到了，但是，用户心里还是会有些不愉快的，下次系统维护或升级就肯定不会再找我们了，所以，这里当判断当前菜单有子菜单时就干脆不让用户删除）*
+26. 在修改菜单的父级菜单的时候，当前菜单以及所有子菜单（包括孙子菜单）都禁止显示，不能把当前菜单挂在它的子菜单下面，否则会产生死循环，数据库会有大量的垃圾数据， **树形结构都要预防死循环**
 
-30. 在修改菜单的父级菜单的时候，当前菜单以及所有子菜单（包括孙子菜单）都禁止显示，不能把当前菜单挂在它的子菜单下面，否则会产生死循环，数据库会有大量的垃圾数据， **树形结构都要预防死循环**
+27. 为了在修改菜单的时候避免当前菜单和它的子菜单作为父级菜单显示出来，需要在后台加载数据的时候对它自己以及它的子菜单进行过滤，在service层查询出当前菜单的所有子孙菜单，然后在action中循环剔除子孙菜单
 
-31. 为了在修改菜单的时候避免当前菜单和它的子菜单作为父级菜单显示出来，需要在后台加载数据的时候对它自己以及它的子菜单进行过滤，在service层查询出当前菜单的所有子孙菜单，然后在action中循环剔除子孙菜单
+28. 由于菜单，部门，区域都具备树形结构的特征，所以提取共性封装一个树形节点对象来为他们继承，主要有：id，pId，name这三个属性
 
-32. 由于菜单，部门，区域都具备树形结构的特征，所以提取共性封装一个树形节点对象来为他们继承，主要有：id，pId，name这三个属性
-
-33. 在使用zTree的时候可以直接将后台传过来的数据作为zTree的初始化参数：
+29. 在使用zTree的时候可以直接将后台传过来的数据作为zTree的初始化参数：
 	```js
 	success : function(data) {
 	    var menuArray = JSON.parse(data.jsonObj);
@@ -437,7 +400,7 @@
 	}
 	```
 
-34. zTree展开指定层级节点的代码：
+30. zTree展开指定层级节点的代码：
 	```js
 	var nodes = menuTree.getNodesByParam("level",2); // 这里的2代表展开三级，不包含顶级节点
 	for(var i=0; i<nodes.length; i++){
@@ -451,11 +414,11 @@
 	```
 	更多关于zTree的API说明，详见：[zTree API 文档](http://www.treejs.cn/v3/api.php "zTree API 文档")
 
-35. @Deprecated注解用来注释那些已经过时的方法（不推荐使用的方法），往往还要在注释里面给使用者推荐一个取而代之的方法，在本项目中，DeptUtils的sortDeptList方法和MenuUtils的sortMenuList方法都用重新封装的一个TreeUtils来取代，调用其中的泛型方法sortTreeList来完成树形结构的排序
+31. @Deprecated注解用来注释那些已经过时的方法（不推荐使用的方法），往往还要在注释里面给使用者推荐一个取而代之的方法，在本项目中，DeptUtils的sortDeptList方法和MenuUtils的sortMenuList方法都用重新封装的一个TreeUtils来取代，调用其中的泛型方法sortTreeList来完成树形结构的排序
 
-36. 为角色分配权限的时候只能分配当前用户所拥有的权限
+32. 为角色分配权限的时候只能分配当前用户所拥有的权限
 
-37. 在一个服务类里面做多次数据库的操作要用事务来控制
+33. 在一个服务类里面做多次数据库的操作要用事务来控制
 	* 注册事务管理器
 	* 开启事务注解驱动
 	* 在相应的方法上加上注解：
@@ -465,26 +428,26 @@
 		...
 		```
 
-38. 向角色表添加一条记录后，通过mybatis返回的主键向角色-菜单，角色-部门，角色-区域映射表中添加数据，并通过spring的声明式事务进行控制
+35. 向角色表添加一条记录后，通过mybatis返回的主键向角色-菜单，角色-部门，角色-区域映射表中添加数据，并通过spring的声明式事务进行控制
 
-39. mybatis添加记录返回主键需要在insert标签上设置这三个属性：
+36. mybatis添加记录返回主键需要在insert标签上设置这三个属性：
 	```java
 	useGeneratedKeys = "true"	使用生成的主键
 	keyProperty = "id"		  pojo类对应的属性
 	keyColumn = "id"		  数据库表对应的字段
 	```
 
-40. **业务上的注意事项** ：
+37. **业务上的注意事项** ：
 	* 录入用户信息的时候，不录入密码，使用默认密码
 	* 在为用户分配角色的时候，要注意最小化授权，用最少的角色分配给该用户所需要的权限
 	* 超级管理员账号不可以删除，自己不能删除自己，所显示的用户只能是当前用户所在部门里有权限看到的用户（像淘汰子节点一样）
 	* 用户只跟部门挂钩，不要和其他的字段有关联
 	* 系统表一般是不经常改动的表，为了存取的方便，一般要放到缓存组件里
 
-41. 日志功能分析：
+38. 日志功能分析：
 日志一般是通过某些事件（添加，删除，修改...）触发的，所以日志不存在手动添加功能，而需要通过切面来向日志表里添加数据，同时日志也不能修改，日志是用来查询历史记录的，可以在日志记录达到一定量的时候覆盖，而不要提供对外删除日志的接口（除非用户有这方面的需求）。
 
-42. 在该项目中日志的实现思路如下：
+39. 在该项目中日志的实现思路如下：
 	* 日志的几个要素：什么人，什么时候，在哪，做了什么事情，造成了什么后果
 	* 使用aspectJ，导入aop，aopaliance，aspectJ，spring-aspects包
 	* 注册aspectJ的自动代理<aop:aspectj-autoproxy />
@@ -492,6 +455,6 @@
 
 ## 致谢
 感谢您对项目的关注，如果项目中有任何错误或不妥，欢迎指正，我将不胜感激。<br/>
-上述项目中出现的问题和收获只是很小的一部分，更多的内容可以[点击这里](https://github.com/MrQuJL/permission-management-system/tree/master/pms-summary "点击这里")
+上述项目中出现的问题和收获只是很小的一部分，更多的内容可以[点击这里](https://github.com/MrQuJL/permission-management-system/tree/master/pms-summary "点击这里")<br/>
 项目持续更新中...<br/>
 更多精彩内容，敬请关注[曲健磊的博客](http://blog.csdn.net/a909301740 "曲健磊的博客")
