@@ -23,7 +23,7 @@ public class UserDto extends User implements Serializable {
 	
 	// 角色列表
 	private List<Role> roleList;
-	
+
 	public String getName() {
 		return name;
 	}

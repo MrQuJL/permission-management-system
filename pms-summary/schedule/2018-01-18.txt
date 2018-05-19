@@ -19,7 +19,7 @@
 	角色创建完毕后可以置为true解冻，当这个角色不再使用的时候置为false，
 	不进行物理删除
 
-6. 使用阿里的fastjson来将java对象转换成json字符串
+6. 使用fastjson来将java对象转换成json字符串
 JSON.toJSONString(Object obj);
 
 7. 从后台获得数据后分别给表单赋值（form）以及给页面赋值（html）
