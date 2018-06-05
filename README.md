@@ -454,7 +454,7 @@
 	* 注册aspectJ的自动代理<aop:aspectj-autoproxy />
 	* *注：日志的实现方式多样，可以用AOP也可以用拦截器*
 
-## 致谢
+## 其他
 感谢您对项目的关注，如果项目中有任何错误或不妥，欢迎指正。<br/>
 上述项目中出现的问题和收获只是很小的一部分，更多的内容可以[点击这里](https://github.com/MrQuJL/permission-management-system/tree/master/pms-summary "点击这里")<br/>
 项目持续更新中...<br/>
