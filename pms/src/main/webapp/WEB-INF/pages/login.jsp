@@ -54,7 +54,7 @@
 			<label class="input-label" for="password">密码</label>
 			<input type="password" id="password" name="password" class="input-block-level required">
 			<input class="btn btn-large btn-primary" type="submit" value="登 录">&nbsp;&nbsp;
-			<label for="rememberMe" title="下次不需要再登录"><input type="checkbox" id="rememberMe" name="rememberMe"> 记住我</label>
+			<!-- <label for="rememberMe" title="下次不需要再登录"><input type="checkbox" id="rememberMe" name="rememberMe"> 记住我</label> -->
 		</form>
 		<div class="footer">
 			Copyright © 2018 <a href="http://39.107.70.197:8080" target="_blank">权限管理系统</a> - Powered By 曲健磊
